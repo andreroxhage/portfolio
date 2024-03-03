@@ -1,0 +1,123 @@
+import {title} from 'process';
+
+export const links = [
+	{
+		title: 'Home',
+		href: '#Header',
+	},
+	{
+		title: 'About',
+		href: '#About',
+	},
+	{
+		title: 'Voluntary Projects',
+		href: '#VoluntaryProjects',
+	},
+	{
+		title: 'Photography',
+		href: '#Photography',
+	},
+];
+
+export const footerLinks = [
+	{
+		title: 'LinkedIn',
+		href: 'https://www.linkedin.com/in/andreroxhage/',
+	},
+	{
+		title: 'GitHub',
+		href: 'https://github.com/andreroxhage/',
+	},
+	{
+		title: 'andreroxhage74@gmail.com',
+		href: 'mailto:andreroxhage74@gmail.com',
+	},
+];
+
+export const about = [
+	{
+		title: 'Engineering',
+		description:
+			'1 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt repellat ad asperiores, maiores deleniti, assumenda dolore nostrum impedit culpa libero a dignissimos excepturi omnis, aspernatur laboriosam corporis! Iure, hic odit.',
+	},
+	{
+		title: 'Psychology',
+		description:
+			'2 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt repellat ad asperiores, maiores deleniti, assumenda dolore nostrum impedit culpa libero a dignissimos excepturi omnis, aspernatur laboriosam corporis! Iure, hic odit.',
+	},
+];
+
+export const currentWork = [
+	{
+		sectionTitle: 'Current Work',
+		title: 'Join Loyalty Platform',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea numquam modi enim, nobis commodi natus adipisci libero ipsum ut at consequuntur recusandae est laudantium assumenda, repellat magnam eum voluptates tempora.',
+		tags: {tag1: 'Design', tag2: 'Front-end'},
+		resumeTitle: 'Are You a LinkedIn Stalker?',
+	},
+];
+
+export const resume = [
+	{
+		title: 'Education',
+		content: [
+			{
+				subtitle:
+					'Master in Engineering, Information & Communication Technologies',
+				company: 'Lund University, Sweden',
+
+				date: '2020 – 2025',
+			},
+			{
+				subtitle: 'Bachelor of Arts in Psychology',
+				company: 'Lund University, Sweden',
+
+				date: '2022 – 2024',
+			},
+		],
+	},
+	{
+		title: 'Experience',
+		content: [
+			{
+				subtitle: 'Salesperson',
+				company: 'Mattssons Foto',
+				date: '2021 – Current',
+			},
+			{
+				subtitle: 'Head of Photography for a volunteer organization',
+				company: 'Lundakarnevalen',
+				date: '2021 – 2023',
+			},
+			{
+				subtitle:
+					'Marketing Manager & Graphic Designer for a volunteer organization',
+				company: 'Teknikfokus, Career Fair',
+				date: '2021 – 2022',
+			},
+			{
+				subtitle: 'Ranger soldier',
+				company: 'The Swedish Armed Forces',
+				date: '2018 – 2019',
+			},
+		],
+	},
+	{
+		title: 'Skills',
+		content: [
+			{
+				subtitle: 'Creative:',
+				items: ['Proficient in Figma, Adobe Photoshop, and Lightroom'],
+			},
+			{
+				subtitle: 'Programming:',
+				items: ['Skilled in Java, JavaScript, SQL, HTML, CSS, and Python'],
+			},
+			{
+				subtitle: 'Certifications:',
+				items: ['Foundations of User Experience Design - Coursera'],
+			},
+		],
+	},
+];
