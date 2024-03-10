@@ -6,6 +6,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 
 import React, {useState} from 'react';
 import {about} from '../data';
+import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function About() {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -16,9 +17,15 @@ export default function About() {
 
 	return (
 		<>
-			<section className='h-fit my-auto pt-14 md:pt-0 flex-row items-center relative'>
+			<section className='bg-primary-vanilla h-fit my-auto pt-14 md:pt-0 flex-row items-center relative'>
 				<div className='max-w-9xl mx-auto px-6 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
-					<div className='pl-1 w-full sm:pl-0 col-span-8 col-start-2 md:col-span-5'>
+					<motion.div
+						className='pl-1 w-full sm:pl-0 col-span-8 col-start-1 md:col-span-5'
+						initial={{opacity: 0, translateY: 60}}
+						whileInView={{opacity: 1, translateY: 0}}
+						transition={{duration: 0.4, ease: 'easeOut'}}
+						viewport={{once: true}}
+					>
 						<div className='flex flex-row gap-x-6'>
 							{about.map((item, index) => (
 								<div key={index}>
@@ -34,7 +41,7 @@ export default function About() {
 												{color: 'text-secondary-green-darker'},
 												{color: 'text-primary-grey-brighter'},
 											],
-											transition: {duration: 0.2},
+											transition: {duration: 0.2, ease: 'easeInOut'},
 										}}
 									>
 										{item.title}
@@ -56,24 +63,23 @@ export default function About() {
 						</div>
 
 						{about.map((item, index) => (
-							<p
+							<motion.p
 								key={index}
-								className={`text-base md:text-lg font-medium ${
+								className={`text-base md:text-lg font-medium w-[700px] ${
 									activeIndex === index ? 'visible' : 'hidden'
 								}`}
 							>
 								{item.description}
-							</p>
+							</motion.p>
 						))}
-					</div>
-
-					<div className='col-start-2 col-span-8 md:col-start-7 md:col-span-4 my-20'>
+					</motion.div>
+					<ScrollScaleWrapper className='col-start-1 col-span-10 md:col-start-7 md:col-span-4 my-20'>
 						<Image
 							className='h-full w-full rounded-sm'
 							src={Study}
 							alt='image description'
 						/>
-					</div>
+					</ScrollScaleWrapper>
 				</div>
 			</section>
 		</>

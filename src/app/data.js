@@ -19,20 +19,11 @@ export const links = [
 	},
 ];
 
-export const footerLinks = [
-	{
-		title: 'LinkedIn',
-		href: 'https://www.linkedin.com/in/andreroxhage/',
-	},
-	{
-		title: 'GitHub',
-		href: 'https://github.com/andreroxhage/',
-	},
-	{
-		title: 'andreroxhage74@gmail.com',
-		href: 'mailto:andreroxhage74@gmail.com',
-	},
-];
+export const header = {
+	title: 'ANDRÉ ROXHAGE',
+	currently:
+		'Pursuing my Masters in Engineering, specializing in Information and Communication Technologies',
+};
 
 export const about = [
 	{
@@ -61,19 +52,20 @@ export const currentWork = [
 export const resume = [
 	{
 		title: 'Education',
+		icon: 'academic-cap',
 		content: [
 			{
 				subtitle:
 					'Master in Engineering, Information & Communication Technologies',
 				company: 'Lund University, Sweden',
 
-				date: '2020 – 2025',
+				date: '2020 – 2026',
 			},
 			{
 				subtitle: 'Bachelor of Arts in Psychology',
 				company: 'Lund University, Sweden',
 
-				date: '2022 – 2024',
+				date: '2022 – 2026',
 			},
 		],
 	},
@@ -81,10 +73,20 @@ export const resume = [
 		title: 'Experience',
 		content: [
 			{
+				subtitle: 'Front-end Developer',
+				company: 'InterMail',
+				date: '2023 – Current',
+			},
+			{
+				subtitle: 'Teaching Assistant - Interaction Design',
+				company: 'Lunds University',
+				date: '2023 – 2024',
+			} /*
+			{
 				subtitle: 'Salesperson',
 				company: 'Mattssons Foto',
-				date: '2021 – Current',
-			},
+				date: '2021 – 2023',
+			},*/,
 			{
 				subtitle: 'Head of Photography for a volunteer organization',
 				company: 'Lundakarnevalen',
@@ -108,16 +110,47 @@ export const resume = [
 		content: [
 			{
 				subtitle: 'Creative:',
-				items: ['Proficient in Figma, Adobe Photoshop, and Lightroom'],
+				items: ['Figma, Adobe Illustrator, and Photoshop and Lightroom'],
 			},
 			{
 				subtitle: 'Programming:',
-				items: ['Skilled in Java, JavaScript, SQL, HTML, CSS, and Python'],
+				items: [
+					'React, Vue, TypeScript, Tailwind, Bootstrap, Java SQL, and Python',
+				],
 			},
 			{
 				subtitle: 'Certifications:',
 				items: ['Foundations of User Experience Design - Coursera'],
 			},
 		],
+	},
+];
+
+export const VoluntaryProjects = [
+	{
+		title: 'Lundakarnevalen',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea numquam modi enim, nobis commodi natus adipisci libero ipsum ut at consequuntur recusandae est laudantium assumenda, repellat magnam eum voluptates tempora.',
+	},
+	{
+		title: 'Teknikfokus - Career Fair',
+		description:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea numquam modi enim, nobis commodi natus adipisci libero ipsum ut at consequuntur recusandae est laudantium assumenda, repellat magnam eum voluptates tempora.',
+	},
+	{sectionTitle: 'Voluntary Work'},
+];
+
+export const footerLinks = [
+	{
+		title: 'LinkedIn',
+		href: 'https://www.linkedin.com/in/andreroxhage/',
+	},
+	{
+		title: 'GitHub',
+		href: 'https://github.com/andreroxhage/',
+	},
+	{
+		title: 'andreroxhage74@gmail.com',
+		href: 'mailto:andreroxhage74@gmail.com',
 	},
 ];

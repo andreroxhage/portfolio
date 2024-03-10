@@ -65,7 +65,13 @@ export default function Index() {
 					return (
 						<motion.div key={index} style={{scale}} className={styles.el}>
 							<div className={styles.imageContainer}>
-								<Image src={src} fill alt='image' placeholder='blur' />
+								<Image
+									src={src}
+									className='rounded-sm'
+									fill
+									alt='image'
+									placeholder='blur'
+								/>
 							</div>
 						</motion.div>
 					);
