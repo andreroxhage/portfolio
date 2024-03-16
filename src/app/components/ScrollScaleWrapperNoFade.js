@@ -15,10 +15,6 @@ export default function ScrollScaleWrapper({children, className}) {
 			ref={ref}
 			style={{scale: scale}}
 			className={`w-100 h-100 ${className}`}
-			initial={{opacity: 0, translateY: 20}}
-			whileInView={{opacity: 1, translateY: 0}}
-			transition={{duration: 0.6, ease: 'easeInOut'}}
-			viewport={{once: true}}
 		>
 			{children}
 		</motion.div>

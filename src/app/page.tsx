@@ -7,16 +7,19 @@ import CurrentWork from './sections/CurrentWork';
 import Resume from './components/Resume';
 import VoluntaryWork from './sections/VoluntaryWork';
 import {SparklesCore} from './components/sparkles';
+import ZoomParallax from './components/ZoomParallax/ZoomParallax';
 
 export default function Home() {
 	return (
-		<main className='h-full bg-primary-blackish w-max-screen'>
+		<main className='h-full bg-primary-blackish'>
 			<Header></Header>
 			<About></About>
 			<CurrentWork />
 			<Contact></Contact>
-			<div className='h-screen'>{/* Dont remove this*/}</div>
-			<Photography />
+			<div className='bg-primary-vanilla'>
+				<Photography />
+				<ZoomParallax></ZoomParallax>
+			</div>
 			<VoluntaryWork />
 		</main>
 	);

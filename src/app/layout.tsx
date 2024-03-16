@@ -14,7 +14,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en' style={{scrollBehavior: 'smooth'}}>
+		<html
+			lang='en'
+			style={{scrollBehavior: 'smooth'}}
+			className='overflow-x-hidden w-full'
+		>
 			<body>
 				<Navbar />
 				{children}

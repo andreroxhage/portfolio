@@ -126,6 +126,12 @@ export const resume = [
 	},
 ];
 
+export const photo = {
+	title: 'Visual Storytelling',
+	description:
+		'In my free time, I enjoy hanging out with friends and capturing moments with my camera. This hobby keeps my creativity alive and often sparks fresh ideas, leading me towards innovative approaches and creative solutions.',
+};
+
 export const VoluntaryProjects = [
 	{
 		title: 'Lundakarnevalen',

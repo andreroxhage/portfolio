@@ -12,8 +12,6 @@ import Image from 'next/image';
 import {useScroll, useTransform, motion} from 'framer-motion';
 import {useRef} from 'react';
 
-// https://blog.olivierlarose.com/tutorials/zoom-parallax
-
 export default function Index() {
 	const container = useRef(null);
 	const {scrollYProgress} = useScroll({
@@ -21,7 +19,7 @@ export default function Index() {
 		offset: ['start start', 'end end'],
 	});
 
-	const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
+	const scale4 = useTransform(scrollYProgress, [0, 1], [1, 2.8]);
 	const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
 	const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
 	const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
@@ -60,7 +58,17 @@ export default function Index() {
 
 	return (
 		<div ref={container} className={styles.container}>
-			<div className={styles.sticky}>
+			<motion.div
+				className={styles.sticky}
+				initial={{opacity: 0}}
+				whileInView={{opacity: 1}}
+				transition={{
+					duration: 0.4,
+					ease: 'easeInOut',
+					delay: 0.2,
+				}}
+				viewport={{once: true}}
+			>
 				{pictures.map(({src, scale}, index) => {
 					return (
 						<motion.div key={index} style={{scale}} className={styles.el}>
@@ -76,7 +84,7 @@ export default function Index() {
 						</motion.div>
 					);
 				})}
-			</div>
+			</motion.div>
 		</div>
 	);
 }

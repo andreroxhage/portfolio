@@ -43,7 +43,7 @@ const Header = () => {
 					</motion.h1>
 				</div>
 			</section>
-			<section className=' h-4/6 md:h-1/2 my-auto pt-12 md:pt-0 flex-row items-center relative bg-primary-vanilla'>
+			<section className='relative h-4/6 md:h-1/2 my-auto pt-12 md:pt-0 flex-row items-center bg-primary-vanilla'>
 				<div className='max-w-9xl px-6 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
 					<motion.div
 						className='pl-1 sm:pl-0 col-span-10 col-start-1 sm:col-span-5'
@@ -60,7 +60,7 @@ const Header = () => {
 					</motion.div>
 
 					<motion.div
-						className='col-start-2 p-4 md:p-0 col-span-8 md:col-start-8 md:col-span-2 my-20'
+						className='col-start-2 p-4 md:p-0 col-span-8 md:col-start-8 md:col-span-2 md:my-0 my-auto'
 						animate={{scale: 1, opacity: 1}}
 						initial={{scale: 0, opacity: 0}}
 						transition={{duration: 0.5, ease: 'easeOut'}}
@@ -73,31 +73,48 @@ const Header = () => {
 					</motion.div>
 				</div>
 				<motion.div
-					className='absolute bottom-4 right-8 text-black hidden sm:inline-block'
-					animate={{opacity: [0, 1, 0]}}
-					initial={{opacity: 0}}
-					transition={{
-						duration: 3,
-						ease: 'easeInOut',
-						times: [0, 0.5, 1],
-						repeat: 3,
-					}}
+					className='absolute bottom-4 w-full text-black hidden sm:flex sm:flex-row justify-center items-center gap-4'
+					initial={{opacity: 1}}
+					animate={{opacity: 0}}
+					transition={{duration: 0.4, ease: 'easeOut', delay: 8}}
 				>
-					<svg
+					<motion.span
+						className='text-2xl font-bold text-primary-grey-brighter'
+						initial={{opacity: 0}}
+						animate={{opacity: [0, 1]}}
+						transition={{
+							duration: 0.4,
+							ease: 'easeInOut',
+							delay: 4.9,
+						}}
+					>
+						Scroll
+					</motion.span>
+					<motion.svg
 						xmlns='http://www.w3.org/2000/svg'
 						fill='none'
 						viewBox='0 0 24 24'
 						strokeWidth={1.5}
 						stroke='currentColor'
-						className='w-10 h-10 text-primary-grey'
+						className='w-7 h-7 text-secondary-green-darker'
 					>
-						<path
+						<motion.path
 							strokeWidth={3}
 							strokeLinecap='round'
 							strokeLinejoin='round'
 							d='M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3'
+							initial={{opacity: 0, pathLength: 0}}
+							animate={{
+								opacity: [0, 1],
+								pathLength: [0, 1],
+							}}
+							transition={{
+								duration: 0.8,
+								ease: 'easeInOut',
+								delay: 5,
+							}}
 						/>
-					</svg>
+					</motion.svg>
 				</motion.div>
 			</section>
 		</header>
