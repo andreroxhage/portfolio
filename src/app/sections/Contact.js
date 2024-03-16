@@ -1,10 +1,7 @@
 'use client';
 import {motion} from 'framer-motion';
-import {useEffect, useState} from 'react';
-import {useMotionValue, useSpring} from 'framer-motion';
 import {footerLinks} from '../data';
 import {FollowerPointerCard} from '../components/followCursor';
-import Image from 'next/image';
 
 export default function Contact() {
 	const backgroundImage = '/resource/20220611-IMG_5691.jpg'; // 20220611-IMG_5691 or familjen.jpg
@@ -51,7 +48,7 @@ export default function Contact() {
 
 					<div
 						id='contact-info'
-						className='px-6 max-w-9xl w-full mx-auto overflow-hidden text-primary-foreground h-2/6'
+						className='px-6 max-w-9xl w-full mx-auto overflow-hidden h-2/6'
 					>
 						<div className='gap-y-2 grid grid-cols-10 mx-auto'>
 							<hr className='h-0.5 pt-2 border-primary-800 col-start-2 md:col-start-1 col-end-4' />
@@ -64,12 +61,17 @@ export default function Contact() {
 										key={i}
 										href={href}
 										className='col-start-2 md:col-start-1 col-span-6 flex gap-x-2 items-center'
-										whileHover={{color: '#BCE5AE', fill: '#BCE5AE'}}
+										whileHover={{
+											color: '#BCE5AE',
+											fill: '#BCE5AE',
+											translateX: 10,
+										}}
 										whileTap={{scale: 0.95}}
 										initial={{
 											color: '#FEFEFE',
 											fill: '#FEFEFE',
 											opacity: 0,
+											translateX: 0,
 										}}
 										viewport={{once: true}}
 										whileInView={{

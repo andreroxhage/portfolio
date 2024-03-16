@@ -37,6 +37,7 @@ export default function About() {
 										} hover:text-secondary-green-darker`}
 										onClick={() => handleTitleClick(index)}
 										whileHover={{
+											translateY: -4,
 											color: [
 												{color: 'text-secondary-green-darker'},
 												{color: 'text-primary-grey-brighter'},

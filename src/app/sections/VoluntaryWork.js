@@ -37,7 +37,7 @@ export default function VoluntaryWork() {
 					{VoluntaryProjects[2].sectionTitle}
 				</motion.h3>
 			</div>
-			<div className='h-fit my-auto md:pt-0 flex-row items-center relative pb-16'>
+			<div className='h-fit my-auto md:pt-0 flex-row items-center relative'>
 				<div className='mx-auto h-full grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
 					<motion.div className='col-start-1 col-span-5 relative'>
 						<ScrollScaleWrapperNoFade className='w-1/3 absolute top-[16%] left-[22%] z-20'>

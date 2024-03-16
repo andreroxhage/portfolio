@@ -8,6 +8,7 @@ import Resume from './components/Resume';
 import VoluntaryWork from './sections/VoluntaryWork';
 import {SparklesCore} from './components/sparkles';
 import ZoomParallax from './components/ZoomParallax/ZoomParallax';
+import Footer from './sections/Footer';
 
 export default function Home() {
 	return (
@@ -21,6 +22,7 @@ export default function Home() {
 				<ZoomParallax></ZoomParallax>
 			</div>
 			<VoluntaryWork />
+			<Footer />
 		</main>
 	);
 }

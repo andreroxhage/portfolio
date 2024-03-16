@@ -10,6 +10,10 @@ export const links = [
 		href: '#About',
 	},
 	{
+		title: 'Work',
+		href: '#CurrentWork',
+	},
+	{
 		title: 'Voluntary Projects',
 		href: '#VoluntaryProjects',
 	},
