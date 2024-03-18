@@ -10,19 +10,24 @@ export default function index() {
 					const {title, href} = link;
 					return (
 						<div key={`b_${i}`} className='w-full'>
-							<motion.div
+							<motion.a
 								href={href}
-								className='w-fit'
+								className='w-full'
 								custom={i}
 								variants={perspective}
 								initial='initial'
 								animate='enter'
 								exit='exit'
+								whileHover='hover'
 							>
-								<a className='text-primary-grey text-4xl md:text-4xl cursor-pointer'>
+								<motion.p
+									className='text-primary-grey text-4xl md:text-4xl cursor-pointer'
+									variants={slideIn}
+									whileHover='hover'
+								>
 									{title}
-								</a>
-							</motion.div>
+								</motion.p>
+							</motion.a>
 						</div>
 					);
 				})}
@@ -49,6 +54,11 @@ export default function index() {
 							custom={i}
 							initial='initial'
 							animate='enter'
+							whileHover={{
+								color: '#222222',
+								x: 10,
+								transition: {duration: 0.2, ease: 'easeInOut'},
+							}}
 							exit='exit'
 							key={`f_${i}`}
 						>

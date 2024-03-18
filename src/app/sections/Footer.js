@@ -2,11 +2,12 @@
 
 import {motion} from 'framer-motion';
 import {links, footerLinks} from '../data';
+import MagneticWrapper from '../components/MagneticWrapper';
 
 export default function Footer() {
 	return (
 		<div className=' bg-primary-blackish overflow-x-hidden'>
-			<div className='max-w-9xl mx-auto pt-40 px-6'>
+			<div className='max-w-9xl mx-auto pt-20 md:pt-40 px-6'>
 				<div className='max-w-9xl mx-auto gap-y-2 justify-between flex md:flex-row flex-col gap-12 pb-1 font-light'>
 					<div className='md:w-3/4 w-full'>
 						<span className=' text-xl md:text-2xl text-primary-vanilla font-semibold col-start-8 col-span-3'>
@@ -93,7 +94,7 @@ export default function Footer() {
 				</div>
 
 				<div className='flex gap-12 pt-12 pb-6 mt-8'>
-					<div className='flex gap-x-4 w-3/4'>
+					<div className='flex gap-x-4 w-3/4 items-center'>
 						<span className='text-secondary-green mix-blend-overlay md:text-4xl text-2xl font-bold'>
 							ANDRÉ
 						</span>
@@ -101,7 +102,29 @@ export default function Footer() {
 							ROXHAGE
 						</span>
 					</div>
-					<div className='w-1/4'>button</div>
+					<div className='w-1/4 flex p-1 items-center'>
+						<MagneticWrapper>
+							<motion.a
+								className='rounded-full h-16 w-16 bg-secondary-green flex items-center justify-center text-primary-grey-brighter hover:text-primary-blackish hover:bg-secondary-green-darker transition-all duration-300 ease-in-out hover:scale-110'
+								href={'#header'}
+							>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									fill='none'
+									viewBox='0 0 24 24'
+									strokeWidth={2}
+									stroke='currentColor'
+									className='w-6 h-6 '
+								>
+									<path
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										d='M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18'
+									/>
+								</svg>
+							</motion.a>
+						</MagneticWrapper>
+					</div>
 				</div>
 			</div>
 		</div>

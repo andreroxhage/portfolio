@@ -25,10 +25,10 @@ import ScrollScaleWrapperNoFade from '../components/ScrollScaleWrapperNoFade';
 
 export default function VoluntaryWork() {
 	return (
-		<section className='bg-primary-vanilla'>
+		<section id='voluntary-project' className='bg-primary-vanilla'>
 			<div className='max-w-9xl mx-auto px-6 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
 				<motion.h3
-					className='mt-4 mb-9 md:mt-12 col-span-3 text-3xl md:text-5xl font-semibold text-primary-grey'
+					className='pt-4 pb-5 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-semibold text-primary-grey'
 					initial={{opacity: 0, translateY: 60}}
 					whileInView={{opacity: 1, translateY: 0}}
 					transition={{duration: 0.4, ease: 'easeOut'}}
@@ -39,22 +39,42 @@ export default function VoluntaryWork() {
 			</div>
 			<div className='h-fit my-auto md:pt-0 flex-row items-center relative'>
 				<div className='mx-auto h-full grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
-					<motion.div className='col-start-1 col-span-5 relative'>
-						<ScrollScaleWrapperNoFade className='w-1/3 absolute top-[16%] left-[22%] z-20'>
-							<Image src={karneval1} alt='image description' />
+					<motion.div className='px-6 md:px-0 col-start-1 md:col-span-5 col-span-10 relative'>
+						<ScrollScaleWrapperNoFade
+							scaleFrom={0.8}
+							scaleTo={1.1}
+							className='w-1/3 absolute top-[16%] left-[22%] z-20'
+						>
+							<Image
+								src={karneval1}
+								alt='image description'
+								placeholder='blur'
+								priority={true}
+							/>
 						</ScrollScaleWrapperNoFade>
-						<ScrollScaleWrapperNoFade className='w-1/3 absolute top-[42%] left-[42%] z-30'>
-							<Image src={karneval2} alt='image description' />
+						<ScrollScaleWrapperNoFade
+							scaleFrom={0.78}
+							scaleTo={1.12}
+							className='w-1/3 absolute top-[42%] left-[42%] z-30'
+						>
+							<Image
+								src={karneval2}
+								alt='image description'
+								placeholder='blur'
+								priority={true}
+							/>
 						</ScrollScaleWrapperNoFade>
 
 						<Image
 							className='w-full rounded-sm'
 							src={karneval}
 							alt='image description'
+							placeholder='blur'
+							priority={true}
 						/>
 					</motion.div>
 					<motion.div
-						className=' w-full h-full col-span-4 max-w-xl col-start-7'
+						className='px-6 md:px-0 w-full h-full max-w-xl md:col-span-4 md:col-start-7 md:mt-0 mt-6 col-span-10 col-start-1'
 						initial={{opacity: 0, translateY: 60}}
 						whileInView={{opacity: 1, translateY: 0}}
 						transition={{duration: 0.4, ease: 'easeOut'}}
@@ -83,9 +103,9 @@ export default function VoluntaryWork() {
 					</motion.div>
 				</div>
 
-				<div className='mx-auto h-full grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
+				<div className='mx-auto mt-12 md:mt-0 h-full md:grid flex flex-col-reverse md:grid-cols-10 text-2xl text-primary-grey-brighter items-center pt-5 pb-14 md:pb-0 md:pt-0'>
 					<motion.div
-						className='w-full h-full col-span-3 max-w-xl col-start-2'
+						className='px-6 md:px-0 w-full h-full md:col-span-3 max-w-xl md:col-start-2 md:mt-0 mt-6 md:pb-0 pb-5 col-span-10 col-start-1'
 						initial={{opacity: 0, translateY: 60}}
 						whileInView={{opacity: 1, translateY: 0}}
 						transition={{duration: 0.4, ease: 'easeOut'}}
@@ -112,15 +132,26 @@ export default function VoluntaryWork() {
 							</motion.p>
 						</div>
 					</motion.div>
-					<motion.div className='col-start-6 col-span-5 relative'>
-						<ScrollScaleWrapperNoFade className='w-1/3 absolute top-1/3 left-1/3 z-20'>
-							<Image src={teknikfokus1} alt='image description' />
+					<motion.div className='px-6 md:px-0 col-start-6 col-span-5 relative'>
+						<ScrollScaleWrapperNoFade
+							scaleFrom={0.8}
+							scaleTo={1.1}
+							className='w-1/3 absolute top-1/3 left-1/3 z-20'
+						>
+							<Image
+								src={teknikfokus1}
+								alt='image description'
+								placeholder='blur'
+								priority={true}
+							/>
 						</ScrollScaleWrapperNoFade>
 
 						<Image
 							className='w-full rounded-sm'
 							src={teknikfokus}
 							alt='image description'
+							placeholder='blur'
+							priority={true}
 						/>
 					</motion.div>
 				</div>

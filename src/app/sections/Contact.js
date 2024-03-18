@@ -8,7 +8,7 @@ export default function Contact() {
 
 	const TitleComponent = ({title}) => (
 		<div>
-			<p>{title}</p>
+			<p className='z-50'>{title}</p>
 		</div>
 	);
 
@@ -16,7 +16,7 @@ export default function Contact() {
 		<>
 			<div
 				id='contact'
-				className='h-screen w-full rounded-3xl z-20'
+				className='h-screen w-full rounded-3xl'
 				style={{
 					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url(${backgroundImage})`,
 					backgroundSize: 'cover',
@@ -30,7 +30,7 @@ export default function Contact() {
 					>
 						<FollowerPointerCard
 							title={<TitleComponent title={'Connect'} />}
-							className='h-full z-30'
+							className='h-full z-40'
 						>
 							<div className='max-w-9xl mx-auto relative flex items-center w-full h-full overflow-hidden'>
 								<motion.h2

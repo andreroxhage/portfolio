@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import Button from './Button';
 import Nav from './Nav';
@@ -30,10 +30,24 @@ const menu = {
 export default function Navbar() {
 	const [isActive, setIsActive] = useState(false);
 
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (isActive && !event.target.closest('.nav-container')) {
+				setIsActive(false);
+			}
+		}
+
+		document.addEventListener('click', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	}, [isActive]);
+
 	return (
-		<nav className='fixed bottom-10 right-10 md:top-10 z-30'>
+		<nav className='fixed bottom-10 right-10 md:top-10 z-50'>
 			<motion.div
-				className='h-60 bg-secondary-green rounded-md relative'
+				className='h-60 bg-secondary-green rounded-md relative nav-container'
 				variants={menu}
 				animate={isActive ? 'open' : 'closed'}
 				initial='closed'

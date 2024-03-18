@@ -9,6 +9,7 @@ import VoluntaryWork from './sections/VoluntaryWork';
 import {SparklesCore} from './components/sparkles';
 import ZoomParallax from './components/ZoomParallax/ZoomParallax';
 import Footer from './sections/Footer';
+import Test from './sections/Test';
 
 export default function Home() {
 	return (

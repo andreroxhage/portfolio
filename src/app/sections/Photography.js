@@ -5,11 +5,11 @@ import {photo} from '../data.js';
 
 export default function Photography() {
 	return (
-		<section className='bg-primary-vanilla w-full relative'>
+		<section id='photography' className='bg-primary-vanilla w-full relative'>
 			<div className='max-w-9xl mx-auto w-full grid grid-cols-10 px-6 py-40 mb-12'>
-				<div className='col-start-2 col-span-3'>
+				<div className='sm:col-start-2 sm:col-span-3 col-start-1 col-span-10 flex items-center'>
 					<motion.h3
-						className='text-primary-grey text-xl md:text-3xl'
+						className='text-primary-grey text-xl md:text-3xl font-semibold'
 						initial={{opacity: 0, translateY: 60}}
 						whileInView={{opacity: 1, translateY: 0}}
 						transition={{duration: 0.4, ease: 'easeOut'}}
@@ -18,9 +18,9 @@ export default function Photography() {
 						{photo.title}
 					</motion.h3>
 				</div>
-				<div className='col-start-6 col-span-3'>
+				<div className='sm:col-start-6 sm:col-span-3 col-start-1 col-span-10'>
 					<motion.p
-						className='text-primary-grey-brighter text-base md:text-lg font-medium w-[700px]'
+						className='text-primary-grey-brighter text-base md:text-lg font-medium w-full sm:w-[680px] sm:mt-0 mt-1'
 						initial={{opacity: 0, translateY: 60}}
 						whileInView={{opacity: 1, translateY: 0}}
 						transition={{duration: 0.4, ease: 'easeOut'}}

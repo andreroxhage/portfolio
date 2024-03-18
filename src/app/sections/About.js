@@ -17,7 +17,10 @@ export default function About() {
 
 	return (
 		<>
-			<section className='bg-primary-vanilla h-fit my-auto pt-14 md:pt-0 flex-row items-center relative'>
+			<section
+				id='about'
+				className='bg-primary-vanilla h-fit my-auto pt-14 md:pt-0 flex-row items-center relative'
+			>
 				<div className='max-w-9xl mx-auto px-6 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
 					<motion.div
 						className='pl-1 w-full sm:pl-0 col-start-1 md:col-span-5 col-span-10'
@@ -74,7 +77,7 @@ export default function About() {
 							</motion.p>
 						))}
 					</motion.div>
-					<ScrollScaleWrapper className='col-start-1 col-span-10 md:col-start-7 md:col-span-4 my-20'>
+					<ScrollScaleWrapper className='col-start-1 col-span-10 md:col-start-7 md:col-span-4 md:my-20 mt-20 mb-12'>
 						<Image
 							className='h-full w-full rounded-sm'
 							src={Study}

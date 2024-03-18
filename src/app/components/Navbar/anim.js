@@ -27,6 +27,11 @@ export const slideIn = {
 		opacity: 0,
 		y: 20,
 	},
+	hover: {
+		color: '#222222',
+		x: 10,
+		transition: {duration: 0.2, ease: 'easeInOut'},
+	},
 	enter: (i) => ({
 		opacity: 1,
 		y: 0,

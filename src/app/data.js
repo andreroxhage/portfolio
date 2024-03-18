@@ -3,23 +3,23 @@ import {title} from 'process';
 export const links = [
 	{
 		title: 'Home',
-		href: '#Header',
+		href: '#header',
 	},
 	{
 		title: 'About',
-		href: '#About',
+		href: '#about',
 	},
 	{
 		title: 'Work',
-		href: '#CurrentWork',
+		href: '#work',
 	},
 	{
 		title: 'Voluntary Projects',
-		href: '#VoluntaryProjects',
+		href: '#voluntary-project',
 	},
 	{
 		title: 'Photography',
-		href: '#Photography',
+		href: '#photography',
 	},
 ];
 

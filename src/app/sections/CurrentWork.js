@@ -34,12 +34,13 @@ export default function CurrentWork() {
 
 	return (
 		<motion.section
-			className='h-fit flex-row relative items-center py-12'
+			id='work'
+			className='h-fit flex-row items-center md:py-12 py-4'
 			style={{backgroundColor: hue}}
 		>
 			<div
 				ref={container}
-				className='max-w-9xl mx-auto h-full px-6 mt-8 md:pt-12 mb-8 md:mb-16 pt-12'
+				className='max-w-9xl mx-auto h-full px-6 mt-8 md:pt-12 mb-8 md:mb-16 pt-4'
 			>
 				<motion.h3
 					className='mt-4 md:mt-12 text-3xl md:text-5xl font-semibold text-primary-whiteish'
@@ -51,7 +52,7 @@ export default function CurrentWork() {
 					{work.sectionTitle}
 				</motion.h3>
 				<div className='gap-x-8 mt-9 bg-primary-vanilla rounded-xl  grid grid-cols-10 text-2xl  text-primary-grey-brighter items-center'>
-					<div className='w-full col-span-8 col-start-2 md:col-start-2 md:col-span-4 md:pt-0 my-12 pt-12'>
+					<div className='w-full col-start-1 px-3 col-span-10 md:px-0 md:col-start-2 md:col-span-4 md:pt-0 my-8 md:my-12 pt-2'>
 						<div className='flex flex-col gap-x-6'>
 							<motion.h3
 								className='text-2xl md:text-4xl font-semibold pb-1 md:pb-4 cursor-pointer text-primary-grey'

@@ -7,26 +7,30 @@ import Image from 'next/image';
 import ProfilePicture from '../../../public/resource/profileImage.jpg';
 import {header} from '@/app/data';
 import {SparklesCore} from '../components/sparkles';
+import {BackgroundBeams} from '../components/background-beams';
 
 const Header = () => {
-	/**
-	 * <SparklesCore
-					id='tsparticlesfullpage'
-					background='transparent'
-					minSize={0.6}
-					maxSize={1.4}
-					particleDensity={100}
-					className='w-full h-full absolute z-0'
-					particleColor='#FFFFFF'
-				/>
-	 */
+	const [isAtTop, setIsAtTop] = useState(true);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollTop = window.pageYOffset;
+			setIsAtTop(scrollTop === 0); // Check if scrollTop is 0 to determine if at the top
+		};
+
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
 	return (
-		<header className='h-min-screen h-screen '>
-			<section className='bg-transparent h-2/6 md:h-1/2 flex justify-center items-start md:items-center pt-12 md:pt-0 '>
+		<header id='header' className='h-min-screen md:h-screen'>
+			<section className='relative bg-transparent h-2/6 md:h-1/2 flex justify-center items-start md:items-center pt-12 md:pt-0 '>
 				<div className='max-w-9xl mx-auto px-6 gap-x-8 grid grid-cols-10 lg:pl-0'>
 					<motion.h1
-						className='sm:pl-0 pl-1 sm:col-start-2 col-start-1 text-6xl md:text-8xl lg:text-9.5xl font-bold w-full text-secondary-green mix-blend-overlay'
+						className='md:pl-0 pl-1 md:col-start-2 col-start-1 text-6xl md:text-8xl lg:text-9.5xl font-bold w-full text-secondary-green mix-blend-overlay'
 						animate={{opacity: 1}}
 						initial={{opacity: 0}}
 						transition={{duration: 0.5, ease: 'easeOut'}}
@@ -34,7 +38,7 @@ const Header = () => {
 						ANDRÉ
 					</motion.h1>
 					<motion.h1
-						className='sm:col-start-2 col-start-1  text-6xl md:text-8xl lg:text-9.5xl mt-2 lg:mt-0 font-bold w-full  text-secondary-green-darker mix-blend-lighten pl-12 md:pl-0 lg:pl-28 md:mb-0 mb-12'
+						className='md:col-start-2 col-start-1  text-6xl md:text-8xl lg:text-9.5xl mt-2 lg:mt-0 font-bold w-full  text-secondary-green-darker mix-blend-lighten pl-12 md:pl-0 lg:pl-28 md:mb-0 mb-12'
 						animate={{opacity: 1}}
 						initial={{opacity: 0}}
 						transition={{duration: 0.5, ease: 'easeOut'}}
@@ -42,11 +46,12 @@ const Header = () => {
 						ROXHAGE
 					</motion.h1>
 				</div>
+				<BackgroundBeams />
 			</section>
 			<section className='relative h-4/6 md:h-1/2 my-auto pt-12 md:pt-0 flex-row items-center bg-primary-vanilla'>
 				<div className='max-w-9xl px-6 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
 					<motion.div
-						className='pl-1 sm:pl-0 col-span-10 col-start-1 sm:col-span-5'
+						className='pl-1 md:pl-0 col-span-10 col-start-1 md:col-span-5'
 						animate={{opacity: 1, translateY: 0}}
 						initial={{opacity: 0, translateY: 100}}
 						transition={{duration: 0.5, ease: 'easeOut'}}
@@ -72,50 +77,58 @@ const Header = () => {
 						/>
 					</motion.div>
 				</div>
-				<motion.div
-					className='absolute bottom-4 w-full text-black hidden sm:flex sm:flex-row justify-center items-center gap-4'
-					initial={{opacity: 1}}
-					animate={{opacity: 0}}
-					transition={{duration: 0.4, ease: 'easeOut', delay: 8}}
-				>
-					<motion.span
-						className='text-2xl font-bold text-primary-grey-brighter'
-						initial={{opacity: 0}}
-						animate={{opacity: [0, 1]}}
-						transition={{
-							duration: 0.4,
-							ease: 'easeInOut',
-							delay: 4.9,
-						}}
-					>
-						Scroll
-					</motion.span>
-					<motion.svg
-						xmlns='http://www.w3.org/2000/svg'
-						fill='none'
-						viewBox='0 0 24 24'
-						strokeWidth={1.5}
-						stroke='currentColor'
-						className='w-7 h-7 text-secondary-green-darker'
-					>
-						<motion.path
-							strokeWidth={3}
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							d='M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3'
-							initial={{opacity: 0, pathLength: 0}}
-							animate={{
-								opacity: [0, 1],
-								pathLength: [0, 1],
-							}}
+				<AnimatePresence>
+					{isAtTop && (
+						<motion.div
+							className='absolute bottom-4 w-full text-black hidden md:flex md:flex-row justify-center items-center gap-4'
+							initial={{opacity: 0}}
+							animate={{opacity: 1}}
+							exit={{opacity: 0}}
 							transition={{
-								duration: 0.8,
+								duration: 0.4,
 								ease: 'easeInOut',
-								delay: 5,
 							}}
-						/>
-					</motion.svg>
-				</motion.div>
+						>
+							<motion.span
+								className='text-4xl font-bold text-primary-grey-brighter'
+								initial={{opacity: 0}}
+								animate={{opacity: [0, 1]}}
+								transition={{
+									duration: 0.4,
+									ease: 'easeInOut',
+									delay: 1.9,
+								}}
+							>
+								Scroll
+							</motion.span>
+							<motion.svg
+								xmlns='http://www.w3.org/2000/svg'
+								fill='none'
+								viewBox='0 0 24 24'
+								strokeWidth={1.5}
+								stroke='currentColor'
+								className='w-9 h-9 text-secondary-green-darker'
+							>
+								<motion.path
+									strokeWidth={3}
+									strokeLinecap='round'
+									strokeLinejoin='round'
+									d='M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3'
+									initial={{opacity: 0, pathLength: 0}}
+									animate={{
+										opacity: [0, 1],
+										pathLength: [0, 1],
+									}}
+									transition={{
+										duration: 0.8,
+										ease: 'easeInOut',
+										delay: 2,
+									}}
+								/>
+							</motion.svg>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</section>
 		</header>
 	);
