@@ -97,6 +97,9 @@ export const FollowPointer = ({
 			exit={{
 				scale: 0,
 				opacity: 0,
+				transition: {
+					duration: 0.3,
+				},
 			}}
 		>
 			<motion.div

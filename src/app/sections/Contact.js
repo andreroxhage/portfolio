@@ -23,18 +23,18 @@ export default function Contact() {
 					backgroundPosition: 'center',
 				}}
 			>
-				<div className='flex flex-col justify-between overflow-hidden w-full h-screen rounded-2xl'>
+				<div className='flex flex-col justify-between overflow-x-hidden overflow-y-visible w-full h-screen'>
 					<div
 						id='footer-container'
-						className='w-full h-4/6 overflow-hidden rounded-3xl'
+						className='w-full h-4/6 overflow-x-hidden overflow-y-visible py-14'
 					>
 						<FollowerPointerCard
 							title={<TitleComponent title={'Connect'} />}
 							className='h-full z-40'
 						>
-							<div className='max-w-9xl mx-auto relative flex items-center w-full h-full overflow-hidden'>
+							<div className='max-w-9xl mx-auto relative flex items-center w-full h-full overflow-x-hidden overflow-y-visible'>
 								<motion.h2
-									className='px-6 md:text-6xl text-5xl text-primary-foreground leading-tight font-bold'
+									className='px-6 md:text-6xl text-5xl text-primary-whiteish leading-tight font-bold'
 									initial={{opacity: 0, translateY: 60}}
 									whileInView={{opacity: 1, translateY: 0}}
 									transition={{duration: 0.4, ease: 'easeOut'}}
@@ -48,7 +48,7 @@ export default function Contact() {
 
 					<div
 						id='contact-info'
-						className='px-6 max-w-9xl w-full mx-auto overflow-hidden h-2/6'
+						className='px-6 max-w-9xl w-full mx-auto overflow-x-hidden overflow-y-visible h-2/6'
 					>
 						<div className='gap-y-2 grid grid-cols-10 mx-auto'>
 							<hr className='h-0.5 pt-2 border-primary-800 col-start-2 md:col-start-1 col-end-4' />

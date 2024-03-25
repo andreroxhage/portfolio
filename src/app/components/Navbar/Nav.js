@@ -14,7 +14,7 @@ export default function index() {
 								href={href}
 								className='w-full'
 								custom={i}
-								variants={perspective}
+								variants={slideIn}
 								initial='initial'
 								animate='enter'
 								exit='exit'
@@ -38,7 +38,7 @@ export default function index() {
 				initial={{width: 0}}
 				animate={{width: '100%'}}
 				exit={{width: 0, transition: {delay: 0}}}
-				transition={{duration: 0.3, ease: [0.76, 0, 0.24, 1], delay: 0.8}}
+				transition={{duration: 0.5, ease: [0.76, 0, 0.24, 1], delay: 0.5}}
 			/>
 
 			<motion.div className='flex flex-col'>
@@ -48,7 +48,7 @@ export default function index() {
 						<motion.a
 							href={href}
 							className={
-								'w-1/2 mt-2 text-primary-grey font-medium cursor-pointer'
+								'w-full mt-2 text-primary-grey font-medium cursor-pointer'
 							}
 							variants={slideIn}
 							custom={i}

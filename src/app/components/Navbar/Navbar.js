@@ -45,7 +45,7 @@ export default function Navbar() {
 	}, [isActive]);
 
 	return (
-		<nav className='fixed bottom-10 right-10 md:top-10 z-50'>
+		<nav className='fixed bottom-10 h-10 right-10 md:top-10 z-50'>
 			<motion.div
 				className='h-60 bg-secondary-green rounded-md relative nav-container'
 				variants={menu}

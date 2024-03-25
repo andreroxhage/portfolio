@@ -11,8 +11,8 @@ export const perspective = {
 		translateY: 0,
 		transition: {
 			duration: 0.4,
-			delay: 0.4 + i * 0.1,
-			ease: [0.215, 0.61, 0.355, 1],
+			delay: 0.4,
+			ease: 'easeInOut',
 			opacity: {duration: 0.6},
 		},
 	}),
@@ -25,7 +25,7 @@ export const perspective = {
 export const slideIn = {
 	initial: {
 		opacity: 0,
-		y: 20,
+		x: -20,
 	},
 	hover: {
 		color: '#222222',
@@ -34,15 +34,15 @@ export const slideIn = {
 	},
 	enter: (i) => ({
 		opacity: 1,
-		y: 0,
+		x: 0,
 		transition: {
-			duration: 0.2,
-			delay: 1.5 + i * 0.15,
-			ease: [0.215, 0.61, 0.355, 1],
+			duration: 0.4,
+			delay: 0.5,
+			ease: 'easeInOut',
 		},
 	}),
 	exit: {
 		opacity: 0,
-		transition: {duration: 0.5, type: 'tween', ease: 'easeInOut'},
+		transition: {duration: 0.3, type: 'tween', ease: 'easeInOut'},
 	},
 };
