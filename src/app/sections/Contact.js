@@ -32,7 +32,7 @@ export default function Contact() {
               title={<TitleComponent title={"Connect"} />}
               className="h-full z-40"
             >
-              <div className="max-w-9xl mx-auto relative flex items-center w-full h-full overflow-hidden">
+              <div className="max-w-7xl mx-auto relative flex items-center w-full h-full overflow-hidden">
                 <motion.h2
                   className="px-6 md:text-6xl text-5xl text-primary-whiteish leading-tight font-bold"
                   initial={{ opacity: 0, translateY: 60 }}
@@ -48,7 +48,7 @@ export default function Contact() {
 
           <div
             id="contact-info"
-            className="px-6 max-w-9xl w-full mx-auto overflow-hidden h-2/6"
+            className="px-6 max-w-7xl w-full mx-auto overflow-hidden h-2/6"
           >
             <div className="gap-y-2 grid grid-cols-10 mx-auto">
               <hr className="h-0.5 pt-2 border-primary-800 col-start-2 md:col-start-1 col-end-4" />

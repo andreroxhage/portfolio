@@ -6,7 +6,7 @@ import { photo } from "../data.js";
 export default function Photography() {
   return (
     <section id="photography" className="bg-primary-vanilla w-full relative">
-      <div className="max-w-9xl mx-auto w-full grid grid-cols-10 px-6 py-40 mb-12">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-10 px-6 py-40 mb-12">
         <div className="sm:col-start-2 sm:col-span-3 col-start-1 col-span-10 flex items-center">
           <motion.h3
             className="text-primary-grey text-xl md:text-3xl font-semibold"

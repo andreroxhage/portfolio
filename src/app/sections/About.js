@@ -21,7 +21,7 @@ export default function About() {
         id="about"
         className="bg-primary-vanilla h-fit my-auto pt-14 md:pt-0 flex-row items-center relative"
       >
-        <div className="max-w-9xl mx-auto px-6 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
+        <div className="max-w-7xl mx-auto px-6 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
           <motion.div
             className="pl-1 w-full sm:pl-0 col-start-1 md:col-span-5 col-span-10"
             initial={{ opacity: 0, translateY: 60 }}

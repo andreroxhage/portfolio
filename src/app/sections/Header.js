@@ -37,7 +37,7 @@ const Header = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="max-w-9xl mx-auto px-6 gap-x-8 grid grid-cols-10 lg:pl-0">
+        <div className="max-w-7xl mx-auto px-6 gap-x-8 grid grid-cols-10 lg:pl-0">
           <motion.h1
             className="md:pl-0 pl-1 md:col-start-2 col-start-1 text-6xl md:text-8xl lg:text-9xl font-semibold w-full text-primary-vanilla "
             animate={{ opacity: 0.7 }}
@@ -58,7 +58,7 @@ const Header = () => {
         {/* <BackgroundBeams /> */}
       </section>
       <section className="relative h-4/6 md:h-1/2 my-auto pt-12 md:pt-0 flex-row items-center bg-primary-vanilla">
-        <div className="max-w-9xl px-6 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
+        <div className="max-w-7xl px-6 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
           <motion.div
             className="pl-1 md:pl-0 col-span-10 col-start-1 md:col-span-5"
             animate={{ opacity: 1, translateY: 0 }}

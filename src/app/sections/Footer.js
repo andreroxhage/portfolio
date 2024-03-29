@@ -7,8 +7,8 @@ import MagneticWrapper from "../components/MagneticWrapper";
 export default function Footer() {
   return (
     <div className=" bg-primary-blackish overflow-x-hidden">
-      <div className="max-w-9xl mx-auto pt-20 md:pt-40 px-6">
-        <div className="max-w-9xl mx-auto gap-y-2 justify-between flex md:flex-row flex-col gap-12 pb-1 font-light">
+      <div className="max-w-7xl mx-auto pt-20 md:pt-40 px-6">
+        <div className="max-w-7xl mx-auto gap-y-2 justify-between flex md:flex-row flex-col gap-12 pb-1 font-light">
           <div className="md:w-3/4 w-full">
             <span className=" text-xl md:text-2xl text-primary-vanilla font-semibold col-start-8 col-span-3">
               Contact
