@@ -1,9 +1,8 @@
 'use client';
-import {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import Button from './Button';
 import Nav from './Nav';
-import MagneticWrapper from '../MagneticWrapper';
 
 const menu = {
 	open: {
@@ -11,7 +10,7 @@ const menu = {
 		height: 'fit-content',
 		top: '-25px',
 		right: '-25px',
-		transition: {duration: 0.4, type: 'tween', ease: [0.76, 0, 0.24, 1]},
+		transition: { duration: 0.4, type: 'tween', ease: [0.76, 0, 0.24, 1] },
 	},
 	closed: {
 		width: '100px',
@@ -45,7 +44,7 @@ export default function Navbar() {
 	}, [isActive]);
 
 	return (
-		<nav className='fixed bottom-10 h-10 right-10 md:top-10 z-50'>
+		<nav className='fixed h-10 right-10 top-10 z-50'>
 			<motion.div
 				className='h-60 bg-secondary-green rounded-md relative nav-container'
 				variants={menu}

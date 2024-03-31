@@ -1,13 +1,12 @@
-import {motion} from 'framer-motion';
-import MagneticWrapper from '../MagneticWrapper';
+import { motion } from 'framer-motion';
 
-export default function Button({isActive, toggleMenu}) {
+export default function Button({ isActive, toggleMenu }) {
 	return (
 		<div className='absolute top-0 right-0 w-28 h-10 cursor-pointer rounded-md overflow-hidden'>
 			<motion.div
 				className='relative w-full h-full'
-				animate={{top: isActive ? '-100%' : '0%'}}
-				transition={{duration: 0.5, type: 'tween', ease: [0.76, 0, 0.24, 1]}}
+				animate={{ top: isActive ? '-100%' : '0%' }}
+				transition={{ duration: 0.5, type: 'tween', ease: [0.76, 0, 0.24, 1] }}
 			>
 				<div
 					className='w-full h-full flex-row bg-secondary-green hover:bg-secondary-green-darker duration-300 ease-in-out  text-primary-blackish text-base'
@@ -31,7 +30,7 @@ export default function Button({isActive, toggleMenu}) {
 	);
 }
 
-function PerspectiveText({label}) {
+function PerspectiveText({ label }) {
 	return (
 		<div
 			style={{
@@ -56,11 +55,7 @@ function PerspectiveText({label}) {
 						strokeWidth={1.5}
 						stroke='currentColor'
 					>
-						<path
-							strokeLinecap='round'
-							strokeLinejoin='round'
-							d='M6 18 18 6M6 6l12 12'
-						/>
+						<path strokeLinecap='round' strokeLinejoin='round' d='M6 18 18 6M6 6l12 12' />
 					</svg>
 				) : (
 					<svg
