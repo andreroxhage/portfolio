@@ -29,7 +29,7 @@ export const header = {
 export const about = [
 	{
 		title: 'Engineering',
-		description: `My fascination with engineering stemmed from a deep curiosity about the impacts of everyday products. I am deeply committed to crafting digital solutions that prioritize user-centric design, drawing inspiration from my hands-on experiences in enhancing usability. Pursuing a Master's in Engineering, specializing in Information and Communication Technologies, offered me the ideal platform to deepen my technical expertise and contribute meaningfully to the field.`,
+		description: `My fascination with engineering stemmed from a deep curiosity about the impacts of everyday products. I am deeply committed to crafting digital solutions that prioritize user-centric design, drawing inspiration from my hands-on experiences in enhancing usability. Pursuing a Master's in Engineering, specializing in Information and Communication Technologies, provided me with an invaluable opportunity to deepen my technical expertise in the field.`,
 	},
 	{
 		title: 'Psychology',
@@ -76,7 +76,7 @@ export const resume = [
 			},
 			{
 				subtitle: 'Teaching Assistant - Interaction Design',
-				company: 'Lunds University',
+				company: 'Lund University',
 				date: '2023 – 2024',
 			} /*
 			{
@@ -106,7 +106,7 @@ export const resume = [
 		content: [
 			{
 				subtitle: 'Creative:',
-				items: ['Figma, Adobe Illustrator, and Photoshop and Lightroom'],
+				items: ['Figma, Adobe Illustrator, Photoshop and Lightroom'],
 			},
 			{
 				subtitle: 'Programming:',

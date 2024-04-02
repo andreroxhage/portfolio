@@ -94,9 +94,10 @@ export default function Footer() {
 				</div>
 
 				<div className='flex gap-12 pt-12 pb-6 mt-8'>
-					<a className='flex gap-x-4 w-3/4 items-center' href={'#header'}>
-						<span className='text-primary-grey md:text-4xl text-2xl font-semibold'>André</span>
-						<span className='text-primary-grey-brighter  md:text-4xl text-2xl font-semibold'>Roxhage</span>
+					<a className='flex w-3/4 items-center flex-row ' href={'#header'}>
+						<span className='text-primary-grey-brighter text-sm md:text-lg font-semibold mr-6'>©2024</span>
+						<span className='text-primary-grey md:text-2xl text-lg font-semibold mr-2'>André</span>
+						<span className='text-primary-grey-brighter  md:text-2xl text-lg font-semibold'>Roxhage</span>
 					</a>
 					<div className='w-1/4 flex p-1 items-center'>
 						<MagneticWrapper>
