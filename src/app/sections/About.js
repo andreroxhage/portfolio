@@ -1,5 +1,5 @@
 'use client';
-import Study from '../../../public/resource/study.jpg';
+import Study from '../../../public/resource/lund.jpg';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 
