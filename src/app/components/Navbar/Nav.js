@@ -5,14 +5,19 @@ import { slideIn } from './anim';
 export default function index() {
 	return (
 		<div className='flex flex-col h-full w-fit justify-between pt-24 pl-4 pr-4 md:pl-11 md:pr-11 pb-12'>
-			<div className='flex gap-8 flex-col w-full'>
+			<motion.div
+				className='flex gap-8 flex-col w-full'
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4, delay: 0.4 }}
+			>
 				{links.map((link, i) => {
 					const { title, href } = link;
 					return (
 						<div key={`b_${i}`} className='w-full'>
 							<motion.a href={href} className='w-full'>
 								<motion.p
-									className='text-primary-grey text-4xl md:text-4xl cursor-pointer text-nowrap'
+									className='text-primary-grey text-4xl md:text-4xl cursor-pointert text-nowrap'
 									variants={slideIn}
 									whileHover='hover'
 									custom={i}
@@ -26,7 +31,7 @@ export default function index() {
 						</div>
 					);
 				})}
-			</div>
+			</motion.div>
 
 			<motion.hr
 				className='h-0.5 w-full pt-2 border-primary-grey-brighter my-10 md:my-16'
@@ -36,7 +41,12 @@ export default function index() {
 				transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1], delay: 0.5 }}
 			/>
 
-			<motion.div className='flex flex-col'>
+			<motion.div
+				className='flex flex-col'
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.4, delay: 0.4 }}
+			>
 				{footerLinks.map((link, i) => {
 					const { title, href } = link;
 					return (

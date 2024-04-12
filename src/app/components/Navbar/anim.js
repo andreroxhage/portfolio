@@ -30,7 +30,7 @@ export const slideIn = {
 	hover: {
 		color: '#222222',
 		x: 10,
-		transition: { duration: 0.2, ease: 'easeInOut' },
+		transition: { duration: 0.2, ease: 'easeIn' },
 	},
 	enter: (i) => ({
 		opacity: 1,
