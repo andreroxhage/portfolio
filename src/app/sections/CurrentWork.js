@@ -27,7 +27,7 @@ export default function CurrentWork() {
 	return (
 		<motion.section
 			id='work'
-			className='h-fit flex-row items-center md:py-12 py-4'
+			className='h-fit flex-row items-center md:py-12 py-4 pb-12'
 			style={{ backgroundColor: hue }}
 		>
 			<div ref={container} className='max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4'>

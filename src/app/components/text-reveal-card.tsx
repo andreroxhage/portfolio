@@ -1,8 +1,8 @@
 'use client';
-import React, {useEffect, useRef, useState, memo} from 'react';
-import {motion} from 'framer-motion';
-import {twMerge} from 'tailwind-merge';
-import {cn} from '@/../utils/cn';
+import React, { useEffect, useRef, useState, memo } from 'react';
+import { motion } from 'framer-motion';
+import { twMerge } from 'tailwind-merge';
+import { cn } from '@/../utils/cn';
 
 export const TextRevealCard = ({
 	text,
@@ -23,7 +23,7 @@ export const TextRevealCard = ({
 
 	useEffect(() => {
 		if (cardRef.current) {
-			const {left, width: localWidth} = cardRef.current.getBoundingClientRect();
+			const { left, width: localWidth } = cardRef.current.getBoundingClientRect();
 			setLeft(left);
 			setLocalWidth(localWidth);
 		}
@@ -32,7 +32,7 @@ export const TextRevealCard = ({
 	function mouseMoveHandler(event: any) {
 		event.preventDefault();
 
-		const {clientX} = event;
+		const { clientX } = event;
 		if (cardRef.current) {
 			const relativeX = clientX - left;
 			setWidthPercentage((relativeX / localWidth) * 100);
@@ -55,8 +55,8 @@ export const TextRevealCard = ({
 			onMouseMove={mouseMoveHandler}
 			ref={cardRef}
 			className={cn(
-				' w-fit rounded-lg p-4 md:p-8 relative overflow-hidden',
-				className,
+				' w-fit rounded-lg p-4 md:p-8 relative overflow-hidden pointer-events-none sm:pointer-events-auto',
+				className
 			)}
 		>
 			{children}
@@ -76,7 +76,7 @@ export const TextRevealCard = ({
 									clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
 							  }
 					}
-					transition={isMouseOver ? {duration: 0} : {duration: 0.4}}
+					transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
 					className='absolute bg-primary-blackish z-20  will-change-transform'
 				>
 					<p
@@ -94,7 +94,7 @@ export const TextRevealCard = ({
 						rotate: `${rotateDeg}deg`,
 						opacity: widthPercentage > 0 ? 1 : 0,
 					}}
-					transition={isMouseOver ? {duration: 0} : {duration: 0.4}}
+					transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
 					className='h-40 w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform'
 				></motion.div>
 
@@ -109,18 +109,8 @@ export const TextRevealCard = ({
 	);
 };
 
-export const TextRevealCardTitle = ({
-	children,
-	className,
-}: {
-	children: React.ReactNode;
-	className?: string;
-}) => {
-	return (
-		<h2 className={twMerge('text-white text-lg mb-2', className)}>
-			{children}
-		</h2>
-	);
+export const TextRevealCardTitle = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+	return <h2 className={twMerge('text-white text-lg mb-2', className)}>{children}</h2>;
 };
 
 export const TextRevealCardDescription = ({
@@ -130,11 +120,7 @@ export const TextRevealCardDescription = ({
 	children: React.ReactNode;
 	className?: string;
 }) => {
-	return (
-		<p className={twMerge('text-primary-whiteish text-sm', className)}>
-			{children}
-		</p>
-	);
+	return <p className={twMerge('text-primary-whiteish text-sm', className)}>{children}</p>;
 };
 
 const Stars = () => {

@@ -10,20 +10,15 @@ export default function index() {
 					const { title, href } = link;
 					return (
 						<div key={`b_${i}`} className='w-full'>
-							<motion.a
-								href={href}
-								className='w-full'
-								custom={i}
-								variants={slideIn}
-								initial='initial'
-								animate='enter'
-								exit='exit'
-								whileHover='hover'
-							>
+							<motion.a href={href} className='w-full'>
 								<motion.p
-									className='text-primary-grey text-4xl md:text-4xl cursor-pointer'
+									className='text-primary-grey text-4xl md:text-4xl cursor-pointer text-nowrap'
 									variants={slideIn}
 									whileHover='hover'
+									custom={i}
+									initial='initial'
+									animate='enter'
+									exit='exit'
 								>
 									{title}
 								</motion.p>

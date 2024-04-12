@@ -13,10 +13,10 @@ export default function Contact() {
 	);
 
 	return (
-		<>
+		<div className='bg-primary-blackish'>
 			<div
 				id='contact'
-				className='h-screen w-full rounded-3xl'
+				className='h-screen w-full rounded-t-3xl'
 				style={{
 					backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url(${backgroundImage})`,
 					backgroundSize: 'cover',
@@ -119,6 +119,6 @@ export default function Contact() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
