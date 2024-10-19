@@ -23,26 +23,26 @@ export const links = [
 
 export const header = {
 	title: 'ANDRÉ ROXHAGE',
-	currently: 'Pursuing a Double Degree in Engineering and Psychology, with a Passion for Digital Product Design',
+	currently: 'Software Design Engineer, blending software development and design with a passion for enhancing user experiences',
 };
 
 export const about = [
 	{
 		title: 'Engineering',
-		description: `My fascination with engineering stemmed from a deep curiosity about the impacts of everyday products. I am deeply committed to crafting digital solutions that prioritize user-centric design, drawing inspiration from my hands-on experiences in enhancing usability. Pursuing a Master's in Engineering, specializing in Information and Communication Technologies, provided me with an invaluable opportunity to deepen my technical expertise in the field.`,
+		description: `My journey in engineering started with a curiosity for how products influence our daily lives. With a focus on crafting digital solutions that center on user needs, my work spans from software development to design. I’ve gained significant experience in cross-functional teams and agile projects. Pursuing a Master's in Engineering, specializing in Information and Communication Technologies, has allowed me to further deepen my technical expertise.`,	
 	},
 	{
 		title: 'Psychology',
-		description: `My passion for psychology stemmed from a deep curiosity about human behavior and its impact on user experiences. Exploring psychological insights shaped my approach to creating empathetic digital products, where I prioritize anticipating and addressing user needs. Pursuing a Bachelor's degree equipped me with the knowledge and skills to craft solutions that resonated deeply with users.`,
+		description: `My passion for psychology stems from a desire to understand human behavior and its application to digital products. Specializing in creativity psychology, I use these insights to foster innovation and ensure that the user experience resonates deeply with individuals. My Bachelor’s degree in Psychology, combined with my engineering skills, allows me to take a holistic approach to product design, ensuring that every touchpoint is both functional and empathetic to users’ needs.`,
 	},
 ];
 
 export const currentWork = [
 	{
 		sectionTitle: 'Current Work',
-		title: 'Join Loyalty Platform',
-		description: `In my role as a Front-end Developer at Intermail, I've made an impact on the design and user experience of Join, a completely new loyalty platform. While my primary responsibility lies in front-end development, my involvement has extended significantly into design activities. Leading a comprehensive redesign effort, I prioritized enhancing usability and making the platform more intuitive and easy to learn.`,
-		tags: { tag1: 'Design', tag2: 'Front-end' },
+		title: 'InterMail',
+		description: `In my role as a Software Design Engineer, I bridge the gap between design and development, working closely with cross-functional teams to create a seamless and intuitive customer data platform. My involvement spans from front-end development to strategic design decisions, ensuring that usability and user-centricity remain central to every solution. Leading a comprehensive redesign effort, I focused on enhancing the platform’s usability, making it more intuitive and easy to learn.`,
+		tags: { tag1: 'UX', tag2: 'Frontend', tag3: 'SaaS' },
 		resumeTitle: 'Are You a LinkedIn Stalker?',
 	},
 ];
@@ -70,7 +70,7 @@ export const resume = [
 		title: 'Experience',
 		content: [
 			{
-				subtitle: 'Front-end Developer',
+				subtitle: 'Software Design Engineer',
 				company: 'InterMail',
 				date: '2023 – Current',
 			},
