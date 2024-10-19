@@ -15,7 +15,12 @@ const ImageSlider = ({ images, intervalTime }) => {
 
     return (
         <motion.div key={currentImage}>
-            <Image className="h-full w-full rounded-sm" src={images[currentImage]} alt={'A mockup of a computer displaying the interface of Join a customer data platform'} />
+            <Image 
+                className="h-full w-full rounded-sm" 
+                src={images[currentImage]} 
+                alt={'A mockup of a computer displaying the interface of Join a customer data platform'} 
+                priority
+            />
         </motion.div>
     )
 }
