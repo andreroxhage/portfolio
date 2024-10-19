@@ -6,7 +6,7 @@ import MagneticWrapper from '../components/MagneticWrapper';
 
 export default function Footer() {
 	return (
-		<div className=' bg-primary-blackish overflow-x-hidden'>
+		<footer className=' bg-primary-blackish overflow-x-hidden'>
 			<div className='max-w-7xl mx-auto pt-20 md:pt-40 px-4'>
 				<div className='max-w-7xl mx-auto gap-y-2 justify-between flex md:flex-row flex-col gap-12 pb-1 font-light'>
 					<div className='md:w-3/4 w-full'>
@@ -103,7 +103,7 @@ export default function Footer() {
 						<MagneticWrapper>
 							<motion.a
 								className='rounded-full h-16 w-16 bg-secondary-green items-center justify-center text-primary-grey-brighter hover:text-primary-blackish hover:bg-secondary-green-darker transition-all duration-300 ease-in-out hover:scale-110 flex'
-								href={'#header'}
+								href={'#header'} aria-label="Scroll to top"
 							>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -124,6 +124,6 @@ export default function Footer() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</footer>
 	);
 }

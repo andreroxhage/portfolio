@@ -4,7 +4,7 @@ import { photo } from '../data.js';
 
 export default function Photography() {
 	return (
-		<section id='photography' className='bg-primary-vanilla w-full relative'>
+		<div id='photography' className='bg-primary-vanilla w-full relative'>
 			<div className='max-w-7xl mx-auto w-full grid grid-cols-10 px-4 md:py-40 py-16 mb-12'>
 				<div className='sm:col-start-2 sm:col-span-3 col-start-1 col-span-10 flex items-center'>
 					<motion.h3
@@ -29,6 +29,6 @@ export default function Photography() {
 					</motion.p>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 }

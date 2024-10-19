@@ -26,7 +26,7 @@ export default function CurrentWork() {
     const hue = useTransform(scrollYProgress, [0, 1], ["#ffffff00", "#ffffff20"])
 
     return (
-        <motion.section
+        <motion.div
             id="work"
             className="h-fit flex-row items-center md:py-12 py-4 pb-12"
             style={{ backgroundColor: hue }}>
@@ -96,6 +96,6 @@ export default function CurrentWork() {
 
                 <Resume></Resume>
             </div>
-        </motion.section>
+        </motion.div>
     )
 }

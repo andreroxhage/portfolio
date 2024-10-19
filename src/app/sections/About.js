@@ -16,7 +16,7 @@ export default function About() {
 
 	return (
 		<>
-			<section
+			<div
 				id='about'
 				className='bg-primary-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative'
 			>
@@ -85,10 +85,10 @@ export default function About() {
 						fade={true}
 						className='col-start-1 col-span-10 md:col-start-7 md:col-span-4 md:my-20 mt-20 mb-12'
 					>
-						<Image className='h-full w-full rounded-sm' src={Study} alt='image description' />
+						<Image className='h-full w-full rounded-sm' src={Study} alt='Lunds university building and a clear blue sky' />
 					</ScrollScaleWrapper>
 				</div>
-			</section>
+			</div>
 		</>
 	);
 }

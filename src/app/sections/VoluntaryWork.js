@@ -12,7 +12,7 @@ import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function VoluntaryWork() {
 	return (
-		<section id='voluntary-project' className='bg-primary-vanilla'>
+		<div id='voluntary-project' className='bg-primary-vanilla'>
 			<div className='max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center'>
 				<motion.h3
 					className='pt-4 pb-5 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-semibold text-primary-grey'
@@ -58,7 +58,7 @@ export default function VoluntaryWork() {
 						viewport={{ once: true }}
 					>
 						<div className='flex flex-col gap-x-6 px-4 sm:px-16 justify-center items-start w-full h-full'>
-							<motion.h5
+							<motion.h4
 								className='text-xl md:text-3xl font-semibold pb-1 md:pb-4'
 								initial={{ opacity: 0, translateY: 60 }}
 								whileInView={{ opacity: 1, translateY: 0 }}
@@ -66,7 +66,7 @@ export default function VoluntaryWork() {
 								viewport={{ once: true }}
 							>
 								{VoluntaryProjects[0].title}
-							</motion.h5>
+							</motion.h4>
 							<motion.p
 								className='text-base md:text-lg font-medium max-w-[700px]'
 								initial={{ opacity: 0, translateY: 60 }}
@@ -89,7 +89,7 @@ export default function VoluntaryWork() {
 						viewport={{ once: true }}
 					>
 						<div className='flex flex-col gap-x-6 px-4 sm:px-16 justify-center items-start w-full h-full'>
-							<motion.h5
+							<motion.h4
 								className='text-xl md:text-3xl font-semibold pb-1 md:pb-4'
 								initial={{ opacity: 0, translateY: 60 }}
 								whileInView={{ opacity: 1, translateY: 0 }}
@@ -97,7 +97,7 @@ export default function VoluntaryWork() {
 								viewport={{ once: true }}
 							>
 								{VoluntaryProjects[1].title}
-							</motion.h5>
+							</motion.h4>
 							<motion.p
 								className='text-base md:text-lg font-medium max-w-[700px]'
 								initial={{ opacity: 0, translateY: 60 }}
@@ -128,6 +128,6 @@ export default function VoluntaryWork() {
 					</motion.div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 }
