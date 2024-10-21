@@ -42,7 +42,7 @@ export const currentWork = [
 		sectionTitle: 'Current Work',
 		title: 'InterMail',
 		description: `In my role as a Software Design Engineer, I bridge the gap between design and development, working closely with cross-functional teams to create a seamless and intuitive customer data platform. My involvement spans from front-end development to strategic design decisions, ensuring that usability and user-centricity remain central to every solution. Leading a comprehensive redesign effort, I focused on enhancing the platform’s usability, making it more intuitive and easy to learn.`,
-		tags: { tag1: 'UX', tag2: 'Frontend', tag3: 'SaaS' },
+		tags: { tag1: 'Frontend', tag2: 'UX', tag3: 'SaaS' },
 		resumeTitle: 'Are You a LinkedIn Stalker?',
 	},
 ];
