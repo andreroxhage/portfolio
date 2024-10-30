@@ -78,7 +78,6 @@ function PerspectiveText({ label }) {
 					style={{
 						transition: 'all 0.75s cubic-bezier(0.76, 0, 0.24, 1)',
 						pointerEvents: 'none',
-						textTransform: 'uppercase',
 					}}
 				>
 					{label}
