@@ -30,7 +30,8 @@ export default function CurrentWork() {
   return (
     <motion.div
       id="work"
-      className={`h-fit flex-row items-center md:py-12 py-4 pb-12 sm:bg-${hue} bg-[#ffffff00]`}
+      className={`h-fit flex-row items-center md:py-12 py-4 pb-12`}
+      style={{ backgroundColor: hue }}
     >
       <div
         ref={container}
