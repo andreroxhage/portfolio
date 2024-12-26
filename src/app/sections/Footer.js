@@ -99,7 +99,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex gap-12 pt-12 pb-6 mt-8">
+        <div className="flex flex-col-reverse sm:flex-row gap-12 pt-12 pb-6 mt-8">
           <a className="flex w-3/4 items-center flex-row" href={"#header"}>
             <span className="text-primary-grey-brighter text-sm md:text-lg font-semibold mr-6">
               ©2024
