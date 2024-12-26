@@ -13,7 +13,7 @@ export default function Contact() {
   );
 
   return (
-    <div className="bg-primary-blackish">
+    <div className="bg-primary-grey sm:bg-primary-blackish">
       <div
         id="contact"
         className="h-screen w-full rounded-t-3xl"
