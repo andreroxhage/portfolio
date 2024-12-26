@@ -289,7 +289,6 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         );
 
       default:
-        console.warn(`Unhandled content type: ${content.type}`);
         return null;
     }
   }
