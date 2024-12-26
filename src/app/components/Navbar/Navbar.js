@@ -62,7 +62,7 @@ export default function Navbar() {
         />
       </nav>
 
-      <nav className="fixed h-10 right-10 bottom-10 md:top-10 md:bottom-auto z-50 md:hidden">
+      <nav className="fixed h-10 right-8 md:right-10 bottom-2 md:top-10 md:bottom-auto z-50 md:hidden">
         <motion.div
           className="bg-secondary-green rounded-md relative nav-container origin-bottom"
           variants={menu}
