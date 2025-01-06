@@ -427,6 +427,7 @@ function getProjectAssets(projectSlug) {
         className="w-full rounded-lg"
         width={700}
         height={475}
+        placeholder="blur"
       />`,
   };
 

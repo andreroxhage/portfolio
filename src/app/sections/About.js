@@ -90,6 +90,7 @@ export default function About() {
             <Image
               className="h-full w-full rounded-sm"
               src={Study}
+              placeholder="blur"
               alt="Lunds university building and a clear blue sky"
             />
           </ScrollScaleWrapper>

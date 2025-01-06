@@ -18,6 +18,7 @@ const ImageSlider = ({ images, intervalTime }) => {
       <Image
         className="h-full w-full rounded-sm"
         src={images[currentImage]}
+        placeholder="blur"
         alt={
           "A mockup of a computer displaying the interface of Join a customer data platform"
         }

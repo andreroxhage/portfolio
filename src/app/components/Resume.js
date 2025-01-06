@@ -1,5 +1,3 @@
-"use client";
-
 import { resume } from "@/app/data";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";

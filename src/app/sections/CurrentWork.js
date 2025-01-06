@@ -139,7 +139,7 @@ export default function CurrentWork() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-12 text-primary-grey group-hover:scale-110 transition-all duration-300 ease-in-out"
+                    className="size-8 sm:size-10 md:size-12 text-primary-grey group-hover:scale-110 transition-all duration-300 ease-in-out"
                   >
                     <path
                       strokeLinecap="round"
@@ -166,7 +166,7 @@ export default function CurrentWork() {
 
                 <MagneticWrapper magneticStrength={0.2}>
                   <div
-                    className="w-full p-24 items-center justify-center inline-block rounded-lg hover:scale-105 duration-200 ease-in-out"
+                    className="w-full p-12 sm:p-14 md:p-16 lg:p-20 items-center justify-center inline-block rounded-lg hover:scale-105 duration-200 ease-in-out"
                     dangerouslySetInnerHTML={{
                       __html: project.cardImage,
                     }}

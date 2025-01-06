@@ -78,6 +78,7 @@ const Header = () => {
             <Image
               className="h-full w-full rounded-full drop-shadow-2xl shadow-md md:shadow-customShadow"
               src={ProfilePicture}
+              placeholder="blur"
               alt="image description"
             />
           </motion.div>

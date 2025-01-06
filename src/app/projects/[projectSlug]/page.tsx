@@ -269,6 +269,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
               alt={content.alt || "Section image"}
               className="w-full rounded-lg"
               layout="responsive"
+              placeholder="blur"
               width={700}
               height={475}
             />
