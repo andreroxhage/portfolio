@@ -78,13 +78,22 @@ export default function VoluntaryWork() {
                 {VoluntaryProjects[0].title}
               </motion.h4>
               <motion.p
-                className="text-base md:text-lg font-medium max-w-[700px]"
+                className="text-base md:text-lg font-medium max-w-[700px] pb-6"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[0].description}
+              </motion.p>
+              <motion.p
+                className="text-xs md:text-sm text-right font-medium w-full pb-1"
+                initial={{ opacity: 0, translateY: 60 }}
+                whileInView={{ opacity: 1, translateY: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                {VoluntaryProjects[0].year}
               </motion.p>
             </div>
           </motion.div>
@@ -109,13 +118,22 @@ export default function VoluntaryWork() {
                 {VoluntaryProjects[1].title}
               </motion.h4>
               <motion.p
-                className="text-base md:text-lg font-medium max-w-[700px]"
+                className="text-base md:text-lg font-medium max-w-[700px] pb-6"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[1].description}
+              </motion.p>
+              <motion.p
+                className="text-xs md:text-sm text-right font-medium w-full pb-1"
+                initial={{ opacity: 0, translateY: 60 }}
+                whileInView={{ opacity: 1, translateY: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                {VoluntaryProjects[1].year}
               </motion.p>
             </div>
           </motion.div>

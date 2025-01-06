@@ -427,7 +427,6 @@ function getProjectAssets(projectSlug) {
         className="w-full rounded-lg"
         width={700}
         height={475}
-        placeholder="blur"
       />`,
   };
 
@@ -523,10 +522,12 @@ export const VoluntaryProjects = [
   {
     title: "Lundakarnevalen",
     description: `During my time as the Head of Photography for Lundakarnevalen, I had the privilege of leading a dedicated team of photographers and editors. Together, we documented the organization and its events for marketing purposes. Through effective leadership and project management, we ensured that our work captured the essence of the organization, demonstrating strong attention to detail and commitment to excellence. Additionally, collaborating with the editorial team to publish a book was a rewarding experience, resulting in the distribution of every single copy as attendees eagerly sought to collect a piece of the carnival's memories.`,
+    year: "2022",
   },
   {
     title: "Teknikfokus - Career Fair",
     description: `As the Marketing Manager & Graphic Designer for Teknikfokus, Career Fair, I embraced the opportunity to enhance the organization's online presence and visual identity. Through innovative marketing strategies, we significantly increased social media publicity and engagement, fostering a stronger connection with our audience. Crafting a cohesive and visually appealing graphic profile was a fulfilling endeavor, as it allowed me to combine creativity with adherence to brand guidelines. These experiences taught me the importance of effective communication, strategic planning, and creative problem-solving in achieving organizational goals.`,
+    year: "2021",
   },
   { sectionTitle: "Voluntary Work" },
 ];
