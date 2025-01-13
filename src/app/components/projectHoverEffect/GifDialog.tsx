@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import Image from "next/legacy/image";
-import React, { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 interface GifDialogProps {
   gifSrc: string;
@@ -64,19 +64,19 @@ const GifDialog = ({
       }}
       exit={{ scale: 0.9, opacity: 0 }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 20,
       }}
       className="fixed z-10 rounded-lg shadow-xl overflow-hidden pointer-events-none"
       style={{
-        borderRadius: "40px",
+        borderRadius: '40px',
         left: `calc(50% - ${dimensions.width / 2}px)`,
         top: `calc(50% - ${dimensions.height / 2}px)`,
-        width: isLoading ? "0" : dimensions.width,
-        height: isLoading ? "0" : dimensions.height,
-        maxWidth: "70vw",
-        maxHeight: "70vh",
+        width: isLoading ? '0' : dimensions.width,
+        height: isLoading ? '0' : dimensions.height,
+        maxWidth: '70vw',
+        maxHeight: '70vh',
       }}
     >
       <Image
@@ -84,11 +84,15 @@ const GifDialog = ({
         unoptimized
         alt="Project preview"
         className={`w-full h-full object-contain transition-opacity duration-300 ${
-          isLoading ? "opacity-0" : "opacity-100"
+          isLoading ? 'opacity-0' : 'opacity-100'
         }`}
         width={dimensions.width || 0}
         height={dimensions.height || 0}
         onLoad={handleImageLoad}
+        style={{
+          maxWidth: '100%',
+          height: 'auto',
+        }}
       />
     </motion.div>
   );

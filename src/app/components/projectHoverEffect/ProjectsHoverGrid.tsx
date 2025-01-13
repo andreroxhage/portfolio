@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "@/app/data";
-import Link from "next/link";
-import GifDialogMobile from "@/app/components/projectHoverEffect/GifDialogMobile";
-import GifDialog from "@/app/components/projectHoverEffect/GifDialog";
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { projects } from '@/app/data';
+import Link from 'next/link';
+import GifDialogMobile from '@/app/components/projectHoverEffect/GifDialogMobile';
+import GifDialog from '@/app/components/projectHoverEffect/GifDialog';
 
 type Project = {
   title: string;
@@ -52,7 +52,7 @@ const ProjectGrid = () => {
             onMouseEnter={() => handleMouseEnter(project)}
             onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}
-            onClick={(e) => {
+            onClick={e => {
               if (window.innerWidth < 768) {
                 e.preventDefault();
                 setDialogOpen(true);
@@ -61,8 +61,8 @@ const ProjectGrid = () => {
             }}
             className={`relative hover:bg-white bg-primary-whiteish/60 p-4 rounded-3xl group transition-all duration-150 col-span-10 md:col-span-5 ${
               showOnboarding && index === 0
-                ? "border-2 border-secondary-green-darker animate-pulse"
-                : ""
+                ? 'border-2 border-secondary-green-darker animate-pulse'
+                : ''
             }`}
           >
             <div className="text-primary-blackish flex justify-between items-center">

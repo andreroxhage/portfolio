@@ -1,26 +1,26 @@
-"use client";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Button from "./Button";
-import Nav from "./Nav";
+'use client';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Button from './Button';
+import Nav from './Nav';
 
 const menu = {
   open: {
-    width: "fit-content",
-    height: "fit-content",
-    top: "-25px",
-    right: "-25px",
-    transition: { duration: 0.4, type: "tween", ease: [0.76, 0, 0.24, 1] },
+    width: 'fit-content',
+    height: 'fit-content',
+    top: '-25px',
+    right: '-25px',
+    transition: { duration: 0.4, type: 'tween', ease: [0.76, 0, 0.24, 1] },
   },
   closed: {
-    width: "100px",
-    height: "40px",
-    top: "0px",
-    right: "0px",
+    width: '100px',
+    height: '40px',
+    top: '0px',
+    right: '0px',
     transition: {
       duration: 0.4,
       delay: 0.35,
-      type: "tween",
+      type: 'tween',
       ease: [0.76, 0, 0.24, 1],
     },
   },
@@ -31,15 +31,15 @@ export default function Navbar() {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (isActive && !event.target.closest(".nav-container")) {
+      if (isActive && !event.target.closest('.nav-container')) {
         setIsActive(false);
       }
     }
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
 
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, [isActive]);
 
@@ -49,7 +49,7 @@ export default function Navbar() {
         <motion.div
           className="h-60 bg-secondary-green rounded-md relative nav-container"
           variants={menu}
-          animate={isActive ? "open" : "closed"}
+          animate={isActive ? 'open' : 'closed'}
           initial="closed"
         >
           <AnimatePresence>{isActive && <Nav />}</AnimatePresence>
@@ -66,9 +66,9 @@ export default function Navbar() {
         <motion.div
           className="bg-secondary-green rounded-md relative nav-container origin-bottom"
           variants={menu}
-          animate={isActive ? "open" : "closed"}
+          animate={isActive ? 'open' : 'closed'}
           initial="closed"
-          style={{ transformOrigin: "bottom" }}
+          style={{ transformOrigin: 'bottom' }}
         >
           <AnimatePresence mode="wait">
             {isActive && (

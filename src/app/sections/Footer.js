@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { links, footerLinks } from "../data";
-import MagneticWrapper from "../components/MagneticWrapper";
+import { motion } from 'framer-motion';
+import { links, footerLinks } from '../data';
+import MagneticWrapper from '../components/MagneticWrapper';
 
 export default function Footer() {
   return (
@@ -24,14 +24,14 @@ export default function Footer() {
                   href={href}
                   className="col-start-8 col-span-3 flex items-center mb-2 text-lg md:text-xl text-primary-whiteish"
                   whileHover={{
-                    color: "#BCE5AE",
-                    fill: "#BCE5AE",
+                    color: '#BCE5AE',
+                    fill: '#BCE5AE',
                     translateX: 10,
                   }}
                   whileTap={{ scale: 0.95 }}
                   initial={{
-                    color: "#FEFEFE",
-                    fill: "#FEFEFE",
+                    color: '#FEFEFE',
+                    fill: '#FEFEFE',
                     opacity: 0,
                     translateX: 0,
                   }}
@@ -41,12 +41,12 @@ export default function Footer() {
                     transition: {
                       delay: 0.2 * i,
                       duration: 0.4,
-                      ease: "easeInOut",
+                      ease: 'easeInOut',
                     },
                   }}
                   transition={{
                     duration: 0.2,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                   }}
                 >
                   {title}
@@ -67,14 +67,14 @@ export default function Footer() {
                   href={href}
                   className="col-start-1 col-span-7 flex items-center mb-2 text-lg md:text-xl text-primary-whiteish"
                   whileHover={{
-                    color: "#BCE5AE",
-                    fill: "#BCE5AE",
+                    color: '#BCE5AE',
+                    fill: '#BCE5AE',
                     translateX: 10,
                   }}
                   whileTap={{ scale: 0.95 }}
                   initial={{
-                    color: "#FEFEFE",
-                    fill: "#FEFEFE",
+                    color: '#FEFEFE',
+                    fill: '#FEFEFE',
                     opacity: 0,
                     translateX: 0,
                   }}
@@ -84,12 +84,12 @@ export default function Footer() {
                     transition: {
                       delay: 0.2 * i,
                       duration: 0.4,
-                      ease: "easeInOut",
+                      ease: 'easeInOut',
                     },
                   }}
                   transition={{
                     duration: 0.2,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                   }}
                 >
                   {title}
@@ -100,7 +100,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col-reverse sm:flex-row gap-12 pt-12 pb-6 mt-8">
-          <a className="flex w-3/4 items-center flex-row" href={"#header"}>
+          <a className="flex w-3/4 items-center flex-row" href={'#header'}>
             <span className="text-primary-grey-brighter text-sm md:text-lg font-semibold mr-6">
               ©2024
             </span>
@@ -115,7 +115,7 @@ export default function Footer() {
             <MagneticWrapper>
               <motion.a
                 className="rounded-full h-16 w-16 bg-secondary-green items-center justify-center text-primary-grey-brighter hover:text-primary-blackish hover:bg-secondary-green-darker transition-all duration-300 ease-in-out hover:scale-110 flex"
-                href={"#header"}
+                href={'#header'}
                 aria-label="Scroll to top"
               >
                 <svg

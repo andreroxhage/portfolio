@@ -1,13 +1,13 @@
-import React from "react";
-import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "./components/Navbar/Navbar";
-import Head from "next/head";
+import React from 'react';
+import type { Metadata } from 'next';
+import './globals.css';
+import Navbar from './components/Navbar/Navbar';
+import Head from 'next/head';
 
 export const metadata: Metadata = {
-  title: "André Roxhage",
+  title: 'André Roxhage',
   description:
-    "Software Design Engineer specializing in frontend development, UX design, and creativity psychology. I create intuitive digital products, solving complex challenges with a human-centered approach. Explore my portfolio for more.",
+    'Software Design Engineer specializing in frontend development, UX design, and creativity psychology. I create intuitive digital products, solving complex challenges with a human-centered approach. Explore my portfolio for more.',
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      style={{ scrollBehavior: "smooth" }}
+      style={{ scrollBehavior: 'smooth' }}
       className="overflow-x-hidden w-full"
     >
       <Head>
@@ -61,12 +61,12 @@ export default function RootLayout({
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <title>{"André Roxhage | Software Design Engineer"}</title>
+        <title>{'André Roxhage | Software Design Engineer'}</title>
         <meta
           name="description"
           content={
             metadata.description ??
-            "Software Design Engineer specializing in frontend development, UX design, and creativity psychology. I create intuitive digital products, solving complex challenges with a human-centered approach. Explore my portfolio for more."
+            'Software Design Engineer specializing in frontend development, UX design, and creativity psychology. I create intuitive digital products, solving complex challenges with a human-centered approach. Explore my portfolio for more.'
           }
         />
       </Head>

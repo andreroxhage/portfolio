@@ -1,24 +1,24 @@
-"use client";
-import { motion } from "framer-motion";
-import React from "react";
-import Link from "next/link";
-import { footerLinks } from "@/app/data";
-import ProfilePicture from "../../../public/resource/profileImage.jpg";
-import Image from "next/legacy/image";
-import ProjectGrid from "@/app/components//projectHoverEffect/ProjectsHoverGrid";
+'use client';
+import { motion } from 'framer-motion';
+import React from 'react';
+import Link from 'next/link';
+import { footerLinks } from '@/app/data';
+import ProfilePicture from '../../../public/resource/profileImage.jpg';
+import Image from 'next/image';
+import ProjectGrid from '@/app/components//projectHoverEffect/ProjectsHoverGrid';
 
 const ProjectsPage: React.FC = () => {
   return (
     <motion.div
       id="header"
       animate={{
-        backgroundColor: ["#FAF5F0", "#DEF5F0", "#FAF0F4"],
+        backgroundColor: ['#FAF5F0', '#DEF5F0', '#FAF0F4'],
       }}
       transition={{
         duration: 16,
         repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut",
+        repeatType: 'reverse',
+        ease: 'easeInOut',
       }}
     >
       <div className="max-w-5xl px-4 mx-auto h-full min-h-screen flex flex-col">
@@ -29,6 +29,10 @@ const ProjectsPage: React.FC = () => {
               src={ProfilePicture}
               placeholder="blur"
               alt="image description"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
             />
             <div className="flex flex-col gap-[6px] justify-center items-start">
               <h1 className="text-xl md:text-2xl font-bold text-primary-blackish">

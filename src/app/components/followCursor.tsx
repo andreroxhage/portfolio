@@ -1,9 +1,9 @@
 // Core component that receives mouse positions and renders pointer and content
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { motion, AnimatePresence, useMotionValue } from "framer-motion";
-import { cn } from "@/../utils/cn";
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import { cn } from '@/../utils/cn';
 
 export const FollowerPointerCard = ({
   children,
@@ -47,10 +47,10 @@ export const FollowerPointerCard = ({
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       style={{
-        cursor: "none",
+        cursor: 'none',
       }}
       ref={ref}
-      className={cn("relative", className)}
+      className={cn('relative', className)}
     >
       <AnimatePresence mode="wait">
         {isInside && <FollowPointer x={x} y={y} title={title} />}
@@ -75,7 +75,7 @@ export const FollowPointer = ({
       style={{
         top: y,
         left: x,
-        pointerEvents: "none",
+        pointerEvents: 'none',
       }}
       initial={{
         scale: 1,
@@ -95,7 +95,7 @@ export const FollowPointer = ({
     >
       <motion.div
         style={{
-          backgroundColor: "#BCE5AE",
+          backgroundColor: '#BCE5AE',
         }}
         initial={{
           scale: 0.5,
@@ -110,7 +110,7 @@ export const FollowPointer = ({
           opacity: 0,
         }}
         className={
-          "text-center bg-neutral-200 text-primary-blackish h-28 w-28 whitespace-nowrap text-lg rounded-full flex justify-center items-center"
+          'text-center bg-neutral-200 text-primary-blackish h-28 w-28 whitespace-nowrap text-lg rounded-full flex justify-center items-center'
         }
       >
         {title || `William Shakespeare`}

@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface Project {
   projectSlug: string;
@@ -18,7 +18,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   currentProjectSlug,
 }) => {
   const currentIndex = projects.findIndex(
-    (p) => p.projectSlug === currentProjectSlug,
+    p => p.projectSlug === currentProjectSlug
   );
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject =

@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import Picture1 from "../../../../public/resource/carousel/1.jpg";
-import Picture2 from "../../../../public/resource/carousel/2.jpg";
-import Picture3 from "../../../../public/resource/carousel/3.jpg";
-import Picture4 from "../../../../public/resource/carousel/4.jpg";
-import Picture5 from "../../../../public/resource/carousel/5.jpg";
-import Picture6 from "../../../../public/resource/carousel/6.jpg";
-import Picture7 from "../../../../public/resource/carousel/7.jpg";
-import styles from "./styles.module.css";
-import Image from "next/legacy/image";
-import { useScroll, useTransform, motion } from "framer-motion";
-import { useRef } from "react";
+import Picture1 from '../../../../public/resource/carousel/1.jpg';
+import Picture2 from '../../../../public/resource/carousel/2.jpg';
+import Picture3 from '../../../../public/resource/carousel/3.jpg';
+import Picture4 from '../../../../public/resource/carousel/4.jpg';
+import Picture5 from '../../../../public/resource/carousel/5.jpg';
+import Picture6 from '../../../../public/resource/carousel/6.jpg';
+import Picture7 from '../../../../public/resource/carousel/7.jpg';
+import styles from './styles.module.css';
+import Image from 'next/image';
+import { useScroll, useTransform, motion } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function Index() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start start", "end end"],
+    offset: ['start start', 'end end'],
   });
 
   const scale4 = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
@@ -64,7 +64,7 @@ export default function Index() {
         whileInView={{ opacity: 1 }}
         transition={{
           duration: 0.4,
-          ease: "easeInOut",
+          ease: 'easeInOut',
           delay: 0.2,
         }}
         viewport={{ once: true }}
@@ -76,7 +76,7 @@ export default function Index() {
                 <Image
                   src={src}
                   className="rounded-sm"
-                  fill
+                  fill={true}
                   alt="image"
                   placeholder="blur"
                 />

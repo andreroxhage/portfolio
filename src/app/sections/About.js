@@ -1,16 +1,16 @@
-"use client";
-import Study from "../../../public/resource/lund.jpg";
-import Image from "next/legacy/image";
-import { AnimatePresence, motion } from "framer-motion";
+'use client';
+import Study from '../../../public/resource/lund.jpg';
+import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { useState } from "react";
-import { about } from "../data";
-import ScrollScaleWrapper from "../components/ScrollScaleWrapper";
+import { useState } from 'react';
+import { about } from '../data';
+import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleTitleClick = (index) => {
+  const handleTitleClick = index => {
     setActiveIndex(index);
   };
 
@@ -22,7 +22,7 @@ export default function About() {
             className="pl-1 w-full sm:pl-0 col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 md:pt-8 pt-14"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
             <div className="flex flex-row gap-x-6">
@@ -31,17 +31,17 @@ export default function About() {
                   <motion.h3
                     className={`text-xl md:text-3xl font-semibold pb-1 md:pb-4 cursor-pointer  ${
                       activeIndex === index
-                        ? "text-primary-grey"
-                        : "text-primary-grey-brighter"
+                        ? 'text-primary-grey'
+                        : 'text-primary-grey-brighter'
                     } hover:text-secondary-green-darker`}
                     onClick={() => handleTitleClick(index)}
                     whileHover={{
                       translateY: -4,
                       color: [
-                        { color: "text-secondary-green-darker" },
-                        { color: "text-primary-grey-brighter" },
+                        { color: 'text-secondary-green-darker' },
+                        { color: 'text-primary-grey-brighter' },
                       ],
-                      transition: { duration: 0.2, ease: "easeInOut" },
+                      transition: { duration: 0.2, ease: 'easeInOut' },
                     }}
                   >
                     {item.title}
@@ -50,10 +50,10 @@ export default function About() {
                     {activeIndex === index && (
                       <motion.hr
                         className="h-0.5 pt-2 col-start-1 col-end-4 border-primary-grey"
-                        initial={{ width: "0%" }}
-                        animate={{ width: "100%" }}
-                        exit={{ width: "0%" }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        initial={{ width: '0%' }}
+                        animate={{ width: '100%' }}
+                        exit={{ width: '0%' }}
+                        transition={{ duration: 0.4, ease: 'easeInOut' }}
                         key="line"
                       />
                     )}
@@ -72,11 +72,11 @@ export default function About() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
                     >
                       {item.description}
                     </motion.p>
-                  ),
+                  )
               )}
             </AnimatePresence>
           </motion.div>
@@ -89,6 +89,10 @@ export default function About() {
               src={Study}
               placeholder="blur"
               alt="Lunds university building and a clear blue sky"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
             />
           </ScrollScaleWrapper>
         </div>

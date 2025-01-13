@@ -1,36 +1,46 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:prettier/recommended",
-        "next/core-web-vitals"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
-    "plugins": ["react", "prettier"],
-    "rules": {
-        "prettier/prettier": "error",
-        "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off",
-        "no-console": "warn",
-        "eqeqeq": "error",
-        "curly": "error",
-        "react/jsx-uses-react": "off",
-        "react/jsx-uses-vars": "error"
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "bracketSpacing": true,
+        "arrowParens": "avoid"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "no-console": "warn",
+    "eqeqeq": "error",
+    "curly": "error",
+    "react/jsx-uses-react": "off",
+    "react/jsx-uses-vars": "error"
+  }
 }

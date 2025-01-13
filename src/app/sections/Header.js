@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/legacy/image";
-import ProfilePicture from "../../../public/resource/profileImage.jpg";
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import ProfilePicture from '../../../public/resource/profileImage.jpg';
 
-import { header } from "@/app/data";
+import { header } from '@/app/data';
 
 const Header = () => {
   const [isAtTop, setIsAtTop] = useState(true);
-  const headerImage = "/resource/20220611-IMG_5691.jpg";
+  const headerImage = '/resource/20220611-IMG_5691.jpg';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +17,10 @@ const Header = () => {
       setIsAtTop(scrollTop === 0); // Check if scrollTop is 0 to determine if at the top
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -30,8 +30,8 @@ const Header = () => {
         className="relative h-2/6 md:h-2/5 flex justify-center items-start md:items-center pt-12 md:pt-0 "
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(${headerImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 gap-x-8 grid grid-cols-10 lg:pl-0">
@@ -39,7 +39,7 @@ const Header = () => {
             className="md:pl-0 pl-1 md:col-start-2 col-start-1 text-6xl md:text-8xl lg:text-9xl font-semibold w-full text-primary-vanilla "
             animate={{ opacity: 0.7 }}
             initial={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             André
           </motion.h1>
@@ -47,7 +47,7 @@ const Header = () => {
             className="md:col-start-2 col-start-1  text-6xl md:text-8xl lg:text-9xl mt-2 lg:mt-0 font-semibold w-full  text-primary-vanilla pl-12 md:pl-0 lg:pl-28 md:mb-0 mb-12 "
             animate={{ opacity: 0.6 }}
             initial={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             Roxhage
           </motion.h1>
@@ -59,7 +59,7 @@ const Header = () => {
             className="pl-1 md:pl-0 col-span-10 col-start-1 md:col-span-6"
             animate={{ opacity: 1, translateY: 0 }}
             initial={{ opacity: 0, translateY: 100 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             <h2 className="text-3xl md:text-4xl font-semibold pb-1 md:pb-2 text-primary-grey">
               Currently
@@ -73,13 +73,17 @@ const Header = () => {
             className="col-start-3 p-4 md:p-6 col-span-6 md:col-start-7 md:col-span-3 md:my-0 sm:my-12 my-8"
             animate={{ scale: 1, opacity: 1 }}
             initial={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             <Image
               className="h-full w-full rounded-full drop-shadow-2xl shadow-md md:shadow-customShadow"
               src={ProfilePicture}
               placeholder="blur"
               alt="image description"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
             />
           </motion.div>
         </div>
@@ -93,7 +97,7 @@ const Header = () => {
               exit={{ opacity: 0 }}
               transition={{
                 duration: 0.4,
-                ease: "easeInOut",
+                ease: 'easeInOut',
               }}
             >
               <motion.span
@@ -102,7 +106,7 @@ const Header = () => {
                 animate={{ opacity: [0, 1] }}
                 transition={{
                   duration: 0.4,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   delay: 1,
                 }}
               >
@@ -128,7 +132,7 @@ const Header = () => {
                   }}
                   transition={{
                     duration: 0.8,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.9,
                   }}
                 />

@@ -1,5 +1,5 @@
-import React from "react";
-import Footer from "@/app/sections/Footer";
+import React from 'react';
+import Footer from '@/app/sections/Footer';
 
 interface ProjectsLayoutProps {
   children: React.ReactNode;

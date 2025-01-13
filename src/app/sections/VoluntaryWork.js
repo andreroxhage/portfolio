@@ -1,14 +1,14 @@
-"use client";
-import karneval from "../../../public/resource/work/karneval.jpg";
-import karneval1 from "../../../public/resource/work/karneval1.jpg";
-import karneval2 from "../../../public/resource/work/karneval2.jpg";
-import teknikfokus from "../../../public/resource/work/teknikfokus.png";
-import teknikfokus1 from "../../../public/resource/work/teknikfokus1.jpg";
+'use client';
+import karneval from '../../../public/resource/work/karneval.jpg';
+import karneval1 from '../../../public/resource/work/karneval1.jpg';
+import karneval2 from '../../../public/resource/work/karneval2.jpg';
+import teknikfokus from '../../../public/resource/work/teknikfokus.png';
+import teknikfokus1 from '../../../public/resource/work/teknikfokus1.jpg';
 
-import Image from "next/legacy/image";
-import { motion } from "framer-motion";
-import { VoluntaryProjects } from "../data";
-import ScrollScaleWrapper from "../components/ScrollScaleWrapper";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { VoluntaryProjects } from '../data';
+import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function VoluntaryWork() {
   return (
@@ -18,7 +18,7 @@ export default function VoluntaryWork() {
           className="pt-4 pb-5 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-semibold text-primary-grey"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
           {VoluntaryProjects[2].sectionTitle}
@@ -37,6 +37,10 @@ export default function VoluntaryWork() {
                 alt="image description"
                 placeholder="blur"
                 priority={true}
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                }}
               />
             </ScrollScaleWrapper>
             <ScrollScaleWrapper
@@ -49,6 +53,10 @@ export default function VoluntaryWork() {
                 alt="image description"
                 placeholder="blur"
                 priority={true}
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                }}
               />
             </ScrollScaleWrapper>
 
@@ -58,13 +66,17 @@ export default function VoluntaryWork() {
               alt="image description"
               placeholder="blur"
               priority={true}
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
             />
           </motion.div>
           <motion.div
             className="md:px-0 w-full h-full md:col-span-5 md:col-start-6 md:mt-0 mt-6 col-span-10 col-start-1"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
             <div className="flex flex-col gap-x-6 px-4 sm:px-16 justify-center items-start w-full h-full">
@@ -72,7 +84,7 @@ export default function VoluntaryWork() {
                 className="text-xl md:text-3xl font-semibold pb-1 md:pb-4"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[0].title}
@@ -81,7 +93,7 @@ export default function VoluntaryWork() {
                 className="text-base md:text-lg font-medium max-w-[700px] pb-6"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[0].description}
@@ -90,7 +102,7 @@ export default function VoluntaryWork() {
                 className="text-xs md:text-sm text-right font-medium w-full pb-1"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[0].year}
@@ -104,7 +116,7 @@ export default function VoluntaryWork() {
             className="px-4 md:px-0 w-full h-full md:col-span-5 md:col-start-1 md:mt-0 mt-6 md:pb-0 pb-5 col-span-10 col-start-1"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
             <div className="flex flex-col gap-x-6 px-4 sm:px-16 justify-center items-start w-full h-full">
@@ -112,7 +124,7 @@ export default function VoluntaryWork() {
                 className="text-xl md:text-3xl font-semibold pb-1 md:pb-4"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[1].title}
@@ -121,7 +133,7 @@ export default function VoluntaryWork() {
                 className="text-base md:text-lg font-medium max-w-[700px] pb-6"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[1].description}
@@ -130,7 +142,7 @@ export default function VoluntaryWork() {
                 className="text-xs md:text-sm text-right font-medium w-full pb-1"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {VoluntaryProjects[1].year}
@@ -148,6 +160,10 @@ export default function VoluntaryWork() {
                 alt="image description"
                 placeholder="blur"
                 priority={true}
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                }}
               />
             </ScrollScaleWrapper>
 
@@ -157,6 +173,10 @@ export default function VoluntaryWork() {
               alt="image description"
               placeholder="blur"
               priority={true}
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
             />
           </motion.div>
         </div>

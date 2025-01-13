@@ -1,10 +1,10 @@
-"use client";
-import { motion } from "framer-motion";
-import { footerLinks } from "../data";
-import { FollowerPointerCard } from "../components/followCursor";
+'use client';
+import { motion } from 'framer-motion';
+import { footerLinks } from '../data';
+import { FollowerPointerCard } from '../components/followCursor';
 
 export default function Contact() {
-  const backgroundImage = "/resource/20220611-IMG_5691.jpg"; // 20220611-IMG_5691 or familjen.jpg
+  const backgroundImage = '/resource/20220611-IMG_5691.jpg'; // 20220611-IMG_5691 or familjen.jpg
 
   const TitleComponent = ({ title }) => (
     <div>
@@ -19,8 +19,8 @@ export default function Contact() {
         className="h-screen w-full rounded-t-3xl"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <div className="flex flex-col justify-between overflow-hidden w-full h-screen">
@@ -29,7 +29,7 @@ export default function Contact() {
             className="w-full h-4/6 overflow-hidden py-14"
           >
             <FollowerPointerCard
-              title={<TitleComponent title={"Connect"} />}
+              title={<TitleComponent title={'Connect'} />}
               className="h-full z-40"
             >
               <div className="max-w-7xl mx-auto relative flex items-center w-full h-full overflow-hidden">
@@ -39,7 +39,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, translateY: 0 }}
                   transition={{
                     duration: 0.4,
-                    ease: "easeOut",
+                    ease: 'easeOut',
                   }}
                   viewport={{ once: true }}
                 >
@@ -65,14 +65,14 @@ export default function Contact() {
                     href={href}
                     className="col-start-1 col-span-10 flex gap-x-2 items-center w-full"
                     whileHover={{
-                      color: "#BCE5AE",
-                      fill: "#BCE5AE",
+                      color: '#BCE5AE',
+                      fill: '#BCE5AE',
                       translateX: 10,
                     }}
                     whileTap={{ scale: 0.95 }}
                     initial={{
-                      color: "#FEFEFE",
-                      fill: "#FEFEFE",
+                      color: '#FEFEFE',
+                      fill: '#FEFEFE',
                       opacity: 0,
                       translateX: 0,
                     }}
@@ -82,15 +82,15 @@ export default function Contact() {
                       transition: {
                         delay: 0.2 * i,
                         duration: 0.4,
-                        ease: "easeInOut",
+                        ease: 'easeInOut',
                       },
                     }}
                     transition={{
                       duration: 0.2,
-                      ease: "easeInOut",
+                      ease: 'easeInOut',
                     }}
                   >
-                    {title === "LinkedIn" && (
+                    {title === 'LinkedIn' && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         version="1.1"
@@ -101,7 +101,7 @@ export default function Contact() {
                         <path d="M 31.835 29.91 h 17.89 v 8.206 h 0.255 c 2.49 -4.72 8.576 -9.692 17.647 -9.692 C 86.514 28.424 90 40.849 90 57.007 V 89.92 H 71.357 V 60.737 c 0 -6.961 -0.121 -15.912 -9.692 -15.912 c -9.706 0 -11.187 7.587 -11.187 15.412 V 89.92 H 31.835 V 29.91 z" />
                       </svg>
                     )}
-                    {title === "andreroxhage74@gmail.com" && (
+                    {title === 'andreroxhage74@gmail.com' && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -117,7 +117,7 @@ export default function Contact() {
                         />
                       </svg>
                     )}
-                    {title === "GitHub" && (
+                    {title === 'GitHub' && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-4 h-4"

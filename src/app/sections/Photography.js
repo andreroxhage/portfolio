@@ -1,6 +1,6 @@
-"use client";
-import { motion } from "framer-motion";
-import { photo } from "../data.js";
+'use client';
+import { motion } from 'framer-motion';
+import { photo } from '../data.js';
 
 export default function Photography() {
   return (
@@ -11,7 +11,7 @@ export default function Photography() {
             className="text-primary-grey text-xl md:text-3xl font-semibold"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
             {photo.title}
@@ -22,7 +22,7 @@ export default function Photography() {
             className="text-primary-grey-brighter text-base md:text-lg font-medium w-full sm:max-w-[680px] sm:mt-0 mt-1"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
             {photo.description}

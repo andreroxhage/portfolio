@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { links, footerLinks } from "../../data";
-import { slideIn } from "./anim";
+import { motion } from 'framer-motion';
+import { links, footerLinks } from '../../data';
+import { slideIn } from './anim';
 
 export default function index() {
   return (
@@ -36,7 +36,7 @@ export default function index() {
       <motion.hr
         className="h-0.5 w-full pt-2 border-primary-grey-brighter my-10 md:my-16"
         initial={{ width: 0 }}
-        animate={{ width: "100%" }}
+        animate={{ width: '100%' }}
         exit={{ width: 0, transition: { delay: 0 } }}
         transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1], delay: 0.5 }}
       />
@@ -53,16 +53,16 @@ export default function index() {
             <motion.a
               href={href}
               className={
-                "w-full mt-2 text-primary-grey font-medium cursor-pointer"
+                'w-full mt-2 text-primary-grey font-medium cursor-pointer'
               }
               variants={slideIn}
               custom={i}
               initial="initial"
               animate="enter"
               whileHover={{
-                color: "#222222",
+                color: '#222222',
                 x: 10,
-                transition: { duration: 0.2, ease: "easeInOut" },
+                transition: { duration: 0.2, ease: 'easeInOut' },
               }}
               exit="exit"
               key={`f_${i}`}

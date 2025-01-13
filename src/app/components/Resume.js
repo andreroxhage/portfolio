@@ -1,11 +1,11 @@
-import { resume } from "@/app/data";
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { resume } from '@/app/data';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function Resume() {
   const resumeRef = useRef(null);
   const resumeInView = useInView(resumeRef, {
-    margin: "-100px",
+    margin: '-100px',
     once: true,
   });
 
@@ -19,9 +19,9 @@ export default function Resume() {
           key={index}
           className={`sm:mt-0 mt-12 col-start-${index * 4 + 1} col-span-4 pr-6`}
           animate={{ y: resumeInView ? 0 : 160 * (index + 1) }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          {section.title === "Education" && (
+          {section.title === 'Education' && (
             <div className="flex gap-x-4 items-center">
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export default function Resume() {
                   animate={{ pathLength: 1 }}
                   transition={{
                     duration: 1,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.8 + index * 0.1,
                   }}
                 />
@@ -52,7 +52,7 @@ export default function Resume() {
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
                   duration: 0.5,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   delay: 0.11 + 0.11 * index,
                 }}
               >
@@ -60,7 +60,7 @@ export default function Resume() {
               </motion.h3>
             </div>
           )}
-          {section.title === "Experience" && (
+          {section.title === 'Experience' && (
             <div className="flex gap-x-4 items-center">
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ export default function Resume() {
                   animate={{ pathLength: 1 }}
                   transition={{
                     duration: 1,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.8 + index * 0.1,
                   }}
                 />
@@ -91,7 +91,7 @@ export default function Resume() {
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
                   duration: 0.5,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   delay: 0.11 + 0.11 * index,
                 }}
               >
@@ -99,7 +99,7 @@ export default function Resume() {
               </motion.h3>
             </div>
           )}
-          {section.title === "Skills" && (
+          {section.title === 'Skills' && (
             <div className="flex gap-x-4 items-center">
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ export default function Resume() {
                   animate={{ pathLength: 1 }}
                   transition={{
                     duration: 1,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.8 + index * 0.1,
                   }}
                 />
@@ -130,7 +130,7 @@ export default function Resume() {
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
                   duration: 0.5,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   delay: 0.11 + 0.11 * index,
                 }}
               >
@@ -150,7 +150,7 @@ export default function Resume() {
                   }}
                   transition={{
                     duration: 0.5,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.1 + 0.11 * itemIndex,
                   }}
                 >
@@ -166,7 +166,7 @@ export default function Resume() {
                   }}
                   transition={{
                     duration: 0.5,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.15 + 0.11 * itemIndex,
                   }}
                 >
@@ -183,7 +183,7 @@ export default function Resume() {
                   }}
                   transition={{
                     duration: 0.5,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.2 + 0.11 * itemIndex,
                   }}
                 >
@@ -198,7 +198,7 @@ export default function Resume() {
                   }}
                   transition={{
                     duration: 0.5,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: 0.1 + 0.11 * itemIndex,
                   }}
                 >
@@ -212,7 +212,7 @@ export default function Resume() {
                       }}
                       transition={{
                         duration: 0.5,
-                        ease: "easeInOut",
+                        ease: 'easeInOut',
                         delay: 0.25 + 0.11 * listItemIndex,
                       }}
                     >

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import Image from "next/legacy/image";
-import Link from "next/link";
-import { ArrowUpRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 interface GifDialogMobileProps {
   project: {
@@ -26,9 +26,9 @@ const GifDialogMobile = ({
 }: GifDialogMobileProps) => {
   useEffect(() => {
     setIsLoading(true);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     };
   }, [setIsLoading]);
 
@@ -42,14 +42,14 @@ const GifDialogMobile = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-      style={{ position: "fixed" }}
+      style={{ position: 'fixed' }}
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         className="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden"
-        style={{ position: "relative" }}
+        style={{ position: 'relative' }}
       >
         <button
           onClick={onClose}
@@ -63,9 +63,9 @@ const GifDialogMobile = ({
             src={project.gifSrc}
             alt={`${project.title} preview`}
             className={`w-full h-full object-contain transition-opacity duration-300 ${
-              isLoading ? "opacity-0" : "opacity-100"
+              isLoading ? 'opacity-0' : 'opacity-100'
             }`}
-            fill
+            fill={true}
             unoptimized
             onLoad={handleImageLoad}
             priority

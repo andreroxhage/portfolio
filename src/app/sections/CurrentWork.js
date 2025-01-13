@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-import mockup1 from "@/../public/resource/joinMockup1.png";
-import mockup2 from "@/../public/resource/joinMockup2.png";
-import { currentWork, projects } from "@/app/data";
-import { TextRevealCard } from "../components/text-reveal-card";
-import { useRef } from "react";
-import Resume from "../components/Resume";
-import ScrollScaleWrapper from "../components/ScrollScaleWrapper";
-import ImageSlider from "../components/ImageSlider";
-import Link from "next/link";
-import MagneticWrapper from "../components/MagneticWrapper";
+import mockup1 from '@/../public/resource/joinMockup1.png';
+import mockup2 from '@/../public/resource/joinMockup2.png';
+import { currentWork, projects } from '@/app/data';
+import { TextRevealCard } from '../components/text-reveal-card';
+import { useRef } from 'react';
+import Resume from '../components/Resume';
+import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
+import ImageSlider from '../components/ImageSlider';
+import Link from 'next/link';
+import MagneticWrapper from '../components/MagneticWrapper';
 
 export default function CurrentWork() {
   const work = currentWork[0];
@@ -25,7 +25,7 @@ export default function CurrentWork() {
     offset: [0, 1],
   });
 
-  const hue = useTransform(scrollYProgress, [0, 1], ["#ffffff00", "#ffffff20"]);
+  const hue = useTransform(scrollYProgress, [0, 1], ['#ffffff00', '#ffffff20']);
 
   return (
     <motion.div
@@ -41,7 +41,7 @@ export default function CurrentWork() {
           className="mt-4 md:mt-12 text-3xl md:text-5xl font-semibold text-primary-whiteish"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
           {work.sectionTitle}
@@ -53,7 +53,7 @@ export default function CurrentWork() {
                 className="text-2xl md:text-4xl font-semibold pb-1 md:pb-4 cursor-pointer text-primary-grey"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {work.title}
@@ -62,7 +62,7 @@ export default function CurrentWork() {
                 className="text-base md:text-lg font-medium"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {work.description}
@@ -71,7 +71,7 @@ export default function CurrentWork() {
                 className="flex flex-wrap gap-3 mt-6"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
                 {Object.values(work.tags).map((tag, index) => (
@@ -101,7 +101,7 @@ export default function CurrentWork() {
           className="mt-4 md:mt-12 text-3xl md:text-5xl font-semibold text-primary-whiteish"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
           Projects
@@ -126,7 +126,7 @@ export default function CurrentWork() {
                     }}
                     transition={{
                       duration: 0.4,
-                      ease: "easeOut",
+                      ease: 'easeOut',
                     }}
                     viewport={{ once: true }}
                   >
@@ -157,7 +157,7 @@ export default function CurrentWork() {
                   }}
                   transition={{
                     duration: 0.3,
-                    ease: "easeOut",
+                    ease: 'easeOut',
                     delay: 0.1,
                   }}
                 >
@@ -196,7 +196,7 @@ export default function CurrentWork() {
           className="pt-0 sm:pt-36 flex flex-row items-center justify-center gap-x-0 md:gap-x-20 md:p-0 sm:pb-16 pb-0 w-full"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
           <TextRevealCard
