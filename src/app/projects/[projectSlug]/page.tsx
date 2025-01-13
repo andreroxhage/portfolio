@@ -116,63 +116,69 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
       {/* Content Sections */}
       <div className="max-w-7xl mx-auto px-4 pt-12 grid grid-cols-10 gap-8">
-        {project.sections.map((section, index) => {
-          const { title = "", layout = "middle", content = [] } = section;
+        {"sections" in project &&
+          project.sections.map((section: any, index: number) => {
+            const { title = "", layout = "middle", content = [] } = section;
 
-          const layoutClasses = {
-            middle:
-              "mb-12 md:col-start-3 col-start-1 md:col-span-6 col-span-10",
-            "two-col": "mb-12 col-span-10",
-            "full-width": "mb-12 col-span-10",
-          };
-          const sectionWrapperClasses =
-            layoutClasses[layout as keyof typeof layoutClasses] ||
-            "mb-12 col-span-10";
+            const layoutClasses = {
+              middle:
+                "mb-12 md:col-start-3 col-start-1 md:col-span-6 col-span-10",
+              "two-col": "mb-12 col-span-10",
+              "full-width": "mb-12 col-span-10",
+            };
+            const sectionWrapperClasses =
+              layoutClasses[layout as keyof typeof layoutClasses] ||
+              "mb-12 col-span-10";
 
-          return (
-            <motion.div
-              key={index}
-              className={sectionWrapperClasses}
-              initial={{ opacity: 0, translateY: 60 }}
-              whileInView={{ opacity: 1, translateY: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              {title && layout !== "two-col" && (
-                <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-4">
-                  {title}
-                </h2>
-              )}
+            return (
+              <motion.div
+                key={index}
+                className={sectionWrapperClasses}
+                initial={{ opacity: 0, translateY: 60 }}
+                whileInView={{ opacity: 1, translateY: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                {title && layout !== "two-col" && (
+                  <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-4">
+                    {title}
+                  </h2>
+                )}
 
-              {layout === "two-col" ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Left Column */}
-                  <div className="space-y-8">
-                    {title && (
-                      <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-4">
-                        {title}
-                      </h2>
-                    )}
-                    {content
-                      .filter((c) => "column" in c && c.column === "left")
-                      .map((c, i) => renderContent(c, i))}
+                {layout === "two-col" ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Left Column */}
+                    <div className="space-y-8">
+                      {title && (
+                        <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-4">
+                          {title}
+                        </h2>
+                      )}
+                      {content
+                        .filter(
+                          (c: { column: string }) =>
+                            "column" in c && c.column === "left"
+                        )
+                        .map((c: any, i: number) => renderContent(c, i))}
+                    </div>
+
+                    {/* Right Column */}
+                    <div className="space-y-8">
+                      {content
+                        .filter(
+                          (c: any) => "column" in c && c.column === "right"
+                        )
+                        .map((c: any, i: number) => renderContent(c, i))}
+                    </div>
                   </div>
-
-                  {/* Right Column */}
+                ) : (
                   <div className="space-y-8">
-                    {content
-                      .filter((c) => "column" in c && c.column === "right")
-                      .map((c, i) => renderContent(c, i))}
+                    {content.map((c: any, i: number) => renderContent(c, i))}
                   </div>
-                </div>
-              ) : (
-                <div className="space-y-8">
-                  {content.map((c, i) => renderContent(c, i))}
-                </div>
-              )}
-            </motion.div>
-          );
-        })}
+                )}
+              </motion.div>
+            );
+          })}
       </div>
       <ProjectNavigation
         projects={projects}

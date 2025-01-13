@@ -67,6 +67,7 @@ export const projects = [
     ...getProjectAssets("login-experience-in-vr"),
     tags: ["VR", "Authentication", "GAIM", "Design Process"],
     image: "/resource/projects/vr-login.jpg",
+    gifSrc: "/resource/projects/p2_hifi.gif",
     imageAlt: "Scroll Select Authentication in VR",
     sections: [
       {
@@ -248,10 +249,11 @@ export const projects = [
     headerSrc: "/resource/projects/p1.jpg",
     titleColor: "#5059C9",
     subtitleColor: "#6264A7",
+    gifSrc: "/resource/projects/p1.jpg",
     date: "2024",
     projectSlug: "usability-evaluation-of-microsoft-teams-calendar-feature",
     ...getProjectAssets(
-      "usability-evaluation-of-microsoft-teams-calendar-feature",
+      "usability-evaluation-of-microsoft-teams-calendar-feature"
     ),
     tags: ["Usability Evaluation", "Microsoft Teams", "Calendar Feature"],
     image: "/resource/projects/p1.jpeg",
@@ -405,6 +407,19 @@ export const projects = [
         ],
       },
     ],
+  },
+  {
+    title: "Iphone",
+    subtitle: "Microsoft Teams Calendar",
+    headerSrc: "/resource/projects/p1.jpg",
+    titleColor: "#5059C9",
+    subtitleColor: "#6264A7",
+    projectSlug: "",
+    gifSrc: "/resource/projects/ihpone.gif",
+    date: "2024",
+    tags: ["Usability Evaluation", "Microsoft Teams", "Calendar Feature"],
+    image: "/resource/projects/p1.jpeg",
+    imageAlt: "Usability Evaluation of Microsoft Teams Calendar Feature",
   },
 ];
 

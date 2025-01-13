@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../sections/Footer";
 
 interface ProjectsLayoutProps {
   children: React.ReactNode;
@@ -8,8 +7,7 @@ interface ProjectsLayoutProps {
 const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
   return (
     <div>
-      <main>{children}</main>
-      <Footer />
+      <main className="bg-primary-whiteish">{children}</main>
     </div>
   );
 };

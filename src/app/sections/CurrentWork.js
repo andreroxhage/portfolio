@@ -191,6 +191,7 @@ export default function CurrentWork() {
 
       <div className="mx-auto h-full px-4 w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
         <motion.div
+          id="about"
           ref={resumeRef}
           className="pt-0 sm:pt-36 flex flex-row items-center justify-center gap-x-0 md:gap-x-20 md:p-0 sm:pb-16 pb-0 w-full"
           initial={{ opacity: 0, translateY: 60 }}

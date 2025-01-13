@@ -16,10 +16,7 @@ export default function About() {
 
   return (
     <>
-      <div
-        id="about"
-        className="bg-primary-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative"
-      >
+      <div className="bg-primary-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
         <div className="max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
           <motion.div
             className="pl-1 w-full sm:pl-0 col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 md:pt-8 pt-14"
