@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import ScrollScaleWrapper from "@/app/components/ScrollScaleWrapper";
 import { projects } from "@/app/data";
 import { motion, useScroll, useTransform } from "framer-motion";

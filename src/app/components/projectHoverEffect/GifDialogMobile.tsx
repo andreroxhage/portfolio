@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { ArrowUpRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 

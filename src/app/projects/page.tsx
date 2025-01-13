@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { footerLinks } from "@/app/data";
 import ProfilePicture from "../../../public/resource/profileImage.jpg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import ProjectGrid from "@/app/components//projectHoverEffect/ProjectsHoverGrid";
 
 const ProjectsPage: React.FC = () => {

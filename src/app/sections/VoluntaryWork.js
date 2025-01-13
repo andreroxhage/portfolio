@@ -5,7 +5,7 @@ import karneval2 from "../../../public/resource/work/karneval2.jpg";
 import teknikfokus from "../../../public/resource/work/teknikfokus.png";
 import teknikfokus1 from "../../../public/resource/work/teknikfokus1.jpg";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { motion } from "framer-motion";
 import { VoluntaryProjects } from "../data";
 import ScrollScaleWrapper from "../components/ScrollScaleWrapper";

@@ -8,7 +8,7 @@ import Picture5 from "../../../../public/resource/carousel/5.jpg";
 import Picture6 from "../../../../public/resource/carousel/6.jpg";
 import Picture7 from "../../../../public/resource/carousel/7.jpg";
 import styles from "./styles.module.css";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 

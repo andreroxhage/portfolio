@@ -1,6 +1,6 @@
 "use client";
 import Study from "../../../public/resource/lund.jpg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useState } from "react";

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import ProfilePicture from "../../../public/resource/profileImage.jpg";
 
 import { header } from "@/app/data";
