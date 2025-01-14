@@ -14,12 +14,13 @@ const GifDialog = ({
   mousePosition,
   isLoading,
   setIsLoading,
+  uniqueKey,
 }: GifDialogProps) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     setIsLoading(true);
-  }, [gifSrc, setIsLoading]);
+  }, [gifSrc, uniqueKey, setIsLoading]);
 
   const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const img = event.target as HTMLImageElement;
@@ -55,6 +56,7 @@ const GifDialog = ({
 
   return (
     <motion.div
+      key={uniqueKey}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{
         scale: 1,
@@ -68,9 +70,8 @@ const GifDialog = ({
         stiffness: 100,
         damping: 20,
       }}
-      className="fixed z-10 rounded-lg shadow-xl overflow-hidden pointer-events-none"
+      className="fixed z-10 rounded-[40px] shadow-xl overflow-hidden pointer-events-none"
       style={{
-        borderRadius: '40px',
         left: `calc(50% - ${dimensions.width / 2}px)`,
         top: `calc(50% - ${dimensions.height / 2}px)`,
         width: isLoading ? '0' : dimensions.width,

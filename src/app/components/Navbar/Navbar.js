@@ -62,7 +62,7 @@ export default function Navbar() {
         />
       </nav>
 
-      <nav className="fixed h-10 right-8 md:right-10 bottom-2 md:top-10 md:bottom-auto z-50 md:hidden">
+      <nav className="fixed h-10 right-3 md:right-10 bottom-3 md:top-10 md:bottom-auto z-50 md:hidden">
         <motion.div
           className="bg-secondary-green rounded-md relative nav-container origin-bottom"
           variants={menu}
@@ -73,7 +73,7 @@ export default function Navbar() {
           <AnimatePresence mode="wait">
             {isActive && (
               <motion.div
-                className="absolute bottom-full mb-4 right-0  sm:bg-none bg-secondary-green rounded-md"
+                className="absolute bottom-full mb-4 right-5  sm:bg-none bg-secondary-green rounded-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}

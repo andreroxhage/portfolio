@@ -3,15 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
-
-interface Project {
-  title: string;
-  date: string;
-  subtitle: string;
-  tags: string[];
-  gifSrc: string;
-  projectSlug: string;
-}
+import { Project } from '@/app/types';
 
 interface GifDialogMobileProps {
   project: Project;
@@ -19,26 +11,21 @@ interface GifDialogMobileProps {
   onClose: () => void;
 }
 
-const Tag = memo(({ tag }: { tag: string }) => (
-  <span className="px-3 py-1 rounded-xl border border-gray-800/40 text-primary-grey-brighter text-xs">
-    {tag}
-  </span>
-));
-
-Tag.displayName = 'Tag';
-
 const ProjectImage = memo(
   ({ src, alt, onLoad }: { src: string; alt: string; onLoad: () => void }) => (
-    <div className="w-full aspect-video relative">
-      <Image
-        src={src}
-        alt={alt}
-        fill={true}
-        unoptimized
-        onLoad={onLoad}
-        priority
-        className="transition-opacity duration-300"
-      />
+    <div className="relative w-[calc(100%-32px)] max-w-[80vw] max-h-[80vh] mx-auto rounded-[40px] overflow-hidden">
+      <div className="w-full h-full relative">
+        <Image
+          src={src}
+          alt={alt}
+          width={1200}
+          height={800}
+          unoptimized
+          onLoad={onLoad}
+          priority
+          className="w-full h-auto object-contain"
+        />
+      </div>
     </div>
   )
 );
@@ -70,9 +57,17 @@ const GifDialogMobile = ({
   };
 
   const contentVariants = {
-    hidden: { scale: 0.9, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { delay: 0.1 } },
-    exit: { scale: 0.9, opacity: 0 },
+    hidden: { scale: 0.95, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+    exit: { scale: 0.95, opacity: 0 },
   };
 
   return (
@@ -83,56 +78,41 @@ const GifDialogMobile = ({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
           onClick={handleClose}
         >
           <motion.div
             variants={contentVariants}
-            className="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden"
+            className="relative w-full"
             onClick={e => e.stopPropagation()}
           >
-            <button
-              onClick={handleClose}
-              className="absolute right-4 top-4 z-10 p-2 bg-white/80 rounded-full hover:bg-white transition-colors"
-              aria-label="Close dialog"
-            >
-              <XMarkIcon className="w-6 h-6 text-gray-700" />
-            </button>
-
             <ProjectImage
               src={project.gifSrc}
               alt={`${project.title} preview`}
-              onLoad={() => {}} // Handle loading state if needed
+              onLoad={() => {}}
             />
+          </motion.div>
 
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-semibold text-primary-grey">
-                  {project.title}
-                </h3>
-                <span className="text-sm text-primary-grey-brighter">
-                  {project.date}
-                </span>
-              </div>
-
-              <p className="text-primary-grey mb-4">{project.subtitle}</p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag, index) => (
-                  <Tag key={`${tag}-${index}`} tag={tag} />
-                ))}
-              </div>
-
+          <div className="absolute bottom-3 px-3 flex items-center justify-between w-full">
+            <button
+              onClick={handleClose}
+              className="p-3 rounded-full overflow-hidden relative"
+              aria-label="Close dialog"
+            >
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
+              <XMarkIcon className="w-8 h-8 text-white relative z-10 " />
+            </button>{' '}
+            {project?.projectSlug && (
               <Link
                 href={`/projects/${project.projectSlug}`}
-                className="flex items-center justify-between w-full p-4 bg-primary-whiteish hover:bg-white rounded-2xl text-primary-grey group transition-all duration-150"
-                onClick={handleClose}
+                className="p-3 rounded-full overflow-hidden relative"
+                aria-label="Visit Project"
               >
-                <span className="font-medium">Read More</span>
-                <ArrowUpRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
+                <ArrowUpRightIcon className="w-8 h-8 text-white relative z-10" />
               </Link>
-            </div>
-          </motion.div>
+            )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
