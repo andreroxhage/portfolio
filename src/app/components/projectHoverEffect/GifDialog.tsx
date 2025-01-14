@@ -14,13 +14,12 @@ const GifDialog = ({
   mousePosition,
   isLoading,
   setIsLoading,
-  uniqueKey,
 }: GifDialogProps) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     setIsLoading(true);
-  }, [gifSrc, uniqueKey, setIsLoading]);
+  }, [gifSrc, setIsLoading]);
 
   const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const img = event.target as HTMLImageElement;
@@ -49,14 +48,13 @@ const GifDialog = ({
   };
 
   const calculateOffset = () => {
-    const offsetX = (mousePosition.x / window.innerWidth - 0.5) * 240;
-    const offsetY = (mousePosition.y / window.innerHeight - 0.5) * 240;
+    const offsetX = (mousePosition.x / window.innerWidth - 0.5) * 400;
+    const offsetY = (mousePosition.y / window.innerHeight - 0.5) * 400;
     return { x: offsetX, y: offsetY };
   };
 
   return (
     <motion.div
-      key={uniqueKey}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{
         scale: 1,

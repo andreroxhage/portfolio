@@ -12,8 +12,8 @@ export const links = [
     href: '/#work',
   },
   {
-    title: 'Photography',
-    href: '/#photography',
+    title: 'Projects & ideas',
+    href: '/projects',
   },
   {
     title: 'Voluntary Work',
@@ -40,7 +40,7 @@ export const about = [
 
 export const currentWork = [
   {
-    sectionTitle: 'Current Work',
+    sectionTitle: 'Current work',
     title: 'InterMail',
     description: `In my role as a Software Design Engineer, I bridge the gap between design and development, working closely with cross-functional teams to create a seamless and intuitive customer data platform. My involvement spans from front-end development to strategic design decisions, ensuring that usability and user-centricity remain central to every solution. Leading a comprehensive redesign effort, I focused on enhancing the platform’s usability, making it more intuitive and easy to learn.`,
     tags: {
@@ -408,19 +408,18 @@ export const projects = [
       },
     ],
   },
+  /*
   {
-    title: 'Iphone',
+    title: 'Example of a idea that is only displayed as preview and not as page',
     subtitle: 'Microsoft Teams Calendar',
     headerSrc: '/resource/projects/p1.jpg',
-    titleColor: '#5059C9',
-    subtitleColor: '#6264A7',
     projectSlug: '',
     gifSrc: '/resource/projects/ihpone.gif',
     date: '2024',
     tags: ['Usability Evaluation', 'Microsoft Teams', 'Calendar Feature'],
     image: '/resource/projects/p1.jpeg',
     imageAlt: 'Usability Evaluation of Microsoft Teams Calendar Feature',
-  },
+  },*/
 ];
 
 function getProjectAssets(projectSlug) {
@@ -528,7 +527,7 @@ export const resume = [
 ];
 
 export const photo = {
-  title: 'Visual Storytelling',
+  title: 'Visual storytelling',
   description:
     'In my free time, I enjoy hanging out with friends and capturing moments with my camera. This hobby keeps my creativity alive and often sparks fresh ideas, leading me towards innovative approaches and creative solutions.',
 };

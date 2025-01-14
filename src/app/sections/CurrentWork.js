@@ -1,7 +1,5 @@
 'use client';
-
 import { motion, useScroll, useTransform } from 'framer-motion';
-
 import mockup1 from '@/../public/resource/joinMockup1.png';
 import mockup2 from '@/../public/resource/joinMockup2.png';
 import { currentWork, projects } from '@/app/data';
@@ -12,6 +10,7 @@ import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 import ImageSlider from '../components/ImageSlider';
 import Link from 'next/link';
 import MagneticWrapper from '../components/MagneticWrapper';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
 export default function CurrentWork() {
   const work = currentWork[0];
@@ -25,7 +24,7 @@ export default function CurrentWork() {
     offset: [0, 1],
   });
 
-  const hue = useTransform(scrollYProgress, [0, 1], ['#ffffff00', '#ffffff20']);
+  const hue = useTransform(scrollYProgress, [0, 1], ['#ffffff00', '#ffffff30']);
 
   return (
     <motion.div
@@ -97,95 +96,103 @@ export default function CurrentWork() {
 
       {/*  Projects */}
       <div className="max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
-        <motion.h3
-          className="mt-4 md:mt-12 text-3xl md:text-5xl font-semibold text-primary-whiteish"
-          initial={{ opacity: 0, translateY: 60 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          viewport={{ once: true }}
+        <Link
+          href={'/projects'}
+          className="mt-4 group md:mt-12 flex gap-4 text-primary-whiteish justify-between"
         >
-          Projects
-        </motion.h3>
+          <motion.h3
+            className="text-3xl md:text-5xl font-semibold cursor-pointer group-hover:text-secondary-green"
+            initial={{ opacity: 0, translateY: 60 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            viewport={{ once: true }}
+            whileHover={{
+              translateY: -4,
+              transition: { duration: 0.2, ease: 'easeInOut' },
+            }}
+          >
+            Projects
+          </motion.h3>
+          <div className="group cursor-pointer flex items-end">
+            <motion.label
+              className="text-base md:text-lg font-medium text-primary-whiteish group-hover:text-secondary-green cursor-pointer"
+              whileHover={{
+                translateY: -4,
+                transition: { duration: 0.2, ease: 'easeInOut' },
+              }}
+            >
+              See all
+            </motion.label>
+          </div>
+        </Link>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-9">
-          {Object.values(p).map((project, index) => (
-            <Link
-              key={index}
-              href={`/projects/${project.projectSlug}`}
-              className="bg-primary-vanilla rounded-xl p-4 group hover:bg-secondary-green-lighter active:bg-secondary-green-darker transition-all duration-300 ease-in-out"
-            >
-              <div className="flex flex-col h-full">
-                <div className="flex w-full justify-between">
-                  <motion.h3
-                    className="text-2xl md:text-3xl font-semibold cursor-pointer text-primary-grey"
-                    initial={{ opacity: 0, translateY: 60 }}
+          {Object.values(p)
+            .slice(0, 2)
+            .map((project, index) => (
+              <Link
+                key={index}
+                href={`/projects/${project.projectSlug}`}
+                className="bg-primary-vanilla rounded-xl p-4 group hover:bg-secondary-green-lighter active:bg-secondary-green-darker transition-all duration-300 ease-in-out"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex w-full justify-between">
+                    <motion.h3
+                      className="text-2xl md:text-3xl font-semibold cursor-pointer text-primary-grey"
+                      initial={{ opacity: 0, translateY: 60 }}
+                      whileInView={{
+                        opacity: 1,
+                        translateY: 0,
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        ease: 'easeOut',
+                      }}
+                      viewport={{ once: true }}
+                    >
+                      {project.title}
+                    </motion.h3>
+                    <ArrowUpRightIcon className="size-8 sm:size-10 md:size-12 text-primary-grey group-hover:scale-110 transition-all duration-300 ease-in-out"></ArrowUpRightIcon>
+                  </div>
+                  <motion.p
+                    className="text-lg md:text-xl font-medium text-secondary-grey  text-primary-grey"
+                    initial={{ opacity: 0, translateY: 20 }}
                     whileInView={{
                       opacity: 1,
                       translateY: 0,
                     }}
                     transition={{
-                      duration: 0.4,
+                      duration: 0.3,
                       ease: 'easeOut',
+                      delay: 0.1,
                     }}
-                    viewport={{ once: true }}
                   >
-                    {project.title}
-                  </motion.h3>
+                    {project.subtitle}
+                  </motion.p>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-8 sm:size-10 md:size-12 text-primary-grey group-hover:scale-110 transition-all duration-300 ease-in-out"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                    />
-                  </svg>
-                </div>
-                <motion.p
-                  className="text-lg md:text-xl font-medium text-secondary-grey  text-primary-grey"
-                  initial={{ opacity: 0, translateY: 20 }}
-                  whileInView={{
-                    opacity: 1,
-                    translateY: 0,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: 'easeOut',
-                    delay: 0.1,
-                  }}
-                >
-                  {project.subtitle}
-                </motion.p>
-
-                <MagneticWrapper magneticStrength={0.2}>
-                  <div
-                    className="w-full p-12 sm:p-14 md:p-16 lg:p-20 items-center justify-center inline-block rounded-lg hover:scale-105 duration-200 ease-in-out"
-                    dangerouslySetInnerHTML={{
-                      __html: project.cardImage,
-                    }}
-                  />
-                </MagneticWrapper>
-
-                <div className="flex flex-wrap gap-3">
-                  {Object.values(project.tags).map((tag, index) => (
+                  <MagneticWrapper magneticStrength={0.2}>
                     <div
-                      key={index}
-                      className="px-4 py-2 rounded-xl border border-neutral-600 text-neutral-700 w-fit text-sm cursor-default"
-                    >
-                      {tag}
-                    </div>
-                  ))}
+                      className="w-full p-12 sm:p-14 md:p-16 lg:p-20 items-center justify-center inline-block rounded-lg hover:scale-105 duration-200 ease-in-out"
+                      dangerouslySetInnerHTML={{
+                        __html: project.cardImage,
+                      }}
+                    />
+                  </MagneticWrapper>
+
+                  <div className="flex flex-wrap gap-3">
+                    {Object.values(project.tags).map((tag, index) => (
+                      <div
+                        key={index}
+                        className="px-4 py-2 rounded-xl border border-neutral-600 text-neutral-700 w-fit text-sm cursor-default"
+                      >
+                        {tag}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
         </div>
       </div>
 
