@@ -411,7 +411,10 @@ export const projects = [
   {
     title: 'Accessible Drinks',
     subtitle: 'Where Mixology Meets Inclusive Design',
+    headerSrc: '',
     projectSlug: '',
+    subtitleColor: '',
+    titleColor: '',
     videoSrc: '/resource/projects/p3.mp4',
     date: '2024',
     tags: ['Accessibility', 'Inclusive Design', 'WCAG 2.1', 'React / Next.js'],
