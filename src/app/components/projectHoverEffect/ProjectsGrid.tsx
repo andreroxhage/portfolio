@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '@/app/data';
 import Link from 'next/link';
@@ -20,22 +20,21 @@ const ProjectGrid = () => {
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoading, setIsLoading] = useState(false);
-  const [showOnboarding, setShowOnboarding] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowOnboarding(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleMouseEnter = (project: Project) => {
+    setIsLoading(true);
     setIsHovered(true);
     setCurrentProject(project);
-    setIsLoading(true);
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setCurrentProject(null);
+    setTimeout(() => {
+      if (!isHovered) {
+        setCurrentProject(null);
+        setIsLoading(false);
+      }
+    }, 100);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -48,7 +47,7 @@ const ProjectGrid = () => {
         {projects.map((project, index) => (
           <Link
             key={index}
-            href={`/projects/${project.projectSlug}`}
+            href={dialogOpen ? '' : `/projects/${project.projectSlug}`}
             onMouseEnter={() => handleMouseEnter(project)}
             onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}
@@ -59,22 +58,12 @@ const ProjectGrid = () => {
                 setCurrentProject(project);
               }
             }}
-            className={`relative hover:bg-white bg-primary-whiteish/60 p-4 rounded-3xl group transition-all duration-150 col-span-10 md:col-span-5 ${
-              showOnboarding && index === 0
-                ? 'border-2 border-secondary-green-darker animate-pulse'
-                : ''
-            }`}
+            className="relative hover:bg-white bg-primary-whiteish/60 p-4 rounded-3xl group transition-all duration-150 col-span-10 md:col-span-5"
           >
             <div className="text-primary-blackish flex justify-between items-center">
-              {showOnboarding && index === 0 ? (
-                <label className="text-lg md:text-xl font-semibold text-secondary-green-darker">
-                  Hover to Preview - Click to Enter
-                </label>
-              ) : (
-                <label className="text-lg md:text-xl font-semibold text-primary-grey">
-                  {project.title}
-                </label>
-              )}
+              <label className="text-lg md:text-xl font-semibold text-primary-grey">
+                {project.title}
+              </label>
               <span>{project.date}</span>
             </div>
 
@@ -111,8 +100,7 @@ const ProjectGrid = () => {
           {dialogOpen && currentProject && (
             <GifDialogMobile
               project={currentProject}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
+              isOpen={dialogOpen}
               onClose={() => setDialogOpen(false)}
             />
           )}

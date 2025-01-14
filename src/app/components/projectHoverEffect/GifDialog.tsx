@@ -89,10 +89,7 @@ const GifDialog = ({
         width={dimensions.width || 0}
         height={dimensions.height || 0}
         onLoad={handleImageLoad}
-        style={{
-          maxWidth: '100%',
-          height: 'auto',
-        }}
+        sizes="(max-width: 768px) 100vw, 33vw"
       />
     </motion.div>
   );
