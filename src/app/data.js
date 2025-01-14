@@ -408,18 +408,16 @@ export const projects = [
       },
     ],
   },
-  /*
   {
-    title: 'Example of a idea that is only displayed as preview and not as page',
-    subtitle: 'Microsoft Teams Calendar',
-    headerSrc: '/resource/projects/p1.jpg',
+    title: 'Accessible Drinks',
+    subtitle: 'Where Mixology Meets Inclusive Design',
     projectSlug: '',
-    gifSrc: '/resource/projects/ihpone.gif',
+    gifSrc: '/resource/projects/p3.gif',
     date: '2024',
-    tags: ['Usability Evaluation', 'Microsoft Teams', 'Calendar Feature'],
+    tags: ['Accessibility', 'Inclusive Design', 'WCAG 2.1', 'React / Next.js'],
     image: '/resource/projects/p1.jpeg',
-    imageAlt: 'Usability Evaluation of Microsoft Teams Calendar Feature',
-  },*/
+    imageAlt: 'Drink website startpage with search bar',
+  },
 ];
 
 function getProjectAssets(projectSlug) {
