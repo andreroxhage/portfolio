@@ -15,7 +15,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
       {project.tags.map((tag, tagIndex) => (
         <span
           key={tagIndex}
-          className="px-3 py-1 rounded-xl border border-gray-800/40 text-primary-grey-brighter w-fit text-xs cursor-default"
+          className="px-3 py-1 rounded-xl border border-gray-800/40 text-primary-grey-brighter w-fit text-xs cursor-default cursor-pointer"
         >
           {tag}
         </span>
