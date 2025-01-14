@@ -1,6 +1,4 @@
-// Core component that receives mouse positions and renders pointer and content
-
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
 import { cn } from '@/../utils/cn';
@@ -18,29 +16,44 @@ export const FollowerPointerCard = ({
   const y = useMotionValue(0);
   const ref = React.useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect | null>(null);
-  const [isInside, setIsInside] = useState<boolean>(false); // Add this line
+  const [isInside, setIsInside] = useState(false);
 
-  useEffect(() => {
+  const updateRect = useCallback(() => {
     if (ref.current) {
       setRect(ref.current.getBoundingClientRect());
     }
   }, []);
 
+  useEffect(() => {
+    updateRect();
+    window.addEventListener('resize', updateRect);
+    window.addEventListener('scroll', updateRect);
+
+    return () => {
+      window.removeEventListener('resize', updateRect);
+      window.removeEventListener('scroll', updateRect);
+    };
+  }, [updateRect]);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (rect) {
-      const scrollX = window.scrollX;
-      const scrollY = window.scrollY;
-      x.set(e.clientX - rect.left + scrollX - 66);
-      y.set(e.clientY - rect.top + scrollY - 66);
+      const relativeX = e.clientX - rect.left;
+      const relativeY = e.clientY - rect.top;
+
+      x.set(relativeX - 66);
+      y.set(relativeY - 66);
     }
   };
+
   const handleMouseLeave = () => {
     setIsInside(false);
   };
 
   const handleMouseEnter = () => {
     setIsInside(true);
+    updateRect();
   };
+
   return (
     <div
       onMouseLeave={handleMouseLeave}
