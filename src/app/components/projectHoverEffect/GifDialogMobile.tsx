@@ -87,7 +87,7 @@ const GifDialogMobile = ({
             onClick={e => e.stopPropagation()}
           >
             <ProjectImage
-              src={project.gifSrc}
+              src={project.videoSrc}
               alt={`${project.title} preview`}
               onLoad={() => {}}
             />

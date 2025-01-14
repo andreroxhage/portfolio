@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '@/app/data';
 import Link from 'next/link';
-import GifDialog from '@/app/components/projectHoverEffect/GifDialog';
 import { Project } from '@/app/types';
 import ProjectCard from '@/app/components/projectHoverEffect/ProjectCard';
+import VideoDialog from './VideoDialog';
 
 const ProjectGrid = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -51,9 +51,9 @@ const ProjectGrid = () => {
         ))}
         <AnimatePresence>
           {isHovered && currentProject && (
-            <GifDialog
+            <VideoDialog
               key={`dialog-${hoverKey}`}
-              gifSrc={currentProject.gifSrc}
+              videoSrc={currentProject.videoSrc}
               mousePosition={mousePosition}
               isLoading={isLoading}
               setIsLoading={setIsLoading}

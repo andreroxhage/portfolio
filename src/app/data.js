@@ -67,7 +67,7 @@ export const projects = [
     ...getProjectAssets('login-experience-in-vr'),
     tags: ['VR', 'Authentication', 'GAIM', 'Design Process'],
     image: '/resource/projects/vr-login.jpg',
-    gifSrc: '/resource/projects/p2_hifi.gif',
+    videoSrc: '/resource/projects/p2_hifi.mp4',
     imageAlt: 'Scroll Select Authentication in VR',
     sections: [
       {
@@ -102,7 +102,7 @@ export const projects = [
           {
             type: 'image',
             column: 'right',
-            src: '/resource/projects/p2_hifi.gif',
+            src: '/resource/projects/p2_hifi.jpeg',
             alt: 'Conceptual Design of Scroll Select Authentication',
           },
         ],
@@ -249,7 +249,7 @@ export const projects = [
     headerSrc: '/resource/projects/p1.jpg',
     titleColor: '#5059C9',
     subtitleColor: '#6264A7',
-    gifSrc: '/resource/projects/p1.jpg',
+    videoSrc: '/resource/projects/p1.mp4',
     date: '2024',
     projectSlug: 'usability-evaluation-of-microsoft-teams-calendar-feature',
     ...getProjectAssets(
@@ -412,7 +412,7 @@ export const projects = [
     title: 'Accessible Drinks',
     subtitle: 'Where Mixology Meets Inclusive Design',
     projectSlug: '',
-    gifSrc: '/resource/projects/p3.gif',
+    videoSrc: '/resource/projects/p3.mp4',
     date: '2024',
     tags: ['Accessibility', 'Inclusive Design', 'WCAG 2.1', 'React / Next.js'],
     image: '/resource/projects/p1.jpeg',
@@ -434,7 +434,7 @@ function getProjectAssets(projectSlug) {
       </svg>`,
     'login-experience-in-vr': `
       <Image
-        src="/resource/projects/p2_hifi.gif"
+        src="/resource/projects/p2_hifi.jpeg"
         alt="Scroll Select Authentication in VR"
         className="w-full rounded-lg"
         width={700}

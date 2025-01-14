@@ -3,14 +3,14 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 interface GifDialogProps {
-  gifSrc: string;
+  videoSrc: string;
   mousePosition: { x: number; y: number };
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const GifDialog = ({
-  gifSrc,
+  videoSrc,
   mousePosition,
   isLoading,
   setIsLoading,
@@ -19,7 +19,7 @@ const GifDialog = ({
 
   useEffect(() => {
     setIsLoading(true);
-  }, [gifSrc, setIsLoading]);
+  }, [videoSrc, setIsLoading]);
 
   const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const img = event.target as HTMLImageElement;
@@ -79,7 +79,7 @@ const GifDialog = ({
       }}
     >
       <Image
-        src={gifSrc}
+        src={videoSrc}
         unoptimized
         alt="Project preview"
         className={`w-full h-full object-contain transition-opacity duration-300 ${

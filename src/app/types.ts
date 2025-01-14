@@ -3,6 +3,6 @@ export type Project = {
   date: string;
   subtitle: string;
   tags: string[];
-  gifSrc: string;
+  videoSrc: string;
   projectSlug: string;
 };
