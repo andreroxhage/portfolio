@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Project } from '@/app/types';
@@ -11,26 +10,27 @@ interface GifDialogMobileProps {
   onClose: () => void;
 }
 
-const ProjectImage = memo(
-  ({ src, alt, onLoad }: { src: string; alt: string; onLoad: () => void }) => (
+const ProjectVideo = memo(
+  ({ videoSrc, onLoad }: { videoSrc: string; onLoad: () => void }) => (
     <div className="relative w-[calc(100%-32px)] max-w-[80vw] max-h-[80vh] mx-auto rounded-[40px] overflow-hidden">
       <div className="w-full h-full relative">
-        <Image
-          src={src}
-          alt={alt}
+        <video
+          src={videoSrc}
+          className="w-full h-auto object-contain"
           width={1200}
           height={800}
-          unoptimized
-          onLoad={onLoad}
-          priority
-          className="w-full h-auto object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+          onLoadedData={onLoad}
         />
       </div>
     </div>
   )
 );
 
-ProjectImage.displayName = 'ProjectImage';
+ProjectVideo.displayName = 'ProjectVideo';
 
 const GifDialogMobile = ({
   project,
@@ -86,11 +86,7 @@ const GifDialogMobile = ({
             className="relative w-full"
             onClick={e => e.stopPropagation()}
           >
-            <ProjectImage
-              src={project.videoSrc}
-              alt={`${project.title} preview`}
-              onLoad={() => {}}
-            />
+            <ProjectVideo videoSrc={project.videoSrc} onLoad={() => {}} />
           </motion.div>
 
           <div className="absolute bottom-3 px-3 flex items-center justify-between w-full">

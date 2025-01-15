@@ -2,7 +2,7 @@ import { projects } from '@/app/data';
 import { Project } from '@/app/types';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import GifDialogMobile from './GifDialogMobile';
+import GifDialogMobile from './VideoDialogMobile';
 import ProjectCard from './ProjectCard';
 
 const ProjectGridMobile = () => {
