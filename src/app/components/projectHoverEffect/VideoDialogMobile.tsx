@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback, memo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { ArrowUpRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Project } from "@/app/types";
+import React, { useEffect, useCallback, memo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Project } from '@/app/types';
 
 interface GifDialogMobileProps {
   project: Project;
@@ -28,7 +28,7 @@ const ProjectVideo = memo(
   )
 );
 
-ProjectVideo.displayName = "ProjectVideo";
+ProjectVideo.displayName = 'ProjectVideo';
 
 const GifDialogMobile = ({
   project,
@@ -41,9 +41,9 @@ const GifDialogMobile = ({
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
       return () => {
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = 'auto';
       };
     }
   }, [isOpen]);
@@ -60,7 +60,7 @@ const GifDialogMobile = ({
       scale: 1,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
         damping: 30,
       },
@@ -82,7 +82,7 @@ const GifDialogMobile = ({
           <motion.div
             variants={contentVariants}
             className="relative w-full"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <ProjectVideo videoSrc={project.videoSrc} onLoad={() => {}} />
           </motion.div>
@@ -95,7 +95,7 @@ const GifDialogMobile = ({
             >
               <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
               <XMarkIcon className="w-8 h-8 text-white relative z-10 " />
-            </button>{" "}
+            </button>{' '}
             {project?.projectSlug && (
               <Link
                 href={`/projects/${project.projectSlug}`}
