@@ -26,38 +26,32 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
   return (
     <motion.div id="header" style={{ backgroundColor: hue }}>
-      {project.headerSrc ? (
-        <header
-          className="h-2/6 md:h-2/5 flex justify-center items-start md:items-center py-12 md:py-36"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(${project.headerSrc})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="text-center">
-            <motion.h1
-              className="text-4xl md:text-6xl font-extrabold text-secondary-green-darker mb-2"
-              style={{ color: project.titleColor || '#739966' }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-            >
-              {project.title}
-            </motion.h1>
-
+      <header className="max-w-7xl mx-auto px-4  w-fullflex justify-center items-start md:items-center py-12">
+        <div className="text-start">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold text-secondary-green-darker mb-2"
+            style={{ color: project.titleColor || '#739966' }}
+            initial={{ opacity: 0, translateY: 60 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{
+              duration: 0.4,
+              ease: 'easeOut',
+            }}
+          >
+            {project.title}
+          </motion.h1>
+          <div className="flex flex-row items-center space-x-8">
             {project.subtitle && (
               <motion.h2
-                className="text-lg md:text-xl font-medium mt-2"
+                className="text-xl md:text-2xl font-medium mt-2"
                 style={{
-                  color: project.subtitleColor || '#D3E9C2',
+                  color: project.subtitleColor || '#40403B',
                 }}
-                initial={{ opacity: 0, translateY: 10 }}
+                initial={{ opacity: 0, translateY: 60 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.4,
                   ease: 'easeOut',
-                  delay: 0.1,
                 }}
               >
                 {project.subtitle}
@@ -65,58 +59,27 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             )}
             {project.date && (
               <motion.h3
-                className="text-lg md:text-xl font-extralight mt-2"
+                className="text-xl md:text-2xl font-normal mt-2"
                 style={{
-                  color: project.subtitleColor || '#D3E9C2',
+                  color: project.subtitleColor || '#788876',
                 }}
-                initial={{ opacity: 0, translateY: 10 }}
+                initial={{ opacity: 0, translateY: 60 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.4,
                   ease: 'easeOut',
-                  delay: 0.1,
                 }}
               >
                 {project.date}
               </motion.h3>
             )}
           </div>
-        </header>
-      ) : (
-        <header className="flex flex-col items-center justify-center min-h-[40vh] bg-primary-grey-light text-center px-4 bg-primary-blackish">
-          <motion.h1
-            className="text-4xl md:text-6xl font-extrabold text-secondary-green-darker mb-2"
-            style={{ color: project.titleColor || '#739966' }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
-            {project.title}
-          </motion.h1>
-
-          {project.subtitle && (
-            <motion.h2
-              className="text-lg md:text-xl font-mediummt-2"
-              style={{
-                color: project.subtitleColor || '#D3E9C2',
-              }}
-              initial={{ opacity: 0, translateY: 10 }}
-              animate={{ opacity: 1, translateY: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: 'easeOut',
-                delay: 0.1,
-              }}
-            >
-              {project.subtitle}
-            </motion.h2>
-          )}
-        </header>
-      )}
+        </div>
+      </header>
 
       {/* Content Sections */}
       <div className="max-w-7xl mx-auto px-4 pt-12 grid grid-cols-10 gap-8">
-        {'sections' in project &&
+        {project.sections &&
           project.sections.map((section: any, index: number) => {
             const { title = '', layout = 'middle', content = [] } = section;
 
@@ -136,11 +99,11 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                 className={sectionWrapperClasses}
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
+                transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
                 viewport={{ once: true }}
               >
                 {title && layout !== 'two-col' && (
-                  <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-4">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-3">
                     {title}
                   </h2>
                 )}
@@ -150,7 +113,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                     {/* Left Column */}
                     <div className="space-y-8">
                       {title && (
-                        <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-4">
+                        <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-0">
                           {title}
                         </h2>
                       )}
@@ -193,12 +156,36 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
       return null;
     }
 
+    const imageSizes = {
+      sm: {
+        width: 384,
+        height: 261,
+        sizes: '(max-width: 768px) 100vw, 24rem',
+        className: 'max-w-sm mx-auto',
+      },
+      default: {
+        width: 700,
+        height: 475,
+        sizes: '(max-width: 768px) 100vw, 33vw',
+        className: '',
+      },
+      xl: {
+        width: 1200,
+        height: 815,
+        sizes: '(max-width: 1200px) 100vw, 1200px',
+        className: 'max-w-[1200px] mx-auto',
+      },
+    };
+
+    const sizeConfig =
+      imageSizes[(content.size as keyof typeof imageSizes) || 'default'];
+
     switch (content.type) {
       case 'title':
         return (
           <h3
             key={key}
-            className="text-xl md:text-2xl font-semibold text-primary-grey-brighter mb-4"
+            className="text-xl md:text-2xl font-semibold text-primary-grey-brighter mb-2"
           >
             {content.text}
           </h3>
@@ -208,13 +195,13 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         return (
           <div
             key={key}
-            className={`${colSpan} text-base md:text-lg font-medium text-primary-grey-brighter`}
+            className={`${colSpan} font-medium text-primary-grey-brighter`}
           >
             {content.subtitle && (
-              <h4 className="text-lg font-semibold mb-2">{content.subtitle}</h4>
+              <h4 className="text-xl font-semibold mb-2">{content.subtitle}</h4>
             )}
             {content.paragraphs?.map((paragraph: string, pIndex: number) => (
-              <p className="m-0 text-base md:text-lg mb-4" key={pIndex}>
+              <p className="m-0 text-base md:text-lg mb-2" key={pIndex}>
                 {paragraph}
               </p>
             ))}
@@ -225,41 +212,47 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         return (
           <div key={key} className={`${colSpan} text-primary-grey-brighter`}>
             {content.subtitle && (
-              <h4 className="text-lg font-semibold mb-2">{content.subtitle}</h4>
+              <h4 className="text-xl font-semibold mb-2">{content.subtitle}</h4>
             )}
             {content.style === 'bullet' ? (
               <ul className="list-disc pl-5">
-                {content.items.map((item: string, index: number) => (
-                  <li key={index} className="text-base md:text-lg">
-                    {item}
-                  </li>
-                ))}
+                {content.items.map(
+                  (
+                    item: string | { prefix: string; text: string },
+                    index: number
+                  ) => (
+                    <li key={index} className="text-base md:text-lg">
+                      {typeof item === 'string' ? (
+                        item
+                      ) : (
+                        <>
+                          <strong>{item.prefix}:</strong> {item.text}
+                        </>
+                      )}
+                    </li>
+                  )
+                )}
               </ul>
             ) : (
               <ol className="list-decimal pl-5">
-                {content.items.map((item: string, index: number) => (
-                  <li key={index} className="text-base md:text-lg">
-                    {item}
-                  </li>
-                ))}
+                {content.items.map(
+                  (
+                    item: string | { prefix: string; text: string },
+                    index: number
+                  ) => (
+                    <li key={index} className="text-base md:text-lg">
+                      {typeof item === 'string' ? (
+                        item
+                      ) : (
+                        <>
+                          <strong>{item.prefix}:</strong> {item.text}
+                        </>
+                      )}
+                    </li>
+                  )
+                )}
               </ol>
             )}
-          </div>
-        );
-
-      case 'enumeration':
-        return (
-          <div key={key} className={`${colSpan} text-primary-grey-brighter`}>
-            {content.subtitle && (
-              <h4 className="text-lg font-semibold mb-2">{content.subtitle}</h4>
-            )}
-            <ol className="list-decimal pl-5">
-              {content.items.map((item: { text: string }, index: number) => (
-                <li key={index} className="text-base md:text-lg">
-                  {item.text}
-                </li>
-              ))}
-            </ol>
           </div>
         );
 
@@ -268,16 +261,57 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           <ScrollScaleWrapper
             key={key}
             fade={true}
-            className={`${colSpan} mt-8`}
+            className={`${colSpan} mt-8 ${sizeConfig.className}`}
           >
             <Image
               src={content.src}
               alt={content.alt || 'Section image'}
-              className="rounded-lg"
-              sizes="(max-width: 768px) 100vw, 33vw"
-              width={700}
-              height={475}
+              className="rounded-lg w-full"
+              sizes={sizeConfig.sizes}
+              width={sizeConfig.width}
+              height={sizeConfig.height}
             />
+            {content.caption && (
+              <p className="text-sm text-gray-500 mt-2 text-center">
+                {content.caption}
+              </p>
+            )}
+          </ScrollScaleWrapper>
+        );
+      case 'video':
+        return (
+          <ScrollScaleWrapper
+            key={key}
+            fade={true}
+            className="w-full h-full flex justify-center"
+          >
+            <div>
+              <video
+                className="max-w-full max-h-full object-contain rounded-[40px]"
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={content.poster}
+                preload="metadata"
+                style={{
+                  maxHeight: '900px',
+                  objectFit: content.objectFit || 'cover',
+                }}
+              >
+                <source
+                  src={content.src}
+                  type={content.videoType || 'video/mp4'}
+                />
+                Your browser does not support the video tag.
+              </video>
+
+              {content.caption && (
+                <p className="text-sm text-gray-500 mt-2 text-center">
+                  {content.caption}
+                </p>
+              )}
+            </div>
           </ScrollScaleWrapper>
         );
 

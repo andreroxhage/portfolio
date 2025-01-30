@@ -57,11 +57,383 @@ export const currentWork = [
 
 export const projects = [
   {
+    title: 'Spotify Events',
+    subtitle: 'Event Invitations with Spotify’s Unique Strengths',
+    headerSrc: '/resource/projects/p4_kate.jpeg',
+    titleColor: '#739966',
+    date: '2024',
+    projectSlug: 'spotify-events',
+    tags: ['Spotify', 'Events', 'Concept', 'Design Process'],
+    videoSrc: '/resource/projects/p4.mp4',
+    imageAlt: 'Spotify events concept design in Figma',
+    sections: [
+      {
+        title: '',
+        layout: 'two-col',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Summary',
+            column: 'left',
+            paragraphs: [
+              'Spotify has long been synonymous with personalization, creativity, and dynamic user engagement. By integrating these principles into event invitations, this concept leverages Spotify’s existing strengths in User-Generated Content (UGC) and Data-Driven Innovation (DDI) to create an entirely new way of inviting, engaging, and exciting guests.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Problem Statement',
+            column: 'left',
+            paragraphs: [
+              'Digital invitations often get lost or lack interactive elements, making it difficult for hosts to track attendees and build excitement before the event. Users need a more immersive, music-driven solution that addresses these pain points, particularly low response rates and minimal personalization.',
+              'This concept takes inspiration from Spotify Wrapped, combining emotional resonance, personalization, vibrant visual and auditory design. Imagine receiving an invitation that is more than just an announcement, it’s an experience. A personalized playlist, dynamic visuals, and engaging interactions like common playlists and discussions all set the tone for the event before it even begins.',
+            ],
+          },
+          {
+            type: 'list',
+            style: 'number',
+            column: 'left',
+            subtitle: 'Key Features',
+            items: [
+              {
+                prefix: 'Customizable Invitations',
+                text: 'Hosts can prepare playlists, choose a theme and add personal touches like photos and messages.',
+              },
+              {
+                prefix: 'Personalized Guest Experiences',
+                text: 'Each recipient gets an interactive invitation, complete with event details, the host’s playlist, and playlist suiting the theme or blending of guests’ taste.',
+              },
+              {
+                prefix: 'Integration with Spotify Ecosystem',
+                text: 'From saving playlists to syncing calendars, the invitation seamlessly connects with users’ digital habits.',
+              },
+              {
+                prefix: 'Emotional Engagement',
+                text: 'Dynamic visuals, animations, and music previews build anticipation and excitement.',
+              },
+            ],
+          },
+          {
+            type: 'text',
+            column: 'left',
+            paragraphs: [
+              'By bridging Spotify’s strength in crafting personalized experiences with event planning, this feature offers a memorable, music-centric invitation process, making it a key part of how people connect and celebrate.',
+            ],
+          },
+          {
+            type: 'video',
+            column: 'right',
+            src: '/resource/projects/p4.mp4',
+            alt: 'Conceptual Design of Scroll Select Authentication',
+          },
+        ],
+      },
+      {
+        title: 'Design Process',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            paragraphs: [
+              'This concept was born from user research and insights into how people plan and experience events. A survey of 43 respondents revealed key pain points in managing invitations and RSVPs, and a desire for personalized invitations and an openness to music-integrated solutions.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Project Scope',
+            paragraphs: [
+              'This project focuses on the user journey of individuals who receive an event invitation through various channels, SMS, email, or an in-app Spotify notification. By narrowing the attention to this segment, I ensure every interaction speaks directly to guest needs and expectations. From the second a user opens the invitation to exploring playlists, reviewing event details, or completing an RSVP, every touchpoint is optimized for ease, engagement, and emotional connection.',
+            ],
+          },
+          {
+            subtitle: 'Objectives',
+            type: 'list',
+            style: 'number',
+            items: [
+              {
+                prefix: 'Deliver an Immersive Invitation Experience',
+                text: 'Create invitations that spark curiosity and resonate emotionally, reflecting the event’s essence in a way that feels fresh and memorable.',
+              },
+              {
+                prefix: 'Simplified Guest Interaction',
+                text: 'Reduce barriers for attendees by ensuring that finding event details, responding, and integrating invitations into their personal schedules is effortless.',
+              },
+              {
+                prefix: 'Using existing Strengths for Personalized Engagement',
+                text: 'By using the platform´s existing user data, brand identity, and music-driven insights, invitations are customized to create a sense of connection and enhance overall event appeal.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'User Research: Key Insights',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            paragraphs: [
+              'To ensure the concept addressed real user needs, a survey of 43 respondents (23 male, 20 female, primarily aged 25–34) was conducted to understand how people create and respond to event invitations.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Digital Reliance, Yet Cumbersome RSVP Management',
+            paragraphs: [
+              'Most respondents already rely on social media, email and messaging apps to send out invitations. When asked about their go-to methods, social media emerged as the most frequently used, likely due to its convenience and wide reach. However, they often experience low visibility, invitations can be buried in notifications or feeds, reducing the amount of answers. On a 5-point Likert scale, the average likelihood of adopting digital invitation tools was 4.35, indicating strong interest in leveraging online solutions for event management.',
+            ],
+          },
+          {
+            type: 'image',
+            src: '/resource/projects/p4_methods.svg',
+            alt: 'methods used for sending invitations: primarily social media then messaging apps and paper invitations',
+          },
+          {
+            type: 'text',
+            subtitle: 'Challenges in Managing Invitations',
+            paragraphs: [
+              'Participants cited managing RSVPs (accepts, declines, no-shows) and dealing with last-minute changes as major pain points. They want an easy way to respond, get reminders, and stay updated on any event changes, without wading through multiple messages.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Openness to Music Integration',
+            paragraphs: [
+              'An impressive 42% expressed an interest to include music elements in their invitations. Many respondents believe music sets the tone for an event and can build excitement beforehand. Whether it’s a casual get-together or a formal occasion, a curated playlist can communicate the vibe instantly. Music integration becomes a key differentiator, offering a more immersive experience. Features like personalized playlists or short previews could elevate the invitation beyond text and images.',
+            ],
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'two-col',
+        content: [
+          {
+            type: 'image',
+            column: 'left',
+            src: '/resource/projects/p4_music.svg',
+            alt: 'methods used for sending invitations: primarily social media then messaging apps and paper invitations',
+          },
+          {
+            type: 'image',
+            column: 'right',
+            src: '/resource/projects/p4_music_how.svg',
+            alt: 'methods used for sending invitations: primarily social media then messaging apps and paper invitations',
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Personalization & Emotional Resonance',
+            paragraphs: [
+              'On a scale of 1 to 5, respondents rated personalization at 3.44, which means they generally find personalization in event invitations important. Regardless of the somewhat low rating of importance, participants expressed through an open questionnaire that personalization shows that the host has put genuine effort into the invitation. Recipients who feel valued are more inclined to attend, fostering a positive emotional connection even before the event begins.',
+              'Whether it’s highlighting a theme (e.g., beach party, formal gala) or sharing a personal note, customization helps guests set the event’s vibe. Personalized invites can stand out amid a cluttered inbox or social feed, increasing the likelihood of guest engagement and timely RSVPs.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Conclusion',
+            paragraphs: [
+              'From the survey findings, it’s evident that users are inclined to use digital platforms for invitations but struggle with RSVP management, last-minute updates, and limited personalization options. Their openness to integrating music presents an untapped opportunity to enrich invitations and create a more immersive, memorable experience.',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Ideation & Prototyping',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Persona Development',
+            paragraphs: [
+              'Meet Kate: a tech-savvy profile soon to be 30 years old who loves hosting parties. Making a persona helped me keep the design grounded in realistic user goals.',
+            ],
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'full-width',
+        content: [
+          {
+            type: 'image',
+            size: 'xl',
+            src: '/resource/projects/p4_persona.png',
+            alt: 'methods used for sending invitations: primarily social media then messaging apps and paper invitations',
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Early Sketches & Prototyping',
+            paragraphs: [
+              'By this stage, I had started to figure out what I wanted to create. To validate my ideas, I began with rough sketches and lo-fi wireframes. Although sketching by hand is not one of my strengths, I quickly moved on to Figma.',
+            ],
+          },
+          {
+            type: 'image',
+            src: '/resource/projects/p4_lofi.png',
+            alt: 'Persona Kate',
+          },
+
+          {
+            type: 'text',
+            subtitle: 'User Flows and Scenarios',
+            paragraphs: [
+              'Next, I refined the user flows to address key interactions. Kate has just finished customizing her 30th birthday invite using the new Spotify Events feature. She selects a confetti animation to capture the festive mood and pairs it with her lively 90s playlist to set the tone. When her friend Maria taps on the link, she’s greeted by the animated intro, followed by a crisp event summary showing the date, time, and location. With one tap, Maria can RSVP, choosing “Accept!”, and immediately add the event to her Google Calendar so she won’t forget. Curious about the playlist, she scrolls down to preview a few tracks and hits “Save to Library” so she can get into the party spirit beforehand. Everything feels effortless and fun, leaving Maria excited to celebrate with Kate.',
+            ],
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'full-width',
+        content: [
+          {
+            type: 'image',
+            size: 'xl',
+            src: '/resource/projects/p4_flow.svg',
+            alt: 'methods used for sending invitations: primarily social media then messaging apps and paper invitations',
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Features & Functionalities Explanations',
+            paragraphs: [
+              'In order to achieve the core needs of the users, I mapped and prioritized functionalities based on user goals, according to the table below:',
+            ],
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'full-width',
+        content: [
+          {
+            type: 'text',
+            paragraphs: [],
+          },
+          {
+            type: 'image',
+            size: 'xl',
+            src: '/resource/projects/p4_table.svg',
+            alt: 'Table of functions and user goal mapping and prioritization',
+          },
+        ],
+      },
+
+      {
+        title: '',
+        layout: 'two-col',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Calendar & Maps Integration',
+            column: 'left',
+            paragraphs: [
+              'In the final design, “Add to Calendar” and “Open in Maps” appear both as quick actions in the dialog drawer and as interactive links on the date or address. This keeps navigation straightforward and ensures guests can quickly sync the event to their schedules. Additionally, social sharing options enable plus-one invites or event-sharing, depending on the host’s chosen settings, and an RSVP deadline can be displayed to encourage timely responses.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Attendees & Discussion',
+            column: 'left',
+            paragraphs: [
+              'On the event landing page, attendees are briefly showcased alongside a discussion section. This allows guests to see who else is going, share excitement, and coordinate details, whether it’s planning a pre-party, carpooling, or outfit themes. To dig deeping in managing attendees and discussions, dedicated sub-pages will be introduced, giving the host and guests full control over how discussions are structured.',
+            ],
+          },
+          {
+            type: 'image',
+            size: 'xl',
+            column: 'right',
+            src: '/resource/projects/p4_d_a.png',
+            alt: 'Prototype of the Spotify Events feature showing a dropdown with quick actions',
+          },
+        ],
+      },
+      {
+        title: '',
+        layout: 'two-col',
+        content: [
+          {
+            type: 'text',
+            column: 'left',
+            subtitle: 'Guest Blend & Ethical Considerations',
+            paragraphs: [
+              'A core highlight of the concept is the Guest blend playlist, which blends music based on everyone’s music tastes. However, not all users are comfortable sharing their listening data, raising important design ethics questions. To address these concerns, the feature can be permission-based, guests opt in or remain anonymous, ensuring those who prefer privacy aren’t forced to reveal personal preferences. If participants agree, the system can add guests’ songs by individual favorites or shared music taste. Alternatively, if Kate chooses a theme for the event, like an ‘80s party, the playlist can filter tracks to match that vibe while still reflecting each guest’s input. This approach fosters inclusivity while respecting individual boundaries, ensuring everyone feels represented in the playlist, but only if they choose to be.',
+            ],
+          },
+          {
+            type: 'text',
+            column: 'left',
+            subtitle: 'Host’s Playlist & Manual Additions',
+            paragraphs: [
+              'Beyond the Guest blend, the host’s personal playlist sets the event’s overall vibe, offering a baseline selection of songs that reflect the theme. Optionally, the host can allow guests to manually add tracks, either to enrich the event’s atmosphere or showcase personal favorites, making the playlist more collaborative. This dual-layered system (host picks + guest additions) strikes a balance between creative control and communal input, further enhancing the sense of shared ownership around the music and the celebration itself.',
+            ],
+          },
+          {
+            type: 'text',
+            column: 'left',
+            subtitle:
+              'Psychological Perspectives & Inspiration from Spotify Wrapped',
+            paragraphs: [
+              'Spotify Wrapped demonstrates how data-driven storytelling can spark widespread engagement and user satisfaction, primarily by transforming user data into a fun, shareable format. This success owes much to behavioral and social theories that emphasize the power of communal participation: once enough users start sharing their “music personality” or yearly stats (as explained by critical mass theory), it triggers a viral loop that motivates others to join in. Meanwhile, Wrapped deftly avoids overwhelming users—despite the large volume of data collected—by filtering and organizing insights into concise, visually appealing “stories,” effectively applying information overload theory. Wrapped also highlights how common-ground theory comes into play when shared musical tastes foster a sense of identity and belonging among listeners.',
+              'Using these principles for Spotify Events could similarly encourage viral sharing and community-building around invitations. By reframing event details into digestible, personalized experiences, each guest feels a deeper connection to both the host and other attendees. Showcasing or blending music preferences can create an instant sense of unity, boosting anticipation and engagement before the celebration even begins. Through strategies that manage data complexity, spark social momentum, and foster common ground, Spotify Events can offer a compelling, communal approach to digital invitations—just as Wrapped has done with users’ annual listening habits.',
+            ],
+          },
+          {
+            type: 'image',
+            column: 'right',
+            size: 'sm',
+            src: '/resource/projects/p4_ugd.png',
+          },
+        ],
+      },
+      {
+        title: 'Final Evaluation',
+        layout: 'middle',
+        content: [
+          {
+            type: 'text',
+            subtitle: 'Constraints & Considerations',
+            paragraphs: [
+              'A limitation of the concept is that guest notifications and reminders rely on a Spotify account or app integration. Without an account, participants won’t receive automated updates, increasing the risk of missed changes or late RSVPs if they never revisit the invitation link. While email and SMS can partially address this issue, a truly seamless experience would benefit from robust account linkage. In cases where a Spotify account is not required, collecting an email at the RSVP stage ensures guests can still receive timely updates and reminders, reducing the likelihood of overlooked event details and duplicate sign ups.',
+              'Additionally, creating a Guest blend playlist, or any feature that relies on aggregated user preferences, requires accurate attendee data. Without knowing which Spotify accounts or email addresses correspond to accepted invitations, the system cannot tailor a combined playlist reflecting each guest’s tastes. Robust data structures and user-authentication flows must be in place to collect, process, and match these inputs, ensuring that music recommendations are both personalized and relevant to the confirmed guest list. The dream scenario would be if all of Kate’s friends already used Spotify and the invitation went directly through Spotify, with a fallback link available for those who don’t have accounts.',
+              'Another practical constraint involves balancing music playback with readability. If the invitation’s playlist continues playing when entering the event landing page, guests may be distracted while trying to read important event details. A potential solution is to lower or fade out the volume when users open the detail page or scroll through text-heavy sections, ensuring the music sets the tone without overwhelming the core information.',
+            ],
+          },
+          {
+            type: 'text',
+            subtitle: 'Outcomes and Future Opportunities',
+            paragraphs: [
+              'Early prototype testing revealed strong user enthusiasm for integrated music in invitations and playful visual elements. Beyond the current prototype, several enhancements could elevate this concept further. For instance, gamified elements such as interactive music quizzes could spark friendly competition, while AI DJ X suggestions might tailor playlists to each guest’s preferences in real time. Moreover, this project only addresses a fraction of what a full-scale “Spotify Events” feature might include: managing private vs. public events, enabling users to browse upcoming gatherings, and handling guest access controls could all be essential next steps.',
+              'Finally, this project highlights how Spotify’s expertise in personalization and engagement can translate into event planning. By combining music, dynamic visuals, and intuitive functionality, we redefine how people invite, engage, and celebrate, transforming a simple event invitations into a memorable, community-driven experience.',
+              'On a personal note, I’m deeply passionate about bringing this concept to life. As someone aspiring to join Spotify, I believe these ideas not only showcase my dedication to user-centric design but also align perfectly with Spotify’s mission to connect people through music. I would love the opportunity to help shape this feature into a reality, enabling hosts and guests to celebrate in an even more immersive, musical way.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Login Experience in VR',
     subtitle: 'Innovative Authentication Method for GAIM',
     headerSrc: '/resource/projects/p2_gaim.jpeg',
-    titleColor: '#d4edff',
-    subtitleColor: '#c2d9e9',
+    titleColor: '#668799',
+    subtitleColor: '#768288',
     date: '2024',
     projectSlug: 'login-experience-in-vr',
     ...getProjectAssets('login-experience-in-vr'),
@@ -100,9 +472,9 @@ export const projects = [
             ],
           },
           {
-            type: 'image',
+            type: 'video',
             column: 'right',
-            src: '/resource/projects/p2_hifi.jpeg',
+            src: '/resource/projects/p2_hifi.mp4 ',
             alt: 'Conceptual Design of Scroll Select Authentication',
           },
         ],
@@ -247,8 +619,8 @@ export const projects = [
     title: 'Usability Evaluation',
     subtitle: 'Microsoft Teams Calendar',
     headerSrc: '/resource/projects/p1.jpg',
-    titleColor: '#5059C9',
-    subtitleColor: '#6264A7',
+    titleColor: '#686699',
+    subtitleColor: '#767688',
     videoSrc: '/resource/projects/p1.mp4',
     date: '2024',
     projectSlug: 'usability-evaluation-of-microsoft-teams-calendar-feature',
