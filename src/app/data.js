@@ -59,10 +59,12 @@ export const projects = [
   {
     title: 'Spotify Events',
     subtitle: 'Event Invitations with Spotify’s Unique Strengths',
-    headerSrc: '/resource/projects/p4_kate.jpeg',
+    headerSrc: '/resource/projects/p2_gaim.jpeg',
+    image: '/resource/projects/p2_gaim.jpeg',
     titleColor: '#739966',
     date: '2024',
     projectSlug: 'spotify-events',
+    ...getProjectAssets('spotify-events'),
     tags: ['Spotify', 'Events', 'Concept', 'Design Process'],
     videoSrc: '/resource/projects/p4.mp4',
     imageAlt: 'Spotify events concept design in Figma',
@@ -810,6 +812,14 @@ function getProjectAssets(projectSlug) {
     'login-experience-in-vr': `
       <Image
         src="/resource/projects/p2_hifi.jpeg"
+        alt="Scroll Select Authentication in VR"
+        className="w-full rounded-lg"
+        width={700}
+        height={475}
+      />`,
+
+    'spotify-events': `<Image
+        src="/resource/projects/p4_d_a.png"
         alt="Scroll Select Authentication in VR"
         className="w-full rounded-lg"
         width={700}
