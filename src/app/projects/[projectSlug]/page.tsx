@@ -26,8 +26,8 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
   return (
     <motion.div id="header" style={{ backgroundColor: hue }}>
-      <header className="max-w-7xl mx-auto px-4  w-fullflex justify-center items-start md:items-center py-12">
-        <div className="text-start">
+      <header className="max-w-7xl mx-auto px-4  w-fullflex justify-center items-start md:items-center md:py-6 py-10">
+        <div className="flex flex-col gap-2">
           <motion.h1
             className="text-4xl md:text-6xl font-extrabold text-secondary-green-darker mb-2"
             style={{ color: project.titleColor || '#739966' }}
@@ -40,10 +40,10 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           >
             {project.title}
           </motion.h1>
-          <div className="flex flex-row items-center space-x-8">
+          <div className="flex flex-row items-start space-x-8">
             {project.subtitle && (
               <motion.h2
-                className="text-xl md:text-2xl font-medium mt-2"
+                className="text-xl md:text-2xl font-medium"
                 style={{
                   color: project.subtitleColor || '#40403B',
                 }}
@@ -59,7 +59,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             )}
             {project.date && (
               <motion.h3
-                className="text-xl md:text-2xl font-normal mt-2"
+                className="text-xl md:text-2xl font-normal"
                 style={{
                   color: project.subtitleColor || '#788876',
                 }}
@@ -78,8 +78,8 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
       </header>
 
       {/* Content Sections */}
-      <div className="max-w-7xl mx-auto px-4 pt-12 grid grid-cols-10 gap-8">
-        {project.sections &&
+      <div className="max-w-7xl mx-auto px-4 pt-2 grid grid-cols-10 gap-8">
+        {'sections' in project &&
           project.sections.map((section: any, index: number) => {
             const { title = '', layout = 'middle', content = [] } = section;
 
