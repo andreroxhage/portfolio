@@ -445,11 +445,12 @@ export const projects = [
     imageAlt: 'Scroll Select Authentication in VR',
     sections: [
       {
-        title: 'Executive Summary',
+        title: '',
         layout: 'two-col',
         content: [
           {
             type: 'text',
+            subtitle: 'Executive Summary',
             column: 'left',
             paragraphs: [
               'This project was conducted as part of the “Working Environment Project” course, with a group of four members collaborating to address the challenges of authentication in Virtual Reality (VR). The project focused on designing a innovative login method tailored to immersive VR environments, particularly for GAIM’s VR shooting application.',
@@ -634,12 +635,12 @@ export const projects = [
     imageAlt: 'Usability Evaluation of Microsoft Teams Calendar Feature',
     sections: [
       {
-        title: 'Executive Summary',
+        title: '',
         layout: 'two-col',
         content: [
           {
             type: 'text',
-            title: 'Overview',
+            subtitle: 'Executive Summary',
             column: 'left',
             paragraphs: [
               'This usability evaluation, conducted as part of a school project in a group of six, assessed the Microsoft Teams Free calendar feature, focusing on its usability challenges, user satisfaction, and actionable improvements. By simulating real-world tasks with young, digitally experienced users, we uncovered key insights into the platform’s strengths and weaknesses.',
