@@ -62,7 +62,7 @@ export const projects = [
     headerSrc: '/resource/projects/p2_gaim.jpeg',
     image: '/resource/projects/p2_gaim.jpeg',
     titleColor: '#739966',
-    date: '2024',
+    date: '2025',
     projectSlug: 'spotify-events',
     ...getProjectAssets('spotify-events'),
     tags: ['Spotify', 'Events', 'Concept', 'Design Process'],
