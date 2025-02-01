@@ -1,29 +1,18 @@
 # Portfolio Website
 
-Welcome to my portfolio website! This website showcases my projects, skills, and experiences. Below is an overview of the content and the technologies used to create this website.
+Welcome to my portfolio website! This website showcases my projects, skills, and experiences.
 
 ## Content
 
 ### Home Page
 - **Introduction**: A brief introduction about myself.
 - **Featured Projects**: A showcase of some of my best projects with links to their detailed pages.
-- **Skills**: A list of my technical skills and proficiencies.
+- **Resume**: A list of my experiences, technical skills and interests.
+- **Hobbies**: Photography!
 
 ### Projects Page
 - **Project List**: A comprehensive list of all my projects with brief descriptions.
-- **Project Details**: Each project has a dedicated page with detailed information, including:
-  - **Title**: The name of the project.
-  - **Subtitle**: A brief description or tagline.
-  - **Content**: Detailed information about the project, including:
-    - **Text**: Descriptions and explanations.
-    - **Images**: Visual representations of the project.
-    - **Lists**: Bullet or numbered lists of features, technologies used, etc.
-
-### About Page
-- **Biography**: A detailed biography about myself.
-- **Education**: Information about my educational background.
-- **Experience**: Details about my professional experience.
-- **Contact Information**: Ways to get in touch with me.
+- **Project Details**: Each project has a dedicated page with detailed information.
 
 ## Technologies Used
 
