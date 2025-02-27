@@ -72,10 +72,7 @@ const ProjectGrid = () => {
   return (
     <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
       <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
-        <div className="flex flex-col gap-8">
-          <h2 className="text-xl font-semibold text-primary-grey">Projects</h2>
-          {renderItems(projects, true)}
-        </div>
+        <div className="flex flex-col gap-8">{renderItems(projects, true)}</div>
 
         {ideas.length > 0 && (
           <>
