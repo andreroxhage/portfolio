@@ -1,0 +1,21 @@
+{
+  "defaultLanguage": "javascript",
+  "fileAssociations": {
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact"
+  },
+  "indexing": {
+    "exclude": [
+      "**/node_modules/**",
+      "**/build/**",
+      "**/dist/**",
+      "**/.next/**"
+    ],
+    "include": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "components/**/*.{js,jsx,ts,tsx}",
+      "pages/**/*.{js,jsx,ts,tsx}",
+      "styles/**/*.{css,scss}"
+    ]
+  }
+}

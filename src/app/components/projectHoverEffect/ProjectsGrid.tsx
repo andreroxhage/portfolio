@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects } from '@/app/data';
+import { projects, ideas } from '@/app/data';
 import Link from 'next/link';
 import { Project } from '@/app/types';
 import ProjectCard from '@/app/components/projectHoverEffect/ProjectCard';
@@ -8,15 +8,15 @@ import VideoDialog from './VideoDialog';
 
 const ProjectGrid = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+  const [currentItem, setCurrentItem] = useState<Project | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoading, setIsLoading] = useState(false);
   const [hoverKey, setHoverKey] = useState(0);
 
-  const handleMouseEnter = (project: Project) => {
+  const handleMouseEnter = (item: Project) => {
     setIsLoading(true);
     setIsHovered(true);
-    setCurrentProject(project);
+    setCurrentItem(item);
     setHoverKey(prevKey => prevKey + 1);
   };
 
@@ -24,7 +24,7 @@ const ProjectGrid = () => {
     setIsHovered(false);
     setTimeout(() => {
       if (!isHovered) {
-        setCurrentProject(null);
+        setCurrentItem(null);
         setIsLoading(false);
       }
     }, 100);
@@ -34,35 +34,74 @@ const ProjectGrid = () => {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
-  return (
-    <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
-      <div className="grid grid-cols-10 gap-4 pb-24 pt-12 w-full h-full overflow-y-auto">
-        {projects.map((project, index) => (
-          <Link
-            key={index}
-            href={`/projects/${project.projectSlug}`}
-            onMouseEnter={() => handleMouseEnter(project)}
+  const renderItems = (items: Project[], isProject: boolean) => (
+    <div className="grid grid-cols-10 gap-4 w-full">
+      {items.map(item => {
+        if (isProject && item.projectSlug) {
+          return (
+            <Link
+              key={item.title}
+              href={`/projects/${item.projectSlug}`}
+              onMouseEnter={() => handleMouseEnter(item)}
+              onMouseLeave={handleMouseLeave}
+              onMouseMove={handleMouseMove}
+              className="col-span-5"
+            >
+              <ProjectCard project={item} />
+            </Link>
+          );
+        }
+
+        return (
+          <button
+            key={item.title}
+            onMouseEnter={() => handleMouseEnter(item)}
             onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}
-            className="col-span-5"
+            onClick={() => {}}
+            aria-label={`View preview of ${item.title}`}
+            className="col-span-5 text-left cursor-default"
           >
-            <ProjectCard project={project} />
-          </Link>
-        ))}
-        <AnimatePresence>
-          {isHovered && currentProject && (
-            <VideoDialog
-              key={`dialog-${hoverKey}`}
-              videoSrc={currentProject.videoSrc}
-              mousePosition={mousePosition}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-            />
-          )}
-        </AnimatePresence>
+            <ProjectCard project={item} />
+          </button>
+        );
+      })}
+    </div>
+  );
+
+  return (
+    <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
+      <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
+        <div className="flex flex-col gap-8">
+          <h2 className="text-xl font-semibold text-primary-grey">Projects</h2>
+          {renderItems(projects, true)}
+        </div>
+
+        {ideas.length > 0 && (
+          <>
+            <div className="w-full h-px bg-primary-grey/20" />
+            <div className="flex flex-col gap-8">
+              <h2 className="text-xl font-semibold text-primary-grey">Ideas</h2>
+              {renderItems(ideas, false)}
+            </div>
+          </>
+        )}
       </div>
+
       <AnimatePresence>
-        {currentProject && isHovered && (
+        {isHovered && currentItem && (
+          <VideoDialog
+            key={`dialog-${hoverKey}`}
+            videoSrc={currentItem.videoSrc}
+            mousePosition={mousePosition}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {currentItem && isHovered && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -70,12 +109,20 @@ const ProjectGrid = () => {
             transition={{ duration: 0.3 }}
             className="hover:bg-white flex bg-primary-whiteish/60 p-3 px-4 gap-8 text-base rounded-3xl group transition-all duration-150"
           >
-            <label className="font-medium text-primary-grey">
-              {currentProject.title}
-            </label>
-            <label className="text-primary-grey-brighter">
-              {currentProject.date}
-            </label>
+            <div className="flex items-center gap-8">
+              <label className="font-medium text-primary-grey">
+                {currentItem.title}
+              </label>
+              <label className="text-primary-grey-brighter">
+                {currentItem.date}
+              </label>
+            </div>
+            {currentItem.projectSlug && (
+              <div className="flex items-center gap-2 text-primary-grey-brighter">
+                <span>|</span>
+                <span className="text-sm">Click to read more</span>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

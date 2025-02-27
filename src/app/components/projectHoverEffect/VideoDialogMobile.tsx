@@ -76,7 +76,7 @@ const GifDialogMobile = ({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 p-4"
           onClick={handleClose}
         >
           <motion.div
@@ -87,6 +87,15 @@ const GifDialogMobile = ({
             <ProjectVideo videoSrc={project.videoSrc} onLoad={() => {}} />
           </motion.div>
 
+          <div className="absolute bottom-5 flex-row items-center gap-2">
+            <div className="bg-white/10 backdrop-blur-md flex items-center gap-3 px-4 py-2 rounded-2xl">
+              <p className="text-white text-center">{project.title}</p>
+              <p className="text-white/70 text-sm text-center">
+                {project.date}
+              </p>
+            </div>
+          </div>
+
           <div className="absolute bottom-3 px-3 flex items-center justify-between w-full">
             <button
               onClick={handleClose}
@@ -94,9 +103,9 @@ const GifDialogMobile = ({
               aria-label="Close dialog"
             >
               <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
-              <XMarkIcon className="w-8 h-8 text-white relative z-10 " />
-            </button>{' '}
-            {project?.projectSlug && (
+              <XMarkIcon className="w-8 h-8 text-white relative z-10" />
+            </button>
+            {project.projectSlug && (
               <Link
                 href={`/projects/${project.projectSlug}`}
                 className="p-3 rounded-full overflow-hidden relative"

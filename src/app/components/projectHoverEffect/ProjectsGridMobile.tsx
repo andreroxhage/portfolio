@@ -1,4 +1,4 @@
-import { projects } from '@/app/data';
+import { projects, ideas } from '@/app/data';
 import { Project } from '@/app/types';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
@@ -7,28 +7,50 @@ import ProjectCard from './ProjectCard';
 
 const ProjectGridMobile = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+  const [currentItem, setCurrentItem] = useState<Project | null>(null);
+
+  const renderItems = (items: Project[], isProject: boolean) => (
+    <div className="grid grid-cols-1 gap-4 w-full">
+      {items.map((item, index) => (
+        <button
+          key={index}
+          className={
+            isProject ? 'cursor-pointer text-left' : 'cursor-default text-left'
+          }
+          onClick={() => {
+            setDialogOpen(true);
+            setCurrentItem(item);
+          }}
+        >
+          <ProjectCard project={item} />
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
-      <div className="grid grid-cols-1 gap-4 pb-24 pt-12 w-full h-full overflow-y-auto">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="cursor-pointer"
-            onClick={() => {
-              setDialogOpen(true);
-              setCurrentProject(project);
-            }}
-          >
-            <ProjectCard project={project} />
-          </div>
-        ))}
+      <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
+        <div className="flex flex-col gap-8">
+          <h2 className="text-xl font-semibold text-primary-grey">Projects</h2>
+          {renderItems(projects, true)}
+        </div>
+
+        {ideas.length > 0 && (
+          <>
+            <div className="w-full h-px bg-primary-grey/20" />
+            <div className="flex flex-col gap-8">
+              <h2 className="text-xl font-semibold text-primary-grey">Ideas</h2>
+              {renderItems(ideas, false)}
+            </div>
+          </>
+        )}
       </div>
+
       <AnimatePresence>
-        {dialogOpen && currentProject && (
+        {dialogOpen && currentItem && (
           <GifDialogMobile
-            project={currentProject}
+            project={currentItem}
             isOpen={dialogOpen}
             onClose={() => setDialogOpen(false)}
           />

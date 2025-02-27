@@ -11,6 +11,7 @@ import ImageSlider from '../components/ImageSlider';
 import Link from 'next/link';
 import MagneticWrapper from '../components/MagneticWrapper';
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 export default function CurrentWork() {
   const work = currentWork[0];
@@ -73,9 +74,9 @@ export default function CurrentWork() {
                 transition={{ duration: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
-                {Object.values(work.tags).map((tag, index) => (
+                {Object.entries(work.tags).map(([key, tag]) => (
                   <div
-                    key={index}
+                    key={`${work.title}-${key}`}
                     className="px-4 py-2 rounded-xl border border-neutral-600 text-neutral-700 w-fit text-sm cursor-default"
                   >
                     {tag}
@@ -172,18 +173,19 @@ export default function CurrentWork() {
                   </motion.p>
 
                   <MagneticWrapper magneticStrength={0.2}>
-                    <div
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
                       className="w-full p-12 sm:p-14 md:p-16 lg:p-20 items-center justify-center inline-block rounded-lg hover:scale-105 duration-200 ease-in-out"
-                      dangerouslySetInnerHTML={{
-                        __html: project.cardImage,
-                      }}
+                      width={500}
+                      height={500}
                     />
                   </MagneticWrapper>
 
                   <div className="flex flex-wrap gap-3">
-                    {Object.values(project.tags).map((tag, index) => (
+                    {Object.entries(project.tags).map(([key, tag]) => (
                       <div
-                        key={index}
+                        key={`${project.projectSlug}-${key}`}
                         className="px-4 py-2 rounded-xl border border-neutral-600 text-neutral-700 w-fit text-sm cursor-default"
                       >
                         {tag}

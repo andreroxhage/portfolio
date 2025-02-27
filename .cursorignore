@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.next/
+.cache/
+dist/
+build/
+
+# Environment files
+.env*
+.env.local
+.env.development
+.env.production
+
+# Generated files
+public/resource/
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.svg
+*.ico
+*.gif
+
+# Build outputs
+out/
+coverage/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large data files
+src/app/data.js
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/ 
