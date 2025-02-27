@@ -64,7 +64,7 @@ const ProjectsPage: React.FC = () => {
 
   const navigationLinks = useMemo(
     () => [
-      { href: '/#about', label: 'About' },
+      { href: '/', label: 'About' },
       { href: footerLinks[2].href, label: 'Email' },
       { href: footerLinks[0].href, label: 'LinkedIn' },
     ],
