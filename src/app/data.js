@@ -60,7 +60,6 @@ export const ideas = [
   {
     title: 'Example Idea',
     subtitle: 'Event Invitations with Spotify’s Unique Strengths',
-    videoSrc: '/resource/projects/p4.mp4',
     videoAlt: 'Spotify events concept design in Figma',
     image: '/resource/projects/p4_d_a.png',
     imageAlt: 'Spotify events concept design in Figma',
@@ -80,7 +79,6 @@ export const projects = [
     date: '2025',
     projectSlug: 'spotify-events',
     tags: ['Spotify', 'Events', 'Concept', 'Design Process'],
-    videoSrc: '/resource/projects/p4.mp4',
     imageAlt: 'Spotify events concept design in Figma',
     sections: [
       {
@@ -454,7 +452,6 @@ export const projects = [
     projectSlug: 'login-experience-in-vr',
     tags: ['VR', 'Authentication', 'GAIM', 'Design Process'],
     image: '/resource/projects/p2_hifi.jpeg',
-    videoSrc: '/resource/projects/p2_hifi.mp4',
     imageAlt: 'Scroll Select Authentication in VR',
     sections: [
       {
@@ -637,7 +634,6 @@ export const projects = [
     headerSrc: '/resource/projects/p1.jpg',
     titleColor: '#686699',
     subtitleColor: '#767688',
-    videoSrc: '/resource/projects/p1.mp4',
     date: '2024',
     projectSlug: 'usability-evaluation-of-microsoft-teams-calendar-feature',
     tags: ['Usability Evaluation', 'UX Research'],
@@ -761,7 +757,7 @@ export const projects = [
         ],
       },
       {
-        title: 'Analysis & Discussion', // write these and add lots of diagrams from the report
+        title: 'Analysis & Discussion',
         layout: 'middle',
         content: [
           {

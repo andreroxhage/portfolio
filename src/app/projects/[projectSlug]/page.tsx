@@ -3,11 +3,12 @@ import Image from 'next/image';
 import ScrollScaleWrapper from '@/app/components/ScrollScaleWrapper';
 import { projects } from '@/app/data';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
 import ProjectNavigation from '@/app/components/ProjectNavigation';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Page({ params }: { params: { projectSlug: string } }) {
   const project = projects.find(p => p.projectSlug === params.projectSlug);
+  const [videoUrl, setVideoUrl] = useState<string>('');
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -15,6 +16,19 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
     offset: [0, 1],
   });
   const hue = useTransform(scrollYProgress, [0, 0.3], ['#FAEFDE', '#fafaf8']);
+
+  useEffect(() => {
+    fetch(`/api/videos?project=${params.projectSlug}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          setVideoUrl(data[0].video_url);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching video:', error);
+      });
+  }, [params.projectSlug]);
 
   if (!project) {
     return (
@@ -279,6 +293,9 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           </ScrollScaleWrapper>
         );
       case 'video':
+        if (!videoUrl) {
+          return null;
+        }
         return (
           <ScrollScaleWrapper
             key={key}
@@ -300,7 +317,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                 }}
               >
                 <source
-                  src={content.src}
+                  src={videoUrl}
                   type={content.videoType || 'video/mp4'}
                 />
                 Your browser does not support the video tag.

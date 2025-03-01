@@ -86,10 +86,10 @@ const ProjectGrid = () => {
       </div>
 
       <AnimatePresence>
-        {isHovered && currentItem && (
+        {isHovered && currentItem && currentItem.projectSlug && (
           <VideoDialog
             key={`dialog-${hoverKey}`}
-            videoSrc={currentItem.videoSrc}
+            projectSlug={currentItem.projectSlug}
             mousePosition={mousePosition}
             isLoading={isLoading}
             setIsLoading={setIsLoading}

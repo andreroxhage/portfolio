@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, memo } from 'react';
+import React, { useEffect, useCallback, memo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -11,21 +11,40 @@ interface GifDialogMobileProps {
 }
 
 const ProjectVideo = memo(
-  ({ videoSrc, onLoad }: { videoSrc: string; onLoad: () => void }) => (
-    <div className="relative mx-auto w-[calc(100%-32px)] max-w-[80vw] max-h-[80vh] rounded-[40px] overflow-hidden bg-black">
-      <div className="relative flex items-center justify-center w-full h-full">
-        <video
-          src={videoSrc}
-          className="max-w-full max-h-full object-contain"
-          autoPlay
-          loop
-          muted
-          playsInline
-          onLoadedData={onLoad}
-        />
+  ({ projectSlug, onLoad }: { projectSlug: string; onLoad: () => void }) => {
+    const [videoUrl, setVideoUrl] = useState<string>('');
+
+    useEffect(() => {
+      fetch(`/api/videos?project=${projectSlug}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.length > 0) {
+            setVideoUrl(data[0].video_url);
+          }
+        })
+        .catch(error => console.error('Error fetching video:', error));
+    }, [projectSlug]);
+
+    if (!videoUrl) {
+      return null;
+    }
+
+    return (
+      <div className="relative mx-auto w-[calc(100%-32px)] max-w-[80vw] max-h-[80vh] rounded-[40px] overflow-hidden bg-black">
+        <div className="relative flex items-center justify-center w-full h-full">
+          <video
+            src={videoUrl}
+            className="max-w-full max-h-full object-contain"
+            autoPlay
+            loop
+            muted
+            playsInline
+            onLoadedData={onLoad}
+          />
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 );
 
 ProjectVideo.displayName = 'ProjectVideo';
@@ -68,6 +87,10 @@ const GifDialogMobile = ({
     exit: { scale: 0.95, opacity: 0 },
   };
 
+  if (!project.projectSlug) {
+    return null;
+  }
+
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
@@ -84,10 +107,10 @@ const GifDialogMobile = ({
             className="relative w-full"
             onClick={e => e.stopPropagation()}
           >
-            <ProjectVideo videoSrc={project.videoSrc} onLoad={() => {}} />
+            <ProjectVideo projectSlug={project.projectSlug} onLoad={() => {}} />
           </motion.div>
 
-          <div className="absolute bottom-5 flex-row items-center  flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/20 border border-white/10 shadow-lg">
+          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/20 border border-white/10 shadow-lg">
             <p className="text-white text-center">{project.title}</p>
             <p className="text-white/70 text-sm text-center">{project.date}</p>
           </div>

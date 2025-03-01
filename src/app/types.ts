@@ -8,7 +8,6 @@ export interface Project {
   date: string;
   projectSlug?: string;
   tags: string[];
-  videoSrc: string;
   imageAlt: string;
   sections?: any[]; // Or define a proper type for sections if needed
   videoAlt?: string; // Make videoAlt optional since it's not present in all items

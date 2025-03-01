@@ -2,23 +2,35 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
 interface VideoDialogProps {
-  videoSrc: string;
+  projectSlug: string;
   mousePosition: { x: number; y: number };
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const VideoDialog = ({
-  videoSrc,
+  projectSlug,
   mousePosition,
   isLoading,
   setIsLoading,
 }: VideoDialogProps) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [videoUrl, setVideoUrl] = useState<string>('');
 
   useEffect(() => {
     setIsLoading(true);
-  }, [videoSrc, setIsLoading]);
+    fetch(`/api/videos?project=${projectSlug}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          setVideoUrl(data[0].video_url);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching video:', error);
+        setIsLoading(false);
+      });
+  }, [projectSlug, setIsLoading]);
 
   const handleVideoLoad = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = event.currentTarget;
@@ -51,6 +63,10 @@ const VideoDialog = ({
     return { x: offsetX, y: offsetY };
   };
 
+  if (!videoUrl) {
+    return null;
+  }
+
   return (
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}
@@ -77,7 +93,7 @@ const VideoDialog = ({
       }}
     >
       <video
-        src={videoSrc}
+        src={videoUrl}
         className={`w-full h-full object-contain transition-opacity duration-300 ${
           isLoading ? 'opacity-0' : 'opacity-100'
         }`}
