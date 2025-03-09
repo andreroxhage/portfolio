@@ -31,19 +31,10 @@ const ProjectGridMobile = () => {
   return (
     <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
       <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4">
           {renderItems(projects as Project[], true)}
+          {renderItems(ideas, false)}
         </div>
-
-        {ideas.length > 0 && (
-          <>
-            <div className="w-full h-px bg-primary-grey/20" />
-            <div className="flex flex-col gap-4">
-              <h2 className="text-xl font-medium text-primary-grey">Ideas</h2>
-              {renderItems(ideas, false)}
-            </div>
-          </>
-        )}
       </div>
 
       <AnimatePresence>

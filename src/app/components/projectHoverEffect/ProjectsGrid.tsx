@@ -34,57 +34,42 @@ const ProjectGrid = () => {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
-  const renderItems = (items: Project[], isProject: boolean) => (
-    <div className="grid grid-cols-10 gap-4 w-full">
-      {items.map(item => {
-        if (isProject && item.projectSlug) {
-          return (
-            <Link
-              key={item.title}
-              href={`/projects/${item.projectSlug}`}
-              onMouseEnter={() => handleMouseEnter(item)}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
-              className="col-span-5"
-            >
-              <ProjectCard project={item} />
-            </Link>
-          );
-        }
+  const renderItem = (item: Project) => {
+    const commonProps = {
+      key: item.title,
+      onMouseEnter: () => handleMouseEnter(item),
+      onMouseLeave: handleMouseLeave,
+      onMouseMove: handleMouseMove,
+      className: 'col-span-5',
+    };
 
-        return (
-          <button
-            key={item.title}
-            onMouseEnter={() => handleMouseEnter(item)}
-            onMouseLeave={handleMouseLeave}
-            onMouseMove={handleMouseMove}
-            onClick={() => {}}
-            aria-label={`View preview of ${item.title}`}
-            className="col-span-5 text-left cursor-default"
-          >
-            <ProjectCard project={item} />
-          </button>
-        );
-      })}
-    </div>
-  );
+    if ('projectSlug' in item && item.projectSlug) {
+      return (
+        <Link {...commonProps} href={`/projects/${item.projectSlug}`}>
+          <ProjectCard project={item} />
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        {...commonProps}
+        onClick={() => {}}
+        aria-label={`View preview of ${item.title}`}
+      >
+        <ProjectCard project={item} />
+      </button>
+    );
+  };
+
+  const allItems = [...(projects as Project[]), ...(ideas as Project[])];
 
   return (
     <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
       <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
-        <div className="flex flex-col gap-8">
-          {renderItems(projects as Project[], true)}
+        <div className="grid grid-cols-10 gap-4 w-full">
+          {allItems.map(item => renderItem(item))}
         </div>
-
-        {ideas.length > 0 && (
-          <>
-            <div className="w-full h-px bg-primary-grey/20" />
-            <div className="flex flex-col gap-6">
-              <h2 className="text-xl font-medium text-primary-grey">Ideas</h2>
-              {renderItems(ideas, false)}
-            </div>
-          </>
-        )}
       </div>
 
       <AnimatePresence>
