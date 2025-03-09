@@ -11,11 +11,11 @@ interface GifDialogMobileProps {
 }
 
 const ProjectVideo = memo(
-  ({ projectSlug, onLoad }: { projectSlug: string; onLoad: () => void }) => {
+  ({ identifier, onLoad }: { identifier: string; onLoad: () => void }) => {
     const [videoUrl, setVideoUrl] = useState<string>('');
 
     useEffect(() => {
-      fetch(`/api/videos?project=${projectSlug}`)
+      fetch(`/api/videos?project=${identifier}`)
         .then(res => res.json())
         .then(data => {
           if (data && data.length > 0) {
@@ -23,7 +23,7 @@ const ProjectVideo = memo(
           }
         })
         .catch(error => console.error('Error fetching video:', error));
-    }, [projectSlug]);
+    }, [identifier]);
 
     if (!videoUrl) {
       return null;
@@ -87,9 +87,11 @@ const GifDialogMobile = ({
     exit: { scale: 0.95, opacity: 0 },
   };
 
-  if (!project.projectSlug) {
+  if (!project.projectSlug && !project.id) {
     return null;
   }
+
+  const identifier = (project.projectSlug ?? project.id) as string;
 
   return (
     <AnimatePresence mode="wait">
@@ -107,7 +109,7 @@ const GifDialogMobile = ({
             className="relative w-full"
             onClick={e => e.stopPropagation()}
           >
-            <ProjectVideo projectSlug={project.projectSlug} onLoad={() => {}} />
+            <ProjectVideo identifier={identifier} onLoad={() => {}} />
           </motion.div>
 
           <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/20 border border-white/10 shadow-lg">

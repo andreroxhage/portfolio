@@ -56,17 +56,14 @@ export const currentWork = [
 ];
 
 export const ideas = [
-  /*
   {
-    title: 'Example Idea',
-    subtitle: 'Event Invitations with Spotify’s Unique Strengths',
-    videoAlt: 'Spotify events concept design in Figma',
-    image: '/resource/projects/p4_d_a.png',
-    imageAlt: 'Spotify events concept design in Figma',
+    id: 'i1',
+    title: 'Stopwatch',
+    subtitle: 'Double-tap & your stopwatch is ready!',
+    videoAlt: 'IOS prototype',
     date: '2025',
-    tags: ['Spotify', 'Events', 'Concept', 'Design Process'],
+    tags: ['IOS', 'Concept', 'Home indicator'],
   },
-  */
 ];
 
 export const projects = [

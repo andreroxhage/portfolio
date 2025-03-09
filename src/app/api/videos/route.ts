@@ -7,7 +7,7 @@ export async function GET(request: Request) {
 
   if (!projectSlug) {
     return NextResponse.json(
-      { error: 'Project slug is required' },
+      { error: 'Project slug or idea ID is required' },
       { status: 400 }
     );
   }

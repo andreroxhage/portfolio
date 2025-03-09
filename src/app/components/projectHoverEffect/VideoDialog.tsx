@@ -2,14 +2,14 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
 interface VideoDialogProps {
-  projectSlug: string;
+  identifier: string; // Either project slug or idea ID
   mousePosition: { x: number; y: number };
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const VideoDialog = ({
-  projectSlug,
+  identifier,
   mousePosition,
   isLoading,
   setIsLoading,
@@ -19,7 +19,7 @@ const VideoDialog = ({
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`/api/videos?project=${projectSlug}`)
+    fetch(`/api/videos?project=${identifier}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
@@ -30,7 +30,7 @@ const VideoDialog = ({
         console.error('Error fetching video:', error);
         setIsLoading(false);
       });
-  }, [projectSlug, setIsLoading]);
+  }, [identifier, setIsLoading]);
 
   const handleVideoLoad = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = event.currentTarget;

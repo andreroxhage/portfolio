@@ -72,13 +72,15 @@ const ProjectGrid = () => {
   return (
     <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
       <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
-        <div className="flex flex-col gap-8">{renderItems(projects, true)}</div>
+        <div className="flex flex-col gap-8">
+          {renderItems(projects as Project[], true)}
+        </div>
 
         {ideas.length > 0 && (
           <>
             <div className="w-full h-px bg-primary-grey/20" />
-            <div className="flex flex-col gap-8">
-              <h2 className="text-xl font-semibold text-primary-grey">Ideas</h2>
+            <div className="flex flex-col gap-6">
+              <h2 className="text-xl font-medium text-primary-grey">Ideas</h2>
               {renderItems(ideas, false)}
             </div>
           </>
@@ -86,15 +88,17 @@ const ProjectGrid = () => {
       </div>
 
       <AnimatePresence>
-        {isHovered && currentItem && currentItem.projectSlug && (
-          <VideoDialog
-            key={`dialog-${hoverKey}`}
-            projectSlug={currentItem.projectSlug}
-            mousePosition={mousePosition}
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-          />
-        )}
+        {isHovered &&
+          currentItem &&
+          (currentItem.projectSlug || currentItem.id) && (
+            <VideoDialog
+              key={`dialog-${hoverKey}`}
+              identifier={currentItem.projectSlug || (currentItem.id as string)}
+              mousePosition={mousePosition}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
+          )}
       </AnimatePresence>
 
       <AnimatePresence>
