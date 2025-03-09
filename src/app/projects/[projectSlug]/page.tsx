@@ -5,6 +5,7 @@ import { projects } from '@/app/data';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ProjectNavigation from '@/app/components/ProjectNavigation';
 import { useState, useEffect, useRef } from 'react';
+import VideoLoadingAnimation from '@/app/components/VideoLoadingAnimation';
 
 export default function Page({ params }: { params: { projectSlug: string } }) {
   const project = projects.find(p => p.projectSlug === params.projectSlug);
@@ -302,9 +303,14 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             fade={true}
             className="w-full h-full flex justify-center"
           >
-            <div>
+            <div className="relative">
+              {content.loading && (
+                <VideoLoadingAnimation className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-[40px]" />
+              )}
               <video
-                className="max-w-full max-h-full object-contain rounded-[40px]"
+                className={`max-w-full max-h-full object-contain rounded-[40px] transition-opacity duration-300 ${
+                  content.loading ? 'opacity-0' : 'opacity-100'
+                }`}
                 autoPlay
                 loop
                 muted

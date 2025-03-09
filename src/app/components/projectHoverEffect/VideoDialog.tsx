@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useVideo } from '@/app/hooks/useVideo';
+import VideoLoadingAnimation from '../VideoLoadingAnimation';
 
 interface VideoDialogProps {
-  identifier: string; // Either project slug or idea ID
+  identifier: string;
   mousePosition: { x: number; y: number };
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,22 +17,7 @@ const VideoDialog = ({
   setIsLoading,
 }: VideoDialogProps) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [videoUrl, setVideoUrl] = useState<string>('');
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetch(`/api/videos?project=${identifier}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.length > 0) {
-          setVideoUrl(data[0].video_url);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching video:', error);
-        setIsLoading(false);
-      });
-  }, [identifier, setIsLoading]);
+  const { video_url: videoUrl, loading: isVideoLoading } = useVideo(identifier);
 
   const handleVideoLoad = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = event.currentTarget;
@@ -67,6 +54,8 @@ const VideoDialog = ({
     return null;
   }
 
+  const showLoading = isLoading || isVideoLoading;
+
   return (
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}
@@ -86,16 +75,19 @@ const VideoDialog = ({
       style={{
         left: `calc(50% - ${dimensions.width / 2}px)`,
         top: `calc(50% - ${dimensions.height / 2}px)`,
-        width: isLoading ? '0' : dimensions.width,
-        height: isLoading ? '0' : dimensions.height,
+        width: showLoading ? '300px' : dimensions.width,
+        height: showLoading ? '300px' : dimensions.height,
         maxWidth: '70vw',
         maxHeight: '70vh',
       }}
     >
+      {showLoading && (
+        <VideoLoadingAnimation className="absolute inset-0 bg-white/20 backdrop-blur-sm" />
+      )}
       <video
         src={videoUrl}
         className={`w-full h-full object-contain transition-opacity duration-300 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
+          showLoading ? 'opacity-0' : 'opacity-100'
         }`}
         width={dimensions.width || 0}
         height={dimensions.height || 0}
@@ -103,6 +95,7 @@ const VideoDialog = ({
         loop
         muted
         playsInline
+        preload="auto"
         onLoadedData={handleVideoLoad}
       />
     </motion.div>

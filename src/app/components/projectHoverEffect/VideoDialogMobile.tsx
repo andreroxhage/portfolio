@@ -1,8 +1,10 @@
-import React, { useEffect, useCallback, memo, useState } from 'react';
+import React, { useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Project } from '@/app/types';
+import { useVideo } from '@/app/hooks/useVideo';
+import VideoLoadingAnimation from '../VideoLoadingAnimation';
 
 interface GifDialogMobileProps {
   project: Project;
@@ -12,35 +14,41 @@ interface GifDialogMobileProps {
 
 const ProjectVideo = memo(
   ({ identifier, onLoad }: { identifier: string; onLoad: () => void }) => {
-    const [videoUrl, setVideoUrl] = useState<string>('');
-
-    useEffect(() => {
-      fetch(`/api/videos?project=${identifier}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data && data.length > 0) {
-            setVideoUrl(data[0].video_url);
-          }
-        })
-        .catch(error => console.error('Error fetching video:', error));
-    }, [identifier]);
-
-    if (!videoUrl) {
-      return null;
-    }
+    const { video_url: videoUrl, loading } = useVideo(identifier);
 
     return (
-      <div className="relative mx-auto w-[calc(100%-32px)] max-w-[80vw] max-h-[80vh] rounded-[40px] overflow-hidden bg-black">
+      <div className="relative mx-auto w-[calc(100%-32px)] max-w-[70vw] max-h-[70vh] rounded-[40px] overflow-hidden">
         <div className="relative flex items-center justify-center w-full h-full">
-          <video
-            src={videoUrl}
-            className="max-w-full max-h-full object-contain"
-            autoPlay
-            loop
-            muted
-            playsInline
-            onLoadedData={onLoad}
-          />
+          <AnimatePresence>
+            {loading && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-30 flex items-center justify-center"
+              >
+                <VideoLoadingAnimation className="w-full h-full min-h-[100px]" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          {videoUrl && (
+            <video
+              key={videoUrl}
+              src={videoUrl}
+              className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${
+                loading ? 'opacity-0' : 'opacity-100'
+              }`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              onLoadedData={() => {
+                console.log('Video loaded');
+                onLoad();
+              }}
+            />
+          )}
         </div>
       </div>
     );
@@ -59,6 +67,7 @@ const GifDialogMobile = ({
   }, [onClose]);
 
   useEffect(() => {
+    console.log('Dialog open state:', isOpen);
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       return () => {
@@ -109,7 +118,10 @@ const GifDialogMobile = ({
             className="relative w-full"
             onClick={e => e.stopPropagation()}
           >
-            <ProjectVideo identifier={identifier} onLoad={() => {}} />
+            <ProjectVideo
+              identifier={identifier}
+              onLoad={() => console.log('ProjectVideo onLoad called')}
+            />
           </motion.div>
 
           <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/20 border border-white/10 shadow-lg">
