@@ -82,7 +82,7 @@ const VideoDialog = ({
       }}
     >
       {showLoading && (
-        <VideoLoadingAnimation className="absolute inset-0 bg-white/20 backdrop-blur-sm" />
+        <VideoLoadingAnimation className="absolute inset-0 bg-white/10" />
       )}
       <video
         src={videoUrl}

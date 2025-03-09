@@ -64,6 +64,14 @@ export const ideas = [
     date: '2025',
     tags: ['IOS', 'Concept', 'Home indicator'],
   },
+  {
+    id: 'i2',
+    title: 'Malmö museum 3D map',
+    subtitle: 'Explore with an interactive 3D navigator!',
+    videoAlt: 'Malmö museum map website to navigate',
+    date: '2025',
+    tags: ['3D', 'Spatial design', 'Proof of concept'],
+  },
 ];
 
 export const projects = [
