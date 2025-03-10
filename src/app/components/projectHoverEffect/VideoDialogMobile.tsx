@@ -17,8 +17,8 @@ const ProjectVideo = memo(
     const { video_url: videoUrl, loading } = useVideo(identifier);
 
     return (
-      <div className="relative mx-auto w-[calc(100%-32px)] max-w-[70vw] max-h-[70vh] rounded-[40px] overflow-hidden">
-        <div className="relative flex items-center justify-center w-full h-full">
+      <div className="relative mx-auto max-w-[60vw] w-full rounded-[40px] overflow-hidden">
+        <div className="relative flex h-full w-full items-center justify-center">
           <AnimatePresence>
             {loading && (
               <motion.div
@@ -35,7 +35,7 @@ const ProjectVideo = memo(
             <video
               key={videoUrl}
               src={videoUrl}
-              className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${
+              className={`w-full h-full object-contain transition-opacity duration-300 ${
                 loading ? 'opacity-0' : 'opacity-100'
               }`}
               autoPlay
@@ -124,15 +124,15 @@ const GifDialogMobile = ({
             />
           </motion.div>
 
-          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/20 border border-white/10 shadow-lg">
-            <p className="text-white text-center">{project.title}</p>
+          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-black/30 border border-white/10 shadow-lg">
+            <p className="text-white text-center text-sm">{project.title}</p>
             <p className="text-white/70 text-sm text-center">{project.date}</p>
           </div>
 
           <div className="absolute bottom-3 px-3 flex items-center justify-between w-full">
             <button
               onClick={handleClose}
-              className="p-3 rounded-full overflow-hidden relative bg-white/20 border border-white/10 shadow-lg"
+              className="p-3 rounded-full overflow-hidden relative bg-black/30 border border-white/10 shadow-lg"
               aria-label="Close dialog"
             >
               <XMarkIcon className="w-8 h-8 text-white relative z-10" />
@@ -140,7 +140,7 @@ const GifDialogMobile = ({
             {project.projectSlug && (
               <Link
                 href={`/projects/${project.projectSlug}`}
-                className="p-3 rounded-full overflow-hidden relative bg-white/20 border border-white/10 shadow-lg"
+                className="p-3 rounded-full overflow-hidden relative bg-black/30 border border-white/10 shadow-lg"
                 aria-label="Visit Project"
               >
                 <ArrowUpRightIcon className="w-8 h-8 text-white relative z-10" />
