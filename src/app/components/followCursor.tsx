@@ -26,13 +26,15 @@ export const FollowerPointerCard = ({
 
   useEffect(() => {
     updateRect();
-    window.addEventListener('resize', updateRect);
-    window.addEventListener('scroll', updateRect);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', updateRect);
+      window.addEventListener('scroll', updateRect);
 
-    return () => {
-      window.removeEventListener('resize', updateRect);
-      window.removeEventListener('scroll', updateRect);
-    };
+      return () => {
+        window.removeEventListener('resize', updateRect);
+        window.removeEventListener('scroll', updateRect);
+      };
+    }
   }, [updateRect]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {

@@ -24,8 +24,10 @@ const VideoDialog = ({
     const naturalWidth = video.videoWidth;
     const naturalHeight = video.videoHeight;
 
-    const viewportWidth = window.innerWidth * 0.7;
-    const viewportHeight = window.innerHeight * 0.7;
+    const viewportWidth =
+      typeof window !== 'undefined' ? window.innerWidth * 0.7 : 800;
+    const viewportHeight =
+      typeof window !== 'undefined' ? window.innerHeight * 0.7 : 600;
 
     const aspectRatio = naturalWidth / naturalHeight;
     let scaledWidth = viewportWidth;
@@ -45,6 +47,9 @@ const VideoDialog = ({
   };
 
   const calculateOffset = () => {
+    if (typeof window === 'undefined') {
+      return { x: 0, y: 0 };
+    }
     const offsetX = (mousePosition.x / window.innerWidth - 0.5) * 400;
     const offsetY = (mousePosition.y / window.innerHeight - 0.5) * 400;
     return { x: offsetX, y: offsetY };

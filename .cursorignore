@@ -35,8 +35,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# Large data files
-src/app/data.js
 
 # Debug logs
 npm-debug.log*

@@ -24,7 +24,7 @@ export const links = [
 export const header = {
   title: 'ANDRÉ ROXHAGE',
   currently:
-    'Software Design Engineer, blending software development and design with a passion for enhancing user experiences',
+    'Software Design Engineer, blending software development and design with a passion for improving user experience',
 };
 
 export const about = [
@@ -51,7 +51,7 @@ export const currentWork = [
       tag5: 'Bootstrap',
       tag6: 'Figma',
     },
-    resumeTitle: 'Are You a LinkedIn Stalker?',
+    resumeTitle: 'Are you a LinkedIn stalker?',
   },
 ];
 

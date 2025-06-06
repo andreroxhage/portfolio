@@ -25,9 +25,6 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         if (data && data.length > 0) {
           setVideoUrl(data[0].video_url);
         }
-      })
-      .catch(error => {
-        console.error('Error fetching video:', error);
       });
   }, [params.projectSlug]);
 

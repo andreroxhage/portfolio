@@ -37,7 +37,7 @@
     ],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "no-console": "warn",
+    "no-console": ["warn", { "allow": ["error"] }],
     "eqeqeq": "error",
     "curly": "error",
     "react/jsx-uses-react": "off",

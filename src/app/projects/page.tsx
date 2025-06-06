@@ -28,7 +28,7 @@ const HeaderLink: React.FC<{ href: string; label: string }> = ({
 );
 
 const ProfileSection: React.FC = () => (
-  <div className="flex gap-8 items-center justify-start">
+  <Link href="/" className="flex gap-8 items-center justify-start">
     <Image
       className="h-auto w-16 lg:w-24 rounded-full drop-shadow-lg shadow-md md:shadow-customShadow"
       src={ProfilePicture}
@@ -39,14 +39,14 @@ const ProfileSection: React.FC = () => (
       height={96}
     />
     <div className="flex flex-col gap-[6px] justify-center items-start">
-      <h1 className="text-xl md:text-2xl font-bold text-primary-blackish">
+      <h1 className="text-xl md:text-2xl font-bold text-primary-blackish hover:text-secondary-green-darker transition-all duration-300">
         André Roxhage
       </h1>
       <h2 className="text-sm md:text-base font-medium text-primary-grey">
         Software Design Engineer
       </h2>
     </div>
-  </div>
+  </Link>
 );
 
 const ProjectsPage: React.FC = () => {
@@ -54,12 +54,16 @@ const ProjectsPage: React.FC = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 768);
+      }
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
   }, []);
 
   const navigationLinks = useMemo(

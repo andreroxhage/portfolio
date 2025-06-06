@@ -1,28 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProfilePicture from '../../../public/resource/profileImage.jpg';
 
 import { header } from '@/app/data';
 
 const Header = () => {
-  const [isAtTop, setIsAtTop] = useState(true);
   const headerImage = '/resource/20220611-IMG_5691.jpg';
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      setIsAtTop(scrollTop === 0); // Check if scrollTop is 0 to determine if at the top
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <header id="header" className="h-min-screen md:h-screen">
@@ -87,59 +72,6 @@ const Header = () => {
             />
           </motion.div>
         </div>
-        <AnimatePresence>
-          {isAtTop && (
-            <motion.a
-              className="absolute bottom-4 w-full group text-black hidden md:flex md:flex-row justify-center items-center gap-4"
-              href="#about"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.4,
-                ease: 'easeInOut',
-              }}
-            >
-              <motion.span
-                className="md:text-3xl text-2xl font-bold text-primary-grey-brighter group-hover:text-primary-grey group-hover:scale-105 duration-300 ease-in-out"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1] }}
-                transition={{
-                  duration: 0.4,
-                  ease: 'easeInOut',
-                  delay: 1,
-                }}
-              >
-                Learn more
-              </motion.span>
-              <motion.svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="md:w-7 md:h-7 w-5 h-5 text-secondary-green-darker group-hover:text-green-700 group-hover:scale-110 duration-300 ease-in-out"
-              >
-                <motion.path
-                  strokeWidth={3}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-                  initial={{ opacity: 0, pathLength: 0 }}
-                  animate={{
-                    opacity: [0, 1],
-                    pathLength: [0, 1],
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    ease: 'easeInOut',
-                    delay: 0.9,
-                  }}
-                />
-              </motion.svg>
-            </motion.a>
-          )}
-        </AnimatePresence>
       </div>
     </header>
   );

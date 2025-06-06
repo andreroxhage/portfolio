@@ -1,8 +1,9 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from './components/Navbar/Navbar';
 import Head from 'next/head';
+import FloatingNav from './components/Navbar/FloatingNav';
+import { ProjectHoverProvider } from './contexts/ProjectHoverContext';
 
 export const metadata: Metadata = {
   title: 'André Roxhage',
@@ -37,7 +38,7 @@ export default function RootLayout({
         />
         <meta
           property="og:description"
-          content="Discover André Roxhage’s portfolio, projects, and voluntary work."
+          content="Discover André Roxhage's portfolio, projects, and voluntary work."
         />
         <meta property="og:image" content="/images/preview.png" />
         <meta property="og:url" content="https://yourdomain.com" />
@@ -71,9 +72,11 @@ export default function RootLayout({
         />
       </Head>
       <body>
-        <Navbar />
-        <main></main>
-        {children}
+        <ProjectHoverProvider>
+          <FloatingNav />
+          <main></main>
+          {children}
+        </ProjectHoverProvider>
       </body>
     </html>
   );

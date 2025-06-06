@@ -101,10 +101,10 @@ export default function Footer() {
 
         <div className="flex flex-col-reverse sm:flex-row gap-12 pt-12 pb-6 mt-8">
           <a className="flex w-3/4 items-center flex-row" href={'#header'}>
-            <span className="text-primary-grey-brighter text-sm md:text-lg font-semibold mr-6">
+            <span className="text-primary-grey text-sm md:text-lg font-semibold mr-6">
               ©2024
             </span>
-            <span className="text-primary-grey md:text-2xl text-lg font-semibold mr-2">
+            <span className="text-primary-grey-brighter md:text-2xl text-lg font-semibold mr-2">
               André
             </span>
             <span className="text-primary-grey-brighter md:text-2xl text-lg font-semibold">

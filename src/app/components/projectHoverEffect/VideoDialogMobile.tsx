@@ -44,7 +44,6 @@ const ProjectVideo = memo(
               playsInline
               preload="auto"
               onLoadedData={() => {
-                console.log('Video loaded');
                 onLoad();
               }}
             />
@@ -67,7 +66,6 @@ const GifDialogMobile = ({
   }, [onClose]);
 
   useEffect(() => {
-    console.log('Dialog open state:', isOpen);
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       return () => {
@@ -118,10 +116,7 @@ const GifDialogMobile = ({
             className="relative w-full"
             onClick={e => e.stopPropagation()}
           >
-            <ProjectVideo
-              identifier={identifier}
-              onLoad={() => console.log('ProjectVideo onLoad called')}
-            />
+            <ProjectVideo identifier={identifier} onLoad={() => {}} />
           </motion.div>
 
           <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-black/30 border border-white/10 shadow-lg">

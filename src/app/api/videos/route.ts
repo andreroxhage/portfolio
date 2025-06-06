@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/app/lib/supabaseClient';
+import { sql } from '@/app/lib/neonClient';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -12,16 +12,50 @@ export async function GET(request: Request) {
     );
   }
 
-  const { data, error } = await supabase
-    .from('project_videos')
-    .select('*')
-    .eq('project_slug', projectSlug)
-    .order('created_at', { ascending: false });
+  try {
+    let data = await sql`
+      SELECT 
+        id,
+        item_type,
+        item_identifier,
+        filename,
+        content_type,
+        file_size,
+        created_at
+      FROM project_videos 
+      WHERE item_type = 'project' AND item_identifier = ${projectSlug}
+      ORDER BY created_at DESC
+    `;
 
-  if (error) {
-    console.error('Supabase error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    if (data.length === 0) {
+      data = await sql`
+        SELECT 
+          id,
+          item_type,
+          item_identifier,
+          filename,
+          content_type,
+          file_size,
+          created_at
+        FROM project_videos 
+        WHERE item_type = 'idea' AND item_identifier = ${projectSlug}
+        ORDER BY created_at DESC
+      `;
+    }
+
+    const videosWithApiUrls = data.map(video => ({
+      ...video,
+      video_url: `/api/videos/stream/${video.id}`,
+    }));
+
+    return NextResponse.json(videosWithApiUrls);
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Neon database error:', error);
+    }
+    return NextResponse.json(
+      { error: 'Database query failed' },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json(data);
 }
