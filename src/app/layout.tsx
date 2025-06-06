@@ -1,5 +1,5 @@
-import React from 'react';
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import './globals.css';
 import Head from 'next/head';
 import FloatingNav from './components/Navbar/FloatingNav';
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html
