@@ -1,25 +1,13 @@
 import { Project } from '@/app/types';
+import { PlusIcon } from '@heroicons/react/24/outline';
 
 const ProjectCard = ({ project }: { project: Project }) => (
-  <div className="hover:bg-white bg-primary-whiteish/60 p-4 rounded-3xl group transition-all duration-150">
-    <div className="text-primary-blackish flex justify-between items-center">
-      <label className="text-lg md:text-xl font-semibold text-primary-grey">
+  <div className="bg-gray-900 border border-white/10 rounded-4xl hover:bg-gray-800 cursor-pointer transition-all duration-150 p-6">
+    <div className="flex items-center gap-4">
+      <PlusIcon className="w-5 h-5 text-gray-300 flex-shrink-0" />
+      <h3 className="text-base md:text-lg font-medium text-gray-100">
         {project.title}
-      </label>
-      <span>{project.date}</span>
-    </div>
-    <p className="text-base md:text-lg font-light text-primary-grey mt-2 text-left">
-      {project.subtitle}
-    </p>
-    <div className="flex flex-wrap gap-2 mt-4">
-      {project.tags.map(tag => (
-        <span
-          key={tag}
-          className="px-3 py-1 rounded-xl border border-gray-800/40 text-primary-grey-brighter w-fit text-xs"
-        >
-          {tag}
-        </span>
-      ))}
+      </h3>
     </div>
   </div>
 );

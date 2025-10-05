@@ -16,10 +16,19 @@ export default function About() {
 
   return (
     <>
-      <div className="bg-primary-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
-        <div className="max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
+      <div className="bg-brand-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
+        <motion.h3
+          className="max-w-7xl mx-auto px-4 md:pt-24 pt-16 text-brand-grey text-3xl md:text-6xl font-medium"
+          initial={{ opacity: 0, translateY: 60 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          viewport={{ once: true }}
+        >
+          About me
+        </motion.h3>
+        <div className="max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <motion.div
-            className="pl-1 w-full sm:pl-0 col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 md:pt-8 pt-14"
+            className="pl-1 w-full sm:pl-0 col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 md:pt-8 pt-12"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -29,17 +38,17 @@ export default function About() {
               {about.map((item, index) => (
                 <div key={index}>
                   <motion.h3
-                    className={`text-xl md:text-3xl font-semibold pb-1 md:pb-4 cursor-pointer  ${
+                    className={`text-xl md:text-3xl font-mediun pb-1 md:pb-4 cursor-pointer  ${
                       activeIndex === index
-                        ? 'text-primary-grey'
-                        : 'text-primary-grey-brighter'
+                        ? 'text-brand-grey'
+                        : 'text-brand-grey-brighter'
                     } hover:text-secondary-green-darker`}
                     onClick={() => handleTitleClick(index)}
                     whileHover={{
                       translateY: -4,
                       color: [
                         { color: 'text-secondary-green-darker' },
-                        { color: 'text-primary-grey-brighter' },
+                        { color: 'text-brand-grey-brighter' },
                       ],
                       transition: { duration: 0.2, ease: 'easeInOut' },
                     }}
@@ -49,7 +58,7 @@ export default function About() {
                   <AnimatePresence>
                     {activeIndex === index && (
                       <motion.hr
-                        className="h-0.5 pt-2 col-start-1 col-end-4 border-primary-grey"
+                        className="h-0.5 pt-2 col-start-1 col-end-4 border-brand-grey"
                         initial={{ width: '0%' }}
                         animate={{ width: '100%' }}
                         exit={{ width: '0%' }}

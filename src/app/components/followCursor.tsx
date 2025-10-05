@@ -125,7 +125,7 @@ export const FollowPointer = ({
           opacity: 0,
         }}
         className={
-          'text-center bg-neutral-200 text-primary-blackish h-28 w-28 whitespace-nowrap text-lg rounded-full flex justify-center items-center'
+          'text-center bg-neutral-200 text-brand-blackish h-28 w-28 whitespace-nowrap text-lg rounded-full flex justify-center items-center'
         }
       >
         {title || `William Shakespeare`}

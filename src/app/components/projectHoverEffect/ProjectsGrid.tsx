@@ -1,143 +1,180 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { projects, ideas } from '@/app/data';
-import Link from 'next/link';
 import { Project } from '@/app/types';
-import ProjectCard from '@/app/components/projectHoverEffect/ProjectCard';
-import VideoDialog from './VideoDialog';
-import { useProjectHover } from '../../contexts/ProjectHoverContext';
-import { preloadVideos } from '@/app/hooks/useVideo';
+import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
+import { preloadVideos, useVideo } from '@/app/hooks/useVideo';
+import LoadingScreen from '@/app/components/projectHoverEffect/LoadingScreen';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useQueryClient } from '@tanstack/react-query';
+import ImageSlider from '@/app/components/ImageSlider';
 
 const ProjectGrid = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [currentItem, setCurrentItem] = useState<Project | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isLoading, setIsLoading] = useState(false);
-  const [hoverKey, setHoverKey] = useState(0);
-  const { setIsProjectHovered } = useProjectHover();
+  const queryClient = useQueryClient();
 
   const allItems = useMemo(
-    () => [...(projects as Project[]), ...(ideas as Project[])],
+    () =>
+      [...(projects as Project[]), ...(ideas as Project[])].sort((a, b) => {
+        const orderA = a.order ?? 999;
+        const orderB = b.order ?? 999;
+        return orderA - orderB;
+      }),
     []
   );
 
-  // Preload all videos
+  const [expandedProjectId, setExpandedProjectId] = useState<string | null>(
+    null
+  );
+  const [isVideosLoaded, setIsVideosLoaded] = useState(false);
+
   useEffect(() => {
     const identifiers = allItems
       .map(item => item.projectSlug || (item as any).id)
       .filter(Boolean);
 
-    preloadVideos(identifiers);
-  }, [allItems]);
+    preloadVideos(identifiers, queryClient).then(() => {
+      const firstProject = allItems[0];
+      const firstProjectId = firstProject
+        ? firstProject.projectSlug || (firstProject as any).id
+        : null;
+      setExpandedProjectId(firstProjectId);
+      setIsVideosLoaded(true);
+    });
+  }, [allItems, queryClient]);
 
-  useEffect(() => {
-    const shouldShowPill = currentItem && isHovered;
-    setIsProjectHovered(!!shouldShowPill);
-  }, [currentItem, isHovered, setIsProjectHovered]);
-
-  const handleMouseEnter = (item: Project) => {
-    setIsLoading(true);
-    setIsHovered(true);
-    setCurrentItem(item);
-    setHoverKey(prevKey => prevKey + 1);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTimeout(() => {
-      if (!isHovered) {
-        setCurrentItem(null);
-        setIsLoading(false);
-      }
-    }, 100);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  const renderItem = (item: Project) => {
-    const commonProps = {
-      onMouseEnter: () => handleMouseEnter(item),
-      onMouseLeave: handleMouseLeave,
-      onMouseMove: handleMouseMove,
-      className: 'col-span-5',
-    };
-
-    if ('projectSlug' in item && item.projectSlug) {
-      return (
-        <Link
-          key={item.title}
-          {...commonProps}
-          href={`/projects/${item.projectSlug}`}
-        >
-          <ProjectCard project={item} />
-        </Link>
-      );
-    }
-
-    return (
-      <button
-        key={item.title}
-        {...commonProps}
-        onClick={() => {}}
-        aria-label={`View preview of ${item.title}`}
-      >
-        <ProjectCard project={item} />
-      </button>
-    );
-  };
+  const handleCardClick = useCallback((itemId: string) => {
+    setExpandedProjectId(itemId);
+  }, []);
 
   return (
-    <div className="flex flex-col h-full justify-between items-center pb-6 flex-grow">
-      <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
-        <div className="grid grid-cols-10 gap-4 w-full">
-          {allItems.map(item => renderItem(item))}
+    <>
+      <AnimatePresence>{!isVideosLoaded && <LoadingScreen />}</AnimatePresence>
+
+      {/* Main Content */}
+      <div className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-12">
+          <motion.div
+            className="md:col-span-5 flex flex-col gap-6 justify-center"
+            layout
+          >
+            {allItems.map(item => {
+              const itemId = item.projectSlug || (item as any).id;
+              const isExpanded = expandedProjectId === itemId;
+
+              return (
+                <ProjectCardDesktop
+                  key={itemId || item.title}
+                  project={item}
+                  isExpanded={isExpanded}
+                  onClick={() => handleCardClick(itemId)}
+                />
+              );
+            })}
+          </motion.div>
+
+          <RightPreviewPanel
+            itemIdentifier={expandedProjectId || ''}
+            isActive={!!expandedProjectId}
+            currentProject={allItems.find(
+              item =>
+                (item.projectSlug || (item as any).id) === expandedProjectId
+            )}
+          />
         </div>
       </div>
-
-      <AnimatePresence>
-        {isHovered &&
-          currentItem &&
-          (currentItem.projectSlug || currentItem.id) && (
-            <VideoDialog
-              key={`dialog-${hoverKey}`}
-              identifier={currentItem.projectSlug || (currentItem.id as string)}
-              mousePosition={mousePosition}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-            />
-          )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {currentItem && isHovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="hover:bg-white flex bg-primary-whiteish/60 p-3 px-4 gap-8 text-base rounded-3xl group transition-all duration-150 z-40"
-          >
-            <div className="flex items-center gap-8">
-              <label className="font-medium text-primary-grey">
-                {currentItem.title}
-              </label>
-              <label className="text-primary-grey-brighter">
-                {currentItem.date}
-              </label>
-            </div>
-            {currentItem.projectSlug && (
-              <div className="flex items-center gap-2 text-primary-grey-brighter">
-                <span>|</span>
-                <span className="text-sm">Click to read more</span>
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    </>
   );
 };
 
 export default ProjectGrid;
+
+const RightPreviewPanel = ({
+  itemIdentifier,
+  isActive,
+  currentProject,
+}: {
+  itemIdentifier: string;
+  isActive: boolean;
+  currentProject?: Project;
+}) => {
+  const { video_url: videoUrl } = useVideo(itemIdentifier || '', true);
+  const [prevVideoUrl, setPrevVideoUrl] = useState<string>('');
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+
+  useEffect(() => {
+    if (videoUrl && videoUrl !== prevVideoUrl) {
+      setPrevVideoUrl(videoUrl);
+      setIsFirstLoad(false);
+    }
+  }, [videoUrl, prevVideoUrl]);
+
+  const hasImageSlider =
+    currentProject?.imageSlider && currentProject.imageSlider.length > 0;
+  const showPanel =
+    isActive && !!itemIdentifier && (!!videoUrl || hasImageSlider);
+  const shouldRound = currentProject?.roundedCorners !== false;
+
+  const easings = {
+    videoTransition: [0.45, 0.0, 0.15, 1] as const,
+  };
+
+  return (
+    <div className="hidden md:block md:col-span-7">
+      <div className="sticky top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
+        <AnimatePresence mode="wait">
+          {showPanel && (
+            <>
+              {hasImageSlider ? (
+                <motion.div
+                  key={itemIdentifier}
+                  className={`${shouldRound ? 'rounded-[40px]' : ''} overflow-hidden`}
+                  initial={{ opacity: 0, y: -64 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 64 }}
+                  transition={{
+                    duration: isFirstLoad ? 0.6 : 0.5,
+                    ease: easings.videoTransition,
+                  }}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                  }}
+                >
+                  <ImageSlider
+                    images={currentProject.imageSlider!.map(src => src)}
+                    intervalTime={currentProject.intervalTime || 5000}
+                  />
+                </motion.div>
+              ) : (
+                <motion.video
+                  key={itemIdentifier}
+                  src={videoUrl}
+                  className={`shadow-xl ${shouldRound ? 'rounded-[40px]' : ''}`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  initial={{ opacity: 0, y: -64 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 64 }}
+                  transition={{
+                    duration: isFirstLoad ? 0.6 : 0.5,
+                    ease: easings.videoTransition,
+                  }}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                  }}
+                />
+              )}
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};

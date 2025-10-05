@@ -30,7 +30,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-lg font-semibold text-gray-500">
+      <div className="min-h-screen flex items-center justify-center text-lg font-semium text-gray-500">
         Project not found
       </div>
     );
@@ -38,13 +38,13 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
   return (
     <motion.div id="header" style={{ backgroundColor: hue }}>
-      <header className="max-w-7xl mx-auto px-4  w-fullflex justify-center items-start md:items-center md:py-6 py-10">
-        <div className="flex flex-col gap-2">
+      <header className="max-w-7xl mx-auto px-4 w-full flex justify-start items-start py-20">
+        <div className="flex flex-row items-baseline gap-4">
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold text-secondary-green-darker mb-2"
+            className="text-4xl md:text-6xl font-medium tracking-tighter text-secondary-green-darker"
             style={{ color: project.titleColor || '#739966' }}
-            initial={{ opacity: 0, translateY: 60 }}
-            animate={{ opacity: 1, translateY: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{
               duration: 0.4,
               ease: 'easeOut',
@@ -52,40 +52,23 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           >
             {project.title}
           </motion.h1>
-          <div className="flex flex-row items-start space-x-8">
-            {project.subtitle && (
-              <motion.h2
-                className="text-xl md:text-2xl font-medium"
-                style={{
-                  color: project.subtitleColor || '#40403B',
-                }}
-                initial={{ opacity: 0, translateY: 60 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  duration: 0.4,
-                  ease: 'easeOut',
-                }}
-              >
-                {project.subtitle}
-              </motion.h2>
-            )}
-            {project.date && (
-              <motion.h3
-                className="text-xl md:text-2xl font-normal"
-                style={{
-                  color: project.subtitleColor || '#788876',
-                }}
-                initial={{ opacity: 0, translateY: 60 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                  duration: 0.4,
-                  ease: 'easeOut',
-                }}
-              >
-                {project.date}
-              </motion.h3>
-            )}
-          </div>
+          {project.date && (
+            <motion.h3
+              className="text-lg md:text-2xl font-normal opacity-80"
+              style={{
+                color: project.subtitleColor || '#788876',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.4,
+                ease: 'easeOut',
+                delay: 0.1,
+              }}
+            >
+              {project.date}
+            </motion.h3>
+          )}
         </div>
       </header>
 
@@ -115,7 +98,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                 viewport={{ once: true }}
               >
                 {title && layout !== 'two-col' && (
-                  <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-3">
+                  <h2 className="text-2xl md:text-3xl font-semium text-brand-grey-brighter mb-3">
                     {title}
                   </h2>
                 )}
@@ -125,7 +108,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                     {/* Left Column */}
                     <div className="space-y-8">
                       {title && (
-                        <h2 className="text-2xl md:text-3xl font-semibold text-primary-grey-brighter mb-0">
+                        <h2 className="text-2xl md:text-3xl font-semium text-brand-grey-brighter mb-0">
                           {title}
                         </h2>
                       )}
@@ -197,7 +180,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         return (
           <h3
             key={key}
-            className="text-xl md:text-2xl font-semibold text-primary-grey-brighter mb-2"
+            className="text-xl md:text-2xl font-semium text-brand-grey-brighter mb-2"
           >
             {content.text}
           </h3>
@@ -207,10 +190,10 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         return (
           <div
             key={key}
-            className={`${colSpan} font-medium text-primary-grey-brighter`}
+            className={`${colSpan} font-medium text-brand-grey-brighter`}
           >
             {content.subtitle && (
-              <h4 className="text-xl font-semibold mb-2">{content.subtitle}</h4>
+              <h4 className="text-xl font-semium mb-2">{content.subtitle}</h4>
             )}
             {content.paragraphs?.map((paragraph: string, pIndex: number) => (
               <p className="m-0 text-base md:text-lg mb-2" key={pIndex}>
@@ -222,9 +205,9 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
       case 'list':
         return (
-          <div key={key} className={`${colSpan} text-primary-grey-brighter`}>
+          <div key={key} className={`${colSpan} text-brand-grey-brighter`}>
             {content.subtitle && (
-              <h4 className="text-xl font-semibold mb-2">{content.subtitle}</h4>
+              <h4 className="text-xl font-semium mb-2">{content.subtitle}</h4>
             )}
             {content.style === 'bullet' ? (
               <ul className="list-disc pl-5">
@@ -238,7 +221,8 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                         item
                       ) : (
                         <>
-                          <strong>{item.prefix}:</strong> {item.text}
+                          <span className="font-medium">{item.prefix}:</span>{' '}
+                          {item.text}
                         </>
                       )}
                     </li>
@@ -257,7 +241,8 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
                         item
                       ) : (
                         <>
-                          <strong>{item.prefix}:</strong> {item.text}
+                          <span className="font-medium">{item.prefix}:</span>{' '}
+                          {item.text}
                         </>
                       )}
                     </li>
@@ -302,7 +287,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           >
             <div className="relative">
               {content.loading && (
-                <VideoLoadingAnimation className="absolute inset-0 bg-white/20 backdrop-blur-sm rounded-[40px]" />
+                <VideoLoadingAnimation className="absolute inset-0 backdrop-blur-sm rounded-[40px]" />
               )}
               <video
                 className={`max-w-full max-h-full object-contain rounded-[40px] transition-opacity duration-300 ${

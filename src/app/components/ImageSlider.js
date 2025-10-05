@@ -13,14 +13,19 @@ const ImageSlider = ({ images, intervalTime }) => {
     return () => clearInterval(interval);
   }, [images.length, intervalTime]);
 
+  const currentImageSrc = images[currentImage];
+  const isStringPath = typeof currentImageSrc === 'string';
+
   return (
     <motion.div key={currentImage}>
       <Image
         className="h-full w-full rounded-sm"
-        src={images[currentImage]}
+        src={currentImageSrc}
         alt={
           'A mockup of a computer displaying the interface of Join a customer data platform'
         }
+        width={isStringPath ? 1200 : undefined}
+        height={isStringPath ? 800 : undefined}
         priority
         style={{
           maxWidth: '100%',

@@ -29,7 +29,7 @@ export default function Resume() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-primary-vanilla"
+                className="w-6 h-6 text-brand-vanilla"
                 initial="hidden"
                 animate="visible"
               >
@@ -47,7 +47,7 @@ export default function Resume() {
                 />
               </motion.svg>
               <motion.h3
-                className="text-xl sm:text-2xl font-semibold text-primary-vanilla"
+                className="text-xl sm:text-2xl font-medium text-brand-vanilla"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
@@ -68,7 +68,7 @@ export default function Resume() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-primary-vanilla"
+                className="w-6 h-6 text-brand-vanilla"
                 initial="hidden"
                 animate="visible"
               >
@@ -86,7 +86,7 @@ export default function Resume() {
                 />
               </motion.svg>
               <motion.h3
-                className="text-xl sm:text-2xl font-semibold text-primary-vanilla"
+                className="text-xl sm:text-2xl font-medium text-brand-vanilla"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
@@ -107,7 +107,7 @@ export default function Resume() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6 text-primary-vanilla"
+                className="w-6 h-6 text-brand-vanilla"
                 initial="hidden"
                 animate="visible"
               >
@@ -125,7 +125,7 @@ export default function Resume() {
                 />
               </motion.svg>
               <motion.h3
-                className="text-xl sm:text-2xl font-semibold text-primary-vanilla"
+                className="text-xl sm:text-2xl font-medium text-brand-vanilla"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
@@ -176,7 +176,7 @@ export default function Resume() {
               {item.date && (
                 <motion.div
                   key={index}
-                  className="px-4 py-2 my-3 rounded-xl border border-primary-grey-brighter w-fit text-sm"
+                  className="px-4 py-2 my-3 rounded-xl border border-brand-grey-brighter w-fit text-sm"
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: resumeInView ? 1 : 0.25 - 0.08 * itemIndex,
