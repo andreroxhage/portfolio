@@ -15,7 +15,7 @@ const FloatingNav = () => {
   const pathname = usePathname();
   const { isProjectHovered } = useProjectHover();
 
-  const isProjectsRoute = pathname?.startsWith('/projects');
+  const isProjectsRoute = pathname?.endsWith('/projects');
   const shouldShowArrows = !isProjectsRoute;
   const shouldUseScrollOpacity = true;
 
