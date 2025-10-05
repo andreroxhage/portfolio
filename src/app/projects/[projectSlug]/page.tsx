@@ -10,6 +10,7 @@ import VideoLoadingAnimation from '@/app/components/VideoLoadingAnimation';
 export default function Page({ params }: { params: { projectSlug: string } }) {
   const project = projects.find(p => p.projectSlug === params.projectSlug);
   const [videoUrl, setVideoUrl] = useState<string>('');
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -253,7 +254,8 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           </div>
         );
 
-      case 'image':
+      case 'image': {
+        const isImageLoaded = loadedImages.has(key);
         return (
           <ScrollScaleWrapper
             key={key}
@@ -263,10 +265,15 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             <Image
               src={content.src}
               alt={content.alt || 'Section image'}
-              className="rounded-lg w-full"
+              className={`rounded-lg w-full transition-opacity duration-500 ease-out ${
+                isImageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
               sizes={sizeConfig.sizes}
               width={sizeConfig.width}
               height={sizeConfig.height}
+              onLoad={() => {
+                setLoadedImages(prev => new Set(prev).add(key));
+              }}
             />
             {content.caption && (
               <p className="text-sm text-gray-500 mt-2 text-center">
@@ -275,6 +282,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             )}
           </ScrollScaleWrapper>
         );
+      }
       case 'video':
         if (!videoUrl) {
           return null;
