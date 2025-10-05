@@ -2,22 +2,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import mockup1 from '@/../public/resource/joinMockup1.png';
 import mockup2 from '@/../public/resource/joinMockup2.png';
-import { currentWork, projects } from '@/app/data';
-import { TextRevealCard } from '../components/text-reveal-card';
+import { currentWork } from '@/app/data';
 import { useRef } from 'react';
-import Resume from '../components/Resume';
 import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 import ImageSlider from '../components/ImageSlider';
 import Link from 'next/link';
-import MagneticWrapper from '../components/MagneticWrapper';
-import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 
 export default function CurrentWork() {
   const work = currentWork[0];
-  const p = projects;
   const container = useRef(null);
-  const resumeRef = useRef(null);
   const images = [mockup1, mockup2];
 
   const { scrollYProgress } = useScroll({
@@ -25,32 +18,52 @@ export default function CurrentWork() {
     offset: [0, 1],
   });
 
-  const hue = useTransform(scrollYProgress, [0, 1], ['#ffffff00', '#ffffff30']);
+  const hue = useTransform(scrollYProgress, [0, 1], ['#ffffff00', '#ffffff32']);
 
   return (
     <motion.div
       id="work"
-      className={`h-fit flex-row items-center md:py-12 py-4 pb-12`}
+      className={`flex-row items-center md:pb-48 pt-24 h-screen py-4`}
       style={{ backgroundColor: hue }}
     >
-      <div
-        ref={container}
-        className="max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4"
-      >
-        <motion.h3
-          className="mt-4 md:mt-12 text-3xl md:text-5xl font-semibold text-primary-whiteish"
-          initial={{ opacity: 0, translateY: 60 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          viewport={{ once: true }}
+      <div className="max-w-7xl mx-auto h-screen px-4 mt-8 md:pt-12 mb-8 md:mb-6 pt-4">
+        <div
+          ref={container}
+          className="mt-4 md:mt-12 flex gap-4 items-end justify-between"
         >
-          {work.sectionTitle}
-        </motion.h3>
-        <div className="gap-x-8 mt-9 bg-primary-vanilla rounded-xl  grid grid-cols-10 text-2xl  text-primary-grey-brighter items-center">
+          <motion.h3
+            className="text-3xl md:text-5xl font-medium text-brand-whiteish"
+            initial={{ opacity: 0, translateY: 60 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          >
+            {work.sectionTitle}
+          </motion.h3>
+          <Link
+            href="/projects"
+            className="group cursor-pointer flex items-end"
+          >
+            <motion.span
+              className="text-base md:text-lg font-medium text-brand-whiteish hover:text-secondary-green cursor-pointer"
+              initial={{ opacity: 0, translateY: 60 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              viewport={{ once: true }}
+              whileHover={{
+                translateY: -4,
+                transition: { duration: 0.2, ease: 'easeInOut' },
+              }}
+            >
+              See projects
+            </motion.span>
+          </Link>
+        </div>
+        <div className="gap-x-8 mt-9 bg-brand-vanilla rounded-xl  grid grid-cols-10 text-2xl  text-brand-grey-brighter items-center">
           <div className="w-full col-start-1 px-3 col-span-10 md:px-0 md:col-start-2 md:col-span-5 max-w-[650px] md:pt-0 my-8 md:my-12 pt-2">
             <div className="flex flex-col gap-x-6">
               <motion.h3
-                className="text-2xl md:text-4xl font-semibold pb-1 md:pb-4 cursor-pointer text-primary-grey"
+                className="text-2xl md:text-4xl font-medium pb-1 md:pb-4 cursor-pointer text-brand-grey"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -67,22 +80,6 @@ export default function CurrentWork() {
               >
                 {work.description}
               </motion.p>
-              <motion.div
-                className="flex flex-wrap gap-3 mt-6"
-                initial={{ opacity: 0, translateY: 60 }}
-                whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                viewport={{ once: true }}
-              >
-                {Object.entries(work.tags).map(([key, tag]) => (
-                  <div
-                    key={`${work.title}-${key}`}
-                    className="px-4 py-2 rounded-xl border border-neutral-600 text-neutral-700 w-fit text-sm cursor-default"
-                  >
-                    {tag}
-                  </div>
-                ))}
-              </motion.div>
             </div>
           </div>
 
@@ -94,15 +91,16 @@ export default function CurrentWork() {
           </ScrollScaleWrapper>
         </div>
       </div>
+      {/*
 
-      {/*  Projects */}
+      Projects
       <div className="max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
         <Link
           href={'/projects'}
-          className="mt-4 group md:mt-12 flex gap-4 text-primary-whiteish justify-between"
+          className="mt-4 group md:mt-12 flex gap-4 text-brand-whiteish justify-between"
         >
           <motion.h3
-            className="text-3xl md:text-5xl font-semibold cursor-pointer group-hover:text-secondary-green"
+            className="text-3xl md:text-5xl font-medium cursor-pointer text-brand-whiteish group-hover:text-secondary-green"
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -116,7 +114,7 @@ export default function CurrentWork() {
           </motion.h3>
           <div className="group cursor-pointer flex items-end">
             <motion.label
-              className="text-base md:text-lg font-medium text-primary-whiteish group-hover:text-secondary-green cursor-pointer"
+              className="text-base md:text-lg font-medium text-brand-whiteish group-hover:text-secondary-green cursor-pointer"
               whileHover={{
                 translateY: -4,
                 transition: { duration: 0.2, ease: 'easeInOut' },
@@ -127,7 +125,6 @@ export default function CurrentWork() {
           </div>
         </Link>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-9">
           {Object.values(p)
             .slice(0, 2)
@@ -135,12 +132,12 @@ export default function CurrentWork() {
               <Link
                 key={index}
                 href={`/projects/${project.projectSlug}`}
-                className="bg-primary-vanilla rounded-xl p-4 group hover:bg-secondary-green-lighter active:bg-secondary-green-darker transition-all duration-300 ease-in-out"
+                className="bg-brand-vanilla rounded-xl p-4 group hover:bg-secondary-green-lighter active:bg-secondary-green-darker transition-all duration-300 ease-in-out"
               >
                 <div className="flex flex-col h-full">
                   <div className="flex w-full justify-between">
                     <motion.h3
-                      className="text-2xl md:text-3xl font-semibold cursor-pointer text-primary-grey"
+                      className="text-2xl md:text-3xl font-medium cursor-pointer text-brand-grey"
                       initial={{ opacity: 0, translateY: 60 }}
                       whileInView={{
                         opacity: 1,
@@ -154,10 +151,10 @@ export default function CurrentWork() {
                     >
                       {project.title}
                     </motion.h3>
-                    <ArrowUpRightIcon className="size-8 sm:size-10 md:size-12 text-primary-grey group-hover:scale-110 transition-all duration-300 ease-in-out"></ArrowUpRightIcon>
+                    <ArrowUpRightIcon className="size-8 sm:size-10 md:size-12 text-brand-grey group-hover:scale-110 transition-all duration-300 ease-in-out"></ArrowUpRightIcon>
                   </div>
                   <motion.p
-                    className="text-lg md:text-xl font-medium text-secondary-grey  text-primary-grey"
+                    className="text-lg md:text-xl font-medium text-secondary-grey  text-brand-grey"
                     initial={{ opacity: 0, translateY: 20 }}
                     whileInView={{
                       opacity: 1,
@@ -181,23 +178,47 @@ export default function CurrentWork() {
                       height={500}
                     />
                   </MagneticWrapper>
-
-                  <div className="flex flex-wrap gap-3">
-                    {Object.entries(project.tags).map(([key, tag]) => (
-                      <div
-                        key={`${project.projectSlug}-${key}`}
-                        className="px-4 py-2 rounded-xl border border-neutral-600 text-neutral-700 w-fit text-sm cursor-default"
-                      >
-                        {tag}
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </Link>
             ))}
         </div>
       </div>
-
+      */}
+      {/*
+        About
+      <div className="max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
+        <Link
+          href={'/projects'}
+          className="mt-4 group md:mt-12 flex gap-4 text-brand-whiteish justify-between"
+        >
+          <motion.h3
+            className="text-3xl md:text-5xl font-medium cursor-pointer text-brand-whiteish group-hover:text-secondary-green"
+            initial={{ opacity: 0, translateY: 60 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            viewport={{ once: true }}
+            whileHover={{
+              translateY: -4,
+              transition: { duration: 0.2, ease: 'easeInOut' },
+            }}
+          >
+            Projects
+          </motion.h3>
+          <div className="group cursor-pointer flex items-end">
+            <motion.label
+              className="text-base md:text-lg font-medium text-brand-whiteish group-hover:text-secondary-green cursor-pointer"
+              whileHover={{
+                translateY: -4,
+                transition: { duration: 0.2, ease: 'easeInOut' },
+              }}
+            >
+              See all
+            </motion.label>
+          </div>
+        </Link>
+      </div>
+      */}
+      {/*  
       <div className="mx-auto h-full px-4 w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
         <motion.div
           id="about"
@@ -214,8 +235,9 @@ export default function CurrentWork() {
           ></TextRevealCard>
         </motion.div>
 
-        <Resume></Resume>
+   <Resume></Resume> 
       </div>
+      */}
     </motion.div>
   );
 }

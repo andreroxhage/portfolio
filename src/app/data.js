@@ -4,20 +4,16 @@ export const links = [
     href: '/#header',
   },
   {
-    title: 'About',
-    href: '/#about',
-  },
-  {
-    title: 'Work',
-    href: '/#work',
-  },
-  {
-    title: 'Projects & ideas',
+    title: 'Work & Projects',
     href: '/projects',
   },
   {
-    title: 'Voluntary Work',
-    href: '/#voluntary-work',
+    title: 'Contact',
+    href: '/#contact',
+  },
+  {
+    title: 'Photography',
+    href: '/#photography',
   },
 ];
 
@@ -40,17 +36,9 @@ export const about = [
 
 export const currentWork = [
   {
-    sectionTitle: 'Current work',
-    title: 'InterMail',
+    sectionTitle: 'Recent work',
+    title: 'Join',
     description: `In my role as a Software Design Engineer, I bridge the gap between design and development, working closely with cross-functional teams to create a seamless and intuitive customer data platform. My involvement spans from front-end development to strategic design decisions, ensuring that usability and user-centricity remain central to every solution. Leading a comprehensive redesign effort, I focused on enhancing the platform’s usability, making it more intuitive and easy to learn.`,
-    tags: {
-      tag1: 'Frontend',
-      tag2: 'UX',
-      tag3: 'SaaS',
-      tag4: 'Vue',
-      tag5: 'Bootstrap',
-      tag6: 'Figma',
-    },
     resumeTitle: 'Are you a LinkedIn stalker?',
   },
 ];
@@ -58,33 +46,39 @@ export const currentWork = [
 export const ideas = [
   {
     id: 'i1',
-    title: 'Stopwatch',
-    subtitle: 'Double-tap & your stopwatch is ready!',
-    videoAlt: 'IOS prototype',
-    date: '2025',
-    tags: ['IOS', 'Concept', 'Home indicator'],
+    title: 'Join',
+    subtitle:
+      "Customer data platforms shouldn't feel like rocket science. I led Join's redesign to turn complex data into clear insights and intuitive workflows, improving usability and driving adoption",
+    videoAlt: 'Join customer data platform interface',
+    date: '2023 – Current',
+    roundedCorners: false,
+    imageSlider: ['/resource/joinMockup1.png', '/resource/joinMockup2.png'],
+    intervalTime: 5000,
+    order: 1,
   },
   {
     id: 'i2',
     title: 'Malmö museum 3D map',
-    subtitle: 'Explore with an interactive 3D navigator!',
+    subtitle:
+      'Museum maps are flat and confusing. This concept reimagines wayfinding with an interactive 3D navigator that helps visitors explore exhibits spatially',
     videoAlt: 'Malmö museum map website to navigate',
     date: '2025',
-    tags: ['3D', 'Spatial design', 'Proof of concept'],
+    order: 5,
   },
 ];
 
 export const projects = [
   {
-    title: 'Spotify Events',
-    subtitle: 'Event Invitations with Spotify’s Unique Strengths',
+    title: 'Spotify events',
+    subtitle:
+      'What if event invitations felt like Spotify Wrapped? This concept turns invites into personalized music experiences, using data and design to build excitement before the party even starts',
     headerSrc: '/resource/projects/p2_gaim.jpeg',
     image: '/resource/projects/p4_d_a.png',
     titleColor: '#739966',
     date: '2025',
     projectSlug: 'spotify-events',
-    tags: ['Spotify', 'Events', 'Concept', 'Design Process'],
     imageAlt: 'Spotify events concept design in Figma',
+    order: 2,
     sections: [
       {
         title: '',
@@ -103,8 +97,8 @@ export const projects = [
             subtitle: 'Problem Statement',
             column: 'left',
             paragraphs: [
-              'Digital invitations often get lost or lack interactive elements, making it difficult for hosts to track attendees and build excitement before the event. Users need a more immersive, music-driven solution that addresses these pain points, particularly low response rates and minimal personalization.',
-              'This concept takes inspiration from Spotify Wrapped, combining emotional resonance, personalization, vibrant visual and auditory design. Imagine receiving an invitation that is more than just an announcement, it’s an experience. A personalized playlist, dynamic visuals, and engaging interactions like common playlists and discussions all set the tone for the event before it even begins.',
+              'Digital invitations often get lost in feeds or lack interactive elements, making it difficult for hosts to track attendees and build excitement before events. Users need a more immersive, music-driven solution that addresses these pain points: low response rates and minimal personalization.',
+              'This concept takes inspiration from Spotify Wrapped, combining emotional resonance, personalization, and vibrant visual and auditory design. Imagine receiving an invitation that is more than an announcement, it is an experience. Personalized playlists, dynamic visuals, and engaging interactions like shared playlists and discussions set the tone before the event even begins.',
             ],
           },
           {
@@ -119,7 +113,7 @@ export const projects = [
               },
               {
                 prefix: 'Personalized Guest Experiences',
-                text: 'Each recipient gets an interactive invitation, complete with event details, the host’s playlist, and playlist suiting the theme or blending of guests’ taste.',
+                text: "Each recipient gets an interactive invitation complete with event details, the host's curated playlist, and algorithmically generated playlists that blend guest preferences or match the event theme.",
               },
               {
                 prefix: 'Integration with Spotify Ecosystem',
@@ -160,7 +154,7 @@ export const projects = [
             type: 'text',
             subtitle: 'Project Scope',
             paragraphs: [
-              'This project focuses on the user journey of individuals who receive an event invitation through various channels, SMS, email, or an in-app Spotify notification. By narrowing the attention to this segment, I ensure every interaction speaks directly to guest needs and expectations. From the second a user opens the invitation to exploring playlists, reviewing event details, or completing an RSVP, every touchpoint is optimized for ease, engagement, and emotional connection.',
+              'This project focuses on the guest experience, from receiving an invitation via SMS, email, or in-app Spotify notification to opening it, exploring playlists, and completing an RSVP. By concentrating on this specific user segment, every touchpoint is optimized for ease, engagement, and emotional connection, ensuring the experience speaks directly to guest needs and expectations.',
             ],
           },
           {
@@ -177,8 +171,9 @@ export const projects = [
                 text: 'Reduce barriers for attendees by ensuring that finding event details, responding, and integrating invitations into their personal schedules is effortless.',
               },
               {
-                prefix: 'Using existing Strengths for Personalized Engagement',
-                text: 'By using the platform´s existing user data, brand identity, and music-driven insights, invitations are customized to create a sense of connection and enhance overall event appeal.',
+                prefix:
+                  'Leverage Existing Strengths for Personalized Engagement',
+                text: "By utilizing the platform's existing user data, brand identity, and music-driven insights through DDI principles, invitations are customized to create a sense of connection and enhance overall event appeal.",
               },
             ],
           },
@@ -198,7 +193,7 @@ export const projects = [
             type: 'text',
             subtitle: 'Digital Reliance, Yet Cumbersome RSVP Management',
             paragraphs: [
-              'Most respondents already rely on social media, email and messaging apps to send out invitations. When asked about their go-to methods, social media emerged as the most frequently used, likely due to its convenience and wide reach. However, they often experience low visibility, invitations can be buried in notifications or feeds, reducing the amount of answers. On a 5-point Likert scale, the average likelihood of adopting digital invitation tools was 4.35, indicating strong interest in leveraging online solutions for event management.',
+              'Most respondents already rely on social media, email, and messaging apps to send invitations. When asked about their go-to methods, social media emerged as the most frequently used, likely due to its convenience and wide reach. However, they often experience low visibility: invitations get buried in notifications or feeds, reducing response rates. On a 5-point Likert scale, respondents rated their likelihood of adopting digital invitation tools at 4.35, indicating strong interest in more robust online solutions for event management.',
             ],
           },
           {
@@ -217,7 +212,7 @@ export const projects = [
             type: 'text',
             subtitle: 'Openness to Music Integration',
             paragraphs: [
-              'An impressive 42% expressed an interest to include music elements in their invitations. Many respondents believe music sets the tone for an event and can build excitement beforehand. Whether it’s a casual get-together or a formal occasion, a curated playlist can communicate the vibe instantly. Music integration becomes a key differentiator, offering a more immersive experience. Features like personalized playlists or short previews could elevate the invitation beyond text and images.',
+              "An impressive 42% expressed interest in including music elements in their invitations. Many respondents believe music sets the tone for an event and builds excitement beforehand. Whether it's a casual get-together or a formal occasion, a curated playlist communicates the vibe instantly. Music integration becomes a key differentiator, offering a more immersive experience through UGC-driven playlists and personalized previews that elevate invitations beyond static text and images.",
             ],
           },
         ],
@@ -248,8 +243,8 @@ export const projects = [
             type: 'text',
             subtitle: 'Personalization & Emotional Resonance',
             paragraphs: [
-              'On a scale of 1 to 5, respondents rated personalization at 3.44, which means they generally find personalization in event invitations important. Regardless of the somewhat low rating of importance, participants expressed through an open questionnaire that personalization shows that the host has put genuine effort into the invitation. Recipients who feel valued are more inclined to attend, fostering a positive emotional connection even before the event begins.',
-              'Whether it’s highlighting a theme (e.g., beach party, formal gala) or sharing a personal note, customization helps guests set the event’s vibe. Personalized invites can stand out amid a cluttered inbox or social feed, increasing the likelihood of guest engagement and timely RSVPs.',
+              "On a scale of 1 to 5, respondents rated personalization at 3.44, indicating they generally find it important in event invitations. Despite the moderate quantitative rating, qualitative responses revealed that personalization demonstrates the host's genuine effort. Recipients who feel valued are more inclined to attend, fostering positive emotional connections before the event begins.",
+              "Whether highlighting a theme (beach party, formal gala) or sharing a personal note, customization helps guests understand the event's vibe. Personalized invites stand out in cluttered inboxes and social feeds, increasing engagement and timely RSVPs.",
             ],
           },
           {
@@ -269,7 +264,7 @@ export const projects = [
             type: 'text',
             subtitle: 'Persona Development',
             paragraphs: [
-              'Meet Kate: a tech-savvy profile soon to be 30 years old who loves hosting parties. Making a persona helped me keep the design grounded in realistic user goals.',
+              'Meet Kate: a tech-savvy 30-year-old who loves hosting parties. Creating this persona helped ground the design in realistic user goals and behaviors, ensuring feature decisions aligned with authentic user needs.',
             ],
           },
         ],
@@ -294,7 +289,7 @@ export const projects = [
             type: 'text',
             subtitle: 'Early Sketches & Prototyping',
             paragraphs: [
-              'By this stage, I had started to figure out what I wanted to create. To validate my ideas, I began with rough sketches and lo-fi wireframes. Although sketching by hand is not one of my strengths, I quickly moved on to Figma.',
+              "With a clear direction emerging, I began validating ideas through rough sketches and lo-fi wireframes. Recognizing that hand sketching isn't my strongest skill, I quickly transitioned to Figma to refine concepts with higher fidelity.",
             ],
           },
           {
@@ -307,7 +302,7 @@ export const projects = [
             type: 'text',
             subtitle: 'User Flows and Scenarios',
             paragraphs: [
-              'Next, I refined the user flows to address key interactions. Kate has just finished customizing her 30th birthday invite using the new Spotify Events feature. She selects a confetti animation to capture the festive mood and pairs it with her lively 90s playlist to set the tone. When her friend Maria taps on the link, she’s greeted by the animated intro, followed by a crisp event summary showing the date, time, and location. With one tap, Maria can RSVP, choosing “Accept!”, and immediately add the event to her Google Calendar so she won’t forget. Curious about the playlist, she scrolls down to preview a few tracks and hits “Save to Library” so she can get into the party spirit beforehand. Everything feels effortless and fun, leaving Maria excited to celebrate with Kate.',
+              'I refined user flows to address key interactions through a concrete scenario: Kate finishes customizing her 30th birthday invite using Spotify Events. She selects a confetti animation to capture the festive mood and pairs it with her curated 90s playlist. When her friend Maria taps the link, she is greeted by the animated intro, followed by a clear event summary showing date, time, and location. With one tap, Maria RSVPs by selecting "Accept!" and immediately adds the event to her Google Calendar. Curious about the music, she scrolls down to preview tracks and hits "Save to Library" to get into the party spirit beforehand. The flow feels effortless and engaging, leaving Maria excited to celebrate.',
             ],
           },
         ],
@@ -330,9 +325,9 @@ export const projects = [
         content: [
           {
             type: 'text',
-            subtitle: 'Features & Functionalities Explanations',
+            subtitle: 'Feature Prioritization',
             paragraphs: [
-              'In order to achieve the core needs of the users, I mapped and prioritized functionalities based on user goals, according to the table below:',
+              'To address core user needs, I mapped and prioritized functionalities based on user goals and technical feasibility, as shown in the table below:',
             ],
           },
         ],
@@ -371,7 +366,7 @@ export const projects = [
             subtitle: 'Attendees & Discussion',
             column: 'left',
             paragraphs: [
-              'On the event landing page, attendees are briefly showcased alongside a discussion section. This allows guests to see who else is going, share excitement, and coordinate details, whether it’s planning a pre-party, carpooling, or outfit themes. To dig deeping in managing attendees and discussions, dedicated sub-pages will be introduced, giving the host and guests full control over how discussions are structured.',
+              'The event landing page showcases attendees alongside a discussion section, allowing guests to see who is attending, share excitement, and coordinate details: planning pre-parties, carpools, or outfit themes. To provide deeper functionality, dedicated sub-pages will handle attendee management and structured discussions, giving hosts and guests full control over conversation flow.',
             ],
           },
           {
@@ -392,15 +387,15 @@ export const projects = [
             column: 'left',
             subtitle: 'Guest Blend & Ethical Considerations',
             paragraphs: [
-              'A core highlight of the concept is the Guest blend playlist, which blends music based on everyone’s music tastes. However, not all users are comfortable sharing their listening data, raising important design ethics questions. To address these concerns, the feature can be permission-based, guests opt in or remain anonymous, ensuring those who prefer privacy aren’t forced to reveal personal preferences. If participants agree, the system can add guests’ songs by individual favorites or shared music taste. Alternatively, if Kate chooses a theme for the event, like an ‘80s party, the playlist can filter tracks to match that vibe while still reflecting each guest’s input. This approach fosters inclusivity while respecting individual boundaries, ensuring everyone feels represented in the playlist, but only if they choose to be.',
+              "A core feature is the Guest Blend playlist, which algorithmically combines guests' music preferences into a cohesive soundtrack. However, not all users are comfortable sharing listening data, raising important design ethics questions. To address privacy concerns, the feature is permission-based: guests opt in or remain anonymous, ensuring those who prefer privacy aren't forced to reveal personal preferences. If participants consent, the system incorporates their individual favorites or shared taste profiles. When hosts set an event theme (like an '80s party), the algorithm filters tracks to match that vibe while still reflecting guest input. This approach balances inclusivity with privacy, ensuring everyone can be represented in the playlist, but only if they choose to be.",
             ],
           },
           {
             type: 'text',
             column: 'left',
-            subtitle: 'Host’s Playlist & Manual Additions',
+            subtitle: 'Host Playlist & Collaborative Additions',
             paragraphs: [
-              'Beyond the Guest blend, the host’s personal playlist sets the event’s overall vibe, offering a baseline selection of songs that reflect the theme. Optionally, the host can allow guests to manually add tracks, either to enrich the event’s atmosphere or showcase personal favorites, making the playlist more collaborative. This dual-layered system (host picks + guest additions) strikes a balance between creative control and communal input, further enhancing the sense of shared ownership around the music and the celebration itself.',
+              "Beyond Guest Blend, the host's personal playlist sets the baseline vibe, offering a curated selection that reflects the event theme. Optionally, hosts can enable manual track additions, allowing guests to enrich the atmosphere or showcase personal favorites. This dual-layered system (host curation plus collaborative UGC input) balances creative control with communal participation, enhancing shared ownership of both the music and the celebration.",
             ],
           },
           {
@@ -409,8 +404,8 @@ export const projects = [
             subtitle:
               'Psychological Perspectives & Inspiration from Spotify Wrapped',
             paragraphs: [
-              'Spotify Wrapped demonstrates how data-driven storytelling can spark widespread engagement and user satisfaction, primarily by transforming user data into a fun, shareable format. This success owes much to behavioral and social theories that emphasize the power of communal participation: once enough users start sharing their “music personality” or yearly stats (as explained by critical mass theory), it triggers a viral loop that motivates others to join in. Meanwhile, Wrapped deftly avoids overwhelming users—despite the large volume of data collected—by filtering and organizing insights into concise, visually appealing “stories,” effectively applying information overload theory. Wrapped also highlights how common-ground theory comes into play when shared musical tastes foster a sense of identity and belonging among listeners.',
-              'Using these principles for Spotify Events could similarly encourage viral sharing and community-building around invitations. By reframing event details into digestible, personalized experiences, each guest feels a deeper connection to both the host and other attendees. Showcasing or blending music preferences can create an instant sense of unity, boosting anticipation and engagement before the celebration even begins. Through strategies that manage data complexity, spark social momentum, and foster common ground, Spotify Events can offer a compelling, communal approach to digital invitations—just as Wrapped has done with users’ annual listening habits.',
+              'Spotify Wrapped demonstrates how DDI-powered storytelling can spark widespread engagement by transforming user data into shareable, emotionally resonant content. Its success stems from behavioral and social theories: critical mass theory explains how initial adopters sharing their "music personality" create viral loops that motivate others to participate. Meanwhile, Wrapped avoids information overload despite processing extensive data by filtering insights into concise, visually appealing "stories." The feature also leverages common-ground theory: shared musical tastes foster identity and belonging among listeners.',
+              "Applying these principles to Spotify Events could similarly encourage viral sharing and community-building around invitations. By reframing event details into digestible, personalized experiences through DDI, each guest feels deeper connections to hosts and attendees. Blending music preferences creates instant unity through UGC, boosting anticipation before celebrations begin. Through strategies that manage data complexity, spark social momentum, and establish common ground, Spotify Events offers a compelling, communal approach to digital invitations, mirroring Wrapped's success with listening habits.",
             ],
           },
           {
@@ -427,20 +422,20 @@ export const projects = [
         content: [
           {
             type: 'text',
-            subtitle: 'Constraints & Considerations',
+            subtitle: 'Technical Constraints & Considerations',
             paragraphs: [
-              'A limitation of the concept is that guest notifications and reminders rely on a Spotify account or app integration. Without an account, participants won’t receive automated updates, increasing the risk of missed changes or late RSVPs if they never revisit the invitation link. While email and SMS can partially address this issue, a truly seamless experience would benefit from robust account linkage. In cases where a Spotify account is not required, collecting an email at the RSVP stage ensures guests can still receive timely updates and reminders, reducing the likelihood of overlooked event details and duplicate sign ups.',
-              'Additionally, creating a Guest blend playlist, or any feature that relies on aggregated user preferences, requires accurate attendee data. Without knowing which Spotify accounts or email addresses correspond to accepted invitations, the system cannot tailor a combined playlist reflecting each guest’s tastes. Robust data structures and user-authentication flows must be in place to collect, process, and match these inputs, ensuring that music recommendations are both personalized and relevant to the confirmed guest list. The dream scenario would be if all of Kate’s friends already used Spotify and the invitation went directly through Spotify, with a fallback link available for those who don’t have accounts.',
-              'Another practical constraint involves balancing music playback with readability. If the invitation’s playlist continues playing when entering the event landing page, guests may be distracted while trying to read important event details. A potential solution is to lower or fade out the volume when users open the detail page or scroll through text-heavy sections, ensuring the music sets the tone without overwhelming the core information.',
+              "Guest notifications and reminders rely on Spotify account integration. Without an account, participants won't receive automated updates, increasing the risk of missed changes or late RSVPs. While email and SMS can partially mitigate this, a seamless experience requires robust account linkage. Collecting email addresses at the RSVP stage ensures guests without Spotify accounts still receive timely updates, reducing overlooked details and duplicate sign-ups.",
+              "Creating Guest Blend playlists requires accurate attendee data mapping. Without knowing which Spotify accounts correspond to accepted invitations, the system cannot tailor combined playlists reflecting each guest's taste profile. Robust data structures and authentication flows must collect, process, and match these inputs, ensuring music recommendations are both personalized and relevant to confirmed attendees. The ideal scenario involves native Spotify delivery with fallback links for non-users.",
+              'Balancing music playback with content readability presents another UX challenge. If playlists continue playing during content consumption, guests may struggle to focus on event details. A potential solution involves dynamic volume control: fading audio when users scroll through text-heavy sections, ensuring music enhances atmosphere without overwhelming core information.',
             ],
           },
           {
             type: 'text',
-            subtitle: 'Outcomes and Future Opportunities',
+            subtitle: 'Outcomes & Future Opportunities',
             paragraphs: [
-              'Early prototype testing revealed strong user enthusiasm for integrated music in invitations and playful visual elements. Beyond the current prototype, several enhancements could elevate this concept further. For instance, gamified elements such as interactive music quizzes could spark friendly competition, while AI DJ X suggestions might tailor playlists to each guest’s preferences in real time. Moreover, this project only addresses a fraction of what a full-scale “Spotify Events” feature might include: managing private vs. public events, enabling users to browse upcoming gatherings, and handling guest access controls could all be essential next steps.',
-              'Finally, this project highlights how Spotify’s expertise in personalization and engagement can translate into event planning. By combining music, dynamic visuals, and intuitive functionality, we redefine how people invite, engage, and celebrate, transforming a simple event invitations into a memorable, community-driven experience.',
-              'On a personal note, I’m deeply passionate about bringing this concept to life. As someone aspiring to join Spotify, I believe these ideas not only showcase my dedication to user-centric design but also align perfectly with Spotify’s mission to connect people through music. I would love the opportunity to help shape this feature into a reality, enabling hosts and guests to celebrate in an even more immersive, musical way.',
+              'Early prototype testing revealed strong enthusiasm for music-integrated invitations and playful visual elements. Several enhancements could elevate this concept further: gamified elements like interactive music quizzes could spark friendly competition, while AI DJ X integration might tailor playlists to individual preferences in real-time. This project addresses only a fraction of a full-scale "Spotify Events" feature: managing private vs. public events, browsing upcoming gatherings, and implementing granular access controls represent essential next steps.',
+              "This project demonstrates how Spotify's expertise in personalization and engagement through DDI and UGC principles can extend into event planning. By combining music, dynamic visuals, and intuitive functionality, the concept redefines how people invite, engage, and celebrate, transforming simple invitations into memorable, community-driven experiences.",
+              "On a personal note, I'm deeply passionate about bringing this concept to life. As someone aspiring to join Spotify, these ideas showcase my dedication to user-centric design while aligning with Spotify's mission to connect people through music. I would welcome the opportunity to help shape this feature, enabling hosts and guests to celebrate in more immersive, musical ways.",
             ],
           },
         ],
@@ -448,16 +443,17 @@ export const projects = [
     ],
   },
   {
-    title: 'Login Experience in VR',
-    subtitle: 'Innovative Authentication Method for GAIM',
+    title: 'Login experience in VR',
+    subtitle:
+      "Typing passwords in VR breaks immersion. This project introduces Scroll Select Authentication, a novel login method designed for GAIM's VR shooting platform that keeps users in the action",
     headerSrc: '/resource/projects/p2_gaim.jpeg',
     titleColor: '#668799',
     subtitleColor: '#768288',
     date: '2024',
     projectSlug: 'login-experience-in-vr',
-    tags: ['VR', 'Authentication', 'GAIM', 'Design Process'],
     image: '/resource/projects/p2_hifi.jpeg',
     imageAlt: 'Scroll Select Authentication in VR',
+    order: 3,
     sections: [
       {
         title: '',
@@ -465,11 +461,11 @@ export const projects = [
         content: [
           {
             type: 'text',
-            subtitle: 'Executive Summary',
+            subtitle: 'Summary',
             column: 'left',
             paragraphs: [
-              'This project was conducted as part of the “Working Environment Project” course, with a group of four members collaborating to address the challenges of authentication in Virtual Reality (VR). The project focused on designing a innovative login method tailored to immersive VR environments, particularly for GAIM’s VR shooting application.',
-              'The problem stemmed from traditional authentication methods, such as typing passwords on virtual keyboards, which are cumbersome, error-prone, and disruptive to the immersive experience. Our objective was to develop a solution that enhances usability, maintains robust security, and integrates seamlessly into the VR experience.',
+              'Conducted as part of the "Working Environment Project" course, this collaborative effort with four team members addressed authentication challenges in Virtual Reality (VR). The project focused on designing an innovative login method tailored to immersive VR environments, specifically for GAIM\'s VR shooting application.',
+              'Traditional authentication methods, typing passwords on virtual keyboards, are cumbersome, error-prone, and disruptive to immersion. Our objective was to develop a solution that enhances usability, maintains robust security, and integrates seamlessly into VR interaction paradigms.',
             ],
           },
           {
@@ -484,9 +480,9 @@ export const projects = [
             column: 'left',
             subtitle: 'Key Outcomes',
             items: [
-              'Scroll Select Authentication: A novel interaction design combining horizontal scrolling and object selection to streamline login processes in VR.',
-              'Innovative Immersion: Designed with VR-specific principles to maintain user engagement and immersion.',
-              'Theme Integration: Seamlessly integrated with GAIM’s VR shooting application, ensuring consistency with the overall user experience.',
+              'Scroll Select Authentication: Novel interaction pattern combining horizontal scrolling with object selection to streamline VR login processes.',
+              'Immersion-First Design: Built on VR-specific interaction principles to maintain engagement and presence.',
+              "Contextual Integration: Seamlessly integrated with GAIM's weapon-style controllers, ensuring thematic consistency with the shooting application.",
             ],
           },
           {
@@ -505,7 +501,7 @@ export const projects = [
             subtitle: 'Problem Statement',
             type: 'text',
             paragraphs: [
-              'Current VR login methods are cumbersome and detract from the immersive experience. Typing passwords on virtual keyboards is slow, error-prone, and breaks the flow of interaction. This problem is intensified in applications like GAIM’s VR shooting experiences, where users handle integrated controllers. A more intuitive, efficient, and secure authentication solution tailored to VR environments is essential to enhance usability and maintain immersion.',
+              "Current VR login methods are cumbersome and break immersion. Typing passwords on virtual keyboards is slow, error-prone, and disrupts interaction flow. This problem intensifies in applications like GAIM's VR shooting experiences, where users handle specialized controllers. A more intuitive, efficient, and secure authentication solution tailored to VR interaction paradigms is essential for maintaining usability and presence.",
             ],
           },
           {
@@ -513,9 +509,9 @@ export const projects = [
             type: 'list',
             style: 'number',
             items: [
-              'Research: Explore alternative login methods suited for VR, focusing on reducing frustration, increasing efficiency, and maintaining robust security.',
-              'Design: Create conceptual and high-fidelity prototypes that integrate seamlessly into VR environments.',
-              'Prototyping: Develop a functional prototype in Unity to demonstrate the Scroll Select Authentication method.',
+              'Research: Explore alternative authentication methods for VR, focusing on reducing friction, increasing efficiency, and maintaining security.',
+              'Design: Create conceptual and high-fidelity prototypes that integrate seamlessly into immersive VR environments.',
+              'Prototyping: Develop a functional Unity prototype demonstrating the Scroll Select Authentication interaction pattern.',
             ],
           },
         ],
@@ -528,13 +524,13 @@ export const projects = [
             subtitle: 'Research & Ideation',
             type: 'text',
             paragraphs: [
-              "We reviewed existing VR authentication methods and design guidelines, including gesture-based systems like RubikAuth and ergonomic principles for immersive interaction, as well as Apple's and Meta's guidelines for developing VR applications.",
+              "We reviewed existing VR authentication methods and design guidelines, including gesture-based systems like RubikAuth and ergonomic principles for immersive interaction. We also analyzed Apple's and Meta's VR development guidelines to understand platform-specific best practices.",
             ],
           },
           {
             type: 'text',
             paragraphs: [
-              'After conducting research, we brainstormed ideas and sketched concepts to explore innovative approaches. The Scroll Select Authentication method emerged as a promising solution, combining horizontal scrolling with object selection to create an intuitive and engaging login experience. Other concepts were evaluated based on usability, security, and integration with GAIM’s VR application.',
+              "Following research, we brainstormed and sketched concepts to explore innovative approaches. Scroll Select Authentication emerged as a promising solution, combining horizontal scrolling with object selection to create an intuitive login experience. Concepts were evaluated based on usability, security robustness, and integration feasibility with GAIM's VR shooting application.",
             ],
           },
           {
@@ -552,9 +548,9 @@ export const projects = [
             type: 'text',
             column: 'left',
             paragraphs: [
-              'This method combines horizontal scrolling and object selection for a seamless login experience. The interaction design leverages VR’s spatial capabilities and is tailored to fit environments where single-button controllers or weapon controllers are used, such as GAIM’s VR shooting platform. This ensures that the authentication process aligns with the thematic consistency of the application while maintaining ease of use.',
-              'The Scroll Select Authentication method seamlessly integrates with GAIM’s weapon-style controllers, allowing users to navigate and input credentials without needing to detach or switch devices. This thematic alignment enhances immersion, as the controller’s natural mechanics are repurposed for authentication without breaking the flow of interaction. The single-button functionality simplifies actions, ensuring accessibility even for less experienced users.',
-              'This integration not only strengthens the user’s sense of engagement within the VR environment but also eliminates the need for external input devices, reinforcing the immersive and streamlined experience that is essential to VR applications.',
+              "This method combines horizontal scrolling and object selection for seamless authentication. The interaction design leverages VR's spatial capabilities and is tailored for single-button controllers, particularly GAIM's weapon-style controllers. This ensures the authentication process aligns with application theming while maintaining ease of use.",
+              "Scroll Select Authentication integrates directly with GAIM's existing controller mechanics, allowing users to navigate and input credentials without device switching. This thematic alignment enhances immersion by repurposing the controller's natural mechanics for authentication without breaking interaction flow. Single-button functionality simplifies actions, ensuring accessibility for users across experience levels.",
+              'This integration strengthens user engagement within the VR environment while eliminating external input devices, reinforcing the immersive, streamlined experience essential to VR applications.',
             ],
           },
           {
@@ -563,11 +559,11 @@ export const projects = [
             type: 'list',
             style: 'number',
             items: [
-              'Center Selection: A key appears in the center of the user’s field of view for focus and precision.',
-              'Horizontal Scrolling: Users move the controller left or right to scroll through keys.',
-              'Row Navigation: Switching between rows for letters, numbers, special characters, and control options.',
-              'Key Selection: Once the desired key is centered, the user presses the controller button.',
-              'Completion: Users navigate to the “Login” key to authenticate.',
+              "Center Selection: A key appears in the center of the user's field of view for focus and precision.",
+              'Horizontal Scrolling: Users move the controller left or right to scroll through available keys.',
+              'Row Navigation: Users switch between rows containing letters, numbers, special characters, and control options.',
+              'Key Selection: Once the desired key is centered, users press the controller button to confirm.',
+              'Authentication: Users navigate to the "Login" key to complete authentication.',
             ],
           },
           {
@@ -577,10 +573,10 @@ export const projects = [
             alt: 'High-Fidelity Prototype of Scroll Select Authentication',
           },
           {
-            subtitle: 'High-Fidelity Prototype',
+            subtitle: 'Unity Implementation',
             type: 'text',
             paragraphs: [
-              'The prototype was developed in Unity, leveraging advanced VR interactions and controls. Key features included spatial navigation, precise key selection, and immersive feedback mechanisms.',
+              'The prototype was developed in Unity, leveraging advanced VR interaction systems and controller APIs. Key features included spatial navigation, precise key selection with visual feedback, and haptic response mechanisms for confirmation.',
             ],
           },
           {
@@ -589,10 +585,10 @@ export const projects = [
             alt: 'High-Fidelity Prototype of Scroll Select Authentication',
           },
           {
-            subtitle: 'Usability Evaluation',
+            subtitle: 'Initial Usability Insights',
             type: 'text',
             paragraphs: [
-              'User testing focused on speed, error rate, and satisfaction. Participants found the method intuitive and engaging, with reduced cognitive load compared to traditional approaches. However, challenges in gesture precision highlighted areas for improvement.',
+              'Early testing focused on speed, error rate, and user satisfaction. Participants found the method intuitive and engaging, with reduced cognitive load compared to virtual keyboard approaches. However, challenges in gesture precision and scrolling sensitivity highlighted areas requiring refinement.',
             ],
           },
         ],
@@ -601,19 +597,19 @@ export const projects = [
         layout: 'middle',
         content: [
           {
-            subtitle: 'High-Fidelity Prototype',
+            subtitle: 'Technical Implementation',
             type: 'text',
             paragraphs: [
-              'The high-fidelity prototype brought the Scroll Select Authentication concept to life, using Unity to create an immersive and intuitive VR login experience. Users navigate a dynamic horizontal scrolling interface, hover over directional zones to switch between character sets, and make selections with a single button. This setup ensures ergonomic ease, precision, while maintaining immersion.',
-              'Key features include hover-based navigation, real-time text updates in the input field, and seamless transitions between rows of characters (letters, numbers, symbols, and controls). The integration with VR controllers ensures users can authenticate efficiently without breaking their engagement with the virtual environment. This prototype successfully demonstrates how authentication can be reimagined to enhance usability, reduce errors, and maintain immersion in VR applications, setting a foundation for future development and evaluation.',
+              "The high-fidelity prototype brought Scroll Select Authentication to life using Unity's VR interaction framework. Users navigate a dynamic horizontal scrolling interface, hover over directional zones to switch between character sets, and make selections with a single button press. This implementation ensures ergonomic ease and precision while maintaining immersion.",
+              'Key technical features include hover-based navigation with spatial mapping, real-time text field updates, and seamless row transitions between character sets (letters, numbers, symbols, control actions). Integration with VR controller ensures users can authenticate efficiently without breaking engagement with the virtual environment. This prototype demonstrates how authentication can be reimagined to enhance usability, reduce input errors, and maintain presence in VR applications, establishing a foundation for iterative refinement.',
             ],
           },
           {
-            subtitle: 'User Testing',
+            subtitle: 'User Testing & Evaluation',
             type: 'text',
             paragraphs: [
-              'User testing was conducted with eight participants of varying VR experience levels, including both novice users and a VR researcher. The goal was to evaluate the usability, efficiency, and intuitiveness of the Scroll Select Authentication system. The testing revealed several insights into user behavior, strengths, and potential areas for improvement.',
-              'Participants noted the system’s efficiency once they understood the interaction mechanics, with one expert user quickly writing their name without errors after an initial adjustment period. However, challenges included sensitivity issues, confusion about the interaction flow, and difficulty locating specific actions like “Erase” or “Enter.” Some participants found the scrolling speed too fast, while others felt the distance between keys made navigation tedious. Suggestions such as onboarding animations, clearer grouping of rows, and hover-based feedback emerged as potential fixes to enhance the overall experience. Despite initial learning curves, most users appreciated the innovative approach and saw its potential with refinements.',
+              'User testing involved eight participants with varying VR experience levels, from novices to a VR researcher. The evaluation focused on usability, efficiency, and interaction intuitiveness, revealing insights into user behavior and system performance.',
+              'Participants noted high efficiency once familiar with the interaction mechanics, with one expert user completing name entry error-free after initial adjustment. However, challenges emerged: sensitivity calibration issues, unclear interaction flow, and difficulty locating control actions like "Erase" or "Enter." Some found scrolling speed excessive, while others felt key spacing made navigation tedious. Suggested improvements included onboarding animations, clearer row grouping, and enhanced hover feedback. Despite learning curves, most users recognized the approach\'s potential and value with iterative refinement.',
             ],
           },
         ],
@@ -625,8 +621,8 @@ export const projects = [
           {
             type: 'text',
             paragraphs: [
-              'The Scroll Select Authentication system successfully demonstrated a novel approach to VR login methods, prioritizing immersion and efficiency. User feedback highlighted the method’s strengths, including its alignment with VR controller mechanics and its capacity for precise, single-button interactions. However, testing also revealed areas for improvement, such as better onboarding, optimized sensitivity, and more intuitive placement of key actions like “Enter” and “Erase.”',
-              'Proposed adjustments, including differentiated scroll speeds, hover delay for error mitigation, and animations to clarify row movements, could significantly enhance usability and reduce confusion. Overall, the project met its objectives of exploring innovative VR login methods, offering a foundation for further refinement and development. With iterative design and continued user testing, the Scroll Select Authentication method has strong potential to set a benchmark for intuitive and immersive VR authentication systems.',
+              'Scroll Select Authentication successfully demonstrated a novel approach to VR authentication, prioritizing immersion and efficiency. User feedback highlighted key strengths: alignment with VR controller mechanics, precise single-button interactions, and maintained presence during authentication. Testing also revealed improvement areas: enhanced onboarding, optimized sensitivity calibration, and more intuitive placement of control actions.',
+              'Proposed refinements include differentiated scroll speeds based on character type, hover delay for error mitigation, and animations clarifying row transitions. These adjustments could significantly enhance usability and reduce confusion. The project met its objectives of exploring innovative VR authentication methods, establishing a foundation for iterative development. With continued refinement and user testing, Scroll Select Authentication demonstrates strong potential to benchmark intuitive, immersive VR authentication systems.',
             ],
           },
         ],
@@ -634,16 +630,17 @@ export const projects = [
     ],
   },
   {
-    title: 'Usability Evaluation',
-    subtitle: 'Microsoft Teams Calendar',
+    title: 'Usability evaluation',
+    subtitle:
+      "Where does Microsoft Teams' free calendar fall short? Through hands-on testing with new users, this evaluation uncovers friction points and offers practical improvements for scheduling and RSVP tracking",
     headerSrc: '/resource/projects/p1.jpg',
     titleColor: '#686699',
     subtitleColor: '#767688',
     date: '2024',
     projectSlug: 'usability-evaluation-of-microsoft-teams-calendar-feature',
-    tags: ['Usability Evaluation', 'UX Research'],
     image: '/resource/projects/p1.jpeg',
     imageAlt: 'Usability Evaluation of Microsoft Teams Calendar Feature',
+    order: 4,
     sections: [
       {
         title: '',
@@ -651,12 +648,12 @@ export const projects = [
         content: [
           {
             type: 'text',
-            subtitle: 'Executive Summary',
+            subtitle: 'Summary',
             column: 'left',
             paragraphs: [
-              'This usability evaluation, conducted as part of a school project in a group of six, assessed the Microsoft Teams Free calendar feature, focusing on its usability challenges, user satisfaction, and actionable improvements. By simulating real-world tasks with young, digitally experienced users, we uncovered key insights into the platform’s strengths and weaknesses.',
-              'Basic tasks like joining meetings were intuitive, but users struggled with rescheduling meetings, locating features, and understanding system feedback during connection issues. Ambiguous labels and limited guidance during technical disruptions led to delays and confusion.',
-              'System messages, especially during connection loss, should be more visible and clear. RSVP tracking should be streamlined and provide real-time updates. An interactive onboarding experience should be introduced to familiarize new users with core features. Button labels like “Start Meeting” and “End Meeting” should be clearer and align with user expectations.',
+              "This usability evaluation, conducted as part of a group project with six members, assessed the Microsoft Teams Free calendar feature, focusing on usability challenges, user satisfaction, and actionable improvements. By simulating real-world tasks with digitally experienced users aged 18-30, we uncovered key insights into the platform's strengths and weaknesses.",
+              'Basic tasks like joining meetings proved intuitive, but users struggled with rescheduling, feature discovery, and interpreting system feedback during connection issues. Ambiguous labels and limited guidance during technical disruptions caused delays and confusion.',
+              'Key findings: System messages, especially during connection loss, require enhanced visibility. RSVP tracking needs streamlining with real-time updates. Interactive onboarding should familiarize new users with core features. Button labels need refinement to align with user mental models.',
             ],
           },
           {
@@ -674,7 +671,7 @@ export const projects = [
             subtitle: 'Purpose',
             type: 'text',
             paragraphs: [
-              'The purpose of this evaluation is to understand how people interact with Microsoft Teams’ calendar feature in a real-world setting. We aim to discover whether new users can easily get started without dedicated training, identify where the experience might be improved, and assess the quality of feedback provided during connection hiccups.',
+              "This evaluation examines how users interact with Microsoft Teams' calendar feature in realistic scenarios. We aimed to assess whether new users can adopt the system without dedicated training, identify usability improvement opportunities, and evaluate system feedback quality during connection disruptions.",
             ],
           },
           {
@@ -682,9 +679,9 @@ export const projects = [
             type: 'list',
             style: 'number',
             items: [
-              'How satisfied are users with the calendar’s overall usability?',
-              'How effective is the process of creating and rescheduling meetings?',
-              'Does Microsoft Teams provide sufficient feedback during connection loss?',
+              "How satisfied are users with the calendar's overall usability?",
+              'How effective are the meeting creation and rescheduling workflows?',
+              'Does Microsoft Teams provide adequate feedback during connection failures?',
             ],
           },
         ],
@@ -696,8 +693,8 @@ export const projects = [
           {
             type: 'text',
             paragraphs: [
-              'The evaluation involved six participants aged 18–30, all based in Lund, Sweden, who were familiar with other digital calendar tools like Google Calendar but new to Microsoft Teams. Participants completed a series of tasks designed to replicate typical usage scenarios, such as scheduling meetings, checking attendee availability, and handling connection disruptions. Data collection methods included the Think Aloud protocol, task completion metrics, and pre- and post-test questionnaires, ensuring a comprehensive understanding of user experiences.',
-              'Testing was conducted in a controlled lab environment to minimize distractions and standardize conditions across sessions. Each task was framed as a real-world scenario to capture authentic interactions. Observers documented user behavior, while participants provided feedback through structured questionnaires and open-ended discussions.',
+              'The evaluation involved six participants aged 18-30, all based in Lund, Sweden, who were familiar with digital calendar tools like Google Calendar but new to Microsoft Teams. Participants completed tasks replicating typical usage scenarios: scheduling meetings, checking attendee availability, and handling connection disruptions. Data collection employed Think Aloud protocol, task completion metrics, and pre/post-test questionnaires, ensuring comprehensive user experience insights.',
+              'Testing occurred in a controlled lab environment to minimize distractions and standardize conditions across sessions. Tasks were framed as realistic scenarios to capture authentic interactions. Observers documented user behavior while participants provided feedback through structured questionnaires and open-ended discussions.',
             ],
           },
 
@@ -706,13 +703,13 @@ export const projects = [
             subtitle: 'Tasks',
             style: 'number',
             items: [
-              'Joining a Scheduled Meeting: Testing ease of access to an ongoing meeting.',
-              'Creating a New Meeting: Evaluating the steps to schedule a new meeting.',
-              'Checking Availability and Rescheduling: Assessing users’ ability to view invitee availability and reschedule if needed.',
-              'Starting and Ending a Meeting: Observing the ease of ending meetings without inadvertently leaving.',
-              'Recognizing Connection Loss: Testing how effectively users detect connection loss.',
-              'Rescheduling Without Internet: Observing user behavior when attempting to reschedule offline.',
-              'Logging Out: Testing users’ ability to find and use the logout option.',
+              'Joining a Scheduled Meeting: Testing ease of access to ongoing meetings.',
+              'Creating a New Meeting: Evaluating workflow steps for scheduling new meetings.',
+              'Checking Availability and Rescheduling: Assessing ability to view invitee availability and execute rescheduling.',
+              'Starting and Ending a Meeting: Observing clarity of meeting control actions.',
+              'Recognizing Connection Loss: Testing effectiveness of connection status communication.',
+              'Rescheduling Without Internet: Observing user behavior during offline rescheduling attempts.',
+              'Logging Out: Testing discoverability and execution of logout functionality.',
             ],
           },
         ],
@@ -735,10 +732,10 @@ export const projects = [
           {
             type: 'text',
             paragraphs: [
-              'The evaluation identified several patterns in user behavior and task performance. Basic tasks, such as joining a meeting, were completed with high success rates, with most participants relying on intuitive features like pop-up notifications. However, even in these tasks, minor interface ambiguities caused delays. For instance, some users initially overlooked meeting notifications, mistaking them for unrelated alerts.',
-              'Creating a meeting was moderately successful but revealed critical usability issues. Participants were often uncertain whether the invitation had been sent, as the confirmation dialog lacked clarity. This led some users to duplicate efforts, manually copying links or recreating meetings to ensure the task was completed.',
-              'Rescheduling meetings emerged as the most challenging task. Participants struggled to locate RSVP details and check attendee availability, with some navigating to unrelated sections, such as the “Events” tab. These difficulties highlighted inconsistencies in how information was presented and accessed within the calendar interface.',
-              'Connection loss further complicated task completion. Although all participants eventually identified the issue, many only realized it after repeated failed interactions. The system’s feedback was subtle and easily overlooked, contributing to frustration and wasted effort. Similarly, the “Leave” and “End Meeting” buttons confused participants, as the interface did not clearly differentiate their functions.',
+              'The evaluation identified patterns in user behavior and task performance. Basic tasks like joining meetings achieved high success rates, with participants leveraging intuitive features like pop-up notifications. However, even successful tasks revealed minor interface ambiguities causing delays, some users initially overlooked meeting notifications, mistaking them for unrelated alerts.',
+              'Meeting creation proved moderately successful but exposed critical usability issues. Participants often remained uncertain whether invitations had been sent, as confirmation dialogs lacked clarity. This uncertainty led some users to duplicate efforts, manually copying links or recreating meetings for verification.',
+              'Rescheduling emerged as the most challenging task. Participants struggled to locate RSVP details and check attendee availability, with some navigating to incorrect sections like the "Events" tab. These difficulties highlighted inconsistencies in information architecture and access patterns within the calendar interface.',
+              'Connection loss further complicated task completion. While all participants eventually identified the issue, many only recognized it after repeated failed interactions. System feedback was subtle and easily overlooked, contributing to frustration and wasted effort. Similarly, "Leave" and "End Meeting" buttons confused participants due to unclear functional differentiation.',
             ],
           },
         ],
@@ -768,9 +765,9 @@ export const projects = [
           {
             type: 'text',
             paragraphs: [
-              'The evaluation provided a detailed understanding of where the Microsoft Teams calendar succeeds and where it falters. Joining meetings was the most intuitive function, benefiting from clear notifications and streamlined workflows. However, creating and rescheduling meetings required additional effort and introduced opportunities for user error. The lack of clear guidance during connection disruptions compounded these challenges, especially for participants who expected real-time syncing or prominent error messages.',
-              'Labeling and navigation emerged as recurring themes in user feedback. For example, the term “Join” led some users to believe they were interrupting an ongoing meeting rather than starting a new one. Similarly, the “Events” section was mistaken for a calendar feature, as its icon closely resembled the calendar symbol. These findings underscore the importance of aligning interface terminology and iconography with user expectations to reduce cognitive load and improve task efficiency.',
-              'RSVP tracking was a significant pain point in the free version of Microsoft Teams, where the absence of real-time RSVP updates drastically impacted usability. Unlike the paid version, which integrates RSVP responses seamlessly into the calendar, the free version forces users to navigate between the chat and calendar views to find this information. This disjointed process led to confusion, with participants often doubting whether their invitations were successfully sent or received.',
+              'The evaluation provided detailed insights into Microsoft Teams calendar strengths and weaknesses. Joining meetings proved most intuitive, benefiting from clear notifications and streamlined workflows. However, creating and rescheduling meetings required additional effort and introduced error opportunities. Inadequate guidance during connection disruptions compounded these challenges, particularly for participants expecting real-time syncing or prominent error states.',
+              'Labeling and navigation emerged as recurring themes in user feedback. The term "Join" led some users to believe they were interrupting ongoing meetings rather than initiating new ones. Similarly, the "Events" section was mistaken for calendar functionality due to icon similarity. These findings underscore the importance of aligning interface terminology and iconography with user mental models to reduce cognitive load and improve task efficiency.',
+              'RSVP tracking represented a significant pain point in the free version, where the absence of real-time RSVP updates drastically impacted usability. Unlike the paid version, which integrates RSVP responses seamlessly into the calendar view, the free version forces navigation between chat and calendar views. This disjointed information architecture led to confusion, with participants often doubting whether invitations were successfully transmitted.',
             ],
           },
         ],
@@ -783,11 +780,11 @@ export const projects = [
             type: 'list',
             style: 'number',
             items: [
-              'Enhance Connection Feedback Visibility: Make connection status more visible, such as using a centered banner with color-coded feedback.',
-              'Improve RSVP and Invitation Management: Embed RSVP responses in the main calendar or chat view.',
-              "Refine Key Function Labels: Use 'Start' instead of 'Join' for initiating new sessions.",
-              'Introduce an Onboarding Tutorial: Cover critical tasks such as creating and rescheduling meetings, RSVP tracking, and handling connection loss.',
-              'Enhance Meeting Confirmation and Feedback: Replace or supplement confirmation pop-ups with checkmarks or notification messages.',
+              'Enhance Connection Feedback Visibility: Implement prominent connection status indicators, such as centered banners with color-coded states.',
+              'Improve RSVP and Invitation Management: Embed RSVP responses directly in calendar and chat views for unified information access.',
+              'Refine Action Labels: Replace ambiguous terms like "Join" with contextually clear labels like "Start Meeting" for new sessions.',
+              'Introduce Interactive Onboarding: Implement guided tutorials covering critical workflows including meeting creation, rescheduling, RSVP tracking, and connection handling.',
+              'Enhance Confirmation Patterns: Supplement or replace modal dialogs with persistent visual confirmations like checkmarks or status messages.',
             ],
           },
         ],

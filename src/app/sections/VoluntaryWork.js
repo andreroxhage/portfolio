@@ -12,10 +12,10 @@ import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function VoluntaryWork() {
   return (
-    <div id="voluntary-work" className="bg-primary-vanilla">
-      <div className="max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
+    <div id="voluntary-work" className="bg-brand-vanilla md:pt-24 pt-16 ">
+      <div className="max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
         <motion.h3
-          className="pt-4 pb-5 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-semibold text-primary-grey"
+          className="pt-4 pb-5 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-medium text-brand-grey"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -25,7 +25,7 @@ export default function VoluntaryWork() {
         </motion.h3>
       </div>
       <div className="h-fit md:pt-0 flex-row items-center relative">
-        <div className="mx-auto h-full grid grid-cols-10 text-2xl text-primary-grey-brighter items-center">
+        <div className="mx-auto h-full grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <motion.div className="px-4 md:px-0 col-start-1 md:col-span-5 col-span-10 relative">
             <ScrollScaleWrapper
               scaleFrom={0.8}
@@ -81,7 +81,7 @@ export default function VoluntaryWork() {
           >
             <div className="flex flex-col gap-x-6 px-4 sm:px-16 justify-center items-start w-full h-full">
               <motion.h4
-                className="text-xl md:text-3xl font-semibold pb-1 md:pb-4"
+                className="text-xl md:text-3xl font-medium pb-1 md:pb-4"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -111,7 +111,7 @@ export default function VoluntaryWork() {
           </motion.div>
         </div>
 
-        <div className="mx-auto mt-12 md:mt-0 h-full md:grid flex flex-col-reverse md:grid-cols-10 text-2xl text-primary-grey-brighter items-center pt-5 pb-14 md:pb-0 md:pt-0">
+        <div className="mx-auto mt-12 md:mt-0 h-full md:grid flex flex-col-reverse md:grid-cols-10 text-2xl text-brand-grey-brighter items-center pt-5 pb-14 md:pb-0 md:pt-0">
           <motion.div
             className="px-4 md:px-0 w-full h-full md:col-span-5 md:col-start-1 md:mt-0 mt-6 md:pb-0 pb-5 col-span-10 col-start-1"
             initial={{ opacity: 0, translateY: 60 }}
@@ -121,7 +121,7 @@ export default function VoluntaryWork() {
           >
             <div className="flex flex-col gap-x-6 px-4 sm:px-16 justify-center items-start w-full h-full">
               <motion.h4
-                className="text-xl md:text-3xl font-semibold pb-1 md:pb-4"
+                className="text-xl md:text-3xl font-medium pb-1 md:pb-4"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}

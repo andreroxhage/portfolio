@@ -78,13 +78,13 @@ export const TextRevealCard = ({
                 }
           }
           transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
-          className="absolute bg-primary-blackish z-20  will-change-transform"
+          className="absolute bg-brand-blackish z-20  will-change-transform"
         >
           <p
             style={{
               textShadow: '4px 4px 15px rgba(0,0,0,0.5)',
             }}
-            className="text-xl sm:text-3xl py-10 font-bold text-primary-white bg-clip-text text-transparent bg-gradient-to-b from-primary-vanilla to-secondary-green text-center"
+            className="text-xl sm:text-3xl py-10 font-medium bg-clip-text text-transparent bg-gradient-to-b from-brand-vanilla to-secondary-green text-center"
           >
             {revealText}
           </p>
@@ -100,7 +100,7 @@ export const TextRevealCard = ({
         ></motion.div>
 
         <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-xl sm:text-3xl py-10 font-bold bg-clip-text text-transparent bg-primary-whiteish">
+          <p className="text-xl sm:text-3xl py-10 font-medium bg-clip-text text-transparent bg-brand-whiteish">
             {text}
           </p>
           <MemoizedStars />
@@ -132,7 +132,7 @@ export const TextRevealCardDescription = ({
   className?: string;
 }) => {
   return (
-    <p className={twMerge('text-primary-whiteish text-sm', className)}>
+    <p className={twMerge('text-brand-whiteish text-sm', className)}>
       {children}
     </p>
   );

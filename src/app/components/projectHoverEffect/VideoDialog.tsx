@@ -8,6 +8,7 @@ interface VideoDialogProps {
   mousePosition: { x: number; y: number };
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  shouldRound?: boolean;
 }
 
 const VideoDialog = ({
@@ -15,6 +16,7 @@ const VideoDialog = ({
   mousePosition,
   isLoading,
   setIsLoading,
+  shouldRound = true,
 }: VideoDialogProps) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { video_url: videoUrl, loading: isVideoLoading } = useVideo(identifier);
@@ -76,7 +78,7 @@ const VideoDialog = ({
         stiffness: 100,
         damping: 20,
       }}
-      className="fixed z-10 rounded-[40px] shadow-xl overflow-hidden pointer-events-none"
+      className={`fixed z-10 overflow-hidden pointer-events-none ${shouldRound ? 'rounded-[40px]' : ''}`}
       style={{
         left: `calc(50% - ${dimensions.width / 2}px)`,
         top: `calc(50% - ${dimensions.height / 2}px)`,
@@ -86,9 +88,7 @@ const VideoDialog = ({
         maxHeight: '70vh',
       }}
     >
-      {showLoading && (
-        <VideoLoadingAnimation className="absolute inset-0 bg-white/10" />
-      )}
+      {showLoading && <VideoLoadingAnimation className="absolute inset-0" />}
       <video
         src={videoUrl}
         className={`w-full h-full object-contain transition-opacity duration-300 ${

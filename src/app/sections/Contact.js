@@ -13,7 +13,7 @@ export default function Contact() {
   );
 
   return (
-    <div className="bg-primary-grey sm:bg-primary-blackish">
+    <div className="bg-brand-grey sm:bg-brand-blackish">
       <div
         id="contact"
         className="h-screen w-full rounded-t-3xl"
@@ -34,7 +34,7 @@ export default function Contact() {
             >
               <div className="max-w-7xl mx-auto relative flex items-center w-full h-full overflow-hidden">
                 <motion.h2
-                  className="px-4 md:text-6xl text-5xl text-primary-whiteish leading-tight font-bold"
+                  className="px-4 md:text-6xl text-5xl text-brand-whiteish leading-tight font-medium"
                   initial={{ opacity: 0, translateY: 60 }}
                   whileInView={{ opacity: 1, translateY: 0 }}
                   transition={{
@@ -54,7 +54,7 @@ export default function Contact() {
             className="px-4 max-w-7xl w-full mx-auto overflow-hidden h-2/6"
           >
             <div className="gap-y-2 grid grid-cols-10 mx-auto">
-              <hr className="h-0.5 pt-2 border-primary-800 col-start-1 md:col-end-4 col-end-9" />
+              <hr className="h-0.5 pt-2 border-gray-200 col-start-1 md:col-end-4 col-end-9" />
 
               {footerLinks.map((link, i) => {
                 const { title, href } = link;

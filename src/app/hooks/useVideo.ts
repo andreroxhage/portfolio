@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 interface VideoData {
   video_url: string;
@@ -6,118 +6,144 @@ interface VideoData {
   error: Error | null;
 }
 
-// Enhanced caching with video metadata
-const videoCache = new Map<string, string>();
-const videoPreloadCache = new Set<string>();
+interface VideoResponse {
+  video_url: string;
+}
 
-// Preload a video URL in the background
-const preloadVideo = (url: string) => {
-  if (videoPreloadCache.has(url)) {
-    return;
+const videoBlobCache = new Map<string, string>();
+const blobLoadingStatus = new Map<string, Promise<string>>();
+
+const fetchVideoUrl = async (identifier: string): Promise<string> => {
+  const res = await fetch(`/api/videos?project=${identifier}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch video');
   }
 
-  videoPreloadCache.add(url);
-  const video = document.createElement('video');
-  video.preload = 'auto';
-  video.muted = true;
-  video.src = url;
+  const data: VideoResponse[] = await res.json();
+  if (!data || data.length === 0) {
+    throw new Error('No video found');
+  }
 
-  // Clean up after preload
-  video.addEventListener('loadeddata', () => {
-    video.remove();
-  });
+  return data[0].video_url;
+};
 
-  video.addEventListener('error', () => {
-    videoPreloadCache.delete(url);
-    video.remove();
-  });
+const preloadVideoAsBlob = async (
+  url: string,
+  identifier: string
+): Promise<string> => {
+  if (videoBlobCache.has(identifier)) {
+    return videoBlobCache.get(identifier)!;
+  }
+
+  if (blobLoadingStatus.has(identifier)) {
+    return blobLoadingStatus.get(identifier)!;
+  }
+
+  const loadingPromise = (async () => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Failed to fetch video blob');
+      }
+
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+
+      videoBlobCache.set(identifier, blobUrl);
+      blobLoadingStatus.delete(identifier);
+
+      return blobUrl;
+    } catch (error) {
+      blobLoadingStatus.delete(identifier);
+      throw error;
+    }
+  })();
+
+  blobLoadingStatus.set(identifier, loadingPromise);
+  return loadingPromise;
 };
 
 export const useVideo = (identifier: string, shouldPreload = false) => {
-  const [videoData, setVideoData] = useState<VideoData>({
-    video_url: '',
-    loading: true,
-    error: null,
+  const {
+    data: videoUrl,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['video', identifier],
+    queryFn: () => fetchVideoUrl(identifier),
+    enabled: !!identifier,
+    staleTime: Infinity, // Videos don't change, cache forever
+    gcTime: 1000 * 60 * 60, // Keep in cache for 1 hour
   });
 
-  useEffect(() => {
-    const fetchVideo = async () => {
-      // Check cache first
-      if (videoCache.has(identifier)) {
-        const cachedUrl = videoCache.get(identifier)!;
-        setVideoData({
-          video_url: cachedUrl,
-          loading: false,
-          error: null,
-        });
+  const blobUrl = videoBlobCache.get(identifier);
 
-        // Preload in background if requested
-        if (shouldPreload) {
-          preloadVideo(cachedUrl);
-        }
-        return;
-      }
+  if (
+    shouldPreload &&
+    videoUrl &&
+    !blobUrl &&
+    !blobLoadingStatus.has(identifier)
+  ) {
+    preloadVideoAsBlob(videoUrl, identifier).catch(err => {
+      console.error('Blob preload failed:', identifier, err);
+    });
+  }
 
-      try {
-        const res = await fetch(`/api/videos?project=${identifier}`);
-        if (!res.ok) {
-          throw new Error('Failed to fetch video');
-        }
-
-        const data = await res.json();
-        if (data && data.length > 0) {
-          const videoUrl = data[0].video_url;
-
-          // Store in cache
-          videoCache.set(identifier, videoUrl);
-          setVideoData({
-            video_url: videoUrl,
-            loading: false,
-            error: null,
-          });
-
-          // Preload in background if requested
-          if (shouldPreload) {
-            preloadVideo(videoUrl);
-          }
-        } else {
-          throw new Error('No video found');
-        }
-      } catch (error) {
-        setVideoData(prev => ({
-          ...prev,
-          loading: false,
-          error: error as Error,
-        }));
-      }
-    };
-
-    fetchVideo();
-  }, [identifier, shouldPreload]);
-
-  return videoData;
+  return {
+    video_url: blobUrl || videoUrl || '',
+    loading: isLoading || (!blobUrl && !!videoUrl && shouldPreload),
+    error: error as Error | null,
+  } as VideoData;
 };
 
-// Utility function to preload multiple videos
-export const preloadVideos = (identifiers: string[]) => {
-  identifiers.forEach(async identifier => {
-    if (videoCache.has(identifier)) {
-      preloadVideo(videoCache.get(identifier)!);
-      return;
-    }
+export const preloadVideos = async (
+  identifiers: string[],
+  queryClient: any
+): Promise<void> => {
+  if (!identifiers.length) {
+    return;
+  }
 
-    try {
-      const res = await fetch(`/api/videos?project=${identifier}`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.length > 0) {
-          videoCache.set(identifier, data[0].video_url);
-          preloadVideo(data[0].video_url);
-        }
-      }
-    } catch (error) {
-      // Silently fail for preloading
-      console.error('Preload failed for:', identifier);
-    }
+  await Promise.all(
+    identifiers.map(identifier =>
+      queryClient.prefetchQuery({
+        queryKey: ['video', identifier],
+        queryFn: () => fetchVideoUrl(identifier),
+        staleTime: Infinity,
+      })
+    )
+  );
+
+  const urlMappings = identifiers
+    .map(identifier => {
+      const cachedData = queryClient.getQueryData(['video', identifier]) as
+        | string
+        | undefined;
+      return cachedData ? { identifier, url: cachedData } : null;
+    })
+    .filter(Boolean) as { identifier: string; url: string }[];
+
+  const priorityVideos = urlMappings.slice(0, 3);
+  const remainingVideos = urlMappings.slice(3);
+
+  await Promise.allSettled(
+    priorityVideos.map(({ identifier, url }) =>
+      preloadVideoAsBlob(url, identifier)
+    )
+  );
+
+  for (let i = 0; i < remainingVideos.length; i += 2) {
+    const batch = remainingVideos.slice(i, i + 2);
+    await Promise.allSettled(
+      batch.map(({ identifier, url }) => preloadVideoAsBlob(url, identifier))
+    );
+  }
+};
+
+export const cleanupVideoBlobCache = () => {
+  videoBlobCache.forEach(blobUrl => {
+    URL.revokeObjectURL(blobUrl);
   });
+  videoBlobCache.clear();
+  blobLoadingStatus.clear();
 };

@@ -26,6 +26,15 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-brand-grey;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

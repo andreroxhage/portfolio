@@ -6,13 +6,13 @@ import MagneticWrapper from '../components/MagneticWrapper';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-blackish overflow-x-hidden">
+    <footer className="bg-brand-blackish overflow-x-hidden">
       <div className="max-w-7xl mx-auto pt-20 md:pt-40 px-4">
         <div className="grid grid-cols-10 gap-y-2 justify-between pb-1 font-light">
           <div className="col-span-10 md:col-span-6 w-full">
-            <span className="text-xl md:text-2xl text-primary-vanilla font-semibold col-start-8 col-span-3">
+            <span className="text-xl md:text-2xl text-brand-vanilla font-medium col-start-8 col-span-3">
               Contact
-              <hr className="h-0.5 pt-2 border-primary-whiteish md:zmr-12 my-2" />
+              <hr className="h-0.5 pt-2 border-brand-whiteish md:zmr-12 my-2" />
             </span>
 
             {footerLinks.map((link, i) => {
@@ -22,7 +22,7 @@ export default function Footer() {
                 <motion.a
                   key={i}
                   href={href}
-                  className="col-start-8 col-span-3 flex items-center mb-2 text-lg md:text-xl text-primary-whiteish"
+                  className="col-start-8 col-span-3 flex items-center mb-2 text-lg md:text-xl text-brand-whiteish"
                   whileHover={{
                     color: '#BCE5AE',
                     fill: '#BCE5AE',
@@ -55,9 +55,9 @@ export default function Footer() {
             })}
           </div>
           <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-10">
-            <span className="text-xl md:text-2xl text-primary-vanilla font-semibold col-start-1 col-span-7">
+            <span className="text-xl md:text-2xl text-brand-vanilla font-medium col-start-1 col-span-7">
               Navigation
-              <hr className="h-0.5 pt-2 border-primary-whiteish w-full my-2" />
+              <hr className="h-0.5 pt-2 border-brand-whiteish w-full my-2" />
             </span>
             {links.map((link, i) => {
               const { title, href } = link;
@@ -65,7 +65,7 @@ export default function Footer() {
                 <motion.a
                   key={i}
                   href={href}
-                  className="col-start-1 col-span-7 flex items-center mb-2 text-lg md:text-xl text-primary-whiteish"
+                  className="col-start-1 col-span-7 flex items-center mb-2 text-lg md:text-xl text-brand-whiteish"
                   whileHover={{
                     color: '#BCE5AE',
                     fill: '#BCE5AE',
@@ -101,20 +101,20 @@ export default function Footer() {
 
         <div className="flex flex-col-reverse sm:flex-row gap-12 pt-12 pb-6 mt-8">
           <a className="flex w-3/4 items-center flex-row" href={'#header'}>
-            <span className="text-primary-grey text-sm md:text-lg font-semibold mr-6">
+            <span className="text-brand-grey text-sm md:text-lg font-medium mr-6">
               ©2024
             </span>
-            <span className="text-primary-grey-brighter md:text-2xl text-lg font-semibold mr-2">
+            <span className="text-brand-grey-brighter md:text-2xl text-lg font-medium mr-2">
               André
             </span>
-            <span className="text-primary-grey-brighter md:text-2xl text-lg font-semibold">
+            <span className="text-brand-grey-brighter md:text-2xl text-lg font-medium">
               Roxhage
             </span>
           </a>
           <div className="w-1/4 flex p-1 items-center">
             <MagneticWrapper>
               <motion.a
-                className="rounded-full h-16 w-16 bg-secondary-green items-center justify-center text-primary-grey-brighter hover:text-primary-blackish hover:bg-secondary-green-darker transition-all duration-300 ease-in-out hover:scale-110 flex"
+                className="rounded-full h-16 w-16 bg-secondary-green items-center justify-center text-brand-grey-brighter hover:text-brand-blackish hover:bg-secondary-green-darker transition-all duration-300 ease-in-out hover:scale-110 flex"
                 href={'#header'}
                 aria-label="Scroll to top"
               >

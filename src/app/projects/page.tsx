@@ -1,11 +1,8 @@
 'use client';
-import { motion } from 'framer-motion';
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { footerLinks } from '@/app/data';
-import ProfilePicture from '../../../public/resource/profileImage.jpg';
-import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
 
 const ProjectsGrid = dynamic(
   () => import('@/app/components/projectHoverEffect/ProjectsGrid'),
@@ -16,35 +13,17 @@ const ProjectsGridMobile = dynamic(
   { ssr: false }
 );
 
-const HeaderLink: React.FC<{ href: string; label: string }> = ({
-  href,
-  label,
-}) => (
-  <Link href={href}>
-    <label className="text-sm md:text-base font-medium text-primary-grey-brighter cursor-pointer hover:text-secondary-green-darker transition-all duration-300">
-      {label}
-    </label>
-  </Link>
-);
-
 const ProfileSection: React.FC = () => (
-  <Link href="/" className="flex gap-8 items-center justify-start">
-    <Image
-      className="h-auto w-16 lg:w-24 rounded-full drop-shadow-lg shadow-md md:shadow-customShadow"
-      src={ProfilePicture}
-      placeholder="blur"
-      alt="André Roxhage profile picture"
-      priority
-      width={96}
-      height={96}
-    />
+  <Link href="/" className="flex gap-8 items-center justify-start group">
     <div className="flex flex-col gap-[6px] justify-center items-start">
-      <h1 className="text-xl md:text-2xl font-bold text-primary-blackish hover:text-secondary-green-darker transition-all duration-300">
+      <motion.h1
+        className="text-4xl md:text-6xl font-medium tracking-tighter text-brand-blackish dark:text-brand-whiteish group-hover:text-secondary-green-darker dark:group-hover:text-secondary-green transition-all duration-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
+      >
         André Roxhage
-      </h1>
-      <h2 className="text-sm md:text-base font-medium text-primary-grey">
-        Software Design Engineer
-      </h2>
+      </motion.h1>
     </div>
   </Link>
 );
@@ -66,48 +45,19 @@ const ProjectsPage: React.FC = () => {
     }
   }, []);
 
-  const navigationLinks = useMemo(
-    () => [
-      { href: '/', label: 'About' },
-      { href: footerLinks[2].href, label: 'Email' },
-      { href: footerLinks[0].href, label: 'LinkedIn' },
-    ],
-    []
-  );
-
-  const animationConfig = useMemo(
-    () => ({
-      animate: {
-        backgroundColor: ['#FAF5F0', '#DEF5F0', '#FAF0F4'],
-      },
-      transition: {
-        duration: 16,
-        repeat: Infinity,
-        repeatType: 'reverse' as const,
-        ease: 'easeInOut',
-      },
-    }),
-    []
-  );
+  // Static dark background for projects page (no animated background)
 
   return (
-    <motion.div id="header" {...animationConfig}>
-      <div className="max-w-5xl px-4 mx-auto h-full min-h-screen flex flex-col">
-        <div className="md:pt-36 pt-20 md:pb-4 pb-0 flex md:flex-row flex-col items-center justify-between">
-          <ProfileSection />
-
-          <nav className="hidden md:flex flex-col gap-[6px] justify-center items-start">
-            <div className="flex gap-4">
-              {navigationLinks.map(link => (
-                <HeaderLink key={link.href} {...link} />
-              ))}
-            </div>
-          </nav>
+    <div className="dark">
+      <div id="header">
+        <div className="max-w-8xl px-4 mx-auto h-full min-h-screen flex flex-col py-20  text-gray-200">
+          <div className="flex items-center justify-between w-full">
+            <ProfileSection />
+          </div>
+          {isMobile ? <ProjectsGridMobile /> : <ProjectsGrid />}
         </div>
-
-        {isMobile ? <ProjectsGridMobile /> : <ProjectsGrid />}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -7,7 +7,15 @@ interface ProjectsLayoutProps {
 const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
   return (
     <div>
-      <main className="bg-primary-whiteish">{children}</main>
+      <main
+        className="min-h-screen"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 50% at 64% 50%, #191919 0%, #000000 70%)',
+        }}
+      >
+        {children}
+      </main>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import './globals.css';
 import Head from 'next/head';
 import FloatingNav from './components/Navbar/FloatingNav';
 import { ProjectHoverProvider } from './contexts/ProjectHoverContext';
+import QueryProvider from './components/QueryProvider';
 
 export const metadata: Metadata = {
   title: 'André Roxhage',
@@ -72,11 +73,13 @@ export default function RootLayout({
         />
       </Head>
       <body>
-        <ProjectHoverProvider>
-          <FloatingNav />
-          <main></main>
-          {children}
-        </ProjectHoverProvider>
+        <QueryProvider>
+          <ProjectHoverProvider>
+            <FloatingNav />
+            <main></main>
+            {children}
+          </ProjectHoverProvider>
+        </QueryProvider>
       </body>
     </html>
   );
