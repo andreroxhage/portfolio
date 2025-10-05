@@ -18,7 +18,7 @@ export default function About() {
     <>
       <div className="bg-brand-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
         <motion.h3
-          className="max-w-7xl mx-auto px-4 md:pt-24 pt-16 text-brand-grey text-3xl md:text-6xl font-medium"
+          className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 md:pt-24 pt-20 sm:pt-24 text-brand-grey text-3xl md:text-6xl font-medium pb-10 sm:pb-0"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -26,19 +26,19 @@ export default function About() {
         >
           About me
         </motion.h3>
-        <div className="max-w-7xl mx-auto px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <motion.div
-            className="pl-1 w-full sm:pl-0 col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 md:pt-8 pt-12"
+            className="w-full col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 "
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
-            <div className="flex flex-row gap-x-6">
+            <div className="flex flex-row gap-x-8 sm:gap-x-10 md:gap-x-6">
               {about.map((item, index) => (
-                <div key={index}>
+                <div key={index} className="pb-2">
                   <motion.h3
-                    className={`text-xl md:text-3xl font-mediun pb-1 md:pb-4 cursor-pointer  ${
+                    className={`text-xl md:text-3xl font-mediun pb-2 md:pb-4 cursor-pointer py-2 px-1 -ml-1 ${
                       activeIndex === index
                         ? 'text-brand-grey'
                         : 'text-brand-grey-brighter'
@@ -77,7 +77,7 @@ export default function About() {
                   activeIndex === index && (
                     <motion.p
                       key={index}
-                      className="text-base md:text-lg font-medium md:max-w-[700px] md:col-span-5 col-span-9 w-full h-60"
+                      className="text-base md:text-lg font-medium md:max-w-[700px] md:col-span-5 col-span-9 w-full min-h-[240px] sm:min-h-[200px] leading-relaxed pt-2"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -91,7 +91,7 @@ export default function About() {
           </motion.div>
           <ScrollScaleWrapper
             fade={true}
-            className="col-start-1 col-span-10 md:col-start-7 md:col-span-4 md:my-20 mt-12 mb-12"
+            className="col-start-1 col-span-10 md:col-start-7 md:col-span-4 md:my-20 mt-16 mb-16 sm:mt-20 sm:mb-20"
           >
             <Image
               className="h-full w-full rounded-sm"

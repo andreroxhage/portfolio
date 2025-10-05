@@ -8,7 +8,7 @@ export default function Contact() {
 
   const TitleComponent = ({ title }) => (
     <div>
-      <p className="z-50">{title}</p>
+      <p className="z-5">{title}</p>
     </div>
   );
 
@@ -30,7 +30,7 @@ export default function Contact() {
           >
             <FollowerPointerCard
               title={<TitleComponent title={'Connect'} />}
-              className="h-full z-40"
+              className="h-full z-20"
             >
               <div className="max-w-7xl mx-auto relative flex items-center w-full h-full overflow-hidden">
                 <motion.h2

@@ -19,7 +19,7 @@ const Header = () => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="max-w-7xl h-full px-4 mx-auto flex items-center">
+        <div className="max-w-7xl h-full px-5 sm:px-6 md:px-4 mx-auto flex items-center">
           <motion.h1
             className="text-6xl md:text-8xl font-medium tracking-tighter text-brand-whiteish mix-blend-difference"
             animate={{ opacity: 0.4, color: '#fefefe' }}
@@ -30,24 +30,24 @@ const Header = () => {
           </motion.h1>
         </div>
       </div>
-      <div className="h-4/6 md:h-3/5 my-auto pt-12 md:pt-0 flex-row items-center bg-brand-vanilla">
-        <div className="max-w-7xl px-4 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+      <div className="h-4/6 md:h-3/5 min-h-[480px] py-16 md:py-0 flex-row items-center bg-brand-vanilla">
+        <div className="max-w-7xl px-5 sm:px-6 md:px-4 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <motion.div
-            className="pl-1 md:pl-0 col-span-10 col-start-1 md:col-span-6"
+            className="col-span-10 col-start-1 md:col-span-6 mb-12 sm:mb-16 md:mb-0"
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h2 className="text-3xl md:text-4xl font-medium pb-1 md:pb-2 text-brand-grey">
+            <h2 className="text-3xl md:text-4xl font-medium pb-3 md:pb-2 text-brand-grey">
               Currently
             </h2>
-            <h3 className="text-xl md:text-2xl font-medium max-w-[680px]">
+            <h3 className="text-xl md:text-2xl font-medium max-w-[680px] leading-relaxed">
               {header.currently}
             </h3>
           </motion.div>
 
           <motion.div
-            className="col-start-3 p-4 md:p-6 col-span-6 md:col-start-7 md:col-span-3 md:my-0 sm:my-12 my-8"
+            className="col-start-3 p-6 md:p-6 col-span-6 md:col-start-7 md:col-span-3 md:my-0"
             animate={{ scale: 1, opacity: 1 }}
             initial={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}

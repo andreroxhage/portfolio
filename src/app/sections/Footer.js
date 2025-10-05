@@ -7,12 +7,12 @@ import MagneticWrapper from '../components/MagneticWrapper';
 export default function Footer() {
   return (
     <footer className="bg-brand-blackish overflow-x-hidden">
-      <div className="max-w-7xl mx-auto pt-20 md:pt-40 px-4">
-        <div className="grid grid-cols-10 gap-y-2 justify-between pb-1 font-light">
+      <div className="max-w-7xl mx-auto pt-24 sm:pt-32 md:pt-40 px-5 sm:px-6 md:px-4">
+        <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-light">
           <div className="col-span-10 md:col-span-6 w-full">
             <span className="text-xl md:text-2xl text-brand-vanilla font-medium col-start-8 col-span-3">
               Contact
-              <hr className="h-0.5 pt-2 border-brand-whiteish md:zmr-12 my-2" />
+              <hr className="h-0.5 pt-2 border-brand-whiteish md:zmr-12 my-3 sm:my-2" />
             </span>
 
             {footerLinks.map((link, i) => {
@@ -22,7 +22,7 @@ export default function Footer() {
                 <motion.a
                   key={i}
                   href={href}
-                  className="col-start-8 col-span-3 flex items-center mb-2 text-lg md:text-xl text-brand-whiteish"
+                  className="col-start-8 col-span-3 flex items-center mb-3 sm:mb-2 text-lg md:text-xl text-brand-whiteish py-1 -ml-1 pl-1"
                   whileHover={{
                     color: '#BCE5AE',
                     fill: '#BCE5AE',
@@ -54,10 +54,10 @@ export default function Footer() {
               );
             })}
           </div>
-          <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-10">
+          <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-12 sm:mt-14">
             <span className="text-xl md:text-2xl text-brand-vanilla font-medium col-start-1 col-span-7">
               Navigation
-              <hr className="h-0.5 pt-2 border-brand-whiteish w-full my-2" />
+              <hr className="h-0.5 pt-2 border-brand-whiteish w-full my-3 sm:my-2" />
             </span>
             {links.map((link, i) => {
               const { title, href } = link;
@@ -65,7 +65,7 @@ export default function Footer() {
                 <motion.a
                   key={i}
                   href={href}
-                  className="col-start-1 col-span-7 flex items-center mb-2 text-lg md:text-xl text-brand-whiteish"
+                  className="col-start-1 col-span-7 flex items-center mb-3 sm:mb-2 text-lg md:text-xl text-brand-whiteish py-1 -ml-1 pl-1"
                   whileHover={{
                     color: '#BCE5AE',
                     fill: '#BCE5AE',
@@ -99,8 +99,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col-reverse sm:flex-row gap-12 pt-12 pb-6 mt-8">
-          <a className="flex w-3/4 items-center flex-row" href={'#header'}>
+        <div className="flex flex-col-reverse sm:flex-row gap-12 pt-16 sm:pt-12 pb-8 sm:pb-6 mt-8">
+          <a className="flex w-3/4 items-center flex-row py-2" href={'#header'}>
             <span className="text-brand-grey text-sm md:text-lg font-medium mr-6">
               ©2024
             </span>

@@ -23,13 +23,14 @@ export default function CurrentWork() {
   return (
     <motion.div
       id="work"
-      className={`flex-row items-center md:pb-48 pt-24 h-screen py-4`}
+      className={`flex-row items-center pt-16 sm:pt-20 md:pt-24 min-h-screen pb-12 sm:pb-16 md:pb-48`}
       style={{ backgroundColor: hue }}
     >
-      <div className="max-w-7xl mx-auto h-screen px-4 mt-8 md:pt-12 mb-8 md:mb-6 pt-4">
-        <div
+      <div className="max-w-7xl mx-auto min-h-screen px-5 sm:px-6 md:px-4 md:pt-12 pt-4">
+        <Link
+          href="/projects"
           ref={container}
-          className="mt-4 md:mt-12 flex gap-4 items-end justify-between"
+          className="pt-6 md:pt-12 flex gap-4 items-end justify-between group"
         >
           <motion.h3
             className="text-3xl md:text-5xl font-medium text-brand-whiteish"
@@ -40,12 +41,9 @@ export default function CurrentWork() {
           >
             {work.sectionTitle}
           </motion.h3>
-          <Link
-            href="/projects"
-            className="group cursor-pointer flex items-end"
-          >
+          <div className="cursor-pointer flex items-end">
             <motion.span
-              className="text-base md:text-lg font-medium text-brand-whiteish hover:text-secondary-green cursor-pointer"
+              className="text-base md:text-lg font-medium text-brand-whiteish hover:text-secondary-green cursor-pointer group-hover:text-secondary-green"
               initial={{ opacity: 0, translateY: 60 }}
               whileInView={{ opacity: 1, translateY: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -57,13 +55,13 @@ export default function CurrentWork() {
             >
               See projects
             </motion.span>
-          </Link>
-        </div>
-        <div className="gap-x-8 mt-9 bg-brand-vanilla rounded-xl  grid grid-cols-10 text-2xl  text-brand-grey-brighter items-center">
-          <div className="w-full col-start-1 px-3 col-span-10 md:px-0 md:col-start-2 md:col-span-5 max-w-[650px] md:pt-0 my-8 md:my-12 pt-2">
-            <div className="flex flex-col gap-x-6">
+          </div>
+        </Link>
+        <div className="gap-x-8 mt-8 sm:mt-9 bg-brand-vanilla rounded-xl grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+          <div className="w-full col-start-1 px-5 sm:px-6 col-span-10 md:px-0 md:col-start-2 md:col-span-5 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
+            <div className="flex flex-col gap-y-4">
               <motion.h3
-                className="text-2xl md:text-4xl font-medium pb-1 md:pb-4 cursor-pointer text-brand-grey"
+                className="text-2xl md:text-4xl font-medium pb-2 md:pb-4 cursor-pointer text-brand-grey"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -72,7 +70,7 @@ export default function CurrentWork() {
                 {work.title}
               </motion.h3>
               <motion.p
-                className="text-base md:text-lg font-medium"
+                className="text-base md:text-lg font-medium leading-relaxed"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -85,7 +83,7 @@ export default function CurrentWork() {
 
           <ScrollScaleWrapper
             fade={true}
-            className="col-start-2 col-span-8 md:col-start-7 md:col-span-4 py-6 md:my-20 pr-0 md:pr-9"
+            className="col-start-2 col-span-8 md:col-start-7 md:col-span-4 py-10 sm:py-12 md:my-20 pr-0 md:pr-9"
           >
             <ImageSlider images={images} intervalTime={5000} />
           </ScrollScaleWrapper>

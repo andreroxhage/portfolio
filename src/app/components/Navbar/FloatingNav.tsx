@@ -187,86 +187,114 @@ const FloatingNav = () => {
   };
 
   return (
-    <motion.div
-      ref={navRef}
-      className="fixed bottom-6 left-1/2 z-50"
-      variants={initialAppearance}
-      initial="hidden"
-      animate={isProjectHovered ? 'hidden' : 'visible'}
-    >
+    <motion.div>
+      {/* Backdrop overlay */}
       <motion.div
-        className={`bg-gray-900 border-1 border-brand-grey-brighter border-opacity-10 backdrop-blur-md flex flex-col overflow-hidden shadow-lg ${
-          isExpanded ? 'items-start' : 'items-center justify-center'
-        }`}
-        variants={navVariants}
-        initial="collapsed"
-        animate={
-          isExpanded ? 'expanded' : isHovering ? 'hovering' : 'collapsed'
-        }
-        onMouseEnter={() => !isExpanded && setIsHovering(true)}
-        onMouseLeave={() => !isExpanded && setIsHovering(false)}
-        style={{
-          transformOrigin: 'center center',
-          left: 0,
-          backgroundColor: isProjectsRoute ? '' : navBackgroundColor,
-        }}
+        className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isExpanded ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        style={{ pointerEvents: isExpanded ? 'auto' : 'none' }}
+        onClick={() => setIsExpanded(false)}
+      />
+
+      <motion.div
+        ref={navRef}
+        className="fixed bottom-6 left-1/2 z-50"
+        variants={initialAppearance}
+        initial="hidden"
+        animate={isProjectHovered ? 'hidden' : 'visible'}
       >
-        <div
-          className="w-full h-[52px] px-4 flex items-center justify-between cursor-pointer"
-          onClick={() => setIsExpanded(!isExpanded)}
+        <motion.div
+          className={`bg-gray-900 border-1 border-brand-grey-brighter border-opacity-10 backdrop-blur-md flex flex-col overflow-hidden shadow-lg ${
+            isExpanded ? 'items-start' : 'items-center justify-center'
+          }`}
+          variants={navVariants}
+          initial="collapsed"
+          animate={
+            isExpanded ? 'expanded' : isHovering ? 'hovering' : 'collapsed'
+          }
+          onMouseEnter={() => !isExpanded && setIsHovering(true)}
+          onMouseLeave={() => !isExpanded && setIsHovering(false)}
+          style={{
+            transformOrigin: 'center center',
+            left: 0,
+            backgroundColor: isProjectsRoute ? '' : navBackgroundColor,
+          }}
         >
-          <motion.span
-            className={`text-brand-vanilla font-medium text-2xl cursor-pointer`}
-            animate={{ opacity: isExpanded ? 0 : 1 }}
-            transition={{ duration: 0.2 }}
-            onClick={handleLogoClick}
+          <div
+            className="w-full h-[52px] px-4 flex items-center justify-between cursor-pointer"
+            onClick={() => setIsExpanded(!isExpanded)}
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              key={
-                shouldShowArrows
-                  ? isAtTop
-                    ? 'down'
-                    : isAtBottom
-                      ? 'up'
-                      : 'menu'
-                  : 'menu-static'
-              }
+            <motion.span
+              className={`text-brand-vanilla font-medium text-2xl cursor-pointer`}
+              animate={{ opacity: isExpanded ? 0 : 1 }}
+              transition={{ duration: 0.2 }}
+              onClick={handleLogoClick}
             >
-              {shouldShowArrows ? (
-                isAtTop ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`text-brand-whiteish hover:text-secondary-green transform rotate-180`}
-                  >
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
-                ) : isAtBottom ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`text-brand-whiteish hover:text-secondary-green`}
-                  >
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                key={
+                  shouldShowArrows
+                    ? isAtTop
+                      ? 'down'
+                      : isAtBottom
+                        ? 'up'
+                        : 'menu'
+                    : 'menu-static'
+                }
+              >
+                {shouldShowArrows ? (
+                  isAtTop ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`text-brand-whiteish hover:text-secondary-green transform rotate-180`}
+                    >
+                      <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                  ) : isAtBottom ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`text-brand-whiteish hover:text-secondary-green`}
+                    >
+                      <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                  ) : (
+                    <motion.svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className={`w-6 h-6 text-brand-whiteish hover:text-secondary-green`}
+                      initial={false}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      />
+                    </motion.svg>
+                  )
                 ) : (
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -283,124 +311,108 @@ const FloatingNav = () => {
                       d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
                   </motion.svg>
-                )
-              ) : (
+                )}
+              </motion.div>
+            </motion.span>
+            <motion.div className="flex items-center gap-1">
+              <motion.span
+                className={`text-brand-whiteish hover:text-secondary-green text-base font-medium translate-y-[1px]`}
+                animate={{ opacity: isExpanded ? 0 : 1 }}
+                transition={{ duration: 0.2 }}
+              >
+                Find
+              </motion.span>
+              <motion.div className="translate-y-[1px] relative w-6 h-6">
+                {/* X Icon */}
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth="1.5"
                   stroke="currentColor"
-                  className={`w-6 h-6 text-brand-whiteish hover:text-secondary-green`}
-                  initial={false}
+                  className={`text-brand-whiteish hover:text-secondary-green absolute size-6 mt-1 mr-4`}
+                  animate={{
+                    opacity: isExpanded ? 1 : 0,
+                    scale: isExpanded ? 1 : 0.8,
+                  }}
+                  transition={{ duration: 0.2 }}
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    d="M6 18 18 6M6 6l12 12"
                   />
                 </motion.svg>
-              )}
+              </motion.div>
             </motion.div>
-          </motion.span>
-          <motion.div className="flex items-center gap-1">
-            <motion.span
-              className={`text-brand-whiteish hover:text-secondary-green text-base font-medium translate-y-[1px]`}
-              animate={{ opacity: isExpanded ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
-            >
-              Find
-            </motion.span>
-            <motion.div className="translate-y-[1px] relative w-6 h-6">
-              {/* X Icon */}
-              <motion.svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className={`text-brand-whiteish hover:text-secondary-green absolute size-6 mt-1 mr-4`}
-                animate={{
-                  opacity: isExpanded ? 1 : 0,
-                  scale: isExpanded ? 1 : 0.8,
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
-                />
-              </motion.svg>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        <motion.div
-          ref={contentRef}
-          className={`w-full overflow-hidden ${isExpanded ? 'px-8 pb-8 pt-2' : 'p-0'}`}
-          variants={contentVariants}
-          initial="hidden"
-          animate={isExpanded ? 'visible' : 'hidden'}
-          style={{
-            height: isExpanded ? 'auto' : 0,
-            display: 'block',
-            pointerEvents: isExpanded ? 'auto' : 'none',
-          }}
-        >
-          {/* Main navigation links */}
-          <div className="mb-6">
-            <h3 className="text-brand-grey-brighter text-sm mb-4">
-              Navigation
-            </h3>
-            {links.map((link, i) => (
-              <motion.a
-                key={`main_${i}`}
-                href={link.href}
-                className={`block mb-4 text-brand-whiteish text-lg hover:text-secondary-green transition-colors duration-200`}
-                variants={navItemVariants}
-                custom={i}
-                initial="hidden"
-                animate={isExpanded ? 'visible' : 'hidden'}
-                whileHover={{ x: 5 }}
-                onClick={() => setIsExpanded(false)}
-              >
-                {link.title}
-              </motion.a>
-            ))}
           </div>
 
-          {/* Divider */}
-          <motion.hr
-            className="border-brand-grey-brighter border-opacity-30 my-5"
-            initial={{ width: 0 }}
-            animate={isExpanded ? { width: '100%' } : { width: 0 }}
-            transition={{
-              duration: 0.4,
-              ease: 'easeInOut',
-              delay: links.length * 0.08 + 0.1,
+          <motion.div
+            ref={contentRef}
+            className={`w-full overflow-hidden ${isExpanded ? 'px-8 pb-8 pt-2' : 'p-0'}`}
+            variants={contentVariants}
+            initial="hidden"
+            animate={isExpanded ? 'visible' : 'hidden'}
+            style={{
+              height: isExpanded ? 'auto' : 0,
+              display: 'block',
+              pointerEvents: isExpanded ? 'auto' : 'none',
             }}
-          />
+          >
+            {/* Main navigation links */}
+            <div className="mb-6">
+              <h3 className="text-brand-grey-brighter text-sm mb-4">
+                Navigation
+              </h3>
+              {links.map((link, i) => (
+                <motion.a
+                  key={`main_${i}`}
+                  href={link.href}
+                  className={`block mb-4 text-brand-whiteish text-lg hover:text-secondary-green transition-colors duration-200`}
+                  variants={navItemVariants}
+                  custom={i}
+                  initial="hidden"
+                  animate={isExpanded ? 'visible' : 'hidden'}
+                  whileHover={{ x: 5 }}
+                  onClick={() => setIsExpanded(false)}
+                >
+                  {link.title}
+                </motion.a>
+              ))}
+            </div>
 
-          {/* Footer links */}
-          <div>
-            <h3 className="text-brand-grey-brighter text-sm mb-4">Contact</h3>
-            {footerLinks.map((link, i) => (
-              <motion.a
-                key={`footer_${i}`}
-                href={link.href}
-                className={`block mb-3 text-brand-whiteish text-base hover:text-secondary-green transition-colors duration-200`}
-                variants={contactItemVariants}
-                custom={i}
-                initial="hidden"
-                animate={isExpanded ? 'visible' : 'hidden'}
-                whileHover={{ x: 5 }}
-                onClick={() => setIsExpanded(false)}
-              >
-                {link.title}
-              </motion.a>
-            ))}
-          </div>
+            {/* Divider */}
+            <motion.hr
+              className="border-brand-grey-brighter border-opacity-30 my-5"
+              initial={{ width: 0 }}
+              animate={isExpanded ? { width: '100%' } : { width: 0 }}
+              transition={{
+                duration: 0.4,
+                ease: 'easeInOut',
+                delay: links.length * 0.08 + 0.1,
+              }}
+            />
+
+            {/* Footer links */}
+            <div>
+              <h3 className="text-brand-grey-brighter text-sm mb-4">Contact</h3>
+              {footerLinks.map((link, i) => (
+                <motion.a
+                  key={`footer_${i}`}
+                  href={link.href}
+                  className={`block mb-3 text-brand-whiteish text-base hover:text-secondary-green transition-colors duration-200`}
+                  variants={contactItemVariants}
+                  custom={i}
+                  initial="hidden"
+                  animate={isExpanded ? 'visible' : 'hidden'}
+                  whileHover={{ x: 5 }}
+                  onClick={() => setIsExpanded(false)}
+                >
+                  {link.title}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>

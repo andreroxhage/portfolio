@@ -134,7 +134,7 @@ const GifDialogMobile = ({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 p-4"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4"
           onClick={handleClose}
         >
           <motion.div
