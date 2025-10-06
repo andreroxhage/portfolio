@@ -23,10 +23,10 @@ export default function CurrentWork() {
   return (
     <motion.div
       id="work"
-      className={`flex-row items-center pt-16 sm:pt-20 md:pt-24 min-h-screen pb-12 sm:pb-16 md:pb-48`}
+      className={`flex-row items-center pt-16 sm:pt-20 md:pt-24 h-screen pb-12 sm:pb-16 md:pb-48`}
       style={{ backgroundColor: hue }}
     >
-      <div className="max-w-7xl mx-auto min-h-screen px-5 sm:px-6 md:px-4 md:pt-12 pt-4">
+      <div className="max-w-7xl mx-auto h-screen px-5 sm:px-6 md:px-4 md:pt-12 pt-4">
         <Link
           href="/projects"
           ref={container}
