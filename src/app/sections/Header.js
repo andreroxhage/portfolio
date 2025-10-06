@@ -11,15 +11,23 @@ const Header = () => {
 
   return (
     <header id="header" className="h-screen">
-      <div
-        className="h-2/6 md:h-2/5"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(${headerImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="max-w-7xl h-full px-5 sm:px-6 md:px-4 mx-auto flex items-center">
+      <div className="h-2/6 md:h-2/5 relative overflow-hidden">
+        {/* Background Image with smooth fade-in */}
+        <div className="absolute inset-0">
+          <Image
+            src={headerImage}
+            alt="Header background"
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            className="transition-opacity duration-700 ease-in-out"
+            priority
+          />
+        </div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-85" />
+
+        {/* Content */}
+        <div className="relative max-w-7xl h-full px-5 sm:px-6 md:px-4 mx-auto flex items-center">
           <motion.h1
             className="text-6xl md:text-8xl font-medium tracking-tighter text-brand-whiteish mix-blend-difference"
             animate={{ opacity: 0.4, color: '#fefefe' }}
