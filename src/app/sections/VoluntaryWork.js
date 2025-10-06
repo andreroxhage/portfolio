@@ -84,7 +84,7 @@ export default function VoluntaryWork() {
           >
             <div className="flex flex-col gap-y-3 px-5 sm:px-8 md:px-16 justify-center items-start w-full h-full">
               <motion.h4
-                className="text-xl md:text-3xl font-medium pb-1 md:pb-2"
+                className="text-xl md:text-3xl font-medium"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -124,7 +124,7 @@ export default function VoluntaryWork() {
           >
             <div className="flex flex-col gap-y-3 px-5 sm:px-8 md:px-16 justify-center items-start w-full h-full mt-10 sm:mt-12 md:mt-0">
               <motion.h4
-                className="text-xl md:text-3xl font-medium pb-1 md:pb-2"
+                className="text-xl md:text-3xl font-medium"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
