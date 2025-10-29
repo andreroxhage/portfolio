@@ -1,27 +1,38 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProfilePicture from '../../../public/resource/profileImage.jpg';
 
 import { header } from '@/app/data';
+import { EASING } from '@/app/lib/motion';
 
 const Header = () => {
   const headerImage = '/resource/20220611-IMG_5691.jpg';
+
+  const [bgLoaded, setBgLoaded] = useState(false);
 
   return (
     <header id="header" className="h-screen">
       <div className="h-2/6 md:h-2/5 relative overflow-hidden">
         {/* Background Image with smooth fade-in */}
         <div className="absolute inset-0">
-          <Image
-            src={headerImage}
-            alt="Header background"
-            fill
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            className="transition-opacity duration-700 ease-in-out"
-            priority
-          />
+          <motion.div
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: bgLoaded ? 1 : 0 }}
+            transition={{ duration: 0.8, ease: EASING.ENTER }}
+          >
+            <Image
+              src={headerImage}
+              alt="Header background"
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              priority
+              onLoad={() => setBgLoaded(true)}
+            />
+          </motion.div>
         </div>
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-85" />
@@ -58,12 +69,13 @@ const Header = () => {
             className="col-start-3 p-6 md:p-6 col-span-6 md:col-start-7 md:col-span-3 md:my-0"
             animate={{ scale: 1, opacity: 1 }}
             initial={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.4, ease: EASING.ENTER }}
           >
             <Image
               className="h-full w-full rounded-full drop-shadow-2xl shadow-md md:shadow-customShadow"
               src={ProfilePicture}
               placeholder="blur"
+              priority
               alt="image description"
               style={{
                 maxWidth: '100%',
