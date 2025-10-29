@@ -22,6 +22,13 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
 
     const handleClick = () => {
       if (isExpanded && hasProjectSlug) {
+        if (typeof window !== 'undefined') {
+          try {
+            sessionStorage.setItem('fromProjects', '1');
+          } catch (_e) {
+            /* noop */
+          }
+        }
         router.push(`/projects/${project.projectSlug}`);
         return;
       }
@@ -32,6 +39,13 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         if (isExpanded && hasProjectSlug) {
+          if (typeof window !== 'undefined') {
+            try {
+              sessionStorage.setItem('fromProjects', '1');
+            } catch (_e) {
+              /* noop */
+            }
+          }
           router.push(`/projects/${project.projectSlug}`);
           return;
         }
