@@ -1,14 +1,18 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 // This component should be used to wrap any element that you want to apply the magnetic effect to
 // Credits to https://blog.olivierlarose.com/tutorials/magnetic-button for the inspiration
 
 export default function MagneticWrapper({ children, magneticStrength = 1 }) {
+  const prefersReducedMotion = useReducedMotion();
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = e => {
+    if (prefersReducedMotion) return;
+
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
@@ -35,12 +39,16 @@ export default function MagneticWrapper({ children, magneticStrength = 1 }) {
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x, y }}
-      transition={{
-        type: 'spring',
-        stiffness: 150,
-        damping: 15,
-        mass: 0.1,
-      }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0.01 }
+          : {
+              type: 'spring',
+              stiffness: 150,
+              damping: 15,
+              mass: 0.1,
+            }
+      }
     >
       {children}
     </motion.div>

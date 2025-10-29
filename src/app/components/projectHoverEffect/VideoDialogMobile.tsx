@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -6,6 +8,7 @@ import { Project } from '@/app/types';
 import { useVideo } from '@/app/hooks/useVideo';
 import VideoLoadingAnimation from '../VideoLoadingAnimation';
 import ImageSlider from '../ImageSlider';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface GifDialogMobileProps {
   project: Project;
@@ -105,16 +108,20 @@ const GifDialogMobile = ({
     exit: { opacity: 0 },
   };
 
+  const prefersReducedMotion = useReducedMotion();
+
   const contentVariants = {
     hidden: { scale: 0.95, opacity: 0 },
     visible: {
       scale: 1,
       opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            type: 'spring',
+            stiffness: 300,
+            damping: 30,
+          },
     },
     exit: { scale: 0.95, opacity: 0 },
   };

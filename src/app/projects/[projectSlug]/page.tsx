@@ -2,22 +2,15 @@
 import Image from 'next/image';
 import ScrollScaleWrapper from '@/app/components/ScrollScaleWrapper';
 import { projects } from '@/app/data';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ProjectNavigation from '@/app/components/ProjectNavigation';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import VideoLoadingAnimation from '@/app/components/VideoLoadingAnimation';
 
 export default function Page({ params }: { params: { projectSlug: string } }) {
   const project = projects.find(p => p.projectSlug === params.projectSlug);
   const [videoUrl, setVideoUrl] = useState<string>('');
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: [0, 1],
-  });
-  const hue = useTransform(scrollYProgress, [0, 0.3], ['#FAEFDE', '#fafaf8']);
 
   useEffect(() => {
     fetch(`/api/videos?project=${params.projectSlug}`)
@@ -31,14 +24,25 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-lg font-semium text-gray-500">
-        Project not found
+      <div className="min-h-screen flex items-center justify-center text-lg font-semium text-gray-500 bg-wh">
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter text-secondary-green-darker">
+            Project not found
+          </h1>
+          <p className="text-lg md:text-2xl font-normal opacity-80">
+            The project you are looking for does not exist.
+          </p>
+        </div>
+        <ProjectNavigation
+          projects={projects}
+          currentProjectSlug={params.projectSlug}
+        />
       </div>
     );
   }
 
   return (
-    <motion.div id="header" style={{ backgroundColor: hue }}>
+    <motion.div id="header" className="bg-neutral-50">
       <header className="max-w-7xl mx-auto px-4 w-full flex justify-start items-start py-20">
         <div className="flex flex-row items-baseline gap-4">
           <motion.h1

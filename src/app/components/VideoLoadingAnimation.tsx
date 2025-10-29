@@ -1,4 +1,8 @@
+'use client';
+
 import { motion } from 'framer-motion';
+import { EASING } from '@/app/lib/motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface VideoLoadingAnimationProps {
   className?: string;
@@ -7,6 +11,8 @@ interface VideoLoadingAnimationProps {
 const VideoLoadingAnimation = ({
   className = '',
 }: VideoLoadingAnimationProps) => {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <div
       className={`flex items-center justify-center w-full h-full ${className}`}
@@ -17,8 +23,9 @@ const VideoLoadingAnimation = ({
         animate={{ opacity: 1 }}
         transition={{
           duration: 0.8,
-          repeat: Infinity,
+          repeat: prefersReducedMotion ? 0 : Infinity,
           repeatType: 'reverse',
+          ease: EASING.STANDARD,
         }}
       >
         <motion.div
@@ -27,8 +34,8 @@ const VideoLoadingAnimation = ({
           animate={{ scale: 1, opacity: 0 }}
           transition={{
             duration: 1,
-            repeat: Infinity,
-            ease: 'easeOut',
+            repeat: prefersReducedMotion ? 0 : Infinity,
+            ease: EASING.EXIT,
           }}
         />
         <motion.div

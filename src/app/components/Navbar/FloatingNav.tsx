@@ -4,8 +4,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { links, footerLinks } from '../../data';
 import { useProjectHover } from '../../contexts/ProjectHoverContext';
+import { DURATION, EASING } from '@/app/lib/motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 const FloatingNav = () => {
+  const prefersReducedMotion = useReducedMotion();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -100,33 +103,39 @@ const FloatingNav = () => {
       width: '150px',
       borderRadius: '26px',
       x: '-50%',
-      transition: {
-        type: 'spring',
-        damping: 30,
-        stiffness: 250,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            type: 'spring',
+            damping: 30,
+            stiffness: 250,
+          },
     },
     hovering: {
       height: '56px',
       width: '160px',
       borderRadius: '28px',
       x: '-50%',
-      transition: {
-        type: 'spring',
-        damping: 30,
-        stiffness: 250,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            type: 'spring',
+            damping: 30,
+            stiffness: 250,
+          },
     },
     expanded: {
       height: contentHeight ? `${contentHeight + 64}px` : 'auto', // 64px is header height
       width: '320px',
       borderRadius: '40px',
       x: '-50%',
-      transition: {
-        type: 'spring',
-        damping: 30,
-        stiffness: 250,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            type: 'spring',
+            damping: 30,
+            stiffness: 250,
+          },
     },
   };
 
@@ -137,8 +146,8 @@ const FloatingNav = () => {
       y: 0,
       transition: {
         delay: i * 0.05,
-        duration: 0.3,
-        ease: [0.6, 0.05, 0.01, 0.9],
+        duration: DURATION.MEDIUM,
+        ease: EASING.ENTER,
       },
     }),
   };
@@ -150,8 +159,8 @@ const FloatingNav = () => {
       y: 0,
       transition: {
         delay: links.length * 0.05 + 0.2 + i * 0.05, // Add delay after last nav item + buffer
-        duration: 0.3,
-        ease: [0.6, 0.05, 0.01, 0.9],
+        duration: DURATION.MEDIUM,
+        ease: EASING.ENTER,
       },
     }),
   };
@@ -161,12 +170,14 @@ const FloatingNav = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        type: 'spring',
-        damping: 20,
-        stiffness: 300,
-        delay: 0.2,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            type: 'spring',
+            damping: 20,
+            stiffness: 300,
+            delay: 0.2,
+          },
     },
   };
 
@@ -174,14 +185,15 @@ const FloatingNav = () => {
     hidden: {
       opacity: 0,
       transition: {
-        duration: 0.2,
+        duration: DURATION.FAST,
       },
     },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.3,
+        duration: DURATION.MEDIUM,
         delay: 0.1,
+        ease: EASING.ENTER,
       },
     },
   };
@@ -193,7 +205,7 @@ const FloatingNav = () => {
         className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: isExpanded ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
         style={{ pointerEvents: isExpanded ? 'auto' : 'none' }}
         onClick={() => setIsExpanded(false)}
       />
@@ -229,14 +241,14 @@ const FloatingNav = () => {
             <motion.span
               className={`text-brand-vanilla font-medium text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               onClick={handleLogoClick}
             >
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
                 key={
                   shouldShowArrows
                     ? isAtTop
@@ -318,7 +330,7 @@ const FloatingNav = () => {
               <motion.span
                 className={`text-brand-whiteish hover:text-secondary-green text-base font-medium translate-y-[1px]`}
                 animate={{ opacity: isExpanded ? 0 : 1 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               >
                 Find
               </motion.span>
@@ -335,7 +347,7 @@ const FloatingNav = () => {
                     opacity: isExpanded ? 1 : 0,
                     scale: isExpanded ? 1 : 0.8,
                   }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
                 >
                   <path
                     strokeLinecap="round"
@@ -387,8 +399,8 @@ const FloatingNav = () => {
               initial={{ width: 0 }}
               animate={isExpanded ? { width: '100%' } : { width: 0 }}
               transition={{
-                duration: 0.4,
-                ease: 'easeInOut',
+                duration: DURATION.SLOW,
+                ease: EASING.STANDARD,
                 delay: links.length * 0.08 + 0.1,
               }}
             />

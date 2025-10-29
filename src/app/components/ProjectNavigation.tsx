@@ -61,7 +61,10 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
           </motion.div>
           <div className="text-left">
             <div className="text-sm text-gray-500">Previous Project</div>
-            <label className="font-medium text-brand-blackish group-hover:text-brand-grey duration-300">
+            <label
+              className="font-medium duration-300"
+              style={{ color: prevProject.titleColor }}
+            >
               {prevProject.title}
             </label>
           </div>
@@ -73,7 +76,10 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
         >
           <div className="text-right">
             <div className="text-sm text-gray-500">Next Project</div>
-            <label className="font-medium text-secondary-green-darker group-hover:text-secondary-green duration-300">
+            <label
+              className="font-medium duration-300"
+              style={{ color: nextProject.titleColor }}
+            >
               {nextProject.title}
             </label>
           </div>

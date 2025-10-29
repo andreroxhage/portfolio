@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import { cn } from '@/../utils/cn';
+import { DURATION, EASING } from '@/app/lib/motion';
 
 export const TextRevealCard = ({
   text,
@@ -77,7 +78,11 @@ export const TextRevealCard = ({
                   clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
                 }
           }
-          transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
+          transition={
+            isMouseOver
+              ? { duration: 0 }
+              : { duration: DURATION.MEDIUM, ease: EASING.STANDARD }
+          }
           className="absolute bg-brand-blackish z-20  will-change-transform"
         >
           <p
@@ -95,7 +100,11 @@ export const TextRevealCard = ({
             rotate: `${rotateDeg}deg`,
             opacity: widthPercentage > 0 ? 1 : 0,
           }}
-          transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
+          transition={
+            isMouseOver
+              ? { duration: 0 }
+              : { duration: DURATION.MEDIUM, ease: EASING.STANDARD }
+          }
           className="h-40 w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 

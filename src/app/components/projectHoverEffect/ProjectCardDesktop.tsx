@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Project } from '@/app/types';
 import { PlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { EASING, BUTTON_PRESS_SCALE, DURATION } from '@/app/lib/motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface ProjectCardDesktopProps {
   project: Project;
@@ -13,14 +16,25 @@ interface ProjectCardDesktopProps {
 const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
   ({ project, isExpanded, onClick }) => {
     const hasProjectSlug = 'projectSlug' in project && project.projectSlug;
+    const router = useRouter();
+    const prefersReducedMotion = useReducedMotion();
+    const [isHovering, setIsHovering] = useState(false);
 
     const handleClick = () => {
+      if (isExpanded && hasProjectSlug) {
+        router.push(`/projects/${project.projectSlug}`);
+        return;
+      }
       onClick();
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
+        if (isExpanded && hasProjectSlug) {
+          router.push(`/projects/${project.projectSlug}`);
+          return;
+        }
         onClick();
       }
     };
@@ -32,6 +46,9 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         tabIndex={0}
         role="button"
         aria-expanded={isExpanded}
+        whileTap={{ scale: BUTTON_PRESS_SCALE }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
         className="bg-gray-900 border-white/10 rounded-4xl hover:bg-gray-800 cursor-pointer transition-all duration-150 overflow-hidden w-fit"
       >
         {/* Collapsed Content - Hidden when expanded */}
@@ -44,14 +61,12 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
           }}
           transition={{
             height: {
-              type: 'spring',
-              stiffness: 250,
-              damping: 28,
-              mass: 0.8,
+              duration: 0.3,
+              ease: EASING.ENTER,
             },
             opacity: {
               duration: isExpanded ? 0 : 0.82,
-              ease: [0.4, 0, 0.2, 1],
+              ease: EASING.ENTER,
               delay: isExpanded ? 0 : 0.16,
             },
           }}
@@ -77,14 +92,12 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
           }}
           transition={{
             height: {
-              type: 'spring',
-              stiffness: 200,
-              damping: 24,
-              mass: 1.2,
+              duration: 0.4,
+              ease: EASING.ENTER,
             },
             opacity: {
               duration: isExpanded ? 0.6 : 0,
-              ease: [0.4, 0, 0.2, 1],
+              ease: EASING.ENTER,
               delay: isExpanded ? 0.32 : 0,
             },
           }}
@@ -109,16 +122,29 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                   animate={{ opacity: isExpanded ? 1 : 0 }}
                   transition={{
                     duration: 0.4,
-                    ease: [0.4, 0, 0.2, 1],
+                    ease: EASING.ENTER,
                     delay: isExpanded ? 0.38 : 0,
                   }}
                 >
                   <Link
                     href={`/projects/${project.projectSlug}`}
-                    className="text-sm text-gray-100 hover:text-secondary-green-darker transition-colors duration-200"
+                    className="text-sm text-gray-100 hover:text-secondary-green-darker transition-colors duration-200 flex items-center gap-2"
                     onClick={e => e.stopPropagation()}
                   >
-                    View Project <ArrowRightIcon className="w-4 h-4 inline" />
+                    View Project{' '}
+                    <motion.span
+                      aria-hidden
+                      animate={{
+                        x: isExpanded && hasProjectSlug && isHovering ? 4 : 0,
+                      }}
+                      transition={{
+                        duration: prefersReducedMotion ? 0.01 : DURATION.FAST,
+                        ease: EASING.ENTER,
+                      }}
+                      style={{ display: 'inline-block' }}
+                    >
+                      <ArrowRightIcon className="w-4 h-4 inline mb-1" />
+                    </motion.span>
                   </Link>
                 </motion.div>
               )}

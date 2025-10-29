@@ -1,6 +1,9 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface GifDialogProps {
   videoSrc: string;
@@ -15,6 +18,7 @@ const GifDialog = ({
   isLoading,
   setIsLoading,
 }: GifDialogProps) => {
+  const prefersReducedMotion = useReducedMotion();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
@@ -68,11 +72,15 @@ const GifDialog = ({
         y: calculateOffset().y,
       }}
       exit={{ scale: 0.9, opacity: 0 }}
-      transition={{
-        type: 'spring',
-        stiffness: 100,
-        damping: 20,
-      }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0.01 }
+          : {
+              type: 'spring',
+              stiffness: 100,
+              damping: 20,
+            }
+      }
       className="fixed z-10 rounded-[40px] shadow-xl overflow-hidden pointer-events-none"
       style={{
         left: `calc(50% - ${dimensions.width / 2}px)`,
