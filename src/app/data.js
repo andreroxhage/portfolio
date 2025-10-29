@@ -26,11 +26,11 @@ export const header = {
 export const about = [
   {
     title: 'Engineering',
-    description: `My journey in engineering started with a curiosity for how products influence our daily lives. With a focus on crafting digital solutions that center on user needs, my work spans from software development to design. I’ve gained significant experience in cross-functional teams and agile projects. Pursuing a Master's in Engineering, specializing in Information and Communication Technologies, has allowed me to further deepen my technical expertise.`,
+    description: `I got into engineering by wondering how everyday products shape our routines. I like building digital stuff that’s usable, reliable, and grounded in real user needs. I’ve shipped with cross‑functional teams in agile setups, and I’m currently doing a Master’s in ICT to deepen the technical side.`,
   },
   {
     title: 'Psychology',
-    description: `My passion for psychology stems from a desire to understand human behavior and its application to digital products. Specializing in creativity psychology, I use these insights to foster innovation and ensure that the user experience resonates deeply with individuals. My Bachelor’s degree in Psychology, combined with my engineering skills, allows me to take a holistic approach to product design, ensuring that every touchpoint is both functional and empathetic to users’ needs.`,
+    description: `My interest in psychology is about understanding why people do what they do, and using that to make better products. I focus on creativity psychology to spark ideas and keep the experience grounded in how people actually think and feel. With a Bachelor’s in Psychology plus my engineering toolkit, I take a holistic approach so every touchpoint feels straightforward and genuinely considerate.`,
   },
 ];
 
