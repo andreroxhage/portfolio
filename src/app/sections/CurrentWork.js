@@ -5,13 +5,13 @@ import mockup2 from '@/../public/resource/joinMockup2.png';
 import { currentWork } from '@/app/data';
 import { useRef } from 'react';
 import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
-import ImageSlider from '../components/ImageFader';
+import ImageFader from '../components/ImageFader';
 import Link from 'next/link';
 
 export default function CurrentWork() {
   const work = currentWork[0];
   const container = useRef(null);
-  const images = [mockup1, mockup2];
+  const imageFader = [mockup1, mockup2];
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -85,7 +85,7 @@ export default function CurrentWork() {
             fade={true}
             className="col-start-2 col-span-8 md:col-start-7 md:col-span-4 py-10 sm:py-12 md:my-20 pr-0 md:pr-9"
           >
-            <ImageSlider images={images} intervalTime={5000} />
+            <ImageFader images={imageFader} intervalTime={5000} />
           </ScrollScaleWrapper>
         </div>
       </div>

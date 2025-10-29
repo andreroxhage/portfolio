@@ -52,7 +52,7 @@ export const ideas = [
     videoAlt: 'Join customer data platform interface',
     date: '2023 – Current',
     roundedCorners: false,
-    imageSlider: ['/resource/joinMockup1.png', '/resource/joinMockup2.png'],
+    imageFader: ['/resource/joinMockup1.png', '/resource/joinMockup2.png'],
     intervalTime: 5000,
     order: 1,
   },

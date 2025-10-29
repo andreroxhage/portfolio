@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
-const ImageSlider = ({ images, intervalTime = 5000 }) => {
+const ImageFader = ({ images, intervalTime = 5000 }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [prevImage, setPrevImage] = useState(null);
 
@@ -72,4 +72,4 @@ const ImageSlider = ({ images, intervalTime = 5000 }) => {
   );
 };
 
-export default ImageSlider;
+export default ImageFader;

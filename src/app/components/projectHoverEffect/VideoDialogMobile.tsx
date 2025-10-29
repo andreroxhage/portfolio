@@ -7,8 +7,8 @@ import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Project } from '@/app/types';
 import { useVideo } from '@/app/hooks/useVideo';
 import VideoLoadingAnimation from '../VideoLoadingAnimation';
-import ImageSlider from '../ImageFader';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import ImageFader from '../ImageFader';
 
 interface GifDialogMobileProps {
   project: Project;
@@ -21,26 +21,26 @@ const ProjectVideo = memo(
     identifier,
     onLoad,
     shouldRound = true,
-    imageSlider,
+    imageFader,
     intervalTime,
   }: {
     identifier: string;
     onLoad: () => void;
     shouldRound?: boolean;
-    imageSlider?: any[];
+    imageFader?: any[];
     intervalTime?: number;
   }) => {
     const { video_url: videoUrl, loading } = useVideo(identifier);
-    const hasImageSlider = imageSlider && imageSlider.length > 0;
+    const hasImageFader = imageFader && imageFader.length > 0;
 
     return (
       <div
         className={`relative mx-auto max-w-[60vw] w-full overflow-hidden ${shouldRound ? 'rounded-[40px]' : ''}`}
       >
         <div className="relative flex h-full w-full items-center justify-center">
-          {hasImageSlider ? (
-            <ImageSlider
-              images={imageSlider}
+          {hasImageFader ? (
+            <ImageFader
+              images={imageFader}
               intervalTime={intervalTime || 5000}
             />
           ) : (
@@ -153,7 +153,7 @@ const GifDialogMobile = ({
               identifier={identifier}
               onLoad={() => {}}
               shouldRound={shouldRound}
-              imageSlider={project.imageSlider}
+              imageFader={project.imageFader}
               intervalTime={project.intervalTime}
             />
           </motion.div>

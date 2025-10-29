@@ -18,7 +18,7 @@ interface BaseItem {
   titleColor?: string;
   subtitleColor?: string;
   roundedCorners?: boolean; // Controls video dialog corner rounding
-  imageSlider?: any[]; // Array of images for slider (instead of video)
+  imageFader?: any[]; // Array of images for slider (instead of video)
   intervalTime?: number; // Interval time for image slider in ms
   order?: number; // Display order (lower numbers appear first)
 }

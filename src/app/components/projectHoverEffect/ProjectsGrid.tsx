@@ -6,7 +6,7 @@ import { preloadVideos, useVideo } from '@/app/hooks/useVideo';
 import LoadingScreen from '@/app/components/projectHoverEffect/LoadingScreen';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQueryClient } from '@tanstack/react-query';
-import ImageSlider from '@/app/components/ImageSlider';
+import ImageFader from '../ImageFader';
 
 const ProjectGrid = () => {
   const queryClient = useQueryClient();
@@ -107,10 +107,10 @@ const RightPreviewPanel = ({
     }
   }, [videoUrl, prevVideoUrl]);
 
-  const hasImageSlider =
-    currentProject?.imageSlider && currentProject.imageSlider.length > 0;
+  const hasImageFader =
+    currentProject?.imageFader && currentProject.imageFader.length > 0;
   const showPanel =
-    isActive && !!itemIdentifier && (!!videoUrl || hasImageSlider);
+    isActive && !!itemIdentifier && (!!videoUrl || hasImageFader);
   const shouldRound = currentProject?.roundedCorners !== false;
 
   const easings = {
@@ -123,7 +123,7 @@ const RightPreviewPanel = ({
         <AnimatePresence mode="wait">
           {showPanel && (
             <>
-              {hasImageSlider ? (
+              {hasImageFader ? (
                 <motion.div
                   key={itemIdentifier}
                   className={`${shouldRound ? 'rounded-[40px]' : ''} overflow-hidden`}
@@ -141,8 +141,8 @@ const RightPreviewPanel = ({
                     height: 'auto',
                   }}
                 >
-                  <ImageSlider
-                    images={currentProject.imageSlider!.map(src => src)}
+                  <ImageFader
+                    images={currentProject.imageFader!.map(src => src)}
                     intervalTime={currentProject.intervalTime || 5000}
                   />
                 </motion.div>
