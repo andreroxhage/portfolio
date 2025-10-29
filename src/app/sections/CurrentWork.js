@@ -5,7 +5,7 @@ import mockup2 from '@/../public/resource/joinMockup2.png';
 import { currentWork } from '@/app/data';
 import { useRef } from 'react';
 import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
-import ImageSlider from '../components/ImageSlider';
+import ImageSlider from '../components/ImageFader';
 import Link from 'next/link';
 
 export default function CurrentWork() {

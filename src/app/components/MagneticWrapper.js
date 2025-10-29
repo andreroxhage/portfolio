@@ -11,7 +11,9 @@ export default function MagneticWrapper({ children, magneticStrength = 1 }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = e => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      return;
+    }
 
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();

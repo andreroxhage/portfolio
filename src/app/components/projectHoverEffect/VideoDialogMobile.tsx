@@ -7,7 +7,7 @@ import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Project } from '@/app/types';
 import { useVideo } from '@/app/hooks/useVideo';
 import VideoLoadingAnimation from '../VideoLoadingAnimation';
-import ImageSlider from '../ImageSlider';
+import ImageSlider from '../ImageFader';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface GifDialogMobileProps {
