@@ -13,10 +13,10 @@ export default function Contact() {
   );
 
   return (
-    <div className="bg-brand-grey sm:bg-brand-blackish">
+    <div className="bg-brand-grey h-screen  sm:bg-brand-cream p-12 py-18">
       <div
         id="contact"
-        className="h-screen w-full rounded-t-3xl"
+        className="w-full h-full rounded-[40px]"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url(${backgroundImage})`,
           backgroundSize: 'cover',

@@ -1,64 +1,30 @@
 'use client';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import mockup1 from '@/../public/resource/joinMockup1.png';
 import mockup2 from '@/../public/resource/joinMockup2.png';
 import { currentWork } from '@/app/data';
-import { useRef } from 'react';
 import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 import ImageFader from '../components/ImageFader';
 import Link from 'next/link';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING } from '@/app/lib/motion';
 
 export default function CurrentWork() {
   const work = currentWork[0];
-  const container = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
   const imageFader = [mockup1, mockup2];
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: [0, 1],
-  });
-
-  const hue = useTransform(scrollYProgress, [0, 1], ['#ffffff00', '#ffffff32']);
+  const [isLinkHovered, setIsLinkHovered] = useState(false);
 
   return (
     <motion.div
       id="work"
-      className={`flex-row items-center pt-16 sm:pt-20 md:pt-24 h-screen pb-12 sm:pb-16 md:pb-48`}
-      style={{ backgroundColor: hue }}
+      className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-brand-vanilla`}
     >
-      <div className="max-w-7xl mx-auto h-screen px-5 sm:px-6 md:px-4 md:pt-12 pt-4">
-        <Link
-          href="/projects"
-          ref={container}
-          className="pt-6 md:pt-12 flex gap-4 items-end justify-between group"
-        >
-          <motion.h3
-            className="text-3xl md:text-5xl font-medium text-brand-whiteish"
-            initial={{ opacity: 0, translateY: 60 }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          >
-            {work.sectionTitle}
-          </motion.h3>
-          <div className="cursor-pointer flex items-end">
-            <motion.span
-              className="text-base md:text-lg font-medium text-brand-whiteish hover:text-secondary-green cursor-pointer group-hover:text-secondary-green"
-              initial={{ opacity: 0, translateY: 60 }}
-              whileInView={{ opacity: 1, translateY: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              viewport={{ once: true }}
-              whileHover={{
-                translateY: -4,
-                transition: { duration: 0.2, ease: 'easeInOut' },
-              }}
-            >
-              See projects
-            </motion.span>
-          </div>
-        </Link>
-        <div className="gap-x-8 mt-8 sm:mt-9 bg-brand-vanilla rounded-xl grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
-          <div className="w-full col-start-1 px-5 sm:px-6 col-span-10 md:px-0 md:col-start-2 md:col-span-5 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
+        <div className="gap-x-8 rounded-xl grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+          <div className="w-full col-start-1 px-5 sm:px-6 col-span-10 md:px-0 md:col-start-1 md:col-span-6 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
             <div className="flex flex-col gap-y-4">
               <motion.h3
                 className="text-2xl md:text-4xl font-medium cursor-pointer text-brand-grey"
@@ -78,12 +44,35 @@ export default function CurrentWork() {
               >
                 {work.description}
               </motion.p>
+              <div className="">
+                <Link
+                  href="/projects"
+                  className="flex gap-2 align-items-baseline group text-primary-800 text-base md:text-lg font-medium hover:text-primary-600 active:text-primary-900 transition-colors"
+                  onMouseEnter={() => setIsLinkHovered(true)}
+                  onMouseLeave={() => setIsLinkHovered(false)}
+                >
+                  See projects
+                  <motion.span
+                    aria-hidden
+                    animate={{
+                      x: isLinkHovered ? 4 : 0,
+                    }}
+                    transition={{
+                      duration: prefersReducedMotion ? 0.01 : DURATION.FAST,
+                      ease: EASING.ENTER,
+                    }}
+                    style={{ display: 'inline-block' }}
+                  >
+                    <ArrowRightIcon className="w-4 h-4 inline mb-1" />
+                  </motion.span>{' '}
+                </Link>
+              </div>
             </div>
           </div>
 
           <ScrollScaleWrapper
             fade={true}
-            className="col-start-2 col-span-8 md:col-start-7 md:col-span-4 py-10 sm:py-12 md:my-20 pr-0 md:pr-9"
+            className="col-start-2 col-span-10 md:col-start-7 md:col-span-5 py-10 sm:py-12 md:my-20 pr-0 md:pr-9"
           >
             <ImageFader images={imageFader} intervalTime={5000} />
           </ScrollScaleWrapper>

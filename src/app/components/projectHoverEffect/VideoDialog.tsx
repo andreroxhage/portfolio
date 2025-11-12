@@ -23,7 +23,10 @@ const VideoDialog = ({
 }: VideoDialogProps) => {
   const prefersReducedMotion = useReducedMotion();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const { video_url: videoUrl, loading: isVideoLoading } = useVideo(identifier);
+  const { video_url: videoUrl, loading: isVideoLoading } = useVideo(
+    identifier,
+    true
+  );
 
   const handleVideoLoad = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = event.currentTarget;

@@ -26,7 +26,7 @@ export const header = {
 export const about = [
   {
     title: 'Engineering',
-    description: `I got into engineering by wondering how everyday products shape our routines. I like building digital stuff that’s usable, reliable, and grounded in real user needs. I’ve shipped with cross‑functional teams in agile setups, and I’m currently doing a Master’s in ICT to deepen the technical side.`,
+    description: `I got into engineering by wondering how everyday products shape our routines. I like building digital stuff that’s usable, reliable, and grounded in real user needs. I’ve shipped with cross‑functional teams in agile setups, and I’m currently doing a Master’s in Information and Communication Systems to deepen the technical side.`,
   },
   {
     title: 'Psychology',

@@ -49,7 +49,7 @@ const Header = () => {
           </motion.h1>
         </div>
       </div>
-      <div className="h-4/6 md:h-3/5 min-h-[480px] py-16 md:py-0 flex-row items-center bg-brand-vanilla">
+      <div className="h-4/6 md:h-3/5 min-h-[480px] py-16 md:py-0 flex-row items-center bg-brand-cream">
         <div className="max-w-7xl px-5 sm:px-6 md:px-4 mx-auto h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <motion.div
             className="col-span-10 col-start-1 md:col-span-6 mb-12 sm:mb-16 md:mb-0"

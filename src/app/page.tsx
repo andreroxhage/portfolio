@@ -9,15 +9,15 @@ import Footer from './sections/Footer';
 
 export default function Home() {
   return (
-    <main className="h-full bg-brand-blackish">
+    <main className="h-full bg-brand-cream">
       <Header></Header>
       <CurrentWork />
-      <About></About>
 
-      <div className="bg-brand-vanilla">
+      <div className="bg-brand-cream">
         <Photography />
         <ZoomParallax></ZoomParallax>
       </div>
+      <About></About>
       <Contact></Contact>
       <VoluntaryWork />
       <Footer />

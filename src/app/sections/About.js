@@ -16,16 +16,7 @@ export default function About() {
 
   return (
     <>
-      <div className="bg-brand-vanilla h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
-        <motion.h3
-          className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 md:pt-24 pt-20 sm:pt-24 text-brand-grey text-3xl md:text-6xl font-medium pb-10 sm:pb-0"
-          initial={{ opacity: 0, translateY: 60 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          viewport={{ once: true }}
-        >
-          About me
-        </motion.h3>
+      <div className="bg-brand-cream h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <motion.div
             className="w-full col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 "
@@ -34,11 +25,20 @@ export default function About() {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             viewport={{ once: true }}
           >
+            <motion.h3
+              className="mx-auto text-brand-grey text-2xl md:text-4xl font-medium pb-4"
+              initial={{ opacity: 0, translateY: 60 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              About me
+            </motion.h3>
             <div className="flex flex-row gap-x-8 sm:gap-x-10 md:gap-x-6">
               {about.map((item, index) => (
                 <div key={index} className="pb-2">
-                  <motion.h3
-                    className={`text-xl md:text-3xl font-mediun pb-2 md:pb-4 cursor-pointer py-2 px-1 -ml-1 ${
+                  <motion.h4
+                    className={`text-base md:text-lg font-medium pb-1 md:pb-2 cursor-pointer py-2 px-1 -ml-1 ${
                       activeIndex === index
                         ? 'text-primary-800'
                         : 'text-brand-grey-brighter'
@@ -54,11 +54,11 @@ export default function About() {
                     }}
                   >
                     {item.title}
-                  </motion.h3>
+                  </motion.h4>
                   <AnimatePresence>
                     {activeIndex === index && (
                       <motion.hr
-                        className="h-0.5 pt-2 col-start-1 col-end-4 border-brand-grey"
+                        className="h-0.5 col-start-1 col-end-4 border-brand-grey"
                         initial={{ width: '0%' }}
                         animate={{ width: '100%' }}
                         exit={{ width: '0%' }}
@@ -70,7 +70,6 @@ export default function About() {
                 </div>
               ))}
             </div>
-
             <AnimatePresence mode="wait">
               {about.map(
                 (item, index) =>

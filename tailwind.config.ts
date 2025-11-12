@@ -29,6 +29,7 @@ const config: Config = {
           vanilla: '#FAEFDE',
           grey: '#40403B',
           'grey-brighter': '#5D5D56',
+          cream: '#EBE1D1',
         },
         secondary: {
           green: '#BCE5AE',

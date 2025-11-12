@@ -12,10 +12,7 @@ import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function VoluntaryWork() {
   return (
-    <div
-      id="voluntary-work"
-      className="bg-brand-vanilla md:pt-24 pt-20 sm:pt-24"
-    >
+    <div id="voluntary-work" className="bg-brand-cream md:pt-18 pt-20 sm:pt-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
         <motion.h3
           className="pt-6 pb-8 sm:pb-10 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-medium text-brand-grey"
