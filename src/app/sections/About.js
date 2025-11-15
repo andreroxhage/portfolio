@@ -16,10 +16,10 @@ export default function About() {
 
   return (
     <>
-      <div className="bg-brand-cream h-fit my-auto pt-2 md:pt-0 flex-row items-center relative">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+      <div className="bg-brand-cream h-fit my-auto flex-row items-center relative">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-brand-grey-brighter align-items-center">
           <motion.div
-            className="w-full col-start-1 md:col-span-6 max-w-[660px] col-span-10 min-h-100 "
+            className="w-full lg:col-start-1 lg:col-span-6 max-w-[660px] col-span-10 min-h-100 "
             initial={{ opacity: 0, translateY: 60 }}
             whileInView={{ opacity: 1, translateY: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -90,7 +90,7 @@ export default function About() {
           </motion.div>
           <ScrollScaleWrapper
             fade={true}
-            className="col-start-1 col-span-10 md:col-start-7 md:col-span-4 md:my-20 mt-16 mb-16 sm:mt-20 sm:mb-20"
+            className="col-start-1 col-span-10 md:col-start-7 md:col-span-4 flex-row items-center hidden lg:flex"
           >
             <Image
               className="h-full w-full rounded-sm"

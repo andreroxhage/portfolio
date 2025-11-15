@@ -13,7 +13,7 @@ export default function Contact() {
   );
 
   return (
-    <div className="bg-brand-grey h-screen  sm:bg-brand-cream p-12 py-18">
+    <div className="h-screen bg-brand-cream p-0 lg:p-12 lg:py-18">
       <div
         id="contact"
         className="w-full h-full rounded-[40px]"
@@ -26,7 +26,7 @@ export default function Contact() {
         <div className="flex flex-col justify-between overflow-hidden w-full h-screen">
           <div
             id="footer-container"
-            className="w-full h-4/6 overflow-hidden py-14"
+            className="w-full h-full lg:h-4/6 overflow-hidden py-14"
           >
             <FollowerPointerCard
               title={<TitleComponent title={'Connect'} />}
