@@ -33,8 +33,11 @@ export const useVideo = (identifier: string) => {
     queryKey: ['video', identifier],
     queryFn: () => fetchVideoUrl(identifier),
     enabled: !!identifier,
-    staleTime: Infinity, // Videos don't change, cache forever
-    gcTime: 1000 * 60 * 60, // Keep in cache for 1 hour
+    staleTime: 1000 * 60 * 55,
+    gcTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
   });
 
   return {
