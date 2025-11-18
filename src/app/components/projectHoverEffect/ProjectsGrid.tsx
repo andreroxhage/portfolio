@@ -1,20 +1,12 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { projects, ideas } from '@/app/data';
 import { Project } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
-import {
-  preloadTopNVideos,
-  prioritizeVideo,
-  useVideo,
-} from '@/app/hooks/useVideo';
-import LoadingScreen from '@/app/components/projectHoverEffect/LoadingScreen';
+import { useVideo } from '@/app/hooks/useVideo';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useQueryClient } from '@tanstack/react-query';
 import ImageFader from '../ImageFader';
 
 const ProjectGrid = () => {
-  const queryClient = useQueryClient();
-
   const allItems = useMemo(
     () =>
       [...(projects as Project[]), ...(ideas as Project[])].sort((a, b) => {
@@ -25,106 +17,50 @@ const ProjectGrid = () => {
     []
   );
 
+  const firstProject = allItems[0];
+  const firstProjectId = firstProject
+    ? firstProject.projectSlug || (firstProject as any).id
+    : null;
+
   const [expandedProjectId, setExpandedProjectId] = useState<string | null>(
-    null
+    firstProjectId
   );
-  const [isVideosLoaded, setIsVideosLoaded] = useState(false);
 
-  useEffect(() => {
-    const noImageFader = (item: Project) =>
-      !item.imageFader || item.imageFader.length === 0;
-
-    const itemsNeedingVideos = allItems.filter(noImageFader);
-
-    const identifiers = itemsNeedingVideos
-      .map(item => item.projectSlug || (item as any).id)
-      .filter(Boolean);
-
-    const firstProject = allItems[0];
-    const firstProjectId = firstProject
-      ? firstProject.projectSlug || (firstProject as any).id
-      : null;
-
-    // Determine how many of the top 3 require video
-    const top3 = allItems.slice(0, 3);
-    const top3VideoCount = top3.filter(noImageFader).length;
-
-    // If no videos exist at all, show content immediately
-    if (identifiers.length === 0) {
-      setExpandedProjectId(firstProjectId);
-      setIsVideosLoaded(true);
-      return;
-    }
-
-    // If none of the top 3 need videos, show content and start background loading
-    if (top3VideoCount === 0) {
-      setExpandedProjectId(firstProjectId);
-      setIsVideosLoaded(true);
-      preloadTopNVideos(identifiers, queryClient, 0).catch(err => {
-        console.error('Background video preload failed:', err);
-      });
-      return;
-    }
-
-    // Preload top 3 video blobs (or fewer, depending on how many top 3 need video)
-    preloadTopNVideos(identifiers, queryClient, top3VideoCount)
-      .catch(err => {
-        console.error('Top 3 videos preload failed:', err);
-      })
-      .finally(() => {
-        setExpandedProjectId(firstProjectId);
-        setIsVideosLoaded(true);
-      });
-  }, [allItems, queryClient]);
-
-  const handleCardClick = useCallback(
-    (itemId: string) => {
-      // Prioritize video preload for clicked item
-      prioritizeVideo(itemId, queryClient).catch(err => {
-        console.error('Prioritize video failed:', itemId, err);
-      });
-      setExpandedProjectId(itemId);
-    },
-    [queryClient]
-  );
+  const handleCardClick = useCallback((itemId: string) => {
+    setExpandedProjectId(itemId);
+  }, []);
 
   return (
-    <>
-      <AnimatePresence>{!isVideosLoaded && <LoadingScreen />}</AnimatePresence>
+    <div className="w-full">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-12">
+        <motion.div
+          className="md:col-span-5 flex flex-col gap-6 justify-center"
+          layout
+        >
+          {allItems.map(item => {
+            const itemId = item.projectSlug || (item as any).id;
+            const isExpanded = expandedProjectId === itemId;
 
-      {/* Main Content */}
-      <div className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-12">
-          <motion.div
-            className="md:col-span-5 flex flex-col gap-6 justify-center"
-            layout
-          >
-            {allItems.map(item => {
-              const itemId = item.projectSlug || (item as any).id;
-              const isExpanded = expandedProjectId === itemId;
+            return (
+              <ProjectCardDesktop
+                key={itemId || item.title}
+                project={item}
+                isExpanded={isExpanded}
+                onClick={() => handleCardClick(itemId)}
+              />
+            );
+          })}
+        </motion.div>
 
-              return (
-                <ProjectCardDesktop
-                  key={itemId || item.title}
-                  project={item}
-                  isExpanded={isExpanded}
-                  onClick={() => handleCardClick(itemId)}
-                />
-              );
-            })}
-          </motion.div>
-
-          <RightPreviewPanel
-            itemIdentifier={expandedProjectId || ''}
-            isActive={!!expandedProjectId}
-            currentProject={allItems.find(
-              item =>
-                (item.projectSlug || (item as any).id) === expandedProjectId
-            )}
-          />
-        </div>
+        <RightPreviewPanel
+          itemIdentifier={expandedProjectId || ''}
+          isActive={!!expandedProjectId}
+          currentProject={allItems.find(
+            item => (item.projectSlug || (item as any).id) === expandedProjectId
+          )}
+        />
       </div>
-    </>
+    </div>
   );
 };
 
@@ -139,7 +75,7 @@ const RightPreviewPanel = ({
   isActive: boolean;
   currentProject?: Project;
 }) => {
-  const { video_url: videoUrl } = useVideo(itemIdentifier || '', true);
+  const { video_url: videoUrl } = useVideo(itemIdentifier || '');
   const [prevVideoUrl, setPrevVideoUrl] = useState<string>('');
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
