@@ -63,7 +63,16 @@ export const ideas = [
       'Museum maps are flat and confusing. This concept reimagines wayfinding with an interactive 3D navigator that helps visitors explore exhibits spatially',
     videoAlt: 'Malmö museum map website to navigate',
     date: '2025',
-    order: 5,
+    order: 6,
+  },
+  {
+    id: 'i3',
+    title: 'Readiness',
+    subtitle:
+      "Knowing whether you're overtrained or ready for a workout shouldn't be a guess. This SwiftUI project uses HRV data from Apple Health to help you understand your body's response to stress and activity",
+    videoAlt: 'HRV Reading platform',
+    date: '2025',
+    order: 3,
   },
 ];
 
@@ -453,7 +462,7 @@ export const projects = [
     projectSlug: 'login-experience-in-vr',
     image: '/resource/projects/p2_hifi.jpeg',
     imageAlt: 'Scroll Select Authentication in VR',
-    order: 3,
+    order: 5,
     sections: [
       {
         title: '',
