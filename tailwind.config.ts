@@ -1,6 +1,7 @@
 const {
   default: flattenColorPalette,
 } = require('tailwindcss/lib/util/flattenColorPalette');
+const cornerShape = require('@toolwind/corner-shape');
 
 import type { Config } from 'tailwindcss';
 
@@ -148,7 +149,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [addVariablesForColors],
+  plugins: [addVariablesForColors, cornerShape],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).

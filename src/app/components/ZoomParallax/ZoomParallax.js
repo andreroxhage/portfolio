@@ -75,7 +75,7 @@ export default function Index() {
               <div className={styles.imageContainer}>
                 <Image
                   src={src}
-                  className="rounded-sm"
+                  className="rounded-[2px] corner-squircle"
                   fill={true}
                   alt="image"
                   placeholder="blur"

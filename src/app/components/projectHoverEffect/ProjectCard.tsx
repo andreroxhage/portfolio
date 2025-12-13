@@ -6,7 +6,7 @@ import { BUTTON_PRESS_SCALE } from '@/app/lib/motion';
 const ProjectCard = ({ project }: { project: Project }) => (
   <motion.div
     whileTap={{ scale: BUTTON_PRESS_SCALE }}
-    className="bg-gray-900 border border-white/10 rounded-4xl hover:bg-gray-800 cursor-pointer transition-all duration-150 p-6"
+    className="bg-gray-900 border border-white/10 rounded-[28px] corner-squircle hover:bg-gray-800 cursor-pointer transition-all duration-150 p-6"
   >
     <div className="flex items-center gap-4">
       <PlusIcon className="w-5 h-5 text-gray-300 flex-shrink-0" />

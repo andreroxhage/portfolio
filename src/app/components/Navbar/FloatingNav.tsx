@@ -101,7 +101,6 @@ const FloatingNav = () => {
     collapsed: {
       height: '52px',
       width: '150px',
-      borderRadius: '26px',
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
@@ -114,7 +113,6 @@ const FloatingNav = () => {
     hovering: {
       height: '56px',
       width: '160px',
-      borderRadius: '28px',
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
@@ -218,7 +216,7 @@ const FloatingNav = () => {
         animate={isProjectHovered ? 'hidden' : 'visible'}
       >
         <motion.div
-          className={`bg-gray-900 border-1 border-brand-grey-brighter border-opacity-10 backdrop-blur-md flex flex-col overflow-hidden shadow-lg ${
+          className={`bg-gray-900 border-1 border-brand-grey-brighter border-opacity-10 backdrop-blur-md flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
             isExpanded ? 'items-start' : 'items-center justify-center'
           }`}
           variants={navVariants}

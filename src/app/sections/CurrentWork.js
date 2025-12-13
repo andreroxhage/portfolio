@@ -23,7 +23,7 @@ export default function CurrentWork() {
       className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-brand-vanilla`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
-        <div className="gap-x-8 rounded-xl grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+        <div className="gap-x-8 rounded-[12px] corner-squircle grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
           <div className="w-full col-start-1 px-5 sm:px-6 col-span-10 md:px-0 md:col-start-1 md:col-span-6 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
             <div className="flex flex-col gap-y-4">
               <motion.h3

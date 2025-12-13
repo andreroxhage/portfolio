@@ -81,7 +81,7 @@ const GifDialog = ({
               damping: 20,
             }
       }
-      className="fixed z-10 rounded-[40px] shadow-xl overflow-hidden pointer-events-none"
+      className="fixed z-10 rounded-[40px] corner-squircle shadow-xl overflow-hidden pointer-events-none"
       style={{
         left: `calc(50% - ${dimensions.width / 2}px)`,
         top: `calc(50% - ${dimensions.height / 2}px)`,

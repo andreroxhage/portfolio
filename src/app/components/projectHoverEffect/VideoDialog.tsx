@@ -86,7 +86,7 @@ const VideoDialog = ({
               damping: 20,
             }
       }
-      className={`fixed z-10 overflow-hidden pointer-events-none ${shouldRound ? 'rounded-[40px]' : ''}`}
+      className={`fixed z-10 overflow-hidden pointer-events-none ${shouldRound ? 'rounded-[40px] corner-squircle' : ''}`}
       style={{
         left: `calc(50% - ${dimensions.width / 2}px)`,
         top: `calc(50% - ${dimensions.height / 2}px)`,

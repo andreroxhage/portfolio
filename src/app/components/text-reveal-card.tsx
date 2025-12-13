@@ -57,7 +57,7 @@ export const TextRevealCard = ({
       onMouseMove={mouseMoveHandler}
       ref={cardRef}
       className={cn(
-        ' w-fit rounded-lg p-4 md:p-8 relative overflow-hidden pointer-events-none sm:pointer-events-auto',
+        ' w-fit rounded-[8px] corner-squircle p-4 md:p-8 relative overflow-hidden pointer-events-none sm:pointer-events-auto',
         className
       )}
     >

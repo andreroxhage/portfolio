@@ -93,7 +93,7 @@ export default function About() {
             className="col-start-1 col-span-10 md:col-start-7 md:col-span-4 flex-row items-center hidden lg:flex"
           >
             <Image
-              className="h-full w-full rounded-sm"
+              className="h-full w-full rounded-[2px] corner-squircle"
               src={Study}
               placeholder="blur"
               alt="Lunds university building and a clear blue sky"

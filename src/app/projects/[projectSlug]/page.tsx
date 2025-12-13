@@ -269,7 +269,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             <Image
               src={content.src}
               alt={content.alt || 'Section image'}
-              className={`rounded-lg w-full transition-opacity duration-500 ease-out ${
+              className={`rounded-[8px] corner-squircle w-full transition-opacity duration-500 ease-out ${
                 isImageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               sizes={sizeConfig.sizes}
@@ -299,10 +299,10 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
           >
             <div className="relative">
               {content.loading && (
-                <VideoLoadingAnimation className="absolute inset-0 backdrop-blur-sm rounded-[40px]" />
+                <VideoLoadingAnimation className="absolute inset-0 backdrop-blur-sm rounded-[40px] corner-squircle" />
               )}
               <video
-                className={`max-w-full max-h-full object-contain rounded-[40px] transition-opacity duration-300 ${
+                className={`max-w-full max-h-full object-contain rounded-[40px] corner-squircle transition-opacity duration-300 ${
                   content.loading ? 'opacity-0' : 'opacity-100'
                 }`}
                 autoPlay

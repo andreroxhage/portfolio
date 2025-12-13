@@ -105,7 +105,7 @@ const RightPreviewPanel = ({
               {hasImageFader ? (
                 <motion.div
                   key={itemIdentifier}
-                  className={`${shouldRound ? 'rounded-[40px]' : ''} overflow-hidden`}
+                  className={`${shouldRound ? 'rounded-[40px] corner-squircle' : ''} overflow-hidden`}
                   initial={{ opacity: 0, y: -64 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 64 }}
@@ -129,7 +129,7 @@ const RightPreviewPanel = ({
                 <motion.video
                   key={itemIdentifier}
                   src={videoUrl}
-                  className={`shadow-xl ${shouldRound ? 'rounded-[40px]' : ''}`}
+                  className={`shadow-xl ${shouldRound ? 'rounded-[40px] corner-squircle' : ''}`}
                   autoPlay
                   loop
                   muted

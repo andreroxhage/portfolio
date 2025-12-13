@@ -35,7 +35,7 @@ const ProjectVideo = memo(
 
     return (
       <div
-        className={`relative mx-auto max-w-[60vw] w-full overflow-hidden ${shouldRound ? 'rounded-[40px]' : ''}`}
+        className={`relative mx-auto max-w-[60vw] w-full overflow-hidden ${shouldRound ? 'rounded-[40px] corner-squircle' : ''}`}
       >
         <div className="relative flex h-full w-full items-center justify-center">
           {hasImageFader ? (
@@ -158,7 +158,7 @@ const GifDialogMobile = ({
             />
           </motion.div>
 
-          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-2xl bg-gray-600/30 border border-white/10 shadow-lg">
+          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-[16px] corner-squircle bg-gray-600/30 border border-white/10 shadow-lg">
             <p className="text-white text-center text-sm">{project.title}</p>
             <p className="text-white/70 text-sm text-center">{project.date}</p>
           </div>

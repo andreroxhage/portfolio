@@ -61,7 +61,7 @@ export default function VoluntaryWork() {
             </ScrollScaleWrapper>
 
             <Image
-              className="w-full rounded-sm"
+              className="w-full rounded-[2px] corner-squircle"
               src={karneval}
               alt="image description"
               placeholder="blur"
@@ -168,7 +168,7 @@ export default function VoluntaryWork() {
             </ScrollScaleWrapper>
 
             <Image
-              className="w-full rounded-sm"
+              className="w-full rounded-[2px] corner-squircle"
               src={teknikfokus}
               alt="image description"
               placeholder="blur"

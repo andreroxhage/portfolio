@@ -16,7 +16,7 @@ export default function Contact() {
     <div className="h-screen bg-brand-cream p-0 lg:p-12 lg:py-18">
       <div
         id="contact"
-        className="w-full h-full rounded-[40px]"
+        className="w-full h-full rounded-[40px] corner-squircle"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url(${backgroundImage})`,
           backgroundSize: 'cover',

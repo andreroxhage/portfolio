@@ -176,7 +176,7 @@ export default function Resume() {
               {item.date && (
                 <motion.div
                   key={index}
-                  className="px-4 py-2 my-3 rounded-xl border border-brand-grey-brighter w-fit text-sm"
+                  className="px-4 py-2 my-3 rounded-[12px] corner-squircle border border-brand-grey-brighter w-fit text-sm"
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: resumeInView ? 1 : 0.25 - 0.08 * itemIndex,

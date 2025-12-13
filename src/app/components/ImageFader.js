@@ -43,7 +43,7 @@ const ImageFader = ({ images, intervalTime = 5000 }) => {
         height={800}
         priority
         style={{ maxWidth: '100%', height: 'auto' }}
-        className="rounded-sm"
+        className="rounded-[2px] corner-squircle"
       />
 
       {/* Fade out previous image on top to simulate crossfade without changing sizing */}
@@ -62,7 +62,7 @@ const ImageFader = ({ images, intervalTime = 5000 }) => {
               alt=""
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-contain rounded-sm"
+              className="object-contain rounded-[2px] corner-squircle"
               priority
             />
           </motion.div>
