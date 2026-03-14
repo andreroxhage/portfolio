@@ -43,7 +43,15 @@ next-env.d.ts
 .cursor.json
 .cursorignore
 .vscode/
-.claude/settings.local.json
+
+# claude
+.claude/
+
+# husky
+.husky/
+
+# docs
+docs/
 
 # superpowers working directories
 .superpowers/
