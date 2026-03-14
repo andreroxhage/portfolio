@@ -4,23 +4,28 @@ import ScrollScaleWrapper from '@/app/components/ScrollScaleWrapper';
 import { projects } from '@/app/data';
 import { motion } from 'framer-motion';
 import ProjectNavigation from '@/app/components/ProjectNavigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import VideoLoadingAnimation from '@/app/components/VideoLoadingAnimation';
 
-export default function Page({ params }: { params: { projectSlug: string } }) {
-  const project = projects.find(p => p.projectSlug === params.projectSlug);
+export default function Page({
+  params,
+}: {
+  params: Promise<{ projectSlug: string }>;
+}) {
+  const { projectSlug } = use(params);
+  const project = projects.find(p => p.projectSlug === projectSlug);
   const [videoUrl, setVideoUrl] = useState<string>('');
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    fetch(`/api/videos?project=${params.projectSlug}`)
+    fetch(`/api/videos?project=${projectSlug}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.length > 0) {
           setVideoUrl(data[0].video_url);
         }
       });
-  }, [params.projectSlug]);
+  }, [projectSlug]);
 
   if (!project) {
     return (
@@ -35,7 +40,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
         </div>
         <ProjectNavigation
           projects={projects}
-          currentProjectSlug={params.projectSlug}
+          currentProjectSlug={projectSlug}
         />
       </div>
     );
@@ -143,10 +148,7 @@ export default function Page({ params }: { params: { projectSlug: string } }) {
             );
           })}
       </div>
-      <ProjectNavigation
-        projects={projects}
-        currentProjectSlug={params.projectSlug}
-      />
+      <ProjectNavigation projects={projects} currentProjectSlug={projectSlug} />
     </motion.div>
   );
 

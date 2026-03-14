@@ -1,47 +1,252 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+/* === Dark Mode Variant (class-based) === */
+@custom-variant dark (&:is(.dark *));
+
+/* === Custom Utility: corner-squircle === */
+/* Replaces @toolwind/corner-shape TW3 plugin */
+@utility corner-squircle {
+  corner-shape: squircle;
+}
+
+/* === Theme Configuration === */
+/* Migrated from tailwind.config.ts to CSS-first (Tailwind 4) */
+@theme inline {
+  /* Font family */
+  --font-sans: 'Roboto', sans-serif;
+
+  /* Custom font sizes */
+  --font-size-8\.5xl: 6.5rem;
+  --font-size-9\.5xl: 10rem;
+
+  /* Brand colors */
+  --color-brand-blackish: #222222;
+  --color-brand-whiteish: #fefefe;
+  --color-brand-vanilla: #faefde;
+  --color-brand-grey: #40403b;
+  --color-brand-grey-brighter: #5d5d56;
+  --color-brand-cream: #ebe1d1;
+
+  /* Secondary colors */
+  --color-secondary-green: #bce5ae;
+  --color-secondary-green-darker: #739966;
+  --color-secondary-green-lighter: #d3e9c2;
+
+  /* Custom muted tones */
+  --color-custom-green: #bcd3bb;
+  --color-custom-brown: #d3c4bb;
+  --color-custom-yellow: #d1d3bb;
+  --color-custom-blue: #bbccd3;
+
+  /* Primary scale (green) */
+  --color-primary-50: #f4f9f0;
+  --color-primary-100: #e7f3dd;
+  --color-primary-200: #d3e9c2;
+  --color-primary-300: #b8dda5;
+  --color-primary-400: #9cc988;
+  --color-primary-500: #88c075;
+  --color-primary-600: #7daa6f;
+  --color-primary-700: #739966;
+  --color-primary-800: #5d7d52;
+  --color-primary-900: #4a6542;
+  --color-primary-950: #2d3d28;
+
+  /* Accent scale (orange) */
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+  --color-accent-950: #431407;
+
+  /* Gray scale */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+
+  /* Neutral scale (warm earth) */
+  --color-neutral-50: #faf9f7;
+  --color-neutral-100: #f1eeea;
+  --color-neutral-200: #e4ddd4;
+  --color-neutral-300: #d1c7ba;
+  --color-neutral-400: #b9aa98;
+  --color-neutral-500: #a08d7a;
+  --color-neutral-600: #8a7667;
+  --color-neutral-700: #726157;
+  --color-neutral-800: #5f514a;
+  --color-neutral-900: #50453f;
+  --color-neutral-950: #2a2420;
+
+  /* Semantic tokens (shadcn/ui compatible) */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Chart colors */
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  /* Box shadow */
+  --shadow-customShadow: 0 45px 70.8px -48px rgba(0, 0, 0, 0.95);
+
+  /* Border radius */
+  --radius-4xl: 28px;
+  --radius: 0.5rem;
+
+  /* Max width */
+  --container-8xl: 90rem;
+
+  /* Screens */
+  --breakpoint-3xl: 1600px;
+
+  /* Animations */
+  --animate-shimmer: shimmer 2s linear infinite 0.5s;
+  --animate-aurora: aurora 60s linear infinite;
+}
+
+/* Keyframes */
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      350% 50%,
+      350% 50%;
+  }
+}
+
+/* === Semantic Design Tokens === */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: 39 87% 92%;
+  --foreground: 56 5% 24%;
+  --card: 0 0% 100%;
+  --card-foreground: 56 5% 24%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 56 5% 24%;
+  --primary: 106 35% 61%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 34 30% 87%;
+  --secondary-foreground: 56 5% 24%;
+  --muted: 34 30% 87%;
+  --muted-foreground: 56 4% 35%;
+  --accent: 103 36% 86%;
+  --accent-foreground: 113 20% 20%;
+  --destructive: 21 90% 48%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 34 30% 87%;
+  --input: 34 30% 87%;
+  --ring: 106 35% 61%;
+  --chart-1: 106 35% 61%;
+  --chart-2: 103 36% 86%;
+  --chart-3: 21 90% 48%;
+  --chart-4: 34 30% 87%;
+  --chart-5: 56 4% 35%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Dark mode placeholder — finalize after design discovery */
+.dark {
+  --background: 0 0% 13%;
+  --foreground: 0 0% 100%;
+  --card: 113 20% 20%;
+  --card-foreground: 0 0% 100%;
+  --popover: 113 20% 20%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 106 30% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 20 13% 28%;
+  --secondary-foreground: 34 30% 87%;
+  --muted: 20 13% 28%;
+  --muted-foreground: 34 20% 75%;
+  --accent: 113 20% 30%;
+  --accent-foreground: 103 36% 86%;
+  --destructive: 21 90% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 20 13% 22%;
+  --input: 20 13% 22%;
+  --ring: 106 30% 55%;
+  --chart-1: 106 30% 55%;
+  --chart-2: 113 20% 30%;
+  --chart-3: 21 90% 60%;
+  --chart-4: 20 13% 28%;
+  --chart-5: 34 20% 75%;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* === Base Resets === */
+*,
+::after,
+::before {
+  border-color: hsl(var(--border));
 }
 
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply text-brand-grey;
-  }
+/* === Scrollbar Styling === */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--background));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-/* Accessibility: Respect prefers-reduced-motion */
+*::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* === Accessibility === */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
