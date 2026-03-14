@@ -110,6 +110,11 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
+  --color-surface-dark: hsl(var(--surface-dark));
+  --color-surface-dark-elevated: hsl(var(--surface-dark-elevated));
+  --color-surface-dark-foreground: hsl(var(--surface-dark-foreground));
+  --color-surface-dark-muted: hsl(var(--surface-dark-muted));
+  --color-surface-footer: hsl(var(--surface-footer));
 
   /* Chart colors */
   --color-chart-1: hsl(var(--chart-1));
@@ -120,6 +125,9 @@
 
   /* Box shadow */
   --shadow-customShadow: 0 45px 70.8px -48px rgba(0, 0, 0, 0.95);
+  --inset-shadow-border-glow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
   /* Border radius */
   --radius-4xl: 28px;
@@ -169,22 +177,27 @@
   --popover-foreground: 56 5% 24%;
   --primary: 106 35% 61%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 34 30% 87%;
+  --secondary: 37 55% 88%;
   --secondary-foreground: 56 5% 24%;
-  --muted: 34 30% 87%;
+  --muted: 37 55% 88%;
   --muted-foreground: 56 4% 35%;
-  --accent: 103 36% 86%;
-  --accent-foreground: 113 20% 20%;
+  --accent: 110 52% 79%;
+  --accent-foreground: 106 22% 50%;
   --destructive: 21 90% 48%;
   --destructive-foreground: 0 0% 100%;
-  --border: 34 30% 87%;
-  --input: 34 30% 87%;
+  --border: 0 0% 100% / 0.12;
+  --input: 37 55% 88%;
   --ring: 106 35% 61%;
   --chart-1: 106 35% 61%;
   --chart-2: 103 36% 86%;
   --chart-3: 21 90% 48%;
   --chart-4: 34 30% 87%;
   --chart-5: 56 4% 35%;
+  --surface-dark: 0 0% 9%;
+  --surface-dark-elevated: 0 0% 15%;
+  --surface-dark-foreground: 0 0% 96%;
+  --surface-dark-muted: 0 0% 83%;
+  --surface-footer: 0 0% 13%;
 }
 
 /* Dark mode placeholder — finalize after design discovery */
@@ -201,11 +214,11 @@
   --secondary-foreground: 34 30% 87%;
   --muted: 20 13% 28%;
   --muted-foreground: 34 20% 75%;
-  --accent: 113 20% 30%;
-  --accent-foreground: 103 36% 86%;
+  --accent: 110 45% 65%;
+  --accent-foreground: 106 30% 60%;
   --destructive: 21 90% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 20 13% 22%;
+  --border: 0 0% 100% / 0.15;
   --input: 20 13% 22%;
   --ring: 106 30% 55%;
   --chart-1: 106 30% 55%;
@@ -213,6 +226,11 @@
   --chart-3: 21 90% 60%;
   --chart-4: 20 13% 28%;
   --chart-5: 34 20% 75%;
+  --surface-dark: 0 0% 9%;
+  --surface-dark-elevated: 0 0% 15%;
+  --surface-dark-foreground: 0 0% 96%;
+  --surface-dark-muted: 0 0% 83%;
+  --surface-footer: 0 0% 9%;
 }
 
 /* === Base Resets === */

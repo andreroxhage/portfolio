@@ -20,14 +20,14 @@ export default function CurrentWork() {
   return (
     <motion.div
       id="work"
-      className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-brand-vanilla`}
+      className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-background`}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
-        <div className="gap-x-8 rounded-[12px] corner-squircle grid grid-cols-10 text-2xl text-brand-grey-brighter items-center">
+        <div className="gap-x-8 rounded-[12px] corner-squircle grid grid-cols-10 text-2xl text-muted-foreground items-center">
           <div className="w-full col-start-1 px-5 sm:px-6 col-span-10 md:px-0 md:col-start-1 md:col-span-6 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
             <div className="flex flex-col gap-y-4">
               <motion.h3
-                className="text-2xl md:text-4xl font-medium cursor-pointer text-brand-grey"
+                className="text-2xl md:text-4xl font-medium cursor-pointer text-foreground"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -124,7 +124,7 @@ export default function CurrentWork() {
                 <div className="flex flex-col h-full">
                   <div className="flex w-full justify-between">
                     <motion.h3
-                      className="text-2xl md:text-3xl font-medium cursor-pointer text-brand-grey"
+                      className="text-2xl md:text-3xl font-medium cursor-pointer text-foreground"
                       initial={{ opacity: 0, translateY: 60 }}
                       whileInView={{
                         opacity: 1,
@@ -138,10 +138,10 @@ export default function CurrentWork() {
                     >
                       {project.title}
                     </motion.h3>
-                    <ArrowUpRightIcon className="size-8 sm:size-10 md:size-12 text-brand-grey group-hover:scale-110 transition-all duration-300 ease-in-out"></ArrowUpRightIcon>
+                    <ArrowUpRightIcon className="size-8 sm:size-10 md:size-12 text-foreground group-hover:scale-110 transition-all duration-300 ease-in-out"></ArrowUpRightIcon>
                   </div>
                   <motion.p
-                    className="text-lg md:text-xl font-medium text-secondary-grey  text-brand-grey"
+                    className="text-lg md:text-xl font-medium text-secondary-grey  text-foreground"
                     initial={{ opacity: 0, translateY: 20 }}
                     whileInView={{
                       opacity: 1,

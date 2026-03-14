@@ -141,7 +141,7 @@ const GifDialogMobile = ({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/90 p-4"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-dark/90 p-4"
           onClick={handleClose}
         >
           <motion.div
@@ -158,26 +158,30 @@ const GifDialogMobile = ({
             />
           </motion.div>
 
-          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-[16px] corner-squircle bg-gray-600/30 border border-white/10 shadow-lg">
-            <p className="text-white text-center text-sm">{project.title}</p>
-            <p className="text-white/70 text-sm text-center">{project.date}</p>
+          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-[16px] corner-squircle bg-surface-dark/30 inset-shadow-border-glow shadow-lg">
+            <p className="text-surface-dark-foreground text-center text-sm">
+              {project.title}
+            </p>
+            <p className="text-surface-dark-foreground/70 text-sm text-center">
+              {project.date}
+            </p>
           </div>
 
           <div className="absolute bottom-3 px-3 flex items-center justify-between w-full">
             <button
               onClick={handleClose}
-              className="p-3 rounded-full overflow-hidden relative bg-gray-600/30 border border-white/10 shadow-lg"
+              className="p-3 rounded-full overflow-hidden relative bg-surface-dark/30 inset-shadow-border-glow shadow-lg"
               aria-label="Close dialog"
             >
-              <XMarkIcon className="w-8 h-8 text-white relative z-10" />
+              <XMarkIcon className="w-8 h-8 text-surface-dark-foreground relative z-10" />
             </button>
             {project.projectSlug && (
               <Link
                 href={`/projects/${project.projectSlug}`}
-                className="p-3 rounded-full overflow-hidden relative bg-gray-600/30 border border-white/10 shadow-lg"
+                className="p-3 rounded-full overflow-hidden relative bg-surface-dark/30 inset-shadow-border-glow shadow-lg"
                 aria-label="Visit Project"
               >
-                <ArrowUpRightIcon className="w-8 h-8 text-white relative z-10" />
+                <ArrowUpRightIcon className="w-8 h-8 text-surface-dark-foreground relative z-10" />
               </Link>
             )}
           </div>

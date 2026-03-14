@@ -6,7 +6,7 @@ import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 const LoadingScreen: React.FC = () => {
   const [showAnimation, setShowAnimation] = useState(false);
   const prefersReducedMotion = useReducedMotion();
-  const whiteish = '#FEFEFE';
+  const whiteish = 'hsl(var(--surface-dark-foreground))';
 
   useEffect(() => {
     const timer = setTimeout(() => {

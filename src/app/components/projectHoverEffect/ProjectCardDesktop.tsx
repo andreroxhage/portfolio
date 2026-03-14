@@ -63,7 +63,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         whileTap={{ scale: BUTTON_PRESS_SCALE }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="bg-gray-900 border-white/10 rounded-[50px] corner-squircle hover:bg-gray-800 cursor-pointer transition-all duration-150 overflow-hidden w-fit"
+        className="bg-surface-dark border-surface-dark-foreground/10 rounded-[50px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 overflow-hidden w-fit"
       >
         {/* Collapsed Content - Hidden when expanded */}
         <motion.div
@@ -88,8 +88,8 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex items-center gap-4">
-              <PlusIcon className="w-5 h-5 text-gray-300 flex-shrink-0" />
-              <h3 className="text-base md:text-lg font-medium text-gray-100 w-fit">
+              <PlusIcon className="w-5 h-5 text-surface-dark-muted shrink-0" />
+              <h3 className="text-base md:text-lg font-medium text-surface-dark-foreground w-fit">
                 {project.title}
               </h3>
             </div>
@@ -119,12 +119,12 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex flex-col gap-4">
-              <span className="text-base md:text-lg font-medium text-gray-100">
+              <span className="text-base md:text-lg font-medium text-surface-dark-foreground">
                 {project.title}
                 {project.subtitle && (
                   <>
                     .{' '}
-                    <span className="text-base md:text-lg font-thin text-gray-200">
+                    <span className="text-base md:text-lg font-thin text-surface-dark-foreground">
                       {project.subtitle}
                     </span>
                   </>
@@ -142,7 +142,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                 >
                   <Link
                     href={`/projects/${project.projectSlug}`}
-                    className="text-sm text-gray-100 hover:text-secondary-green-darker transition-colors duration-200 flex items-center gap-2"
+                    className="text-sm text-surface-dark-foreground hover:text-accent-foreground transition-colors duration-200 flex items-center gap-2"
                     onClick={e => e.stopPropagation()}
                   >
                     View Project{' '}

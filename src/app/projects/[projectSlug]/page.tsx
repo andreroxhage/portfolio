@@ -29,9 +29,9 @@ export default function Page({
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-lg font-semium text-gray-500 bg-wh">
+      <div className="min-h-screen flex items-center justify-center text-lg font-semium text-muted-foreground bg-wh">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter text-secondary-green-darker">
+          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter text-accent-foreground">
             Project not found
           </h1>
           <p className="text-lg md:text-2xl font-normal opacity-80">
@@ -47,11 +47,11 @@ export default function Page({
   }
 
   return (
-    <motion.div id="header" className="bg-neutral-50">
+    <motion.div id="header" className="bg-card">
       <header className="max-w-7xl mx-auto px-4 w-full flex justify-start items-start py-20">
         <div className="flex flex-row items-baseline gap-4">
           <motion.h1
-            className="text-4xl md:text-6xl font-medium tracking-tighter text-secondary-green-darker"
+            className="text-4xl md:text-6xl font-medium tracking-tighter text-accent-foreground"
             style={{ color: project.titleColor || '#739966' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -108,7 +108,7 @@ export default function Page({
                 viewport={{ once: true }}
               >
                 {title && layout !== 'two-col' && (
-                  <h2 className="text-2xl md:text-3xl font-semium text-brand-grey-brighter mb-3">
+                  <h2 className="text-2xl md:text-3xl font-semium text-muted-foreground mb-3">
                     {title}
                   </h2>
                 )}
@@ -118,7 +118,7 @@ export default function Page({
                     {/* Left Column */}
                     <div className="space-y-8">
                       {title && (
-                        <h2 className="text-2xl md:text-3xl font-semium text-brand-grey-brighter mb-0">
+                        <h2 className="text-2xl md:text-3xl font-semium text-muted-foreground mb-0">
                           {title}
                         </h2>
                       )}
@@ -187,7 +187,7 @@ export default function Page({
         return (
           <h3
             key={key}
-            className="text-xl md:text-2xl font-semium text-brand-grey-brighter mb-2"
+            className="text-xl md:text-2xl font-semium text-muted-foreground mb-2"
           >
             {content.text}
           </h3>
@@ -197,7 +197,7 @@ export default function Page({
         return (
           <div
             key={key}
-            className={`${colSpan} font-medium text-brand-grey-brighter`}
+            className={`${colSpan} font-medium text-muted-foreground`}
           >
             {content.subtitle && (
               <h4 className="text-xl font-semium mb-2">{content.subtitle}</h4>
@@ -212,7 +212,7 @@ export default function Page({
 
       case 'list':
         return (
-          <div key={key} className={`${colSpan} text-brand-grey-brighter`}>
+          <div key={key} className={`${colSpan} text-muted-foreground`}>
             {content.subtitle && (
               <h4 className="text-xl font-semium mb-2">{content.subtitle}</h4>
             )}
@@ -282,7 +282,7 @@ export default function Page({
               }}
             />
             {content.caption && (
-              <p className="text-sm text-gray-500 mt-2 text-center">
+              <p className="text-sm text-muted-foreground mt-2 text-center">
                 {content.caption}
               </p>
             )}
@@ -326,7 +326,7 @@ export default function Page({
               </video>
 
               {content.caption && (
-                <p className="text-sm text-gray-500 mt-2 text-center">
+                <p className="text-sm text-muted-foreground mt-2 text-center">
                   {content.caption}
                 </p>
               )}
@@ -341,7 +341,7 @@ export default function Page({
             href={content.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-secondary-green-darker hover:underline"
+            className="text-accent-foreground hover:underline"
           >
             {content.text}
           </a>

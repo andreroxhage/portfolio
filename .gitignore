@@ -45,3 +45,7 @@ next-env.d.ts
 .vscode/
 .claude/settings.local.json
 
+# superpowers working directories
+.superpowers/
+DOCS/superpowers/
+

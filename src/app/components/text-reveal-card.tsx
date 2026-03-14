@@ -83,7 +83,7 @@ export const TextRevealCard = ({
               ? { duration: 0 }
               : { duration: DURATION.MEDIUM, ease: EASING.STANDARD }
           }
-          className="absolute bg-brand-blackish z-20  will-change-transform"
+          className="absolute bg-surface-dark z-20  will-change-transform"
         >
           <p
             style={{
@@ -109,7 +109,7 @@ export const TextRevealCard = ({
         ></motion.div>
 
         <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-xl sm:text-3xl py-10 font-medium bg-clip-text text-transparent bg-brand-whiteish">
+          <p className="text-xl sm:text-3xl py-10 font-medium bg-clip-text text-transparent bg-surface-dark-foreground">
             {text}
           </p>
           <MemoizedStars />
@@ -127,7 +127,12 @@ export const TextRevealCardTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={twMerge('text-white text-lg mb-2', className)}>
+    <h2
+      className={twMerge(
+        'text-surface-dark-foreground text-lg mb-2',
+        className
+      )}
+    >
       {children}
     </h2>
   );
@@ -141,7 +146,7 @@ export const TextRevealCardDescription = ({
   className?: string;
 }) => {
   return (
-    <p className={twMerge('text-brand-whiteish text-sm', className)}>
+    <p className={twMerge('text-surface-dark-foreground text-sm', className)}>
       {children}
     </p>
   );

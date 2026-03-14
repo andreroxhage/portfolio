@@ -33,7 +33,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
 
   return (
     <motion.div
-      className="w-full border-t border-gray-200"
+      className="w-full border-t border-border"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.3 }}
@@ -41,7 +41,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
       <div className="max-w-7xl mx-auto px-4 py-8 flex justify-between items-center">
         <Link
           href={`/projects/${prevProject.projectSlug}`}
-          className="group flex items-center space-x-3 text-brand-grey-brighter hover:text-brand-grey-brightest transition-colors"
+          className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
             <svg
@@ -50,7 +50,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 text-brand-grey group-hover:text-brand-grey-brightest group-hover:scale-110 transition-all duration-300"
+              className="size-6 text-foreground group-hover:text-foreground group-hover:scale-110 transition-all duration-300"
             >
               <path
                 strokeLinecap="round"
@@ -60,7 +60,9 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             </svg>
           </motion.div>
           <div className="text-left">
-            <div className="text-sm text-gray-500">Previous Project</div>
+            <div className="text-sm text-muted-foreground">
+              Previous Project
+            </div>
             <label
               className="font-medium duration-300"
               style={{ color: prevProject.titleColor }}
@@ -72,10 +74,10 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
 
         <Link
           href={`/projects/${nextProject.projectSlug}`}
-          className="group flex items-center space-x-3 text-brand-grey-brighter hover:text-brand-grey-brightest transition-colors"
+          className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <div className="text-right">
-            <div className="text-sm text-gray-500">Next Project</div>
+            <div className="text-sm text-muted-foreground">Next Project</div>
             <label
               className="font-medium duration-300"
               style={{ color: nextProject.titleColor }}
@@ -89,7 +91,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 text-brand-grey group-hover:text-brand-grey-brightest group-hover:scale-110 transition-all duration-300"
+            className="size-6 text-foreground group-hover:text-foreground group-hover:scale-110 transition-all duration-300"
           >
             <path
               strokeLinecap="round"

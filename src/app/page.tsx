@@ -9,11 +9,11 @@ import Footer from './sections/Footer';
 
 export default function Home() {
   return (
-    <main className="h-full bg-brand-cream">
+    <main className="h-full bg-secondary">
       <Header></Header>
       <CurrentWork />
 
-      <div className="bg-brand-cream">
+      <div className="bg-secondary">
         <Photography />
         <ZoomParallax></ZoomParallax>
       </div>

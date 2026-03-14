@@ -200,7 +200,7 @@ const FloatingNav = () => {
     <motion.div>
       {/* Backdrop overlay */}
       <motion.div
-        className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+        className="fixed inset-0 z-40 bg-surface-dark/30 backdrop-blur-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: isExpanded ? 1 : 0 }}
         transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
@@ -216,7 +216,7 @@ const FloatingNav = () => {
         animate={isProjectHovered ? 'hidden' : 'visible'}
       >
         <motion.div
-          className={`bg-gray-900 border-1 border-brand-grey-brighter border-opacity-10 backdrop-blur-md flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
+          className={`bg-surface-dark inset-shadow-border-glow backdrop-blur-md flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
             isExpanded ? 'items-start' : 'items-center justify-center'
           }`}
           variants={navVariants}
@@ -237,7 +237,7 @@ const FloatingNav = () => {
             onClick={() => setIsExpanded(!isExpanded)}
           >
             <motion.span
-              className={`text-brand-vanilla font-medium text-2xl cursor-pointer`}
+              className={`text-surface-dark-foreground font-medium text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               onClick={handleLogoClick}
@@ -269,7 +269,7 @@ const FloatingNav = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className={`text-brand-whiteish hover:text-secondary-green transform rotate-180`}
+                      className={`text-surface-dark-foreground hover:text-accent transform rotate-180`}
                     >
                       <path d="M12 19V5M5 12l7-7 7 7" />
                     </svg>
@@ -284,7 +284,7 @@ const FloatingNav = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className={`text-brand-whiteish hover:text-secondary-green`}
+                      className={`text-surface-dark-foreground hover:text-accent`}
                     >
                       <path d="M12 19V5M5 12l7-7 7 7" />
                     </svg>
@@ -295,7 +295,7 @@ const FloatingNav = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className={`w-6 h-6 text-brand-whiteish hover:text-secondary-green`}
+                      className={`w-6 h-6 text-surface-dark-foreground hover:text-accent`}
                       initial={false}
                     >
                       <path
@@ -312,7 +312,7 @@ const FloatingNav = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className={`w-6 h-6 text-brand-whiteish hover:text-secondary-green`}
+                    className={`w-6 h-6 text-surface-dark-foreground hover:text-accent`}
                     initial={false}
                   >
                     <path
@@ -326,7 +326,7 @@ const FloatingNav = () => {
             </motion.span>
             <motion.div className="flex items-center gap-1">
               <motion.span
-                className={`text-brand-whiteish hover:text-secondary-green text-base font-medium translate-y-[1px]`}
+                className={`text-surface-dark-foreground hover:text-accent text-base font-medium translate-y-px`}
                 animate={{ opacity: isExpanded ? 0 : 1 }}
                 transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               >
@@ -340,7 +340,7 @@ const FloatingNav = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className={`text-brand-whiteish hover:text-secondary-green absolute size-6 mt-1 mr-4`}
+                  className={`text-surface-dark-foreground hover:text-accent absolute size-6 mt-1 mr-4`}
                   animate={{
                     opacity: isExpanded ? 1 : 0,
                     scale: isExpanded ? 1 : 0.8,
@@ -371,14 +371,12 @@ const FloatingNav = () => {
           >
             {/* Main navigation links */}
             <div className="mb-6">
-              <h3 className="text-brand-grey-brighter text-sm mb-4">
-                Navigation
-              </h3>
+              <h3 className="text-muted-foreground text-sm mb-4">Navigation</h3>
               {links.map((link, i) => (
                 <motion.a
                   key={`main_${i}`}
                   href={link.href}
-                  className={`block mb-4 text-brand-whiteish text-lg hover:text-secondary-green transition-colors duration-200`}
+                  className={`block mb-4 text-surface-dark-foreground text-lg hover:text-accent transition-colors duration-200`}
                   variants={navItemVariants}
                   custom={i}
                   initial="hidden"
@@ -393,7 +391,7 @@ const FloatingNav = () => {
 
             {/* Divider */}
             <motion.hr
-              className="border-brand-grey-brighter border-opacity-30 my-5"
+              className="border-border border-opacity-30 my-5"
               initial={{ width: 0 }}
               animate={isExpanded ? { width: '100%' } : { width: 0 }}
               transition={{
@@ -405,12 +403,12 @@ const FloatingNav = () => {
 
             {/* Footer links */}
             <div>
-              <h3 className="text-brand-grey-brighter text-sm mb-4">Contact</h3>
+              <h3 className="text-muted-foreground text-sm mb-4">Contact</h3>
               {footerLinks.map((link, i) => (
                 <motion.a
                   key={`footer_${i}`}
                   href={link.href}
-                  className={`block mb-3 text-brand-whiteish text-base hover:text-secondary-green transition-colors duration-200`}
+                  className={`block mb-3 text-surface-dark-foreground text-base hover:text-accent transition-colors duration-200`}
                   variants={contactItemVariants}
                   custom={i}
                   initial="hidden"

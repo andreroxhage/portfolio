@@ -13,7 +13,7 @@ export default function Contact() {
   );
 
   return (
-    <div className="h-screen bg-brand-cream p-0 lg:p-12 lg:py-18">
+    <div className="h-screen bg-secondary p-0 lg:p-12 lg:py-18">
       <div
         id="contact"
         className="w-full h-full rounded-[40px] corner-squircle"
@@ -34,7 +34,7 @@ export default function Contact() {
             >
               <div className="max-w-7xl mx-auto relative flex items-center w-full h-full overflow-hidden">
                 <motion.h2
-                  className="px-4 md:text-6xl text-5xl text-brand-whiteish leading-tight font-medium"
+                  className="px-4 md:text-6xl text-5xl text-surface-dark-foreground leading-tight font-medium"
                   initial={{ opacity: 0, translateY: 60 }}
                   whileInView={{ opacity: 1, translateY: 0 }}
                   transition={{
@@ -54,7 +54,7 @@ export default function Contact() {
             className="px-4 max-w-7xl w-full mx-auto overflow-hidden h-2/6"
           >
             <div className="gap-y-2 grid grid-cols-10 mx-auto">
-              <hr className="h-0.5 pt-2 border-gray-200 col-start-1 md:col-end-4 col-end-9" />
+              <hr className="h-0.5 pt-2 border-border col-start-1 md:col-end-4 col-end-9" />
 
               {footerLinks.map((link, i) => {
                 const { title, href } = link;
@@ -65,14 +65,14 @@ export default function Contact() {
                     href={href}
                     className="col-start-1 col-span-10 flex gap-x-2 items-center w-full"
                     whileHover={{
-                      color: '#BCE5AE',
-                      fill: '#BCE5AE',
+                      color: 'hsl(var(--accent))',
+                      fill: 'hsl(var(--accent))',
                       translateX: 10,
                     }}
                     whileTap={{ scale: 0.95 }}
                     initial={{
-                      color: '#FEFEFE',
-                      fill: '#FEFEFE',
+                      color: 'hsl(var(--surface-dark-foreground))',
+                      fill: 'hsl(var(--surface-dark-foreground))',
                       opacity: 0,
                       translateX: 0,
                     }}
