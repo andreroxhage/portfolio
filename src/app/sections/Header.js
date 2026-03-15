@@ -41,7 +41,10 @@ const Header = () => {
         <div className="relative max-w-7xl h-full px-5 sm:px-6 md:px-4 mx-auto flex items-center">
           <motion.h1
             className="text-6xl md:text-8xl font-medium tracking-tighter text-surface-dark-foreground mix-blend-difference"
-            animate={{ opacity: 0.4, color: '#fefefe' }}
+            animate={{
+              opacity: 0.4,
+              color: 'hsl(var(--surface-dark-foreground))',
+            }}
             initial={{ opacity: 0, color: 'hsl(var(--accent-foreground))' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >

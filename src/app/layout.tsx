@@ -2,7 +2,9 @@ import React from 'react';
 import type { Metadata } from 'next';
 import './globals.css';
 import FloatingNav from './components/Navbar/FloatingNav';
+import ThemeToggle from './components/ThemeToggle';
 import { ProjectHoverProvider } from './contexts/ProjectHoverContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import QueryProvider from './components/QueryProvider';
 
 export const metadata: Metadata = {
@@ -30,6 +32,8 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+const FOIWT_SCRIPT = `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(s!=='light'&&d))document.documentElement.classList.add('dark')}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,17 +42,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       style={{ scrollBehavior: 'smooth' }}
       className="overflow-x-hidden w-full"
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: FOIWT_SCRIPT }} />
+      </head>
       <body>
-        <QueryProvider>
-          <ProjectHoverProvider>
-            <FloatingNav />
-            <main></main>
-            {children}
-          </ProjectHoverProvider>
-        </QueryProvider>
+        <ThemeProvider>
+          <QueryProvider>
+            <ProjectHoverProvider>
+              <FloatingNav />
+              <ThemeToggle />
+              <main></main>
+              {children}
+            </ProjectHoverProvider>
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

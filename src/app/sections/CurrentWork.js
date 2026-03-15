@@ -47,7 +47,7 @@ export default function CurrentWork() {
               <div className="">
                 <Link
                   href="/projects"
-                  className="flex gap-2 align-items-baseline group text-primary-800 text-base md:text-lg font-medium hover:text-primary-600 active:text-primary-900 transition-colors"
+                  className="flex gap-2 align-items-baseline group text-primary-800 dark:text-primary-300 text-base md:text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 active:text-primary-900 dark:active:text-primary-200 transition-colors"
                   onMouseEnter={() => setIsLinkHovered(true)}
                   onMouseLeave={() => setIsLinkHovered(false)}
                 >

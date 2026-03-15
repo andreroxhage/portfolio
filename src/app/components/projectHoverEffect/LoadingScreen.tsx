@@ -47,7 +47,7 @@ const LoadingScreen: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black flex items-center justify-center z-50"
+      className="fixed inset-0 bg-surface-dark flex items-center justify-center z-50"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}

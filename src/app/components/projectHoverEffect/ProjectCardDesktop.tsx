@@ -63,7 +63,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         whileTap={{ scale: BUTTON_PRESS_SCALE }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="bg-surface-dark border-surface-dark-foreground/10 rounded-[50px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 overflow-hidden w-fit"
+        className="bg-surface-dark-card border border-surface-dark-foreground/10 rounded-[50px] corner-squircle hover:bg-surface-dark cursor-pointer transition-all duration-150 overflow-hidden w-fit"
       >
         {/* Collapsed Content - Hidden when expanded */}
         <motion.div

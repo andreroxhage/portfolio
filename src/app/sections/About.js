@@ -40,7 +40,7 @@ export default function About() {
                   <motion.h4
                     className={`text-base md:text-lg font-medium pb-1 md:pb-2 cursor-pointer py-2 px-1 -ml-1 ${
                       activeIndex === index
-                        ? 'text-primary-800'
+                        ? 'text-primary-800 dark:text-primary-300'
                         : 'text-muted-foreground'
                     } hover:text-accent-foreground`}
                     onClick={() => handleTitleClick(index)}

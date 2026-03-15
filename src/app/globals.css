@@ -19,8 +19,47 @@
   --font-size-8\.5xl: 6.5rem;
   --font-size-9\.5xl: 10rem;
 
-  /* Brand colors */
-  --color-brand-blackish: #222222;
+  /* Vanilla scale (warm cream → deep brown) */
+  --color-vanilla-50: #fefbf6;
+  --color-vanilla-100: #fdf5e8;
+  --color-vanilla-200: #faefde;
+  --color-vanilla-300: #f5e2c6;
+  --color-vanilla-400: #edcfa6;
+  --color-vanilla-500: #dfb882;
+  --color-vanilla-600: #c99a5c;
+  --color-vanilla-700: #a47940;
+  --color-vanilla-800: #7a5a30;
+  --color-vanilla-900: #503b1f;
+  --color-vanilla-950: #221a0e;
+
+  /* Cream scale (warm beige → deep earth) */
+  --color-cream-50: #faf6f0;
+  --color-cream-100: #f3ece0;
+  --color-cream-200: #ebe1d1;
+  --color-cream-300: #ded0ba;
+  --color-cream-400: #ccba9e;
+  --color-cream-500: #b8a082;
+  --color-cream-600: #9e8468;
+  --color-cream-700: #7f6a52;
+  --color-cream-800: #5e4f3d;
+  --color-cream-900: #3e3428;
+  --color-cream-950: #211c15;
+
+  /* Warm grey scale */
+  --color-warm-grey-50: #f5f5f3;
+  --color-warm-grey-100: #eaeae6;
+  --color-warm-grey-200: #d4d4ce;
+  --color-warm-grey-300: #b5b5ad;
+  --color-warm-grey-400: #90908a;
+  --color-warm-grey-500: #73736c;
+  --color-warm-grey-600: #5d5d56;
+  --color-warm-grey-700: #4e4e48;
+  --color-warm-grey-800: #40403b;
+  --color-warm-grey-900: #31312c;
+  --color-warm-grey-950: #222220;
+
+  /* Brand color aliases (point to scale positions) */
+  --color-brand-blackish: #222220;
   --color-brand-whiteish: #fefefe;
   --color-brand-vanilla: #faefde;
   --color-brand-grey: #40403b;
@@ -111,6 +150,7 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   --color-surface-dark: hsl(var(--surface-dark));
+  --color-surface-dark-card: hsl(var(--surface-dark-card));
   --color-surface-dark-elevated: hsl(var(--surface-dark-elevated));
   --color-surface-dark-foreground: hsl(var(--surface-dark-foreground));
   --color-surface-dark-muted: hsl(var(--surface-dark-muted));
@@ -194,43 +234,45 @@
   --chart-4: 34 30% 87%;
   --chart-5: 56 4% 35%;
   --surface-dark: 0 0% 9%;
+  --surface-dark-card: 0 0% 6%;
   --surface-dark-elevated: 0 0% 15%;
   --surface-dark-foreground: 0 0% 96%;
   --surface-dark-muted: 0 0% 83%;
   --surface-footer: 0 0% 13%;
 }
 
-/* Dark mode placeholder — finalize after design discovery */
+/* Dark mode — warm organic palette using brand scales */
 .dark {
-  --background: 0 0% 13%;
-  --foreground: 0 0% 100%;
-  --card: 113 20% 20%;
-  --card-foreground: 0 0% 100%;
-  --popover: 113 20% 20%;
-  --popover-foreground: 0 0% 100%;
+  --background: 35 22% 11%;           /* cream-950 */
+  --foreground: 0 0% 80%;             /* light grey */
+  --card: 113 20% 20%;                /* original green-tinted card */
+  --card-foreground: 0 0% 100%;       /* original */
+  --popover: 113 20% 20%;             /* original */
+  --popover-foreground: 0 0% 100%;    /* original */
   --primary: 106 30% 55%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 16%;
+  --secondary: 60 5% 18%;             /* warm-grey-900 */
   --secondary-foreground: 34 30% 87%;
-  --muted: 0 0% 16%;
-  --muted-foreground: 34 20% 75%;
+  --muted: 60 5% 18%;                 /* warm-grey-900 */
+  --muted-foreground: 0 0% 60%;       /* dimmer grey */
   --accent: 110 45% 65%;
   --accent-foreground: 106 30% 60%;
   --destructive: 21 90% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 100% / 0.15;
-  --input: 20 13% 22%;
+  --border: 0 0% 100% / 0.15;         /* original */
+  --input: 33 21% 30%;                /* cream-800 */
   --ring: 106 30% 55%;
   --chart-1: 106 30% 55%;
   --chart-2: 113 20% 30%;
   --chart-3: 21 90% 60%;
   --chart-4: 20 13% 28%;
   --chart-5: 34 20% 75%;
-  --surface-dark: 0 0% 9%;
-  --surface-dark-elevated: 0 0% 15%;
-  --surface-dark-foreground: 0 0% 96%;
-  --surface-dark-muted: 0 0% 83%;
-  --surface-footer: 0 0% 9%;
+  --surface-dark: 0 0% 9%;            /* original */
+  --surface-dark-card: 0 0% 6%;
+  --surface-dark-elevated: 0 0% 15%;  /* original */
+  --surface-dark-foreground: 0 0% 96%;/* original */
+  --surface-dark-muted: 0 0% 83%;     /* original */
+  --surface-footer: 0 0% 9%;          /* original */
 }
 
 /* === Base Resets === */
@@ -262,6 +304,15 @@
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* === Theme Transition === */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+  transition-delay: 0s !important;
 }
 
 /* === Accessibility === */
