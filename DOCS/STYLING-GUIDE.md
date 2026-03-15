@@ -6,10 +6,10 @@ How to extend the global styling, update Tailwind, and work with shadcn/ui compo
 
 The portfolio uses a **dual-layer color system**:
 
-1. **Brand colors** — Direct Tailwind classes (`bg-brand-cream`, `text-brand-grey`) defined in `tailwind.config.ts`
+1. **Brand colors** — Direct Tailwind classes (`bg-brand-cream`, `text-brand-grey`) defined in `globals.css` `@theme inline`
 2. **Semantic tokens** — CSS custom properties (`--background`, `--primary`) defined in `src/app/globals.css`
 
-### Brand → Semantic Token Mapping
+### Semantic Token Mapping
 
 | Semantic Token | Light Mode Source | Hex | Tailwind Class |
 |----------------|-------------------|-----|----------------|
@@ -18,12 +18,12 @@ The portfolio uses a **dual-layer color system**:
 | `--card` | brand-whiteish | `#FEFEFE` | `bg-card` |
 | `--primary` | primary-500 | `#88C075` | `bg-primary` |
 | `--secondary` | brand-cream | `#EBE1D1` | `bg-secondary` |
-| `--muted` | brand-cream | `#EBE1D1` | `bg-muted` |
 | `--muted-foreground` | brand-grey-brighter | `#5D5D56` | `text-muted-foreground` |
 | `--accent` | secondary-green-lighter | `#D3E9C2` | `bg-accent` |
-| `--destructive` | accent-600 | `#ea580c` | `bg-destructive` |
-| `--border` | brand-cream | `#EBE1D1` | `border-border` |
-| `--ring` | primary-500 | `#88C075` | `ring-ring` |
+| `--accent-foreground` | primary-700 | `#739966` | `text-accent-foreground` |
+| `--border` | white/12% | `rgba(255,255,255,0.12)` | `border-border` |
+
+> **Note:** Tokens like `--popover`, `--destructive`, `--input`, `--ring`, and `--chart-*` were removed (zero usage). Re-add from git history when installing shadcn/ui components that need them.
 
 ### When to Use Which
 
@@ -36,15 +36,10 @@ The portfolio uses a **dual-layer color system**:
 
 ### Adding a brand color
 
-Edit `tailwind.config.ts` → `theme.extend.colors`:
+Add to `src/app/globals.css` inside `@theme inline { }`:
 
-```typescript
-colors: {
-  brand: {
-    // existing colors...
-    'new-color': '#HEXVAL',
-  }
-}
+```css
+--color-brand-new-color: #HEXVAL;
 ```
 
 ### Adding a semantic token
@@ -93,7 +88,7 @@ shadcn/ui is configured in `components.json`:
 | Setting | Value | Notes |
 |---------|-------|-------|
 | Style | default | Component visual style |
-| Base color | neutral | Maps to our warm neutral scale |
+| Base color | neutral | Base color scheme |
 | CSS variables | true | Uses `--background`, `--primary`, etc. |
 | RSC | true | React Server Components support |
 | UI path | `@/components/ui` | Where components are installed |
@@ -111,24 +106,28 @@ import { cn } from '@/lib/utils';
 
 ## Tailwind Configuration
 
-### Current Setup (Tailwind 3)
+### Current Setup (Tailwind 4 — CSS-first)
 
-Configuration lives in `tailwind.config.ts` with:
-- Custom brand/primary/accent/neutral color scales
+All configuration lives in `src/app/globals.css`:
+- `@theme inline { }` block defines all theme values
+- `@import 'tailwindcss'` replaces old `@tailwind` directives
+- Custom brand + primary color scales (vanilla, primary-green, secondary-green)
 - Custom font sizes (8.5xl, 9.5xl)
 - Custom animations (shimmer, aurora)
 - Custom box shadow (customShadow)
 - Custom breakpoint (3xl: 1600px)
-- `@toolwind/corner-shape` plugin (provides `corner-squircle`)
-- `addVariablesForColors` plugin (generates CSS vars for all colors)
+- `corner-squircle` as a custom `@utility`
 
-### After Tailwind 4 Migration
+### Raw Color Scales Available
 
-All config moves to CSS-first approach in `globals.css`:
-- `@theme inline { }` block replaces `tailwind.config.ts`
-- `@import 'tailwindcss'` replaces `@tailwind` directives
-- CSS variables auto-generated (no plugin needed)
-- `corner-squircle` becomes a custom `@utility`
+| Scale | Range | Purpose |
+|-------|-------|---------|
+| `vanilla-*` | 50–950 | Warm cream palette (page backgrounds) |
+| `primary-*` | 50–950 | Green scale (actions, links, active states) |
+| `secondary-green` | 3 values | Gradient and hover accents |
+| `brand-*` | 6 aliases | Core identity colors (blackish, whiteish, vanilla, grey, grey-brighter, cream) |
+
+> Removed scales (available in git history): cream, warm-grey, accent (orange), gray, neutral, custom-muted tones.
 
 ## Dark Mode
 
@@ -156,15 +155,15 @@ Direct brand classes (`bg-brand-cream`) do NOT auto-switch. For dark mode suppor
 <div className="bg-secondary" />
 
 // Option B: Explicit dark variant
-<div className="bg-brand-cream dark:bg-neutral-800" />
+<div className="bg-brand-cream dark:bg-[#5f514a]" />
 ```
 
-### Adding Dark Mode Toggle
+### Dark Mode Toggle
 
-Once dark mode values are finalized:
-1. Install `next-themes`: `npm install next-themes`
-2. Add `ThemeProvider` to `layout.tsx`
-3. Create a toggle component using shadcn/ui
+Dark mode is implemented with:
+- `next-themes` ThemeProvider in `layout.tsx`
+- `ThemeToggle` component at `src/app/components/ThemeToggle.tsx`
+- Class-based switching via `@custom-variant dark (&:is(.dark *))`
 
 ## Corner Shapes
 

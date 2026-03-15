@@ -11,6 +11,9 @@
 
 /* === Theme Configuration === */
 /* Migrated from tailwind.config.ts to CSS-first (Tailwind 4) */
+/* Removed unused scales: cream, warm-grey, accent (orange), gray, neutral, custom-*.
+   Removed unused semantic tokens: popover, destructive, chart-*.
+   Re-add from git history if needed for future shadcn/ui components. */
 @theme inline {
   /* Font family */
   --font-sans: 'Roboto', sans-serif;
@@ -32,33 +35,7 @@
   --color-vanilla-900: #503b1f;
   --color-vanilla-950: #221a0e;
 
-  /* Cream scale (warm beige → deep earth) */
-  --color-cream-50: #faf6f0;
-  --color-cream-100: #f3ece0;
-  --color-cream-200: #ebe1d1;
-  --color-cream-300: #ded0ba;
-  --color-cream-400: #ccba9e;
-  --color-cream-500: #b8a082;
-  --color-cream-600: #9e8468;
-  --color-cream-700: #7f6a52;
-  --color-cream-800: #5e4f3d;
-  --color-cream-900: #3e3428;
-  --color-cream-950: #211c15;
-
-  /* Warm grey scale */
-  --color-warm-grey-50: #f5f5f3;
-  --color-warm-grey-100: #eaeae6;
-  --color-warm-grey-200: #d4d4ce;
-  --color-warm-grey-300: #b5b5ad;
-  --color-warm-grey-400: #90908a;
-  --color-warm-grey-500: #73736c;
-  --color-warm-grey-600: #5d5d56;
-  --color-warm-grey-700: #4e4e48;
-  --color-warm-grey-800: #40403b;
-  --color-warm-grey-900: #31312c;
-  --color-warm-grey-950: #222220;
-
-  /* Brand color aliases (point to scale positions) */
+  /* Brand color aliases */
   --color-brand-blackish: #222220;
   --color-brand-whiteish: #fefefe;
   --color-brand-vanilla: #faefde;
@@ -70,12 +47,6 @@
   --color-secondary-green: #bce5ae;
   --color-secondary-green-darker: #739966;
   --color-secondary-green-lighter: #d3e9c2;
-
-  /* Custom muted tones */
-  --color-custom-green: #bcd3bb;
-  --color-custom-brown: #d3c4bb;
-  --color-custom-yellow: #d1d3bb;
-  --color-custom-blue: #bbccd3;
 
   /* Primary scale (green) */
   --color-primary-50: #f4f9f0;
@@ -90,52 +61,11 @@
   --color-primary-900: #4a6542;
   --color-primary-950: #2d3d28;
 
-  /* Accent scale (orange) */
-  --color-accent-50: #fff7ed;
-  --color-accent-100: #ffedd5;
-  --color-accent-200: #fed7aa;
-  --color-accent-300: #fdba74;
-  --color-accent-400: #fb923c;
-  --color-accent-500: #f97316;
-  --color-accent-600: #ea580c;
-  --color-accent-700: #c2410c;
-  --color-accent-800: #9a3412;
-  --color-accent-900: #7c2d12;
-  --color-accent-950: #431407;
-
-  /* Gray scale */
-  --color-gray-50: #fafafa;
-  --color-gray-100: #f5f5f5;
-  --color-gray-200: #e5e5e5;
-  --color-gray-300: #d4d4d4;
-  --color-gray-400: #a3a3a3;
-  --color-gray-500: #737373;
-  --color-gray-600: #525252;
-  --color-gray-700: #404040;
-  --color-gray-800: #262626;
-  --color-gray-900: #171717;
-  --color-gray-950: #0a0a0a;
-
-  /* Neutral scale (warm earth) */
-  --color-neutral-50: #faf9f7;
-  --color-neutral-100: #f1eeea;
-  --color-neutral-200: #e4ddd4;
-  --color-neutral-300: #d1c7ba;
-  --color-neutral-400: #b9aa98;
-  --color-neutral-500: #a08d7a;
-  --color-neutral-600: #8a7667;
-  --color-neutral-700: #726157;
-  --color-neutral-800: #5f514a;
-  --color-neutral-900: #50453f;
-  --color-neutral-950: #2a2420;
-
   /* Semantic tokens (shadcn/ui compatible) */
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
@@ -144,8 +74,6 @@
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -155,13 +83,6 @@
   --color-surface-dark-foreground: hsl(var(--surface-dark-foreground));
   --color-surface-dark-muted: hsl(var(--surface-dark-muted));
   --color-surface-footer: hsl(var(--surface-footer));
-
-  /* Chart colors */
-  --color-chart-1: hsl(var(--chart-1));
-  --color-chart-2: hsl(var(--chart-2));
-  --color-chart-3: hsl(var(--chart-3));
-  --color-chart-4: hsl(var(--chart-4));
-  --color-chart-5: hsl(var(--chart-5));
 
   /* Box shadow */
   --shadow-customShadow: 0 45px 70.8px -48px rgba(0, 0, 0, 0.95);
@@ -208,31 +129,25 @@
 }
 
 /* === Semantic Design Tokens === */
+/* Core shadcn/ui tokens */
 :root {
   --background: 38 58% 91%;
   --foreground: 56 5% 24%;
   --card: 0 0% 100%;
   --card-foreground: 56 5% 24%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 56 5% 24%;
   --primary: 106 35% 61%;
   --primary-foreground: 0 0% 100%;
   --secondary: 38 62% 93%;
   --secondary-foreground: 56 5% 24%;
-  --muted: 38 62% 93%;
+  --muted: 38 50% 88%;
   --muted-foreground: 56 4% 35%;
   --accent: 110 52% 79%;
   --accent-foreground: 106 22% 50%;
-  --destructive: 21 90% 48%;
-  --destructive-foreground: 0 0% 100%;
   --border: 0 0% 100% / 0.12;
-  --input: 38 62% 93%;
+  --input: 38 50% 88%;
   --ring: 106 35% 61%;
-  --chart-1: 106 35% 61%;
-  --chart-2: 103 36% 86%;
-  --chart-3: 21 90% 48%;
-  --chart-4: 34 30% 87%;
-  --chart-5: 56 4% 35%;
+
+  /* Portfolio extensions */
   --surface-dark: 0 0% 9%;
   --surface-dark-card: 0 0% 6%;
   --surface-dark-elevated: 0 0% 15%;
@@ -243,36 +158,29 @@
 
 /* Dark mode — warm organic palette using brand scales */
 .dark {
-  --background: 35 22% 11%;           /* cream-950 */
-  --foreground: 0 0% 80%;             /* light grey */
-  --card: 113 20% 20%;                /* original green-tinted card */
-  --card-foreground: 0 0% 100%;       /* original */
-  --popover: 113 20% 20%;             /* original */
-  --popover-foreground: 0 0% 100%;    /* original */
+  --background: 35 22% 11%;
+  --foreground: 0 0% 80%;
+  --card: 113 20% 20%;
+  --card-foreground: 0 0% 100%;
   --primary: 106 30% 55%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 60 5% 18%;             /* warm-grey-900 */
+  --secondary: 60 5% 18%;
   --secondary-foreground: 34 30% 87%;
-  --muted: 60 5% 18%;                 /* warm-grey-900 */
-  --muted-foreground: 0 0% 60%;       /* dimmer grey */
+  --muted: 35 15% 16%;
+  --muted-foreground: 0 0% 60%;
   --accent: 110 45% 65%;
   --accent-foreground: 106 30% 60%;
-  --destructive: 21 90% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 100% / 0.15;         /* original */
-  --input: 33 21% 30%;                /* cream-800 */
+  --border: 0 0% 100% / 0.15;
+  --input: 33 21% 30%;
   --ring: 106 30% 55%;
-  --chart-1: 106 30% 55%;
-  --chart-2: 113 20% 30%;
-  --chart-3: 21 90% 60%;
-  --chart-4: 20 13% 28%;
-  --chart-5: 34 20% 75%;
-  --surface-dark: 0 0% 9%;            /* original */
+
+  /* Portfolio extensions */
+  --surface-dark: 0 0% 9%;
   --surface-dark-card: 0 0% 6%;
-  --surface-dark-elevated: 0 0% 15%;  /* original */
-  --surface-dark-foreground: 0 0% 96%;/* original */
-  --surface-dark-muted: 0 0% 83%;     /* original */
-  --surface-footer: 0 0% 9%;          /* original */
+  --surface-dark-elevated: 0 0% 15%;
+  --surface-dark-foreground: 0 0% 96%;
+  --surface-dark-muted: 0 0% 83%;
+  --surface-footer: 0 0% 9%;
 }
 
 /* === Base Resets === */

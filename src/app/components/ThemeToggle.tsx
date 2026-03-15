@@ -5,6 +5,7 @@ import { IconSun, IconMoon } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING, BUTTON_PRESS_SCALE } from '@/app/lib/motion';
 
 export default function ThemeToggle() {
   const { resolvedTheme, mounted, setTheme } = useTheme();
@@ -27,16 +28,16 @@ export default function ThemeToggle() {
       };
 
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
+      whileTap={prefersReducedMotion ? undefined : { scale: BUTTON_PRESS_SCALE }}
+      transition={{ duration: DURATION.FAST, ease: EASING.STANDARD }}
       className={cn(
         'fixed bottom-4 right-4 z-50',
         'flex items-center justify-center',
         'h-9 w-9 rounded-[10px] corner-squircle',
-        'bg-card text-foreground',
-        'border border-border',
-        'shadow-sm hover:shadow-md',
-        'transition-shadow duration-200',
+        'bg-surface-dark inset-shadow-border-glow',
+        'text-surface-dark-foreground',
         'cursor-pointer'
       )}
       aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
@@ -49,7 +50,7 @@ export default function ThemeToggle() {
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ duration: 0.15 }}
+            transition={{ duration: DURATION.FAST, ease: EASING.STANDARD }}
           >
             <IconSun size={16} stroke={1.5} />
           </motion.span>
@@ -60,12 +61,12 @@ export default function ThemeToggle() {
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{ duration: 0.15 }}
+            transition={{ duration: DURATION.FAST, ease: EASING.STANDARD }}
           >
             <IconMoon size={16} stroke={1.5} />
           </motion.span>
         )}
       </AnimatePresence>
-    </button>
+    </motion.button>
   );
 }

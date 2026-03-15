@@ -56,13 +56,12 @@ export const ThemeProvider: React.FC<{
 
   useEffect(() => {
     const stored = localStorage.getItem('theme') as Theme | null;
-    const initial: Theme =
-      stored === 'light' || stored === 'dark' ? stored : 'system';
-    const resolved = initial === 'system' ? getSystemTheme() : initial;
+    const initial: ResolvedTheme =
+      stored === 'light' || stored === 'dark' ? stored : 'light';
 
     setThemeState(initial);
-    setResolvedTheme(resolved);
-    applyTheme(resolved, false);
+    setResolvedTheme(initial);
+    applyTheme(initial, false);
     setMounted(true);
   }, []);
 

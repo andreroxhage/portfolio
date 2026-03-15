@@ -105,7 +105,7 @@ export const TextRevealCard = ({
               ? { duration: 0 }
               : { duration: DURATION.MEDIUM, ease: EASING.STANDARD }
           }
-          className="h-40 w-[8px] bg-gradient-to-b from-transparent via-neutral-800 to-transparent absolute z-50 will-change-transform"
+          className="h-40 w-[8px] bg-gradient-to-b from-transparent via-[#5f514a] to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 
         <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">

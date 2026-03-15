@@ -1,4 +1,5 @@
 'use client';
+
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import mockup1 from '@/../public/resource/joinMockup1.png';
@@ -20,7 +21,7 @@ export default function CurrentWork() {
   return (
     <motion.div
       id="work"
-      className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-background`}
+      className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-muted dark:bg-white/2 `}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
         <div className="gap-x-8 rounded-[12px] corner-squircle grid grid-cols-10 text-2xl text-muted-foreground items-center">
