@@ -1,4 +1,5 @@
-import { projects, ideas } from '@/app/data';
+import { projects } from '@/app/data/projects';
+import { ideas } from '@/app/data/ideas';
 import { Project } from '@/app/types';
 import { AnimatePresence } from 'framer-motion';
 import { useState, useMemo } from 'react';

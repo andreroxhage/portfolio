@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import mockup1 from '@/../public/resource/joinMockup1.png';
 import mockup2 from '@/../public/resource/joinMockup2.png';
-import { currentWork } from '@/app/data';
+import { currentWork } from '@/app/data/home';
 import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 import ImageFader from '../components/ImageFader';
 import Link from 'next/link';
@@ -23,66 +23,64 @@ export default function CurrentWork() {
       id="work"
       className={`flex-row items-center pt-16 md:pt-12 pb-12 sm:pb-16 md:pb-18 bg-muted dark:bg-white/2 `}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
-        <div className="gap-x-8 rounded-[12px] corner-squircle grid grid-cols-10 text-2xl text-muted-foreground items-center">
-          <div className="w-full col-start-1 px-5 sm:px-6 col-span-10 md:px-0 md:col-start-1 md:col-span-6 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
-            <div className="flex flex-col gap-y-4">
-              <motion.h3
-                className="text-2xl md:text-4xl font-medium cursor-pointer text-foreground"
-                initial={{ opacity: 0, translateY: 60 }}
-                whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                viewport={{ once: true }}
+      <div className="max-w-8xl px-5 sm:px-6 md:px-4 mx-auto h-full gap-x-8 rounded-[12px] corner-squircle grid grid-cols-10 text-2xl text-muted-foreground items-center">
+        <div className="w-full col-start-1 col-span-10 md:col-start-1 md:col-span-5 max-w-[650px] md:pt-0 py-10 sm:py-12 md:my-12">
+          <div className="flex flex-col gap-y-4">
+            <motion.h3
+              className="text-2xl md:text-4xl font-medium cursor-pointer text-foreground"
+              initial={{ opacity: 0, translateY: 60 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              {work.title}
+            </motion.h3>
+            <motion.p
+              className="text-base md:text-lg font-medium leading-relaxed"
+              initial={{ opacity: 0, translateY: 60 }}
+              whileInView={{ opacity: 1, translateY: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              viewport={{ once: true }}
+            >
+              {work.description}
+            </motion.p>
+            <div className="">
+              <Link
+                href="/projects"
+                className="flex gap-2 align-items-baseline group text-primary-800 dark:text-primary-300 text-base md:text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 active:text-primary-900 dark:active:text-primary-200 transition-colors"
+                onMouseEnter={() => setIsLinkHovered(true)}
+                onMouseLeave={() => setIsLinkHovered(false)}
               >
-                {work.title}
-              </motion.h3>
-              <motion.p
-                className="text-base md:text-lg font-medium leading-relaxed"
-                initial={{ opacity: 0, translateY: 60 }}
-                whileInView={{ opacity: 1, translateY: 0 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                viewport={{ once: true }}
-              >
-                {work.description}
-              </motion.p>
-              <div className="">
-                <Link
-                  href="/projects"
-                  className="flex gap-2 align-items-baseline group text-primary-800 dark:text-primary-300 text-base md:text-lg font-medium hover:text-primary-600 dark:hover:text-primary-400 active:text-primary-900 dark:active:text-primary-200 transition-colors"
-                  onMouseEnter={() => setIsLinkHovered(true)}
-                  onMouseLeave={() => setIsLinkHovered(false)}
+                See projects
+                <motion.span
+                  aria-hidden
+                  animate={{
+                    x: isLinkHovered ? 4 : 0,
+                  }}
+                  transition={{
+                    duration: prefersReducedMotion ? 0.01 : DURATION.FAST,
+                    ease: EASING.ENTER,
+                  }}
+                  style={{ display: 'inline-block' }}
                 >
-                  See projects
-                  <motion.span
-                    aria-hidden
-                    animate={{
-                      x: isLinkHovered ? 4 : 0,
-                    }}
-                    transition={{
-                      duration: prefersReducedMotion ? 0.01 : DURATION.FAST,
-                      ease: EASING.ENTER,
-                    }}
-                    style={{ display: 'inline-block' }}
-                  >
-                    <ArrowRightIcon className="w-4 h-4 inline mb-1" />
-                  </motion.span>{' '}
-                </Link>
-              </div>
+                  <ArrowRightIcon className="w-4 h-4 inline mb-1" />
+                </motion.span>{' '}
+              </Link>
             </div>
           </div>
-
-          <ScrollScaleWrapper
-            fade={true}
-            className="col-start-2 col-span-10 md:col-start-7 md:col-span-5 py-10 sm:py-12 md:my-20 pr-0 md:pr-9"
-          >
-            <ImageFader images={imageFader} intervalTime={5000} />
-          </ScrollScaleWrapper>
         </div>
+
+        <ScrollScaleWrapper
+          fade={true}
+          className="col-start-3 p-6 md:p-6 col-span-6 md:col-start-7 md:col-span-3 md:my-0 flex items-center justify-center"
+        >
+          <ImageFader images={imageFader} intervalTime={5000} />
+        </ScrollScaleWrapper>
       </div>
       {/*
 
       Projects
-      <div className="max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
+      <div className="max-w-8xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
         <Link
           href={'/projects'}
           className="mt-4 group md:mt-12 flex gap-4 text-brand-whiteish justify-between"
@@ -174,7 +172,7 @@ export default function CurrentWork() {
       */}
       {/*
         About
-      <div className="max-w-7xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
+      <div className="max-w-8xl mx-auto h-full px-4 mt-8 md:pt-12 mb-8 md:mb-16 pt-4">
         <Link
           href={'/projects'}
           className="mt-4 group md:mt-12 flex gap-4 text-brand-whiteish justify-between"

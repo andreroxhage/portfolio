@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import { links, footerLinks } from '../../data';
+import { links, footerLinks } from '@/app/data/nav';
 import { useProjectHover } from '../../contexts/ProjectHoverContext';
 import { DURATION, EASING } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
@@ -15,18 +14,13 @@ const FloatingNav = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
-  const pathname = usePathname();
   const { isProjectHovered } = useProjectHover();
-
-  const isProjectsRoute = pathname?.endsWith('/projects');
-  const shouldShowArrows = !isProjectsRoute;
-  const shouldUseScrollOpacity = true;
 
   const { scrollYProgress } = useScroll();
   const scrollBasedOpacity = useTransform(
     scrollYProgress,
     [0, 0.05, 0.95, 1], // At very top (0-5%) and very bottom (95-100%)
-    shouldUseScrollOpacity ? [0.3, 0.9, 0.9, 0.3] : [0.9, 0.9, 0.9, 0.9] // Static opacity on projects page
+    [0.3, 0.9, 0.9, 0.3]
   );
 
   const navOpacity = useTransform(scrollBasedOpacity, opacity =>
@@ -53,7 +47,7 @@ const FloatingNav = () => {
   const handleLogoClick = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent navbar expansion from parent click
 
-    if (shouldShowArrows && typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') {
       if (isAtTop) {
         window.scrollTo({
           top: window.innerHeight,
@@ -67,8 +61,6 @@ const FloatingNav = () => {
       } else {
         setIsExpanded(!isExpanded);
       }
-    } else {
-      setIsExpanded(!isExpanded);
     }
   };
 
@@ -229,7 +221,7 @@ const FloatingNav = () => {
           style={{
             transformOrigin: 'center center',
             left: 0,
-            backgroundColor: isProjectsRoute ? '' : navBackgroundColor,
+            backgroundColor: navBackgroundColor,
           }}
         >
           <div
@@ -247,64 +239,38 @@ const FloatingNav = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
-                key={
-                  shouldShowArrows
-                    ? isAtTop
-                      ? 'down'
-                      : isAtBottom
-                        ? 'up'
-                        : 'menu'
-                    : 'menu-static'
-                }
+                key={isAtTop ? 'down' : isAtBottom ? 'up' : 'menu'}
               >
-                {shouldShowArrows ? (
-                  isAtTop ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className={`text-surface-dark-foreground hover:text-accent transform rotate-180`}
-                    >
-                      <path d="M12 19V5M5 12l7-7 7 7" />
-                    </svg>
-                  ) : isAtBottom ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className={`text-surface-dark-foreground hover:text-accent`}
-                    >
-                      <path d="M12 19V5M5 12l7-7 7 7" />
-                    </svg>
-                  ) : (
-                    <motion.svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className={`w-6 h-6 text-surface-dark-foreground hover:text-accent`}
-                      initial={false}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                      />
-                    </motion.svg>
-                  )
+                {isAtTop ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`text-surface-dark-foreground hover:text-accent transform rotate-180`}
+                  >
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                ) : isAtBottom ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`text-surface-dark-foreground hover:text-accent`}
+                  >
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
                 ) : (
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +298,7 @@ const FloatingNav = () => {
               >
                 Find
               </motion.span>
-              <motion.div className="translate-y-[1px] relative w-6 h-6">
+              <motion.div className="translate-y-px relative w-6 h-6">
                 {/* X Icon */}
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"

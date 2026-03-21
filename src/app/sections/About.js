@@ -1,11 +1,8 @@
 'use client';
-import Study from '../../../public/resource/lund.jpg';
-import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { about } from '../data';
-import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
+import { about } from '@/app/data/home';
 
 export default function About() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -17,7 +14,7 @@ export default function About() {
   return (
     <>
       <div className="bg-secondary h-fit my-auto flex-row items-center relative">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-muted-foreground align-items-center">
+        <div className="max-w-8xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-muted-foreground align-items-center">
           <motion.div
             className="w-full lg:col-start-1 lg:col-span-6 max-w-[660px] col-span-10 min-h-100 "
             initial={{ opacity: 0, translateY: 60 }}
@@ -58,7 +55,7 @@ export default function About() {
                   <AnimatePresence>
                     {activeIndex === index && (
                       <motion.hr
-                        className="h-0.5 col-start-1 col-end-4 border-border"
+                        className="h-0.5 w-full rounded-full border-0 bg-primary-700"
                         initial={{ width: '0%' }}
                         animate={{ width: '100%' }}
                         exit={{ width: '0%' }}
@@ -76,7 +73,7 @@ export default function About() {
                   activeIndex === index && (
                     <motion.p
                       key={index}
-                      className="text-base md:text-lg font-medium md:max-w-[700px] md:col-span-5 col-span-9 w-full min-h-[240px] sm:min-h-[200px] leading-relaxed pt-2"
+                      className="text-base md:text-lg font-medium md:max-w-[700px] md:col-span-5 col-span-9 w-full min-h-[240px] sm:min-h-[200px] leading-relaxed"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -88,6 +85,7 @@ export default function About() {
               )}
             </AnimatePresence>
           </motion.div>
+          {/*
           <ScrollScaleWrapper
             fade={true}
             className="col-start-1 col-span-10 md:col-start-7 md:col-span-4 flex-row items-center hidden lg:flex"
@@ -103,6 +101,7 @@ export default function About() {
               }}
             />
           </ScrollScaleWrapper>
+          */}
         </div>
       </div>
     </>

@@ -30,7 +30,9 @@ export default function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      whileTap={prefersReducedMotion ? undefined : { scale: BUTTON_PRESS_SCALE }}
+      whileTap={
+        prefersReducedMotion ? undefined : { scale: BUTTON_PRESS_SCALE }
+      }
       transition={{ duration: DURATION.FAST, ease: EASING.STANDARD }}
       className={cn(
         'fixed bottom-4 right-4 z-50',

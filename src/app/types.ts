@@ -43,3 +43,49 @@ interface IdeaItem extends BaseItem {
 
 // Union type that can be either a project or an idea
 export type Project = ProjectItem | IdeaItem;
+
+// Registry types for the split data layer
+
+export interface ProjectMeta {
+  projectSlug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  image: string;
+  imageAlt: string;
+  videoIdentifier?: string;
+  tags?: string[];
+  order: number;
+  type: 'project';
+  titleColor?: string;
+  subtitleColor?: string;
+}
+
+export interface IdeaMeta {
+  id: string;
+  ideaSlug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  image?: string;
+  imageAlt?: string;
+  imageFader?: string[];
+  intervalTime?: number;
+  roundedCorners?: boolean;
+  tags?: string[];
+  order: number;
+  type: 'idea';
+  hasDetailPage: boolean;
+}
+
+export type GalleryItem = ProjectMeta | IdeaMeta;
+
+export interface Capability {
+  id: string;
+  title: string;
+  description: string;
+  videoIdentifier?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  order: number;
+}

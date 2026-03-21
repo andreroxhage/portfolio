@@ -1,0 +1,54 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Badge } from '@/components/ui/badge';
+import ProjectBreadcrumb from '@/app/components/ProjectBreadcrumb';
+import type { ProjectMeta } from '@/app/types';
+
+interface ProjectHeaderProps {
+  project: ProjectMeta;
+}
+
+export default function ProjectHeader({ project }: ProjectHeaderProps) {
+  return (
+    <header className="max-w-7xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-8 pb-20 gap-6">
+      <ProjectBreadcrumb title={project.title} />
+
+      <motion.h1
+        className="text-4xl md:text-6xl font-medium tracking-tighter"
+        style={{ color: project.titleColor || '#739966' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+      >
+        {project.title}
+      </motion.h1>
+
+      {project.date && (
+        <motion.h3
+          className="text-lg md:text-2xl font-normal opacity-80"
+          style={{ color: project.subtitleColor || '#788876' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+        >
+          {project.date}
+        </motion.h3>
+      )}
+
+      {project.tags && project.tags.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-2">
+          {project.tags.map(tag => (
+            <Badge
+              key={tag}
+              variant="secondary"
+              className="text-xs bg-surface-dark-elevated text-surface-dark-muted border-0 corner-squircle"
+            >
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      )}
+    </header>
+  );
+}

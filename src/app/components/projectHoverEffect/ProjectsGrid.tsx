@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { projects, ideas } from '@/app/data';
+import { projects } from '@/app/data/projects';
+import { ideas } from '@/app/data/ideas';
 import { Project } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
 import { useVideo } from '@/app/hooks/useVideo';

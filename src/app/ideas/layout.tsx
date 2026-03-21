@@ -1,11 +1,11 @@
 import React from 'react';
-import Footer from '../sections/Footer';
+import Footer from '@/app/sections/Footer';
 
-interface ProjectsLayoutProps {
+export default function IdeasLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-
-const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
+}) {
   return (
     <div>
       <main
@@ -20,6 +20,4 @@ const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
       </main>
     </div>
   );
-};
-
-export default ProjectsLayout;
+}
