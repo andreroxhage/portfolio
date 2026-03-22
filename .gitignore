@@ -44,8 +44,20 @@ next-env.d.ts
 .cursorignore
 .vscode/
 
-# claude
-.claude/
+# claude (shared project config, local/runtime excluded)
+.claude/*
+!.claude/agents/
+!.claude/agents/**
+!.claude/hooks/
+!.claude/hooks/**
+!.claude/rules/
+!.claude/rules/**
+!.claude/skills/
+!.claude/skills/**
+!.claude/settings.json
+.claude/settings.local.json
+.claude/agent-memory/
+.claude/worktrees/
 
 # husky
 .husky/

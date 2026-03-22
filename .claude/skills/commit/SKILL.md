@@ -2,6 +2,8 @@
 name: commit-portfolio
 description: Conventional commit workflow with pre-commit build, lint, and type checks.
 origin: portfolio
+disable-model-invocation: true
+allowed-tools: Bash(git *), Bash(npm run build), Bash(npm run lint), Bash(npx tsc --noEmit)
 ---
 
 # Portfolio Commit Skill
@@ -15,7 +17,7 @@ Run ALL three checks before committing. If any fail, fix the issues first:
 npm run build
 
 # 2. Lint check
-npx eslint . --ext .js,.jsx,.ts,.tsx
+npm run lint
 
 # 3. Type check
 npx tsc --noEmit

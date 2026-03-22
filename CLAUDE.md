@@ -1,75 +1,53 @@
-# Portfolio — André Roxhage
+# Portfolio - Andre Roxhage
 
 ## Project Overview
 
-Personal portfolio website for André Roxhage — a Software Design Engineer specializing in frontend development, UX design, and creativity psychology. Built with Next.js App Router, showcasing projects, photography, voluntary work, and professional experience.
+Personal portfolio for Andre Roxhage, focused on frontend engineering, UX, and creativity psychology. The site uses Next.js App Router and showcases projects, photography, voluntary work, and professional experience.
 
-## Commands
+## Core Commands
 
 ```bash
-npm run dev      # Start Next.js dev server (port 3000)
-npm run build    # Production build
-npm run lint     # ESLint
-npx tsc --noEmit # Type check
+npm run dev
+npm run build
+npm run lint
+npx tsc --noEmit
 ```
 
-## Tech Stack
+## Tech Snapshot
 
-- **Framework**: Next.js 15 (App Router) with `src/app/` directory
-- **Language**: TypeScript 5 (strict) — some legacy `.js` section files
-- **Styling**: Tailwind CSS 4 (CSS-first, no config file) with custom brand color system + shadcn/ui
-- **Animation**: Framer Motion + tsparticles
-- **Icons**: @tabler/icons-react, @heroicons/react
-- **Data**: Neon Postgres (serverless) + Cloudflare R2 (video storage)
-- **Deployment**: Vercel
-- **Path alias**: `@/*` → `./src/*`
+- Framework: Next.js 15 App Router (`src/app/`)
+- Language: TypeScript (strict) with some legacy `.js` section files
+- Styling: Tailwind CSS 4 + brand token system + shadcn/ui
+- Animation: Framer Motion + tsparticles
+- Data/infra: Neon Postgres + Cloudflare R2 + Vercel
+- Alias: `@/*` -> `./src/*`
 
-## Key Files
+## Key Paths
 
-| File | Purpose |
-|------|---------|
-| `src/app/page.tsx` | Home page (Header, CurrentWork, Photography, About, Contact, Footer) |
-| `src/app/layout.tsx` | Root layout, metadata, providers |
-| `src/app/data.js` | All static content and project data |
-| `src/app/projects/[projectSlug]/page.tsx` | Dynamic project detail pages |
-| `src/app/globals.css` | Tailwind 4 theme (@theme inline), semantic tokens, design system |
-| `src/lib/utils.ts` | `cn()` class merge utility (clsx + tailwind-merge) |
-| `components.json` | shadcn/ui configuration |
+- `src/app/page.tsx` - home composition
+- `src/app/data.js` - portfolio content source
+- `src/app/projects/[projectSlug]/page.tsx` - dynamic project pages
+- `src/app/globals.css` - token/theme definitions
+- `src/lib/utils.ts` - `cn()` helper
 
-## Architecture
+## Non-Negotiables
 
-```
-src/app/
-├── components/       # Reusable UI components
-│   ├── Navbar/       # FloatingNav
-│   ├── projectHoverEffect/  # ProjectCard, GifDialog, VideoDialog
-│   └── ZoomParallax/ # Parallax scroll effect
-├── sections/         # Page sections (Header, About, Contact, etc.)
-├── projects/         # Dynamic project routes
-├── contexts/         # React contexts (ProjectHoverContext)
-├── hooks/            # Custom hooks (useReducedMotion, useVideo)
-├── lib/              # Utilities (cn, motion, neonClient, r2Client)
-└── api/videos/       # Video streaming API routes
-```
+- Preserve warm, organic visual identity (`brand-vanilla`, `brand-cream`, primary greens).
+- Keep global typography consistent with Roboto.
+- Use `corner-squircle` with explicit rounded classes on curved surfaces.
+- Respect reduced motion for all animation work.
+- Avoid introducing new visual systems when existing tokens/components already solve it.
 
-## Key Constraints
+## Working Style
 
-- **Visual identity**: Warm, organic palette (vanilla #FAEFDE, cream #EBE1D1, green primary scale)
-- **Font**: Roboto sans-serif throughout
-- **Corner shapes**: `corner-squircle` class used extensively for iOS-style rounded corners
-- **Animations**: shimmer + aurora keyframes, Framer Motion for component transitions
-- **Reduced motion**: Always respect `prefers-reduced-motion`
-- **Environment**: Requires `.env.local` with Neon DB + R2 credentials for full functionality
+- Reuse existing patterns before inventing new abstractions.
+- Prefer minimal, targeted edits over broad refactors.
+- Verify changes with relevant checks before finishing.
+- Keep shared Claude behavior in `.claude/rules/`, not in long ad-hoc prompts.
 
-## Agents and Skills
+## Claude Project Structure
 
-### Agents (`.claude/agents/`)
-- `frontend-dev` — UI components, styling, Tailwind, shadcn, framer-motion
-- `content-editor` — Portfolio content, data, copy, SEO metadata
-- `devops-eng` — Deployment, dependencies, build optimization, Vercel
-- `evaluator` — Code review, quality scoring, design system compliance
-- `design-discoverer` — Playwright-based visual audit and dark mode planning
-
-### Skills (`.claude/skills/`)
-- `frontend-style` — Design system guide (colors, typography, animations, patterns)
-- `commit-portfolio` — Conventional commit workflow with pre-commit checks
+- Rules: `.claude/rules/`
+- Skills: `.claude/skills/`
+- Subagents: `.claude/agents/`
+- Shared settings/hooks: `.claude/settings.json` and `.claude/hooks/`
