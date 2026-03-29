@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING } from '@/app/lib/motion';
 
@@ -23,14 +23,14 @@ const BASE_CARDS = [
   { x: 18.73, y: 179.5, h: 7.01 },
 ];
 
-const MAX_H = 128.7;
-const MIN_H = 7;
 const COUNT = BASE_CARDS.length;
 const ISO_DX = 115.686;
 const ISO_DY = 57.843;
 const CORNER_DX = 1.69;
 const CORNER_DY = 0.845;
 const FALLOFF = 2.5;
+const MAX_HEIGHT = Math.max(...BASE_CARDS.map(c => c.h));
+const MIN_HEIGHT = Math.min(...BASE_CARDS.map(c => c.h));
 
 function buildCardPath(x: number, y: number, h: number): string {
   return [
@@ -60,60 +60,109 @@ function buildInnerLine(x: number, y: number, h: number): string {
   ].join('');
 }
 
-function getWaveHeight(i: number, center: number): number {
-  const dist = Math.abs(i - center);
-  const t = Math.exp(-(dist * dist) / (2 * FALLOFF * FALLOFF));
-  return MIN_H + (MAX_H - MIN_H) * t;
-}
-
+/**
+ * Isometric card stack with spring-physics hover.
+ * Uses framer-motion useSpring for the smooth trailing feel —
+ * mouse sets the target, spring interpolates, DOM writes are direct.
+ */
 export default function IsometricStack() {
   const prefersReducedMotion = useReducedMotion();
-  const containerRef = useRef<HTMLDivElement>(null);
-  // Fractional index: 0 = first card (top-right), COUNT-1 = last card (bottom-left)
-  const [hoverCenter, setHoverCenter] = useState<number | null>(null);
+  const groupRefs = useRef<(SVGGElement | null)[]>([]);
+
+  // Wave center position (tracks cursor during hover)
+  const cursorIndex = useMotionValue(0);
+  const springIndex = useSpring(cursorIndex, {
+    stiffness: 300,
+    damping: 30,
+    mass: 0.5,
+  });
+
+  // Wave intensity: 1 = full wave, 0 = all cards at MIN_HEIGHT
+  const intensityTarget = useMotionValue(0);
+  const springIntensity = useSpring(intensityTarget, {
+    stiffness: 100,
+    damping: 22,
+    mass: 0.7,
+  });
+
+  // Restore to base heights: 0 = use wave/min, 1 = use base heights
+  const restoreTarget = useMotionValue(1);
+  const springRestore = useSpring(restoreTarget, {
+    stiffness: 60,
+    damping: 18,
+    mass: 1.2,
+  });
+
+  // Subscribe to all three springs and write card heights directly to DOM
+  useEffect(() => {
+    const update = () => {
+      const center = springIndex.get();
+      const intensity = springIntensity.get();
+      const restore = springRestore.get();
+
+      for (let i = 0; i < COUNT; i++) {
+        const g = groupRefs.current[i];
+        if (!g) {
+          continue;
+        }
+
+        const card = BASE_CARDS[i];
+
+        // Gaussian wave height, scaled by intensity
+        // intensity=1: full wave, intensity=0: all at MIN_HEIGHT
+        const dist = Math.abs(i - center);
+        const t = Math.exp(-(dist * dist) / (2 * FALLOFF * FALLOFF));
+        const waveH = MIN_HEIGHT + (MAX_HEIGHT - MIN_HEIGHT) * t * intensity;
+
+        // Blend wave/min → base via restore spring
+        const newH = waveH + (card.h - waveH) * restore;
+
+        const deltaH = newH - card.h;
+        const newY = card.y - deltaH;
+
+        const outerPath = g.querySelector('path:first-child');
+        if (outerPath) {
+          outerPath.setAttribute('d', buildCardPath(card.x, newY, newH));
+        }
+        const innerPath = g.querySelector('path:last-child');
+        if (innerPath) {
+          innerPath.setAttribute('d', buildInnerLine(card.x, newY, newH));
+        }
+      }
+    };
+
+    const unsub1 = springIndex.on('change', update);
+    const unsub2 = springIntensity.on('change', update);
+    const unsub3 = springRestore.on('change', update);
+    return () => {
+      unsub1();
+      unsub2();
+      unsub3();
+    };
+  }, [springIndex, springIntensity, springRestore]);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (prefersReducedMotion) {
         return;
       }
-      const el = containerRef.current;
-      if (!el) {
-        return;
-      }
-      const rect = el.getBoundingClientRect();
-      // Normalize mouse position to 0–1 along the diagonal
-      // Bottom-left = (0, height), Top-right = (width, 0)
-      // Project onto the diagonal axis
+      const rect = e.currentTarget.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width;
       const ny = (e.clientY - rect.top) / rect.height;
-      // Diagonal: bottom-left (0,1) to top-right (1,0)
-      // Progress along diagonal: average of x and (1-y)
+      // Diagonal: bottom-left → top-right maps to card index
       const diag = (nx + (1 - ny)) / 2;
-      // Map 0–1 to card index range (inverted: top-right = card 0)
       const idx = (1 - diag) * (COUNT - 1);
-      const clamped = Math.max(0, Math.min(COUNT - 1, idx));
-      setHoverCenter(clamped);
+      cursorIndex.set(Math.max(0, Math.min(COUNT - 1, idx)));
+      intensityTarget.set(1);
+      restoreTarget.set(0);
     },
-    [prefersReducedMotion]
+    [prefersReducedMotion, cursorIndex, intensityTarget, restoreTarget]
   );
 
   const handleMouseLeave = useCallback(() => {
-    setHoverCenter(null);
-  }, []);
-
-  const cards = useMemo(
-    () =>
-      BASE_CARDS.map((base, i) => {
-        if (hoverCenter === null) {
-          return { x: base.x, y: base.y, h: base.h };
-        }
-        const newH = getWaveHeight(i, hoverCenter);
-        const newY = base.y + base.h - newH;
-        return { x: base.x, y: newY, h: newH };
-      }),
-    [hoverCenter]
-  );
+    intensityTarget.set(0); // Fade wave → all cards to MIN_HEIGHT (medium speed)
+    restoreTarget.set(1); // Then restore to base heights (slower)
+  }, [intensityTarget, restoreTarget]);
 
   return (
     <motion.div
@@ -127,50 +176,38 @@ export default function IsometricStack() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <div
-        ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className="w-full max-w-[300px]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="-10 -120 292 400"
+          viewBox="0 0 272 267"
           fill="none"
           className="w-full"
           role="img"
           aria-label="Isometric stack of cards"
         >
-          {cards.map((card, i) => {
-            const dist =
-              hoverCenter !== null ? Math.abs(i - hoverCenter) : COUNT;
-            const delay = dist * 0.02;
-
-            return (
-              <g key={i}>
-                <path
-                  d={buildCardPath(card.x, card.y, card.h)}
-                  fill="rgba(0,0,0,0.08)"
-                  stroke="#a3a3a3"
-                  strokeWidth="0.5"
-                  style={{
-                    transition: `d ${DURATION.FAST}s cubic-bezier(0.22, 1, 0.36, 1)`,
-                    transitionDelay: `${delay.toFixed(3)}s`,
-                  }}
-                />
-                <path
-                  d={buildInnerLine(card.x, card.y, card.h)}
-                  stroke="#d4d4d4"
-                  strokeWidth="0.5"
-                  strokeLinecap="round"
-                  fill="none"
-                  style={{
-                    transition: `d ${DURATION.FAST}s cubic-bezier(0.22, 1, 0.36, 1)`,
-                    transitionDelay: `${delay.toFixed(3)}s`,
-                  }}
-                />
-              </g>
-            );
-          })}
+          {BASE_CARDS.map((card, i) => (
+            <g
+              key={i}
+              ref={el => {
+                groupRefs.current[i] = el;
+              }}
+              strokeWidth="0.5"
+            >
+              <path
+                d={buildCardPath(card.x, card.y, card.h)}
+                className="fill-neutral-400/50 stroke-neutral-200 dark:fill-neutral-900/60 dark:stroke-neutral-500"
+              />
+              <path
+                d={buildInnerLine(card.x, card.y, card.h)}
+                className="stroke-neutral-300 dark:stroke-neutral-700"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </g>
+          ))}
         </svg>
       </div>
     </motion.div>
