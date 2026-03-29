@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface ProjectsLayoutProps {
+export default function WritingLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-
-const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
+}) {
   return (
     <div>
       <main
@@ -18,6 +18,4 @@ const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
       </main>
     </div>
   );
-};
-
-export default ProjectsLayout;
+}

@@ -4,14 +4,14 @@ import React, { useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Project } from '@/app/types';
+import type { GridItem } from '@/app/types';
 import { useVideo } from '@/app/hooks/useVideo';
 import VideoLoadingAnimation from '../VideoLoadingAnimation';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import ImageFader from '../ImageFader';
 
 interface GifDialogMobileProps {
-  project: Project;
+  item: GridItem;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -27,7 +27,7 @@ const ProjectVideo = memo(
     identifier: string;
     onLoad: () => void;
     shouldRound?: boolean;
-    imageFader?: any[];
+    imageFader?: string[];
     intervalTime?: number;
   }) => {
     const { video_url: videoUrl, loading } = useVideo(identifier);
@@ -84,11 +84,7 @@ const ProjectVideo = memo(
 
 ProjectVideo.displayName = 'ProjectVideo';
 
-const GifDialogMobile = ({
-  project,
-  isOpen,
-  onClose,
-}: GifDialogMobileProps) => {
+const GifDialogMobile = ({ item, isOpen, onClose }: GifDialogMobileProps) => {
   const handleClose = useCallback(() => {
     onClose();
   }, [onClose]);
@@ -126,12 +122,8 @@ const GifDialogMobile = ({
     exit: { scale: 0.95, opacity: 0 },
   };
 
-  if (!project.projectSlug && !project.id) {
-    return null;
-  }
-
-  const identifier = (project.projectSlug ?? project.id) as string;
-  const shouldRound = project.roundedCorners !== false;
+  const identifier = item.videoIdentifier ?? item.id;
+  const shouldRound = item.roundedCorners !== false;
 
   return (
     <AnimatePresence mode="wait">
@@ -153,17 +145,14 @@ const GifDialogMobile = ({
               identifier={identifier}
               onLoad={() => {}}
               shouldRound={shouldRound}
-              imageFader={project.imageFader}
-              intervalTime={project.intervalTime}
+              imageFader={item.imageFader}
+              intervalTime={item.intervalTime}
             />
           </motion.div>
 
           <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-[16px] corner-squircle bg-surface-dark/30 inset-shadow-border-glow shadow-lg">
             <p className="text-surface-dark-foreground text-center text-sm">
-              {project.title}
-            </p>
-            <p className="text-surface-dark-foreground/70 text-sm text-center">
-              {project.date}
+              {item.title}
             </p>
           </div>
 
@@ -175,9 +164,9 @@ const GifDialogMobile = ({
             >
               <XMarkIcon className="w-8 h-8 text-surface-dark-foreground relative z-10" />
             </button>
-            {project.projectSlug && (
+            {item.href && (
               <Link
-                href={`/projects/${project.projectSlug}`}
+                href={item.href}
                 className="p-3 rounded-full overflow-hidden relative bg-surface-dark/30 inset-shadow-border-glow shadow-lg"
                 aria-label="Visit Project"
               >

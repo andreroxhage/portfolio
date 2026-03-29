@@ -12,7 +12,7 @@ export default function Resume() {
   return (
     <div
       ref={resumeRef}
-      className="max-w-8xl sm:py-6 py-0 grid sm:grid-cols-12 text-muted-foreground"
+      className="max-w-7xl sm:py-6 py-0 grid sm:grid-cols-12 text-muted-foreground"
     >
       {resume.map((section, index) => (
         <motion.div

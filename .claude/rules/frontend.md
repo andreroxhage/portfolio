@@ -1,6 +1,6 @@
 ---
 paths:
-  - "src/**/*.{ts,tsx,js,jsx,css}"
+  - 'src/**/*.{ts,tsx,js,jsx,css}'
 ---
 
 # Frontend UI Rules

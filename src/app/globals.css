@@ -10,10 +10,9 @@
 }
 
 /* === Theme Configuration === */
-/* Migrated from tailwind.config.ts to CSS-first (Tailwind 4) */
-/* Removed unused scales: cream, warm-grey, accent (orange), gray, neutral, custom-*.
-   Removed unused semantic tokens: popover, destructive, chart-*.
-   Re-add from git history if needed for future shadcn/ui components. */
+/* Migrated from HSL to oklch for perceptual uniformity.
+   Consolidated: removed unused vanilla scale, merged brand aliases into neutral,
+   merged secondary-green into primary green scale. */
 @theme inline {
   /* Font family */
   --font-sans: 'Roboto', sans-serif;
@@ -22,67 +21,56 @@
   --font-size-8\.5xl: 6.5rem;
   --font-size-9\.5xl: 10rem;
 
-  /* Vanilla scale (warm cream → deep brown) */
-  --color-vanilla-50: #fefbf6;
-  --color-vanilla-100: #fdf5e8;
-  --color-vanilla-200: #faefde;
-  --color-vanilla-300: #f5e2c6;
-  --color-vanilla-400: #edcfa6;
-  --color-vanilla-500: #dfb882;
-  --color-vanilla-600: #c99a5c;
-  --color-vanilla-700: #a47940;
-  --color-vanilla-800: #7a5a30;
-  --color-vanilla-900: #503b1f;
-  --color-vanilla-950: #221a0e;
+  /* Warm neutral scale (replaces vanilla + brand aliases) */
+  --color-neutral-25: oklch(0.975 0.005 85);
+  --color-neutral-50: oklch(0.995 0 0);
+  --color-neutral-100: oklch(0.988 0.008 80);
+  --color-neutral-200: oklch(0.955 0.025 85);
+  --color-neutral-300: oklch(0.91 0.025 80);
+  --color-neutral-400: oklch(0.8 0.015 80);
+  --color-neutral-500: oklch(0.65 0.012 80);
+  --color-neutral-600: oklch(0.45 0.01 90);
+  --color-neutral-700: oklch(0.34 0.01 90);
+  --color-neutral-800: oklch(0.26 0.01 80);
+  --color-neutral-900: oklch(0.2 0.008 90);
+  --color-neutral-950: oklch(0.145 0.01 70);
+  --color-neutral-975: oklch(0.115 0.008 70);
 
-  /* Brand color aliases */
-  --color-brand-blackish: #222220;
-  --color-brand-whiteish: #fefefe;
-  --color-brand-vanilla: #faefde;
-  --color-brand-grey: #40403b;
-  --color-brand-grey-brighter: #5d5d56;
-  --color-brand-cream: #ebe1d1;
-
-  /* Secondary colors */
-  --color-secondary-green: #bce5ae;
-  --color-secondary-green-darker: #739966;
-  --color-secondary-green-lighter: #d3e9c2;
-
-  /* Primary scale (green) */
-  --color-primary-50: #f4f9f0;
-  --color-primary-100: #e7f3dd;
-  --color-primary-200: #d3e9c2;
-  --color-primary-300: #b8dda5;
-  --color-primary-400: #9cc988;
-  --color-primary-500: #88c075;
-  --color-primary-600: #7daa6f;
-  --color-primary-700: #739966;
-  --color-primary-800: #5d7d52;
-  --color-primary-900: #4a6542;
-  --color-primary-950: #2d3d28;
+  /* Primary scale (green — consolidates old primary + secondary-green) */
+  --color-primary-50: oklch(0.975 0.02 148);
+  --color-primary-100: oklch(0.95 0.04 146);
+  --color-primary-200: oklch(0.91 0.06 144);
+  --color-primary-300: oklch(0.855 0.085 144);
+  --color-primary-400: oklch(0.79 0.095 144);
+  --color-primary-500: oklch(0.75 0.105 144);
+  --color-primary-600: oklch(0.69 0.085 148);
+  --color-primary-700: oklch(0.635 0.08 148);
+  --color-primary-800: oklch(0.54 0.07 148);
+  --color-primary-900: oklch(0.45 0.06 148);
+  --color-primary-950: oklch(0.3 0.04 148);
 
   /* Semantic tokens (shadcn/ui compatible) */
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-surface-dark: hsl(var(--surface-dark));
-  --color-surface-dark-card: hsl(var(--surface-dark-card));
-  --color-surface-dark-elevated: hsl(var(--surface-dark-elevated));
-  --color-surface-dark-foreground: hsl(var(--surface-dark-foreground));
-  --color-surface-dark-muted: hsl(var(--surface-dark-muted));
-  --color-surface-footer: hsl(var(--surface-footer));
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
+  --color-card: oklch(var(--card));
+  --color-card-foreground: oklch(var(--card-foreground));
+  --color-primary: oklch(var(--primary));
+  --color-primary-foreground: oklch(var(--primary-foreground));
+  --color-secondary: oklch(var(--secondary));
+  --color-secondary-foreground: oklch(var(--secondary-foreground));
+  --color-muted: oklch(var(--muted));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+  --color-accent: oklch(var(--accent));
+  --color-accent-foreground: oklch(var(--accent-foreground));
+  --color-border: oklch(var(--border));
+  --color-input: oklch(var(--input));
+  --color-ring: oklch(var(--ring));
+  --color-surface-dark: oklch(var(--surface-dark));
+  --color-surface-dark-card: oklch(var(--surface-dark-card));
+  --color-surface-dark-elevated: oklch(var(--surface-dark-elevated));
+  --color-surface-dark-foreground: oklch(var(--surface-dark-foreground));
+  --color-surface-dark-muted: oklch(var(--surface-dark-muted));
+  --color-surface-footer: oklch(var(--surface-footer));
 
   /* Box shadow */
   --shadow-customShadow: 0 45px 70.8px -48px rgba(0, 0, 0, 0.95);
@@ -128,72 +116,81 @@
   }
 }
 
-/* === Semantic Design Tokens === */
-/* Core shadcn/ui tokens */
+/* === Semantic Design Tokens (oklch) === */
 :root {
-  --background: 38 58% 91%;
-  --foreground: 56 5% 24%;
-  --card: 0 0% 100%;
-  --card-foreground: 56 5% 24%;
-  --primary: 106 35% 61%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 38 62% 93%;
-  --secondary-foreground: 56 5% 24%;
-  --muted: 38 50% 88%;
-  --muted-foreground: 56 4% 35%;
-  --accent: 110 52% 79%;
-  --accent-foreground: 106 22% 50%;
-  --border: 0 0% 100% / 0.12;
-  --input: 38 50% 88%;
-  --ring: 106 35% 61%;
+  --background: 0.975 0.005 85;
+  --foreground: 0.34 0.01 90;
+  --card: 0.995 0 0;
+  --card-foreground: 0.34 0.01 90;
+  --primary: 0.72 0.11 148;
+  --primary-foreground: 1 0 0;
+  --secondary: 0.955 0.025 85;
+  --secondary-foreground: 0.34 0.01 90;
+  --muted: 0.91 0.025 80;
+  --muted-foreground: 0.45 0.01 90;
+  --accent: 0.855 0.085 144;
+  --accent-foreground: 0.54 0.07 148;
+  --border: 1 0 0 / 0.12;
+  --input: 0.91 0.025 80;
+  --ring: 0.72 0.11 148;
 
-  /* Portfolio extensions */
-  --surface-dark: 0 0% 9%;
-  --surface-dark-card: 0 0% 6%;
-  --surface-dark-elevated: 0 0% 15%;
-  --surface-dark-foreground: 0 0% 96%;
-  --surface-dark-muted: 0 0% 83%;
-  --surface-footer: 0 0% 13%;
+  /* Portfolio surfaces (light mode) */
+  --surface-dark: 0.975 0.005 85;
+  --surface-dark-card: 0.995 0 0;
+  --surface-dark-elevated: 0.955 0.025 85;
+  --surface-dark-foreground: 0.34 0.01 90;
+  --surface-dark-muted: 0.45 0.01 90;
+  --surface-footer: 0.19 0 0;
 }
 
-/* Dark mode — warm organic palette using brand scales */
+/* Dark mode — warm organic palette */
 .dark {
-  --background: 35 22% 11%;
-  --foreground: 0 0% 80%;
-  --card: 113 20% 20%;
-  --card-foreground: 0 0% 100%;
-  --primary: 106 30% 55%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 60 5% 18%;
-  --secondary-foreground: 34 30% 87%;
-  --muted: 35 15% 16%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 110 45% 65%;
-  --accent-foreground: 106 30% 60%;
-  --border: 0 0% 100% / 0.15;
-  --input: 33 21% 30%;
-  --ring: 106 30% 55%;
+  --background: 0.115 0.008 70;
+  --foreground: 0.87 0 85;
+  --card: 0.2 0.02 148;
+  --card-foreground: 0.97 0 0;
+  --primary: 0.68 0.1 148;
+  --primary-foreground: 1 0 0;
+  --secondary: 0.175 0.008 80;
+  --secondary-foreground: 0.93 0.005 85;
+  --muted: 0.165 0.01 70;
+  --muted-foreground: 0.85 0.012 80;
+  --accent: 0.75 0.1 148;
+  --accent-foreground: 0.7 0.09 148;
+  --border: 1 0 0 / 0.1;
+  --input: 0.25 0.015 70;
+  --ring: 0.68 0.1 148;
 
-  /* Portfolio extensions */
-  --surface-dark: 0 0% 9%;
-  --surface-dark-card: 0 0% 6%;
-  --surface-dark-elevated: 0 0% 15%;
-  --surface-dark-foreground: 0 0% 96%;
-  --surface-dark-muted: 0 0% 83%;
-  --surface-footer: 0 0% 9%;
+  /* Portfolio surfaces (dark mode) */
+  --surface-dark: 0.145 0 0;
+  --surface-dark-card: 0.105 0 0;
+  --surface-dark-elevated: 0.215 0 0;
+  --surface-dark-foreground: 0.97 0 0;
+  --surface-dark-muted: 0.87 0 0;
+  --surface-footer: 0.145 0 0;
+}
+
+/* Always-dark surface lock — nav, footer, header overlay */
+.surface-lock-dark {
+  --surface-dark: 0.145 0 0;
+  --surface-dark-card: 0.105 0 0;
+  --surface-dark-elevated: 0.215 0 0;
+  --surface-dark-foreground: 0.97 0 0;
+  --surface-dark-muted: 0.87 0 0;
+  --surface-footer: 0.19 0 0;
 }
 
 /* === Base Resets === */
 *,
 ::after,
 ::before {
-  border-color: hsl(var(--border));
+  border-color: oklch(var(--border));
 }
 
 /* === Scrollbar Styling === */
 * {
   scrollbar-width: thin;
-  scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--background));
+  scrollbar-color: oklch(var(--muted-foreground) / 0.3) oklch(var(--background));
 }
 
 *::-webkit-scrollbar {
@@ -202,16 +199,16 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: oklch(var(--background));
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--muted-foreground) / 0.3);
+  background-color: oklch(var(--muted-foreground) / 0.3);
   border-radius: 3px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(var(--muted-foreground) / 0.5);
+  background-color: oklch(var(--muted-foreground) / 0.5);
 }
 
 /* === Theme Transition === */

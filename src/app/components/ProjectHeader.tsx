@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
-import ProjectBreadcrumb from '@/app/components/ProjectBreadcrumb';
 import type { ProjectMeta } from '@/app/types';
 
 interface ProjectHeaderProps {
@@ -11,15 +10,13 @@ interface ProjectHeaderProps {
 
 export default function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
-    <header className="max-w-7xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-8 pb-20 gap-6">
-      <ProjectBreadcrumb title={project.title} />
-
+    <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
       <motion.h1
         className="text-4xl md:text-6xl font-medium tracking-tighter"
         style={{ color: project.titleColor || '#739966' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
       >
         {project.title}
       </motion.h1>
@@ -30,7 +27,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
           style={{ color: project.subtitleColor || '#788876' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
         >
           {project.date}
         </motion.h3>

@@ -189,7 +189,7 @@ const FloatingNav = () => {
   };
 
   return (
-    <motion.div>
+    <motion.div className="surface-lock-dark">
       {/* Backdrop overlay */}
       <motion.div
         className="fixed inset-0 z-40 bg-surface-dark/30 backdrop-blur-sm"

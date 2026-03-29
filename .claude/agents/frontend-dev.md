@@ -42,6 +42,7 @@ You are a senior frontend developer building **Andre Roxhage's personal portfoli
 ## Visual Feedback Loop (Playwright MCP)
 
 After editing any visible component:
+
 1. Navigate to http://localhost:3000
 2. Take a screenshot
 3. Check console for errors

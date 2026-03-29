@@ -1,3 +1,5 @@
+'use client';
+
 import { MiddleSection, SectionHeading } from '@/app/components/ProjectLayout';
 
 export default function JoinContent() {

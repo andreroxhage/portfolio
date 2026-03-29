@@ -3,8 +3,7 @@
 import React from 'react';
 import {
   MiddleSection,
-  TwoColSection,
-  FullWidthSection,
+  WideSection,
   SectionHeading,
   ProjectImage,
 } from '@/app/components/ProjectLayout';
@@ -13,100 +12,98 @@ import { ProgressiveMedia } from '@/app/components/ProgressiveMedia';
 export default function SpotifyEventsContent() {
   return (
     <>
-      {/* Section 1 — two-col: summary + video */}
-      <TwoColSection className="mb-16">
-        <TwoColSection.Left className="space-y-6">
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Summary
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Spotify has long been synonymous with personalization, creativity,
-              and dynamic user engagement. By integrating these principles into
-              event invitations, this concept leverages Spotify&apos;s existing
-              strengths in User-Generated Content (UGC) and Data-Driven
-              Innovation (DDI) to create an entirely new way of inviting,
-              engaging, and exciting guests.
-            </p>
-          </div>
+      {/* Section 1 — summary + video */}
+      <MiddleSection className="mb-8 space-y-6">
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Summary
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            Spotify has long been synonymous with personalization, creativity,
+            and dynamic user engagement. By integrating these principles into
+            event invitations, this concept leverages Spotify&apos;s existing
+            strengths in User-Generated Content (UGC) and Data-Driven Innovation
+            (DDI) to create an entirely new way of inviting, engaging, and
+            exciting guests.
+          </p>
+        </div>
 
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Problem Statement
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Digital invitations often get lost in feeds or lack interactive
-              elements, making it difficult for hosts to track attendees and
-              build excitement before events. Users need a more immersive,
-              music-driven solution that addresses these pain points: low
-              response rates and minimal personalization.
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              This concept takes inspiration from Spotify Wrapped, combining
-              emotional resonance, personalization, and vibrant visual and
-              auditory design. Imagine receiving an invitation that is more than
-              an announcement, it is an experience. Personalized playlists,
-              dynamic visuals, and engaging interactions like shared playlists
-              and discussions set the tone before the event even begins.
-            </p>
-          </div>
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Problem Statement
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            Digital invitations often get lost in feeds or lack interactive
+            elements, making it difficult for hosts to track attendees and build
+            excitement before events. Users need a more immersive, music-driven
+            solution that addresses these pain points: low response rates and
+            minimal personalization.
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            This concept takes inspiration from Spotify Wrapped, combining
+            emotional resonance, personalization, and vibrant visual and
+            auditory design. Imagine receiving an invitation that is more than
+            an announcement, it is an experience. Personalized playlists,
+            dynamic visuals, and engaging interactions like shared playlists and
+            discussions set the tone before the event even begins.
+          </p>
+        </div>
 
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Key Features
-            </h4>
-            <ol className="list-decimal pl-5 space-y-1">
-              <li className="text-base md:text-lg text-muted-foreground">
-                <span className="font-semibold text-surface-dark-foreground">
-                  Customizable Invitations:
-                </span>{' '}
-                Hosts can prepare playlists, choose a theme and add personal
-                touches like photos and messages.
-              </li>
-              <li className="text-base md:text-lg text-muted-foreground">
-                <span className="font-semibold text-surface-dark-foreground">
-                  Personalized Guest Experiences:
-                </span>{' '}
-                Each recipient gets an interactive invitation complete with
-                event details, the host&apos;s curated playlist, and
-                algorithmically generated playlists that blend guest preferences
-                or match the event theme.
-              </li>
-              <li className="text-base md:text-lg text-muted-foreground">
-                <span className="font-semibold text-surface-dark-foreground">
-                  Integration with Spotify Ecosystem:
-                </span>{' '}
-                From saving playlists to syncing calendars, the invitation
-                seamlessly connects with users&apos; digital habits.
-              </li>
-              <li className="text-base md:text-lg text-muted-foreground">
-                <span className="font-semibold text-surface-dark-foreground">
-                  Emotional Engagement:
-                </span>{' '}
-                Dynamic visuals, animations, and music previews build
-                anticipation and excitement.
-              </li>
-            </ol>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-3">
-              By bridging Spotify&apos;s strength in crafting personalized
-              experiences with event planning, this feature offers a memorable,
-              music-centric invitation process, making it a key part of how
-              people connect and celebrate.
-            </p>
-          </div>
-        </TwoColSection.Left>
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Key Features
+          </h4>
+          <ol className="list-decimal pl-5 space-y-1">
+            <li className="text-base md:text-lg text-muted-foreground">
+              <span className="font-semibold text-surface-dark-foreground">
+                Customizable Invitations:
+              </span>{' '}
+              Hosts can prepare playlists, choose a theme and add personal
+              touches like photos and messages.
+            </li>
+            <li className="text-base md:text-lg text-muted-foreground">
+              <span className="font-semibold text-surface-dark-foreground">
+                Personalized Guest Experiences:
+              </span>{' '}
+              Each recipient gets an interactive invitation complete with event
+              details, the host&apos;s curated playlist, and algorithmically
+              generated playlists that blend guest preferences or match the
+              event theme.
+            </li>
+            <li className="text-base md:text-lg text-muted-foreground">
+              <span className="font-semibold text-surface-dark-foreground">
+                Integration with Spotify Ecosystem:
+              </span>{' '}
+              From saving playlists to syncing calendars, the invitation
+              seamlessly connects with users&apos; digital habits.
+            </li>
+            <li className="text-base md:text-lg text-muted-foreground">
+              <span className="font-semibold text-surface-dark-foreground">
+                Emotional Engagement:
+              </span>{' '}
+              Dynamic visuals, animations, and music previews build anticipation
+              and excitement.
+            </li>
+          </ol>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-3">
+            By bridging Spotify&apos;s strength in crafting personalized
+            experiences with event planning, this feature offers a memorable,
+            music-centric invitation process, making it a key part of how people
+            connect and celebrate.
+          </p>
+        </div>
+      </MiddleSection>
 
-        <TwoColSection.Right>
-          <ProgressiveMedia
-            videoIdentifier="spotify-events"
-            imageSrc="/resource/projects/p4_d_a.png"
-            imageAlt="Spotify Events prototype showing event invitation screen"
-            aspectRatio="9/16"
-            rounded
-            className="w-full max-h-[700px] mx-auto"
-          />
-        </TwoColSection.Right>
-      </TwoColSection>
+      <WideSection className="mb-16">
+        <ProgressiveMedia
+          videoIdentifier="spotify-events"
+          imageSrc="/resource/projects/p4_d_a.png"
+          imageAlt="Spotify Events prototype showing event invitation screen"
+          aspectRatio="9/16"
+          rounded
+          className="w-full max-h-[700px] mx-auto"
+        />
+      </WideSection>
 
       {/* Section 2 — middle: design process */}
       <MiddleSection className="mb-16 space-y-6">
@@ -227,21 +224,17 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      {/* Section 4 — two-col: music survey images */}
-      <TwoColSection className="mb-16">
-        <TwoColSection.Left>
-          <ProjectImage
-            src="/resource/projects/p4_music.svg"
-            alt="Music interest survey results"
-          />
-        </TwoColSection.Left>
-        <TwoColSection.Right>
-          <ProjectImage
-            src="/resource/projects/p4_music_how.svg"
-            alt="How music integration would work"
-          />
-        </TwoColSection.Right>
-      </TwoColSection>
+      {/* Section 4 — music survey images */}
+      <WideSection className="mb-16 space-y-6">
+        <ProjectImage
+          src="/resource/projects/p4_music.svg"
+          alt="Music interest survey results"
+        />
+        <ProjectImage
+          src="/resource/projects/p4_music_how.svg"
+          alt="How music integration would work"
+        />
+      </WideSection>
 
       {/* Section 5 — middle: personalization + conclusion */}
       <MiddleSection className="mb-16 space-y-6">
@@ -296,14 +289,14 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      {/* Section 7 — full-width: persona image */}
-      <FullWidthSection className="mb-16">
+      {/* Section 7 — wide: persona image */}
+      <WideSection className="mb-16">
         <ProjectImage
           src="/resource/projects/p4_persona.png"
           alt="Persona Kate"
           size="xl"
         />
-      </FullWidthSection>
+      </WideSection>
 
       {/* Section 8 — middle: sketches + user flows */}
       <MiddleSection className="mb-16 space-y-6">
@@ -343,14 +336,14 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      {/* Section 9 — full-width: user flow diagram */}
-      <FullWidthSection className="mb-16">
+      {/* Section 9 — wide: user flow diagram */}
+      <WideSection className="mb-16">
         <ProjectImage
           src="/resource/projects/p4_flow.svg"
           alt="User flow diagram for the Spotify Events feature"
           size="xl"
         />
-      </FullWidthSection>
+      </WideSection>
 
       {/* Section 10 — middle: feature prioritization intro */}
       <MiddleSection className="mb-16 space-y-6">
@@ -366,139 +359,131 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      {/* Section 11 — full-width: prioritization table */}
-      <FullWidthSection className="mb-16">
+      {/* Section 11 — wide: prioritization table */}
+      <WideSection className="mb-16">
         <ProjectImage
           src="/resource/projects/p4_table.svg"
           alt="Table of functions and user goal mapping and prioritization"
           size="xl"
         />
-      </FullWidthSection>
+      </WideSection>
 
-      {/* Section 12 — two-col: calendar/attendees + prototype image */}
-      <TwoColSection className="mb-16">
-        <TwoColSection.Left className="space-y-6">
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Calendar &amp; Maps Integration
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              In the final design, &lsquo;Add to Calendar&rsquo; and &lsquo;Open
-              in Maps&rsquo; appear both as quick actions in the dialog drawer
-              and as interactive links on the date or address. This keeps
-              navigation straightforward and ensures guests can quickly sync the
-              event to their schedules. Additionally, social sharing options
-              enable plus-one invites or event-sharing, depending on the
-              host&apos;s chosen settings, and an RSVP deadline can be displayed
-              to encourage timely responses.
-            </p>
-          </div>
+      {/* Section 12 — calendar/attendees + prototype image */}
+      <MiddleSection className="mb-8 space-y-6">
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Calendar &amp; Maps Integration
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            In the final design, &lsquo;Add to Calendar&rsquo; and &lsquo;Open
+            in Maps&rsquo; appear both as quick actions in the dialog drawer and
+            as interactive links on the date or address. This keeps navigation
+            straightforward and ensures guests can quickly sync the event to
+            their schedules. Additionally, social sharing options enable
+            plus-one invites or event-sharing, depending on the host&apos;s
+            chosen settings, and an RSVP deadline can be displayed to encourage
+            timely responses.
+          </p>
+        </div>
 
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Attendees &amp; Discussion
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              The event landing page showcases attendees alongside a discussion
-              section, allowing guests to see who is attending, share
-              excitement, and coordinate details: planning pre-parties,
-              carpools, or outfit themes. To provide deeper functionality,
-              dedicated sub-pages will handle attendee management and structured
-              discussions, giving hosts and guests full control over
-              conversation flow.
-            </p>
-          </div>
-        </TwoColSection.Left>
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Attendees &amp; Discussion
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            The event landing page showcases attendees alongside a discussion
+            section, allowing guests to see who is attending, share excitement,
+            and coordinate details: planning pre-parties, carpools, or outfit
+            themes. To provide deeper functionality, dedicated sub-pages will
+            handle attendee management and structured discussions, giving hosts
+            and guests full control over conversation flow.
+          </p>
+        </div>
+      </MiddleSection>
 
-        <TwoColSection.Right>
-          <ProjectImage
-            src="/resource/projects/p4_d_a.png"
-            alt="Prototype of the Spotify Events feature showing a dropdown with quick actions"
-            size="xl"
-          />
-        </TwoColSection.Right>
-      </TwoColSection>
+      <WideSection className="mb-16">
+        <ProjectImage
+          src="/resource/projects/p4_d_a.png"
+          alt="Prototype of the Spotify Events feature showing a dropdown with quick actions"
+          size="xl"
+        />
+      </WideSection>
 
-      {/* Section 13 — two-col: guest blend/psychology + UGC diagram */}
-      <TwoColSection className="mb-16">
-        <TwoColSection.Left className="space-y-6">
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Guest Blend &amp; Ethical Considerations
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              A core feature is the Guest Blend playlist, which algorithmically
-              combines guests&apos; music preferences into a cohesive
-              soundtrack. However, not all users are comfortable sharing
-              listening data, raising important design ethics questions. To
-              address privacy concerns, the feature is permission-based: guests
-              opt in or remain anonymous, ensuring those who prefer privacy
-              aren&apos;t forced to reveal personal preferences. If participants
-              consent, the system incorporates their individual favorites or
-              shared taste profiles. When hosts set an event theme (like an
-              &lsquo;80s party), the algorithm filters tracks to match that vibe
-              while still reflecting guest input. This approach balances
-              inclusivity with privacy, ensuring everyone can be represented in
-              the playlist, but only if they choose to be.
-            </p>
-          </div>
+      {/* Section 13 — guest blend/psychology + UGC diagram */}
+      <MiddleSection className="mb-8 space-y-6">
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Guest Blend &amp; Ethical Considerations
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            A core feature is the Guest Blend playlist, which algorithmically
+            combines guests&apos; music preferences into a cohesive soundtrack.
+            However, not all users are comfortable sharing listening data,
+            raising important design ethics questions. To address privacy
+            concerns, the feature is permission-based: guests opt in or remain
+            anonymous, ensuring those who prefer privacy aren&apos;t forced to
+            reveal personal preferences. If participants consent, the system
+            incorporates their individual favorites or shared taste profiles.
+            When hosts set an event theme (like an &lsquo;80s party), the
+            algorithm filters tracks to match that vibe while still reflecting
+            guest input. This approach balances inclusivity with privacy,
+            ensuring everyone can be represented in the playlist, but only if
+            they choose to be.
+          </p>
+        </div>
 
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Host Playlist &amp; Collaborative Additions
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Beyond Guest Blend, the host&apos;s personal playlist sets the
-              baseline vibe, offering a curated selection that reflects the
-              event theme. Optionally, hosts can enable manual track additions,
-              allowing guests to enrich the atmosphere or showcase personal
-              favorites. This dual-layered system (host curation plus
-              collaborative UGC input) balances creative control with communal
-              participation, enhancing shared ownership of both the music and
-              the celebration.
-            </p>
-          </div>
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Host Playlist &amp; Collaborative Additions
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            Beyond Guest Blend, the host&apos;s personal playlist sets the
+            baseline vibe, offering a curated selection that reflects the event
+            theme. Optionally, hosts can enable manual track additions, allowing
+            guests to enrich the atmosphere or showcase personal favorites. This
+            dual-layered system (host curation plus collaborative UGC input)
+            balances creative control with communal participation, enhancing
+            shared ownership of both the music and the celebration.
+          </p>
+        </div>
 
-          <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Psychological Perspectives &amp; Inspiration from Spotify Wrapped
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Spotify Wrapped demonstrates how DDI-powered storytelling can
-              spark widespread engagement by transforming user data into
-              shareable, emotionally resonant content. Its success stems from
-              behavioral and social theories: critical mass theory explains how
-              initial adopters sharing their &lsquo;music personality&rsquo;
-              create viral loops that motivate others to participate. Meanwhile,
-              Wrapped avoids information overload despite processing extensive
-              data by filtering insights into concise, visually appealing
-              &lsquo;stories.&rsquo; The feature also leverages common-ground
-              theory: shared musical tastes foster identity and belonging among
-              listeners.
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Applying these principles to Spotify Events could similarly
-              encourage viral sharing and community-building around invitations.
-              By reframing event details into digestible, personalized
-              experiences through DDI, each guest feels deeper connections to
-              hosts and attendees. Blending music preferences creates instant
-              unity through UGC, boosting anticipation before celebrations
-              begin. Through strategies that manage data complexity, spark
-              social momentum, and establish common ground, Spotify Events
-              offers a compelling, communal approach to digital invitations,
-              mirroring Wrapped&apos;s success with listening habits.
-            </p>
-          </div>
-        </TwoColSection.Left>
+        <div>
+          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            Psychological Perspectives &amp; Inspiration from Spotify Wrapped
+          </h4>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            Spotify Wrapped demonstrates how DDI-powered storytelling can spark
+            widespread engagement by transforming user data into shareable,
+            emotionally resonant content. Its success stems from behavioral and
+            social theories: critical mass theory explains how initial adopters
+            sharing their &lsquo;music personality&rsquo; create viral loops
+            that motivate others to participate. Meanwhile, Wrapped avoids
+            information overload despite processing extensive data by filtering
+            insights into concise, visually appealing &lsquo;stories.&rsquo; The
+            feature also leverages common-ground theory: shared musical tastes
+            foster identity and belonging among listeners.
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            Applying these principles to Spotify Events could similarly
+            encourage viral sharing and community-building around invitations.
+            By reframing event details into digestible, personalized experiences
+            through DDI, each guest feels deeper connections to hosts and
+            attendees. Blending music preferences creates instant unity through
+            UGC, boosting anticipation before celebrations begin. Through
+            strategies that manage data complexity, spark social momentum, and
+            establish common ground, Spotify Events offers a compelling,
+            communal approach to digital invitations, mirroring Wrapped&apos;s
+            success with listening habits.
+          </p>
+        </div>
+      </MiddleSection>
 
-        <TwoColSection.Right>
-          <ProjectImage
-            src="/resource/projects/p4_ugd.png"
-            alt="UGC and DDI principles diagram"
-            size="sm"
-          />
-        </TwoColSection.Right>
-      </TwoColSection>
+      <ProjectImage
+        src="/resource/projects/p4_ugd.png"
+        alt="UGC and DDI principles diagram"
+        size="sm"
+        className="mb-16"
+      />
 
       {/* Section 14 — middle: final evaluation */}
       <MiddleSection className="mb-16 space-y-6">

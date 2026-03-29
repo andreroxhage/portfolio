@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Project } from '@/app/types';
+import type { GridItem } from '@/app/types';
 import { PlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { EASING, BUTTON_PRESS_SCALE, DURATION } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface ProjectCardDesktopProps {
-  project: Project;
+  item: GridItem;
   isExpanded: boolean;
   onClick: () => void;
 }
 
 const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
-  ({ project, isExpanded, onClick }) => {
-    const hasProjectSlug = 'projectSlug' in project && project.projectSlug;
+  ({ item, isExpanded, onClick }) => {
     const router = useRouter();
     const prefersReducedMotion = useReducedMotion();
     const [isHovering, setIsHovering] = useState(false);
 
     const handleClick = () => {
-      if (isExpanded && hasProjectSlug) {
+      if (isExpanded && item.href) {
         if (typeof window !== 'undefined') {
           try {
             sessionStorage.setItem('fromProjects', '1');
@@ -29,7 +28,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
             /* noop */
           }
         }
-        router.push(`/projects/${project.projectSlug}`);
+        router.push(item.href);
         return;
       }
       onClick();
@@ -38,7 +37,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
     const handleKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        if (isExpanded && hasProjectSlug) {
+        if (isExpanded && item.href) {
           if (typeof window !== 'undefined') {
             try {
               sessionStorage.setItem('fromProjects', '1');
@@ -46,7 +45,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
               /* noop */
             }
           }
-          router.push(`/projects/${project.projectSlug}`);
+          router.push(item.href);
           return;
         }
         onClick();
@@ -90,7 +89,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
             <div className="flex items-center gap-4">
               <PlusIcon className="w-5 h-5 text-surface-dark-muted shrink-0" />
               <h3 className="text-base md:text-lg font-medium text-surface-dark-foreground w-fit">
-                {project.title}
+                {item.title}
               </h3>
             </div>
           </div>
@@ -120,18 +119,18 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
           <div className="p-6">
             <div className="flex flex-col gap-4">
               <span className="text-base md:text-lg font-medium text-surface-dark-foreground">
-                {project.title}
-                {project.subtitle && (
+                {item.title}
+                {item.subtitle && (
                   <>
                     .{' '}
                     <span className="text-base md:text-lg font-thin text-surface-dark-foreground">
-                      {project.subtitle}
+                      {item.subtitle}
                     </span>
                   </>
                 )}
               </span>
 
-              {hasProjectSlug && (
+              {item.href && (
                 <motion.div
                   animate={{ opacity: isExpanded ? 1 : 0 }}
                   transition={{
@@ -141,7 +140,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                   }}
                 >
                   <Link
-                    href={`/projects/${project.projectSlug}`}
+                    href={item.href}
                     className="text-sm text-surface-dark-foreground hover:text-accent-foreground transition-colors duration-200 flex items-center gap-2"
                     onClick={e => e.stopPropagation()}
                   >
@@ -149,7 +148,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                     <motion.span
                       aria-hidden
                       animate={{
-                        x: isExpanded && hasProjectSlug && isHovering ? 4 : 0,
+                        x: isExpanded && item.href && isHovering ? 4 : 0,
                       }}
                       transition={{
                         duration: prefersReducedMotion ? 0.01 : DURATION.FAST,

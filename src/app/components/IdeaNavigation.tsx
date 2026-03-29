@@ -29,7 +29,7 @@ const IdeaNavigation: React.FC<IdeaNavigationProps> = ({ currentIdeaSlug }) => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.3 }}
     >
-      <div className="max-w-8xl mx-auto px-4 py-8 flex justify-between items-center">
+      <div className="max-w-2xl mx-auto px-4 py-8 flex justify-between items-center">
         <Link
           href={`/ideas/${prevIdea.ideaSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"

@@ -1,28 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { projectRegistry } from '@/app/data/projects';
+import { writingRegistry } from '@/app/data/writing';
 
-interface ProjectNavigationProps {
-  currentProjectSlug: string;
+interface WritingNavigationProps {
+  currentWritingSlug: string;
 }
 
-const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
-  currentProjectSlug,
+const WritingNavigation: React.FC<WritingNavigationProps> = ({
+  currentWritingSlug,
 }) => {
-  const currentIndex = projectRegistry.findIndex(
-    p => p.projectSlug === currentProjectSlug
+  const currentIndex = writingRegistry.findIndex(
+    w => w.writingSlug === currentWritingSlug
   );
 
-  const prevProject =
+  const prevWriting =
     currentIndex > 0
-      ? projectRegistry[currentIndex - 1]
-      : projectRegistry[projectRegistry.length - 1];
+      ? writingRegistry[currentIndex - 1]
+      : writingRegistry[writingRegistry.length - 1];
 
-  const nextProject =
-    currentIndex < projectRegistry.length - 1
-      ? projectRegistry[currentIndex + 1]
-      : projectRegistry[0];
+  const nextWriting =
+    currentIndex < writingRegistry.length - 1
+      ? writingRegistry[currentIndex + 1]
+      : writingRegistry[0];
 
   return (
     <motion.div
@@ -33,7 +33,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     >
       <div className="max-w-2xl mx-auto px-4 py-8 flex justify-between items-center">
         <Link
-          href={`/projects/${prevProject.projectSlug}`}
+          href={`/writing/${prevWriting.writingSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
@@ -54,28 +54,22 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
           </motion.div>
           <div className="text-left">
             <div className="text-sm text-muted-foreground">
-              Previous Project
+              Previous Article
             </div>
-            <label
-              className="font-medium duration-300"
-              style={{ color: prevProject.titleColor }}
-            >
-              {prevProject.title}
+            <label className="font-medium text-primary-500 duration-300">
+              {prevWriting.title}
             </label>
           </div>
         </Link>
 
         <Link
-          href={`/projects/${nextProject.projectSlug}`}
+          href={`/writing/${nextWriting.writingSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <div className="text-right">
-            <div className="text-sm text-muted-foreground">Next Project</div>
-            <label
-              className="font-medium duration-300"
-              style={{ color: nextProject.titleColor }}
-            >
-              {nextProject.title}
+            <div className="text-sm text-muted-foreground">Next Article</div>
+            <label className="font-medium text-primary-500 duration-300">
+              {nextWriting.title}
             </label>
           </div>
           <svg
@@ -98,4 +92,4 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   );
 };
 
-export default ProjectNavigation;
+export default WritingNavigation;

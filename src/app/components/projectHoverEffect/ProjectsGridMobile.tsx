@@ -1,53 +1,54 @@
+import React from 'react';
 import { projects } from '@/app/data/projects';
 import { ideas } from '@/app/data/ideas';
-import { Project } from '@/app/types';
+import type { GridItem, GalleryItem } from '@/app/types';
+import { galleryItemToGridItem } from '@/app/types';
 import { AnimatePresence } from 'framer-motion';
 import { useState, useMemo } from 'react';
 import GifDialogMobile from './VideoDialogMobile';
 import ProjectCard from './ProjectCard';
 
-const ProjectGridMobile = () => {
+interface ProjectGridMobileProps {
+  items?: GridItem[];
+}
+
+const ProjectGridMobile: React.FC<ProjectGridMobileProps> = ({
+  items: itemsProp,
+}) => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [currentItem, setCurrentItem] = useState<Project | null>(null);
+  const [currentItem, setCurrentItem] = useState<GridItem | null>(null);
 
   const allItems = useMemo(() => {
-    return [...(projects as Project[]), ...ideas].sort((a, b) => {
-      const orderA = a.order ?? 999;
-      const orderB = b.order ?? 999;
-      return orderA - orderB;
-    });
-  }, []);
+    if (itemsProp) {
+      return itemsProp;
+    }
+    const gallery: GalleryItem[] = [...projects, ...ideas];
+    return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);
+  }, [itemsProp]);
 
   return (
     <div className="flex flex-col h-full justify-between items-center pb-12 flex-grow">
       <div className="flex flex-col gap-12 pb-24 pt-12 w-full h-full overflow-y-auto">
         <div className="flex flex-col gap-4">
-          {allItems.map((item, index) => {
-            const isProject = 'projectSlug' in item && item.projectSlug;
-            return (
-              <button
-                key={index}
-                className={
-                  isProject
-                    ? 'cursor-pointer text-left'
-                    : 'cursor-default text-left'
-                }
-                onClick={() => {
-                  setDialogOpen(true);
-                  setCurrentItem(item);
-                }}
-              >
-                <ProjectCard project={item} />
-              </button>
-            );
-          })}
+          {allItems.map(item => (
+            <button
+              key={item.id}
+              className="cursor-pointer text-left"
+              onClick={() => {
+                setDialogOpen(true);
+                setCurrentItem(item);
+              }}
+            >
+              <ProjectCard item={item} />
+            </button>
+          ))}
         </div>
       </div>
 
       <AnimatePresence>
         {dialogOpen && currentItem && (
           <GifDialogMobile
-            project={currentItem}
+            item={currentItem}
             isOpen={dialogOpen}
             onClose={() => setDialogOpen(false)}
           />

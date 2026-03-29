@@ -1,12 +1,11 @@
 'use client';
+import { useMemo } from 'react';
 import { ProjectsPageContent } from '@/app/components/ProjectsPageContent';
-import { CapabilitiesHero } from '@/app/components/CapabilitiesHero';
+import { capabilities } from '@/app/data/capabilities';
+import { capabilityToGridItem } from '@/app/types';
 
 export default function WorkPage() {
-  return (
-    <ProjectsPageContent
-      heroMode="capabilities"
-      heroContent={<CapabilitiesHero />}
-    />
-  );
+  const items = useMemo(() => capabilities.map(capabilityToGridItem), []);
+
+  return <ProjectsPageContent items={items} />;
 }

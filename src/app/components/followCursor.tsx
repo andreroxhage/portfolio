@@ -109,9 +109,6 @@ export const FollowPointer = ({
       }}
     >
       <motion.div
-        style={{
-          backgroundColor: 'hsl(var(--accent))',
-        }}
         initial={{
           scale: 0.5,
           opacity: 0,
@@ -125,7 +122,7 @@ export const FollowPointer = ({
           opacity: 0,
         }}
         className={
-          'text-center bg-card text-foreground h-28 w-28 whitespace-nowrap text-lg rounded-full flex justify-center items-center'
+          'text-center bg-primary-900/90 mix-blend-difference text-neutral-100 h-28 w-28 whitespace-nowrap text-lg rounded-full flex justify-center items-center'
         }
       >
         {title || `William Shakespeare`}

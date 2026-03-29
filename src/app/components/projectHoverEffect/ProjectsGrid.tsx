@@ -1,34 +1,34 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { projects } from '@/app/data/projects';
 import { ideas } from '@/app/data/ideas';
-import { Project } from '@/app/types';
+import { GridItem, galleryItemToGridItem } from '@/app/types';
+import type { GalleryItem } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
 import { useVideo } from '@/app/hooks/useVideo';
 import { motion, AnimatePresence } from 'framer-motion';
 import ImageFader from '../ImageFader';
 
-const ProjectGrid = () => {
-  const allItems = useMemo(
-    () =>
-      [...(projects as Project[]), ...(ideas as Project[])].sort((a, b) => {
-        const orderA = a.order ?? 999;
-        const orderB = b.order ?? 999;
-        return orderA - orderB;
-      }),
-    []
-  );
+interface ProjectGridProps {
+  items?: GridItem[];
+}
 
-  const firstProject = allItems[0];
-  const firstProjectId = firstProject
-    ? firstProject.projectSlug || (firstProject as any).id
-    : null;
+const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
+  const allItems = useMemo(() => {
+    if (itemsProp) {
+      return itemsProp;
+    }
+    const gallery: GalleryItem[] = [...projects, ...ideas];
+    return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);
+  }, [itemsProp]);
 
-  const [expandedProjectId, setExpandedProjectId] = useState<string | null>(
-    firstProjectId
+  const firstItem = allItems[0];
+
+  const [expandedItemId, setExpandedItemId] = useState<string | null>(
+    firstItem?.id ?? null
   );
 
   const handleCardClick = useCallback((itemId: string) => {
-    setExpandedProjectId(itemId);
+    setExpandedItemId(itemId);
   }, []);
 
   return (
@@ -39,26 +39,22 @@ const ProjectGrid = () => {
           layout
         >
           {allItems.map(item => {
-            const itemId = item.projectSlug || (item as any).id;
-            const isExpanded = expandedProjectId === itemId;
+            const isExpanded = expandedItemId === item.id;
 
             return (
               <ProjectCardDesktop
-                key={itemId || item.title}
-                project={item}
+                key={item.id}
+                item={item}
                 isExpanded={isExpanded}
-                onClick={() => handleCardClick(itemId)}
+                onClick={() => handleCardClick(item.id)}
               />
             );
           })}
         </motion.div>
 
         <RightPreviewPanel
-          itemIdentifier={expandedProjectId || ''}
-          isActive={!!expandedProjectId}
-          currentProject={allItems.find(
-            item => (item.projectSlug || (item as any).id) === expandedProjectId
-          )}
+          item={allItems.find(item => item.id === expandedItemId)}
+          isActive={!!expandedItemId}
         />
       </div>
     </div>
@@ -68,15 +64,14 @@ const ProjectGrid = () => {
 export default ProjectGrid;
 
 const RightPreviewPanel = ({
-  itemIdentifier,
+  item,
   isActive,
-  currentProject,
 }: {
-  itemIdentifier: string;
+  item?: GridItem;
   isActive: boolean;
-  currentProject?: Project;
 }) => {
-  const { video_url: videoUrl } = useVideo(itemIdentifier || '');
+  const identifier = item?.videoIdentifier ?? item?.id ?? '';
+  const { video_url: videoUrl } = useVideo(identifier);
   const [prevVideoUrl, setPrevVideoUrl] = useState<string>('');
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
@@ -87,11 +82,9 @@ const RightPreviewPanel = ({
     }
   }, [videoUrl, prevVideoUrl]);
 
-  const hasImageFader =
-    currentProject?.imageFader && currentProject.imageFader.length > 0;
-  const showPanel =
-    isActive && !!itemIdentifier && (!!videoUrl || hasImageFader);
-  const shouldRound = currentProject?.roundedCorners !== false;
+  const hasImageFader = item?.imageFader && item.imageFader.length > 0;
+  const showPanel = isActive && !!identifier && (!!videoUrl || hasImageFader);
+  const shouldRound = item?.roundedCorners !== false;
 
   const easings = {
     videoTransition: [0.45, 0.0, 0.15, 1] as const,
@@ -105,7 +98,7 @@ const RightPreviewPanel = ({
             <>
               {hasImageFader ? (
                 <motion.div
-                  key={itemIdentifier}
+                  key={identifier}
                   className={`${shouldRound ? 'rounded-[40px] corner-squircle' : ''} overflow-hidden`}
                   initial={{ opacity: 0, y: -64 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -122,13 +115,13 @@ const RightPreviewPanel = ({
                   }}
                 >
                   <ImageFader
-                    images={currentProject.imageFader!.map(src => src)}
-                    intervalTime={currentProject.intervalTime || 5000}
+                    images={item!.imageFader!.map(src => src)}
+                    intervalTime={item!.intervalTime || 5000}
                   />
                 </motion.div>
               ) : (
                 <motion.video
-                  key={itemIdentifier}
+                  key={identifier}
                   src={videoUrl}
                   className={`shadow-xl ${shouldRound ? 'rounded-[40px] corner-squircle' : ''}`}
                   autoPlay

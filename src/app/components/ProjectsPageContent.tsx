@@ -1,5 +1,5 @@
 'use client';
-import React, { Suspense, useRef } from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import {
@@ -9,9 +9,11 @@ import {
   useTransform,
 } from 'framer-motion';
 import { IconChevronDown } from '@tabler/icons-react';
-import { TabbedGallery } from '@/app/components/Gallery/TabbedGallery';
+import { SimpleList } from '@/app/components/SimpleList';
+import Footer from '@/app/sections/Footer';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { EASING } from '@/app/lib/motion';
+import type { GridItem } from '@/app/types';
 
 const ProjectsGrid = dynamic(
   () => import('@/app/components/projectHoverEffect/ProjectsGrid'),
@@ -69,32 +71,27 @@ function ScrollIndicator({
 }
 
 interface ProjectsPageContentProps {
-  heroMode?: 'projects' | 'capabilities';
-  heroContent?: React.ReactNode;
+  items?: GridItem[];
 }
 
-export function ProjectsPageContent({
-  heroMode = 'projects',
-  heroContent,
-}: ProjectsPageContentProps) {
+export function ProjectsPageContent({ items }: ProjectsPageContentProps) {
   const galleryTriggerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: galleryTriggerRef,
     offset: ['start end', 'start start'],
   });
   const backgroundAlpha = useTransform(scrollYProgress, [0.35, 1], [0.0, 0.3]);
-  const pageBackgroundColor = useMotionTemplate`hsl(var(--secondary) / ${backgroundAlpha})`;
+  const pageBackgroundColor = useMotionTemplate`oklch(var(--surface-dark-elevated) / ${backgroundAlpha})`;
 
   return (
     <motion.div style={{ backgroundColor: pageBackgroundColor }}>
       {/* Hero section — full viewport */}
       <div id="header" className="relative h-screen overflow-hidden">
-        <div className="max-w-8xl px-4 mx-auto h-full flex flex-col py-20 text-surface-dark-foreground">
+        <div className="max-w-7xl px-4 mx-auto h-full flex flex-col py-20 text-surface-dark-foreground">
           <div className="flex items-center justify-between w-full">
             <ProfileSection />
           </div>
-          {heroMode === 'projects' && <ProjectsGrid />}
-          {heroContent}
+          <ProjectsGrid items={items} />
         </div>
 
         {/* Shadow overlay */}
@@ -104,12 +101,11 @@ export function ProjectsPageContent({
         <ScrollIndicator galleryRef={galleryTriggerRef} />
       </div>
 
-      {/* Gallery section — below the fold */}
+      {/* List section — below the fold */}
       <div ref={galleryTriggerRef}>
-        <Suspense>
-          <TabbedGallery />
-        </Suspense>
+        <SimpleList />
       </div>
+      <Footer />
     </motion.div>
   );
 }

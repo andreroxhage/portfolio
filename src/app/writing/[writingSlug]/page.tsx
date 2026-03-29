@@ -1,36 +1,37 @@
 'use client';
 import React, { lazy, Suspense, use } from 'react';
 import { motion } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
-import { ideaRegistry } from '@/app/data/ideas';
-import IdeaNavigation from '@/app/components/IdeaNavigation';
+import { writingRegistry } from '@/app/data/writing';
+import WritingNavigation from '@/app/components/WritingNavigation';
 import Footer from '@/app/sections/Footer';
 
 const contentMap: Record<string, React.ComponentType> = {
-  join: lazy(() => import('./content/join')),
+  'ai-as-a-second-opinion': lazy(
+    () => import('./content/ai-as-a-second-opinion')
+  ),
 };
 
-export default function IdeaPage({
+export default function WritingPage({
   params,
 }: {
-  params: Promise<{ ideaSlug: string }>;
+  params: Promise<{ writingSlug: string }>;
 }) {
-  const { ideaSlug } = use(params);
-  const idea = ideaRegistry.find(i => i.ideaSlug === ideaSlug);
+  const { writingSlug } = use(params);
+  const writing = writingRegistry.find(w => w.writingSlug === writingSlug);
 
-  if (!idea) {
+  if (!writing) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-dark">
         <div className="flex flex-col items-center justify-center gap-4">
           <h1 className="text-4xl md:text-6xl font-medium tracking-tighter text-surface-dark-foreground">
-            Idea not found
+            Article not found
           </h1>
         </div>
       </div>
     );
   }
 
-  const Content = contentMap[ideaSlug];
+  const Content = contentMap[writingSlug];
 
   return (
     <motion.div
@@ -46,30 +47,17 @@ export default function IdeaPage({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
         >
-          {idea.title}
+          {writing.title}
         </motion.h1>
-        {idea.date && (
+        {writing.date && (
           <motion.h3
             className="text-lg md:text-2xl font-normal text-surface-dark-muted"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
           >
-            {idea.date}
+            {writing.date}
           </motion.h3>
-        )}
-        {idea.tags && idea.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {idea.tags.map(tag => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="text-xs bg-surface-dark-elevated text-surface-dark-muted border-0 corner-squircle"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
         )}
       </header>
 
@@ -85,7 +73,7 @@ export default function IdeaPage({
             <Content />
           ) : (
             <div className="text-surface-dark-muted py-20">
-              <p className="text-lg mb-4">{idea.subtitle}</p>
+              <p className="text-lg mb-4">{writing.subtitle}</p>
               <p className="text-sm text-surface-dark-muted/60">
                 Content coming soon.
               </p>
@@ -94,7 +82,7 @@ export default function IdeaPage({
         </div>
       </Suspense>
 
-      <IdeaNavigation currentIdeaSlug={ideaSlug} />
+      <WritingNavigation currentWritingSlug={writingSlug} />
       <Footer />
     </motion.div>
   );

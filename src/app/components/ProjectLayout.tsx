@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import ScrollScaleWrapper from '@/app/components/ScrollScaleWrapper';
 
-// MiddleSection — centered 6-col content within a 10-col grid
+// MiddleSection — passthrough; parent container constrains width to max-w-2xl
 export function MiddleSection({
   className,
   children,
@@ -13,13 +13,11 @@ export function MiddleSection({
   className?: string;
   children: React.ReactNode;
 }) {
-  return (
-    <div className={cn('col-start-3 col-span-6', className)}>{children}</div>
-  );
+  return <div className={cn(className)}>{children}</div>;
 }
 
-// TwoColSection — full-width nested grid with Left and Right sub-columns
-function TwoColSectionRoot({
+// WideSection — breaks out of the max-w-2xl prose container for wider media
+export function WideSection({
   className,
   children,
 }: {
@@ -27,46 +25,15 @@ function TwoColSectionRoot({
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn('col-span-10 grid grid-cols-10 gap-8', className)}>
+    <div
+      className={cn(
+        'relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen max-w-4xl mx-auto px-4',
+        className
+      )}
+    >
       {children}
     </div>
   );
-}
-
-function TwoColLeft({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return <div className={cn('col-span-4', className)}>{children}</div>;
-}
-
-function TwoColRight({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return <div className={cn('col-span-6', className)}>{children}</div>;
-}
-
-export const TwoColSection = Object.assign(TwoColSectionRoot, {
-  Left: TwoColLeft,
-  Right: TwoColRight,
-});
-
-// FullWidthSection — spans all 10 columns
-export function FullWidthSection({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return <div className={cn('col-span-10', className)}>{children}</div>;
 }
 
 // SectionHeading — styled h2 for section titles

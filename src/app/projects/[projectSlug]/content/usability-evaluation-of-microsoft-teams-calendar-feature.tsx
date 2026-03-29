@@ -3,8 +3,7 @@
 import React from 'react';
 import {
   MiddleSection,
-  TwoColSection,
-  FullWidthSection,
+  WideSection,
   SectionHeading,
   ProjectImage,
 } from '@/app/components/ProjectLayout';
@@ -12,44 +11,41 @@ import {
 export default function UsabilityEvaluationMicrosoftTeams() {
   return (
     <>
-      {/* Section 1 — Summary + Hero Image */}
-      <TwoColSection className="mb-16">
-        <TwoColSection.Left>
-          <div className="space-y-6">
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
-              Summary
-            </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              This usability evaluation, conducted as part of a group project
-              with six members, assessed the Microsoft Teams Free calendar
-              feature, focusing on usability challenges, user satisfaction, and
-              actionable improvements. By simulating real-world tasks with
-              digitally experienced users aged 18-30, we uncovered key insights
-              into the platform&apos;s strengths and weaknesses.
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Basic tasks like joining meetings proved intuitive, but users
-              struggled with rescheduling, feature discovery, and interpreting
-              system feedback during connection issues. Ambiguous labels and
-              limited guidance during technical disruptions caused delays and
-              confusion.
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-              Key findings: System messages, especially during connection loss,
-              require enhanced visibility. RSVP tracking needs streamlining with
-              real-time updates. Interactive onboarding should familiarize new
-              users with core features. Button labels need refinement to align
-              with user mental models.
-            </p>
-          </div>
-        </TwoColSection.Left>
-        <TwoColSection.Right>
-          <ProjectImage
-            src="/resource/projects/p1.jpg"
-            alt="Microsoft Teams calendar interface"
-          />
-        </TwoColSection.Right>
-      </TwoColSection>
+      {/* Section 1 — Summary */}
+      <MiddleSection className="mb-16 space-y-6">
+        <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          Summary
+        </h4>
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          This usability evaluation, conducted as part of a group project with
+          six members, assessed the Microsoft Teams Free calendar feature,
+          focusing on usability challenges, user satisfaction, and actionable
+          improvements. By simulating real-world tasks with digitally
+          experienced users aged 18-30, we uncovered key insights into the
+          platform&apos;s strengths and weaknesses.
+        </p>
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          Basic tasks like joining meetings proved intuitive, but users
+          struggled with rescheduling, feature discovery, and interpreting
+          system feedback during connection issues. Ambiguous labels and limited
+          guidance during technical disruptions caused delays and confusion.
+        </p>
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          Key findings: System messages, especially during connection loss,
+          require enhanced visibility. RSVP tracking needs streamlining with
+          real-time updates. Interactive onboarding should familiarize new users
+          with core features. Button labels need refinement to align with user
+          mental models.
+        </p>
+      </MiddleSection>
+
+      {/* Hero image */}
+      <WideSection className="mb-16">
+        <ProjectImage
+          src="/resource/projects/p1.jpg"
+          alt="Microsoft Teams calendar interface"
+        />
+      </WideSection>
 
       {/* Section 2 — Introduction */}
       <MiddleSection className="mb-16">
@@ -160,13 +156,13 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         </div>
       </MiddleSection>
 
-      {/* Section 4 — Full-width screenshot */}
-      <FullWidthSection className="mb-16">
+      {/* Section 4 — Wide screenshot */}
+      <WideSection className="mb-16">
         <ProjectImage
           src="/resource/projects/p1screenshot.jpg"
           alt="Microsoft Teams Calendar Interface"
         />
-      </FullWidthSection>
+      </WideSection>
 
       {/* Section 5 — Results */}
       <MiddleSection className="mb-16">
@@ -208,21 +204,17 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         </div>
       </MiddleSection>
 
-      {/* Section 6 — Two charts side by side */}
-      <TwoColSection className="mb-16">
-        <TwoColSection.Left>
-          <ProjectImage
-            src="/resource/projects/p1_plot_satisfaction.png"
-            alt="Satisfaction Ratings"
-          />
-        </TwoColSection.Left>
-        <TwoColSection.Right>
-          <ProjectImage
-            src="/resource/projects/p1_plot_time_realize.png"
-            alt="Feedback Clarity During Connection Issues"
-          />
-        </TwoColSection.Right>
-      </TwoColSection>
+      {/* Section 6 — Two charts stacked */}
+      <WideSection className="mb-16 space-y-6">
+        <ProjectImage
+          src="/resource/projects/p1_plot_satisfaction.png"
+          alt="Satisfaction Ratings"
+        />
+        <ProjectImage
+          src="/resource/projects/p1_plot_time_realize.png"
+          alt="Feedback Clarity During Connection Issues"
+        />
+      </WideSection>
 
       {/* Section 7 — Analysis & Discussion */}
       <MiddleSection className="mb-16">

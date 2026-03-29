@@ -14,7 +14,7 @@ export default function About() {
   return (
     <>
       <div className="bg-secondary h-fit my-auto flex-row items-center relative">
-        <div className="max-w-8xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-muted-foreground align-items-center">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-muted-foreground align-items-center">
           <motion.div
             className="w-full lg:col-start-1 lg:col-span-6 max-w-[660px] col-span-10 min-h-100 "
             initial={{ opacity: 0, translateY: 60 }}
@@ -43,10 +43,7 @@ export default function About() {
                     onClick={() => handleTitleClick(index)}
                     whileHover={{
                       translateY: -4,
-                      color: [
-                        { color: 'text-secondary-green-darker' },
-                        { color: 'text-brand-grey-brighter' },
-                      ],
+                      color: 'oklch(var(--accent-foreground))',
                       transition: { duration: 0.2, ease: 'easeInOut' },
                     }}
                   >

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import Footer from '@/app/sections/Footer';
 import { EASING } from '@/app/lib/motion';
 
 interface ProjectsLayoutProps {
@@ -18,7 +17,6 @@ const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
 
       {/* Page content */}
       {children}
-      <Footer />
     </div>
   );
 };
