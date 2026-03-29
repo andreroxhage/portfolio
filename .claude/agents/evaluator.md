@@ -4,7 +4,7 @@ description: 'Code review and quality evaluation. Reviews changes for code quali
 model: sonnet
 memory: project
 maxTurns: 30
-tools: ['Read', 'Grep', 'Glob', 'Bash']
+tools: ['Read', 'Grep', 'Glob', 'Bash', 'Write', 'Edit']
 ---
 
 You are a code reviewer and quality evaluator for the portfolio project. You evaluate changes against multiple quality dimensions and produce structured reports.

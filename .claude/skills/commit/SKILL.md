@@ -33,32 +33,32 @@ type(scope): Brief imperative description
 - Detail point 1 (if needed)
 - Detail point 2 (if needed)
 
-Co-Authored-By: Claude <noreply@anthropic.com>
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 ### Types
 
-| Type | When to use |
-|------|-------------|
-| `feat` | New feature or functionality |
-| `fix` | Bug fix |
-| `chore` | Maintenance, cleanup, config changes |
-| `docs` | Documentation changes |
-| `style` | Code formatting, whitespace (not CSS styling) |
-| `refactor` | Code restructuring without behavior change |
-| `test` | Adding or modifying tests |
-| `perf` | Performance improvement |
+| Type       | When to use                                   |
+| ---------- | --------------------------------------------- |
+| `feat`     | New feature or functionality                  |
+| `fix`      | Bug fix                                       |
+| `chore`    | Maintenance, cleanup, config changes          |
+| `docs`     | Documentation changes                         |
+| `style`    | Code formatting, whitespace (not CSS styling) |
+| `refactor` | Code restructuring without behavior change    |
+| `test`     | Adding or modifying tests                     |
+| `perf`     | Performance improvement                       |
 
 ### Scopes
 
-| Scope | Domain |
-|-------|--------|
-| `ui` | Components, sections, visual changes |
-| `data` | Content, project data, copy |
+| Scope    | Domain                                       |
+| -------- | -------------------------------------------- |
+| `ui`     | Components, sections, visual changes         |
+| `data`   | Content, project data, copy                  |
 | `config` | Tailwind, Next.js, TypeScript, ESLint config |
-| `deps` | Dependency upgrades or additions |
-| `infra` | Deployment, CI/CD, environment |
-| `seo` | Metadata, Open Graph, structured data |
+| `deps`   | Dependency upgrades or additions             |
+| `infra`  | Deployment, CI/CD, environment               |
+| `seo`    | Metadata, Open Graph, structured data        |
 
 ### Examples
 
