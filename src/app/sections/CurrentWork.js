@@ -2,11 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import mockup1 from '@/../public/resource/joinMockup1.png';
-import mockup2 from '@/../public/resource/joinMockup2.png';
 import { currentWork } from '@/app/data/home';
-import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
-import ImageFader from '../components/ImageFader';
+import IsometricStack from '../components/IsometricStack';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
@@ -15,7 +12,6 @@ import { DURATION, EASING } from '@/app/lib/motion';
 export default function CurrentWork() {
   const work = currentWork[0];
   const prefersReducedMotion = useReducedMotion();
-  const imageFader = [mockup1, mockup2];
   const [isLinkHovered, setIsLinkHovered] = useState(false);
 
   return (
@@ -30,7 +26,10 @@ export default function CurrentWork() {
               className="text-2xl md:text-4xl font-medium cursor-pointer text-foreground"
               initial={{ opacity: 0, translateY: 60 }}
               whileInView={{ opacity: 1, translateY: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              transition={{
+                duration: prefersReducedMotion ? 0.01 : DURATION.SLOW,
+                ease: EASING.ENTER,
+              }}
               viewport={{ once: true }}
             >
               {work.title}
@@ -39,7 +38,10 @@ export default function CurrentWork() {
               className="text-base md:text-lg font-medium leading-relaxed"
               initial={{ opacity: 0, translateY: 60 }}
               whileInView={{ opacity: 1, translateY: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              transition={{
+                duration: prefersReducedMotion ? 0.01 : DURATION.SLOW,
+                ease: EASING.ENTER,
+              }}
               viewport={{ once: true }}
             >
               {work.description}
@@ -70,12 +72,9 @@ export default function CurrentWork() {
           </div>
         </div>
 
-        <ScrollScaleWrapper
-          fade={true}
-          className="col-start-3 p-6 md:p-6 col-span-6 md:col-start-7 md:col-span-3 md:my-0 flex items-center justify-center"
-        >
-          <ImageFader images={imageFader} intervalTime={5000} />
-        </ScrollScaleWrapper>
+        <div className="col-start-3 p-6 md:p-6 col-span-6 md:col-start-7 md:col-span-4 md:my-0 flex items-center justify-center">
+          <IsometricStack />
+        </div>
       </div>
     </motion.div>
   );

@@ -3,7 +3,6 @@ import React, { lazy, Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { writingRegistry } from '@/app/data/writing';
 import WritingNavigation from '@/app/components/WritingNavigation';
-import Footer from '@/app/sections/Footer';
 
 const contentMap: Record<string, React.ComponentType> = {
   'ai-as-a-second-opinion': lazy(
@@ -83,7 +82,6 @@ export default function WritingPage({
       </Suspense>
 
       <WritingNavigation currentWritingSlug={writingSlug} />
-      <Footer />
     </motion.div>
   );
 }

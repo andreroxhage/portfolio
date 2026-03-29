@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { ideaRegistry } from '@/app/data/ideas';
 import IdeaNavigation from '@/app/components/IdeaNavigation';
-import Footer from '@/app/sections/Footer';
 
 const contentMap: Record<string, React.ComponentType> = {
   join: lazy(() => import('./content/join')),
@@ -95,7 +94,6 @@ export default function IdeaPage({
       </Suspense>
 
       <IdeaNavigation currentIdeaSlug={ideaSlug} />
-      <Footer />
     </motion.div>
   );
 }

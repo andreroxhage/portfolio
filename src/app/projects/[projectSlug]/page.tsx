@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { projectRegistry } from '@/app/data/projects';
 import ProjectNavigation from '@/app/components/ProjectNavigation';
 import ProjectHeader from '@/app/components/ProjectHeader';
-import Footer from '@/app/sections/Footer';
 
 // Static content map — avoids webpack variable import path limitation
 const contentMap: Record<string, React.ComponentType> = {
@@ -72,7 +71,6 @@ export default function Page({
       </Suspense>
 
       <ProjectNavigation currentProjectSlug={projectSlug} />
-      <Footer />
     </motion.div>
   );
 }

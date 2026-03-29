@@ -10,7 +10,6 @@ import {
 } from 'framer-motion';
 import { IconChevronDown } from '@tabler/icons-react';
 import { SimpleList } from '@/app/components/SimpleList';
-import Footer from '@/app/sections/Footer';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { EASING } from '@/app/lib/motion';
 import type { GridItem } from '@/app/types';
@@ -105,7 +104,6 @@ export function ProjectsPageContent({ items }: ProjectsPageContentProps) {
       <div ref={galleryTriggerRef}>
         <SimpleList />
       </div>
-      <Footer />
     </motion.div>
   );
 }
