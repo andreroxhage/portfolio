@@ -1,13 +1,11 @@
 'use client';
-import React, { lazy, Suspense, use } from 'react';
+import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { ideaRegistry } from '@/app/data/ideas';
 import IdeaNavigation from '@/app/components/IdeaNavigation';
 
-const contentMap: Record<string, React.ComponentType> = {
-  join: lazy(() => import('./content/join')),
-};
+const contentMap: Record<string, React.ComponentType> = {};
 
 export default function IdeaPage({
   params,
