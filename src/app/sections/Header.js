@@ -9,8 +9,9 @@ import { header, about } from '@/app/data/home';
 import { EASING } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
+const HEADER_IMAGE = '/resource/20220611-IMG_5691.jpg';
+
 const Header = () => {
-  const headerImage = '/resource/20220611-IMG_5691.jpg';
   const containerRef = useRef(null);
   const reducedMotion = useReducedMotion();
 
@@ -112,7 +113,7 @@ const Header = () => {
               }}
             >
               <Image
-                src={headerImage}
+                src={HEADER_IMAGE}
                 alt="Header background"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -173,7 +174,7 @@ const Header = () => {
                 className="absolute inset-0 flex items-center"
               >
                 <motion.h2
-                  className="text-xl md:text-2xl font-medium max-w-[680px] leading-relaxed"
+                  className="text-xl md:text-2xl font-medium tracking-tight max-w-[680px] leading-relaxed"
                   initial={
                     reducedMotion
                       ? { opacity: 1 }
@@ -203,10 +204,7 @@ const Header = () => {
               </motion.div>
 
               {/* Phase 2: "At work" */}
-              <motion.div
-                style={{ opacity: atWorkHeadingOpacity }}
-                className="absolute inset-0 flex items-center"
-              >
+              <div className="absolute inset-0 flex items-center">
                 <div className="max-w-[680px]">
                   <motion.h3
                     className="text-2xl md:text-4xl font-medium tracking-tight text-foreground pb-4"
@@ -221,13 +219,10 @@ const Header = () => {
                     {about[0].description}
                   </motion.p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Phase 3: "Elsewhere" */}
-              <motion.div
-                style={{ opacity: elsewhereHeadingOpacity }}
-                className="absolute inset-0 flex items-center"
-              >
+              <div className="absolute inset-0 flex items-center">
                 <div className="max-w-[680px]">
                   <motion.h3
                     className="text-2xl md:text-4xl font-medium tracking-tight text-foreground pb-4"
@@ -248,7 +243,7 @@ const Header = () => {
                     {about[1].description}
                   </motion.p>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right column — profile picture (anchored, no scroll animation) */}
