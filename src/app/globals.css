@@ -15,7 +15,10 @@
    merged secondary-green into primary green scale. */
 @theme inline {
   /* Font family */
-  --font-sans: 'Roboto', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  /* Custom tracking (letter-spacing) */
+  --tracking-body: -0.011em;
 
   /* Custom font sizes */
   --font-size-8\.5xl: 6.5rem;
