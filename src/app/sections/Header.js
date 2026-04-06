@@ -29,7 +29,7 @@ const Header = () => {
   const heroScale = useTransform(
     scrollYProgress,
     [0, 1],
-    reducedMotion ? [1, 1] : [1, 1.05]
+    reducedMotion ? [1.15, 1.15] : [1.15, 1.25]
   );
   const overlayOpacity = useTransform(
     scrollYProgress,
@@ -71,26 +71,26 @@ const Header = () => {
     reducedMotion ? [0, 0, 0, 0] : [20, 0, 0, -10]
   );
 
-  // --- Content phase: "Elsewhere" ---
+  // --- Content phase: "Elsewhere" (stays visible — no fade-out) ---
   const elsewhereHeadingOpacity = useTransform(
     scrollYProgress,
-    [0.55, 0.65, 0.82, 0.92],
-    [0, 1, 1, 0]
+    [0.55, 0.65],
+    [0, 1]
   );
   const elsewhereHeadingY = useTransform(
     scrollYProgress,
-    [0.55, 0.65, 0.82, 0.92],
-    reducedMotion ? [0, 0, 0, 0] : [20, 0, 0, -10]
+    [0.55, 0.65],
+    reducedMotion ? [0, 0] : [20, 0]
   );
   const elsewhereBodyOpacity = useTransform(
     scrollYProgress,
-    [0.57, 0.67, 0.82, 0.92],
-    [0, 1, 1, 0]
+    [0.57, 0.67],
+    [0, 1]
   );
   const elsewhereBodyY = useTransform(
     scrollYProgress,
-    [0.57, 0.67, 0.82, 0.92],
-    reducedMotion ? [0, 0, 0, 0] : [20, 0, 0, -10]
+    [0.57, 0.67],
+    reducedMotion ? [0, 0] : [20, 0]
   );
 
   // --- Entry animation config ---
