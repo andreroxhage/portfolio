@@ -90,11 +90,9 @@ Visual verification is done via Playwright MCP (screenshot + inspect in browser)
 
 ## Non-Negotiables
 
-- Preserve warm, organic visual identity (`brand-vanilla`, `brand-cream`, primary greens).
-- Keep global typography consistent with Roboto.
+- Follow `DESIGN.md` for all visual and styling decisions — it is the single source of truth.
 - Use `corner-squircle` with explicit rounded classes on curved surfaces.
 - Respect reduced motion for all animation work.
-- Avoid introducing new visual systems when existing tokens/components already solve it.
 
 ## Working Style
 
