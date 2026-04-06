@@ -1,14 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  display: 'swap',
-  variable: '--font-sans',
-});
 import FloatingNav from './components/Navbar/FloatingNav';
 import ThemeToggle from './components/ThemeToggle';
 import { ProjectHoverProvider } from './contexts/ProjectHoverContext';
@@ -52,7 +44,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       style={{ scrollBehavior: 'smooth' }}
-      className={`overflow-x-hidden w-full ${plusJakartaSans.variable}`}
+      className="overflow-x-hidden w-full"
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: FOIWT_SCRIPT }} />

@@ -12,7 +12,7 @@
 
 **Key characteristics:**
 
-- Plus Jakarta Sans with medium weight (500) as the gravity center — warm, geometric, modern
+- Roboto with normal weight (400) for body, medium (500) for headings and UI — familiar, versatile, warm
 - Warm oklch neutrals with yellow/brown undertones (never cool grays)
 - Squircle corners everywhere — iOS-inspired superellipse softness
 - Green as the singular interactive accent color
@@ -94,7 +94,7 @@ These map to oklch values via CSS custom properties. Light and dark mode definit
 
 ### Font Family
 
-**Plus Jakarta Sans** — loaded globally via `next/font/google` in `src/app/layout.tsx`. Single font family, no display/text split. Warm geometric letterforms that complement the cream/green palette.
+**Roboto** — set globally via `--font-sans` in `globals.css`. Single font family, no display/text split. Versatile and readable at all sizes.
 
 Custom sizes available: `text-8.5xl` (6.5rem), `text-9.5xl` (10rem) for hero headings.
 
@@ -106,25 +106,25 @@ Custom sizes available: `text-8.5xl` (6.5rem), `text-9.5xl` (10rem) for hero hea
 | Page Title      | text-4xl  | text-6xl     | medium (500) | tighter (-0.05em)  | tight (1.25)    | Page headings, footer CTA       |
 | Section Heading | text-2xl  | text-4xl     | medium (500) | tight (-0.025em)   | tight (1.25)    | "About me", section intros      |
 | Card Title      | text-xl   | text-2xl–3xl | medium (500) | tight (-0.025em)   | snug (1.375)    | Project cards, resume items     |
-| Body            | text-base | text-lg      | medium (500) | body (-0.011em)    | relaxed (1.625) | Descriptions, paragraphs        |
-| Body Light      | text-base | text-lg      | normal (400) | body (-0.011em)    | relaxed (1.625) | De-emphasized body, breadcrumbs |
-| Small / Meta    | text-xs   | text-sm      | medium (500) | normal             | normal (1.5)    | Timestamps, metadata            |
+| Body            | text-base | text-lg      | normal (400) | normal             | relaxed (1.625) | Descriptions, paragraphs        |
+| Body Light      | text-base | text-lg      | normal (400) | normal             | relaxed (1.625) | De-emphasized body, breadcrumbs |
+| Small / Meta    | text-xs   | text-sm      | normal (400) | normal             | normal (1.5)    | Timestamps, metadata            |
 | Label           | text-xs   | text-xs      | normal (400) | widest + uppercase | normal (1.5)    | Section labels in lists         |
 
 ### Tracking (Letter-Spacing)
 
-Apple-inspired negative tracking at all sizes:
+Apple-inspired negative tracking on headlines only — body text uses default spacing for readability:
 
 - **Display (4xl+):** `tracking-tighter` (-0.05em) — machined, billboard-like compression
 - **Heading (xl–3xl):** `tracking-tight` (-0.025em) — subtle tightening, professional
-- **Body (base–lg):** `tracking-body` (-0.011em) — custom token, barely perceptible crispness
-- **Small/Label:** `tracking-normal` or `tracking-widest` (uppercase labels only)
+- **Body and below:** `tracking-normal` (default) — let the font breathe at reading sizes
+- **Labels:** `tracking-widest` (uppercase labels only)
 
 ### Weight Restraint
 
-- **font-medium (500)** — THE default. Headings, body, cards, navigation — everything unless there's a reason to deviate.
-- **font-normal (400)** — De-emphasis: breadcrumbs, article subtitles, secondary descriptions.
-- **font-semibold (600)** — Emphasis within content: bold inline text, important labels.
+- **font-normal (400)** — THE default for body text, descriptions, metadata, and any reading content.
+- **font-medium (500)** — Headings, navigation, card titles, buttons, and UI labels. The weight for structure and emphasis.
+- **font-semibold (600)** — Strong emphasis within content: bold inline text, important callouts. Use sparingly.
 - **font-light (300)** and **font-bold (700)** — Do not use in new work.
 
 ### Line-Height Philosophy
@@ -269,7 +269,7 @@ Warm adaptation of Apple's cinematic light/dark alternation:
 
 - Use oklch semantic tokens for all colors — never hardcode hex or rgb
 - Apply `corner-squircle` with explicit `rounded-[Npx]` on all rectangular curved surfaces
-- Use `font-medium` as the default weight for all new text elements
+- Use `font-normal` for body text, `font-medium` for headings and UI elements
 - Apply negative letter-spacing at display and heading sizes (`tracking-tighter`, `tracking-tight`)
 - Gate all animation behind `useReducedMotion()` — no exceptions
 - Use Tabler icons (`@tabler/icons-react`) for all new icon needs
