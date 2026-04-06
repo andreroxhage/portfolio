@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <!-- Green base -->
+    <radialGradient id="base4b" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6dcc7f"/>
+      <stop offset="100%" stop-color="#3a6542"/>
+    </radialGradient>
+    <!-- Warm neutral sweep from bottom-right -->
+    <radialGradient id="sweep1b" cx="75%" cy="75%" r="55%">
+      <stop offset="0%" stop-color="#a89a88" stop-opacity="0.7"/>
+      <stop offset="35%" stop-color="#6b7a5e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#3a6542" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Lighter green from top-left for depth -->
+    <radialGradient id="sweep2b" cx="15%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#80d88e" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#5ba56d" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#3a6542" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Warm accent highlight -->
+    <radialGradient id="edge4b" cx="65%" cy="65%" r="20%">
+      <stop offset="0%" stop-color="#a89a88" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3a6542" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="url(#base4b)"/>
+  <circle cx="256" cy="256" r="256" fill="url(#sweep1b)"/>
+  <circle cx="256" cy="256" r="256" fill="url(#sweep2b)"/>
+  <circle cx="256" cy="256" r="256" fill="url(#edge4b)"/>
+</svg>

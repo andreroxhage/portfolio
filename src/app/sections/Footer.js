@@ -28,13 +28,13 @@ export default function Footer() {
         <div className="relative flex flex-col justify-between overflow-hidden w-full h-full">
           <div
             id="footer-container"
-            className="relative w-full h-full overflow-hidden py-14 flex flex-col justify-between"
+            className="relative w-full h-full overflow-hidden sm:py-14 py-0 flex flex-col justify-between"
           >
             <FollowerPointerCard
               title={<TitleComponent title={'Connect'} />}
               className="h-full z-20 flex-1"
             >
-              <div className="max-w-7xl mx-auto flex flex-col items-start justify-end w-full h-full overflow-hidden pb-30">
+              <div className="max-w-7xl mx-auto flex flex-col items-start justify-end w-full h-full overflow-hidden pb-0 sm:pb-30">
                 <div className="hidden md:flex flex-col items-start justify-center">
                   <motion.h2
                     className="px-4 md:text-6xl text-5xl text-surface-dark-foreground leading-tight font-medium"
