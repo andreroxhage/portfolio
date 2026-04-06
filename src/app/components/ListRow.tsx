@@ -13,15 +13,15 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
     <Link href={href} className="block">
       <div
         className={cn(
-          'py-3 px-2 -mx-2 border-b border-surface-dark-elevated cursor-pointer',
-          'hover:bg-surface-dark-card/40 transition-colors duration-150',
+          'py-5 px-2 -mx-2 cursor-pointer',
+          'hover:bg-card/40 transition-colors duration-150',
           className
         )}
       >
-        <p className="text-sm font-medium text-surface-dark-foreground leading-snug">
+        <p className="text-base font-medium text-foreground leading-snug">
           {title}
         </p>
-        <p className="text-sm text-surface-dark-muted leading-snug mt-0.5">
+        <p className="text-base text-muted-foreground leading-snug mt-1">
           {description}
         </p>
       </div>

@@ -12,7 +12,7 @@ export function SimpleList() {
     <div className="max-w-2xl mx-auto px-4 py-16">
       {/* Projects */}
       <section>
-        <p className="text-xs uppercase tracking-widest text-surface-dark-muted/60 mb-4">
+        <p className="text-base tracking-wide text-muted-foreground/60 mb-4">
           Projects
         </p>
         {projects.map(p => (
@@ -27,8 +27,8 @@ export function SimpleList() {
 
       {/* Writing — only rendered when registry has entries */}
       {writing.length > 0 && (
-        <section className="mt-12">
-          <p className="text-xs uppercase tracking-widest text-surface-dark-muted/60 mb-4">
+        <section className="mt-24">
+          <p className="text-base tracking-wide text-muted-foreground/60 mb-4">
             Writing
           </p>
           {writing.map(w => (
@@ -43,8 +43,8 @@ export function SimpleList() {
       )}
 
       {/* Ideas */}
-      <section className="mt-12">
-        <p className="text-xs uppercase tracking-widest text-surface-dark-muted/60 mb-4">
+      <section className="mt-24">
+        <p className="text-base tracking-wide text-muted-foreground/80 mb-4">
           Ideas
         </p>
         {ideas.map(i => (
