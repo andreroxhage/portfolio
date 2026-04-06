@@ -12,7 +12,7 @@ export const projectRegistry: ProjectMeta[] = [
     videoIdentifier: 'spotify-events',
     order: 2,
     type: 'project',
-    titleColor: '#739966',
+    titleColor: 'oklch(0.635 0.08 148)',
   },
   {
     projectSlug: 'login-experience-in-vr',
