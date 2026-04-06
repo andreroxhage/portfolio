@@ -133,76 +133,66 @@ const MobileHeader = ({ reducedMotion }) => {
         </div>
       </div>
 
-      {/* Subtitle + profile picture */}
-      <div className="bg-secondary py-12 px-5 sm:px-6">
+      {/* Subtitle with inline profile pic + About tabs — one flowing section */}
+      <div className="bg-secondary pt-8 pb-10 px-5 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.h2
-            className="text-xl font-medium tracking-tight max-w-[680px] leading-relaxed text-muted-foreground mb-10"
-            initial={
-              reducedMotion
-                ? { opacity: 1 }
-                : { opacity: 0, filter: 'blur(8px)' }
-            }
-            animate={{ opacity: 1, filter: 'blur(0px)' }}
-            transition={
-              reducedMotion
-                ? { duration: 0 }
-                : {
-                    duration: heroDuration,
-                    delay: secondaryDelay,
-                    ease: EASING.ENTER,
-                  }
-            }
-          >
-            <span className="text-neutral-600 dark:text-neutral-300">
-              {header.currently.split(',')[0]}
-            </span>
-            &nbsp;
-            <span>
-              {header.currently.substring(header.currently.indexOf(',') + 2)}
-            </span>
-          </motion.h2>
+          {/* Profile pic + subtitle row */}
+          <div className="flex items-start gap-4 mb-8">
+            <motion.div
+              className="w-[72px] h-[72px] shrink-0 mt-1"
+              initial={
+                reducedMotion ? { opacity: 1 } : { scale: 0, opacity: 0 }
+              }
+              animate={{ scale: 1, opacity: 1 }}
+              transition={
+                reducedMotion
+                  ? { duration: 0 }
+                  : {
+                      duration: heroDuration,
+                      delay: secondaryDelay,
+                      ease: EASING.ENTER,
+                    }
+              }
+            >
+              <Image
+                className="h-full w-full rounded-full drop-shadow-md"
+                src={ProfilePicture}
+                placeholder="blur"
+                priority
+                alt="André Roxhage profile photo"
+                style={{ maxWidth: '100%', height: 'auto' }}
+              />
+            </motion.div>
+            <motion.h2
+              className="text-lg sm:text-xl font-medium tracking-tight leading-relaxed text-muted-foreground"
+              initial={
+                reducedMotion
+                  ? { opacity: 1 }
+                  : { opacity: 0, filter: 'blur(8px)' }
+              }
+              animate={{ opacity: 1, filter: 'blur(0px)' }}
+              transition={
+                reducedMotion
+                  ? { duration: 0 }
+                  : {
+                      duration: heroDuration,
+                      delay: secondaryDelay,
+                      ease: EASING.ENTER,
+                    }
+              }
+            >
+              <span className="text-neutral-600 dark:text-neutral-300">
+                {header.currently.split(',')[0]}
+              </span>
+              &nbsp;
+              <span>
+                {header.currently.substring(header.currently.indexOf(',') + 2)}
+              </span>
+            </motion.h2>
+          </div>
 
-          <motion.div
-            className="w-48 h-48 mx-auto mb-12"
-            initial={reducedMotion ? { opacity: 1 } : { scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={
-              reducedMotion
-                ? { duration: 0 }
-                : {
-                    duration: heroDuration,
-                    delay: secondaryDelay,
-                    ease: EASING.ENTER,
-                  }
-            }
-          >
-            <Image
-              className="h-full w-full rounded-full drop-shadow-2xl shadow-md"
-              src={ProfilePicture}
-              placeholder="blur"
-              priority
-              alt="André Roxhage profile photo"
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
-          </motion.div>
-        </div>
-      </div>
-
-      {/* About tabs */}
-      <div className="bg-secondary pb-12 px-5 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.h3
-            className="text-2xl font-medium tracking-tight text-foreground pb-4"
-            initial={{ opacity: 0, translateY: 60 }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            viewport={{ once: true }}
-          >
-            About me
-          </motion.h3>
-
-          <div className="flex flex-row gap-x-8 sm:gap-x-10">
+          {/* Tabs — no "About me" heading, tabs are self-explanatory */}
+          <div className="flex flex-row gap-x-8 sm:gap-x-10 mb-1">
             {about.map((item, index) => (
               <div key={index} className="pb-2">
                 <motion.h4
@@ -242,7 +232,7 @@ const MobileHeader = ({ reducedMotion }) => {
                 activeIndex === index && (
                   <motion.p
                     key={index}
-                    className="text-base font-normal leading-relaxed text-muted-foreground min-h-[240px] sm:min-h-[200px] mt-2"
+                    className="text-base font-normal leading-relaxed text-muted-foreground"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
