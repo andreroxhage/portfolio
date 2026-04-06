@@ -37,7 +37,7 @@ export default function ThemeToggle() {
       className={cn(
         'fixed bottom-4 right-4 z-50',
         'flex items-center justify-center',
-        'h-9 w-9 rounded-[10px] corner-squircle',
+        'h-9 w-9 rounded-[8px] corner-squircle',
         'bg-surface-dark inset-shadow-border-glow',
         'text-surface-dark-foreground',
         'cursor-pointer'

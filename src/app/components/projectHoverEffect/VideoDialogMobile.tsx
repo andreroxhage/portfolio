@@ -150,7 +150,7 @@ const GifDialogMobile = ({ item, isOpen, onClose }: GifDialogMobileProps) => {
             />
           </motion.div>
 
-          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-[16px] corner-squircle bg-surface-dark/30 inset-shadow-border-glow shadow-lg">
+          <div className="absolute bottom-5 flex-row flex items-center gap-3 px-4 py-2 rounded-[12px] corner-squircle bg-surface-dark/30 inset-shadow-border-glow shadow-lg">
             <p className="text-surface-dark-foreground text-center text-sm">
               {item.title}
             </p>
