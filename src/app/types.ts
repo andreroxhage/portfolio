@@ -17,6 +17,8 @@ interface BaseItem {
   videoAlt?: string;
   titleColor?: string;
   subtitleColor?: string;
+  titleColorLight?: string;
+  subtitleColorLight?: string;
   roundedCorners?: boolean; // Controls video dialog corner rounding
   imageFader?: any[]; // Array of images for slider (instead of video)
   intervalTime?: number; // Interval time for image slider in ms
@@ -59,6 +61,8 @@ export interface ProjectMeta {
   type: 'project';
   titleColor?: string;
   subtitleColor?: string;
+  titleColorLight?: string;
+  subtitleColorLight?: string;
 }
 
 export interface IdeaMeta {
@@ -115,6 +119,8 @@ export interface GridItem {
   href?: string;
   titleColor?: string;
   subtitleColor?: string;
+  titleColorLight?: string;
+  subtitleColorLight?: string;
 }
 
 export function galleryItemToGridItem(item: GalleryItem): GridItem {
@@ -130,6 +136,8 @@ export function galleryItemToGridItem(item: GalleryItem): GridItem {
       href: `/projects/${item.projectSlug}`,
       titleColor: item.titleColor,
       subtitleColor: item.subtitleColor,
+      titleColorLight: item.titleColorLight,
+      subtitleColorLight: item.subtitleColorLight,
     };
   }
   return {

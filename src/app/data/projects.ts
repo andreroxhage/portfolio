@@ -13,6 +13,7 @@ export const projectRegistry: ProjectMeta[] = [
     order: 1,
     type: 'project',
     titleColor: 'oklch(0.635 0.08 250)',
+    titleColorLight: 'oklch(0.45 0.1 250)',
   },
   {
     projectSlug: 'spotify-events',
@@ -25,6 +26,7 @@ export const projectRegistry: ProjectMeta[] = [
     order: 2,
     type: 'project',
     titleColor: 'oklch(0.635 0.08 148)',
+    titleColorLight: 'oklch(0.45 0.1 148)',
   },
   {
     projectSlug: 'login-experience-in-vr',
@@ -38,6 +40,8 @@ export const projectRegistry: ProjectMeta[] = [
     type: 'project',
     titleColor: '#668799',
     subtitleColor: '#768288',
+    titleColorLight: '#3a5a6a',
+    subtitleColorLight: '#4a5a5e',
   },
   {
     projectSlug: 'usability-evaluation-of-microsoft-teams-calendar-feature',
@@ -51,6 +55,8 @@ export const projectRegistry: ProjectMeta[] = [
     type: 'project',
     titleColor: '#686699',
     subtitleColor: '#767688',
+    titleColorLight: '#3a3870',
+    subtitleColorLight: '#4a4a5e',
   },
 ];
 
