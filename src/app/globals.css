@@ -134,6 +134,8 @@
   --input: 0.91 0.025 80;
   --ring: 0.72 0.11 148;
 
+  overscroll-behavior: none;
+
   /* Portfolio surfaces (light mode) */
   --surface-dark: 0.975 0.005 85;
   --surface-dark-card: 0.995 0 0;
