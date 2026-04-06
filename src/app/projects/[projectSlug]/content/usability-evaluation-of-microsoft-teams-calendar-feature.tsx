@@ -13,7 +13,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
     <>
       {/* Section 1 — Summary */}
       <MiddleSection className="mb-16 space-y-6">
-        <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+        <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
           Summary
         </h4>
         <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -52,7 +52,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Introduction</SectionHeading>
         <div className="space-y-6">
           <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
               Purpose
             </h4>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -64,7 +64,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             </p>
           </div>
           <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
               Research Questions
             </h4>
             <ol className="list-decimal list-inside space-y-2">
@@ -108,7 +108,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             discussions.
           </p>
           <div>
-            <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+            <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
               Tasks
             </h4>
             <ol className="list-decimal list-inside space-y-2">

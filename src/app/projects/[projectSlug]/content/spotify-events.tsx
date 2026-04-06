@@ -15,7 +15,7 @@ export default function SpotifyEventsContent() {
       {/* Section 1 — summary + video */}
       <MiddleSection className="mb-8 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -29,7 +29,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Problem Statement
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -50,19 +50,19 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Key Features
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Customizable Invitations:
               </span>{' '}
               Hosts can prepare playlists, choose a theme and add personal
               touches like photos and messages.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Personalized Guest Experiences:
               </span>{' '}
               Each recipient gets an interactive invitation complete with event
@@ -71,14 +71,14 @@ export default function SpotifyEventsContent() {
               event theme.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Integration with Spotify Ecosystem:
               </span>{' '}
               From saving playlists to syncing calendars, the invitation
               seamlessly connects with users&apos; digital habits.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Emotional Engagement:
               </span>{' '}
               Dynamic visuals, animations, and music previews build anticipation
@@ -117,7 +117,7 @@ export default function SpotifyEventsContent() {
         </p>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Project Scope
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -131,12 +131,12 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Objectives
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Deliver an Immersive Invitation Experience:
               </span>{' '}
               Create invitations that spark curiosity and resonate emotionally,
@@ -144,7 +144,7 @@ export default function SpotifyEventsContent() {
               memorable.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Simplified Guest Interaction:
               </span>{' '}
               Reduce barriers for attendees by ensuring that finding event
@@ -152,7 +152,7 @@ export default function SpotifyEventsContent() {
               personal schedules is effortless.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Leverage Existing Strengths for Personalized Engagement:
               </span>{' '}
               By utilizing the platform&apos;s existing user data, brand
@@ -175,7 +175,7 @@ export default function SpotifyEventsContent() {
         </p>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Digital Reliance, Yet Cumbersome RSVP Management
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -196,7 +196,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Challenges in Managing Invitations
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -208,7 +208,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Openness to Music Integration
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -239,7 +239,7 @@ export default function SpotifyEventsContent() {
       {/* Section 5 — middle: personalization + conclusion */}
       <MiddleSection className="mb-16 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Personalization &amp; Emotional Resonance
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -259,7 +259,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Conclusion
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -277,7 +277,7 @@ export default function SpotifyEventsContent() {
       <MiddleSection className="mb-16 space-y-6">
         <SectionHeading>Ideation &amp; Prototyping</SectionHeading>
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Persona Development
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -301,7 +301,7 @@ export default function SpotifyEventsContent() {
       {/* Section 8 — middle: sketches + user flows */}
       <MiddleSection className="mb-16 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Early Sketches &amp; Prototyping
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -317,7 +317,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             User Flows and Scenarios
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -348,7 +348,7 @@ export default function SpotifyEventsContent() {
       {/* Section 10 — middle: feature prioritization intro */}
       <MiddleSection className="mb-16 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Feature Prioritization
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -371,7 +371,7 @@ export default function SpotifyEventsContent() {
       {/* Section 12 — calendar/attendees + prototype image */}
       <MiddleSection className="mb-8 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Calendar &amp; Maps Integration
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -387,7 +387,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Attendees &amp; Discussion
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -412,7 +412,7 @@ export default function SpotifyEventsContent() {
       {/* Section 13 — guest blend/psychology + UGC diagram */}
       <MiddleSection className="mb-8 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Guest Blend &amp; Ethical Considerations
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -433,7 +433,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Host Playlist &amp; Collaborative Additions
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -448,7 +448,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Psychological Perspectives &amp; Inspiration from Spotify Wrapped
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -490,7 +490,7 @@ export default function SpotifyEventsContent() {
         <SectionHeading>Final Evaluation</SectionHeading>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Technical Constraints &amp; Considerations
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -524,7 +524,7 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Outcomes &amp; Future Opportunities
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">

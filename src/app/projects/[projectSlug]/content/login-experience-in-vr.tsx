@@ -15,7 +15,7 @@ export default function LoginExperienceInVRContent() {
       {/* Section 1 — summary + video */}
       <MiddleSection className="mb-16 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -44,26 +44,26 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Key Outcomes
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="text-surface-dark-foreground">
                 Scroll Select Authentication:
               </span>{' '}
               Novel interaction pattern combining horizontal scrolling with
               object selection to streamline VR login processes.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Immersion-First Design:
               </span>{' '}
               Built on VR-specific interaction principles to maintain engagement
               and presence.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Contextual Integration:
               </span>{' '}
               Seamlessly integrated with GAIM&apos;s weapon-style controllers,
@@ -89,7 +89,7 @@ export default function LoginExperienceInVRContent() {
         <SectionHeading>Introduction</SectionHeading>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Problem Statement
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -104,12 +104,12 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Project Objectives
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Research:
               </span>{' '}
               Explore alternative authentication methods for VR, focusing on
@@ -117,14 +117,14 @@ export default function LoginExperienceInVRContent() {
               security.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Design:
               </span>{' '}
               Create conceptual and high-fidelity prototypes that integrate
               seamlessly into immersive VR environments.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Prototyping:
               </span>{' '}
               Develop a functional Unity prototype demonstrating the Scroll
@@ -139,7 +139,7 @@ export default function LoginExperienceInVRContent() {
         <SectionHeading>Design Process</SectionHeading>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Research &amp; Ideation
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -167,7 +167,7 @@ export default function LoginExperienceInVRContent() {
       {/* Section 4 — conceptual design + user flow */}
       <MiddleSection className="mb-16 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Conceptual Design &mdash; Scroll Select Authentication
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -195,7 +195,7 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Unity Implementation
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -211,7 +211,7 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Initial Usability Insights
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -224,40 +224,40 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             User Flow
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Center Selection:
               </span>{' '}
               A key appears in the center of the user&apos;s field of view for
               focus and precision.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Horizontal Scrolling:
               </span>{' '}
               Users move the controller left or right to scroll through
               available keys.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Row Navigation:
               </span>{' '}
               Users switch between rows containing letters, numbers, special
               characters, and control options.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Key Selection:
               </span>{' '}
               Once the desired key is centered, users press the controller
               button to confirm.
             </li>
             <li className="text-base md:text-lg text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Authentication:
               </span>{' '}
               Users navigate to the &ldquo;Login&rdquo; key to complete
@@ -277,7 +277,7 @@ export default function LoginExperienceInVRContent() {
       {/* Section 5 — middle: technical implementation + user testing */}
       <MiddleSection className="mb-16 space-y-6">
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Technical Implementation
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -302,7 +302,7 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-semibold text-surface-dark-foreground mb-2">
+          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             User Testing &amp; Evaluation
           </h4>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">

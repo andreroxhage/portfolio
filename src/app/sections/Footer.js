@@ -76,7 +76,7 @@ export default function Footer() {
                     </motion.a>
                   </MagneticWrapper>
                 </div>
-                <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-light">
+                <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-normal">
                   <div className="col-span-10 md:col-span-6 w-full">
                     <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium tracking-tight col-start-8 col-span-3">
                       Connect

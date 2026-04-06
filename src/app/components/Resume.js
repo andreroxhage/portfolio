@@ -159,7 +159,7 @@ export default function Resume() {
               )}
               {item.company && (
                 <motion.p
-                  className="pt-1 text-base md:text-lg font-light"
+                  className="pt-1 text-base md:text-lg font-normal"
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: resumeInView ? 1 : 0.25 - 0.08 * itemIndex,
