@@ -23,7 +23,7 @@ const ProfileSection: React.FC = () => (
   <Link href="/" className="flex gap-8 items-center justify-start group">
     <div className="flex flex-col gap-[6px] justify-center items-start">
       <motion.h1
-        className="text-4xl md:text-6xl font-medium tracking-tighter text-surface-dark-foreground group-hover:text-accent transition-all duration-300"
+        className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-surface-dark-foreground group-hover:text-accent transition-all duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}

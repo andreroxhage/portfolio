@@ -15,7 +15,7 @@ export default function VoluntaryWork() {
     <div id="voluntary-work" className="bg-secondary md:pt-18 pt-20 sm:pt-24">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 h-full gap-x-8 grid grid-cols-10 text-2xl text-muted-foreground items-center">
         <motion.h3
-          className="pt-6 pb-8 sm:pb-10 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-medium text-foreground"
+          className="pt-6 pb-8 sm:pb-10 md:pb-9 md:pt-12 md:col-span-10 col-span-10 text-3xl md:text-5xl font-medium tracking-tight text-foreground"
           initial={{ opacity: 0, translateY: 60 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -81,7 +81,7 @@ export default function VoluntaryWork() {
           >
             <div className="flex flex-col gap-y-3 px-5 sm:px-8 md:px-16 justify-center items-start w-full h-full">
               <motion.h4
-                className="text-xl md:text-3xl font-medium"
+                className="text-xl md:text-3xl font-medium tracking-tight"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -121,7 +121,7 @@ export default function VoluntaryWork() {
           >
             <div className="flex flex-col gap-y-3 px-5 sm:px-8 md:px-16 justify-center items-start w-full h-full mt-10 sm:mt-12 md:mt-0">
               <motion.h4
-                className="text-xl md:text-3xl font-medium"
+                className="text-xl md:text-3xl font-medium tracking-tight"
                 initial={{ opacity: 0, translateY: 60 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}

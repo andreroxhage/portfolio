@@ -23,7 +23,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             <motion.h3
-              className="mx-auto text-foreground text-2xl md:text-4xl font-medium pb-4"
+              className="mx-auto text-foreground text-2xl md:text-4xl font-medium tracking-tight pb-4"
               initial={{ opacity: 0, translateY: 60 }}
               whileInView={{ opacity: 1, translateY: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}

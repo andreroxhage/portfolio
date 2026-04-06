@@ -47,7 +47,7 @@ export default function Resume() {
                 />
               </motion.svg>
               <motion.h3
-                className="text-xl sm:text-2xl font-medium text-surface-dark-foreground"
+                className="text-xl sm:text-2xl font-medium tracking-tight text-surface-dark-foreground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
@@ -86,7 +86,7 @@ export default function Resume() {
                 />
               </motion.svg>
               <motion.h3
-                className="text-xl sm:text-2xl font-medium text-surface-dark-foreground"
+                className="text-xl sm:text-2xl font-medium tracking-tight text-surface-dark-foreground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{
@@ -125,7 +125,7 @@ export default function Resume() {
                 />
               </motion.svg>
               <motion.h3
-                className="text-xl sm:text-2xl font-medium text-surface-dark-foreground"
+                className="text-xl sm:text-2xl font-medium tracking-tight text-surface-dark-foreground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: resumeInView ? 1 : 0.5 - 0.08 * index }}
                 transition={{

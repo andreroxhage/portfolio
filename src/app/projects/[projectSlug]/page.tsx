@@ -29,7 +29,7 @@ export default function Page({
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-dark">
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter text-surface-dark-foreground">
+          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-surface-dark-foreground">
             Project not found
           </h1>
           <p className="text-lg text-surface-dark-muted">

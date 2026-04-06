@@ -22,7 +22,7 @@ export default function WritingPage({
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-dark">
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter text-surface-dark-foreground">
+          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-surface-dark-foreground">
             Article not found
           </h1>
         </div>
@@ -41,7 +41,7 @@ export default function WritingPage({
     >
       <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
         <motion.h1
-          className="text-4xl md:text-6xl font-medium tracking-tighter text-primary-500"
+          className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-primary-500"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}

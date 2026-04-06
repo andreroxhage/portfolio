@@ -78,7 +78,7 @@ export default function Footer() {
                 </div>
                 <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-light">
                   <div className="col-span-10 md:col-span-6 w-full">
-                    <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium col-start-8 col-span-3">
+                    <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium tracking-tight col-start-8 col-span-3">
                       Connect
                       <hr className="h-0.5 pt-2 border-surface-dark-foreground md:zmr-12 my-3 sm:my-2" />
                     </span>
@@ -123,7 +123,7 @@ export default function Footer() {
                     })}
                   </div>
                   <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-12 sm:mt-14">
-                    <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium col-start-1 col-span-7">
+                    <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium tracking-tight col-start-1 col-span-7">
                       Navigation
                       <hr className="h-0.5 pt-2 border-surface-dark-foreground w-full my-3 sm:my-2" />
                     </span>

@@ -56,7 +56,7 @@ const Header = () => {
         {/* Content */}
         <div className="relative max-w-7xl h-full px-5 sm:px-6 md:px-4 mx-auto flex items-center">
           <motion.h1
-            className="text-6xl md:text-8xl font-medium tracking-tighter text-surface-dark-foreground mix-blend-difference"
+            className="text-6xl md:text-8xl font-medium tracking-tighter leading-snug text-surface-dark-foreground mix-blend-difference"
             initial={
               reducedMotion
                 ? { opacity: 0.4 }
@@ -105,7 +105,7 @@ const Header = () => {
                   }
             }
           >
-            <h2 className="text-xl md:text-2xl font-medium max-w-[680px] leading-relaxed">
+            <h2 className="text-xl md:text-2xl font-medium tracking-tight max-w-[680px] leading-relaxed">
               <span className="text-neutral-600 dark:text-neutral-300">
                 {header.currently.split(',')[0]}
               </span>
