@@ -15,16 +15,17 @@ export default function Footer() {
   );
 
   return (
-    <div id="contact" className="h-screen p-0 surface-lock-dark">
+    <div id="contact" className="min-h-fit md:h-screen p-0 surface-lock-dark">
       <div
-        className="w-full h-full rounded-t-[40px] corner-squircle"
+        className="w-full h-full rounded-t-[40px] corner-squircle bg-cover bg-center relative overflow-hidden"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `url(${backgroundImage})`,
         }}
       >
-        <div className="flex flex-col justify-between overflow-hidden w-full h-full">
+        {/* Gradient overlay — darker on mobile */}
+        <div className="absolute inset-0 rounded-t-[40px] corner-squircle bg-gradient-to-b from-black/85 to-black md:from-black/60 md:to-black" />
+
+        <div className="relative flex flex-col justify-between overflow-hidden w-full h-full">
           <div
             id="footer-container"
             className="relative w-full h-full overflow-hidden py-14 flex flex-col justify-between"
@@ -34,7 +35,7 @@ export default function Footer() {
               className="h-full z-20 flex-1"
             >
               <div className="max-w-7xl mx-auto flex flex-col items-start justify-end w-full h-full overflow-hidden pb-30">
-                <div className="flex flex-col items-start justify-center">
+                <div className="hidden md:flex flex-col items-start justify-center">
                   <motion.h2
                     className="px-4 md:text-6xl text-5xl text-surface-dark-foreground leading-tight font-medium"
                     initial={{ opacity: 0, translateY: 60 }}

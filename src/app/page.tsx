@@ -3,6 +3,7 @@ import Header from '@/app/sections/Header';
 import Photography from '@/app/sections/Photography';
 import CurrentWork from '@/app/sections/CurrentWork';
 import ZoomParallax from '@/app/components/ZoomParallax/ZoomParallax';
+import MobilePhotoCollage from '@/app/components/MobilePhotoCollage';
 
 export default function Home() {
   return (
@@ -11,7 +12,10 @@ export default function Home() {
       <CurrentWork />
       <div className="bg-secondary">
         <Photography />
-        <ZoomParallax />
+        <MobilePhotoCollage />
+        <div className="hidden md:block">
+          <ZoomParallax />
+        </div>
       </div>
       <Footer />
     </main>

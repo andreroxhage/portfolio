@@ -93,34 +93,36 @@ const MobileHeader = ({ reducedMotion }) => {
 
   return (
     <header id="header" className="md:hidden">
-      {/* Hero bar — static on mobile (no parallax) */}
-      <div className="h-[33vh] relative overflow-hidden surface-lock-dark">
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute inset-0"
-            style={{ transform: 'scale(1.15)' }}
+      {/* Profile pic + name — clean, no background image */}
+      <div className="bg-secondary pt-14 pb-8 px-5 sm:px-6">
+        <div className="max-w-7xl mx-auto flex items-center gap-4">
+          <motion.div
+            className="w-20 h-20 shrink-0"
+            initial={reducedMotion ? { opacity: 1 } : { scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={
+              reducedMotion
+                ? { duration: 0 }
+                : { duration: heroDuration, delay: 0, ease: EASING.ENTER }
+            }
           >
             <Image
-              src={HEADER_IMAGE}
-              alt="Header background"
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              className="h-full w-full rounded-full"
+              src={ProfilePicture}
+              placeholder="blur"
               priority
+              alt="André Roxhage profile photo"
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-surface-dark/85" />
-        <div className="absolute inset-0 bg-neutral-200/10 mix-blend-overlay" />
-
-        <div className="relative max-w-7xl h-full px-5 sm:px-6 mx-auto flex items-center">
+          </motion.div>
           <motion.h1
-            className="text-6xl font-medium tracking-tighter leading-snug text-surface-dark-foreground mix-blend-difference"
+            className="text-3xl sm:text-4xl font-medium tracking-tighter leading-tight text-foreground"
             initial={
               reducedMotion
                 ? { opacity: 0.4 }
                 : { opacity: 0, filter: 'blur(8px)' }
             }
-            animate={{ opacity: 0.8, filter: 'blur(0px)' }}
+            animate={{ opacity: 1, filter: 'blur(0px)' }}
             transition={
               reducedMotion
                 ? { duration: 0 }
@@ -132,8 +134,8 @@ const MobileHeader = ({ reducedMotion }) => {
         </div>
       </div>
 
-      {/* About tabs — directly after hero */}
-      <div className="bg-secondary pt-8 pb-10 px-5 sm:px-6">
+      {/* About tabs */}
+      <div className="bg-secondary pt-4 pb-10 px-5 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Tabs */}
           <div className="flex flex-row gap-x-8 sm:gap-x-10 mb-1">
