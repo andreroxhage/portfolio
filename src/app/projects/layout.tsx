@@ -11,7 +11,7 @@ const ProjectsLayout: React.FC<ProjectsLayoutProps> = ({ children }) => {
         className="dark min-h-screen"
         style={{
           background:
-            'radial-gradient(ellipse 80% 50% at 64% 50%, #191919 0%, #000000 70%)',
+            'radial-gradient(ellipse 80% 50vh at 64% 50vh, oklch(0.145 0.01 70) 0%, oklch(0.08 0 0) 70%) fixed',
         }}
       >
         {children}
