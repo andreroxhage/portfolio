@@ -3,15 +3,23 @@
     <clipPath id="circle-clip">
       <circle cx="256" cy="256" r="256"/>
     </clipPath>
-    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#5ba56d"/>
+    <!-- Background: bright bottom-right to dark top-left -->
+    <radialGradient id="bg" cx="75%" cy="75%" r="75%">
+      <stop offset="0%" stop-color="#80d88e"/>
+      <stop offset="60%" stop-color="#5ba56d"/>
+      <stop offset="100%" stop-color="#2d5038"/>
+    </radialGradient>
+    <!-- Dots: same direction, slightly brighter -->
+    <radialGradient id="dots" cx="75%" cy="75%" r="75%">
+      <stop offset="0%" stop-color="#a8eab5"/>
+      <stop offset="55%" stop-color="#6dcc7f"/>
       <stop offset="100%" stop-color="#3a6542"/>
     </radialGradient>
   </defs>
   <!-- Background circle -->
   <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
   <!-- Halftone dot grid clipped to circle -->
-  <g clip-path="url(#circle-clip)" fill="#80d88e">
+  <g clip-path="url(#circle-clip)" fill="url(#dots)">
     <circle cx="32" cy="32" r="12"/><circle cx="64" cy="32" r="12"/><circle cx="96" cy="32" r="12"/><circle cx="128" cy="32" r="12"/><circle cx="160" cy="32" r="12"/><circle cx="192" cy="32" r="12"/><circle cx="224" cy="32" r="12"/><circle cx="256" cy="32" r="12"/><circle cx="288" cy="32" r="12"/><circle cx="320" cy="32" r="12"/><circle cx="352" cy="32" r="12"/><circle cx="384" cy="32" r="12"/><circle cx="416" cy="32" r="12"/><circle cx="448" cy="32" r="12"/><circle cx="480" cy="32" r="12"/>
     <circle cx="32" cy="64" r="12"/><circle cx="64" cy="64" r="12"/><circle cx="96" cy="64" r="12"/><circle cx="128" cy="64" r="12"/><circle cx="160" cy="64" r="12"/><circle cx="192" cy="64" r="12"/><circle cx="224" cy="64" r="12"/><circle cx="256" cy="64" r="12"/><circle cx="288" cy="64" r="12"/><circle cx="320" cy="64" r="12"/><circle cx="352" cy="64" r="12"/><circle cx="384" cy="64" r="12"/><circle cx="416" cy="64" r="12"/><circle cx="448" cy="64" r="12"/><circle cx="480" cy="64" r="12"/>
     <circle cx="32" cy="96" r="12"/><circle cx="64" cy="96" r="12"/><circle cx="96" cy="96" r="12"/><circle cx="128" cy="96" r="12"/><circle cx="160" cy="96" r="12"/><circle cx="192" cy="96" r="12"/><circle cx="224" cy="96" r="12"/><circle cx="256" cy="96" r="12"/><circle cx="288" cy="96" r="12"/><circle cx="320" cy="96" r="12"/><circle cx="352" cy="96" r="12"/><circle cx="384" cy="96" r="12"/><circle cx="416" cy="96" r="12"/><circle cx="448" cy="96" r="12"/><circle cx="480" cy="96" r="12"/>
