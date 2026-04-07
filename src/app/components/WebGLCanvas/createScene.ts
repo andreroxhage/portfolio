@@ -7,8 +7,8 @@ function smoothstep(edge0: number, edge1: number, x: number): number {
 }
 
 export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
-  const lineCount = isMobile ? 25 : 50;
-  const pointsPerLine = isMobile ? 100 : 200;
+  const lineCount = isMobile ? 30 : 60;
+  const pointsPerLine = isMobile ? 120 : 200;
 
   // --- Renderer ---
   const renderer = new THREE.WebGLRenderer({
@@ -34,10 +34,10 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
   const lineIndices = new Float32Array(totalPoints);
 
   for (let line = 0; line < lineCount; line++) {
-    const y = -0.6 + (1.2 * line) / (lineCount - 1);
+    const y = -0.75 + (1.5 * line) / (lineCount - 1);
     for (let p = 0; p < pointsPerLine; p++) {
       const idx = line * pointsPerLine + p;
-      const x = -1.2 + (2.4 * p) / (pointsPerLine - 1);
+      const x = -2.0 + (4.0 * p) / (pointsPerLine - 1);
       positions[idx * 3] = x;
       positions[idx * 3 + 1] = y;
       positions[idx * 3 + 2] = 0;
@@ -106,7 +106,7 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
     const s = scrollProgress;
 
     // Scroll-to-uniform mapping
-    const amplitude = 0.15 * (1 - smoothstep(0.3, 0.55, s));
+    const amplitude = 0.1 * (1 - smoothstep(0.3, 0.55, s));
     const dissolve = smoothstep(0.3, 0.55, s);
     const scatter = smoothstep(0.3, 0.7, s);
     const opacity = 1 - smoothstep(0.7, 0.95, s);

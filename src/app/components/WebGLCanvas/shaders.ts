@@ -28,13 +28,16 @@ export const vertexShader = /* glsl */ `
   void main() {
     vec3 pos = position;
 
-    // Per-line variation factor
-    float lineVar = sin(aLineIndex * 0.7 + 1.5) * 0.5 + 0.5;
+    // Per-line variation: groups of lines share similar behavior
+    float lineGroup = floor(aLineIndex / 4.0);
+    float lineVar = 0.4 + 0.6 * sin(lineGroup * 0.8 + 1.5);
 
-    // Three overlapping sine waves for organic displacement
-    float wave1 = sin(pos.x * 3.0 + uTime * 0.6 + aLineIndex * 0.5) * 0.5;
-    float wave2 = sin(pos.x * 1.8 - uTime * 0.4 + aLineIndex * 0.3) * 0.3;
-    float wave3 = sin(pos.x * 5.0 + uTime * 0.8 + aLineIndex * 0.9) * 0.2;
+    // Three overlapping sine waves — low frequency for smooth, parallel flow
+    // Shared phase per line-group creates bunching/separation
+    float groupPhase = lineGroup * 0.35;
+    float wave1 = sin(pos.x * 1.0 + uTime * 0.12 + groupPhase) * 0.65;
+    float wave2 = sin(pos.x * 2.2 - uTime * 0.08 + aLineIndex * 0.12) * 0.2;
+    float wave3 = sin(pos.x * 0.5 + uTime * 0.06 + groupPhase * 1.5) * 0.15;
 
     float waveDisplacement = (wave1 + wave2 + wave3) * uAmplitude * lineVar;
     pos.y += waveDisplacement;
@@ -44,12 +47,13 @@ export const vertexShader = /* glsl */ `
     pos.y += fract(aRandom * 13.37) * uScatter * 0.3 - uScatter * 0.15;
 
     // Point size grows during dissolve
-    float baseSize = 1.5;
-    float dissolveSize = (3.0 + abs(aRandom) * 2.0);
+    float baseSize = 1.0;
+    float dissolveSize = (2.5 + abs(aRandom) * 1.5);
     gl_PointSize = mix(baseSize, dissolveSize, uDissolve);
 
-    // Alpha varies per-point during dissolve for sparkle
-    vAlpha = mix(1.0, 0.3 + abs(aRandom) * 0.7, uDissolve);
+    // Base alpha: subtle lines (0.35), sparkle during dissolve
+    float baseAlpha = 0.3 + 0.1 * lineVar;
+    vAlpha = mix(baseAlpha, 0.15 + abs(aRandom) * 0.5, uDissolve);
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
   }
