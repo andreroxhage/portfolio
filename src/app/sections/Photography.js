@@ -8,7 +8,7 @@ export default function Photography() {
       id="photography"
       className="bg-secondary w-full relative pt-20 sm:pt-24 md:pt-18"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-10 px-5 sm:px-6 md:px-4 md:py-40 py-16 sm:py-20 mb-16 sm:mb-20 md:mb-12">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-10 px-5 sm:px-6 md:px-4 md:py-40 py-12 sm:py-20">
         <div className="col-span-10 lg:col-span-5 lg:col-start-2 flex flex-col gap-y-4">
           <motion.h3
             className="text-foreground text-xl md:text-4xl font-medium tracking-tight"
