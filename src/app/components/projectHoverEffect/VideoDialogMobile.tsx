@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useCallback, memo } from 'react';
+import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpRightIcon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -9,6 +9,7 @@ import { useVideo } from '@/app/hooks/useVideo';
 import VideoLoadingAnimation from '../VideoLoadingAnimation';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import ImageFader from '../ImageFader';
+import Image from 'next/image';
 
 interface GifDialogMobileProps {
   item: GridItem;
@@ -23,15 +24,22 @@ const ProjectVideo = memo(
     shouldRound = true,
     imageFader,
     intervalTime,
+    posterImage,
+    imageAlt,
   }: {
     identifier: string;
     onLoad: () => void;
     shouldRound?: boolean;
     imageFader?: string[];
     intervalTime?: number;
+    posterImage?: string;
+    imageAlt?: string;
   }) => {
     const { video_url: videoUrl, loading } = useVideo(identifier);
+    const [videoReady, setVideoReady] = useState(false);
+    const videoElRef = useRef<HTMLVideoElement>(null);
     const hasImageFader = imageFader && imageFader.length > 0;
+    const hasPoster = !!posterImage;
 
     return (
       <div
@@ -45,8 +53,23 @@ const ProjectVideo = memo(
             />
           ) : (
             <>
+              {/* Poster image — shown until video is playing */}
+              {hasPoster && (
+                <Image
+                  src={posterImage}
+                  alt={imageAlt || ''}
+                  width={1280}
+                  height={720}
+                  priority
+                  className={`w-full h-full object-contain transition-opacity duration-300 ${
+                    videoReady ? 'opacity-0' : 'opacity-100'
+                  }`}
+                />
+              )}
+
+              {/* Fallback loading animation when no poster */}
               <AnimatePresence>
-                {loading && (
+                {loading && !hasPoster && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -57,20 +80,34 @@ const ProjectVideo = memo(
                   </motion.div>
                 )}
               </AnimatePresence>
+
+              {/* Video — layered on top, fades in when playing */}
               {videoUrl && (
                 <video
                   key={videoUrl}
+                  ref={videoElRef}
                   src={videoUrl}
                   className={`w-full h-full object-contain transition-opacity duration-300 ${
-                    loading ? 'opacity-0' : 'opacity-100'
-                  }`}
+                    videoReady ? 'opacity-100' : 'opacity-0'
+                  } ${hasPoster ? 'absolute inset-0' : ''}`}
                   autoPlay
                   loop
                   muted
                   playsInline
                   preload="auto"
                   onLoadedData={() => {
-                    onLoad();
+                    const v = videoElRef.current;
+                    if (v) {
+                      v.play()
+                        .then(() => {
+                          setVideoReady(true);
+                          onLoad();
+                        })
+                        .catch(() => {
+                          setVideoReady(true);
+                          onLoad();
+                        });
+                    }
                   }}
                 />
               )}
@@ -147,6 +184,8 @@ const GifDialogMobile = ({ item, isOpen, onClose }: GifDialogMobileProps) => {
               shouldRound={shouldRound}
               imageFader={item.imageFader}
               intervalTime={item.intervalTime}
+              posterImage={item.posterImage}
+              imageAlt={item.imageAlt}
             />
           </motion.div>
 

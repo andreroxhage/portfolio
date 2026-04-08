@@ -2,35 +2,66 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import { useScrollProgress } from '@/app/hooks/useScrollProgress';
+import { useTheme } from '@/app/contexts/ThemeContext';
 import { createWaveScene } from './createScene';
 
-export function WebGLCanvas() {
+// Line colors per theme (RGB 0-1)
+const COLORS = {
+  dark: [1.0, 1.0, 1.0] as const,
+  light: [0.25, 0.24, 0.23] as const, // warm dark neutral matching neutral-800
+};
+
+interface WebGLCanvasProps {
+  onReady?: () => void;
+}
+
+export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<ReturnType<typeof createWaveScene> | null>(null);
   const rafIdRef = useRef<number>(0);
-  const isVisibleRef = useRef(true);
-  const isTabActiveRef = useRef(true);
+  const isRunningRef = useRef(false);
   const webglFailedRef = useRef(false);
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
 
   const prefersReducedMotion = useReducedMotion();
-  const getScrollProgress = useScrollProgress();
+  const { resolvedTheme } = useTheme();
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isDark = resolvedTheme === 'dark';
 
-  // --- Animation loop ---
-  const animate = useCallback(() => {
-    if (!sceneRef.current || !isVisibleRef.current || !isTabActiveRef.current) {
-      rafIdRef.current = requestAnimationFrame(animate);
+  // Update line color when theme changes
+  useEffect(() => {
+    if (!sceneRef.current) {
       return;
     }
+    const [r, g, b] = isDark ? COLORS.dark : COLORS.light;
+    sceneRef.current.setColor(r, g, b);
+  }, [isDark]);
 
-    const time = performance.now() * 0.001;
-    const scroll = getScrollProgress();
-    sceneRef.current.render(time, scroll);
+  // --- Animation loop — only runs when visible ---
+  const startLoop = useCallback(() => {
+    if (isRunningRef.current) {
+      return;
+    }
+    isRunningRef.current = true;
 
-    rafIdRef.current = requestAnimationFrame(animate);
-  }, [getScrollProgress]);
+    function tick() {
+      if (!isRunningRef.current || !sceneRef.current) {
+        return;
+      }
+      const time = performance.now() * 0.001;
+      sceneRef.current.render(time);
+      rafIdRef.current = requestAnimationFrame(tick);
+    }
+    rafIdRef.current = requestAnimationFrame(tick);
+  }, []);
+
+  const stopLoop = useCallback(() => {
+    isRunningRef.current = false;
+    cancelAnimationFrame(rafIdRef.current);
+  }, []);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -38,50 +69,59 @@ export function WebGLCanvas() {
     }
 
     const canvas = canvasRef.current;
-    if (!canvas) {
+    const container = containerRef.current;
+    if (!canvas || !container) {
       return;
     }
 
     // --- Create scene ---
     try {
-      sceneRef.current = createWaveScene(canvas, isMobile);
+      const scene = createWaveScene(canvas, isMobile);
+      const [r, g, b] = isDark ? COLORS.dark : COLORS.light;
+      scene.setColor(r, g, b);
+      sceneRef.current = scene;
     } catch {
       webglFailedRef.current = true;
       return;
     }
 
-    // --- Start animation loop ---
-    rafIdRef.current = requestAnimationFrame(animate);
+    // Signal ready and fade in canvas immediately after scene creation
+    container.style.opacity = '1';
+    onReadyRef.current?.();
+
+    // --- IntersectionObserver: start/stop rAF loop ---
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(container);
+
+    // --- Visibility change (tab hidden) ---
+    function onVisibilityChange() {
+      if (document.visibilityState === 'hidden') {
+        stopLoop();
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     // --- Resize (debounced) ---
     let resizeTimer: ReturnType<typeof setTimeout>;
     function onResize() {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        sceneRef.current?.resize();
-      }, 150);
+      resizeTimer = setTimeout(() => sceneRef.current?.resize(), 150);
     }
     window.addEventListener('resize', onResize);
-
-    // --- IntersectionObserver to pause when off-screen ---
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisibleRef.current = entry.isIntersecting;
-      },
-      { threshold: 0 }
-    );
-    observer.observe(canvas);
-
-    // --- Visibility change (tab hidden) ---
-    function onVisibilityChange() {
-      isTabActiveRef.current = document.visibilityState === 'visible';
-    }
-    document.addEventListener('visibilitychange', onVisibilityChange);
 
     // --- WebGL context loss / restore ---
     function onContextLost(e: Event) {
       e.preventDefault();
-      cancelAnimationFrame(rafIdRef.current);
+      stopLoop();
     }
     function onContextRestored() {
       if (!canvas) {
@@ -89,7 +129,7 @@ export function WebGLCanvas() {
       }
       try {
         sceneRef.current = createWaveScene(canvas, isMobile);
-        rafIdRef.current = requestAnimationFrame(animate);
+        startLoop();
       } catch {
         webglFailedRef.current = true;
       }
@@ -99,7 +139,7 @@ export function WebGLCanvas() {
 
     // --- Cleanup ---
     return () => {
-      cancelAnimationFrame(rafIdRef.current);
+      stopLoop();
       clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
       observer.disconnect();
@@ -109,17 +149,19 @@ export function WebGLCanvas() {
       sceneRef.current?.dispose();
       sceneRef.current = null;
     };
-  }, [prefersReducedMotion, animate, isMobile]);
+  }, [prefersReducedMotion, startLoop, stopLoop, isMobile, isDark]);
 
-  // Reduced motion or WebGL failure: static dark background
   if (prefersReducedMotion || webglFailedRef.current) {
-    return (
-      <div className="fixed inset-0 z-0 bg-neutral-975" aria-hidden="true" />
-    );
+    return null;
   }
 
   return (
-    <div className="fixed inset-0 z-0 bg-neutral-975" aria-hidden="true">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 z-0 overflow-hidden transition-opacity duration-500 ease-out"
+      style={{ opacity: 0 }}
+      aria-hidden="true"
+    >
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"

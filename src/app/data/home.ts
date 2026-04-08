@@ -1,14 +1,13 @@
 export const header = {
-  title: 'ANDRÉ ROXHAGE',
-  currently:
-    'Design Engineer, blending software development and design with a passion for improving user experience',
+  title: 'André Roxhage',
+  currently: 'Design Engineer, blending software development and design',
 };
 
 export const aboutVersions = {
   playful: [
     {
       title: 'At work',
-      description: `I am a design engineer who genuinely enjoys bringing design and development together as one team. I care a lot about turning ideas into products that feel simple, clear, and useful in everyday life. My approach is structured, collaborative, and human-centered. With a Master's in Engineering and a Bachelor's in Psychology, I combine technical depth with an understanding of human behavior. In short: a creative nerd.`,
+      description: `I genuinely enjoy bringing design and development together as one team. I care a lot about turning ideas into products that feel simple, clear, and useful. My approach is structured, collaborative, and human-centered. With a Master's in Engineering and a Bachelor's in Psychology, I combine technical depth with an understanding of human behavior. In short: a creative nerd.`,
     },
     {
       title: 'Elsewhere',
@@ -107,12 +106,6 @@ export const resume = [
     ],
   },
 ];
-
-export const photo = {
-  title: 'Visual storytelling',
-  description:
-    'In my free time, I enjoy hanging out with friends and capturing moments with my camera. This hobby keeps my creativity alive at all times.',
-};
 
 export const VoluntaryProjects = [
   {

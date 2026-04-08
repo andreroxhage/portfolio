@@ -10,6 +10,10 @@ const WebGLCanvas = dynamic(
   { ssr: false }
 );
 
-export default function WebGLCanvasLoader() {
-  return <WebGLCanvas />;
+interface WebGLCanvasLoaderProps {
+  onReady?: () => void;
+}
+
+export default function WebGLCanvasLoader({ onReady }: WebGLCanvasLoaderProps) {
+  return <WebGLCanvas onReady={onReady} />;
 }

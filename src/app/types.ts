@@ -52,10 +52,16 @@ export interface ProjectMeta {
   projectSlug: string;
   title: string;
   subtitle: string;
+  previewSubtitle?: string;
+  showInPreview?: boolean;
   date: string;
   image: string;
   imageAlt: string;
   videoIdentifier?: string;
+  posterImage?: string;
+  imageFader?: string[];
+  intervalTime?: number;
+  roundedCorners?: boolean;
   tags?: string[];
   order: number;
   type: 'project';
@@ -70,9 +76,12 @@ export interface IdeaMeta {
   ideaSlug: string;
   title: string;
   subtitle: string;
+  previewSubtitle?: string;
+  showInPreview?: boolean;
   date: string;
   image?: string;
   imageAlt?: string;
+  posterImage?: string;
   imageFader?: string[];
   intervalTime?: number;
   roundedCorners?: boolean;
@@ -94,24 +103,16 @@ export interface WritingMeta {
   type: 'writing';
 }
 
-export interface Capability {
-  id: string;
-  title: string;
-  description: string;
-  videoIdentifier?: string;
-  imageSrc?: string;
-  imageAlt?: string;
-  order: number;
-}
-
 // Unified item type consumed by ProjectsGrid and its children
 export interface GridItem {
   id: string;
   title: string;
   subtitle: string;
+  previewSubtitle?: string;
   image?: string;
   imageAlt?: string;
   videoIdentifier?: string;
+  posterImage?: string;
   imageFader?: string[];
   intervalTime?: number;
   roundedCorners?: boolean;
@@ -129,9 +130,14 @@ export function galleryItemToGridItem(item: GalleryItem): GridItem {
       id: item.projectSlug,
       title: item.title,
       subtitle: item.subtitle,
+      previewSubtitle: item.previewSubtitle,
       image: item.image,
       imageAlt: item.imageAlt,
       videoIdentifier: item.videoIdentifier,
+      posterImage: item.posterImage,
+      imageFader: item.imageFader,
+      intervalTime: item.intervalTime,
+      roundedCorners: item.roundedCorners,
       order: item.order,
       href: `/projects/${item.projectSlug}`,
       titleColor: item.titleColor,
@@ -144,25 +150,15 @@ export function galleryItemToGridItem(item: GalleryItem): GridItem {
     id: item.ideaSlug,
     title: item.title,
     subtitle: item.subtitle,
+    previewSubtitle: item.previewSubtitle,
     image: item.image,
     imageAlt: item.imageAlt,
+    videoIdentifier: item.id,
+    posterImage: item.posterImage,
     imageFader: item.imageFader,
     intervalTime: item.intervalTime,
     roundedCorners: item.roundedCorners,
     order: item.order,
     href: `/ideas/${item.ideaSlug}`,
-  };
-}
-
-export function capabilityToGridItem(cap: Capability): GridItem {
-  return {
-    id: cap.id,
-    title: cap.title,
-    subtitle: cap.description,
-    image: cap.imageSrc,
-    imageAlt: cap.imageAlt,
-    videoIdentifier: cap.videoIdentifier,
-    order: cap.order,
-    // No href — capabilities have no detail pages
   };
 }

@@ -19,7 +19,7 @@ export default function IdeaPage({
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-dark">
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-surface-dark-foreground">
+          <h1 className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground">
             Idea not found
           </h1>
         </div>
@@ -31,14 +31,14 @@ export default function IdeaPage({
 
   return (
     <motion.div
-      className="bg-surface-dark"
+      className="bg-surface-dark min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
         <motion.h1
-          className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-primary-500"
+          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
@@ -82,7 +82,9 @@ export default function IdeaPage({
             <Content />
           ) : (
             <div className="text-surface-dark-muted py-20">
-              <p className="text-lg mb-4">{idea.subtitle}</p>
+              <p className="text-lg mb-4">
+                {idea.previewSubtitle || idea.subtitle}
+              </p>
               <p className="text-sm text-surface-dark-muted/60">
                 Content coming soon.
               </p>

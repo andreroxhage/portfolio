@@ -1,11 +1,5 @@
-'use client';
-import { useMemo } from 'react';
-import { ProjectsPageContent } from '@/app/components/ProjectsPageContent';
-import { capabilities } from '@/app/data/capabilities';
-import { capabilityToGridItem } from '@/app/types';
+import { SimpleList } from '@/app/components/SimpleList';
 
 export default function WorkPage() {
-  const items = useMemo(() => capabilities.map(capabilityToGridItem), []);
-
-  return <ProjectsPageContent items={items} />;
+  return <SimpleList />;
 }

@@ -198,7 +198,7 @@ export default function IsometricStack() {
             >
               <path
                 d={buildCardPath(card.x, card.y, card.h)}
-                className="fill-neutral-400/50 stroke-neutral-200 dark:fill-neutral-900/60 dark:stroke-neutral-500"
+                className="fill-neutral-25/60 stroke-neutral-500 dark:fill-neutral-900/60 dark:stroke-neutral-500"
               />
               <path
                 d={buildInnerLine(card.x, card.y, card.h)}

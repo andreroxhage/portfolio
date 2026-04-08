@@ -18,7 +18,7 @@ export default function MobilePhotoCollage() {
   };
 
   return (
-    <div className="md:hidden px-5 sm:px-6 pb-16 bg-secondary">
+    <div className="md:hidden px-5 sm:px-6 pb-16 bg-background">
       <div className="max-w-7xl mx-auto flex flex-col gap-3">
         {/* Large hero image */}
         <motion.div

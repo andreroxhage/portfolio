@@ -1,6 +1,6 @@
 export const links = [
   { title: 'About me', href: '/#about' },
-  { title: 'Work & Projects', href: '/work' }, // could also use /projects
+  { title: 'Work', href: '/work' },
 ];
 
 export const footerLinks = [

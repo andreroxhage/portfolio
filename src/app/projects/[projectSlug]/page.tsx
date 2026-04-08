@@ -29,7 +29,7 @@ export default function Page({
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-dark">
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight text-surface-dark-foreground">
+          <h1 className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground">
             Project not found
           </h1>
           <p className="text-lg text-surface-dark-muted">
@@ -45,7 +45,7 @@ export default function Page({
   return (
     <motion.div
       id="header"
-      className="bg-surface-dark"
+      className="bg-surface-dark min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}

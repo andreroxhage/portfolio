@@ -12,7 +12,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
       <motion.h1
-        className="text-4xl md:text-6xl font-medium tracking-tighter leading-tight"
+        className="text-2xl md:text-3xl font-medium tracking-tight leading-tight"
         style={{ color: project.titleColor || 'oklch(0.635 0.08 148)' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

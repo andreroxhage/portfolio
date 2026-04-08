@@ -1,21 +1,14 @@
 'use client';
 import { motion } from 'framer-motion';
 import { footerLinks } from '@/app/data/nav';
-import { FollowerPointerCard } from '@/app/components/followCursor';
 import MagneticWrapper from '@/app/components/MagneticWrapper';
 import { links } from '@/app/data/nav';
 
 export default function Footer() {
   const backgroundImage = '/resource/20220611-IMG_5691.jpg'; // 20220611-IMG_5691 or familjen.jpg
 
-  const TitleComponent = ({ title }) => (
-    <div>
-      <p className="z-5">{title}</p>
-    </div>
-  );
-
   return (
-    <div id="contact" className="min-h-fit md:h-screen p-0 surface-lock-dark">
+    <div id="contact" className="min-h-fit p-0 surface-lock-dark">
       <div
         className="w-full h-full rounded-t-[40px] corner-squircle bg-cover bg-center relative overflow-hidden"
         style={{
@@ -23,40 +16,19 @@ export default function Footer() {
         }}
       >
         {/* Gradient overlay — darker on mobile */}
-        <div className="absolute inset-0 rounded-t-[40px] corner-squircle bg-gradient-to-b from-black/85 to-black md:from-black/60 md:to-black" />
+        <div className="absolute inset-0 rounded-t-[40px] corner-squircle bg-gradient-to-b from-black/85 to-black md:from-black/80 md:to-black" />
 
         <div className="relative flex flex-col justify-between overflow-hidden w-full h-full">
           <div
             id="footer-container"
             className="relative w-full h-full overflow-hidden sm:py-14 py-0 flex flex-col justify-between"
           >
-            <FollowerPointerCard
-              title={<TitleComponent title={'Connect'} />}
-              className="h-full z-20 flex-1"
-            >
-              <div className="max-w-7xl mx-auto flex flex-col items-start justify-end w-full h-full overflow-hidden pb-0 sm:pb-30">
-                <div className="hidden md:flex flex-col items-start justify-center">
-                  <motion.h2
-                    className="px-4 md:text-6xl text-5xl text-surface-dark-foreground leading-tight font-medium"
-                    initial={{ opacity: 0, translateY: 60 }}
-                    whileInView={{ opacity: 1, translateY: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: 'easeOut',
-                    }}
-                    viewport={{ once: true }}
-                  >
-                    Are you ready to connect?
-                  </motion.h2>
-                </div>
-              </div>
-            </FollowerPointerCard>
             <footer className="overflow-x-hidden">
               <div className="max-w-7xl mx-auto pt-8 pb-24 sm:pt-12 md:pt-16 px-5 sm:px-6 md:px-4">
                 <div className="w-full flex px-1 py-2 justify-end">
                   <MagneticWrapper>
                     <motion.a
-                      className="rounded-full h-16 w-16 bg-neutral-800 items-center justify-center text-neutral-200 hover:text-primary-600 hover:bg-neutral-700 transition-all duration-300 ease-in-out hover:scale-110 flex"
+                      className="rounded-full h-16 w-16 bg-neutral-600 items-center justify-center text-neutral-200 hover:text-primary-500 hover:bg-neutral-600 transition-all duration-300 ease-in-out hover:scale-110 flex"
                       href={'#header'}
                       aria-label="Scroll to top"
                     >
@@ -79,7 +51,7 @@ export default function Footer() {
                 </div>
                 <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-normal">
                   <div className="col-span-10 md:col-span-6 w-full">
-                    <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium tracking-tight col-start-8 col-span-3">
+                    <span className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-8 col-span-3">
                       Connect
                       <hr className="h-0.5 pt-2 border-surface-dark-foreground md:zmr-12 my-3 sm:my-2" />
                     </span>
@@ -124,7 +96,7 @@ export default function Footer() {
                     })}
                   </div>
                   <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-12 sm:mt-14">
-                    <span className="text-xl md:text-2xl text-surface-dark-foreground font-medium tracking-tight col-start-1 col-span-7">
+                    <span className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-1 col-span-7">
                       Navigation
                       <hr className="h-0.5 pt-2 border-surface-dark-foreground w-full my-3 sm:my-2" />
                     </span>

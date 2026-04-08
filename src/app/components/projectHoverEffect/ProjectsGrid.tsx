@@ -1,4 +1,12 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+'use client';
+
+import React, {
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+  useEffect,
+} from 'react';
 import { projects } from '@/app/data/projects';
 import { ideas } from '@/app/data/ideas';
 import { GridItem, galleryItemToGridItem } from '@/app/types';
@@ -17,7 +25,9 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
     if (itemsProp) {
       return itemsProp;
     }
-    const gallery: GalleryItem[] = [...projects, ...ideas];
+    const gallery: GalleryItem[] = [...projects, ...ideas].filter(
+      item => item.showInPreview !== false
+    );
     return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);
   }, [itemsProp]);
 
@@ -33,7 +43,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-24">
         <motion.div
           className="md:col-span-5 flex flex-col gap-6 justify-center"
           layout
@@ -74,6 +84,13 @@ const RightPreviewPanel = ({
   const { video_url: videoUrl } = useVideo(identifier);
   const [prevVideoUrl, setPrevVideoUrl] = useState<string>('');
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Reset videoReady when switching items
+  useEffect(() => {
+    setVideoReady(false);
+  }, [identifier]);
 
   useEffect(() => {
     if (videoUrl && videoUrl !== prevVideoUrl) {
@@ -83,68 +100,89 @@ const RightPreviewPanel = ({
   }, [videoUrl, prevVideoUrl]);
 
   const hasImageFader = item?.imageFader && item.imageFader.length > 0;
-  const showPanel = isActive && !!identifier && (!!videoUrl || hasImageFader);
+  const hasPoster = !!item?.posterImage;
+  const showPanel =
+    isActive && !!identifier && (!!videoUrl || hasImageFader || hasPoster);
   const shouldRound = item?.roundedCorners !== false;
 
   const easings = {
     videoTransition: [0.45, 0.0, 0.15, 1] as const,
   };
 
+  const sharedStyle = {
+    maxWidth: '100%',
+    maxHeight: '100%',
+    width: 'auto' as const,
+    height: 'auto' as const,
+  };
+
+  const roundingClass = shouldRound ? 'rounded-[40px] corner-squircle' : '';
+
   return (
     <div className="hidden md:block md:col-span-7">
       <div className="sticky top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
         <AnimatePresence mode="wait">
           {showPanel && (
-            <>
+            <motion.div
+              key={identifier}
+              className={`relative ${roundingClass} overflow-hidden ${
+                hasPoster && !hasImageFader ? 'w-full h-full' : ''
+              }`}
+              initial={{ opacity: 0, y: -64 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 64 }}
+              transition={{
+                duration: isFirstLoad ? 0.6 : 0.5,
+                ease: easings.videoTransition,
+              }}
+              style={hasPoster && !hasImageFader ? undefined : sharedStyle}
+            >
               {hasImageFader ? (
-                <motion.div
-                  key={identifier}
-                  className={`${shouldRound ? 'rounded-[40px] corner-squircle' : ''} overflow-hidden`}
-                  initial={{ opacity: 0, y: -64 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 64 }}
-                  transition={{
-                    duration: isFirstLoad ? 0.6 : 0.5,
-                    ease: easings.videoTransition,
-                  }}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    width: 'auto',
-                    height: 'auto',
-                  }}
-                >
-                  <ImageFader
-                    images={item!.imageFader!.map(src => src)}
-                    intervalTime={item!.intervalTime || 5000}
-                  />
-                </motion.div>
-              ) : (
-                <motion.video
-                  key={identifier}
-                  src={videoUrl}
-                  className={`shadow-xl ${shouldRound ? 'rounded-[40px] corner-squircle' : ''}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  initial={{ opacity: 0, y: -64 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 64 }}
-                  transition={{
-                    duration: isFirstLoad ? 0.6 : 0.5,
-                    ease: easings.videoTransition,
-                  }}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    width: 'auto',
-                    height: 'auto',
-                  }}
+                <ImageFader
+                  images={item!.imageFader!.map(src => src)}
+                  intervalTime={item!.intervalTime || 5000}
                 />
+              ) : (
+                <>
+                  {/* Poster image — visible until video is playing */}
+                  {hasPoster && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={item!.posterImage!}
+                      alt={item?.imageAlt || item?.title || ''}
+                      className={`absolute inset-0 w-full h-full object-contain shadow-xl ${roundingClass} transition-opacity duration-300 ${
+                        videoReady ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    />
+                  )}
+
+                  {/* Video — layered on top, fades in when ready */}
+                  {videoUrl && (
+                    <video
+                      ref={videoRef}
+                      src={videoUrl}
+                      className={`shadow-xl transition-opacity duration-300 ${
+                        videoReady ? 'opacity-100' : 'opacity-0'
+                      } ${hasPoster ? `absolute inset-0 w-full h-full object-contain ${roundingClass}` : roundingClass}`}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      onLoadedData={() => {
+                        const v = videoRef.current;
+                        if (v) {
+                          v.play()
+                            .then(() => setVideoReady(true))
+                            .catch(() => setVideoReady(true));
+                        }
+                      }}
+                      style={!hasPoster ? sharedStyle : undefined}
+                    />
+                  )}
+                </>
               )}
-            </>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>

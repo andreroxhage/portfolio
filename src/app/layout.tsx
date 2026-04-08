@@ -49,13 +49,12 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: FOIWT_SCRIPT }} />
       </head>
-      <body>
+      <body className="bg-background text-foreground">
         <ThemeProvider>
           <QueryProvider>
             <ProjectHoverProvider>
               <FloatingNav />
               <ThemeToggle />
-              <main></main>
               {children}
             </ProjectHoverProvider>
           </QueryProvider>

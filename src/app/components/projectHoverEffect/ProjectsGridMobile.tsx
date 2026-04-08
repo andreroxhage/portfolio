@@ -22,7 +22,9 @@ const ProjectGridMobile: React.FC<ProjectGridMobileProps> = ({
     if (itemsProp) {
       return itemsProp;
     }
-    const gallery: GalleryItem[] = [...projects, ...ideas];
+    const gallery: GalleryItem[] = [...projects, ...ideas].filter(
+      item => item.showInPreview !== false
+    );
     return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);
   }, [itemsProp]);
 
