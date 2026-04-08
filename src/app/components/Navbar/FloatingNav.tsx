@@ -29,7 +29,7 @@ const FloatingNav = () => {
 
   const navBackgroundColor = useTransform(
     navOpacity,
-    opacity => `rgba(23, 23, 23, ${opacity})`
+    opacity => `oklch(0.165 0 0 / ${opacity})`
   );
 
   useEffect(() => {

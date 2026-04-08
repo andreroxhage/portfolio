@@ -30,11 +30,11 @@ All colors use the oklch perceptual color space. Source of truth: `src/app/globa
 | Stop | oklch Value              | Role                                    |
 | ---- | ------------------------ | --------------------------------------- |
 | 50   | `oklch(0.975 0.02 148)`  | Lightest tint, hover backgrounds        |
-| 100  | `oklch(0.95 0.04 146)`   | Light accent backgrounds                |
-| 200  | `oklch(0.91 0.06 144)`   | Borders, dividers                       |
-| 300  | `oklch(0.855 0.085 144)` | Active state backgrounds                |
-| 400  | `oklch(0.79 0.095 144)`  | Secondary buttons                       |
-| 500  | `oklch(0.75 0.105 144)`  | **Primary action color**                |
+| 100  | `oklch(0.95 0.04 148)`   | Light accent backgrounds                |
+| 200  | `oklch(0.91 0.06 148)`   | Borders, dividers                       |
+| 300  | `oklch(0.855 0.085 148)` | Active state backgrounds                |
+| 400  | `oklch(0.79 0.095 148)`  | Secondary buttons                       |
+| 500  | `oklch(0.75 0.105 148)`  | **Primary action color**                |
 | 600  | `oklch(0.69 0.085 148)`  | Hover on primary                        |
 | 700  | `oklch(0.635 0.08 148)`  | Active on primary, default title accent |
 | 800  | `oklch(0.54 0.07 148)`   | Dark accents                            |

@@ -38,11 +38,11 @@
 
   /* Primary scale (green — consolidates old primary + secondary-green) */
   --color-primary-50: oklch(0.975 0.02 148);
-  --color-primary-100: oklch(0.95 0.04 146);
-  --color-primary-200: oklch(0.91 0.06 144);
-  --color-primary-300: oklch(0.855 0.085 144);
-  --color-primary-400: oklch(0.79 0.095 144);
-  --color-primary-500: oklch(0.75 0.105 144);
+  --color-primary-100: oklch(0.95 0.04 148);
+  --color-primary-200: oklch(0.91 0.06 148);
+  --color-primary-300: oklch(0.855 0.085 148);
+  --color-primary-400: oklch(0.79 0.095 148);
+  --color-primary-500: oklch(0.75 0.105 148);
   --color-primary-600: oklch(0.69 0.085 148);
   --color-primary-700: oklch(0.635 0.08 148);
   --color-primary-800: oklch(0.54 0.07 148);
@@ -73,10 +73,9 @@
   --color-surface-footer: oklch(var(--surface-footer));
 
   /* Box shadow */
-  --shadow-customShadow: 0 45px 70.8px -48px rgba(0, 0, 0, 0.95);
+  --shadow-customShadow: 0 45px 70.8px -48px oklch(0 0 0 / 0.95);
   --inset-shadow-border-glow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    inset 0 1px 0 0 oklch(1 0 0 / 0.08), inset 0 0 0 1px oklch(1 0 0 / 0.05);
 
   /* Border radius */
   --radius-4xl: 28px;
@@ -124,12 +123,12 @@
   --card-foreground: 0.34 0.01 90;
   --primary: 0.72 0.11 148;
   --primary-foreground: 1 0 0;
-  --secondary: 0.955 0.025 85;
+  --secondary: 0.955 0.007 85;
   --secondary-foreground: 0.34 0.01 90;
   --muted: 0.91 0.025 80;
   --muted-foreground: 0.45 0.01 90;
   --accent: 0.855 0.085 144;
-  --accent-foreground: 0.54 0.07 148;
+  --accent-foreground: 0.45 0.07 148;
   --border: 1 0 0 / 0.12;
   --input: 0.91 0.025 80;
   --ring: 0.72 0.11 148;
@@ -164,9 +163,9 @@
   --ring: 0.68 0.1 148;
 
   /* Portfolio surfaces (dark mode) */
-  --surface-dark: 0.145 0 0;
-  --surface-dark-card: 0.105 0 0;
-  --surface-dark-elevated: 0.215 0 0;
+  --surface-dark: 0.165 0 0;
+  --surface-dark-card: 0.2 0 0;
+  --surface-dark-elevated: 0.25 0 0;
   --surface-dark-foreground: 0.97 0 0;
   --surface-dark-muted: 0.87 0 0;
   --surface-footer: 0.145 0 0;
@@ -175,8 +174,8 @@
 /* Always-dark surface lock — nav, footer, header overlay */
 .surface-lock-dark {
   --surface-dark: 0.145 0 0;
-  --surface-dark-card: 0.105 0 0;
-  --surface-dark-elevated: 0.215 0 0;
+  --surface-dark-card: 0.2 0 0;
+  --surface-dark-elevated: 0.25 0 0;
   --surface-dark-foreground: 0.97 0 0;
   --surface-dark-muted: 0.87 0 0;
   --surface-footer: 0.19 0 0;
