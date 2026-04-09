@@ -139,7 +139,7 @@ export function galleryItemToGridItem(item: GalleryItem): GridItem {
       intervalTime: item.intervalTime,
       roundedCorners: item.roundedCorners,
       order: item.order,
-      href: `/projects/${item.projectSlug}`,
+      href: `/work/project/${item.projectSlug}`,
       titleColor: item.titleColor,
       subtitleColor: item.subtitleColor,
       titleColorLight: item.titleColorLight,
@@ -159,6 +159,6 @@ export function galleryItemToGridItem(item: GalleryItem): GridItem {
     intervalTime: item.intervalTime,
     roundedCorners: item.roundedCorners,
     order: item.order,
-    href: `/ideas/${item.ideaSlug}`,
+    href: `/work/idea/${item.ideaSlug}`,
   };
 }

@@ -31,7 +31,7 @@ const IdeaNavigation: React.FC<IdeaNavigationProps> = ({ currentIdeaSlug }) => {
     >
       <div className="max-w-2xl mx-auto px-4 py-8 flex justify-between items-center">
         <Link
-          href={`/ideas/${prevIdea.ideaSlug}`}
+          href={`/work/idea/${prevIdea.ideaSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
@@ -59,7 +59,7 @@ const IdeaNavigation: React.FC<IdeaNavigationProps> = ({ currentIdeaSlug }) => {
         </Link>
 
         <Link
-          href={`/ideas/${nextIdea.ideaSlug}`}
+          href={`/work/idea/${nextIdea.ideaSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <div className="text-right">

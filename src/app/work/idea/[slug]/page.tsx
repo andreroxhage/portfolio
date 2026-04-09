@@ -10,10 +10,10 @@ const contentMap: Record<string, React.ComponentType> = {};
 export default function IdeaPage({
   params,
 }: {
-  params: Promise<{ ideaSlug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { ideaSlug } = use(params);
-  const idea = ideaRegistry.find(i => i.ideaSlug === ideaSlug);
+  const { slug } = use(params);
+  const idea = ideaRegistry.find(i => i.ideaSlug === slug);
 
   if (!idea) {
     return (
@@ -27,7 +27,7 @@ export default function IdeaPage({
     );
   }
 
-  const Content = contentMap[ideaSlug];
+  const Content = contentMap[slug];
 
   return (
     <motion.div
@@ -36,7 +36,7 @@ export default function IdeaPage({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
+      <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
         <motion.h1
           className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground"
           initial={{ opacity: 0 }}
@@ -72,7 +72,7 @@ export default function IdeaPage({
 
       <Suspense
         fallback={
-          <div className="max-w-2xl mx-auto px-4">
+          <div className="max-w-2.5xl mx-auto px-4">
             <div className="h-96 animate-pulse bg-muted rounded-xl corner-squircle" />
           </div>
         }
@@ -81,7 +81,7 @@ export default function IdeaPage({
           {Content ? (
             <Content />
           ) : (
-            <div className="max-w-2xl mx-auto px-4 text-muted-foreground py-20">
+            <div className="max-w-2.5xl mx-auto px-4 text-muted-foreground py-20">
               <p className="text-lg mb-4">
                 {idea.previewSubtitle || idea.subtitle}
               </p>
@@ -93,7 +93,7 @@ export default function IdeaPage({
         </div>
       </Suspense>
 
-      <IdeaNavigation currentIdeaSlug={ideaSlug} />
+      <IdeaNavigation currentIdeaSlug={slug} />
     </motion.div>
   );
 }

@@ -33,7 +33,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     >
       <div className="max-w-2xl mx-auto px-4 py-8 flex justify-between items-center">
         <Link
-          href={`/projects/${prevProject.projectSlug}`}
+          href={`/work/project/${prevProject.projectSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
@@ -66,7 +66,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
         </Link>
 
         <Link
-          href={`/projects/${nextProject.projectSlug}`}
+          href={`/work/project/${nextProject.projectSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <div className="text-right">

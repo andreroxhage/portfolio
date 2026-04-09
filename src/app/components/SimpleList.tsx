@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import { projectRegistry } from '@/app/data/projects';
 import { ideaRegistry } from '@/app/data/ideas';
 import { writingRegistry } from '@/app/data/writing';
 import { ListRow } from '@/app/components/ListRow';
+import Link from 'next/link';
 
 export function SimpleList() {
   const projects = [...projectRegistry].sort((a, b) => a.order - b.order);
@@ -10,28 +10,38 @@ export function SimpleList() {
   const writing = [...writingRegistry].sort((a, b) => a.order - b.order);
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-16">
+    <div className="max-w-2.5xl mx-auto px-4 py-24">
       {/* Profile header */}
-      <div className="flex items-center gap-3 mb-12 md:mb-24">
-        <Image
-          src="/resource/profileImage.jpg"
-          alt="André Roxhage"
-          width={56}
-          height={56}
-          className="rounded-full"
-        />
+      <div className="mb-12 md:mb-24">
         <div>
-          <p className="text-base font-medium text-foreground leading-snug">
+          <Link
+            href="/"
+            className="text-base font-medium text-foreground leading-snug"
+          >
             André Roxhage
-          </p>
+          </Link>
           <p className="text-base text-muted-foreground/90 leading-snug">
-            Design Engineer at Netlight Consulting
+            Design Engineer
           </p>
         </div>
       </div>
 
+      {/* About */}
+      <section className="md:mt-12 mt-8">
+        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-4 md:mb-6">
+          Today
+        </p>
+        <p className="text-base text-muted-foreground/90 leading-relaxed tracking-wide text-balance">
+          I&apos;m a design engineer at Netlight, blending software development
+          with design. I care about how products feel and impact us, and enjoy
+          making complex things feel simple. Most recently I led the redesign of
+          JoinCX&apos;s loyalty platform, turning customer data into data
+          analytics features.
+        </p>
+      </section>
+
       {/* Projects */}
-      <section>
+      <section className="md:mt-24 mt-16">
         <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
           Projects
         </p>
@@ -40,7 +50,7 @@ export function SimpleList() {
             key={p.projectSlug}
             title={p.title}
             description={p.subtitle}
-            href={`/projects/${p.projectSlug}`}
+            href={`/work/project/${p.projectSlug}`}
           />
         ))}
       </section>
@@ -56,7 +66,7 @@ export function SimpleList() {
               key={w.writingSlug}
               title={w.title}
               description={w.subtitle}
-              href={w.url ?? `/writing/${w.writingSlug}`}
+              href={w.url ?? `/work/writing/${w.writingSlug}`}
             />
           ))}
         </section>
@@ -72,7 +82,7 @@ export function SimpleList() {
             key={i.id}
             title={i.title}
             description={i.subtitle}
-            href={`/ideas/${i.ideaSlug}`}
+            href={`/work/idea/${i.ideaSlug}`}
           />
         ))}
       </section>

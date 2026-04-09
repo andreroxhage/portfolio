@@ -20,10 +20,10 @@ const contentMap: Record<string, React.ComponentType> = {
 export default function Page({
   params,
 }: {
-  params: Promise<{ projectSlug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { projectSlug } = use(params);
-  const project = projectRegistry.find(p => p.projectSlug === projectSlug);
+  const { slug } = use(params);
+  const project = projectRegistry.find(p => p.projectSlug === slug);
 
   if (!project) {
     return (
@@ -40,7 +40,7 @@ export default function Page({
     );
   }
 
-  const Content = contentMap[projectSlug];
+  const Content = contentMap[slug];
 
   return (
     <motion.div
@@ -63,14 +63,14 @@ export default function Page({
           {Content ? (
             <Content />
           ) : (
-            <div className="max-w-2xl mx-auto px-4 text-surface-dark-muted text-center py-20">
+            <div className="max-w-2.5xl mx-auto px-4 text-surface-dark-muted text-center py-20">
               Content coming soon.
             </div>
           )}
         </div>
       </Suspense>
 
-      <ProjectNavigation currentProjectSlug={projectSlug} />
+      <ProjectNavigation currentProjectSlug={slug} />
     </motion.div>
   );
 }

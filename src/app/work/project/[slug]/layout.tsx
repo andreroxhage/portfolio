@@ -31,7 +31,7 @@ const FadeFromProjectsParent: React.FC = () => {
     }
     try {
       const flag = sessionStorage.getItem('fromProjects');
-      if (flag === '1' && pathname?.startsWith('/projects/')) {
+      if (flag === '1' && pathname?.startsWith('/work/project/')) {
         setShouldFade(true);
       }
       sessionStorage.removeItem('fromProjects');

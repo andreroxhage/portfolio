@@ -15,11 +15,11 @@ const contentMap: Record<string, React.ComponentType> = {
 export default function WritingPage({
   params,
 }: {
-  params: Promise<{ writingSlug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { writingSlug } = use(params);
+  const { slug } = use(params);
   const reducedMotion = useReducedMotion();
-  const writing = writingRegistry.find(w => w.writingSlug === writingSlug);
+  const writing = writingRegistry.find(w => w.writingSlug === slug);
 
   if (!writing) {
     return (
@@ -33,7 +33,7 @@ export default function WritingPage({
     );
   }
 
-  const Content = contentMap[writingSlug];
+  const Content = contentMap[slug];
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ export default function WritingPage({
       animate={{ opacity: 1 }}
       transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
     >
-      <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
+      <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
         <motion.h1
           className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
@@ -69,7 +69,7 @@ export default function WritingPage({
 
       <Suspense
         fallback={
-          <div className="max-w-2xl mx-auto px-4">
+          <div className="max-w-2.5xl mx-auto px-4">
             <div className="h-96 animate-pulse bg-surface-dark-card rounded-xl corner-squircle" />
           </div>
         }
@@ -78,7 +78,7 @@ export default function WritingPage({
           {Content ? (
             <Content />
           ) : (
-            <div className="max-w-2xl mx-auto px-4 text-surface-dark-muted py-20">
+            <div className="max-w-2.5xl mx-auto px-4 text-surface-dark-muted py-20">
               <p className="text-lg mb-4">{writing.subtitle}</p>
               <p className="text-sm text-surface-dark-muted/60">
                 Content coming soon.
@@ -88,7 +88,7 @@ export default function WritingPage({
         </div>
       </Suspense>
 
-      <WritingNavigation currentWritingSlug={writingSlug} />
+      <WritingNavigation currentWritingSlug={slug} />
     </motion.div>
   );
 }

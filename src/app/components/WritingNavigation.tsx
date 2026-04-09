@@ -33,7 +33,7 @@ const WritingNavigation: React.FC<WritingNavigationProps> = ({
     >
       <div className="max-w-2xl mx-auto px-4 py-8 flex justify-between items-center">
         <Link
-          href={`/writing/${prevWriting.writingSlug}`}
+          href={`/work/writing/${prevWriting.writingSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2 }}>
@@ -63,7 +63,7 @@ const WritingNavigation: React.FC<WritingNavigationProps> = ({
         </Link>
 
         <Link
-          href={`/writing/${nextWriting.writingSlug}`}
+          href={`/work/writing/${nextWriting.writingSlug}`}
           className="group flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors"
         >
           <div className="text-right">
