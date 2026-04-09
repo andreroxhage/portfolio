@@ -1,22 +1,40 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import type { ProjectMeta } from '@/app/types';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 
 interface ProjectHeaderProps {
   project: ProjectMeta;
 }
 
 export default function ProjectHeader({ project }: ProjectHeaderProps) {
+  const reducedMotion = useReducedMotion();
+
+  const enterVariant = (delay: number) => ({
+    initial: { opacity: 0, y: 12 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: DURATION.SLOW,
+      ease: EASING.ENTER,
+      delay: reducedMotion ? 0 : delay,
+    },
+  });
+
   return (
     <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
       <motion.h1
         className="text-2xl md:text-3xl font-medium tracking-tight leading-tight"
-        style={{ color: project.titleColor || 'oklch(0.635 0.08 148)' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
+        style={
+          {
+            color: project.titleColor || 'oklch(0.635 0.08 148)',
+            textWrap: 'balance',
+          } as React.CSSProperties
+        }
+        {...enterVariant(0)}
       >
         {project.title}
       </motion.h1>
@@ -24,17 +42,23 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
       {project.date && (
         <motion.h3
           className="text-lg md:text-2xl font-normal opacity-80"
-          style={{ color: project.subtitleColor || 'oklch(0.45 0.01 90)' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
+          style={
+            {
+              color: project.subtitleColor || 'oklch(0.45 0.01 90)',
+              textWrap: 'balance',
+            } as React.CSSProperties
+          }
+          {...enterVariant(STAGGER.DELAY)}
         >
           {project.date}
         </motion.h3>
       )}
 
       {project.tags && project.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-2">
+        <motion.div
+          className="flex flex-wrap gap-2 mt-2"
+          {...enterVariant(STAGGER.DELAY * 2)}
+        >
           {project.tags.map(tag => (
             <Badge
               key={tag}
@@ -44,7 +68,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
               {tag}
             </Badge>
           ))}
-        </div>
+        </motion.div>
       )}
     </header>
   );

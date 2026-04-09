@@ -135,13 +135,23 @@ const GifDialogMobile = ({ item, isOpen, onClose }: GifDialogMobileProps) => {
     }
   }, [isOpen]);
 
+  const prefersReducedMotion = useReducedMotion();
+
   const dialogVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-    exit: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
+    },
+    exit: {
+      opacity: 0,
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : { duration: 0.12, ease: [0.4, 0, 1, 1] },
+    },
   };
-
-  const prefersReducedMotion = useReducedMotion();
 
   const contentVariants = {
     hidden: { scale: 0.95, opacity: 0 },
@@ -156,7 +166,13 @@ const GifDialogMobile = ({ item, isOpen, onClose }: GifDialogMobileProps) => {
             damping: 30,
           },
     },
-    exit: { scale: 0.95, opacity: 0 },
+    exit: {
+      scale: 0.98,
+      opacity: 0,
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : { duration: 0.15, ease: [0.4, 0, 1, 1] },
+    },
   };
 
   const identifier = item.videoIdentifier ?? item.id;

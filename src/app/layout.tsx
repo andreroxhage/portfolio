@@ -49,7 +49,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: FOIWT_SCRIPT }} />
       </head>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground antialiased">
         <ThemeProvider>
           <QueryProvider>
             <ProjectHoverProvider>

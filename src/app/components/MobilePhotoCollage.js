@@ -10,20 +10,26 @@ import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 export default function MobilePhotoCollage() {
   const reducedMotion = useReducedMotion();
 
-  const reveal = {
+  const baseReveal = {
     initial: reducedMotion ? { opacity: 1 } : { opacity: 0, translateY: 40 },
     whileInView: { opacity: 1, translateY: 0 },
-    transition: { duration: 0.5, ease: 'easeOut' },
     viewport: { once: true },
   };
+
+  const revealTransition = delaySeconds => ({
+    transition: reducedMotion
+      ? { duration: 0.01 }
+      : { duration: 0.5, ease: 'easeOut', delay: delaySeconds },
+  });
 
   return (
     <div className="md:hidden px-5 sm:px-6 pb-16 bg-background">
       <div className="max-w-7xl mx-auto flex flex-col gap-3">
         {/* Large hero image */}
         <motion.div
-          className="relative w-full aspect-[4/3] rounded-[20px] corner-squircle overflow-hidden"
-          {...reveal}
+          className="relative w-full aspect-[4/3] rounded-[20px] corner-squircle overflow-hidden image-depth-outline"
+          {...baseReveal}
+          {...revealTransition(0)}
         >
           <Image
             src={Picture1}
@@ -38,8 +44,9 @@ export default function MobilePhotoCollage() {
         {/* Two-up grid */}
         <div className="grid grid-cols-2 gap-3">
           <motion.div
-            className="relative aspect-[3/4] rounded-[20px] corner-squircle overflow-hidden"
-            {...reveal}
+            className="relative aspect-[3/4] rounded-[20px] corner-squircle overflow-hidden image-depth-outline"
+            {...baseReveal}
+            {...revealTransition(0.08)}
           >
             <Image
               src={Picture3}
@@ -51,8 +58,9 @@ export default function MobilePhotoCollage() {
             />
           </motion.div>
           <motion.div
-            className="relative aspect-[3/4] rounded-[20px] corner-squircle overflow-hidden"
-            {...reveal}
+            className="relative aspect-[3/4] rounded-[20px] corner-squircle overflow-hidden image-depth-outline"
+            {...baseReveal}
+            {...revealTransition(0.16)}
           >
             <Image
               src={Picture4}

@@ -1,10 +1,14 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { footerLinks } from '@/app/data/nav';
 import MagneticWrapper from '@/app/components/MagneticWrapper';
 import { links } from '@/app/data/nav';
 
+// Stagger delay per item — 80ms keeps total reveal under ~500ms for up to 6 items
+const STAGGER_DELAY = 0.08;
+
 export default function Footer() {
+  const shouldReduceMotion = useReducedMotion();
   const backgroundImage = '/resource/20220611-IMG_5691.jpg'; // 20220611-IMG_5691 or familjen.jpg
 
   return (
@@ -32,6 +36,8 @@ export default function Footer() {
                       href={'#header'}
                       aria-label="Scroll to top"
                     >
+                      {/* Arrow-up icons read slightly low when geometrically centered —
+                          lift 1px for optical balance */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -39,6 +45,7 @@ export default function Footer() {
                         strokeWidth={2}
                         stroke="currentColor"
                         className="w-6 h-6"
+                        style={{ transform: 'translateY(-1px)' }}
                       >
                         <path
                           strokeLinecap="round"
@@ -51,7 +58,10 @@ export default function Footer() {
                 </div>
                 <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-normal">
                   <div className="col-span-10 md:col-span-6 w-full">
-                    <span className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-8 col-span-3">
+                    <span
+                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-8 col-span-3"
+                      style={{ textWrap: 'balance' }}
+                    >
                       Connect
                       <hr className="h-0.5 pt-2 border-surface-dark-foreground md:zmr-12 my-3 sm:my-2" />
                     </span>
@@ -64,23 +74,27 @@ export default function Footer() {
                           key={i}
                           href={href}
                           className="col-start-8 col-span-3 flex items-center mb-3 sm:mb-2 text-lg md:text-xl text-surface-dark-foreground py-1 -ml-1 pl-1"
-                          whileHover={{
-                            color: 'oklch(var(--accent))',
-                            fill: 'oklch(var(--accent))',
-                            translateX: 10,
-                          }}
+                          whileHover={
+                            shouldReduceMotion
+                              ? {}
+                              : {
+                                  color: 'oklch(var(--accent))',
+                                  fill: 'oklch(var(--accent))',
+                                  translateX: 10,
+                                }
+                          }
                           whileTap={{ scale: 0.95 }}
                           initial={{
                             color: 'oklch(var(--surface-dark-foreground))',
                             fill: 'oklch(var(--surface-dark-foreground))',
-                            opacity: 0,
+                            opacity: shouldReduceMotion ? 1 : 0,
                             translateX: 0,
                           }}
                           viewport={{ once: true }}
                           whileInView={{
                             opacity: 1,
                             transition: {
-                              delay: 0.2 * i,
+                              delay: shouldReduceMotion ? 0 : STAGGER_DELAY * i,
                               duration: 0.4,
                               ease: 'easeInOut',
                             },
@@ -96,7 +110,10 @@ export default function Footer() {
                     })}
                   </div>
                   <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-12 sm:mt-14">
-                    <span className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-1 col-span-7">
+                    <span
+                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-1 col-span-7"
+                      style={{ textWrap: 'balance' }}
+                    >
                       Navigation
                       <hr className="h-0.5 pt-2 border-surface-dark-foreground w-full my-3 sm:my-2" />
                     </span>
@@ -107,23 +124,27 @@ export default function Footer() {
                           key={i}
                           href={href}
                           className="col-start-1 col-span-7 flex items-center mb-3 sm:mb-2 text-lg md:text-xl text-surface-dark-foreground py-1 -ml-1 pl-1"
-                          whileHover={{
-                            color: 'oklch(var(--accent))',
-                            fill: 'oklch(var(--accent))',
-                            translateX: 10,
-                          }}
+                          whileHover={
+                            shouldReduceMotion
+                              ? {}
+                              : {
+                                  color: 'oklch(var(--accent))',
+                                  fill: 'oklch(var(--accent))',
+                                  translateX: 10,
+                                }
+                          }
                           whileTap={{ scale: 0.95 }}
                           initial={{
                             color: 'oklch(var(--surface-dark-foreground))',
                             fill: 'oklch(var(--surface-dark-foreground))',
-                            opacity: 0,
+                            opacity: shouldReduceMotion ? 1 : 0,
                             translateX: 0,
                           }}
                           viewport={{ once: true }}
                           whileInView={{
                             opacity: 1,
                             transition: {
-                              delay: 0.2 * i,
+                              delay: shouldReduceMotion ? 0 : STAGGER_DELAY * i,
                               duration: 0.4,
                               ease: 'easeInOut',
                             },

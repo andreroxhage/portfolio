@@ -92,6 +92,41 @@
   --animate-aurora: aurora 60s linear infinite;
 }
 
+/* Image depth outline — 1px inset outline per blog post recommendation */
+.image-depth-outline {
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
+}
+:is(.dark) .image-depth-outline {
+  outline-color: oklch(1 0 0 / 0.1);
+}
+
+/* Soft edge shadow — replaces hard borders with layered transparent shadows */
+.shadow-soft-edge {
+  box-shadow:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+}
+.shadow-soft-edge-hover {
+  box-shadow:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.08),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+}
+:is(.dark) .shadow-soft-edge {
+  box-shadow:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.06),
+    0px 1px 2px -1px rgba(255, 255, 255, 0.04),
+    0px 2px 4px 0px rgba(255, 255, 255, 0.02);
+}
+:is(.dark) .shadow-soft-edge-hover {
+  box-shadow:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.08),
+    0px 2px 4px -1px rgba(255, 255, 255, 0.06),
+    0px 4px 8px 0px rgba(255, 255, 255, 0.04);
+}
+
 /* Keyframes */
 @keyframes shimmer {
   from {

@@ -14,7 +14,7 @@ export default function Home() {
       <AtWorkSection />
 
       {/* Personal Zone — warm light surface */}
-      <div className="hidden lg:block px-24 py-16 bg-linear-to-b from-background to-secondary">
+      <div className="hidden lg:block xl:px-12 lg:px-0 px-24 py-16 bg-linear-to-b from-background via-secondary to-secondary">
         <RecentProjects />
       </div>
       <ElsewhereSection />

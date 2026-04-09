@@ -1,15 +1,16 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { about } from '@/app/data/home';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import { DURATION, EASING } from '@/app/lib/motion';
+import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 
 export default function ElsewhereSection() {
   const reducedMotion = useReducedMotion();
   const duration = reducedMotion ? 0.01 : DURATION.SLOW;
 
-  const fadeUp = {
+  const makeVariant = (index: number) => ({
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
@@ -17,22 +18,10 @@ export default function ElsewhereSection() {
       transition: {
         duration,
         ease: EASING.ENTER,
+        delay: reducedMotion ? 0 : index * STAGGER.DELAY,
       },
     },
-  };
-
-  const fadeUpDelayed = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration,
-        ease: EASING.ENTER,
-        delay: reducedMotion ? 0 : 0.1,
-      },
-    },
-  };
+  });
 
   return (
     <section className="bg-secondary relative py-20 md:py-32">
@@ -40,7 +29,8 @@ export default function ElsewhereSection() {
         <div className="md:col-span-5 md:col-start-1">
           <motion.h2
             className="text-2xl md:text-4xl font-medium tracking-tight text-foreground pb-4"
-            variants={fadeUp}
+            style={{ textWrap: 'balance' } as React.CSSProperties}
+            variants={makeVariant(0)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -48,8 +38,8 @@ export default function ElsewhereSection() {
             {about[1].title}
           </motion.h2>
           <motion.p
-            className="text-base md:text-lg font-normal leading-relaxed text-muted-foreground"
-            variants={fadeUpDelayed}
+            className="text-base md:text-lg font-normal leading-relaxed text-foreground text-balance"
+            variants={makeVariant(1)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

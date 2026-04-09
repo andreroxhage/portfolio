@@ -1,6 +1,11 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 import { links, footerLinks } from '@/app/data/nav';
 import { useProjectHover } from '../../contexts/ProjectHoverContext';
 import { DURATION, EASING } from '@/app/lib/motion';
@@ -130,29 +135,47 @@ const FloatingNav = () => {
   };
 
   const navItemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: -8 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: DURATION.MEDIUM,
-        ease: EASING.ENTER,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            delay: i * 0.05,
+            duration: DURATION.MEDIUM,
+            ease: EASING.ENTER,
+          },
     }),
+    exit: {
+      opacity: 0,
+      y: -8,
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : { duration: DURATION.FAST, ease: EASING.EXIT },
+    },
   };
 
   const contactItemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: -8 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: links.length * 0.05 + 0.2 + i * 0.05, // Add delay after last nav item + buffer
-        duration: DURATION.MEDIUM,
-        ease: EASING.ENTER,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : {
+            delay: links.length * 0.05 + 0.2 + i * 0.05,
+            duration: DURATION.MEDIUM,
+            ease: EASING.ENTER,
+          },
     }),
+    exit: {
+      opacity: 0,
+      y: -8,
+      transition: prefersReducedMotion
+        ? { duration: 0.01 }
+        : { duration: DURATION.FAST, ease: EASING.EXIT },
+    },
   };
 
   const initialAppearance = {
@@ -290,37 +313,50 @@ const FloatingNav = () => {
                 )}
               </motion.div>
             </motion.span>
-            <motion.div className="flex items-center gap-1">
-              <motion.span
-                className={`text-surface-dark-foreground hover:text-accent text-base font-medium translate-y-px`}
-                animate={{ opacity: isExpanded ? 0 : 1 }}
-                transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
-              >
-                Find
-              </motion.span>
-              <motion.div className="translate-y-px relative w-6 h-6">
-                {/* X Icon */}
-                <motion.svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className={`text-surface-dark-foreground hover:text-accent absolute size-6 mt-1 mr-4`}
-                  animate={{
-                    opacity: isExpanded ? 1 : 0,
-                    scale: isExpanded ? 1 : 0.8,
-                  }}
-                  transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18 18 6M6 6l12 12"
-                  />
-                </motion.svg>
-              </motion.div>
-            </motion.div>
+            <div className="flex items-center gap-1">
+              <AnimatePresence mode="wait" initial={false}>
+                {!isExpanded ? (
+                  <motion.span
+                    key="find-label"
+                    className="text-surface-dark-foreground hover:text-accent text-base font-medium translate-y-px pr-5"
+                    initial={
+                      prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
+                    }
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={
+                      prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
+                    }
+                    transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
+                  >
+                    Find
+                  </motion.span>
+                ) : (
+                  <motion.svg
+                    key="close-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="text-surface-dark-foreground hover:text-accent size-6 translate-y-px"
+                    initial={
+                      prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
+                    }
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={
+                      prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
+                    }
+                    transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </motion.svg>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           <motion.div

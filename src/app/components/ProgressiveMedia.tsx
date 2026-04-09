@@ -44,7 +44,7 @@ export function ProgressiveMedia({
   return (
     <div
       className={cn(
-        'relative overflow-hidden',
+        'relative overflow-hidden image-depth-outline',
         rounded && 'rounded-[20px] corner-squircle',
         className
       )}

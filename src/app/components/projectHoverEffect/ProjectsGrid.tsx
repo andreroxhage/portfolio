@@ -15,6 +15,7 @@ import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardD
 import { useVideo } from '@/app/hooks/useVideo';
 import { motion, AnimatePresence } from 'framer-motion';
 import ImageFader from '../ImageFader';
+import { STAGGER } from '@/app/lib/motion';
 
 interface ProjectGridProps {
   items?: GridItem[];
@@ -48,16 +49,27 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
           className="md:col-span-5 flex flex-col gap-6 justify-center"
           layout
         >
-          {allItems.map(item => {
+          {allItems.map((item, index) => {
             const isExpanded = expandedItemId === item.id;
 
             return (
-              <ProjectCardDesktop
+              <motion.div
                 key={item.id}
-                item={item}
-                isExpanded={isExpanded}
-                onClick={() => handleCardClick(item.id)}
-              />
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.4, 0, 0.2, 1],
+                  delay: index * STAGGER.DELAY,
+                }}
+              >
+                <ProjectCardDesktop
+                  item={item}
+                  isExpanded={isExpanded}
+                  onClick={() => handleCardClick(item.id)}
+                />
+              </motion.div>
             );
           })}
         </motion.div>
@@ -125,16 +137,28 @@ const RightPreviewPanel = ({
           {showPanel && (
             <motion.div
               key={identifier}
-              className={`relative ${roundingClass} overflow-hidden ${
+              className={`relative overflow-hidden image-depth-outline ${roundingClass} ${
                 hasPoster && !hasImageFader ? 'w-full h-full' : ''
               }`}
-              initial={{ opacity: 0, y: -64 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 64 }}
-              transition={{
-                duration: isFirstLoad ? 0.6 : 0.5,
-                ease: easings.videoTransition,
+              variants={{
+                enter: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: isFirstLoad ? 0.6 : 0.5,
+                    ease: easings.videoTransition,
+                  },
+                },
+                initial: { opacity: 0, y: -64 },
+                exit: {
+                  opacity: 0,
+                  y: 16,
+                  transition: { duration: 0.3, ease: easings.videoTransition },
+                },
               }}
+              initial="initial"
+              animate="enter"
+              exit="exit"
               style={hasPoster && !hasImageFader ? undefined : sharedStyle}
             >
               {hasImageFader ? (

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -62,7 +64,11 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         whileTap={{ scale: BUTTON_PRESS_SCALE }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="bg-surface-dark-card border border-surface-dark-foreground/10 rounded-[50px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 overflow-hidden w-fit"
+        className="bg-surface-dark-card rounded-[50px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 overflow-hidden w-fit"
+        style={{
+          boxShadow:
+            'inset 0 1px 0 0 oklch(1 0 0 / 0.08), inset 0 0 0 1px oklch(1 0 0 / 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 1px 2px -1px rgba(0, 0, 0, 0.04), 0px 2px 4px 0px rgba(0, 0, 0, 0.02)',
+        }}
       >
         {/* Collapsed Content - Hidden when expanded */}
         <motion.div
@@ -123,7 +129,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                 {(item.previewSubtitle || item.subtitle) && (
                   <>
                     .{' '}
-                    <span className="text-base md:text-lg font-thin text-surface-dark-foreground">
+                    <span className="text-base md:text-lg font-thin text-surface-dark-foreground text-balance">
                       {item.previewSubtitle || item.subtitle}
                     </span>
                   </>
@@ -141,18 +147,21 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                 >
                   <Link
                     href={item.href}
-                    className="text-sm text-surface-dark-foreground hover:text-accent-foreground transition-colors duration-200 flex items-center gap-2"
+                    className="text-sm text-surface-dark-foreground hover:text-accent-foreground transition-colors duration-200 flex items-center gap-2 pr-[calc(theme(spacing.4)-2px)]"
                     onClick={e => e.stopPropagation()}
                   >
                     View Project{' '}
                     <motion.span
                       aria-hidden
+                      initial={{ opacity: 0, x: -4 }}
                       animate={{
-                        x: isExpanded && item.href && isHovering ? 4 : 0,
+                        opacity: isExpanded ? 1 : 0,
+                        x: isExpanded && isHovering ? 4 : isExpanded ? 0 : -4,
                       }}
                       transition={{
                         duration: prefersReducedMotion ? 0.01 : DURATION.FAST,
                         ease: EASING.ENTER,
+                        delay: isExpanded ? 0.42 : 0,
                       }}
                       style={{ display: 'inline-block' }}
                     >

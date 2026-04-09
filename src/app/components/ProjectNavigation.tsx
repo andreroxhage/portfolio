@@ -43,7 +43,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 text-foreground group-hover:text-foreground group-hover:scale-110 transition-all duration-300"
+              className="size-6 text-foreground group-hover:text-foreground group-hover:scale-110 transition-all duration-300 mr-[-2px]"
             >
               <path
                 strokeLinecap="round"
@@ -84,7 +84,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 text-foreground group-hover:text-foreground group-hover:scale-110 transition-all duration-300"
+            className="size-6 text-foreground group-hover:text-foreground group-hover:scale-110 transition-all duration-300 ml-[-2px]"
           >
             <path
               strokeLinecap="round"
