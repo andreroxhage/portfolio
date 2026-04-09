@@ -34,9 +34,7 @@ export function SimpleList() {
         <p className="text-base text-muted-foreground/90 leading-relaxed tracking-wide text-balance">
           I&apos;m a design engineer at Netlight, blending software development
           with design. I care about how products feel and impact us, and enjoy
-          making complex things feel simple. Most recently I led the redesign of
-          JoinCX&apos;s loyalty platform, turning customer data into data
-          analytics features.
+          making complex things feel simple.
         </p>
       </section>
 
