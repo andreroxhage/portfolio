@@ -44,6 +44,8 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <ProjectImage
           src="/resource/projects/p1.jpg"
           alt="Microsoft Teams calendar interface"
+          width={4032}
+          height={3024}
         />
       </WideSection>
 
@@ -161,6 +163,9 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <ProjectImage
           src="/resource/projects/p1screenshot.jpg"
           alt="Microsoft Teams Calendar Interface"
+          width={1920}
+          height={1032}
+          rounded={false}
         />
       </WideSection>
 
@@ -209,10 +214,12 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <ProjectImage
           src="/resource/projects/p1_plot_satisfaction.png"
           alt="Satisfaction Ratings"
+          rounded={false}
         />
         <ProjectImage
           src="/resource/projects/p1_plot_time_realize.png"
           alt="Feedback Clarity During Connection Issues"
+          rounded={false}
         />
       </WideSection>
 

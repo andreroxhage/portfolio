@@ -1,29 +1,26 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, type ReactNode } from 'react';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { useTheme } from '@/app/contexts/ThemeContext';
-import { createWaveScene } from './createScene';
+import { createOceanScene } from './createOceanScene';
 
-// Line colors per theme (RGB 0-1)
 const COLORS = {
   dark: [1.0, 1.0, 1.0] as const,
-  light: [0.25, 0.24, 0.23] as const, // warm dark neutral matching neutral-800
+  light: [0.25, 0.24, 0.23] as const,
 };
 
-interface WebGLCanvasProps {
-  onReady?: () => void;
+interface OceanTransitionProps {
+  children?: ReactNode;
 }
 
-export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
+export function OceanTransition({ children }: OceanTransitionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const sceneRef = useRef<ReturnType<typeof createWaveScene> | null>(null);
+  const sceneRef = useRef<ReturnType<typeof createOceanScene> | null>(null);
   const rafIdRef = useRef<number>(0);
   const isRunningRef = useRef(false);
   const webglFailedRef = useRef(false);
-  const onReadyRef = useRef(onReady);
-  onReadyRef.current = onReady;
 
   const prefersReducedMotion = useReducedMotion();
   const { resolvedTheme } = useTheme();
@@ -31,7 +28,6 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const isDark = resolvedTheme === 'dark';
 
-  // Update line color when theme changes
   useEffect(() => {
     if (!sceneRef.current) {
       return;
@@ -40,21 +36,20 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
     sceneRef.current.setColor(r, g, b);
   }, [isDark]);
 
-  // --- Animation loop — only runs when visible ---
   const startLoop = useCallback(() => {
     if (isRunningRef.current) {
       return;
     }
     isRunningRef.current = true;
 
-    function tick() {
+    const tick = () => {
       if (!isRunningRef.current || !sceneRef.current) {
         return;
       }
       const time = performance.now() * 0.001;
       sceneRef.current.render(time);
       rafIdRef.current = requestAnimationFrame(tick);
-    }
+    };
     rafIdRef.current = requestAnimationFrame(tick);
   }, []);
 
@@ -70,9 +65,8 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
       return;
     }
 
-    // --- Create scene ---
     try {
-      const scene = createWaveScene(canvas, isMobile);
+      const scene = createOceanScene(canvas, isMobile);
       const [r, g, b] = isDark ? COLORS.dark : COLORS.light;
       scene.setColor(r, g, b);
       sceneRef.current = scene;
@@ -81,17 +75,15 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
       return;
     }
 
-    // Signal ready and fade in canvas immediately after scene creation
     container.style.opacity = '1';
-    onReadyRef.current?.();
 
-    // Reduced motion: render one static frame and stop
+    // Reduced motion: render one static frame
     if (prefersReducedMotion) {
-      sceneRef.current.render(4.0); // fixed time for a nice wave shape
+      sceneRef.current.render(6.0);
 
       const onResizeStatic = () => {
         sceneRef.current?.resize();
-        sceneRef.current?.render(4.0);
+        sceneRef.current?.render(6.0);
       };
       window.addEventListener('resize', onResizeStatic);
 
@@ -102,7 +94,7 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
       };
     }
 
-    // --- IntersectionObserver: start/stop rAF loop ---
+    // Animated: start/stop based on visibility
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -115,40 +107,36 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
     );
     observer.observe(container);
 
-    // --- Visibility change (tab hidden) ---
-    function onVisibilityChange() {
+    const onVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
         stopLoop();
       }
-    }
+    };
     document.addEventListener('visibilitychange', onVisibilityChange);
 
-    // --- Resize (immediate to prevent black flash) ---
-    function onResize() {
+    const onResize = () => {
       sceneRef.current?.resize();
-    }
+    };
     window.addEventListener('resize', onResize);
 
-    // --- WebGL context loss / restore ---
-    function onContextLost(e: Event) {
+    const onContextLost = (e: Event) => {
       e.preventDefault();
       stopLoop();
-    }
-    function onContextRestored() {
+    };
+    const onContextRestored = () => {
       if (!canvas) {
         return;
       }
       try {
-        sceneRef.current = createWaveScene(canvas, isMobile);
+        sceneRef.current = createOceanScene(canvas, isMobile);
         startLoop();
       } catch {
         webglFailedRef.current = true;
       }
-    }
+    };
     canvas.addEventListener('webglcontextlost', onContextLost);
     canvas.addEventListener('webglcontextrestored', onContextRestored);
 
-    // --- Cleanup ---
     return () => {
       stopLoop();
       window.removeEventListener('resize', onResize);
@@ -162,22 +150,32 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
   }, [prefersReducedMotion, startLoop, stopLoop, isMobile, isDark]);
 
   if (webglFailedRef.current) {
-    return null;
+    return <>{children}</>;
   }
 
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 z-0 overflow-hidden transition-opacity duration-500 ease-out"
-      style={{ opacity: 0 }}
-      aria-hidden="true"
-    >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-      />
-      {/* Bottom fade — smooth transition to next section */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+    <div className="relative min-h-[75vh]">
+      {/* WebGL canvas layer */}
+      <div
+        ref={containerRef}
+        className="absolute inset-0 z-0 overflow-hidden transition-opacity duration-500 ease-out"
+        style={{ opacity: 0 }}
+        aria-hidden="true"
+      >
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full pointer-events-none"
+        />
+        {/* Top fade-in */}
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-secondary to-transparent pointer-events-none" />
+        {/* Bottom fade-out */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-secondary to-transparent pointer-events-none" />
+      </div>
+
+      {/* Content overlay (ElsewhereSection) */}
+      <div className="relative z-10 flex items-center min-h-[75vh]">
+        {children}
+      </div>
     </div>
   );
 }

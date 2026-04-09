@@ -12,7 +12,8 @@ import { ideas } from '@/app/data/ideas';
 import { GridItem, galleryItemToGridItem } from '@/app/types';
 import type { GalleryItem } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
-import { useVideo } from '@/app/hooks/useVideo';
+import { useVideo, prefetchVideo } from '@/app/hooks/useVideo';
+import { useQueryClient } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
 import ImageFader from '../ImageFader';
 import { STAGGER } from '@/app/lib/motion';
@@ -33,6 +34,17 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
   }, [itemsProp]);
 
   const firstItem = allItems[0];
+
+  // Prefetch all video URLs so they're cached before the user clicks
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    allItems.forEach(item => {
+      const id = item.videoIdentifier ?? item.id;
+      if (id && !item.imageFader?.length) {
+        prefetchVideo(queryClient, id);
+      }
+    });
+  }, [allItems, queryClient]);
 
   const [expandedItemId, setExpandedItemId] = useState<string | null>(
     firstItem?.id ?? null
@@ -112,9 +124,7 @@ const RightPreviewPanel = ({
   }, [videoUrl, prevVideoUrl]);
 
   const hasImageFader = item?.imageFader && item.imageFader.length > 0;
-  const hasPoster = !!item?.posterImage;
-  const showPanel =
-    isActive && !!identifier && (!!videoUrl || hasImageFader || hasPoster);
+  const showPanel = isActive && !!identifier && (!!videoUrl || hasImageFader);
   const shouldRound = item?.roundedCorners !== false;
 
   const easings = {
@@ -135,78 +145,58 @@ const RightPreviewPanel = ({
       <div className="sticky top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
         <AnimatePresence mode="wait">
           {showPanel && (
-            <motion.div
-              key={identifier}
-              className={`relative overflow-hidden image-depth-outline ${roundingClass} ${
-                hasPoster && !hasImageFader ? 'w-full h-full' : ''
-              }`}
-              variants={{
-                enter: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
+            <>
+              {hasImageFader ? (
+                <motion.div
+                  key={identifier}
+                  className={`overflow-hidden ${roundingClass}`}
+                  initial={{ opacity: 0, y: -64 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 16 }}
+                  transition={{
                     duration: isFirstLoad ? 0.6 : 0.5,
                     ease: easings.videoTransition,
-                  },
-                },
-                initial: { opacity: 0, y: -64 },
-                exit: {
-                  opacity: 0,
-                  y: 16,
-                  transition: { duration: 0.3, ease: easings.videoTransition },
-                },
-              }}
-              initial="initial"
-              animate="enter"
-              exit="exit"
-              style={hasPoster && !hasImageFader ? undefined : sharedStyle}
-            >
-              {hasImageFader ? (
-                <ImageFader
-                  images={item!.imageFader!.map(src => src)}
-                  intervalTime={item!.intervalTime || 5000}
-                />
+                  }}
+                  style={sharedStyle}
+                >
+                  <ImageFader
+                    images={item!.imageFader!.map(src => src)}
+                    intervalTime={item!.intervalTime || 5000}
+                  />
+                </motion.div>
               ) : (
-                <>
-                  {/* Poster image — visible until video is playing */}
-                  {hasPoster && (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img
-                      src={item!.posterImage!}
-                      alt={item?.imageAlt || item?.title || ''}
-                      className={`absolute inset-0 w-full h-full object-contain shadow-xl ${roundingClass} transition-opacity duration-300 ${
-                        videoReady ? 'opacity-0' : 'opacity-100'
-                      }`}
-                    />
-                  )}
-
-                  {/* Video — layered on top, fades in when ready */}
-                  {videoUrl && (
-                    <video
-                      ref={videoRef}
-                      src={videoUrl}
-                      className={`shadow-xl transition-opacity duration-300 ${
-                        videoReady ? 'opacity-100' : 'opacity-0'
-                      } ${hasPoster ? `absolute inset-0 w-full h-full object-contain ${roundingClass}` : roundingClass}`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="auto"
-                      onLoadedData={() => {
-                        const v = videoRef.current;
-                        if (v) {
-                          v.play()
-                            .then(() => setVideoReady(true))
-                            .catch(() => setVideoReady(true));
-                        }
-                      }}
-                      style={!hasPoster ? sharedStyle : undefined}
-                    />
-                  )}
-                </>
+                videoUrl && (
+                  <motion.video
+                    key={identifier}
+                    ref={videoRef}
+                    src={videoUrl}
+                    poster={item?.posterImage}
+                    className={`${roundingClass} ${!videoReady ? 'video-shimmer' : ''}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    initial={{ opacity: 0, y: -64 }}
+                    animate={{ opacity: videoReady ? 1 : 0, y: 0 }}
+                    exit={{ opacity: 0, y: 16 }}
+                    transition={{
+                      duration: isFirstLoad ? 0.6 : 0.5,
+                      ease: easings.videoTransition,
+                    }}
+                    onLoadedData={() => {
+                      const v = videoRef.current;
+                      if (v) {
+                        v.play()
+                          .then(() => setVideoReady(true))
+                          .catch(() => setVideoReady(true));
+                      }
+                    }}
+                    style={sharedStyle}
+                  />
+                )
               )}
-            </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>

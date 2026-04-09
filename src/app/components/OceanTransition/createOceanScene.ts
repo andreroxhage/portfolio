@@ -1,9 +1,9 @@
 import * as THREE from 'three';
-import { vertexShader, fragmentShader } from './shaders';
+import { vertexShader, fragmentShader } from '../WebGLCanvas/shaders';
 
-export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
-  const lineCount = isMobile ? 50 : 90;
-  const pointsPerLine = isMobile ? 150 : 300;
+export function createOceanScene(canvas: HTMLCanvasElement, isMobile: boolean) {
+  const lineCount = isMobile ? 60 : 120;
+  const pointsPerLine = isMobile ? 150 : 350;
 
   // --- Renderer ---
   const renderer = new THREE.WebGLRenderer({
@@ -12,25 +12,25 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
     antialias: !isMobile,
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
-  // --- Camera (perspective for topographic depth) ---
+  // --- Camera (high helicopter view looking down at ocean) ---
   const camera = new THREE.PerspectiveCamera(
-    58,
-    window.innerWidth / window.innerHeight,
+    50,
+    canvas.clientWidth / canvas.clientHeight,
     0.1,
     100
   );
-  camera.position.set(0, 5, 9);
-  camera.lookAt(0, 0, -6);
+  camera.position.set(0, 14, 4);
+  camera.lookAt(0, 0, -8);
 
   // --- Scene ---
   const scene = new THREE.Scene();
 
-  // --- Geometry: horizontal-only lines receding in Z ---
-  const zNear = 5;
+  // --- Geometry: wide field of horizontal lines seen from above ---
+  const zNear = 8;
   const zFar = -35;
-  const xSpread = 20;
+  const xSpread = 30;
 
   const totalPoints = lineCount * pointsPerLine;
   const positions = new Float32Array(totalPoints * 3);
@@ -58,7 +58,7 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
     new THREE.BufferAttribute(lineIndices, 1)
   );
 
-  // Line segment indices — horizontal pairs only, NO vertical connections
+  // Horizontal pairs only — NO vertical connections
   const lineSegmentIndices: number[] = [];
   for (let line = 0; line < lineCount; line++) {
     const lineStart = line * pointsPerLine;
@@ -68,13 +68,13 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
   }
   geometry.setIndex(lineSegmentIndices);
 
-  // --- Uniforms ---
+  // --- Uniforms (ocean-tuned: tighter waves, stronger fog) ---
   const uniforms = {
     uTime: { value: 0 },
-    uAmplitude: { value: 0.5 },
+    uAmplitude: { value: 0.45 },
     uColor: { value: new THREE.Vector3(1.0, 1.0, 1.0) },
-    uFogNear: { value: 3.0 },
-    uFogFar: { value: 38.0 },
+    uFogNear: { value: 6.0 },
+    uFogFar: { value: 40.0 },
     uLineCount: { value: lineCount },
   };
 
@@ -91,16 +91,14 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
   const mesh = new THREE.LineSegments(geometry, material);
   scene.add(mesh);
 
-  // --- Render function ---
   function render(time: number) {
     uniforms.uTime.value = time;
     renderer.render(scene, camera);
   }
 
-  // --- Resize handler ---
   function resize() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
     if (width === 0 || height === 0) {
       return;
     }
@@ -111,7 +109,6 @@ export function createWaveScene(canvas: HTMLCanvasElement, isMobile: boolean) {
     renderer.setSize(width, height);
   }
 
-  // --- Dispose ---
   function dispose() {
     geometry.dispose();
     material.dispose();

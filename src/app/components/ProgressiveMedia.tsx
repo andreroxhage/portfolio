@@ -14,8 +14,10 @@ interface ProgressiveMediaProps {
   videoSrc?: string;
   aspectRatio?: string;
   rounded?: boolean;
+  outline?: boolean;
   priority?: boolean;
   className?: string;
+  objectFit?: 'contain' | 'cover';
 }
 
 const CROSSFADE_DURATION = 300;
@@ -29,8 +31,10 @@ export function ProgressiveMedia({
   videoSrc,
   aspectRatio,
   rounded = true,
+  outline = true,
   priority = false,
   className,
+  objectFit = 'contain',
 }: ProgressiveMediaProps) {
   const [videoReady, setVideoReady] = useState(false);
   const reducedMotion = useReducedMotion();
@@ -41,10 +45,43 @@ export function ProgressiveMedia({
     videoSrc ?? (videoIdentifier ? fetchedVideoUrl : undefined);
   const hasVideo = !!resolvedVideoSrc && !reducedMotion;
 
+  // When a video is expected, skip the poster image entirely and let the
+  // video element size the container to its native aspect ratio.
+  // The native poster attribute shows the poster image instantly at the
+  // video's intrinsic size, eliminating aspect-ratio mismatch.
+  if (hasVideo) {
+    return (
+      <div
+        className={cn(
+          'relative w-full overflow-hidden',
+          rounded && 'rounded-[20px] corner-squircle',
+          !videoReady && 'video-shimmer',
+          className
+        )}
+      >
+        <video
+          src={resolvedVideoSrc}
+          poster={imageSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          onCanPlay={() => setVideoReady(true)}
+          className={cn('w-full', rounded && 'rounded-[20px] corner-squircle')}
+          style={{
+            opacity: videoReady ? 1 : 0,
+            transition: TRANSITION,
+          }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
-        'relative overflow-hidden image-depth-outline',
+        'relative w-full overflow-hidden',
+        outline && 'image-depth-outline',
         rounded && 'rounded-[20px] corner-squircle',
         className
       )}
@@ -54,29 +91,10 @@ export function ProgressiveMedia({
         src={imageSrc}
         alt={imageAlt}
         fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority={priority}
-        className="object-cover"
-        style={{
-          opacity: videoReady ? 0 : 1,
-          transition: TRANSITION,
-        }}
+        className={objectFit === 'cover' ? 'object-cover' : 'object-contain'}
       />
-
-      {hasVideo && (
-        <video
-          src={resolvedVideoSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
-          onCanPlay={() => setVideoReady(true)}
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{
-            opacity: videoReady ? 1 : 0,
-            transition: TRANSITION,
-          }}
-        />
-      )}
     </div>
   );
 }

@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { about } from '@/app/data/home';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
-import OceanWave from '@/app/components/OceanWave';
 
 export default function ElsewhereSection() {
   const reducedMotion = useReducedMotion();
@@ -25,9 +24,9 @@ export default function ElsewhereSection() {
   });
 
   return (
-    <section className="bg-secondary relative py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 grid grid-cols-1 md:grid-cols-10 gap-8">
-        <div className="md:col-span-5 md:col-start-1">
+    <section className="w-full py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
+        <div className="max-w-2xl">
           <motion.h2
             className="text-2xl md:text-4xl font-medium tracking-tight text-foreground pb-4"
             style={{ textWrap: 'balance' } as React.CSSProperties}
@@ -39,7 +38,7 @@ export default function ElsewhereSection() {
             {about[1].title}
           </motion.h2>
           <motion.p
-            className="text-base md:text-lg font-normal leading-relaxed text-foreground text-balance"
+            className="text-base md:text-lg font-normal leading-relaxed text-muted-foreground text-balance"
             variants={makeVariant(1)}
             initial="hidden"
             whileInView="visible"
@@ -47,11 +46,6 @@ export default function ElsewhereSection() {
           >
             {about[1].description}
           </motion.p>
-        </div>
-
-        {/* Wave animation column */}
-        <div className="hidden md:flex md:col-span-5 items-end justify-center h-48">
-          <OceanWave />
         </div>
       </div>
     </section>

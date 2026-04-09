@@ -9,7 +9,7 @@ export const ideaRegistry: IdeaMeta[] = [
     previewSubtitle:
       'Museum maps are flat and confusing. This concept reimagines wayfinding with an interactive 3D navigator that helps visitors explore exhibits spatially',
     date: '2025',
-    posterImage: '/resource/projects/i2.png',
+    posterImage: '/resource/projects/i2_poster.jpg',
     tags: ['Concept', 'Spatial UX', '3D'],
     order: 6,
     type: 'idea',
@@ -23,7 +23,7 @@ export const ideaRegistry: IdeaMeta[] = [
     previewSubtitle:
       "Knowing whether you're overtrained or ready for a workout shouldn't be a guess. This SwiftUI project uses HRV data from Apple Health to help you understand your body's response to stress and activity",
     date: '2025',
-    posterImage: '/resource/projects/i3.png',
+    posterImage: '/resource/projects/i3_poster.jpg',
     tags: ['iOS', 'SwiftUI', 'Health Tech'],
     order: 3,
     type: 'idea',

@@ -8,7 +8,6 @@ import teknikfokus1 from '../../../public/resource/work/teknikfokus1.jpg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { VoluntaryProjects } from '@/app/data/home';
-import ScrollScaleWrapper from '../components/ScrollScaleWrapper';
 
 export default function VoluntaryWork() {
   return (
@@ -27,11 +26,7 @@ export default function VoluntaryWork() {
       <div className="h-fit md:pt-0 flex-row items-center relative">
         <div className="mx-auto h-full grid grid-cols-10 text-2xl text-muted-foreground items-center">
           <motion.div className="px-5 sm:px-6 md:px-0 col-start-1 md:col-span-5 col-span-10 relative mb-10 sm:mb-12 md:mb-0">
-            <ScrollScaleWrapper
-              scaleFrom={0.8}
-              scaleTo={1.1}
-              className="w-1/3 absolute top-[16%] left-[22%] z-20 hidden md:block"
-            >
+            <div className="w-1/3 absolute top-[16%] left-[22%] z-20 hidden md:block">
               <Image
                 src={karneval1}
                 alt="image description"
@@ -42,12 +37,8 @@ export default function VoluntaryWork() {
                   height: 'auto',
                 }}
               />
-            </ScrollScaleWrapper>
-            <ScrollScaleWrapper
-              scaleFrom={0.78}
-              scaleTo={1.12}
-              className="w-1/3 absolute top-[42%] left-[42%] z-30 hidden md:block"
-            >
+            </div>
+            <div className="w-1/3 absolute top-[42%] left-[42%] z-30 hidden md:block">
               <Image
                 src={karneval2}
                 alt="image description"
@@ -58,7 +49,7 @@ export default function VoluntaryWork() {
                   height: 'auto',
                 }}
               />
-            </ScrollScaleWrapper>
+            </div>
 
             <Image
               className="w-full rounded-[2px] corner-squircle"
@@ -150,11 +141,7 @@ export default function VoluntaryWork() {
             </div>
           </motion.div>
           <motion.div className="px-5 sm:px-6 md:px-0 col-start-6 col-span-5 relative mb-10 sm:mb-12 md:mb-0">
-            <ScrollScaleWrapper
-              scaleFrom={0.8}
-              scaleTo={1.1}
-              className="w-1/3 absolute top-1/3 left-1/3 z-20 hidden md:block"
-            >
+            <div className="w-1/3 absolute top-1/3 left-1/3 z-20 hidden md:block">
               <Image
                 src={teknikfokus1}
                 alt="image description"
@@ -165,7 +152,7 @@ export default function VoluntaryWork() {
                   height: 'auto',
                 }}
               />
-            </ScrollScaleWrapper>
+            </div>
 
             <Image
               className="w-full rounded-[2px] corner-squircle"

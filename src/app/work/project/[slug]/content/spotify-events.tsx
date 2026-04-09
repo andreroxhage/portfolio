@@ -97,11 +97,11 @@ export default function SpotifyEventsContent() {
       <WideSection className="mb-20">
         <ProgressiveMedia
           videoIdentifier="spotify-events"
-          imageSrc="/resource/projects/p4_d_a.png"
+          imageSrc="/resource/projects/p4_poster.jpg"
           imageAlt="Spotify Events prototype showing event invitation screen"
           aspectRatio="9/16"
           rounded
-          className="w-full max-h-[700px] mx-auto"
+          className="max-w-sm mx-auto"
         />
       </WideSection>
 
@@ -192,6 +192,9 @@ export default function SpotifyEventsContent() {
           <ProjectImage
             src="/resource/projects/p4_methods.svg"
             alt="Methods used for sending invitations"
+            width={716}
+            height={404}
+            rounded={false}
           />
         </div>
 
@@ -229,10 +232,16 @@ export default function SpotifyEventsContent() {
         <ProjectImage
           src="/resource/projects/p4_music.svg"
           alt="Music interest survey results"
+          width={571}
+          height={376}
+          rounded={false}
         />
         <ProjectImage
           src="/resource/projects/p4_music_how.svg"
           alt="How music integration would work"
+          width={716}
+          height={440}
+          rounded={false}
         />
       </WideSection>
 
@@ -294,7 +303,9 @@ export default function SpotifyEventsContent() {
         <ProjectImage
           src="/resource/projects/p4_persona.png"
           alt="Persona Kate"
-          size="xl"
+          width={1748}
+          height={1438}
+          rounded={false}
         />
       </WideSection>
 
@@ -313,6 +324,9 @@ export default function SpotifyEventsContent() {
           <ProjectImage
             src="/resource/projects/p4_lofi.png"
             alt="Lo-fi wireframes of the Spotify Events prototype"
+            width={1753}
+            height={868}
+            rounded={false}
           />
         </div>
 
@@ -341,7 +355,9 @@ export default function SpotifyEventsContent() {
         <ProjectImage
           src="/resource/projects/p4_flow.svg"
           alt="User flow diagram for the Spotify Events feature"
-          size="xl"
+          width={2527}
+          height={1592}
+          rounded={false}
         />
       </WideSection>
 
@@ -364,7 +380,9 @@ export default function SpotifyEventsContent() {
         <ProjectImage
           src="/resource/projects/p4_table.svg"
           alt="Table of functions and user goal mapping and prioritization"
-          size="xl"
+          width={1385}
+          height={672}
+          rounded={false}
         />
       </WideSection>
 
@@ -405,7 +423,9 @@ export default function SpotifyEventsContent() {
         <ProjectImage
           src="/resource/projects/p4_d_a.png"
           alt="Prototype of the Spotify Events feature showing a dropdown with quick actions"
-          size="xl"
+          width={1678}
+          height={1708}
+          rounded={false}
         />
       </WideSection>
 
@@ -483,6 +503,9 @@ export default function SpotifyEventsContent() {
           src="/resource/projects/p4_ugd.png"
           alt="UGC and DDI principles diagram"
           size="sm"
+          width={784}
+          height={1704}
+          rounded={false}
         />
       </MiddleSection>
 

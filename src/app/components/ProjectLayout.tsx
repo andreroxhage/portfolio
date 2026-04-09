@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import ScrollScaleWrapper from '@/app/components/ScrollScaleWrapper';
 
 // MiddleSection — constrains content to prose width, centered
 export function MiddleSection({
@@ -51,37 +50,50 @@ export function SectionHeading({
   );
 }
 
-// ProjectImage — Next/Image with size variants wrapped in ScrollScaleWrapper
+// ProjectImage — Next/Image with size variants
 const sizeClasses = {
-  sm: 'max-w-md mx-auto',
+  xs: 'max-w-xs mx-auto',
+  sm: 'max-w-sm mx-auto',
+  md: 'max-w-md mx-auto',
   default: 'w-full',
-  xl: 'w-full',
+  lg: 'w-full',
 } as const;
 
 export function ProjectImage({
   src,
   alt,
   size = 'default',
+  width = 1200,
+  height = 800,
+  maxWidth,
   caption,
   className,
+  rounded = true,
 }: {
   src: string;
   alt: string;
-  size?: 'sm' | 'default' | 'xl';
+  size?: keyof typeof sizeClasses;
+  width?: number;
+  height?: number;
+  maxWidth?: string;
   caption?: string;
   className?: string;
+  rounded?: boolean;
 }) {
+  const sizeClass = maxWidth ? 'mx-auto' : sizeClasses[size];
+
   return (
-    <div className={cn(sizeClasses[size], className)}>
-      <ScrollScaleWrapper className="">
-        <Image
-          src={src}
-          alt={alt}
-          width={1200}
-          height={800}
-          className="w-full h-auto rounded-xl corner-squircle"
-        />
-      </ScrollScaleWrapper>
+    <div
+      className={cn(sizeClass, className)}
+      style={maxWidth ? { maxWidth } : undefined}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={cn('w-full h-auto', rounded && 'rounded-xl corner-squircle')}
+      />
       {caption && (
         <p className="text-sm text-surface-dark-muted mt-3 text-center">
           {caption}

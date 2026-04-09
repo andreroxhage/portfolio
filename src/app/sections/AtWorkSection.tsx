@@ -27,7 +27,7 @@ export default function AtWorkSection() {
   });
 
   return (
-    <section className="pt-4 md:pt-8 pb-12 md:pb-18">
+    <section className="pt-12 md:pt-16 pb-28 md:pb-32">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4 grid grid-cols-1 md:grid-cols-10 gap-12 md:gap-8 items-center">
         {/* Text column */}
         <div className="md:col-span-5">

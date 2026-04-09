@@ -76,11 +76,11 @@ export default function LoginExperienceInVRContent() {
       <WideSection className="mb-20">
         <ProgressiveMedia
           videoIdentifier="login-experience-in-vr"
-          imageSrc="/resource/projects/p2_hifi.jpeg"
+          imageSrc="/resource/projects/p2_poster.jpg"
           imageAlt="Scroll Select Authentication VR prototype"
           aspectRatio="9/16"
           rounded
-          className="w-full max-h-[700px] mx-auto"
+          className="max-w-sm mx-auto"
         />
       </WideSection>
 
@@ -160,6 +160,9 @@ export default function LoginExperienceInVRContent() {
           <ProjectImage
             src="/resource/projects/p2_affinity.png"
             alt="Ideation Process for Scroll Select Authentication"
+            width={3824}
+            height={4506}
+            rounded={false}
           />
         </div>
       </MiddleSection>
@@ -205,8 +208,10 @@ export default function LoginExperienceInVRContent() {
             haptic response mechanisms for confirmation.
           </p>
           <ProjectImage
-            src="/resource/projects/vr-login-prototype.jpg"
+            src="/resource/projects/p2_hifi.jpeg"
             alt="High-Fidelity Prototype of Scroll Select Authentication"
+            width={965}
+            height={965}
           />
         </div>
 
@@ -271,6 +276,9 @@ export default function LoginExperienceInVRContent() {
         <ProjectImage
           src="/resource/projects/p2_concept.png"
           alt="High-Fidelity Prototype of Scroll Select Authentication"
+          width={811}
+          height={387}
+          rounded={false}
         />
       </WideSection>
 

@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, type QueryClient } from '@tanstack/react-query';
 
 interface VideoData {
   video_url: string;
@@ -24,17 +24,29 @@ const fetchVideoUrl = async (identifier: string): Promise<string> => {
   return data[0].video_url;
 };
 
+const videoQueryOptions = (identifier: string) => ({
+  queryKey: ['video', identifier],
+  queryFn: () => fetchVideoUrl(identifier),
+  staleTime: 1000 * 60 * 55,
+  gcTime: 1000 * 60 * 60,
+});
+
+/** Warm the React Query cache for a video URL so it's ready when needed. */
+export function prefetchVideo(queryClient: QueryClient, identifier: string) {
+  if (!identifier) {
+    return;
+  }
+  queryClient.prefetchQuery(videoQueryOptions(identifier));
+}
+
 export const useVideo = (identifier: string) => {
   const {
     data: videoUrl,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['video', identifier],
-    queryFn: () => fetchVideoUrl(identifier),
+    ...videoQueryOptions(identifier),
     enabled: !!identifier,
-    staleTime: 1000 * 60 * 55,
-    gcTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     refetchOnReconnect: false,
