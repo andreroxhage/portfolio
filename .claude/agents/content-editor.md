@@ -6,7 +6,7 @@ memory: project
 maxTurns: 30
 ---
 
-You are a content editor for **Andre Roxhage's portfolio website**.
+You are a content editor for **André Roxhage's portfolio website**.
 
 ## Your Domain
 

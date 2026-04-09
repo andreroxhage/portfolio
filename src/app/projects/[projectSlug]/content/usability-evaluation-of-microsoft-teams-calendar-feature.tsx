@@ -12,7 +12,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
   return (
     <>
       {/* Section 1 — Summary */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
           Summary
         </h4>
@@ -40,7 +40,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </MiddleSection>
 
       {/* Hero image */}
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p1.jpg"
           alt="Microsoft Teams calendar interface"
@@ -48,7 +48,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </WideSection>
 
       {/* Section 2 — Introduction */}
-      <MiddleSection className="mb-16">
+      <MiddleSection className="mb-20">
         <SectionHeading>Introduction</SectionHeading>
         <div className="space-y-6">
           <div>
@@ -86,7 +86,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </MiddleSection>
 
       {/* Section 3 — Methodology */}
-      <MiddleSection className="mb-16">
+      <MiddleSection className="mb-20">
         <SectionHeading>Methodology</SectionHeading>
         <div className="space-y-6">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -157,7 +157,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </MiddleSection>
 
       {/* Section 4 — Wide screenshot */}
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p1screenshot.jpg"
           alt="Microsoft Teams Calendar Interface"
@@ -165,7 +165,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </WideSection>
 
       {/* Section 5 — Results */}
-      <MiddleSection className="mb-16">
+      <MiddleSection className="mb-20">
         <SectionHeading>Results</SectionHeading>
         <div className="space-y-6">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -205,7 +205,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </MiddleSection>
 
       {/* Section 6 — Two charts stacked */}
-      <WideSection className="mb-16 space-y-6">
+      <WideSection className="mb-20 space-y-6">
         <ProjectImage
           src="/resource/projects/p1_plot_satisfaction.png"
           alt="Satisfaction Ratings"
@@ -217,7 +217,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </WideSection>
 
       {/* Section 7 — Analysis & Discussion */}
-      <MiddleSection className="mb-16">
+      <MiddleSection className="mb-20">
         <SectionHeading>Analysis &amp; Discussion</SectionHeading>
         <div className="space-y-6">
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
@@ -253,7 +253,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       </MiddleSection>
 
       {/* Section 8 — Recommendations */}
-      <MiddleSection className="mb-16">
+      <MiddleSection className="mb-20">
         <SectionHeading>Recommendations</SectionHeading>
         <ol className="list-decimal list-inside space-y-2">
           <li className="text-base md:text-lg text-muted-foreground">

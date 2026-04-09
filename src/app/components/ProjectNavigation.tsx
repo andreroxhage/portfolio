@@ -56,12 +56,12 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             <div className="text-sm text-muted-foreground">
               Previous Project
             </div>
-            <label
+            <span
               className="font-medium duration-300"
               style={{ color: prevProject.titleColor }}
             >
               {prevProject.title}
-            </label>
+            </span>
           </div>
         </Link>
 
@@ -71,12 +71,12 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
         >
           <div className="text-right">
             <div className="text-sm text-muted-foreground">Next Project</div>
-            <label
+            <span
               className="font-medium duration-300"
               style={{ color: nextProject.titleColor }}
             >
               {nextProject.title}
-            </label>
+            </span>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"

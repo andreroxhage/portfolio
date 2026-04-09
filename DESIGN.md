@@ -100,16 +100,18 @@ Custom sizes available: `text-8.5xl` (6.5rem), `text-9.5xl` (10rem) for hero hea
 
 ### Hierarchy
 
-| Role            | Mobile    | Desktop      | Weight       | Tracking           | Line Height     | Use                             |
-| --------------- | --------- | ------------ | ------------ | ------------------ | --------------- | ------------------------------- |
-| Display Hero    | text-6xl  | text-8xl     | medium (500) | tighter (-0.05em)  | snug (1.125)    | Main name, hero moments         |
-| Page Title      | text-4xl  | text-6xl     | medium (500) | tighter (-0.05em)  | tight (1.25)    | Page headings, footer CTA       |
-| Section Heading | text-2xl  | text-4xl     | medium (500) | tight (-0.025em)   | tight (1.25)    | "About me", section intros      |
-| Card Title      | text-xl   | text-2xl–3xl | medium (500) | tight (-0.025em)   | snug (1.375)    | Project cards, resume items     |
-| Body            | text-base | text-lg      | normal (400) | normal             | relaxed (1.625) | Descriptions, paragraphs        |
-| Body Light      | text-base | text-lg      | normal (400) | normal             | relaxed (1.625) | De-emphasized body, breadcrumbs |
-| Small / Meta    | text-xs   | text-sm      | normal (400) | normal             | normal (1.5)    | Timestamps, metadata            |
-| Label           | text-xs   | text-xs      | normal (400) | widest + uppercase | normal (1.5)    | Section labels in lists         |
+| Role            | Mobile    | Desktop      | Weight       | Tracking          | Line Height     | Use                             |
+| --------------- | --------- | ------------ | ------------ | ----------------- | --------------- | ------------------------------- |
+| Display Hero    | text-6xl  | text-8xl     | medium (500) | tighter (-0.05em) | snug (1.125)    | Main name, hero moments         |
+| Page Title      | text-4xl  | text-6xl     | medium (500) | tighter (-0.05em) | tight (1.25)    | Page headings, footer CTA       |
+| Section Heading | text-2xl  | text-4xl     | medium (500) | tight (-0.025em)  | tight (1.25)    | "About me", section intros      |
+| Card Title      | text-xl   | text-2xl–3xl | medium (500) | tight (-0.025em)  | snug (1.375)    | Project cards, resume items     |
+| Body            | text-base | text-lg      | normal (400) | normal            | relaxed (1.625) | Descriptions, paragraphs        |
+| Body Light      | text-base | text-lg      | normal (400) | normal            | relaxed (1.625) | De-emphasized body, breadcrumbs |
+| Small / Meta    | text-xs   | text-sm      | normal (400) | normal            | normal (1.5)    | Timestamps, metadata            |
+| Label           | text-xs   | text-xs      | normal (400) | wide              | normal (1.5)    | Section labels in lists         |
+
+> **Note:** The h1 element is used for SEO across all pages. Its visual sizing and treatment can vary per page context — the hierarchy table above is a design guide, not a rigid constraint. Detail pages (projects, writing, ideas) may use smaller h1 sizing to suit their content layout.
 
 ### Tracking (Letter-Spacing)
 
@@ -118,7 +120,7 @@ Apple-inspired negative tracking on headlines only — body text uses default sp
 - **Display (4xl+):** `tracking-tighter` (-0.05em) — machined, billboard-like compression
 - **Heading (xl–3xl):** `tracking-tight` (-0.025em) — subtle tightening, professional
 - **Body and below:** `tracking-normal` (default) — let the font breathe at reading sizes
-- **Labels:** `tracking-widest` (uppercase labels only)
+- **Labels:** `tracking-wide` for small labels and meta text
 
 ### Weight Restraint
 

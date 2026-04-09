@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import ScrollScaleWrapper from '@/app/components/ScrollScaleWrapper';
 
-// MiddleSection — passthrough; parent container constrains width to max-w-2xl
+// MiddleSection — constrains content to prose width, centered
 export function MiddleSection({
   className,
   children,
@@ -13,10 +13,12 @@ export function MiddleSection({
   className?: string;
   children: React.ReactNode;
 }) {
-  return <div className={cn(className)}>{children}</div>;
+  return (
+    <div className={cn('max-w-2xl mx-auto px-4', className)}>{children}</div>
+  );
 }
 
-// WideSection — breaks out of the max-w-2xl prose container for wider media
+// WideSection — wider container for media, centered
 export function WideSection({
   className,
   children,
@@ -25,14 +27,7 @@ export function WideSection({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={cn(
-        'relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen max-w-4xl mx-auto px-4',
-        className
-      )}
-    >
-      {children}
-    </div>
+    <div className={cn('max-w-4xl mx-auto px-4', className)}>{children}</div>
   );
 }
 

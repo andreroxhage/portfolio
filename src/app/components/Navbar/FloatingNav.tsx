@@ -16,6 +16,7 @@ const FloatingNav = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isShortPage, setIsShortPage] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
@@ -49,20 +50,35 @@ const FloatingNav = () => {
     }
   }, []);
 
-  const handleLogoClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent navbar expansion from parent click
-
+  useEffect(() => {
+    const checkPageHeight = () => {
+      if (typeof window !== 'undefined') {
+        setIsShortPage(
+          document.documentElement.scrollHeight < 2 * window.innerHeight
+        );
+      }
+    };
+    checkPageHeight();
     if (typeof window !== 'undefined') {
-      if (isAtTop) {
-        window.scrollTo({
-          top: window.innerHeight,
-          behavior: 'smooth',
-        });
+      window.addEventListener('resize', checkPageHeight);
+      const observer = new MutationObserver(checkPageHeight);
+      observer.observe(document.body, { childList: true, subtree: true });
+      return () => {
+        window.removeEventListener('resize', checkPageHeight);
+        observer.disconnect();
+      };
+    }
+  }, []);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (typeof window !== 'undefined') {
+      if (isShortPage) {
+        setIsExpanded(!isExpanded);
+      } else if (isAtTop) {
+        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
       } else if (isAtBottom) {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setIsExpanded(!isExpanded);
       }
@@ -225,7 +241,7 @@ const FloatingNav = () => {
 
       <motion.div
         ref={navRef}
-        className="fixed bottom-6 left-1/2 z-50"
+        className="fixed bottom-4 left-1/2 z-50"
         variants={initialAppearance}
         initial="hidden"
         animate={isProjectHovered ? 'hidden' : 'visible'}
@@ -262,46 +278,24 @@ const FloatingNav = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
-                key={isAtTop ? 'down' : isAtBottom ? 'up' : 'menu'}
+                key={
+                  isShortPage
+                    ? 'menu'
+                    : isAtTop
+                      ? 'down'
+                      : isAtBottom
+                        ? 'up'
+                        : 'menu'
+                }
               >
-                {isAtTop ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`text-surface-dark-foreground hover:text-accent transform rotate-180`}
-                  >
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
-                ) : isAtBottom ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`text-surface-dark-foreground hover:text-accent`}
-                  >
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
-                ) : (
+                {isShortPage || (!isAtTop && !isAtBottom) ? (
                   <motion.svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className={`w-6 h-6 text-surface-dark-foreground hover:text-accent`}
+                    className="w-6 h-6 text-surface-dark-foreground hover:text-accent"
                     initial={false}
                   >
                     <path
@@ -310,6 +304,36 @@ const FloatingNav = () => {
                       d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
                   </motion.svg>
+                ) : isAtTop ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-surface-dark-foreground hover:text-accent transform rotate-180"
+                  >
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-surface-dark-foreground hover:text-accent"
+                  >
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
                 )}
               </motion.div>
             </motion.span>
@@ -318,7 +342,7 @@ const FloatingNav = () => {
                 {!isExpanded ? (
                   <motion.span
                     key="find-label"
-                    className="text-surface-dark-foreground hover:text-accent text-base font-medium translate-y-px pr-5"
+                    className="text-surface-dark-foreground hover:text-accent text-base font-medium translate-y-px pr-6"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }

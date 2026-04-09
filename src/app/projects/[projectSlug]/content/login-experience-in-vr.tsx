@@ -13,7 +13,7 @@ export default function LoginExperienceInVRContent() {
   return (
     <>
       {/* Section 1 — summary + video */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
@@ -73,7 +73,7 @@ export default function LoginExperienceInVRContent() {
         </div>
       </MiddleSection>
 
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProgressiveMedia
           videoIdentifier="login-experience-in-vr"
           imageSrc="/resource/projects/p2_hifi.jpeg"
@@ -85,7 +85,7 @@ export default function LoginExperienceInVRContent() {
       </WideSection>
 
       {/* Section 2 — middle: introduction */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Introduction</SectionHeading>
 
         <div>
@@ -135,7 +135,7 @@ export default function LoginExperienceInVRContent() {
       </MiddleSection>
 
       {/* Section 3 — middle: design process */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Design Process</SectionHeading>
 
         <div>
@@ -165,7 +165,7 @@ export default function LoginExperienceInVRContent() {
       </MiddleSection>
 
       {/* Section 4 — conceptual design + user flow */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Conceptual Design &mdash; Scroll Select Authentication
@@ -267,7 +267,7 @@ export default function LoginExperienceInVRContent() {
         </div>
       </MiddleSection>
 
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p2_concept.png"
           alt="High-Fidelity Prototype of Scroll Select Authentication"
@@ -275,7 +275,7 @@ export default function LoginExperienceInVRContent() {
       </WideSection>
 
       {/* Section 5 — middle: technical implementation + user testing */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Technical Implementation
@@ -328,7 +328,7 @@ export default function LoginExperienceInVRContent() {
       </MiddleSection>
 
       {/* Section 6 — middle: final evaluation */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Final Evaluation</SectionHeading>
         <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
           Scroll Select Authentication successfully demonstrated a novel

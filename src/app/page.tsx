@@ -5,6 +5,7 @@ import RecentProjects from '@/app/sections/RecentProjects';
 import ElsewhereSection from '@/app/sections/ElsewhereSection';
 import ZoomParallax from '@/app/components/ZoomParallax/ZoomParallax';
 import MobilePhotoCollage from '@/app/components/MobilePhotoCollage';
+import ScrollLines from '@/app/components/ScrollLines';
 
 export default function Home() {
   return (
@@ -17,7 +18,10 @@ export default function Home() {
       <div className="hidden lg:block xl:px-12 lg:px-0 px-24 py-16 bg-linear-to-b from-background via-secondary to-secondary">
         <RecentProjects />
       </div>
-      <ElsewhereSection />
+      <div className="relative">
+        <ScrollLines />
+        <ElsewhereSection />
+      </div>
 
       <div className="relative z-10 bg-secondary">
         <MobilePhotoCollage />

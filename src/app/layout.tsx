@@ -44,12 +44,12 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       style={{ scrollBehavior: 'smooth' }}
-      className="overflow-x-hidden w-full"
+      className="overflow-x-hidden w-full font-sans"
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: FOIWT_SCRIPT }} />
       </head>
-      <body className="bg-background text-foreground antialiased">
+      <body className="bg-background text-foreground">
         <ThemeProvider>
           <QueryProvider>
             <ProjectHoverProvider>

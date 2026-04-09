@@ -54,16 +54,16 @@ export default function Page({
 
       <Suspense
         fallback={
-          <div className="max-w-2xl mx-auto px-4">
+          <div className="max-w-4xl mx-auto px-4">
             <div className="h-96 animate-pulse bg-surface-dark-card rounded-xl corner-squircle" />
           </div>
         }
       >
-        <div className="max-w-2xl mx-auto px-4 pb-16">
+        <div className="pb-16">
           {Content ? (
             <Content />
           ) : (
-            <div className="text-surface-dark-muted text-center py-20">
+            <div className="max-w-2xl mx-auto px-4 text-surface-dark-muted text-center py-20">
               Content coming soon.
             </div>
           )}

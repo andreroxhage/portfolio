@@ -17,9 +17,9 @@ export default function IdeaPage({
 
   if (!idea) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface-dark">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground">
+          <h1 className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground">
             Idea not found
           </h1>
         </div>
@@ -31,14 +31,14 @@ export default function IdeaPage({
 
   return (
     <motion.div
-      className="bg-surface-dark min-h-screen"
+      className="min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
+      <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
         <motion.h1
-          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
+          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
@@ -47,7 +47,7 @@ export default function IdeaPage({
         </motion.h1>
         {idea.date && (
           <motion.h3
-            className="text-lg md:text-2xl font-normal text-surface-dark-muted"
+            className="text-lg md:text-2xl font-normal text-muted-foreground"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
@@ -61,7 +61,7 @@ export default function IdeaPage({
               <Badge
                 key={tag}
                 variant="secondary"
-                className="text-xs bg-surface-dark-elevated text-surface-dark-muted border-0 corner-squircle"
+                className="text-xs bg-muted text-muted-foreground border-0 corner-squircle"
               >
                 {tag}
               </Badge>
@@ -73,19 +73,19 @@ export default function IdeaPage({
       <Suspense
         fallback={
           <div className="max-w-2xl mx-auto px-4">
-            <div className="h-96 animate-pulse bg-surface-dark-card rounded-xl corner-squircle" />
+            <div className="h-96 animate-pulse bg-muted rounded-xl corner-squircle" />
           </div>
         }
       >
-        <div className="max-w-2xl mx-auto px-4 pb-16">
+        <div className="pb-20">
           {Content ? (
             <Content />
           ) : (
-            <div className="text-surface-dark-muted py-20">
+            <div className="max-w-2xl mx-auto px-4 text-muted-foreground py-20">
               <p className="text-lg mb-4">
                 {idea.previewSubtitle || idea.subtitle}
               </p>
-              <p className="text-sm text-surface-dark-muted/60">
+              <p className="text-sm text-muted-foreground/60">
                 Content coming soon.
               </p>
             </div>

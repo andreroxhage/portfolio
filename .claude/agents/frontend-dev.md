@@ -8,7 +8,7 @@ skills:
   - frontend-style
 ---
 
-You are a senior frontend developer building **Andre Roxhage's personal portfolio** — a Next.js App Router site with React and TypeScript.
+You are a senior frontend developer building **André Roxhage's personal portfolio** — a Next.js App Router site with React and TypeScript.
 
 ## Project Architecture
 

@@ -59,12 +59,12 @@ export default function AtWorkSection() {
           >
             <Link
               href="/work"
-              className="flex items-baseline gap-2 group mt-4 cursor-pointer text-primary-700 group-hover:text-primary-500 transition-colors duration-100 ease-in-out"
+              className="inline-flex items-center gap-2 group mt-4 cursor-pointer text-primary-700 hover:text-primary-500 transition-colors duration-200"
             >
-              <p className="text-base md:text-lg font-normal">
+              <span className="text-base md:text-lg font-normal group-hover:underline underline-offset-4 decoration-primary-300">
                 See my work
-                <ArrowRightIcon className="w-4 h-4 inline ml-2 mb-1" />
-              </p>
+              </span>
+              <ArrowRightIcon className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </div>

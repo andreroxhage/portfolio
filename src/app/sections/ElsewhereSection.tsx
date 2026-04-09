@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { about } from '@/app/data/home';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
+import OceanWave from '@/app/components/OceanWave';
 
 export default function ElsewhereSection() {
   const reducedMotion = useReducedMotion();
@@ -46,6 +47,11 @@ export default function ElsewhereSection() {
           >
             {about[1].description}
           </motion.p>
+        </div>
+
+        {/* Wave animation column */}
+        <div className="hidden md:flex md:col-span-5 items-end justify-center h-48">
+          <OceanWave />
         </div>
       </div>
     </section>

@@ -1,8 +1,8 @@
-# Portfolio - Andre Roxhage
+# Portfolio - André Roxhage
 
 ## Project Overview
 
-Personal portfolio for Andre Roxhage, focused on frontend engineering, UX, and creativity psychology. The site uses Next.js App Router and showcases projects, photography, voluntary work, and professional experience.
+Personal portfolio for André Roxhage, focused on frontend engineering, UX, and creativity psychology. The site uses Next.js App Router and showcases projects, photography, voluntary work, and professional experience.
 
 ## Development
 

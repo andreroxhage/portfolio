@@ -3,6 +3,8 @@ import React, { lazy, Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { writingRegistry } from '@/app/data/writing';
 import WritingNavigation from '@/app/components/WritingNavigation';
+import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 const contentMap: Record<string, React.ComponentType> = {
   'ai-as-a-second-opinion': lazy(
@@ -16,6 +18,7 @@ export default function WritingPage({
   params: Promise<{ writingSlug: string }>;
 }) {
   const { writingSlug } = use(params);
+  const reducedMotion = useReducedMotion();
   const writing = writingRegistry.find(w => w.writingSlug === writingSlug);
 
   if (!writing) {
@@ -35,25 +38,29 @@ export default function WritingPage({
   return (
     <motion.div
       className="bg-surface-dark min-h-screen"
-      initial={{ opacity: 0 }}
+      initial={reducedMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
     >
-      <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
+      <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
         <motion.h1
           className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
         >
           {writing.title}
         </motion.h1>
         {writing.date && (
           <motion.h3
             className="text-lg md:text-2xl font-normal text-surface-dark-muted"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
+            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: DURATION.SLOW,
+              ease: EASING.ENTER,
+              delay: reducedMotion ? 0 : STAGGER.DELAY,
+            }}
           >
             {writing.date}
           </motion.h3>
@@ -67,11 +74,11 @@ export default function WritingPage({
           </div>
         }
       >
-        <div className="max-w-2xl mx-auto px-4 pb-16">
+        <div className="pb-20">
           {Content ? (
             <Content />
           ) : (
-            <div className="text-surface-dark-muted py-20">
+            <div className="max-w-2xl mx-auto px-4 text-surface-dark-muted py-20">
               <p className="text-lg mb-4">{writing.subtitle}</p>
               <p className="text-sm text-surface-dark-muted/60">
                 Content coming soon.

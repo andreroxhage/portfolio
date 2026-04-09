@@ -13,7 +13,7 @@ export default function SpotifyEventsContent() {
   return (
     <>
       {/* Section 1 — summary + video */}
-      <MiddleSection className="mb-8 space-y-6">
+      <MiddleSection className="mb-12 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
@@ -94,7 +94,7 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProgressiveMedia
           videoIdentifier="spotify-events"
           imageSrc="/resource/projects/p4_d_a.png"
@@ -106,7 +106,7 @@ export default function SpotifyEventsContent() {
       </WideSection>
 
       {/* Section 2 — middle: design process */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Design Process</SectionHeading>
         <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
           This concept was born from user research and insights into how people
@@ -165,7 +165,7 @@ export default function SpotifyEventsContent() {
       </MiddleSection>
 
       {/* Section 3 — middle: user research */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>User Research: Key Insights</SectionHeading>
         <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
           To ensure the concept addressed real user needs, a survey of 43
@@ -225,7 +225,7 @@ export default function SpotifyEventsContent() {
       </MiddleSection>
 
       {/* Section 4 — music survey images */}
-      <WideSection className="mb-16 space-y-6">
+      <WideSection className="mb-20 space-y-6">
         <ProjectImage
           src="/resource/projects/p4_music.svg"
           alt="Music interest survey results"
@@ -237,7 +237,7 @@ export default function SpotifyEventsContent() {
       </WideSection>
 
       {/* Section 5 — middle: personalization + conclusion */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Personalization &amp; Emotional Resonance
@@ -274,7 +274,7 @@ export default function SpotifyEventsContent() {
       </MiddleSection>
 
       {/* Section 6 — middle: ideation + persona development */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Ideation &amp; Prototyping</SectionHeading>
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
@@ -290,7 +290,7 @@ export default function SpotifyEventsContent() {
       </MiddleSection>
 
       {/* Section 7 — wide: persona image */}
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p4_persona.png"
           alt="Persona Kate"
@@ -299,7 +299,7 @@ export default function SpotifyEventsContent() {
       </WideSection>
 
       {/* Section 8 — middle: sketches + user flows */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Early Sketches &amp; Prototyping
@@ -337,7 +337,7 @@ export default function SpotifyEventsContent() {
       </MiddleSection>
 
       {/* Section 9 — wide: user flow diagram */}
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p4_flow.svg"
           alt="User flow diagram for the Spotify Events feature"
@@ -346,7 +346,7 @@ export default function SpotifyEventsContent() {
       </WideSection>
 
       {/* Section 10 — middle: feature prioritization intro */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Feature Prioritization
@@ -360,7 +360,7 @@ export default function SpotifyEventsContent() {
       </MiddleSection>
 
       {/* Section 11 — wide: prioritization table */}
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p4_table.svg"
           alt="Table of functions and user goal mapping and prioritization"
@@ -369,7 +369,7 @@ export default function SpotifyEventsContent() {
       </WideSection>
 
       {/* Section 12 — calendar/attendees + prototype image */}
-      <MiddleSection className="mb-8 space-y-6">
+      <MiddleSection className="mb-12 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Calendar &amp; Maps Integration
@@ -401,7 +401,7 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      <WideSection className="mb-16">
+      <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p4_d_a.png"
           alt="Prototype of the Spotify Events feature showing a dropdown with quick actions"
@@ -410,7 +410,7 @@ export default function SpotifyEventsContent() {
       </WideSection>
 
       {/* Section 13 — guest blend/psychology + UGC diagram */}
-      <MiddleSection className="mb-8 space-y-6">
+      <MiddleSection className="mb-12 space-y-6">
         <div>
           <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
             Guest Blend &amp; Ethical Considerations
@@ -478,15 +478,16 @@ export default function SpotifyEventsContent() {
         </div>
       </MiddleSection>
 
-      <ProjectImage
-        src="/resource/projects/p4_ugd.png"
-        alt="UGC and DDI principles diagram"
-        size="sm"
-        className="mb-16"
-      />
+      <MiddleSection className="mb-20">
+        <ProjectImage
+          src="/resource/projects/p4_ugd.png"
+          alt="UGC and DDI principles diagram"
+          size="sm"
+        />
+      </MiddleSection>
 
       {/* Section 14 — middle: final evaluation */}
-      <MiddleSection className="mb-16 space-y-6">
+      <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Final Evaluation</SectionHeading>
 
         <div>
