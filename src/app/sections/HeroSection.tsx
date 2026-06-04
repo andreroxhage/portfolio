@@ -61,7 +61,10 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center">
+    <section
+      id="header"
+      className="relative min-h-screen flex items-center bg-linear-to-t from-background via-secondary to-secondary"
+    >
       <WebGLCanvasLoader onReady={handleWebGLReady} />
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 md:px-4 py-16">
         {/* Mobile layout: photo on top, tagline below */}

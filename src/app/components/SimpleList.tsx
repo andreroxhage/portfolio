@@ -33,8 +33,8 @@ export function SimpleList() {
         </p>
         <p className="text-base text-muted-foreground/90 leading-relaxed tracking-wide text-balance">
           I&apos;m a design engineer at Netlight, blending software development
-          with design. I care about how products feel and impact us, and enjoy
-          making complex things feel simple.
+          with design. <br />I care about how products feel and impact us, and
+          enjoy making complex things feel simple.
         </p>
       </section>
 

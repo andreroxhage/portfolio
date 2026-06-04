@@ -61,7 +61,7 @@ export const projectRegistry: ProjectMeta[] = [
     previewSubtitle:
       "Where does Microsoft Teams' free calendar fall short? Through hands-on testing with new users, this evaluation uncovers friction points and offers practical improvements for scheduling and RSVP tracking",
     date: '2024',
-    image: '/resource/projects/p1.jpeg',
+    image: '/resource/projects/p1.jpg',
     imageAlt: 'Usability Evaluation of Microsoft Teams Calendar Feature',
     videoIdentifier: 'usability-evaluation-of-microsoft-teams-calendar-feature',
     posterImage: '/resource/projects/p1_poster.jpg',

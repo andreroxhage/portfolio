@@ -194,7 +194,7 @@ export default function SpotifyEventsContent() {
             alt="Methods used for sending invitations"
             width={716}
             height={404}
-            rounded={false}
+            bg="light"
           />
         </div>
 
@@ -234,14 +234,14 @@ export default function SpotifyEventsContent() {
           alt="Music interest survey results"
           width={571}
           height={376}
-          rounded={false}
+          bg="light"
         />
         <ProjectImage
           src="/resource/projects/p4_music_how.svg"
           alt="How music integration would work"
           width={716}
           height={440}
-          rounded={false}
+          bg="light"
         />
       </WideSection>
 
@@ -357,7 +357,6 @@ export default function SpotifyEventsContent() {
           alt="User flow diagram for the Spotify Events feature"
           width={2527}
           height={1592}
-          rounded={false}
         />
       </WideSection>
 
@@ -382,7 +381,7 @@ export default function SpotifyEventsContent() {
           alt="Table of functions and user goal mapping and prioritization"
           width={1385}
           height={672}
-          rounded={false}
+          bg="light"
         />
       </WideSection>
 

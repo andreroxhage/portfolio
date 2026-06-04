@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback, type ReactNode } from 'react';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { useTheme } from '@/app/contexts/ThemeContext';
-import { createOceanScene } from './createOceanScene';
+import { createOceanSceneV2 as createOceanScene } from './createOceanSceneV2';
 
 const COLORS = {
   dark: [1.0, 1.0, 1.0] as const,
@@ -167,9 +167,9 @@ export function OceanTransition({ children }: OceanTransitionProps) {
           className="absolute inset-0 w-full h-full pointer-events-none"
         />
         {/* Top fade-in */}
-        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-secondary to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-linear-to-b from-secondary to-transparent pointer-events-none" />
         {/* Bottom fade-out */}
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-secondary to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-secondary to-transparent pointer-events-none" />
       </div>
 
       {/* Content overlay (ElsewhereSection) */}

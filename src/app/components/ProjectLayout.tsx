@@ -69,6 +69,7 @@ export function ProjectImage({
   caption,
   className,
   rounded = true,
+  bg,
 }: {
   src: string;
   alt: string;
@@ -79,21 +80,40 @@ export function ProjectImage({
   caption?: string;
   className?: string;
   rounded?: boolean;
+  /** Add a background behind the image (e.g. for SVGs with transparent/light backgrounds on dark pages) */
+  bg?: 'light' | 'dark';
 }) {
   const sizeClass = maxWidth ? 'mx-auto' : sizeClasses[size];
+  const bgClass =
+    bg === 'light'
+      ? 'bg-neutral-100 p-6'
+      : bg === 'dark'
+        ? 'bg-neutral-900 p-6'
+        : '';
 
   return (
     <div
       className={cn(sizeClass, className)}
       style={maxWidth ? { maxWidth } : undefined}
     >
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className={cn('w-full h-auto', rounded && 'rounded-xl corner-squircle')}
-      />
+      <div
+        className={cn(
+          bgClass,
+          bgClass && rounded && 'rounded-xl corner-squircle',
+          bgClass && 'image-depth-outline'
+        )}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className={cn(
+            'w-full h-auto',
+            rounded && !bgClass && 'rounded-xl corner-squircle'
+          )}
+        />
+      </div>
       {caption && (
         <p className="text-sm text-surface-dark-muted mt-3 text-center">
           {caption}

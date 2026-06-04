@@ -9,6 +9,11 @@ import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 export default function ElsewhereSection() {
   const reducedMotion = useReducedMotion();
   const duration = reducedMotion ? 0.01 : DURATION.SLOW;
+  const description = about[1].description;
+  const surfIndex = description.indexOf('surf');
+  const hasSurf = surfIndex !== -1;
+  const beforeSurf = hasSurf ? description.slice(0, surfIndex) : description;
+  const afterSurf = hasSurf ? description.slice(surfIndex + 'surf'.length) : '';
 
   const makeVariant = (index: number) => ({
     hidden: { opacity: 0, y: 40 },
@@ -44,7 +49,15 @@ export default function ElsewhereSection() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {about[1].description}
+            {hasSurf ? (
+              <>
+                {beforeSurf}
+                <span className="font-medium text-foreground">surf</span>
+                {afterSurf}
+              </>
+            ) : (
+              description
+            )}
           </motion.p>
         </div>
       </div>
