@@ -13,7 +13,7 @@ export function MiddleSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn('max-w-2xl mx-auto px-4', className)}>{children}</div>
+    <div className={cn('max-w-2.5xl mx-auto px-4', className)}>{children}</div>
   );
 }
 
@@ -41,7 +41,7 @@ export function SectionHeading({
   return (
     <h2
       className={cn(
-        'text-2xl font-medium tracking-tight text-surface-dark-foreground mb-6',
+        'text-xl font-medium tracking-tight text-surface-dark-foreground mb-6',
         className
       )}
     >
@@ -55,8 +55,17 @@ const sizeClasses = {
   xs: 'max-w-xs mx-auto',
   sm: 'max-w-sm mx-auto',
   md: 'max-w-md mx-auto',
+  lg: 'max-w-lg mx-auto',
+  xl: 'max-w-xl mx-auto',
+  xxl: 'max-w-2xl mx-auto',
+  xxxl: 'max-w-3xl mx-auto',
+  xxxxl: 'max-w-4xl mx-auto',
+  xxxxxl: 'max-w-5xl mx-auto',
+  xxxxxxl: 'max-w-6xl mx-auto',
+  xxxxxxxl: 'max-w-7xl mx-auto',
+  xxxxxxxxl: 'max-w-8xl mx-auto',
   default: 'w-full',
-  lg: 'w-full',
+  full: 'w-full',
 } as const;
 
 export function ProjectImage({

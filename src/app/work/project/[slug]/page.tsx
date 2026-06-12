@@ -7,6 +7,7 @@ import ProjectHeader from '@/app/components/ProjectHeader';
 
 // Static content map — avoids webpack variable import path limitation
 const contentMap: Record<string, React.ComponentType> = {
+  'join-cx': lazy(() => import('./content/join-cx')),
   'spotify-events': lazy(() => import('./content/spotify-events')),
   'login-experience-in-vr': lazy(
     () => import('./content/login-experience-in-vr')

@@ -15,10 +15,10 @@ export default function SpotifyEventsContent() {
       {/* Section 1 — summary + video */}
       <MiddleSection className="mb-12 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Spotify has long been synonymous with personalization, creativity,
             and dynamic user engagement. By integrating these principles into
             event invitations, this concept leverages Spotify&apos;s existing
@@ -29,17 +29,17 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Problem Statement
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Digital invitations often get lost in feeds or lack interactive
             elements, making it difficult for hosts to track attendees and build
             excitement before events. Users need a more immersive, music-driven
             solution that addresses these pain points: low response rates and
             minimal personalization.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             This concept takes inspiration from Spotify Wrapped, combining
             emotional resonance, personalization, and vibrant visual and
             auditory design. Imagine receiving an invitation that is more than
@@ -50,18 +50,18 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Key Features
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Customizable Invitations:
               </span>{' '}
               Hosts can prepare playlists, choose a theme and add personal
               touches like photos and messages.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Personalized Guest Experiences:
               </span>{' '}
@@ -70,14 +70,14 @@ export default function SpotifyEventsContent() {
               generated playlists that blend guest preferences or match the
               event theme.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Integration with Spotify Ecosystem:
               </span>{' '}
               From saving playlists to syncing calendars, the invitation
               seamlessly connects with users&apos; digital habits.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Emotional Engagement:
               </span>{' '}
@@ -85,7 +85,7 @@ export default function SpotifyEventsContent() {
               and excitement.
             </li>
           </ol>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-3">
+          <p className="text-base text-muted-foreground leading-relaxed mt-3">
             By bridging Spotify&apos;s strength in crafting personalized
             experiences with event planning, this feature offers a memorable,
             music-centric invitation process, making it a key part of how people
@@ -108,7 +108,7 @@ export default function SpotifyEventsContent() {
       {/* Section 2 — middle: design process */}
       <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Design Process</SectionHeading>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           This concept was born from user research and insights into how people
           plan and experience events. A survey of 43 respondents revealed key
           pain points in managing invitations and RSVPs, and a desire for
@@ -117,10 +117,10 @@ export default function SpotifyEventsContent() {
         </p>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Project Scope
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             This project focuses on the guest experience, from receiving an
             invitation via SMS, email, or in-app Spotify notification to opening
             it, exploring playlists, and completing an RSVP. By concentrating on
@@ -131,11 +131,11 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Objectives
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Deliver an Immersive Invitation Experience:
               </span>{' '}
@@ -143,7 +143,7 @@ export default function SpotifyEventsContent() {
               reflecting the event&apos;s essence in a way that feels fresh and
               memorable.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Simplified Guest Interaction:
               </span>{' '}
@@ -151,7 +151,7 @@ export default function SpotifyEventsContent() {
               details, responding, and integrating invitations into their
               personal schedules is effortless.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Leverage Existing Strengths for Personalized Engagement:
               </span>{' '}
@@ -167,7 +167,7 @@ export default function SpotifyEventsContent() {
       {/* Section 3 — middle: user research */}
       <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>User Research: Key Insights</SectionHeading>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           To ensure the concept addressed real user needs, a survey of 43
           respondents (23 male, 20 female, primarily aged 25&ndash;34) was
           conducted to understand how people create and respond to event
@@ -175,10 +175,10 @@ export default function SpotifyEventsContent() {
         </p>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Digital Reliance, Yet Cumbersome RSVP Management
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Most respondents already rely on social media, email, and messaging
             apps to send invitations. When asked about their go-to methods,
             social media emerged as the most frequently used, likely due to its
@@ -195,14 +195,15 @@ export default function SpotifyEventsContent() {
             width={716}
             height={404}
             bg="light"
+            size="xl"
           />
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Challenges in Managing Invitations
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Participants cited managing RSVPs (accepts, declines, no-shows) and
             dealing with last-minute changes as major pain points. They want an
             easy way to respond, get reminders, and stay updated on any event
@@ -211,10 +212,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Openness to Music Integration
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             An impressive 42% expressed interest in including music elements in
             their invitations. Many respondents believe music sets the tone for
             an event and builds excitement beforehand. Whether it&apos;s a
@@ -235,6 +236,7 @@ export default function SpotifyEventsContent() {
           width={571}
           height={376}
           bg="light"
+          size="xl"
         />
         <ProjectImage
           src="/resource/projects/p4_music_how.svg"
@@ -242,16 +244,17 @@ export default function SpotifyEventsContent() {
           width={716}
           height={440}
           bg="light"
+          size="xl"
         />
       </WideSection>
 
       {/* Section 5 — middle: personalization + conclusion */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Personalization &amp; Emotional Resonance
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             On a scale of 1 to 5, respondents rated personalization at 3.44,
             indicating they generally find it important in event invitations.
             Despite the moderate quantitative rating, qualitative responses
@@ -259,7 +262,7 @@ export default function SpotifyEventsContent() {
             effort. Recipients who feel valued are more inclined to attend,
             fostering positive emotional connections before the event begins.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Whether highlighting a theme (beach party, formal gala) or sharing a
             personal note, customization helps guests understand the
             event&apos;s vibe. Personalized invites stand out in cluttered
@@ -268,10 +271,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Conclusion
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             From the survey findings, it&apos;s evident that users are inclined
             to use digital platforms for invitations but struggle with RSVP
             management, last-minute updates, and limited personalization
@@ -286,10 +289,10 @@ export default function SpotifyEventsContent() {
       <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Ideation &amp; Prototyping</SectionHeading>
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Persona Development
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Meet Kate: a tech-savvy 30-year-old who loves hosting parties.
             Creating this persona helped ground the design in realistic user
             goals and behaviors, ensuring feature decisions aligned with
@@ -312,10 +315,10 @@ export default function SpotifyEventsContent() {
       {/* Section 8 — middle: sketches + user flows */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Early Sketches &amp; Prototyping
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             With a clear direction emerging, I began validating ideas through
             rough sketches and lo-fi wireframes. Recognizing that hand sketching
             isn&apos;t my strongest skill, I quickly transitioned to Figma to
@@ -331,10 +334,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             User Flows and Scenarios
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             I refined user flows to address key interactions through a concrete
             scenario: Kate finishes customizing her 30th birthday invite using
             Spotify Events. She selects a confetti animation to capture the
@@ -363,10 +366,10 @@ export default function SpotifyEventsContent() {
       {/* Section 10 — middle: feature prioritization intro */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Feature Prioritization
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             To address core user needs, I mapped and prioritized functionalities
             based on user goals and technical feasibility, as shown in the table
             below:
@@ -388,10 +391,10 @@ export default function SpotifyEventsContent() {
       {/* Section 12 — calendar/attendees + prototype image */}
       <MiddleSection className="mb-12 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Calendar &amp; Maps Integration
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             In the final design, &lsquo;Add to Calendar&rsquo; and &lsquo;Open
             in Maps&rsquo; appear both as quick actions in the dialog drawer and
             as interactive links on the date or address. This keeps navigation
@@ -404,10 +407,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Attendees &amp; Discussion
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The event landing page showcases attendees alongside a discussion
             section, allowing guests to see who is attending, share excitement,
             and coordinate details: planning pre-parties, carpools, or outfit
@@ -431,10 +434,10 @@ export default function SpotifyEventsContent() {
       {/* Section 13 — guest blend/psychology + UGC diagram */}
       <MiddleSection className="mb-12 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Guest Blend &amp; Ethical Considerations
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             A core feature is the Guest Blend playlist, which algorithmically
             combines guests&apos; music preferences into a cohesive soundtrack.
             However, not all users are comfortable sharing listening data,
@@ -452,10 +455,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Host Playlist &amp; Collaborative Additions
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Beyond Guest Blend, the host&apos;s personal playlist sets the
             baseline vibe, offering a curated selection that reflects the event
             theme. Optionally, hosts can enable manual track additions, allowing
@@ -467,10 +470,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Psychological Perspectives &amp; Inspiration from Spotify Wrapped
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Spotify Wrapped demonstrates how DDI-powered storytelling can spark
             widespread engagement by transforming user data into shareable,
             emotionally resonant content. Its success stems from behavioral and
@@ -482,7 +485,7 @@ export default function SpotifyEventsContent() {
             feature also leverages common-ground theory: shared musical tastes
             foster identity and belonging among listeners.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Applying these principles to Spotify Events could similarly
             encourage viral sharing and community-building around invitations.
             By reframing event details into digestible, personalized experiences
@@ -513,10 +516,10 @@ export default function SpotifyEventsContent() {
         <SectionHeading>Final Evaluation</SectionHeading>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Technical Constraints &amp; Considerations
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Guest notifications and reminders rely on Spotify account
             integration. Without an account, participants won&apos;t receive
             automated updates, increasing the risk of missed changes or late
@@ -526,7 +529,7 @@ export default function SpotifyEventsContent() {
             still receive timely updates, reducing overlooked details and
             duplicate sign-ups.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Creating Guest Blend playlists requires accurate attendee data
             mapping. Without knowing which Spotify accounts correspond to
             accepted invitations, the system cannot tailor combined playlists
@@ -536,7 +539,7 @@ export default function SpotifyEventsContent() {
             relevant to confirmed attendees. The ideal scenario involves native
             Spotify delivery with fallback links for non-users.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Balancing music playback with content readability presents another
             UX challenge. If playlists continue playing during content
             consumption, guests may struggle to focus on event details. A
@@ -547,10 +550,10 @@ export default function SpotifyEventsContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Outcomes &amp; Future Opportunities
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Early prototype testing revealed strong enthusiasm for
             music-integrated invitations and playful visual elements. Several
             enhancements could elevate this concept further: gamified elements
@@ -561,7 +564,7 @@ export default function SpotifyEventsContent() {
             vs. public events, browsing upcoming gatherings, and implementing
             granular access controls represent essential next steps.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             This project demonstrates how Spotify&apos;s expertise in
             personalization and engagement through DDI and UGC principles can
             extend into event planning. By combining music, dynamic visuals, and
@@ -569,7 +572,7 @@ export default function SpotifyEventsContent() {
             engage, and celebrate, transforming simple invitations into
             memorable, community-driven experiences.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             On a personal note, I&apos;m deeply passionate about bringing this
             concept to life. As someone aspiring to join Spotify, these ideas
             showcase my dedication to user-centric design while aligning with

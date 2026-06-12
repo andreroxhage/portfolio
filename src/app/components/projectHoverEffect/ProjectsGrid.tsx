@@ -58,7 +58,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-24">
         <motion.div
-          className="md:col-span-5 flex flex-col gap-6 justify-center"
+          className="md:col-span-5 flex flex-col gap-6 justify-center pl-0 md:pl-2"
           layout
         >
           {allItems.map((item, index) => {
@@ -142,7 +142,7 @@ const RightPreviewPanel = ({
 
   return (
     <div className="hidden md:block md:col-span-7">
-      <div className="sticky top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
+      <div className="top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
         <AnimatePresence mode="wait">
           {showPanel && (
             <>

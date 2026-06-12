@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
 import type { ProjectMeta } from '@/app/types';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
@@ -25,7 +24,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
   });
 
   return (
-    <header className="max-w-2xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
+    <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
       <motion.h1
         className="text-2xl md:text-3xl font-medium tracking-tight leading-tight"
         style={
@@ -54,6 +53,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
         </motion.h3>
       )}
 
+      {/* Tags hidden for now per user feedback
       {project.tags && project.tags.length > 0 && (
         <motion.div
           className="flex flex-wrap gap-2 mt-2"
@@ -70,6 +70,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
           ))}
         </motion.div>
       )}
+      */}
     </header>
   );
 }

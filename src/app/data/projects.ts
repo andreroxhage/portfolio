@@ -2,16 +2,32 @@ import type { ProjectMeta } from '@/app/types';
 
 export const projectRegistry: ProjectMeta[] = [
   {
+    projectSlug: 'ai-for-interrogation-analysis',
+    title: 'AI for Interrogation Analysis',
+    subtitle: 'Exploring offline AI support for intelligence analysts.',
+    previewSubtitle:
+      'How can AI assist intelligence analysts without creating automation bias? This thesis project, in collaboration with an authority conducting interrogations and Lund University, investigates human-AI collaboration, designing a secure offline system that keeps the human in the loop.',
+    date: '2026',
+    image: '/resource/projects/thesis.png',
+    imageAlt:
+      'Abstract representation of artificial intelligence and cognitive science',
+    tags: ['Human-AI Collaboration', 'UX Research', 'System Design'],
+    order: 0,
+    type: 'project',
+    titleColor: 'oklch(0.58 0.09 200)',
+    titleColorLight: 'oklch(0.42 0.09 200)',
+  },
+  {
     projectSlug: 'join-cx',
     title: 'JoinCX',
     subtitle:
       'Redesigning a loyalty platform and building the analytics tools behind it.',
     previewSubtitle:
       "Customer data platforms shouldn't feel like rocket science. I led Join's redesign to turn complex data into clear insights and intuitive workflows, improving usability and driving adoption",
-    date: '2023 – 2025',
-    image: '/resource/joinMockup1.png',
+    date: '2023 – 2026',
+    image: '/resource/joinMockup2.png',
     imageAlt: 'Join CX platform dashboard showing customer analytics',
-    imageFader: ['/resource/joinMockup1.png', '/resource/joinMockup2.png'],
+    imageFader: ['/resource/joinMockup2.png', '/resource/joinMockup1.png'],
     intervalTime: 5000,
     roundedCorners: false,
     tags: ['Design Engineering', 'SaaS', 'Data Visualization'],
@@ -31,6 +47,7 @@ export const projectRegistry: ProjectMeta[] = [
     imageAlt: 'Spotify events concept design in Figma',
     videoIdentifier: 'spotify-events',
     posterImage: '/resource/projects/p4_poster.jpg',
+    tags: ['Interaction Design', 'Product Psychology', 'UX Concept'],
     order: 2,
     type: 'project',
     titleColor: 'oklch(0.635 0.08 148)',
@@ -47,6 +64,7 @@ export const projectRegistry: ProjectMeta[] = [
     imageAlt: 'Scroll Select Authentication in VR',
     videoIdentifier: 'login-experience-in-vr',
     posterImage: '/resource/projects/p2_poster.jpg',
+    tags: ['VR UX', 'Unity Prototyping', 'Spatial Interaction'],
     order: 5,
     type: 'project',
     titleColor: 'oklch(0.605 0.046 232.4)',
@@ -65,6 +83,7 @@ export const projectRegistry: ProjectMeta[] = [
     imageAlt: 'Usability Evaluation of Microsoft Teams Calendar Feature',
     videoIdentifier: 'usability-evaluation-of-microsoft-teams-calendar-feature',
     posterImage: '/resource/projects/p1_poster.jpg',
+    tags: ['Usability Evaluation', 'User Testing', 'UX Audit'],
     order: 4,
     type: 'project',
     titleColor: 'oklch(0.533 0.079 285.2)',

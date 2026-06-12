@@ -13,10 +13,10 @@ export default function UsabilityEvaluationMicrosoftTeams() {
     <>
       {/* Section 1 — Summary */}
       <MiddleSection className="mb-20 space-y-6">
-        <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+        <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
           Summary
         </h4>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           This usability evaluation, conducted as part of a group project with
           six members, assessed the Microsoft Teams Free calendar feature,
           focusing on usability challenges, user satisfaction, and actionable
@@ -24,13 +24,13 @@ export default function UsabilityEvaluationMicrosoftTeams() {
           experienced users aged 18-30, we uncovered key insights into the
           platform&apos;s strengths and weaknesses.
         </p>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Basic tasks like joining meetings proved intuitive, but users
           struggled with rescheduling, feature discovery, and interpreting
           system feedback during connection issues. Ambiguous labels and limited
           guidance during technical disruptions caused delays and confusion.
         </p>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Key findings: System messages, especially during connection loss,
           require enhanced visibility. RSVP tracking needs streamlining with
           real-time updates. Interactive onboarding should familiarize new users
@@ -54,10 +54,10 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Introduction</SectionHeading>
         <div className="space-y-6">
           <div>
-            <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+            <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
               Purpose
             </h4>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+            <p className="text-base text-muted-foreground leading-relaxed mb-3">
               This evaluation examines how users interact with Microsoft
               Teams&apos; calendar feature in realistic scenarios. We aimed to
               assess whether new users can adopt the system without dedicated
@@ -66,19 +66,19 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             </p>
           </div>
           <div>
-            <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+            <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
               Research Questions
             </h4>
             <ol className="list-decimal list-inside space-y-2">
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 How satisfied are users with the calendar&apos;s overall
                 usability?
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 How effective are the meeting creation and rescheduling
                 workflows?
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 Does Microsoft Teams provide adequate feedback during connection
                 failures?
               </li>
@@ -91,7 +91,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       <MiddleSection className="mb-20">
         <SectionHeading>Methodology</SectionHeading>
         <div className="space-y-6">
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The evaluation involved six participants aged 18-30, all based in
             Lund, Sweden, who were familiar with digital calendar tools like
             Google Calendar but new to Microsoft Teams. Participants completed
@@ -101,7 +101,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             metrics, and pre/post-test questionnaires, ensuring comprehensive
             user experience insights.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Testing occurred in a controlled lab environment to minimize
             distractions and standardize conditions across sessions. Tasks were
             framed as realistic scenarios to capture authentic interactions.
@@ -110,46 +110,46 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             discussions.
           </p>
           <div>
-            <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+            <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
               Tasks
             </h4>
             <ol className="list-decimal list-inside space-y-2">
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">
                   Joining a Scheduled Meeting:
                 </span>{' '}
                 Testing ease of access to ongoing meetings.
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">Creating a New Meeting:</span>{' '}
                 Evaluating workflow steps for scheduling new meetings.
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">
                   Checking Availability and Rescheduling:
                 </span>{' '}
                 Assessing ability to view invitee availability and execute
                 rescheduling.
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">
                   Starting and Ending a Meeting:
                 </span>{' '}
                 Observing clarity of meeting control actions.
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">
                   Recognizing Connection Loss:
                 </span>{' '}
                 Testing effectiveness of connection status communication.
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">
                   Rescheduling Without Internet:
                 </span>{' '}
                 Observing user behavior during offline rescheduling attempts.
               </li>
-              <li className="text-base md:text-lg text-muted-foreground">
+              <li className="text-base text-muted-foreground">
                 <span className="font-medium">Logging Out:</span> Testing
                 discoverability and execution of logout functionality.
               </li>
@@ -173,7 +173,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       <MiddleSection className="mb-20">
         <SectionHeading>Results</SectionHeading>
         <div className="space-y-6">
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The evaluation identified patterns in user behavior and task
             performance. Basic tasks like joining meetings achieved high success
             rates, with participants leveraging intuitive features like pop-up
@@ -182,14 +182,14 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             overlooked meeting notifications, mistaking them for unrelated
             alerts.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Meeting creation proved moderately successful but exposed critical
             usability issues. Participants often remained uncertain whether
             invitations had been sent, as confirmation dialogs lacked clarity.
             This uncertainty led some users to duplicate efforts, manually
             copying links or recreating meetings for verification.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Rescheduling emerged as the most challenging task. Participants
             struggled to locate RSVP details and check attendee availability,
             with some navigating to incorrect sections like the
@@ -197,7 +197,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             inconsistencies in information architecture and access patterns
             within the calendar interface.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Connection loss further complicated task completion. While all
             participants eventually identified the issue, many only recognized
             it after repeated failed interactions. System feedback was subtle
@@ -227,7 +227,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       <MiddleSection className="mb-20">
         <SectionHeading>Analysis &amp; Discussion</SectionHeading>
         <div className="space-y-6">
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The evaluation provided detailed insights into Microsoft Teams
             calendar strengths and weaknesses. Joining meetings proved most
             intuitive, benefiting from clear notifications and streamlined
@@ -237,7 +237,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             particularly for participants expecting real-time syncing or
             prominent error states.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Labeling and navigation emerged as recurring themes in user
             feedback. The term &apos;Join&apos; led some users to believe they
             were interrupting ongoing meetings rather than initiating new ones.
@@ -247,7 +247,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             user mental models to reduce cognitive load and improve task
             efficiency.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             RSVP tracking represented a significant pain point in the free
             version, where the absence of real-time RSVP updates drastically
             impacted usability. Unlike the paid version, which integrates RSVP
@@ -263,26 +263,26 @@ export default function UsabilityEvaluationMicrosoftTeams() {
       <MiddleSection className="mb-20">
         <SectionHeading>Recommendations</SectionHeading>
         <ol className="list-decimal list-inside space-y-2">
-          <li className="text-base md:text-lg text-muted-foreground">
+          <li className="text-base text-muted-foreground">
             <span className="font-medium">
               Enhance Connection Feedback Visibility:
             </span>{' '}
             Implement prominent connection status indicators, such as centered
             banners with color-coded states.
           </li>
-          <li className="text-base md:text-lg text-muted-foreground">
+          <li className="text-base text-muted-foreground">
             <span className="font-medium">
               Improve RSVP and Invitation Management:
             </span>{' '}
             Embed RSVP responses directly in calendar and chat views for unified
             information access.
           </li>
-          <li className="text-base md:text-lg text-muted-foreground">
+          <li className="text-base text-muted-foreground">
             <span className="font-medium">Refine Action Labels:</span> Replace
             ambiguous terms like &quot;Join&quot; with contextually clear labels
             like &quot;Start Meeting&quot; for new sessions.
           </li>
-          <li className="text-base md:text-lg text-muted-foreground">
+          <li className="text-base text-muted-foreground">
             <span className="font-medium">
               Introduce Interactive Onboarding:
             </span>{' '}
@@ -290,7 +290,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             meeting creation, rescheduling, RSVP tracking, and connection
             handling.
           </li>
-          <li className="text-base md:text-lg text-muted-foreground">
+          <li className="text-base text-muted-foreground">
             <span className="font-medium">Enhance Confirmation Patterns:</span>{' '}
             Supplement or replace modal dialogs with persistent visual
             confirmations like checkmarks or status messages.

@@ -1,7 +1,6 @@
 'use client';
 import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
-import { Badge } from '@/components/ui/badge';
 import { ideaRegistry } from '@/app/data/ideas';
 import IdeaNavigation from '@/app/components/IdeaNavigation';
 
@@ -55,6 +54,7 @@ export default function IdeaPage({
             {idea.date}
           </motion.h3>
         )}
+        {/* Tags hidden for now per user feedback
         {idea.tags && idea.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
             {idea.tags.map(tag => (
@@ -68,6 +68,7 @@ export default function IdeaPage({
             ))}
           </div>
         )}
+        */}
       </header>
 
       <Suspense

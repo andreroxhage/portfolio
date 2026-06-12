@@ -3,6 +3,10 @@
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "todoist": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://ai.todoist.net/mcp"]
     }
   }
 }

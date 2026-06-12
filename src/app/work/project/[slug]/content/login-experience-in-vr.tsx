@@ -15,10 +15,10 @@ export default function LoginExperienceInVRContent() {
       {/* Section 1 — summary + video */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Conducted as part of the &lsquo;Working Environment Project&rsquo;
             course, this collaborative effort with four team members addressed
             authentication challenges in Virtual Reality (VR). The project
@@ -26,7 +26,7 @@ export default function LoginExperienceInVRContent() {
             immersive VR environments, specifically for GAIM&apos;s VR shooting
             application.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Traditional authentication methods, typing passwords on virtual
             keyboards, are cumbersome, error-prone, and disruptive to immersion.
             Our objective was to develop a solution that enhances usability,
@@ -44,25 +44,25 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Key Outcomes
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="text-surface-dark-foreground">
                 Scroll Select Authentication:
               </span>{' '}
               Novel interaction pattern combining horizontal scrolling with
               object selection to streamline VR login processes.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Immersion-First Design:
               </span>{' '}
               Built on VR-specific interaction principles to maintain engagement
               and presence.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Contextual Integration:
               </span>{' '}
@@ -89,10 +89,10 @@ export default function LoginExperienceInVRContent() {
         <SectionHeading>Introduction</SectionHeading>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Problem Statement
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Current VR login methods are cumbersome and break immersion. Typing
             passwords on virtual keyboards is slow, error-prone, and disrupts
             interaction flow. This problem intensifies in applications like
@@ -104,11 +104,11 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Project Objectives
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Research:
               </span>{' '}
@@ -116,14 +116,14 @@ export default function LoginExperienceInVRContent() {
               reducing friction, increasing efficiency, and maintaining
               security.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Design:
               </span>{' '}
               Create conceptual and high-fidelity prototypes that integrate
               seamlessly into immersive VR environments.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Prototyping:
               </span>{' '}
@@ -139,17 +139,17 @@ export default function LoginExperienceInVRContent() {
         <SectionHeading>Design Process</SectionHeading>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Research &amp; Ideation
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             We reviewed existing VR authentication methods and design
             guidelines, including gesture-based systems like RubikAuth and
             ergonomic principles for immersive interaction. We also analyzed
             Apple&apos;s and Meta&apos;s VR development guidelines to understand
             platform-specific best practices.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Following research, we brainstormed and sketched concepts to explore
             innovative approaches. Scroll Select Authentication emerged as a
             promising solution, combining horizontal scrolling with object
@@ -170,10 +170,10 @@ export default function LoginExperienceInVRContent() {
       {/* Section 4 — conceptual design + user flow */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Conceptual Design &mdash; Scroll Select Authentication
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             This method combines horizontal scrolling and object selection for
             seamless authentication. The interaction design leverages VR&apos;s
             spatial capabilities and is tailored for single-button controllers,
@@ -181,7 +181,7 @@ export default function LoginExperienceInVRContent() {
             authentication process aligns with application theming while
             maintaining ease of use.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Scroll Select Authentication integrates directly with GAIM&apos;s
             existing controller mechanics, allowing users to navigate and input
             credentials without device switching. This thematic alignment
@@ -190,7 +190,7 @@ export default function LoginExperienceInVRContent() {
             Single-button functionality simplifies actions, ensuring
             accessibility for users across experience levels.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             This integration strengthens user engagement within the VR
             environment while eliminating external input devices, reinforcing
             the immersive, streamlined experience essential to VR applications.
@@ -198,10 +198,10 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Unity Implementation
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The prototype was developed in Unity, leveraging advanced VR
             interaction systems and controller APIs. Key features included
             spatial navigation, precise key selection with visual feedback, and
@@ -216,10 +216,10 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Initial Usability Insights
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Early testing focused on speed, error rate, and user satisfaction.
             Participants found the method intuitive and engaging, with reduced
             cognitive load compared to virtual keyboard approaches. However,
@@ -229,39 +229,39 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             User Flow
           </h4>
           <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Center Selection:
               </span>{' '}
               A key appears in the center of the user&apos;s field of view for
               focus and precision.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Horizontal Scrolling:
               </span>{' '}
               Users move the controller left or right to scroll through
               available keys.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Row Navigation:
               </span>{' '}
               Users switch between rows containing letters, numbers, special
               characters, and control options.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Key Selection:
               </span>{' '}
               Once the desired key is centered, users press the controller
               button to confirm.
             </li>
-            <li className="text-base md:text-lg text-muted-foreground">
+            <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
                 Authentication:
               </span>{' '}
@@ -285,10 +285,10 @@ export default function LoginExperienceInVRContent() {
       {/* Section 5 — middle: technical implementation + user testing */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Technical Implementation
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The high-fidelity prototype brought Scroll Select Authentication to
             life using Unity&apos;s VR interaction framework. Users navigate a
             dynamic horizontal scrolling interface, hover over directional zones
@@ -296,7 +296,7 @@ export default function LoginExperienceInVRContent() {
             button press. This implementation ensures ergonomic ease and
             precision while maintaining immersion.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Key technical features include hover-based navigation with spatial
             mapping, real-time text field updates, and seamless row transitions
             between character sets (letters, numbers, symbols, control actions).
@@ -310,16 +310,16 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-xl font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             User Testing &amp; Evaluation
           </h4>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             User testing involved eight participants with varying VR experience
             levels, from novices to a VR researcher. The evaluation focused on
             usability, efficiency, and interaction intuitiveness, revealing
             insights into user behavior and system performance.
           </p>
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Participants noted high efficiency once familiar with the
             interaction mechanics, with one expert user completing name entry
             error-free after initial adjustment. However, challenges emerged:
@@ -338,7 +338,7 @@ export default function LoginExperienceInVRContent() {
       {/* Section 6 — middle: final evaluation */}
       <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>Final Evaluation</SectionHeading>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Scroll Select Authentication successfully demonstrated a novel
           approach to VR authentication, prioritizing immersion and efficiency.
           User feedback highlighted key strengths: alignment with VR controller
@@ -347,7 +347,7 @@ export default function LoginExperienceInVRContent() {
           enhanced onboarding, optimized sensitivity calibration, and more
           intuitive placement of control actions.
         </p>
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Proposed refinements include differentiated scroll speeds based on
           character type, hover delay for error mitigation, and animations
           clarifying row transitions. These adjustments could significantly

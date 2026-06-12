@@ -15,7 +15,7 @@ const ProjectGridMobile = dynamic(
 
 export default function RecentProjects() {
   return (
-    <section className="surface-lock-dark bg-surface-dark dark:bg-background rounded-[40px] corner-squircle">
+    <section className="surface-lock-dark bg-surface-dark dark:bg-background rounded-[40px] corner-squircle h-full">
       <div className="max-w-7xl mx-auto">
         {/* Desktop project browser */}
         <div className="hidden md:block">
