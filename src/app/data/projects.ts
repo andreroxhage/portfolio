@@ -2,28 +2,12 @@ import type { ProjectMeta } from '@/app/types';
 
 export const projectRegistry: ProjectMeta[] = [
   {
-    projectSlug: 'ai-for-interrogation-analysis',
-    title: 'AI for Interrogation Analysis',
-    subtitle: 'Exploring offline AI support for intelligence analysts.',
-    previewSubtitle:
-      'How can AI assist intelligence analysts without creating automation bias? This thesis project, in collaboration with an authority conducting interrogations and Lund University, investigates human-AI collaboration, designing a secure offline system that keeps the human in the loop.',
-    date: '2026',
-    image: '/resource/projects/thesis.png',
-    imageAlt:
-      'Abstract representation of artificial intelligence and cognitive science',
-    tags: ['Human-AI Collaboration', 'UX Research', 'System Design'],
-    order: 0,
-    type: 'project',
-    titleColor: 'oklch(0.58 0.09 200)',
-    titleColorLight: 'oklch(0.42 0.09 200)',
-  },
-  {
     projectSlug: 'join-cx',
-    title: 'JoinCX',
+    title: 'Join CX',
     subtitle:
       'Redesigning a loyalty platform and building the analytics tools behind it.',
     previewSubtitle:
-      "Customer data platforms shouldn't feel like rocket science. I led Join's redesign to turn complex data into clear insights and intuitive workflows, improving usability and driving adoption",
+      "Data platforms shouldn't feel like rocket science. I led Join's redesign to turn complex customer data into clear insights and intuitive workflows, improving usability and driving adoption",
     date: '2023 – 2026',
     image: '/resource/joinMockup2.png',
     imageAlt: 'Join CX platform dashboard showing customer analytics',
@@ -31,10 +15,27 @@ export const projectRegistry: ProjectMeta[] = [
     intervalTime: 5000,
     roundedCorners: false,
     tags: ['Design Engineering', 'SaaS', 'Data Visualization'],
-    order: 1,
+    order: 0,
     type: 'project',
     titleColor: 'oklch(0.387 0.063 187.2)',
     titleColorLight: 'oklch(0.387 0.063 187.2)',
+  },
+  {
+    projectSlug: 'ai-for-interrogation-analysis',
+    title: 'AI for interrogation analysis',
+    subtitle:
+      'Building an offline RAG pipeline and agentic workflow for intelligence services',
+    previewSubtitle:
+      'Designing an offline RAG pipeline and agentic workflow to transform raw interrogations into actionable intelligence',
+    date: '2026',
+    image: '/resource/projects/thesis.png',
+    imageAlt:
+      'Abstract representation of artificial intelligence and cognitive science',
+    tags: ['Human-AI Collaboration', 'UX Research', 'System Design'],
+    order: 1,
+    type: 'project',
+    titleColor: 'oklch(0.6856 0.0518 149.31)',
+    titleColorLight: 'oklch(0.4588 0.0518 149.31)',
   },
   {
     projectSlug: 'spotify-events',

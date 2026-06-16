@@ -18,47 +18,49 @@ export default function JoinCXContent() {
             Summary
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Customer Data Platforms (CDPs) and loyalty programs shouldn’t feel
-            like rocket science. As the Lead Product Designer and Design
-            Engineer for Join, I led the product redesign of their enterprise
-            loyalty platform. The goal was to transform complex customer data
-            into clear insights and intuitive workflows.
+            I worked at Join for several years, moving from leading an initial
+            platform redesign to eventually designing and implementing a series
+            of new features. Customer Data Platforms and loyalty programs can be
+            difficult to use, but they do not have to feel like rocket science.
+            During my time as aDesign Engineer, I took on the challenge of
+            turning their enterprise loyalty platform into something people
+            actually understood.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            By bridging the gap between product strategy, UX design, and
-            frontend implementation, I redesigned the interface from the ground
-            up. The resulting design simplified complex configuration steps,
-            improved dashboard usability, and helped clients launch loyalty
-            programs without engineering support.
+            I redesigned the interface from the ground up. I did not just hand
+            off Figma files, I actively built out the frontend components. This
+            allowed me to systematically simplify complex configuration steps
+            and improve dashboard usability. Ultimately, clients could launch
+            entire loyalty programs without needing to ask for support.
           </p>
         </div>
 
         <div>
           <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Key Outcomes
+            Key outcomes
           </h4>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Improved Platform Adoption:
+                Improved Platform Adoption.
               </span>{' '}
-              Rewritten dashboard layouts and simplified data visualizations
-              improved usability and user engagement.
+              I rewrote dashboard layouts and simplified data visualizations to
+              make the platform highly usable for our clients.
             </li>
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Streamlined Loyalty Configurations:
+                Streamlined Configurations.
               </span>{' '}
-              Replaced a tedious configuration flow with an interactive loyalty
-              program builder.
+              I replaced tedious setup flows with interactive workflows like a
+              drag-and-drop Journey Builder.
             </li>
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Unified Component Library:
+                Unified Component Library.
               </span>{' '}
-              Built and documented a comprehensive design system in Vue,
-              improving code quality, platform consistency, and developer
-              velocity.
+              I built and documented a comprehensive design system in both Figma
+              and Vue. This improved our code quality and helped developers ship
+              features much faster but also helped brand consistency.
             </li>
           </ol>
         </div>
@@ -76,66 +78,68 @@ export default function JoinCXContent() {
             size="sm"
           />
           <p className="text-center text-sm text-muted-foreground">
-            Segment builder, allowing marketers to target groups of customers
+            The Segment Builder allowed marketers to target groups of customers
             based on dynamic shopping habits and tiers.
           </p>
         </div>
       </WideSection>
 
-      {/* Section 3 — Design Process & Problem */}
+      {/* Section 3 — The Challenge & Core Thread */}
       <MiddleSection className="mb-20 space-y-6">
-        <SectionHeading>The Challenge</SectionHeading>
+        <SectionHeading>The challenge</SectionHeading>
 
         <div>
           <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Simplifying the Complexity of Customer Data
+            Understanding the data complexity
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Loyalty marketers deal with vast amounts of fragmented transactional
-            and behavioral data. In the previous version of the platform,
-            building a simple campaign—such as targeting customers who hadn’t
-            bought anything in 30 days and offering them double points—required
-            complex queries and configuration.
+            Marketers deal with an overwhelming amount of fragmented
+            transactional and behavioral data. In the older version of the
+            platform, building a simple campaign required complex queries. There
+            was a lot of data to understand and visualize. This caused frequent
+            setup errors and delayed campaign launches. Marketers ended up
+            relying heavily on the Join support team just to do their jobs. I
+            realized the product had to rethink this complexity through
+            interface interactions that simplified large tasks into smaller,
+            easier ones.
           </p>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            This high cognitive load led to frequent setup errors, delayed
-            campaign launches, and heavy reliance on the Join support team. The
-            product needed to hide database complexity behind an elegant, visual
-            rule-builder.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Core Objectives
-          </h4>
-          <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Enhance Data Clarity:
-              </span>{' '}
-              Provide marketers with a clear overview of their program’s health,
-              conversion rates, and member value distributions.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Streamline Campaign Setups:
-              </span>{' '}
-              Transform reward rules, point systems, and triggers into a visual,
-              error-free workflow.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Ensure Component Reusability:
-              </span>{' '}
-              Bridge design and code by establishing a robust design system that
-              speeds up feature releases.
-            </li>
-          </ol>
         </div>
       </MiddleSection>
 
-      {/* Section 4 — Mockup 2 Showcase (Dashboard) */}
+      {/* Section 4 — Feature Highlights */}
+      <MiddleSection className="mb-20 space-y-6">
+        <SectionHeading>Interactive workflows</SectionHeading>
+
+        <div>
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+            Visualizing the business
+          </h4>
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
+            To give marketers a clearer overview of their business, I redesigned
+            the customer profiles for better data visualization. I also
+            introduced an Insights feature specifically designed for visualizing
+            business statistics, taking data from multiple sources through our
+            integrations. This allowed users to better understand their loyalty
+            program&apos;s results and guide their marketing decisions without
+            parsing spreadsheets.
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+            Simplifying campaign setups
+          </h4>
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
+            The Segment Builder was just the beginning. I focused on
+            transforming reward rules and point systems into visual workflows.
+            For example, I redesigned the Journey Builder into a drag-and-drop
+            canvas. This allowed marketers to gain a much better overview of the
+            customer lifecycle and construct complex automation rules visually.
+          </p>
+        </div>
+      </MiddleSection>
+
+      {/* Section 5 — Mockup 2 Showcase (Dashboard/Journey Builder) */}
       <WideSection className="mb-20 space-y-12">
         <div className="space-y-4">
           <ProjectImage
@@ -151,9 +155,25 @@ export default function JoinCXContent() {
             lifetime metrics and active loyalty program stats.
           </p>
         </div>
+
+        <div className="space-y-4">
+          {/* TODO: Add the actual image for journey-builder.png to the public/resource directory */}
+          <ProjectImage
+            src="/resource/journey-builder.png"
+            alt="Join CX Journey Builder drag and drop canvas"
+            width={1920}
+            height={1080}
+            rounded={true}
+            size="sm"
+          />
+          <p className="text-center text-sm text-muted-foreground">
+            The Journey Builder, redesigned into an interactive drag-and-drop
+            canvas.
+          </p>
+        </div>
       </WideSection>
 
-      {/* Section 5 — Execution, Architecture & Business Impact */}
+      {/* Section 6 — Execution, Architecture & Business Impact */}
       <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>The Solution &amp; Engineering</SectionHeading>
 
@@ -162,55 +182,64 @@ export default function JoinCXContent() {
             Bridging Design and Code
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            As a Design Engineer, I didn’t just hand off Figma links. I
-            partnered with the engineering team to construct a modular UI
-            library in Vue. I focused heavily on micro-interactions, responsive
-            dashboard grids, and visual animations to make the data exploration
-            process feel fast, tactile, and premium.
+            As a Design Engineer, I never just handed off Figma links. I
+            partnered directly with the engineering team to construct a modular
+            UI library in Vue. I spent a lot of time on micro-interactions,
+            responsive dashboard grids, and animations. I wanted the data
+            exploration process to feel fast and tactile.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Using custom data visualizations built with Recharts, I created
-            widgets that allow users to drill down into specific customer
-            profiles, tracking purchase histories, points balances, and loyalty
-            events in real time.
+            I used custom data visualizations to create widgets that allow users
+            to drill down into specific customer profiles. They could track
+            purchase histories, points balances, and loyalty events in real time
+            without feeling overwhelmed.
           </p>
         </div>
 
         <div>
           <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Platform Consistency &amp; Client Acquisitions
+            Real business impact
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Redesigning the Join platform did more than just satisfy design
-            standards—it directly supported user adoption and client
-            acquisitions:
+            Redesigning the Join platform went far beyond satisfying design
+            standards. It directly drove user adoption and helped us win major
+            deals.
           </p>
-          <ul className="list-disc pl-5 space-y-2">
+          <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Client Wins:
+                Major Client Wins.
               </span>{' '}
-              Improved usability and visual clarity of the analytics dashboard
-              directly contributed to key enterprise client acquisitions,
-              onboarding Filmstaden, Önska, and Bauhaus to the platform.
+              The improved usability of the product directly contributed to
+              onboarding enterprise clients like Filmstaden, Önska, and Bauhaus.
             </li>
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Reduced Support Overhead:
+                Reduced support overhead.
               </span>{' '}
-              Simplifying the configuration flows eliminated common merchant
-              setup errors, enabling self-guided onboarding and reducing
-              reliance on customer support.
+              I simplified the configuration flows to eliminate common setup
+              errors. This allowed for self-guided onboarding and drastically
+              reduced support tickets.
             </li>
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Enhanced Campaign Velocity:
+                Enhanced campaign velocity.
               </span>{' '}
-              By making the segmentation logic visual and intuitive, marketing
-              managers could launch targeted customer loyalty campaigns
-              independently without developer assistance.
+              Because I made the segmentation logic visual and intuitive,
+              marketing managers finally had the freedom to launch targeted
+              loyalty campaigns completely on their own.
             </li>
-          </ul>
+          </ol>
+        </div>
+
+        <div>
+          <p className="text-base text-muted-foreground leading-relaxed italic mt-4 border-l-2 border-surface-dark-muted pl-4">
+            Looking back on my years at Join, I realize that building enterprise
+            software is less about adding features and more about aggressively
+            removing friction. The real win was seeing non-technical users
+            confidently navigate complex data without fear of breaking the
+            system.
+          </p>
         </div>
       </MiddleSection>
     </>

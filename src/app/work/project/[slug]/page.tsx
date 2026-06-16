@@ -1,22 +1,10 @@
 'use client';
-import React, { lazy, Suspense, use } from 'react';
+import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { projectRegistry } from '@/app/data/projects';
 import ProjectNavigation from '@/app/components/ProjectNavigation';
 import ProjectHeader from '@/app/components/ProjectHeader';
-
-// Static content map — avoids webpack variable import path limitation
-const contentMap: Record<string, React.ComponentType> = {
-  'join-cx': lazy(() => import('./content/join-cx')),
-  'spotify-events': lazy(() => import('./content/spotify-events')),
-  'login-experience-in-vr': lazy(
-    () => import('./content/login-experience-in-vr')
-  ),
-  'usability-evaluation-of-microsoft-teams-calendar-feature': lazy(
-    () =>
-      import('./content/usability-evaluation-of-microsoft-teams-calendar-feature')
-  ),
-};
+import { projectContentMap as contentMap } from '@/app/work/project/content-map';
 
 export default function Page({
   params,

@@ -1,16 +1,11 @@
 'use client';
-import React, { lazy, Suspense, use } from 'react';
+import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { writingRegistry } from '@/app/data/writing';
 import WritingNavigation from '@/app/components/WritingNavigation';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-
-const contentMap: Record<string, React.ComponentType> = {
-  'ai-as-a-second-opinion': lazy(
-    () => import('./content/ai-as-a-second-opinion')
-  ),
-};
+import { writingContentMap as contentMap } from '@/app/work/writing/content-map';
 
 export default function WritingPage({
   params,

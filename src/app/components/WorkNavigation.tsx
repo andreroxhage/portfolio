@@ -7,6 +7,9 @@ import { projectRegistry } from '@/app/data/projects';
 import { writingRegistry } from '@/app/data/writing';
 import { ideaRegistry } from '@/app/data/ideas';
 import { useTheme } from '@/app/contexts/ThemeContext';
+import { projectContentSlugs } from '@/app/work/project/content-map';
+import { writingContentSlugs } from '@/app/work/writing/content-map';
+import { ideaContentSlugs } from '@/app/work/idea/content-map';
 
 interface NavItem {
   slug: string;
@@ -17,21 +20,9 @@ interface NavItem {
   titleColorLight?: string;
 }
 
-// Slugs that currently have content subpages with text
-const ACTIVE_PROJECTS = [
-  'join-cx',
-  'spotify-events',
-  'login-experience-in-vr',
-  'usability-evaluation-of-microsoft-teams-calendar-feature',
-];
-
-const ACTIVE_WRITINGS = ['ai-as-a-second-opinion'];
-
-const ACTIVE_IDEAS: string[] = [];
-
-// Build the sequential navigation chain sorted by order
+// Build the sequential navigation chain from registries + content maps
 const activeProjects: NavItem[] = [...projectRegistry]
-  .filter(p => ACTIVE_PROJECTS.includes(p.projectSlug))
+  .filter(p => projectContentSlugs.includes(p.projectSlug))
   .sort((a, b) => a.order - b.order)
   .map(p => ({
     slug: p.projectSlug,
@@ -43,7 +34,7 @@ const activeProjects: NavItem[] = [...projectRegistry]
   }));
 
 const activeWritings: NavItem[] = [...writingRegistry]
-  .filter(w => ACTIVE_WRITINGS.includes(w.writingSlug))
+  .filter(w => writingContentSlugs.includes(w.writingSlug))
   .sort((a, b) => a.order - b.order)
   .map(w => ({
     slug: w.writingSlug,
@@ -55,7 +46,7 @@ const activeWritings: NavItem[] = [...writingRegistry]
   }));
 
 const activeIdeas: NavItem[] = [...ideaRegistry]
-  .filter(i => ACTIVE_IDEAS.includes(i.ideaSlug))
+  .filter(i => ideaContentSlugs.includes(i.ideaSlug))
   .sort((a, b) => a.order - b.order)
   .map(i => ({
     slug: i.ideaSlug,

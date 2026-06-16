@@ -3,8 +3,7 @@ import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { ideaRegistry } from '@/app/data/ideas';
 import IdeaNavigation from '@/app/components/IdeaNavigation';
-
-const contentMap: Record<string, React.ComponentType> = {};
+import { ideaContentMap as contentMap } from '@/app/work/idea/content-map';
 
 export default function IdeaPage({
   params,
