@@ -1,84 +1,52 @@
-'use client';
-import React, { Suspense, use } from 'react';
-import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { ideaRegistry } from '@/app/data/ideas';
-import WorkNavigation from '@/app/components/WorkNavigation';
-import { ideaContentMap as contentMap } from '@/app/work/idea/content-map';
+import IdeaPageClient from './IdeaPageClient';
 
-export default function IdeaPage({
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return ideaRegistry.map(idea => ({ slug: idea.ideaSlug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const idea = ideaRegistry.find(i => i.ideaSlug === slug);
+
+  if (!idea) {
+    return {};
+  }
+
+  const description = idea.previewSubtitle ?? idea.subtitle;
+  const image = idea.posterImage ?? idea.image;
+
+  return {
+    title: `${idea.title} | André Roxhage`,
+    description,
+    openGraph: {
+      title: `${idea.title} | André Roxhage`,
+      description,
+      type: 'article',
+      images: image ? [image] : undefined,
+    },
+  };
+}
+
+export default async function IdeaPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = use(params);
+  const { slug } = await params;
   const idea = ideaRegistry.find(i => i.ideaSlug === slug);
 
   if (!idea) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground">
-            Idea not found
-          </h1>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
-  const Content = contentMap[slug];
-
-  return (
-    <motion.div
-      className="min-h-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
-      <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
-        <motion.h1
-          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
-        >
-          {idea.title}
-        </motion.h1>
-        {idea.date && (
-          <motion.h3
-            className="text-lg md:text-2xl font-normal text-muted-foreground"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
-          >
-            {idea.date}
-          </motion.h3>
-        )}
-      </header>
-
-      <Suspense
-        fallback={
-          <div className="max-w-2.5xl mx-auto px-4">
-            <div className="h-96 animate-pulse bg-muted rounded-xl corner-squircle" />
-          </div>
-        }
-      >
-        <div className="pb-20">
-          {Content ? (
-            <Content />
-          ) : (
-            <div className="max-w-2.5xl mx-auto px-4 text-muted-foreground py-20">
-              <p className="text-lg mb-4">
-                {idea.previewSubtitle || idea.subtitle}
-              </p>
-              <p className="text-sm text-muted-foreground/60">
-                Content coming soon.
-              </p>
-            </div>
-          )}
-        </div>
-      </Suspense>
-
-      <WorkNavigation currentSlug={slug} />
-    </motion.div>
-  );
+  return <IdeaPageClient slug={slug} />;
 }

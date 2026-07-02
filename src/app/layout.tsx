@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import FloatingNav from './components/Navbar/FloatingNav';
 import ThemeToggle from './components/ThemeToggle';
@@ -12,8 +12,6 @@ export const metadata: Metadata = {
   title: 'André Roxhage | Software Design Engineer',
   description:
     'Software Design Engineer specializing in frontend development, UX design, and creativity psychology. I create intuitive digital products, solving complex challenges with a human-centered approach. Explore my portfolio for more.',
-  keywords:
-    'André Roxhage, Software Design Engineer, frontend development, UX design, creativity psychology, human-centered design, digital products, user experience, UI/UX, design thinking, product design, web development',
   authors: [{ name: 'André Roxhage' }],
   openGraph: {
     title: 'André Roxhage - Projects and Portfolio',
@@ -23,6 +21,9 @@ export const metadata: Metadata = {
     url: 'https://andreroxhage.com',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+  },
   icons: {
     apple: '/apple-touch-icon.png',
     icon: [
@@ -31,6 +32,13 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'oklch(0.975 0.005 85)' },
+    { media: '(prefers-color-scheme: dark)', color: 'oklch(0.115 0.008 70)' },
+  ],
 };
 
 const FOIWT_SCRIPT = `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(s!=='light'&&d))document.documentElement.classList.add('dark')}catch(e){}})()`;
