@@ -8,6 +8,7 @@ export const ideaContentMap: Record<string, ComponentType> = {
   'meal-planning-agents': lazy(
     () => import('./[slug]/content/meal-planning-agents')
   ),
+  'ai-running-coach': lazy(() => import('./[slug]/content/ai-running-coach')),
 };
 
 export const ideaContentSlugs = Object.keys(ideaContentMap);
