@@ -4,6 +4,7 @@ export const ideaContentMap: Record<string, ComponentType> = {
   'malmo-museum-3d-map': lazy(
     () => import('./[slug]/content/malmo-museum-3d-map')
   ),
+  readiness: lazy(() => import('./[slug]/content/readiness')),
 };
 
 export const ideaContentSlugs = Object.keys(ideaContentMap);
