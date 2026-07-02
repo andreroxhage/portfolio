@@ -14,7 +14,7 @@ interface ThemeContextType {
   theme: Theme;
   resolvedTheme: ResolvedTheme;
   mounted: boolean;
-  // eslint-disable-next-line no-unused-vars
+
   setTheme: (newTheme: Theme) => void;
 }
 

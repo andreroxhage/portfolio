@@ -38,7 +38,6 @@ export async function GET(
     const chunks: Uint8Array[] = [];
     const reader = r2Response.Body.transformToWebStream().getReader();
 
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       const { done, value } = await reader.read();
       if (done) {

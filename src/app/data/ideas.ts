@@ -13,7 +13,6 @@ export const ideaRegistry: IdeaMeta[] = [
     tags: ['Concept', 'Spatial UX', '3D'],
     order: 6,
     type: 'idea',
-    hasDetailPage: true,
   },
   {
     id: 'i3',
@@ -27,7 +26,6 @@ export const ideaRegistry: IdeaMeta[] = [
     tags: ['iOS', 'SwiftUI', 'Health Tech'],
     order: 3,
     type: 'idea',
-    hasDetailPage: true,
   },
   {
     id: 'i4',
@@ -40,7 +38,6 @@ export const ideaRegistry: IdeaMeta[] = [
     tags: ['AI Agents', 'Automation', 'Claude Code'],
     order: 7,
     type: 'idea',
-    hasDetailPage: true,
     showInPreview: false,
   },
   {
@@ -55,7 +52,6 @@ export const ideaRegistry: IdeaMeta[] = [
     tags: ['AI Agents', 'Training Data', 'Automation'],
     order: 8,
     type: 'idea',
-    hasDetailPage: true,
     showInPreview: false,
   },
 ];
