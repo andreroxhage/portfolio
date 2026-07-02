@@ -19,19 +19,19 @@ export default function LoginExperienceInVRContent() {
             Summary
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Conducted as part of the &lsquo;Working Environment Project&rsquo;
-            course, this collaborative effort with four team members addressed
-            authentication challenges in Virtual Reality (VR). The project
-            focused on designing an innovative login method tailored to
-            immersive VR environments, specifically for GAIM&apos;s VR shooting
-            application.
+            Logging into a VR app usually means poking at a floating keyboard,
+            one letter at a time. It is slow, it is error-prone, and it drops
+            you straight out of the experience you came for. On a team of five,
+            I worked on a better way to sign in for GAIM&apos;s VR shooting
+            platform, where you are already holding a weapon-style controller
+            and the last thing you want is to put it down to type.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Traditional authentication methods, typing passwords on virtual
-            keyboards, are cumbersome, error-prone, and disruptive to immersion.
-            Our objective was to develop a solution that enhances usability,
-            maintains robust security, and integrates seamlessly into VR
-            interaction paradigms.
+            Our answer was Scroll Select Authentication: you scroll horizontally
+            through characters and confirm each one with a single button press,
+            using the controller you are already holding. I helped shape the
+            concept, build the Unity prototype, and run the user testing that
+            told us what actually worked.
           </p>
           <a
             href="https://www.gaim.com/"
@@ -45,29 +45,30 @@ export default function LoginExperienceInVRContent() {
 
         <div>
           <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Key Outcomes
+            Key outcomes
           </h4>
-          <ol className="list-decimal pl-5 space-y-1">
+          <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
-              <span className="text-surface-dark-foreground">
-                Scroll Select Authentication:
+              <span className="font-medium text-surface-dark-foreground">
+                A working VR login without a keyboard.
               </span>{' '}
-              Novel interaction pattern combining horizontal scrolling with
-              object selection to streamline VR login processes.
+              Scroll to a character, press to confirm. The whole flow runs on
+              the single button people already use in the game.
             </li>
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Immersion-First Design:
+                Immersion stayed intact.
               </span>{' '}
-              Built on VR-specific interaction principles to maintain engagement
-              and presence.
+              Reusing the weapon-style controller kept the sign-in on theme, so
+              authenticating felt like part of the experience instead of a
+              detour out of it.
             </li>
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
-                Contextual Integration:
+                Testing pointed us to what to fix next.
               </span>{' '}
-              Seamlessly integrated with GAIM&apos;s weapon-style controllers,
-              ensuring thematic consistency with the shooting application.
+              Eight participants showed us where the idea held up and where
+              sensitivity, discoverability, and scroll speed needed work.
             </li>
           </ol>
         </div>
@@ -84,278 +85,130 @@ export default function LoginExperienceInVRContent() {
         />
       </WideSection>
 
-      {/* Section 2 — middle: introduction */}
+      {/* Section 2 — the problem */}
       <MiddleSection className="mb-20 space-y-6">
-        <SectionHeading>Introduction</SectionHeading>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Problem Statement
-          </h4>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Current VR login methods are cumbersome and break immersion. Typing
-            passwords on virtual keyboards is slow, error-prone, and disrupts
-            interaction flow. This problem intensifies in applications like
-            GAIM&apos;s VR shooting experiences, where users handle specialized
-            controllers. A more intuitive, efficient, and secure authentication
-            solution tailored to VR interaction paradigms is essential for
-            maintaining usability and presence.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Project Objectives
-          </h4>
-          <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Research:
-              </span>{' '}
-              Explore alternative authentication methods for VR, focusing on
-              reducing friction, increasing efficiency, and maintaining
-              security.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Design:
-              </span>{' '}
-              Create conceptual and high-fidelity prototypes that integrate
-              seamlessly into immersive VR environments.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Prototyping:
-              </span>{' '}
-              Develop a functional Unity prototype demonstrating the Scroll
-              Select Authentication interaction pattern.
-            </li>
-          </ol>
-        </div>
+        <SectionHeading>The problem</SectionHeading>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          Typing in VR is genuinely awkward. You aim at a virtual keyboard and
+          jab out characters one by one, which is slow and easy to get wrong. On
+          GAIM&apos;s shooting platform the friction is worse, because people
+          are holding specialized controllers built for aiming, not typing. We
+          took this on as part of the Working Environment Project course, and
+          the brief was simple to state and hard to solve: sign people in
+          without pulling them out of the world they came to be in.
+        </p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          So the real question was how to make authentication feel native to VR.
+          It had to be quick, hard to mess up, secure enough to trust, and it
+          had to work with the hardware players were already holding rather than
+          against it.
+        </p>
       </MiddleSection>
 
-      {/* Section 3 — middle: design process */}
+      {/* Section 3 — research and the idea */}
       <MiddleSection className="mb-20 space-y-6">
-        <SectionHeading>Design Process</SectionHeading>
+        <SectionHeading>Finding the idea</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Research &amp; Ideation
-          </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            We reviewed existing VR authentication methods and design
-            guidelines, including gesture-based systems like RubikAuth and
-            ergonomic principles for immersive interaction. We also analyzed
-            Apple&apos;s and Meta&apos;s VR development guidelines to understand
-            platform-specific best practices.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Following research, we brainstormed and sketched concepts to explore
-            innovative approaches. Scroll Select Authentication emerged as a
-            promising solution, combining horizontal scrolling with object
-            selection to create an intuitive login experience. Concepts were
-            evaluated based on usability, security robustness, and integration
-            feasibility with GAIM&apos;s VR shooting application.
+            We started by looking at how others had approached this: gesture
+            systems like RubikAuth, ergonomic guidelines for immersive
+            interaction, and the VR development guidelines from Apple and Meta.
+            Then we sketched. Scroll Select Authentication came out of that
+            round of ideation as the concept that best balanced usability,
+            security, and the reality of GAIM&apos;s single-button controllers.
           </p>
           <ProjectImage
             src="/resource/projects/p2_affinity.png"
-            alt="Ideation Process for Scroll Select Authentication"
+            alt="Ideation process for Scroll Select Authentication"
             width={3824}
             height={4506}
             rounded={false}
           />
         </div>
+
+        <div>
+          <p className="text-base text-muted-foreground leading-relaxed mb-3">
+            The interaction itself is deliberately simple. A character sits in
+            the center of your view. You tilt the controller left or right to
+            scroll through the row, switch rows to reach letters, numbers,
+            symbols, or controls, and press the button to lock in each
+            character. To finish, you scroll to Login. One input device, one
+            button, no keyboard. Because it borrows the controller&apos;s own
+            mechanics, the whole thing stays on theme with the shooting
+            experience instead of breaking it.
+          </p>
+        </div>
       </MiddleSection>
 
-      {/* Section 4 — conceptual design + user flow */}
+      {/* Section 4 — building the prototype */}
       <MiddleSection className="mb-20 space-y-6">
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Conceptual Design &mdash; Scroll Select Authentication
-          </h4>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            This method combines horizontal scrolling and object selection for
-            seamless authentication. The interaction design leverages VR&apos;s
-            spatial capabilities and is tailored for single-button controllers,
-            particularly GAIM&apos;s weapon-style controllers. This ensures the
-            authentication process aligns with application theming while
-            maintaining ease of use.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Scroll Select Authentication integrates directly with GAIM&apos;s
-            existing controller mechanics, allowing users to navigate and input
-            credentials without device switching. This thematic alignment
-            enhances immersion by repurposing the controller&apos;s natural
-            mechanics for authentication without breaking interaction flow.
-            Single-button functionality simplifies actions, ensuring
-            accessibility for users across experience levels.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            This integration strengthens user engagement within the VR
-            environment while eliminating external input devices, reinforcing
-            the immersive, streamlined experience essential to VR applications.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Unity Implementation
-          </h4>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            The prototype was developed in Unity, leveraging advanced VR
-            interaction systems and controller APIs. Key features included
-            spatial navigation, precise key selection with visual feedback, and
-            haptic response mechanisms for confirmation.
-          </p>
-          <ProjectImage
-            src="/resource/projects/p2_hifi.jpeg"
-            alt="High-Fidelity Prototype of Scroll Select Authentication"
-            width={965}
-            height={965}
-          />
-        </div>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Initial Usability Insights
-          </h4>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Early testing focused on speed, error rate, and user satisfaction.
-            Participants found the method intuitive and engaging, with reduced
-            cognitive load compared to virtual keyboard approaches. However,
-            challenges in gesture precision and scrolling sensitivity
-            highlighted areas requiring refinement.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            User Flow
-          </h4>
-          <ol className="list-decimal pl-5 space-y-1">
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Center Selection:
-              </span>{' '}
-              A key appears in the center of the user&apos;s field of view for
-              focus and precision.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Horizontal Scrolling:
-              </span>{' '}
-              Users move the controller left or right to scroll through
-              available keys.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Row Navigation:
-              </span>{' '}
-              Users switch between rows containing letters, numbers, special
-              characters, and control options.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Key Selection:
-              </span>{' '}
-              Once the desired key is centered, users press the controller
-              button to confirm.
-            </li>
-            <li className="text-base text-muted-foreground">
-              <span className="font-medium text-surface-dark-foreground">
-                Authentication:
-              </span>{' '}
-              Users navigate to the &ldquo;Login&rdquo; key to complete
-              authentication.
-            </li>
-          </ol>
-        </div>
+        <SectionHeading>Building it in Unity</SectionHeading>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          I built the high-fidelity prototype in Unity using its VR interaction
+          framework. You hover into directional zones to switch between
+          character sets, watch the text field update in real time, and confirm
+          with a single press. Visual feedback and haptics on each selection
+          give you a clear sense that the input landed, which matters a lot when
+          there is no physical keyboard to feel.
+        </p>
+        <ProjectImage
+          src="/resource/projects/p2_hifi.jpeg"
+          alt="High-fidelity prototype of Scroll Select Authentication"
+          width={965}
+          height={965}
+        />
       </MiddleSection>
 
       <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/p2_concept.png"
-          alt="High-Fidelity Prototype of Scroll Select Authentication"
+          alt="Concept for Scroll Select Authentication"
           width={811}
           height={387}
           rounded={false}
         />
       </WideSection>
 
-      {/* Section 5 — middle: technical implementation + user testing */}
+      {/* Section 5 — user testing */}
       <MiddleSection className="mb-20 space-y-6">
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            Technical Implementation
-          </h4>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            The high-fidelity prototype brought Scroll Select Authentication to
-            life using Unity&apos;s VR interaction framework. Users navigate a
-            dynamic horizontal scrolling interface, hover over directional zones
-            to switch between character sets, and make selections with a single
-            button press. This implementation ensures ergonomic ease and
-            precision while maintaining immersion.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Key technical features include hover-based navigation with spatial
-            mapping, real-time text field updates, and seamless row transitions
-            between character sets (letters, numbers, symbols, control actions).
-            Integration with VR controller ensures users can authenticate
-            efficiently without breaking engagement with the virtual
-            environment. This prototype demonstrates how authentication can be
-            reimagined to enhance usability, reduce input errors, and maintain
-            presence in VR applications, establishing a foundation for iterative
-            refinement.
-          </p>
-        </div>
-
-        <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
-            User Testing &amp; Evaluation
-          </h4>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            User testing involved eight participants with varying VR experience
-            levels, from novices to a VR researcher. The evaluation focused on
-            usability, efficiency, and interaction intuitiveness, revealing
-            insights into user behavior and system performance.
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Participants noted high efficiency once familiar with the
-            interaction mechanics, with one expert user completing name entry
-            error-free after initial adjustment. However, challenges emerged:
-            sensitivity calibration issues, unclear interaction flow, and
-            difficulty locating control actions like &lsquo;Erase&rsquo; or
-            &lsquo;Enter.&rsquo; Some found scrolling speed excessive, while
-            others felt key spacing made navigation tedious. Suggested
-            improvements included onboarding animations, clearer row grouping,
-            and enhanced hover feedback. Despite learning curves, most users
-            recognized the approach&apos;s potential and value with iterative
-            refinement.
-          </p>
-        </div>
-      </MiddleSection>
-
-      {/* Section 6 — middle: final evaluation */}
-      <MiddleSection className="mb-20 space-y-6">
-        <SectionHeading>Final Evaluation</SectionHeading>
+        <SectionHeading>What testing told us</SectionHeading>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
-          Scroll Select Authentication successfully demonstrated a novel
-          approach to VR authentication, prioritizing immersion and efficiency.
-          User feedback highlighted key strengths: alignment with VR controller
-          mechanics, precise single-button interactions, and maintained presence
-          during authentication. Testing also revealed improvement areas:
-          enhanced onboarding, optimized sensitivity calibration, and more
-          intuitive placement of control actions.
+          We tested with eight participants, from complete VR novices to a VR
+          researcher, and watched how they handled the sign-in. Once people got
+          the hang of the mechanic, it was fast. One expert user entered their
+          name error-free after a short adjustment. That told us the core idea
+          was sound.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
-          Proposed refinements include differentiated scroll speeds based on
-          character type, hover delay for error mitigation, and animations
-          clarifying row transitions. These adjustments could significantly
-          enhance usability and reduce confusion. The project met its objectives
-          of exploring innovative VR authentication methods, establishing a
-          foundation for iterative development. With continued refinement and
-          user testing, Scroll Select Authentication demonstrates strong
-          potential to benchmark intuitive, immersive VR authentication systems.
+          The rough edges were just as useful. Scroll sensitivity needed
+          calibration, since some people found it too fast while others felt the
+          key spacing made navigation tedious. Control actions like Erase and
+          Enter were hard to find. And the flow was not obvious enough on the
+          first try. From that we proposed concrete fixes: onboarding animations
+          to teach the interaction, clearer grouping of rows, stronger hover
+          feedback, scroll speeds tuned to character type, and a short hover
+          delay to catch accidental selections.
+        </p>
+      </MiddleSection>
+
+      {/* Section 6 — reflection */}
+      <MiddleSection className="mb-20 space-y-6">
+        <SectionHeading>What I took away</SectionHeading>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          We set out to prove you could authenticate in VR without a keyboard
+          and without breaking immersion, and the prototype did exactly that.
+          Its strengths were the parts that leaned into VR: it fit the
+          controller mechanics, the single-button interaction stayed precise,
+          and people never had to leave the experience to log in. Its weak spots
+          were all things testing surfaced early enough to design around.
+        </p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          What stuck with me is how much of a good VR interaction lives in the
+          small stuff, like how fast a scroll feels or whether a button gives
+          you a satisfying nudge back. I came away curious about designing for
+          space and motion instead of flat screens, where the interface is
+          something you move through rather than something you point at.
         </p>
       </MiddleSection>
     </>
