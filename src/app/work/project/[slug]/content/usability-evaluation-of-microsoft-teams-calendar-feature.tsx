@@ -17,25 +17,19 @@ export default function UsabilityEvaluationMicrosoftTeams() {
           Summary
         </h4>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
-          This usability evaluation, conducted as part of a group project with
-          six members, assessed the Microsoft Teams Free calendar feature,
-          focusing on usability challenges, user satisfaction, and actionable
-          improvements. By simulating real-world tasks with digitally
-          experienced users aged 18-30, we uncovered key insights into the
-          platform&apos;s strengths and weaknesses.
+          On a team of six, I ran a usability evaluation of the free version of
+          Microsoft Teams&apos; calendar feature. We wanted to know whether
+          someone could pick it up without training, where the workflow broke
+          down, and how well the system communicated when things went wrong. We
+          tested it with people aged 18 to 30 who were comfortable with digital
+          calendars but new to Teams.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
-          Basic tasks like joining meetings proved intuitive, but users
-          struggled with rescheduling, feature discovery, and interpreting
-          system feedback during connection issues. Ambiguous labels and limited
-          guidance during technical disruptions caused delays and confusion.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
-          Key findings: System messages, especially during connection loss,
-          require enhanced visibility. RSVP tracking needs streamlining with
-          real-time updates. Interactive onboarding should familiarize new users
-          with core features. Button labels need refinement to align with user
-          mental models.
+          Joining a meeting was easy. Almost everything else was harder than it
+          should have been. People struggled to reschedule, could not find
+          features they needed, and missed the system&apos;s feedback when the
+          connection dropped. Ambiguous button labels and quiet error states
+          turned simple tasks into guessing games.
         </p>
       </MiddleSection>
 
@@ -58,11 +52,11 @@ export default function UsabilityEvaluationMicrosoftTeams() {
               Purpose
             </h4>
             <p className="text-base text-muted-foreground leading-relaxed mb-3">
-              This evaluation examines how users interact with Microsoft
-              Teams&apos; calendar feature in realistic scenarios. We aimed to
-              assess whether new users can adopt the system without dedicated
-              training, identify usability improvement opportunities, and
-              evaluate system feedback quality during connection disruptions.
+              We wanted to see how the calendar holds up in realistic scenarios:
+              can a new user adopt it without training, where does the interface
+              get in the way, and does the system speak up when the connection
+              fails? Those three questions shaped everything from task design to
+              how we ran the sessions.
             </p>
           </div>
           <div>
@@ -92,22 +86,18 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Methodology</SectionHeading>
         <div className="space-y-6">
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            The evaluation involved six participants aged 18-30, all based in
-            Lund, Sweden, who were familiar with digital calendar tools like
-            Google Calendar but new to Microsoft Teams. Participants completed
-            tasks replicating typical usage scenarios: scheduling meetings,
-            checking attendee availability, and handling connection disruptions.
-            Data collection employed Think Aloud protocol, task completion
-            metrics, and pre/post-test questionnaires, ensuring comprehensive
-            user experience insights.
+            We tested with six participants aged 18 to 30, all based in Lund.
+            Everyone knew tools like Google Calendar well but had never used
+            Teams, which is exactly the kind of user the free version needs to
+            win over. Each session combined think-aloud tasks, task completion
+            metrics, and questionnaires before and after.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Testing occurred in a controlled lab environment to minimize
-            distractions and standardize conditions across sessions. Tasks were
-            framed as realistic scenarios to capture authentic interactions.
-            Observers documented user behavior while participants provided
-            feedback through structured questionnaires and open-ended
-            discussions.
+            Sessions ran in a controlled lab setup so conditions stayed
+            comparable across participants. We framed every task as a realistic
+            scenario, scheduling a meeting, checking who could attend, losing
+            the connection mid-task, and observed how people actually behaved
+            before asking what they thought.
           </p>
           <div>
             <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
@@ -174,37 +164,31 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Results</SectionHeading>
         <div className="space-y-6">
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            The evaluation identified patterns in user behavior and task
-            performance. Basic tasks like joining meetings achieved high success
-            rates, with participants leveraging intuitive features like pop-up
-            notifications. However, even successful tasks revealed minor
-            interface ambiguities causing delays, some users initially
-            overlooked meeting notifications, mistaking them for unrelated
-            alerts.
+            Joining meetings went smoothly for almost everyone, helped by the
+            pop-up notifications. But even the successful tasks showed small
+            cracks: some participants initially dismissed the meeting
+            notification because it looked like any other alert.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Meeting creation proved moderately successful but exposed critical
-            usability issues. Participants often remained uncertain whether
-            invitations had been sent, as confirmation dialogs lacked clarity.
-            This uncertainty led some users to duplicate efforts, manually
-            copying links or recreating meetings for verification.
+            Creating a meeting mostly worked, but the confirmation was so vague
+            that people did not trust it. Several participants copied the
+            meeting link manually or recreated the meeting just to make sure the
+            invitation had actually gone out. When users build their own
+            verification workarounds, the interface has failed to close the
+            loop.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Rescheduling emerged as the most challenging task. Participants
-            struggled to locate RSVP details and check attendee availability,
-            with some navigating to incorrect sections like the
-            &apos;Events&apos; tab. These difficulties highlighted
-            inconsistencies in information architecture and access patterns
-            within the calendar interface.
+            Rescheduling was the hardest task. Participants could not find RSVP
+            details or check attendee availability, and some wandered into the
+            &apos;Events&apos; tab expecting calendar functionality. The
+            information simply was not where people expected it to be.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Connection loss further complicated task completion. While all
-            participants eventually identified the issue, many only recognized
-            it after repeated failed interactions. System feedback was subtle
-            and easily overlooked, contributing to frustration and wasted
-            effort. Similarly, &apos;Leave&apos; and &apos;End Meeting&apos;
-            buttons confused participants due to unclear functional
-            differentiation.
+            Connection loss was the quietest failure. Everyone found the problem
+            eventually, but many only after repeated failed clicks, because the
+            status indicator was subtle enough to miss entirely. The
+            &apos;Leave&apos; and &apos;End Meeting&apos; buttons added
+            confusion of their own, since it was unclear how they differed.
           </p>
         </div>
       </MiddleSection>
@@ -228,33 +212,29 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Analysis &amp; Discussion</SectionHeading>
         <div className="space-y-6">
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            The evaluation provided detailed insights into Microsoft Teams
-            calendar strengths and weaknesses. Joining meetings proved most
-            intuitive, benefiting from clear notifications and streamlined
-            workflows. However, creating and rescheduling meetings required
-            additional effort and introduced error opportunities. Inadequate
-            guidance during connection disruptions compounded these challenges,
-            particularly for participants expecting real-time syncing or
-            prominent error states.
+            The pattern across tasks was consistent: the calendar handles the
+            happy path well and gets progressively worse the further you stray
+            from it. Joining a meeting is one click with a clear notification.
+            Creating and rescheduling take more effort and offer more ways to go
+            wrong, and when the connection drops, the interface gives almost no
+            guidance to users who expect real-time syncing and visible error
+            states.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            Labeling and navigation emerged as recurring themes in user
-            feedback. The term &apos;Join&apos; led some users to believe they
-            were interrupting ongoing meetings rather than initiating new ones.
-            Similarly, the &apos;Events&apos; section was mistaken for calendar
-            functionality due to icon similarity. These findings underscore the
-            importance of aligning interface terminology and iconography with
-            user mental models to reduce cognitive load and improve task
-            efficiency.
+            Labels kept tripping people up. &apos;Join&apos; made some users
+            think they were interrupting an ongoing meeting rather than starting
+            one, and the &apos;Events&apos; section looked enough like a
+            calendar that people ended up there by mistake. Terminology and
+            icons that match user mental models would remove most of this
+            friction for free.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            RSVP tracking represented a significant pain point in the free
-            version, where the absence of real-time RSVP updates drastically
-            impacted usability. Unlike the paid version, which integrates RSVP
-            responses seamlessly into the calendar view, the free version forces
-            navigation between chat and calendar views. This disjointed
-            information architecture led to confusion, with participants often
-            doubting whether invitations were successfully transmitted.
+            The biggest structural problem is RSVP tracking in the free version.
+            The paid version shows RSVP responses directly in the calendar; the
+            free version forces you to jump between chat and calendar to piece
+            the answer together. That split is what made participants doubt
+            whether their invitations had gone out at all, and no amount of
+            label polish fixes it.
           </p>
         </div>
       </MiddleSection>
@@ -296,6 +276,18 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             confirmations like checkmarks or status messages.
           </li>
         </ol>
+      </MiddleSection>
+
+      {/* Section 9 — Reflection */}
+      <MiddleSection className="mb-20">
+        <SectionHeading>What I took away</SectionHeading>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          Watching six people struggle with the same quiet error states taught
+          me more about feedback design than any heuristic list. The product did
+          not lack features, it lacked answers to the question users kept
+          asking: did that work? Since then, closing that loop is one of the
+          first things I look for in any interface I evaluate or build.
+        </p>
       </MiddleSection>
     </>
   );
