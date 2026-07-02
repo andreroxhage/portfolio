@@ -2,7 +2,7 @@
 import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { writingRegistry } from '@/app/data/writing';
-import WritingNavigation from '@/app/components/WritingNavigation';
+import WorkNavigation from '@/app/components/WorkNavigation';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { writingContentMap as contentMap } from '@/app/work/writing/content-map';
@@ -83,7 +83,7 @@ export default function WritingPage({
         </div>
       </Suspense>
 
-      <WritingNavigation currentWritingSlug={slug} />
+      <WorkNavigation currentSlug={slug} />
     </motion.div>
   );
 }

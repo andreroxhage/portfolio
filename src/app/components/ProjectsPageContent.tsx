@@ -94,7 +94,7 @@ export function ProjectsPageContent({ items }: ProjectsPageContentProps) {
         </div>
 
         {/* Shadow overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-black/40 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-b from-transparent to-black/40 pointer-events-none" />
 
         {/* Scroll indicator */}
         <ScrollIndicator galleryRef={galleryTriggerRef} />

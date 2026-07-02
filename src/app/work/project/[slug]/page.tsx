@@ -2,7 +2,7 @@
 import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { projectRegistry } from '@/app/data/projects';
-import ProjectNavigation from '@/app/components/ProjectNavigation';
+import WorkNavigation from '@/app/components/WorkNavigation';
 import ProjectHeader from '@/app/components/ProjectHeader';
 import { projectContentMap as contentMap } from '@/app/work/project/content-map';
 
@@ -59,7 +59,7 @@ export default function Page({
         </div>
       </Suspense>
 
-      <ProjectNavigation currentProjectSlug={slug} />
+      <WorkNavigation currentSlug={slug} />
     </motion.div>
   );
 }

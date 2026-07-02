@@ -177,7 +177,7 @@ export function WebGLCanvas({ onReady }: WebGLCanvasProps) {
         className="absolute inset-0 pointer-events-none"
       />
       {/* Bottom fade — smooth transition to next section */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-background to-transparent pointer-events-none" />
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import React, { Suspense, use } from 'react';
 import { motion } from 'framer-motion';
 import { ideaRegistry } from '@/app/data/ideas';
-import IdeaNavigation from '@/app/components/IdeaNavigation';
+import WorkNavigation from '@/app/components/WorkNavigation';
 import { ideaContentMap as contentMap } from '@/app/work/idea/content-map';
 
 export default function IdeaPage({
@@ -78,7 +78,7 @@ export default function IdeaPage({
         </div>
       </Suspense>
 
-      <IdeaNavigation currentIdeaSlug={slug} />
+      <WorkNavigation currentSlug={slug} />
     </motion.div>
   );
 }
