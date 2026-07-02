@@ -53,21 +53,6 @@ export default function IdeaPage({
             {idea.date}
           </motion.h3>
         )}
-        {/* Tags hidden for now per user feedback
-        {idea.tags && idea.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {idea.tags.map(tag => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="text-xs bg-muted text-muted-foreground border-0 corner-squircle"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
-        */}
       </header>
 
       <Suspense

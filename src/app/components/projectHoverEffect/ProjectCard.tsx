@@ -9,7 +9,7 @@ const ProjectCard = ({ item }: { item: GridItem }) => (
     className="bg-surface-dark inset-shadow-border-glow rounded-[28px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 p-6"
   >
     <div className="flex items-center gap-4">
-      <PlusIcon className="w-5 h-5 text-surface-dark-muted flex-shrink-0" />
+      <PlusIcon className="w-5 h-5 text-surface-dark-muted shrink-0" />
       <h3 className="text-base md:text-lg font-medium text-surface-dark-foreground">
         {item.title}
       </h3>

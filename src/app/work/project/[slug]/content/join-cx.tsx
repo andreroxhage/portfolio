@@ -155,22 +155,6 @@ export default function JoinCXContent() {
             lifetime metrics and active loyalty program stats.
           </p>
         </div>
-
-        <div className="space-y-4">
-          {/* TODO: Add the actual image for journey-builder.png to the public/resource directory */}
-          <ProjectImage
-            src="/resource/journey-builder.png"
-            alt="Join CX Journey Builder drag and drop canvas"
-            width={1920}
-            height={1080}
-            rounded={true}
-            size="sm"
-          />
-          <p className="text-center text-sm text-muted-foreground">
-            The Journey Builder, redesigned into an interactive drag-and-drop
-            canvas.
-          </p>
-        </div>
       </WideSection>
 
       {/* Section 6 — Execution, Architecture & Business Impact */}

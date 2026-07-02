@@ -8,6 +8,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import QueryProvider from './components/QueryProvider';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://andreroxhage.com'),
   title: 'André Roxhage | Software Design Engineer',
   description:
     'Software Design Engineer specializing in frontend development, UX design, and creativity psychology. I create intuitive digital products, solving complex challenges with a human-centered approach. Explore my portfolio for more.',

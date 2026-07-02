@@ -20,7 +20,7 @@ export default function Footer() {
         }}
       >
         {/* Gradient overlay — darker on mobile */}
-        <div className="absolute inset-0 rounded-t-[40px] corner-squircle bg-gradient-to-b from-black/85 to-black md:from-black/80 md:to-black" />
+        <div className="absolute inset-0 rounded-t-[40px] corner-squircle bg-linear-to-b from-black/85 to-black md:from-black/80 md:to-black" />
 
         <div className="relative flex flex-col justify-between overflow-hidden w-full h-full">
           <div
@@ -63,7 +63,7 @@ export default function Footer() {
                       style={{ textWrap: 'balance' }}
                     >
                       Connect
-                      <hr className="h-0.5 pt-2 border-surface-dark-foreground md:zmr-12 my-3 sm:my-2" />
+                      <hr className="h-0.5 pt-2 border-surface-dark-foreground md:mr-12 my-3 sm:my-2" />
                     </span>
 
                     {footerLinks.map((link, i) => {
