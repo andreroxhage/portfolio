@@ -86,6 +86,7 @@ These map to oklch values via CSS custom properties. Light and dark mode definit
 - **Never hardcode hex or rgb values** — always use Tailwind token classes or CSS custom properties
 - **All neutrals are warm** — yellow/brown undertones. Never use cool grays (slate, zinc, gray)
 - **Green is the singular interactive accent** — buttons, links, focus rings, action states
+- **Text selection uses warm neutral** — `neutral-200` (`oklch(0.955 0.025 85)`) background with inherited foreground text. Applied globally via `::selection` in `globals.css`. Never rely on browser-default blue highlights.
 - **Per-project brand colors** (e.g., blue for VR project) are stored in `src/app/data/projects.ts` and applied via inline styles — this is the only acceptable use of non-token colors
 
 ---
@@ -136,6 +137,14 @@ Apple-inspired negative tracking on headlines only — body text uses default sp
 - Headlines compress (`leading-snug` 1.125 to `leading-tight` 1.25) — dense and intentional
 - Body text opens (`leading-relaxed` 1.625) — comfortable reading rhythm
 - This contrast creates visual hierarchy through rhythm alone
+
+### Text Selection
+
+Highlighted text uses a warm neutral tint — like marking cream paper, not browser-default blue:
+
+- **Background:** `neutral-200` — `oklch(0.955 0.025 85)`
+- **Text:** inherits `foreground` for readable contrast on both light and dark surfaces
+- **Implementation:** global `::selection` / `::-moz-selection` in `globals.css`
 
 ---
 
@@ -343,6 +352,7 @@ Quick reference for AI agents building components in this design system.
 | Muted text      | `text-muted-foreground`        |
 | Borders         | `border-border`                |
 | Focus ring      | `ring-ring`                    |
+| Text selection  | `neutral-200` background       |
 
 ### Example Component Recipes
 

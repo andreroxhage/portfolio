@@ -247,6 +247,17 @@ body {
   border-color: oklch(var(--border));
 }
 
+/* Text selection — warm neutral (see DESIGN.md) */
+::selection {
+  background-color: var(--color-neutral-200);
+  color: oklch(var(--foreground));
+}
+
+::-moz-selection {
+  background-color: var(--color-neutral-200);
+  color: oklch(var(--foreground));
+}
+
 /* === Scrollbar Styling === */
 * {
   scrollbar-width: thin;
