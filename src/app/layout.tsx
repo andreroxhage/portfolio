@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
   },
-  manifest: '/site.webmanifest',
+  manifest: '/manifest.webmanifest',
 };
 
 export const viewport: Viewport = {
