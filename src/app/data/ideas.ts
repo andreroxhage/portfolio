@@ -29,6 +29,35 @@ export const ideaRegistry: IdeaMeta[] = [
     type: 'idea',
     hasDetailPage: true,
   },
+  {
+    id: 'i4',
+    ideaSlug: 'meal-planning-agents',
+    title: 'Meal planning with AI agents',
+    subtitle: 'A HelloFresh replacement built on Claude Code agents.',
+    previewSubtitle:
+      'Weekly meal planning that runs itself: specialized AI agents brainstorm dishes, research recipes in parallel, build the shopping list, and plan the cooking',
+    date: '2026',
+    tags: ['AI Agents', 'Automation', 'Claude Code'],
+    order: 7,
+    type: 'idea',
+    hasDetailPage: true,
+    showInPreview: false,
+  },
+  {
+    id: 'i5',
+    ideaSlug: 'ai-running-coach',
+    title: 'AI running coach',
+    subtitle:
+      'Data-driven marathon coaching with an autonomous morning pipeline.',
+    previewSubtitle:
+      'A personal coaching system that ingests Strava data, assesses recovery, checks my calendar, and delivers each day’s workout as a Todoist task — built toward a sub-3:00 marathon',
+    date: '2025 – 2026',
+    tags: ['AI Agents', 'Training Data', 'Automation'],
+    order: 8,
+    type: 'idea',
+    hasDetailPage: true,
+    showInPreview: false,
+  },
 ];
 
 // Backward-compatible alias for existing consumers (ProjectsGrid, etc.)
