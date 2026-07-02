@@ -3,9 +3,12 @@ import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ideaRegistry } from '@/app/data/ideas';
 import WorkNavigation from '@/app/components/WorkNavigation';
+import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { ideaContentMap as contentMap } from '@/app/work/idea/content-map';
 
 export default function IdeaPageClient({ slug }: { slug: string }) {
+  const reducedMotion = useReducedMotion();
   const idea = ideaRegistry.find(i => i.ideaSlug === slug);
 
   if (!idea) {
@@ -16,26 +19,30 @@ export default function IdeaPageClient({ slug }: { slug: string }) {
 
   return (
     <motion.div
-      className="min-h-screen"
-      initial={{ opacity: 0 }}
+      className="bg-surface-dark min-h-screen"
+      initial={reducedMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
     >
       <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
         <motion.h1
-          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
+          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
         >
           {idea.title}
         </motion.h1>
         {idea.date && (
           <motion.h3
-            className="text-lg md:text-2xl font-normal text-muted-foreground"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.9 }}
+            className="text-lg md:text-2xl font-normal text-surface-dark-muted"
+            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: DURATION.SLOW,
+              ease: EASING.ENTER,
+              delay: reducedMotion ? 0 : STAGGER.DELAY,
+            }}
           >
             {idea.date}
           </motion.h3>
@@ -45,7 +52,7 @@ export default function IdeaPageClient({ slug }: { slug: string }) {
       <Suspense
         fallback={
           <div className="max-w-2.5xl mx-auto px-4">
-            <div className="h-96 animate-pulse bg-muted rounded-xl corner-squircle" />
+            <div className="h-96 animate-pulse bg-surface-dark-card rounded-xl corner-squircle" />
           </div>
         }
       >
@@ -53,11 +60,11 @@ export default function IdeaPageClient({ slug }: { slug: string }) {
           {Content ? (
             <Content />
           ) : (
-            <div className="max-w-2.5xl mx-auto px-4 text-muted-foreground py-20">
+            <div className="max-w-2.5xl mx-auto px-4 text-surface-dark-muted py-20">
               <p className="text-lg mb-4">
                 {idea.previewSubtitle || idea.subtitle}
               </p>
-              <p className="text-sm text-muted-foreground/60">
+              <p className="text-sm text-surface-dark-muted/60">
                 Content coming soon.
               </p>
             </div>
