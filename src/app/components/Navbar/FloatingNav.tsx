@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import {
   motion,
   AnimatePresence,
@@ -11,6 +12,8 @@ import { useProjectHover } from '../../contexts/ProjectHoverContext';
 import { DURATION, EASING } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
+const MotionLink = motion.create(Link);
+
 const FloatingNav = () => {
   const prefersReducedMotion = useReducedMotion();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -19,6 +22,7 @@ const FloatingNav = () => {
   const [isShortPage, setIsShortPage] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
   const { isProjectHovered } = useProjectHover();
 
@@ -91,6 +95,13 @@ const FloatingNav = () => {
     scrollPosition + window.innerHeight >=
       document.documentElement.scrollHeight - 100;
 
+  const scrollButtonLabel =
+    isShortPage || (!isAtTop && !isAtBottom)
+      ? 'Open menu'
+      : isAtTop
+        ? 'Scroll down'
+        : 'Scroll to top';
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -108,6 +119,24 @@ const FloatingNav = () => {
     if (isExpanded && contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight);
     }
+  }, [isExpanded]);
+
+  useEffect(() => {
+    if (!isExpanded) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsExpanded(false);
+        toggleButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isExpanded]);
 
   const navVariants = {
@@ -239,8 +268,9 @@ const FloatingNav = () => {
         onClick={() => setIsExpanded(false)}
       />
 
-      <motion.div
+      <motion.nav
         ref={navRef}
+        aria-label="Site navigation"
         className="fixed bottom-4 left-1/2 z-50"
         variants={initialAppearance}
         initial="hidden"
@@ -263,15 +293,15 @@ const FloatingNav = () => {
             backgroundColor: navBackgroundColor,
           }}
         >
-          <div
-            className="w-full h-[52px] px-4 flex items-center justify-between cursor-pointer"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            <motion.span
-              className={`text-surface-dark-foreground font-medium text-2xl cursor-pointer`}
+          <div className="w-full h-[52px] px-4 flex items-center justify-between">
+            <motion.button
+              ref={toggleButtonRef}
+              type="button"
+              className={`bg-transparent text-surface-dark-foreground font-medium text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               onClick={handleLogoClick}
+              aria-label={scrollButtonLabel}
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -336,8 +366,16 @@ const FloatingNav = () => {
                   </svg>
                 )}
               </motion.div>
-            </motion.span>
-            <div className="flex items-center gap-1">
+            </motion.button>
+            <button
+              type="button"
+              className="bg-transparent flex items-center gap-1 cursor-pointer"
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-expanded={isExpanded}
+              aria-label={
+                isExpanded ? 'Close navigation menu' : 'Open navigation menu'
+              }
+            >
               <AnimatePresence mode="wait" initial={false}>
                 {!isExpanded ? (
                   <motion.span
@@ -380,7 +418,7 @@ const FloatingNav = () => {
                   </motion.svg>
                 )}
               </AnimatePresence>
-            </div>
+            </button>
           </div>
 
           <motion.div
@@ -398,21 +436,25 @@ const FloatingNav = () => {
             {/* Main navigation links */}
             <div className="mb-6">
               <h3 className="text-muted-foreground text-sm mb-4">Navigation</h3>
-              {links.map((link, i) => (
-                <motion.a
-                  key={`main_${i}`}
-                  href={link.href}
-                  className={`block mb-4 text-surface-dark-foreground text-lg hover:text-accent transition-colors duration-200`}
-                  variants={navItemVariants}
-                  custom={i}
-                  initial="hidden"
-                  animate={isExpanded ? 'visible' : 'hidden'}
-                  whileHover={{ x: 5 }}
-                  onClick={() => setIsExpanded(false)}
-                >
-                  {link.title}
-                </motion.a>
-              ))}
+              {links.map((link, i) => {
+                const isInternal = link.href.startsWith('/');
+                const LinkComponent = isInternal ? MotionLink : motion.a;
+                return (
+                  <LinkComponent
+                    key={`main_${i}`}
+                    href={link.href}
+                    className={`block mb-4 text-surface-dark-foreground text-lg hover:text-accent transition-colors duration-200`}
+                    variants={navItemVariants}
+                    custom={i}
+                    initial="hidden"
+                    animate={isExpanded ? 'visible' : 'hidden'}
+                    whileHover={{ x: 5 }}
+                    onClick={() => setIsExpanded(false)}
+                  >
+                    {link.title}
+                  </LinkComponent>
+                );
+              })}
             </div>
 
             {/* Divider */}
@@ -448,7 +490,7 @@ const FloatingNav = () => {
             </div>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </motion.nav>
     </motion.div>
   );
 };

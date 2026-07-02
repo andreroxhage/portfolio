@@ -1,8 +1,11 @@
 'use client';
+import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { footerLinks } from '@/app/data/nav';
 import MagneticWrapper from '@/app/components/MagneticWrapper';
 import { links } from '@/app/data/nav';
+
+const MotionLink = motion.create(Link);
 
 // Stagger delay per item — 80ms keeps total reveal under ~500ms for up to 6 items
 const STAGGER_DELAY = 0.08;
@@ -119,8 +122,10 @@ export default function Footer() {
                     </span>
                     {links.map((link, i) => {
                       const { title, href } = link;
+                      const isInternal = href.startsWith('/');
+                      const LinkComponent = isInternal ? MotionLink : motion.a;
                       return (
-                        <motion.a
+                        <LinkComponent
                           key={i}
                           href={href}
                           className="col-start-1 col-span-7 flex items-center mb-3 sm:mb-2 text-lg md:text-xl text-surface-dark-foreground py-1 -ml-1 pl-1"
@@ -155,7 +160,7 @@ export default function Footer() {
                           }}
                         >
                           {title}
-                        </motion.a>
+                        </LinkComponent>
                       );
                     })}
                   </div>
