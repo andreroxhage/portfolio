@@ -27,39 +27,46 @@ npx tsc --noEmit      # Type check
 ```
 src/app/
 ├── page.tsx              # Home composition (imports sections)
-├── layout.tsx            # Root layout, metadata, fonts, providers
+├── layout.tsx            # Root layout, metadata, viewport, providers
+├── not-found.tsx         # Custom 404
+├── sitemap.ts, robots.ts # SEO endpoints (generated from registries)
 ├── globals.css           # Tailwind 4 tokens, theme definitions
-├── types.ts              # Shared TypeScript types
-├── data/                 # Static content and navigation data
-│   ├── data.js           # Portfolio content source (projects, work, about)
+├── types.ts              # Registry types (ProjectMeta, IdeaMeta, WritingMeta, GridItem)
+├── data/                 # Static content registries — edit here first
+│   ├── home.ts           # Hero + about copy
+│   ├── projects.ts       # projectRegistry
+│   ├── ideas.ts          # ideaRegistry (showInPreview: false hides from home grid)
+│   ├── writing.ts        # writingRegistry
 │   └── nav.ts            # Navigation items
-├── sections/             # Home page sections (legacy .js)
-│   ├── Header.js, About.js, CurrentWork.js
-│   ├── Photography.js, VoluntaryWork.js, Footer.js
+├── sections/             # Home page sections
+│   ├── HeroSection.tsx, AtWorkSection.tsx
+│   ├── RecentProjects.tsx, ElsewhereSection.tsx, Footer.js
 ├── components/           # Reusable components
-│   ├── Navbar/           # Floating navigation
-│   ├── projectHoverEffect/  # Project cards and grid
+│   ├── Navbar/           # FloatingNav
+│   ├── projectHoverEffect/  # Project cards and grid (desktop-only, home page)
+│   ├── ProjectLayout.tsx # MiddleSection/WideSection/SectionHeading/ProjectImage
+│   ├── OceanTransition/, WebGLCanvas/  # three.js scenes (lazy-loaded)
 │   └── ZoomParallax/     # Scroll-driven parallax
-├── projects/             # /projects routes
-│   └── [projectSlug]/    # Dynamic project detail pages
-├── ideas/                # /ideas routes
-│   └── [ideaSlug]/       # Dynamic idea detail pages
-├── writing/              # /writing routes
-│   └── [writingSlug]/    # Dynamic writing detail pages
 ├── work/                 # /work routes
-├── hooks/                # Custom React hooks (useReducedMotion, etc.)
-├── contexts/             # React contexts (theme, etc.)
-├── lib/                  # Utilities (cn(), etc.)
-└── api/                  # API routes
+│   ├── page.tsx          # SimpleList overview (projects + writing + ideas)
+│   ├── project/[slug]/   # Server page (SSG + metadata) + ProjectPageClient + content/*.tsx
+│   ├── idea/[slug]/      # Same pattern; short-form pages (see docs/idea-page-template.md)
+│   ├── writing/[slug]/   # Same pattern
+│   └── {project,idea,writing}/content-map.ts  # slug → lazy content component
+├── hooks/                # Custom React hooks (useReducedMotion, useVideo)
+├── contexts/             # React contexts (theme, project hover)
+├── lib/                  # motion tokens, neon/r2 clients
+└── api/                  # API routes (video streaming via R2)
 src/components/
 └── ui/                   # shadcn/ui primitives (button, card, tabs, etc.)
 ```
 
 ### Data Flow
 
-- Static content lives in `src/app/data/` — edit here first, not in components.
-- Project detail pages use `[projectSlug]` with content files per project in `content/`.
-- Sections are composed in `page.tsx` and rendered server-side.
+- Static content lives in the registries under `src/app/data/` — edit there first, not in components.
+- Detail routes are statically generated: `page.tsx` (server) does the registry lookup, exports `generateStaticParams`/`generateMetadata`, calls `notFound()` on unknown slugs, and renders a `*PageClient` with the slug.
+- To add a page: registry entry → `content/<slug>.tsx` → register in the route's `content-map.ts`. Idea pages follow the short-form convention in `docs/idea-page-template.md`.
+- Home sections are composed in `page.tsx`; the project grid is desktop-only by design (mobile home has no projects section).
 
 ## Testing
 
@@ -67,7 +74,7 @@ There is no formal test suite. Quality gates are:
 
 ```bash
 npm run build         # Next.js production build — catches runtime errors
-npm run lint          # ESLint via next lint
+npm run lint          # ESLint 9 (flat config, eslint.config.mjs)
 npx tsc --noEmit      # TypeScript type checking
 ```
 
@@ -83,10 +90,11 @@ Visual verification is done via Playwright MCP (screenshot + inspect in browser)
 ## Key Paths
 
 - `src/app/page.tsx` - home composition
-- `src/app/data/data.js` - portfolio content source
-- `src/app/projects/[projectSlug]/page.tsx` - dynamic project pages
+- `src/app/data/` - content registries (projects, ideas, writing, home, nav)
+- `src/app/work/project/[slug]/page.tsx` - project detail pages (SSG)
 - `src/app/globals.css` - token/theme definitions
 - `src/lib/utils.ts` - `cn()` helper
+- `docs/idea-page-template.md` - short-form idea page convention (local-only, docs/ is gitignored)
 
 ## Non-Negotiables
 
