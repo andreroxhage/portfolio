@@ -47,7 +47,7 @@ export const ideaRegistry: IdeaMeta[] = [
     subtitle:
       'Data-driven marathon coaching with an autonomous morning pipeline.',
     previewSubtitle:
-      'A personal coaching system that ingests Strava data, assesses recovery, checks my calendar, and delivers each day’s workout as a Todoist task — built toward a sub-3:00 marathon',
+      'A personal coaching system that ingests Strava data, assesses recovery, checks my calendar, and delivers each day’s workout as a Todoist task, as I train for a marathon',
     date: '2025 – 2026',
     tags: ['AI Agents', 'Training Data', 'Automation'],
     order: 8,
