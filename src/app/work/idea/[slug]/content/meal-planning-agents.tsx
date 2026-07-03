@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { IconArrowDown, IconCheck } from '@tabler/icons-react';
+import { cn } from '@/lib/utils';
 import {
   MiddleSection,
   WideSection,
@@ -18,12 +19,12 @@ function Pill({
 }) {
   return (
     <span
-      className={
-        'inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs whitespace-nowrap corner-squircle ' +
-        (tone === 'accent'
+      className={cn(
+        'inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs whitespace-nowrap corner-squircle',
+        tone === 'accent'
           ? 'bg-primary text-primary-foreground border-transparent'
-          : 'bg-surface-dark-elevated text-surface-dark-muted')
-      }
+          : 'bg-surface-dark-elevated text-surface-dark-muted'
+      )}
     >
       {children}
     </span>
@@ -95,20 +96,27 @@ function MealPlanningDiagram() {
           title="2. Recipe research"
           subtitle="one researcher agent per dish, running in parallel"
         >
-          <div className="grid grid-cols-3 gap-2 mt-3">
-            {['Dish A', 'Dish B', 'Dish C'].map(dish => (
-              <div
-                key={dish}
-                className="rounded-lg corner-squircle border border-border bg-surface-dark-elevated px-2 py-2 text-center"
-              >
-                <p className="text-[11px] text-surface-dark-muted">
+          <div className="relative mt-4 mb-1">
+            {/* layered backing cards suggest N parallel copies of the same agent */}
+            <div
+              className="absolute inset-0 translate-x-2 translate-y-2 rounded-xl corner-squircle border border-border bg-surface-dark-elevated opacity-40"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-0 translate-x-1 translate-y-1 rounded-xl corner-squircle border border-border bg-surface-dark-elevated opacity-70"
+              aria-hidden="true"
+            />
+            <div className="relative rounded-xl corner-squircle border border-border bg-surface-dark-elevated px-3 py-3">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="text-xs font-medium text-surface-dark-foreground">
                   Researcher
                 </p>
-                <p className="text-[11px] font-medium text-surface-dark-foreground">
-                  {dish}
-                </p>
+                <Pill>× N, one per dish</Pill>
               </div>
-            ))}
+              <p className="text-[11px] text-surface-dark-muted mt-1">
+                each compares 3-5 sources, independently, in parallel
+              </p>
+            </div>
           </div>
           <p className="text-[11px] text-surface-dark-muted mt-2">
             + recipe-creator for anything with no good source
