@@ -12,7 +12,10 @@ interface ProgressiveMediaProps {
   imageAlt: string;
   videoIdentifier?: string;
   videoSrc?: string;
-  aspectRatio?: string;
+  /** CSS aspect-ratio value (e.g. "9/16"). Required: both the video and
+   * poster-image branches size their container from this value alone, so
+   * an absent ratio would collapse the container to 0 height. */
+  aspectRatio: string;
   rounded?: boolean;
   outline?: boolean;
   priority?: boolean;
@@ -60,7 +63,7 @@ export function ProgressiveMedia({
           !videoReady && 'video-shimmer',
           className
         )}
-        style={aspectRatio ? { aspectRatio } : undefined}
+        style={{ aspectRatio }}
       >
         <video
           src={resolvedVideoSrc}
@@ -92,7 +95,7 @@ export function ProgressiveMedia({
         rounded && 'rounded-[20px] corner-squircle',
         className
       )}
-      style={aspectRatio ? { aspectRatio } : undefined}
+      style={{ aspectRatio }}
     >
       <Image
         src={imageSrc}
