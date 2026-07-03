@@ -112,7 +112,7 @@ export function HeroSection() {
         {/* Desktop layout: 10-column grid */}
         <div className="hidden md:grid grid-cols-10 gap-8 items-center">
           {/* Left column: tagline then name, individually staggered */}
-          <div className="col-span-6 flex flex-col justify-center">
+          <div className="col-span-5 flex flex-col justify-center">
             <motion.h1
               className="text-4xl font-medium tracking-tight leading-tight text-foreground"
               style={{ textWrap: 'balance' } as React.CSSProperties}
@@ -134,7 +134,7 @@ export function HeroSection() {
 
           {/* Right column: profile photo */}
           <motion.div
-            className="col-span-4 flex justify-end"
+            className="col-span-5 flex justify-center"
             variants={photoVariants}
             initial="hidden"
             animate={animate}
@@ -143,9 +143,9 @@ export function HeroSection() {
               <Image
                 src={profileImage}
                 alt="André Roxhage"
-                className="w-48 h-48 rounded-full object-cover"
-                width={192}
-                height={192}
+                className="w-64 h-64 rounded-full object-cover"
+                width={256}
+                height={256}
                 placeholder="blur"
                 priority
               />
