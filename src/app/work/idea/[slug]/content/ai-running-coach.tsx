@@ -140,12 +140,6 @@ function RunningPipelineDiagram() {
             title="Calendar check"
             subtitle="finds a slot that actually fits"
           />
-          <div className="flex flex-wrap items-center gap-2 pt-1">
-            <span className="text-xs text-surface-dark-muted">readiness:</span>
-            <Pill>green</Pill>
-            <Pill>amber</Pill>
-            <Pill>red</Pill>
-          </div>
         </Zone>
 
         <ZoneConnector />
@@ -194,9 +188,9 @@ export default function AiRunningCoachContent() {
           updates the training log and rebuilds weekly rollups. The agent then
           reads the active training block, my runner profile, and the last seven
           days of training, checks Google Calendar for a slot that actually
-          fits, and assesses readiness: green, amber, or red, based on days
-          since the last quality session, heart rate suppression, and how far
-          the week has drifted from plan.
+          fits, and assesses readiness, based on days since the last quality
+          session, heart rate suppression, and how far the week has drifted from
+          plan.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Green executes the session as prescribed. Amber runs it with softer
