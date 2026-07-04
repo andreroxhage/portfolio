@@ -5,8 +5,8 @@ import {
   MiddleSection,
   WideSection,
   SectionHeading,
-  ProjectImage,
 } from '@/app/components/ProjectLayout';
+import { ProgressiveMedia } from '@/app/components/ProgressiveMedia';
 
 export default function MalmoMuseum3DMapContent() {
   return (
@@ -52,11 +52,12 @@ export default function MalmoMuseum3DMapContent() {
 
       {/* Visual */}
       <WideSection className="mb-20">
-        <ProjectImage
-          src="/resource/projects/i2_poster.jpg"
-          alt="Concept view of the Malmö museum 3D wayfinding navigator"
-          width={784}
-          height={1704}
+        <ProgressiveMedia
+          videoIdentifier="i2"
+          imageSrc="/resource/projects/i2_poster.jpg"
+          imageAlt="Interactive 3D wayfinding prototype for the Malmö museum"
+          aspectRatio="720/1564"
+          rounded
           className="max-w-sm mx-auto"
         />
       </WideSection>

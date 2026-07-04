@@ -12,7 +12,10 @@ interface ProgressiveMediaProps {
   imageAlt: string;
   videoIdentifier?: string;
   videoSrc?: string;
-  aspectRatio?: string;
+  /** CSS aspect-ratio value (e.g. "9/16"). Required: both the video and
+   * poster-image branches size their container from this value alone, so
+   * an absent ratio would collapse the container to 0 height. */
+  aspectRatio: string;
   rounded?: boolean;
   outline?: boolean;
   priority?: boolean;
@@ -45,10 +48,12 @@ export function ProgressiveMedia({
     videoSrc ?? (videoIdentifier ? fetchedVideoUrl : undefined);
   const hasVideo = !!resolvedVideoSrc && !reducedMotion;
 
-  // When a video is expected, skip the poster image entirely and let the
-  // video element size the container to its native aspect ratio.
-  // The native poster attribute shows the poster image instantly at the
-  // video's intrinsic size, eliminating aspect-ratio mismatch.
+  // When a video is expected, the container is pinned to the declared
+  // aspectRatio (matching the poster/no-video path below) so the box never
+  // reflows between the poster phase, the video's own intrinsic size once
+  // metadata loads, and the playing phase. The video fills that fixed box
+  // with object-fit so both the native poster attribute and the playing
+  // video are clipped/letterboxed consistently instead of overflowing it.
   if (hasVideo) {
     return (
       <div
@@ -58,6 +63,7 @@ export function ProgressiveMedia({
           !videoReady && 'video-shimmer',
           className
         )}
+        style={{ aspectRatio }}
       >
         <video
           src={resolvedVideoSrc}
@@ -67,7 +73,11 @@ export function ProgressiveMedia({
           muted
           playsInline
           onCanPlay={() => setVideoReady(true)}
-          className={cn('w-full', rounded && 'rounded-[20px] corner-squircle')}
+          className={cn(
+            'absolute inset-0 w-full h-full',
+            objectFit === 'cover' ? 'object-cover' : 'object-contain',
+            rounded && 'rounded-[20px] corner-squircle'
+          )}
           style={{
             opacity: videoReady ? 1 : 0,
             transition: TRANSITION,
@@ -85,7 +95,7 @@ export function ProgressiveMedia({
         rounded && 'rounded-[20px] corner-squircle',
         className
       )}
-      style={aspectRatio ? { aspectRatio } : undefined}
+      style={{ aspectRatio }}
     >
       <Image
         src={imageSrc}

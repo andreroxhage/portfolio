@@ -79,7 +79,7 @@ export default function LoginExperienceInVRContent() {
           videoIdentifier="login-experience-in-vr"
           imageSrc="/resource/projects/p2_poster.jpg"
           imageAlt="Scroll Select Authentication VR prototype"
-          aspectRatio="9/16"
+          aspectRatio="1/1"
           rounded
           className="max-w-sm mx-auto"
         />

@@ -72,6 +72,7 @@ export const projectRegistry: ProjectMeta[] = [
     subtitleColor: 'oklch(0.599 0.017 229.2)',
     titleColorLight: 'oklch(0.449 0.046 230.8)',
     subtitleColorLight: 'oklch(0.456 0.021 214.6)',
+    showInPreview: false,
   },
   {
     projectSlug: 'usability-evaluation-of-microsoft-teams-calendar-feature',
@@ -91,6 +92,7 @@ export const projectRegistry: ProjectMeta[] = [
     subtitleColor: 'oklch(0.572 0.028 285.5)',
     titleColorLight: 'oklch(0.373 0.094 282.5)',
     subtitleColorLight: 'oklch(0.417 0.033 284.9)',
+    showInPreview: false,
   },
 ];
 

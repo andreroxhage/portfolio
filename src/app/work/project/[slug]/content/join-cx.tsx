@@ -22,7 +22,7 @@ export default function JoinCXContent() {
             platform redesign to eventually designing and implementing a series
             of new features. Customer Data Platforms and loyalty programs can be
             difficult to use, but they do not have to feel like rocket science.
-            During my time as aDesign Engineer, I took on the challenge of
+            During my time as a Design Engineer, I took on the challenge of
             turning their enterprise loyalty platform into something people
             actually understood.
           </p>
@@ -34,6 +34,24 @@ export default function JoinCXContent() {
             entire loyalty programs without needing to ask for support.
           </p>
         </div>
+
+        {/* Section 2 — Mockup Showcase (Segments) */}
+        <WideSection className="mb-20 space-y-12">
+          <div className="space-y-4">
+            <ProjectImage
+              src="/resource/joinMockup1.png"
+              alt="Join CX segment builder showing visual audience selection rules"
+              width={1920}
+              height={1080}
+              rounded={true}
+              size="xl"
+            />
+            <p className="text-center text-sm text-muted-foreground">
+              The Segment Builder allowed marketers to target groups of
+              customers based on dynamic shopping habits and tiers.
+            </p>
+          </div>
+        </WideSection>
 
         <div>
           <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
@@ -66,24 +84,6 @@ export default function JoinCXContent() {
         </div>
       </MiddleSection>
 
-      {/* Section 2 — Mockup Showcase (Segments) */}
-      <WideSection className="mb-20 space-y-12">
-        <div className="space-y-4">
-          <ProjectImage
-            src="/resource/joinMockup1.png"
-            alt="Join CX segment builder showing visual audience selection rules"
-            width={1920}
-            height={1080}
-            rounded={true}
-            size="sm"
-          />
-          <p className="text-center text-sm text-muted-foreground">
-            The Segment Builder allowed marketers to target groups of customers
-            based on dynamic shopping habits and tiers.
-          </p>
-        </div>
-      </WideSection>
-
       {/* Section 3 — The Challenge & Core Thread */}
       <MiddleSection className="mb-20 space-y-6">
         <SectionHeading>The challenge</SectionHeading>
@@ -105,6 +105,24 @@ export default function JoinCXContent() {
           </p>
         </div>
       </MiddleSection>
+
+      {/* Section 5 — Redesigned customer profile showcase */}
+      <WideSection className="mb-20 space-y-12">
+        <div className="space-y-4">
+          <ProjectImage
+            src="/resource/joinProfileRedesign.png"
+            alt="Join CX redesigned customer profile page showing loyalty tier, active points, and customer value metrics"
+            width={3024}
+            height={2048}
+            rounded={true}
+            size="xxl"
+          />
+          <p className="text-center text-sm text-muted-foreground">
+            The redesigned customer profile, highlighting key customer lifetime
+            metrics and active loyalty program stats.
+          </p>
+        </div>
+      </WideSection>
 
       {/* Section 4 — Feature Highlights */}
       <MiddleSection className="mb-20 space-y-6">
@@ -137,25 +155,26 @@ export default function JoinCXContent() {
             customer lifecycle and construct complex automation rules visually.
           </p>
         </div>
-      </MiddleSection>
 
-      {/* Section 5 — Mockup 2 Showcase (Dashboard/Journey Builder) */}
-      <WideSection className="mb-20 space-y-12">
-        <div className="space-y-4">
-          <ProjectImage
-            src="/resource/joinMockup2.png"
-            alt="Join CX platform dashboard showing customer loyalty analytics and campaign performance"
-            width={1920}
-            height={1080}
-            rounded={true}
-            size="sm"
-          />
-          <p className="text-center text-sm text-muted-foreground">
-            The redesigned dashboard interface, highlighting key customer
-            lifetime metrics and active loyalty program stats.
-          </p>
-        </div>
-      </WideSection>
+        {/* Journey Builder canvas showcase */}
+        <WideSection className="mb-4 space-y-12">
+          <div className="space-y-4">
+            <ProjectImage
+              src="/resource/joinJourneyCanvas.png"
+              alt="Join CX Journey Builder create-journey screen with drag-and-drop trigger, entry, and reward-action blocks"
+              width={3824}
+              height={2484}
+              rounded={true}
+              size="xxl"
+            />
+            <p className="text-center text-sm text-muted-foreground">
+              The Journey Builder as a drag-and-drop canvas, where marketers
+              compose a journey by dragging triggers, entry rules, and reward
+              actions into place.
+            </p>
+          </div>
+        </WideSection>
+      </MiddleSection>
 
       {/* Section 6 — Execution, Architecture & Business Impact */}
       <MiddleSection className="mb-20 space-y-6">

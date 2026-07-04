@@ -99,7 +99,7 @@ export default function SpotifyEventsContent() {
           videoIdentifier="spotify-events"
           imageSrc="/resource/projects/p4_poster.jpg"
           imageAlt="Spotify Events prototype showing event invitation screen"
-          aspectRatio="9/16"
+          aspectRatio="6/13"
           rounded
           className="max-w-sm mx-auto"
         />
