@@ -265,9 +265,7 @@ export default function AiRunningCoachContent() {
           There is an interactive layer too: a briefing skill for today&apos;s
           workout, a race-coach skill for pacing and tapering, and weekly
           reviews that follow a fixed template, always data, then analysis, then
-          recommendation, then the physiological why. The methodology underneath
-          is the Norwegian Singles Approach, roughly 80 percent easy running and
-          the rest controlled sub-threshold work.
+          recommendation, then the physiological why.
         </p>
       </MiddleSection>
 
