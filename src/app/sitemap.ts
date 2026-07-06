@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { projectRegistry } from '@/app/data/projects';
-import { ideaRegistry } from '@/app/data/ideas';
+import { experimentRegistry } from '@/app/data/experiments';
 import { writingRegistry } from '@/app/data/writing';
 
 const BASE_URL = 'https://andreroxhage.com';
@@ -19,13 +19,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}/work/project/${project.projectSlug}`,
   }));
 
-  const ideaRoutes: MetadataRoute.Sitemap = ideaRegistry.map(idea => ({
-    url: `${BASE_URL}/work/idea/${idea.ideaSlug}`,
-  }));
+  const experimentRoutes: MetadataRoute.Sitemap = experimentRegistry.map(
+    experiment => ({
+      url: `${BASE_URL}/work/experiment/${experiment.experimentSlug}`,
+    })
+  );
 
   const writingRoutes: MetadataRoute.Sitemap = writingRegistry.map(writing => ({
     url: `${BASE_URL}/work/writing/${writing.writingSlug}`,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...ideaRoutes, ...writingRoutes];
+  return [
+    ...staticRoutes,
+    ...projectRoutes,
+    ...experimentRoutes,
+    ...writingRoutes,
+  ];
 }

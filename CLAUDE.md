@@ -31,11 +31,11 @@ src/app/
 ├── not-found.tsx         # Custom 404
 ├── sitemap.ts, robots.ts # SEO endpoints (generated from registries)
 ├── globals.css           # Tailwind 4 tokens, theme definitions
-├── types.ts              # Registry types (ProjectMeta, IdeaMeta, WritingMeta, GridItem)
+├── types.ts              # Registry types (ProjectMeta, ExperimentMeta, WritingMeta, GridItem)
 ├── data/                 # Static content registries — edit here first
 │   ├── home.ts           # Hero + about copy
 │   ├── projects.ts       # projectRegistry
-│   ├── ideas.ts          # ideaRegistry (showInPreview: false hides from home grid)
+│   ├── experiments.ts    # experimentRegistry (showInPreview: false hides from home grid)
 │   ├── writing.ts        # writingRegistry
 │   └── nav.ts            # Navigation items
 ├── sections/             # Home page sections
@@ -48,11 +48,11 @@ src/app/
 │   ├── OceanTransition/, WebGLCanvas/  # three.js scenes (lazy-loaded)
 │   └── ZoomParallax/     # Scroll-driven parallax
 ├── work/                 # /work routes
-│   ├── page.tsx          # SimpleList overview (projects + writing + ideas)
+│   ├── page.tsx          # SimpleList overview (projects + writing + experiments)
 │   ├── project/[slug]/   # Server page (SSG + metadata) + ProjectPageClient + content/*.tsx
-│   ├── idea/[slug]/      # Same pattern; short-form pages (see docs/idea-page-template.md)
+│   ├── experiment/[slug]/ # Same pattern; short-form pages (see docs/experiment-page-template.md)
 │   ├── writing/[slug]/   # Same pattern
-│   └── {project,idea,writing}/content-map.ts  # slug → lazy content component
+│   └── {project,experiment,writing}/content-map.ts  # slug → lazy content component
 ├── hooks/                # Custom React hooks (useReducedMotion, useVideo)
 ├── contexts/             # React contexts (theme, project hover)
 ├── lib/                  # motion tokens, neon/r2 clients
@@ -65,7 +65,7 @@ src/components/
 
 - Static content lives in the registries under `src/app/data/` — edit there first, not in components.
 - Detail routes are statically generated: `page.tsx` (server) does the registry lookup, exports `generateStaticParams`/`generateMetadata`, calls `notFound()` on unknown slugs, and renders a `*PageClient` with the slug.
-- To add a page: registry entry → `content/<slug>.tsx` → register in the route's `content-map.ts`. Idea pages follow the short-form convention in `docs/idea-page-template.md`.
+- To add a page: registry entry → `content/<slug>.tsx` → register in the route's `content-map.ts`. Experiment pages follow the short-form convention in `docs/experiment-page-template.md`.
 - Home sections are composed in `page.tsx`; the project grid is desktop-only by design (mobile home has no projects section).
 
 ## Testing
@@ -90,11 +90,11 @@ Visual verification is done via Playwright MCP (screenshot + inspect in browser)
 ## Key Paths
 
 - `src/app/page.tsx` - home composition
-- `src/app/data/` - content registries (projects, ideas, writing, home, nav)
+- `src/app/data/` - content registries (projects, experiments, writing, home, nav)
 - `src/app/work/project/[slug]/page.tsx` - project detail pages (SSG)
 - `src/app/globals.css` - token/theme definitions
 - `src/lib/utils.ts` - `cn()` helper
-- `docs/idea-page-template.md` - short-form idea page convention (local-only, docs/ is gitignored)
+- `docs/experiment-page-template.md` - short-form experiment page convention (local-only, docs/ is gitignored)
 
 ## Non-Negotiables
 

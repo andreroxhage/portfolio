@@ -76,7 +76,7 @@ export default function AIInterrogationContent() {
       <WideSection className="mb-20 space-y-12">
         <div className="space-y-4">
           <ProjectImage
-            src="/resource/projects/thesis.png"
+            src="/resource/projects/fenrir_1.png"
             alt="FENRIR System UI showcasing the progressive intelligence workspace"
             width={1920}
             height={1080}
@@ -123,7 +123,7 @@ export default function AIInterrogationContent() {
       <WideSection className="mb-20 space-y-12">
         <div className="space-y-4">
           <ProjectImage
-            src="/resource/projects/thesis-ui-1.png"
+            src="/resource/projects/fenrir_2.svg"
             alt="FENRIR workspace showing automated PIR tracking and gap analysis"
             width={1920}
             height={1080}

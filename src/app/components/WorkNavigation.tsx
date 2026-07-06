@@ -5,16 +5,16 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { projectRegistry } from '@/app/data/projects';
 import { writingRegistry } from '@/app/data/writing';
-import { ideaRegistry } from '@/app/data/ideas';
+import { experimentRegistry } from '@/app/data/experiments';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { projectContentSlugs } from '@/app/work/project/content-map';
 import { writingContentSlugs } from '@/app/work/writing/content-map';
-import { ideaContentSlugs } from '@/app/work/idea/content-map';
+import { experimentContentSlugs } from '@/app/work/experiment/content-map';
 
 interface NavItem {
   slug: string;
   title: string;
-  type: 'project' | 'writing' | 'idea';
+  type: 'project' | 'writing' | 'experiment';
   url: string;
   titleColor?: string;
   titleColorLight?: string;
@@ -45,14 +45,14 @@ const activeWritings: NavItem[] = [...writingRegistry]
     titleColorLight: 'oklch(0.635 0.08 148)',
   }));
 
-const activeIdeas: NavItem[] = [...ideaRegistry]
-  .filter(i => ideaContentSlugs.includes(i.ideaSlug))
+const activeExperiments: NavItem[] = [...experimentRegistry]
+  .filter(e => experimentContentSlugs.includes(e.experimentSlug))
   .sort((a, b) => a.order - b.order)
-  .map(i => ({
-    slug: i.ideaSlug,
-    title: i.title,
-    type: 'idea',
-    url: `/work/idea/${i.ideaSlug}`,
+  .map(e => ({
+    slug: e.experimentSlug,
+    title: e.title,
+    type: 'experiment',
+    url: `/work/experiment/${e.experimentSlug}`,
     titleColor: 'oklch(0.635 0.08 148)',
     titleColorLight: 'oklch(0.635 0.08 148)',
   }));
@@ -60,7 +60,7 @@ const activeIdeas: NavItem[] = [...ideaRegistry]
 const navItems: NavItem[] = [
   ...activeProjects,
   ...activeWritings,
-  ...activeIdeas,
+  ...activeExperiments,
 ];
 
 interface WorkNavigationProps {
@@ -85,14 +85,14 @@ const WorkNavigation: React.FC<WorkNavigationProps> = ({ currentSlug }) => {
       ? navItems[currentIndex + 1]
       : navItems[0];
 
-  const getTypeLabel = (type: 'project' | 'writing' | 'idea') => {
+  const getTypeLabel = (type: 'project' | 'writing' | 'experiment') => {
     if (type === 'project') {
       return 'Project';
     }
     if (type === 'writing') {
       return 'Article';
     }
-    return 'Idea';
+    return 'Experiment';
   };
 
   const getTitleColor = (item: NavItem) => {

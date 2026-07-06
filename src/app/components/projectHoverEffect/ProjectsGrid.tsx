@@ -8,7 +8,7 @@ import React, {
   useEffect,
 } from 'react';
 import { projects } from '@/app/data/projects';
-import { ideas } from '@/app/data/ideas';
+import { experiments } from '@/app/data/experiments';
 import { GridItem, galleryItemToGridItem } from '@/app/types';
 import type { GalleryItem } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
@@ -27,7 +27,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
     if (itemsProp) {
       return itemsProp;
     }
-    const gallery: GalleryItem[] = [...projects, ...ideas].filter(
+    const gallery: GalleryItem[] = [...projects, ...experiments].filter(
       item => item.showInPreview !== false
     );
     return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);

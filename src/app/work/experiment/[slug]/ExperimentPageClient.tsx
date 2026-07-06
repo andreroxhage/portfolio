@@ -1,17 +1,17 @@
 'use client';
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ideaRegistry } from '@/app/data/ideas';
+import { experimentRegistry } from '@/app/data/experiments';
 import WorkNavigation from '@/app/components/WorkNavigation';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
-import { ideaContentMap as contentMap } from '@/app/work/idea/content-map';
+import { experimentContentMap as contentMap } from '@/app/work/experiment/content-map';
 
-export default function IdeaPageClient({ slug }: { slug: string }) {
+export default function ExperimentPageClient({ slug }: { slug: string }) {
   const reducedMotion = useReducedMotion();
-  const idea = ideaRegistry.find(i => i.ideaSlug === slug);
+  const experiment = experimentRegistry.find(e => e.experimentSlug === slug);
 
-  if (!idea) {
+  if (!experiment) {
     return null;
   }
 
@@ -31,9 +31,9 @@ export default function IdeaPageClient({ slug }: { slug: string }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
         >
-          {idea.title}
+          {experiment.title}
         </motion.h1>
-        {idea.date && (
+        {experiment.date && (
           <motion.h3
             className="text-lg md:text-2xl font-normal text-surface-dark-muted"
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
@@ -44,7 +44,7 @@ export default function IdeaPageClient({ slug }: { slug: string }) {
               delay: reducedMotion ? 0 : STAGGER.DELAY,
             }}
           >
-            {idea.date}
+            {experiment.date}
           </motion.h3>
         )}
       </header>
@@ -62,7 +62,7 @@ export default function IdeaPageClient({ slug }: { slug: string }) {
           ) : (
             <div className="max-w-2.5xl mx-auto px-4 text-surface-dark-muted py-20">
               <p className="text-lg mb-4">
-                {idea.previewSubtitle || idea.subtitle}
+                {experiment.previewSubtitle || experiment.subtitle}
               </p>
               <p className="text-sm text-surface-dark-muted/60">
                 Content coming soon.

@@ -19,7 +19,12 @@ const nextConfig = {
       },
       {
         source: '/ideas/:slug',
-        destination: '/work/idea/:slug',
+        destination: '/work/experiment/:slug',
+        permanent: true,
+      },
+      {
+        source: '/work/idea/:slug',
+        destination: '/work/experiment/:slug',
         permanent: true,
       },
       {

@@ -7,8 +7,8 @@ export interface ProjectMeta {
   previewSubtitle?: string;
   showInPreview?: boolean;
   date: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   videoIdentifier?: string;
   posterImage?: string;
   imageFader?: string[];
@@ -23,9 +23,9 @@ export interface ProjectMeta {
   subtitleColorLight?: string;
 }
 
-export interface IdeaMeta {
+export interface ExperimentMeta {
   id: string;
-  ideaSlug: string;
+  experimentSlug: string;
   title: string;
   subtitle: string;
   previewSubtitle?: string;
@@ -33,16 +33,17 @@ export interface IdeaMeta {
   date: string;
   image?: string;
   imageAlt?: string;
+  videoIdentifier?: string;
   posterImage?: string;
   imageFader?: string[];
   intervalTime?: number;
   roundedCorners?: boolean;
   tags?: string[];
   order: number;
-  type: 'idea';
+  type: 'experiment';
 }
 
-export type GalleryItem = ProjectMeta | IdeaMeta;
+export type GalleryItem = ProjectMeta | ExperimentMeta;
 
 export interface WritingMeta {
   writingSlug: string;
@@ -98,18 +99,18 @@ export function galleryItemToGridItem(item: GalleryItem): GridItem {
     };
   }
   return {
-    id: item.ideaSlug,
+    id: item.experimentSlug,
     title: item.title,
     subtitle: item.subtitle,
     previewSubtitle: item.previewSubtitle,
     image: item.image,
     imageAlt: item.imageAlt,
-    videoIdentifier: item.id,
+    videoIdentifier: item.videoIdentifier ?? item.id,
     posterImage: item.posterImage,
     imageFader: item.imageFader,
     intervalTime: item.intervalTime,
     roundedCorners: item.roundedCorners,
     order: item.order,
-    href: `/work/idea/${item.ideaSlug}`,
+    href: `/work/experiment/${item.experimentSlug}`,
   };
 }

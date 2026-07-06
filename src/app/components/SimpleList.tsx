@@ -1,12 +1,12 @@
 import { projectRegistry } from '@/app/data/projects';
-import { ideaRegistry } from '@/app/data/ideas';
+import { experimentRegistry } from '@/app/data/experiments';
 import { writingRegistry } from '@/app/data/writing';
 import { ListRow } from '@/app/components/ListRow';
 import Link from 'next/link';
 
 export function SimpleList() {
   const projects = [...projectRegistry].sort((a, b) => a.order - b.order);
-  const ideas = [...ideaRegistry].sort((a, b) => a.order - b.order);
+  const experiments = [...experimentRegistry].sort((a, b) => a.order - b.order);
   const writing = [...writingRegistry].sort((a, b) => a.order - b.order);
 
   return (
@@ -70,17 +70,17 @@ export function SimpleList() {
         </section>
       )}
 
-      {/* Ideas */}
+      {/* Experiments */}
       <section className="md:mt-24 mt-16">
         <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
-          Ideas
+          Experiments
         </p>
-        {ideas.map(i => (
+        {experiments.map(e => (
           <ListRow
-            key={i.id}
-            title={i.title}
-            description={i.subtitle}
-            href={`/work/idea/${i.ideaSlug}`}
+            key={e.id}
+            title={e.title}
+            description={e.subtitle}
+            href={`/work/experiment/${e.experimentSlug}`}
           />
         ))}
       </section>
