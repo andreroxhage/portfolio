@@ -254,12 +254,14 @@ export default function AiRunningCoachContent() {
         <SectionHeading>Keeping an AI coach honest</SectionHeading>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
           The most interesting design work was not the coaching, it was the
-          guardrails. Training data flows through three tiers: deterministic
-          weekly rollups are read first and quoted as-is, per-session rows only
-          when a question needs them, raw time series almost never. All
-          physiology anchors, heart rate zones, thresholds, goals, live in one
-          profile file it may reference but never restate. Determinism where
-          numbers matter, LLM judgment where interpretation matters.
+          guardrails. The training data is layered so the agent always reaches
+          for the safest version first. It reads the deterministic weekly
+          rollups and quotes them straight, drops down to individual session
+          rows only when a question genuinely needs that detail, and almost
+          never touches the raw second-by-second data. All physiology anchors,
+          heart rate zones, thresholds, goals, live in one profile file it may
+          reference but never restate. Determinism where numbers matter, LLM
+          judgment where interpretation matters.
         </p>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
           There is an interactive layer too: a briefing skill for today&apos;s
@@ -284,13 +286,27 @@ export default function AiRunningCoachContent() {
         <SectionHeading>What I learned</SectionHeading>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Building an agent around data you personally care about is a fantastic
-          forcing function. Every hallucinated kilometer is a workout you feel
-          in your legs, so you learn fast where LLMs need rails and where they
+          forcing function. When the agent gets a number wrong, it is not an
+          abstract bug in a dashboard, it is a workout I feel in my legs that
+          morning, so you learn fast where LLMs need rails and where they
           genuinely shine. It is not a revolutionary system, honestly it is a
           Python ingest script and some markdown with an agent reading it, but
           it is one I get to redesign every time it lets me down, and that is
           genuinely satisfying to work on morning after morning.
         </p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          At the end of it all, the point stays small and concrete: one Todoist
+          task and a notification waiting for me each morning, tailored to that
+          exact day, and quietly reshaping itself as my training evolves.
+        </p>
+        <a
+          href="https://stride.andreroxhage.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-500 hover:underline text-sm"
+        >
+          Sneak peek at Stride &rarr;
+        </a>
       </MiddleSection>
     </>
   );
