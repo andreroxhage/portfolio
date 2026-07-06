@@ -1,63 +1,94 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { projects, ideas } from '@/app/data';
-import { Project } from '@/app/types';
+'use client';
+
+import React, {
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+  useEffect,
+} from 'react';
+import { projects } from '@/app/data/projects';
+import { experiments } from '@/app/data/experiments';
+import { GridItem, galleryItemToGridItem } from '@/app/types';
+import type { GalleryItem } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
-import { useVideo } from '@/app/hooks/useVideo';
+import { useVideo, prefetchVideo } from '@/app/hooks/useVideo';
+import { useQueryClient } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
 import ImageFader from '../ImageFader';
+import { STAGGER } from '@/app/lib/motion';
 
-const ProjectGrid = () => {
-  const allItems = useMemo(
-    () =>
-      [...(projects as Project[]), ...(ideas as Project[])].sort((a, b) => {
-        const orderA = a.order ?? 999;
-        const orderB = b.order ?? 999;
-        return orderA - orderB;
-      }),
-    []
-  );
+interface ProjectGridProps {
+  items?: GridItem[];
+}
 
-  const firstProject = allItems[0];
-  const firstProjectId = firstProject
-    ? firstProject.projectSlug || (firstProject as any).id
-    : null;
+const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
+  const allItems = useMemo(() => {
+    if (itemsProp) {
+      return itemsProp;
+    }
+    const gallery: GalleryItem[] = [...projects, ...experiments].filter(
+      item => item.showInPreview !== false
+    );
+    return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);
+  }, [itemsProp]);
 
-  const [expandedProjectId, setExpandedProjectId] = useState<string | null>(
-    firstProjectId
+  const firstItem = allItems[0];
+
+  // Prefetch all video URLs so they're cached before the user clicks
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    allItems.forEach(item => {
+      const id = item.videoIdentifier ?? item.id;
+      if (id && !item.imageFader?.length) {
+        prefetchVideo(queryClient, id);
+      }
+    });
+  }, [allItems, queryClient]);
+
+  const [expandedItemId, setExpandedItemId] = useState<string | null>(
+    firstItem?.id ?? null
   );
 
   const handleCardClick = useCallback((itemId: string) => {
-    setExpandedProjectId(itemId);
+    setExpandedItemId(itemId);
   }, []);
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-24">
         <motion.div
-          className="md:col-span-5 flex flex-col gap-6 justify-center"
+          className="md:col-span-5 flex flex-col gap-6 justify-center pl-0 md:pl-2"
           layout
         >
-          {allItems.map(item => {
-            const itemId = item.projectSlug || (item as any).id;
-            const isExpanded = expandedProjectId === itemId;
+          {allItems.map((item, index) => {
+            const isExpanded = expandedItemId === item.id;
 
             return (
-              <ProjectCardDesktop
-                key={itemId || item.title}
-                project={item}
-                isExpanded={isExpanded}
-                onClick={() => handleCardClick(itemId)}
-              />
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.4, 0, 0.2, 1],
+                  delay: index * STAGGER.DELAY,
+                }}
+              >
+                <ProjectCardDesktop
+                  item={item}
+                  isExpanded={isExpanded}
+                  onClick={() => handleCardClick(item.id)}
+                />
+              </motion.div>
             );
           })}
         </motion.div>
 
         <RightPreviewPanel
-          itemIdentifier={expandedProjectId || ''}
-          isActive={!!expandedProjectId}
-          currentProject={allItems.find(
-            item => (item.projectSlug || (item as any).id) === expandedProjectId
-          )}
+          item={allItems.find(item => item.id === expandedItemId)}
+          isActive={!!expandedItemId}
         />
       </div>
     </div>
@@ -67,17 +98,23 @@ const ProjectGrid = () => {
 export default ProjectGrid;
 
 const RightPreviewPanel = ({
-  itemIdentifier,
+  item,
   isActive,
-  currentProject,
 }: {
-  itemIdentifier: string;
+  item?: GridItem;
   isActive: boolean;
-  currentProject?: Project;
 }) => {
-  const { video_url: videoUrl } = useVideo(itemIdentifier || '');
+  const identifier = item?.videoIdentifier ?? item?.id ?? '';
+  const { video_url: videoUrl } = useVideo(identifier);
   const [prevVideoUrl, setPrevVideoUrl] = useState<string>('');
   const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Reset videoReady when switching items
+  useEffect(() => {
+    setVideoReady(false);
+  }, [identifier]);
 
   useEffect(() => {
     if (videoUrl && videoUrl !== prevVideoUrl) {
@@ -86,69 +123,78 @@ const RightPreviewPanel = ({
     }
   }, [videoUrl, prevVideoUrl]);
 
-  const hasImageFader =
-    currentProject?.imageFader && currentProject.imageFader.length > 0;
-  const showPanel =
-    isActive && !!itemIdentifier && (!!videoUrl || hasImageFader);
-  const shouldRound = currentProject?.roundedCorners !== false;
+  const hasImageFader = item?.imageFader && item.imageFader.length > 0;
+  const showPanel = isActive && !!identifier && (!!videoUrl || hasImageFader);
+  const shouldRound = item?.roundedCorners !== false;
 
   const easings = {
     videoTransition: [0.45, 0.0, 0.15, 1] as const,
   };
 
+  const sharedStyle = {
+    maxWidth: '100%',
+    maxHeight: '100%',
+    width: 'auto' as const,
+    height: 'auto' as const,
+  };
+
+  const roundingClass = shouldRound ? 'rounded-[40px] corner-squircle' : '';
+
   return (
     <div className="hidden md:block md:col-span-7">
-      <div className="sticky top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
+      <div className="top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
         <AnimatePresence mode="wait">
           {showPanel && (
             <>
               {hasImageFader ? (
                 <motion.div
-                  key={itemIdentifier}
-                  className={`${shouldRound ? 'rounded-[40px] corner-squircle' : ''} overflow-hidden`}
+                  key={identifier}
+                  className={`overflow-hidden ${roundingClass}`}
                   initial={{ opacity: 0, y: -64 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 64 }}
+                  exit={{ opacity: 0, y: 16 }}
                   transition={{
                     duration: isFirstLoad ? 0.6 : 0.5,
                     ease: easings.videoTransition,
                   }}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    width: 'auto',
-                    height: 'auto',
-                  }}
+                  style={sharedStyle}
                 >
                   <ImageFader
-                    images={currentProject.imageFader!.map(src => src)}
-                    intervalTime={currentProject.intervalTime || 5000}
+                    images={item!.imageFader!.map(src => src)}
+                    intervalTime={item!.intervalTime || 5000}
                   />
                 </motion.div>
               ) : (
-                <motion.video
-                  key={itemIdentifier}
-                  src={videoUrl}
-                  className={`shadow-xl ${shouldRound ? 'rounded-[40px] corner-squircle' : ''}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  initial={{ opacity: 0, y: -64 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 64 }}
-                  transition={{
-                    duration: isFirstLoad ? 0.6 : 0.5,
-                    ease: easings.videoTransition,
-                  }}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    width: 'auto',
-                    height: 'auto',
-                  }}
-                />
+                videoUrl && (
+                  <motion.video
+                    key={identifier}
+                    ref={videoRef}
+                    src={videoUrl}
+                    poster={item?.posterImage}
+                    className={`${roundingClass} ${!videoReady ? 'video-shimmer' : ''}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    initial={{ opacity: 0, y: -64 }}
+                    animate={{ opacity: videoReady ? 1 : 0, y: 0 }}
+                    exit={{ opacity: 0, y: 16 }}
+                    transition={{
+                      duration: isFirstLoad ? 0.6 : 0.5,
+                      ease: easings.videoTransition,
+                    }}
+                    onLoadedData={() => {
+                      const v = videoRef.current;
+                      if (v) {
+                        v.play()
+                          .then(() => setVideoReady(true))
+                          .catch(() => setVideoReady(true));
+                      }
+                    }}
+                    style={sharedStyle}
+                  />
+                )
               )}
             </>
           )}

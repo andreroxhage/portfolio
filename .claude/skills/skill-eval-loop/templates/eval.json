@@ -1,0 +1,48 @@
+{
+  "tests": [
+    {
+      "name": "example-test-1",
+      "prompt": "YOUR TEST PROMPT HERE — the exact message to send with the skill active",
+      "context": "",
+      "assertions": [
+        {
+          "id": "has-structure",
+          "check": "Output contains a numbered list or headings",
+          "expect": true
+        },
+        {
+          "id": "no-emoji",
+          "check": "Output does NOT contain emoji characters",
+          "expect": true
+        },
+        {
+          "id": "word-limit",
+          "check": "Output is under 500 words",
+          "expect": true
+        }
+      ]
+    },
+    {
+      "name": "example-test-2",
+      "prompt": "YOUR SECOND TEST PROMPT HERE",
+      "context": "",
+      "assertions": [
+        {
+          "id": "uses-active-voice",
+          "check": "First paragraph uses active voice",
+          "expect": true
+        },
+        {
+          "id": "cites-sources",
+          "check": "Output includes at least one citation or reference",
+          "expect": true
+        }
+      ]
+    }
+  ],
+  "config": {
+    "runs_per_test": 1,
+    "max_iterations": 5,
+    "pass_threshold": 0.95
+  }
+}

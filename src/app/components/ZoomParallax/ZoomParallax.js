@@ -72,7 +72,7 @@ export default function Index() {
         {pictures.map(({ src, scale }, index) => {
           return (
             <motion.div key={index} style={{ scale }} className={styles.el}>
-              <div className={styles.imageContainer}>
+              <div className={`${styles.imageContainer} image-depth-outline`}>
                 <Image
                   src={src}
                   className="rounded-[2px] corner-squircle"

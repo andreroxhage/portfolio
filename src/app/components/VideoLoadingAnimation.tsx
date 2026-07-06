@@ -29,7 +29,7 @@ const VideoLoadingAnimation = ({
         }}
       >
         <motion.div
-          className="absolute inset-0 border-4 border-secondary-green-darker rounded-full"
+          className="absolute inset-0 border-4 border-accent-foreground rounded-full"
           initial={{ scale: 0.8, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 0 }}
           transition={{
@@ -39,7 +39,7 @@ const VideoLoadingAnimation = ({
           }}
         />
         <motion.div
-          className="absolute inset-0 border-4 border-secondary-green-darker rounded-full"
+          className="absolute inset-0 border-4 border-accent-foreground rounded-full"
           initial={{ scale: 0.5 }}
           animate={{ scale: 1, opacity: 0 }}
           transition={{
@@ -49,7 +49,7 @@ const VideoLoadingAnimation = ({
             delay: 0.2,
           }}
         />
-        <div className="absolute inset-0 border-4 border-secondary-green-darker rounded-full" />
+        <div className="absolute inset-0 border-4 border-accent-foreground rounded-full" />
       </motion.div>
     </div>
   );

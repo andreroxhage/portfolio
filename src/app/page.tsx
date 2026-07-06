@@ -1,25 +1,34 @@
-import Contact from './sections/Contact';
-import Header from './sections/Header';
-import About from './sections/About';
-import Photography from './sections/Photography';
-import CurrentWork from './sections/CurrentWork';
-import VoluntaryWork from './sections/VoluntaryWork';
-import ZoomParallax from './components/ZoomParallax/ZoomParallax';
-import Footer from './sections/Footer';
+import Footer from '@/app/sections/Footer';
+import { HeroSection } from '@/app/sections/HeroSection';
+import AtWorkSection from '@/app/sections/AtWorkSection';
+import RecentProjects from '@/app/sections/RecentProjects';
+import ElsewhereSection from '@/app/sections/ElsewhereSection';
+import ZoomParallax from '@/app/components/ZoomParallax/ZoomParallax';
+import MobilePhotoCollage from '@/app/components/MobilePhotoCollage';
+import OceanTransitionLoader from '@/app/components/OceanTransition/OceanTransitionLoader';
 
 export default function Home() {
   return (
-    <main className="h-full bg-brand-cream">
-      <Header></Header>
-      <CurrentWork />
+    <main className="h-full">
+      {/* Professional Zone — adapts to light/dark mode */}
+      <HeroSection />
+      <AtWorkSection />
 
-      <div className="bg-brand-cream">
-        <Photography />
-        <ZoomParallax></ZoomParallax>
+      {/* Personal Zone — warm light surface */}
+      <div className="hidden lg:block lg:px-0 lg:py-4 xl:px-12 bg-linear-to-b from-background via-secondary to-secondary">
+        <RecentProjects />
       </div>
-      <About></About>
-      <Contact></Contact>
-      <VoluntaryWork />
+      <OceanTransitionLoader>
+        <ElsewhereSection />
+      </OceanTransitionLoader>
+
+      <div className="relative z-10 bg-secondary">
+        <MobilePhotoCollage />
+        <div className="hidden md:block bg-secondary">
+          <ZoomParallax />
+        </div>
+      </div>
+
       <Footer />
     </main>
   );

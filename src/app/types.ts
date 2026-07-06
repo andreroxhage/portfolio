@@ -1,45 +1,116 @@
-export interface Section {
-  title?: string;
-  layout?: 'middle' | 'two-col' | 'full-width';
-  content: Array<{
-    type: string;
-    column?: string;
-    [key: string]: any;
-  }>;
-}
+// Registry types for the split data layer
 
-// Base interface for common properties between projects and ideas
-interface BaseItem {
-  title: string;
-  subtitle?: string;
-  date?: string;
-  tags?: string[];
-  videoAlt?: string;
-  titleColor?: string;
-  subtitleColor?: string;
-  roundedCorners?: boolean; // Controls video dialog corner rounding
-  imageFader?: any[]; // Array of images for slider (instead of video)
-  intervalTime?: number; // Interval time for image slider in ms
-  order?: number; // Display order (lower numbers appear first)
-}
-
-// Project specific interface
-interface ProjectItem extends BaseItem {
+export interface ProjectMeta {
   projectSlug: string;
-  headerSrc?: string;
-  image: string;
-  imageAlt: string;
-  sections?: Section[];
-  id?: never; // Projects don't have an id
-}
-
-// Idea specific interface
-interface IdeaItem extends BaseItem {
-  id: string;
+  title: string;
+  subtitle: string;
+  previewSubtitle?: string;
+  showInPreview?: boolean;
+  date: string;
   image?: string;
   imageAlt?: string;
-  projectSlug?: never; // Ideas don't have a projectSlug
+  videoIdentifier?: string;
+  posterImage?: string;
+  imageFader?: string[];
+  intervalTime?: number;
+  roundedCorners?: boolean;
+  tags?: string[];
+  order: number;
+  type: 'project';
+  titleColor?: string;
+  subtitleColor?: string;
+  titleColorLight?: string;
+  subtitleColorLight?: string;
 }
 
-// Union type that can be either a project or an idea
-export type Project = ProjectItem | IdeaItem;
+export interface ExperimentMeta {
+  id: string;
+  experimentSlug: string;
+  title: string;
+  subtitle: string;
+  previewSubtitle?: string;
+  showInPreview?: boolean;
+  date: string;
+  image?: string;
+  imageAlt?: string;
+  videoIdentifier?: string;
+  posterImage?: string;
+  imageFader?: string[];
+  intervalTime?: number;
+  roundedCorners?: boolean;
+  tags?: string[];
+  order: number;
+  type: 'experiment';
+}
+
+export type GalleryItem = ProjectMeta | ExperimentMeta;
+
+export interface WritingMeta {
+  writingSlug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  url?: string;
+  order: number;
+  type: 'writing';
+}
+
+// Unified item type consumed by ProjectsGrid and its children
+export interface GridItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  previewSubtitle?: string;
+  image?: string;
+  imageAlt?: string;
+  videoIdentifier?: string;
+  posterImage?: string;
+  imageFader?: string[];
+  intervalTime?: number;
+  roundedCorners?: boolean;
+  order: number;
+  href?: string;
+  titleColor?: string;
+  subtitleColor?: string;
+  titleColorLight?: string;
+  subtitleColorLight?: string;
+}
+
+export function galleryItemToGridItem(item: GalleryItem): GridItem {
+  if (item.type === 'project') {
+    return {
+      id: item.projectSlug,
+      title: item.title,
+      subtitle: item.subtitle,
+      previewSubtitle: item.previewSubtitle,
+      image: item.image,
+      imageAlt: item.imageAlt,
+      videoIdentifier: item.videoIdentifier,
+      posterImage: item.posterImage,
+      imageFader: item.imageFader,
+      intervalTime: item.intervalTime,
+      roundedCorners: item.roundedCorners,
+      order: item.order,
+      href: `/work/project/${item.projectSlug}`,
+      titleColor: item.titleColor,
+      subtitleColor: item.subtitleColor,
+      titleColorLight: item.titleColorLight,
+      subtitleColorLight: item.subtitleColorLight,
+    };
+  }
+  return {
+    id: item.experimentSlug,
+    title: item.title,
+    subtitle: item.subtitle,
+    previewSubtitle: item.previewSubtitle,
+    image: item.image,
+    imageAlt: item.imageAlt,
+    videoIdentifier: item.videoIdentifier ?? item.id,
+    posterImage: item.posterImage,
+    imageFader: item.imageFader,
+    intervalTime: item.intervalTime,
+    roundedCorners: item.roundedCorners,
+    order: item.order,
+    href: `/work/experiment/${item.experimentSlug}`,
+  };
+}

@@ -38,6 +38,39 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# cursor
+# editor config
 .cursor/
+.cursor.json
+.cursorignore
+.vscode/
+
+# claude (shared project config, local/runtime excluded)
+.claude/*
+!.claude/agents/
+!.claude/agents/**
+!.claude/hooks/
+!.claude/hooks/**
+!.claude/rules/
+!.claude/rules/**
+!.claude/skills/
+!.claude/skills/**
+!.claude/commands/
+!.claude/commands/**
+!.claude/settings.json
+.claude/settings.local.json
+.claude/agent-memory/
+.claude/worktrees/
+
+# husky
+.husky/
+
+# docs
+docs/
+
+# superpowers working directories
+.superpowers/
+DOCS/superpowers/
+
+# playwright mcp artifacts
+.playwright-mcp/
 

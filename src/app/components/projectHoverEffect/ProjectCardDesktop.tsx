@@ -1,27 +1,28 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Project } from '@/app/types';
+import type { GridItem } from '@/app/types';
 import { PlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { EASING, BUTTON_PRESS_SCALE, DURATION } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
 interface ProjectCardDesktopProps {
-  project: Project;
+  item: GridItem;
   isExpanded: boolean;
   onClick: () => void;
 }
 
 const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
-  ({ project, isExpanded, onClick }) => {
-    const hasProjectSlug = 'projectSlug' in project && project.projectSlug;
+  ({ item, isExpanded, onClick }) => {
     const router = useRouter();
     const prefersReducedMotion = useReducedMotion();
     const [isHovering, setIsHovering] = useState(false);
 
     const handleClick = () => {
-      if (isExpanded && hasProjectSlug) {
+      if (isExpanded && item.href) {
         if (typeof window !== 'undefined') {
           try {
             sessionStorage.setItem('fromProjects', '1');
@@ -29,7 +30,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
             /* noop */
           }
         }
-        router.push(`/projects/${project.projectSlug}`);
+        router.push(item.href);
         return;
       }
       onClick();
@@ -38,7 +39,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
     const handleKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        if (isExpanded && hasProjectSlug) {
+        if (isExpanded && item.href) {
           if (typeof window !== 'undefined') {
             try {
               sessionStorage.setItem('fromProjects', '1');
@@ -46,7 +47,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
               /* noop */
             }
           }
-          router.push(`/projects/${project.projectSlug}`);
+          router.push(item.href);
           return;
         }
         onClick();
@@ -63,7 +64,11 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         whileTap={{ scale: BUTTON_PRESS_SCALE }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="bg-gray-900 border-white/10 rounded-[50px] corner-squircle hover:bg-gray-800 cursor-pointer transition-all duration-150 overflow-hidden w-fit"
+        className="bg-surface-dark-card rounded-[50px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 overflow-hidden w-fit"
+        style={{
+          boxShadow:
+            'inset 0 1px 0 0 oklch(1 0 0 / 0.08), inset 0 0 0 1px oklch(1 0 0 / 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 1px 2px -1px rgba(0, 0, 0, 0.04), 0px 2px 4px 0px rgba(0, 0, 0, 0.02)',
+        }}
       >
         {/* Collapsed Content - Hidden when expanded */}
         <motion.div
@@ -88,9 +93,9 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex items-center gap-4">
-              <PlusIcon className="w-5 h-5 text-gray-300 flex-shrink-0" />
-              <h3 className="text-base md:text-lg font-medium text-gray-100 w-fit">
-                {project.title}
+              <PlusIcon className="w-5 h-5 text-surface-dark-muted shrink-0" />
+              <h3 className="text-base md:text-lg font-medium text-surface-dark-foreground w-fit">
+                {item.title}
               </h3>
             </div>
           </div>
@@ -119,19 +124,19 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex flex-col gap-4">
-              <span className="text-base md:text-lg font-medium text-gray-100">
-                {project.title}
-                {project.subtitle && (
+              <span className="text-base md:text-lg font-medium text-surface-dark-foreground">
+                {item.title}
+                {(item.previewSubtitle || item.subtitle) && (
                   <>
                     .{' '}
-                    <span className="text-base md:text-lg font-thin text-gray-200">
-                      {project.subtitle}
+                    <span className="text-base md:text-lg font-thin text-surface-dark-foreground text-balance">
+                      {item.previewSubtitle || item.subtitle}
                     </span>
                   </>
                 )}
               </span>
 
-              {hasProjectSlug && (
+              {item.href && (
                 <motion.div
                   animate={{ opacity: isExpanded ? 1 : 0 }}
                   transition={{
@@ -141,19 +146,22 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                   }}
                 >
                   <Link
-                    href={`/projects/${project.projectSlug}`}
-                    className="text-sm text-gray-100 hover:text-secondary-green-darker transition-colors duration-200 flex items-center gap-2"
+                    href={item.href}
+                    className="text-sm text-surface-dark-foreground hover:text-accent-foreground transition-colors duration-200 flex items-center gap-2 pr-[calc(theme(spacing.4)-2px)]"
                     onClick={e => e.stopPropagation()}
                   >
                     View Project{' '}
                     <motion.span
                       aria-hidden
+                      initial={{ opacity: 0, x: -4 }}
                       animate={{
-                        x: isExpanded && hasProjectSlug && isHovering ? 4 : 0,
+                        opacity: isExpanded ? 1 : 0,
+                        x: isExpanded && isHovering ? 4 : isExpanded ? 0 : -4,
                       }}
                       transition={{
                         duration: prefersReducedMotion ? 0.01 : DURATION.FAST,
                         ease: EASING.ENTER,
+                        delay: isExpanded ? 0.42 : 0,
                       }}
                       style={{ display: 'inline-block' }}
                     >

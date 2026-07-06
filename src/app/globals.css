@@ -1,47 +1,300 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* === Dark Mode Variant (class-based) === */
+@custom-variant dark (&:is(.dark *));
+
+/* === Custom Utility: corner-squircle === */
+/* Replaces @toolwind/corner-shape TW3 plugin */
+@utility corner-squircle {
+  corner-shape: squircle;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* === Theme Configuration === */
+/* Migrated from HSL to oklch for perceptual uniformity.
+   Consolidated: removed unused vanilla scale, merged brand aliases into neutral,
+   merged secondary-green into primary green scale. */
+@theme inline {
+  /* Font family */
+  --font-sans: 'Sans', 'Sans Fallback', sans-serif;
+
+  /* Custom font sizes */
+  --font-size-8\.5xl: 6.5rem;
+  --font-size-9\.5xl: 10rem;
+
+  /* Warm neutral scale (replaces vanilla + brand aliases) */
+  --color-neutral-25: oklch(0.975 0.005 85);
+  --color-neutral-50: oklch(0.995 0 0);
+  --color-neutral-100: oklch(0.988 0.008 80);
+  --color-neutral-200: oklch(0.955 0.025 85);
+  --color-neutral-300: oklch(0.91 0.025 80);
+  --color-neutral-400: oklch(0.8 0.015 80);
+  --color-neutral-500: oklch(0.65 0.012 80);
+  --color-neutral-600: oklch(0.45 0.01 90);
+  --color-neutral-700: oklch(0.34 0.01 90);
+  --color-neutral-800: oklch(0.26 0.01 80);
+  --color-neutral-900: oklch(0.2 0.008 90);
+  --color-neutral-950: oklch(0.145 0.01 70);
+  --color-neutral-975: oklch(0.115 0.008 70);
+
+  /* Primary scale (green — consolidates old primary + secondary-green) */
+  --color-primary-50: oklch(0.975 0.02 148);
+  --color-primary-100: oklch(0.95 0.04 148);
+  --color-primary-200: oklch(0.91 0.06 148);
+  --color-primary-300: oklch(0.855 0.085 148);
+  --color-primary-400: oklch(0.79 0.095 148);
+  --color-primary-500: oklch(0.75 0.105 148);
+  --color-primary-600: oklch(0.69 0.085 148);
+  --color-primary-700: oklch(0.635 0.08 148);
+  --color-primary-800: oklch(0.54 0.07 148);
+  --color-primary-900: oklch(0.45 0.06 148);
+  --color-primary-950: oklch(0.3 0.04 148);
+
+  /* Semantic tokens (shadcn/ui compatible) */
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
+  --color-card: oklch(var(--card));
+  --color-card-foreground: oklch(var(--card-foreground));
+  --color-primary: oklch(var(--primary));
+  --color-primary-foreground: oklch(var(--primary-foreground));
+  --color-secondary: oklch(var(--secondary));
+  --color-secondary-foreground: oklch(var(--secondary-foreground));
+  --color-muted: oklch(var(--muted));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+  --color-accent: oklch(var(--accent));
+  --color-accent-foreground: oklch(var(--accent-foreground));
+  --color-border: oklch(var(--border));
+  --color-input: oklch(var(--input));
+  --color-ring: oklch(var(--ring));
+  --color-surface-dark: oklch(var(--surface-dark));
+  --color-surface-dark-card: oklch(var(--surface-dark-card));
+  --color-surface-dark-elevated: oklch(var(--surface-dark-elevated));
+  --color-surface-dark-foreground: oklch(var(--surface-dark-foreground));
+  --color-surface-dark-muted: oklch(var(--surface-dark-muted));
+  --color-surface-footer: oklch(var(--surface-footer));
+
+  /* Box shadow */
+  --shadow-customShadow: 0 45px 70.8px -48px oklch(0 0 0 / 0.95);
+  --inset-shadow-border-glow:
+    inset 0 1px 0 0 oklch(1 0 0 / 0.08), inset 0 0 0 1px oklch(1 0 0 / 0.05);
+
+  /* Border radius */
+  --radius-4xl: 28px;
+  --radius: 0.5rem;
+
+  /* Max width */
+  --max-width-2\.5xl: 45rem;
+  --container-8xl: 90rem;
+
+  /* Screens */
+  --breakpoint-3xl: 1600px;
+
+  /* Animations */
+  --animate-shimmer: shimmer 2s linear infinite 0.5s;
+  --animate-aurora: aurora 60s linear infinite;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+/* Image depth outline — 1px inset outline per blog post recommendation */
+.image-depth-outline {
+  outline: 1px solid oklch(0 0 0 / 0.1);
+  outline-offset: -1px;
+}
+:is(.dark) .image-depth-outline {
+  outline-color: oklch(1 0 0 / 0.1);
+}
+
+/* Soft edge shadow — replaces hard borders with layered transparent shadows */
+.shadow-soft-edge {
+  box-shadow:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+}
+.shadow-soft-edge-hover {
+  box-shadow:
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 4px -1px rgba(0, 0, 0, 0.08),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+}
+:is(.dark) .shadow-soft-edge {
+  box-shadow:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.06),
+    0px 1px 2px -1px rgba(255, 255, 255, 0.04),
+    0px 2px 4px 0px rgba(255, 255, 255, 0.02);
+}
+:is(.dark) .shadow-soft-edge-hover {
+  box-shadow:
+    0px 0px 0px 1px rgba(255, 255, 255, 0.08),
+    0px 2px 4px -1px rgba(255, 255, 255, 0.06),
+    0px 4px 8px 0px rgba(255, 255, 255, 0.04);
+}
+
+/* Video shimmer — subtle loading placeholder for video containers */
+.video-shimmer {
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    90deg,
+    oklch(0.2 0.008 90) 0%,
+    oklch(0.26 0.01 80) 50%,
+    oklch(0.2 0.008 90) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite 0.5s;
 }
 
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply text-brand-grey;
+/* Keyframes */
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200% 0;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      350% 50%,
+      350% 50%;
   }
 }
 
-/* Accessibility: Respect prefers-reduced-motion */
+/* === Semantic Design Tokens (oklch) === */
+:root {
+  --background: 0.975 0.005 85;
+  --foreground: 0.34 0.01 90;
+  --card: 0.995 0 0;
+  --card-foreground: 0.34 0.01 90;
+  --primary: 0.72 0.11 148;
+  --primary-foreground: 1 0 0;
+  --secondary: 0.955 0.007 85;
+  --secondary-foreground: 0.34 0.01 90;
+  --muted: 0.91 0.025 80;
+  --muted-foreground: 0.54 0.01 90;
+  --accent: 0.855 0.085 144;
+  --accent-foreground: 0.45 0.07 148;
+  --border: 1 0 0 / 0.12;
+  --input: 0.91 0.025 80;
+  --ring: 0.72 0.11 148;
+
+  overscroll-behavior: none;
+
+  /* Portfolio surfaces (light mode) */
+  --surface-dark: 0.975 0.005 85;
+  --surface-dark-card: 0.995 0 0;
+  --surface-dark-elevated: 0.955 0.025 85;
+  --surface-dark-foreground: 0.34 0.01 90;
+  --surface-dark-muted: 0.45 0.01 90;
+  --surface-footer: 0.19 0 0;
+}
+
+/* Dark mode — warm organic palette */
+.dark {
+  --background: 0.115 0.008 70;
+  --foreground: 0.87 0 85;
+  --card: 0.2 0.02 148;
+  --card-foreground: 0.97 0 0;
+  --primary: 0.68 0.1 148;
+  --primary-foreground: 1 0 0;
+  --secondary: 0.175 0.008 80;
+  --secondary-foreground: 0.93 0.005 85;
+  --muted: 0.165 0.01 70;
+  --muted-foreground: 0.85 0.012 80;
+  --accent: 0.75 0.1 148;
+  --accent-foreground: 0.7 0.09 148;
+  --border: 1 0 0 / 0.1;
+  --input: 0.25 0.015 70;
+  --ring: 0.68 0.1 148;
+
+  /* Portfolio surfaces (dark mode) */
+  --surface-dark: 0.165 0 0;
+  --surface-dark-card: 0.2 0 0;
+  --surface-dark-elevated: 0.25 0 0;
+  --surface-dark-foreground: 0.97 0 0;
+  --surface-dark-muted: 0.87 0 0;
+  --surface-footer: 0.145 0 0;
+}
+
+/* Always-dark surface lock — nav, footer, header overlay */
+.surface-lock-dark {
+  --surface-dark: 0.145 0 0;
+  --surface-dark-card: 0.2 0 0;
+  --surface-dark-elevated: 0.25 0 0;
+  --surface-dark-foreground: 0.97 0 0;
+  --surface-dark-muted: 0.87 0 0;
+  --surface-footer: 0.19 0 0;
+}
+
+/* Antialiased for normal weight — preserves medium/semibold distinction */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:is(.font-medium, .font-semibold, .font-bold, .font-extrabold, .font-black) {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* === Base Resets === */
+*,
+::after,
+::before {
+  border-color: oklch(var(--border));
+}
+
+/* Text selection — warm neutral (see DESIGN.md) */
+::selection {
+  background-color: var(--color-neutral-200);
+  color: oklch(var(--foreground));
+}
+
+::-moz-selection {
+  background-color: var(--color-neutral-200);
+  color: oklch(var(--foreground));
+}
+
+/* === Scrollbar Styling === */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(var(--muted-foreground) / 0.3) oklch(var(--background));
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: oklch(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: oklch(var(--muted-foreground) / 0.5);
+}
+
+/* === Theme Transition === */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease !important;
+  transition-delay: 0s !important;
+}
+
+/* === Accessibility === */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
