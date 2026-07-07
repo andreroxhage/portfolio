@@ -11,11 +11,13 @@ import { links, footerLinks } from '@/app/data/nav';
 import { useProjectHover } from '../../contexts/ProjectHoverContext';
 import { DURATION, EASING } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { useIsMobile } from '@/app/hooks/useIsMobile';
 
 const MotionLink = motion.create(Link);
 
 const FloatingNav = () => {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -141,8 +143,8 @@ const FloatingNav = () => {
 
   const navVariants = {
     collapsed: {
-      height: '52px',
-      width: '150px',
+      height: isMobile ? '48px' : '52px',
+      width: isMobile ? '48px' : '150px',
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
@@ -153,8 +155,8 @@ const FloatingNav = () => {
           },
     },
     hovering: {
-      height: '56px',
-      width: '160px',
+      height: isMobile ? '52px' : '56px',
+      width: isMobile ? '52px' : '160px',
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
@@ -274,7 +276,11 @@ const FloatingNav = () => {
         className="fixed bottom-4 left-1/2 z-50"
         variants={initialAppearance}
         initial="hidden"
-        animate={isProjectHovered ? 'hidden' : 'visible'}
+        animate={
+          isProjectHovered || (isMobile && isAtBottom && !isShortPage)
+            ? 'hidden'
+            : 'visible'
+        }
       >
         <motion.div
           className={`bg-surface-dark inset-shadow-border-glow backdrop-blur-md flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
@@ -293,11 +299,17 @@ const FloatingNav = () => {
             backgroundColor: navBackgroundColor,
           }}
         >
-          <div className="w-full h-[52px] px-4 flex items-center justify-between">
+          <div
+            className={`w-full h-12 md:h-[52px] px-3 md:px-4 flex items-center ${
+              isExpanded
+                ? 'justify-end md:justify-between'
+                : 'justify-center md:justify-between'
+            }`}
+          >
             <motion.button
               ref={toggleButtonRef}
               type="button"
-              className={`bg-transparent text-surface-dark-foreground font-medium text-2xl cursor-pointer`}
+              className={`hidden md:block bg-transparent text-surface-dark-foreground font-medium text-xl md:text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               onClick={handleLogoClick}
@@ -369,7 +381,7 @@ const FloatingNav = () => {
             </motion.button>
             <button
               type="button"
-              className="bg-transparent flex items-center gap-1 cursor-pointer"
+              className="bg-transparent flex items-center justify-center gap-1 cursor-pointer min-h-11 min-w-11 md:min-h-0 md:min-w-0"
               onClick={() => setIsExpanded(!isExpanded)}
               aria-expanded={isExpanded}
               aria-label={
@@ -380,7 +392,7 @@ const FloatingNav = () => {
                 {!isExpanded ? (
                   <motion.span
                     key="find-label"
-                    className="text-surface-dark-foreground hover:text-accent text-base font-medium translate-y-px pr-6"
+                    className="flex items-center text-surface-dark-foreground hover:text-accent"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }
@@ -390,7 +402,23 @@ const FloatingNav = () => {
                     }
                     transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
                   >
-                    Find
+                    <span className="hidden md:inline text-base font-medium translate-y-px pr-6">
+                      Find
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="md:hidden w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      />
+                    </svg>
                   </motion.span>
                 ) : (
                   <motion.svg

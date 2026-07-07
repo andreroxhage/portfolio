@@ -5,11 +5,16 @@ import { IconSun, IconMoon } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/app/contexts/ThemeContext';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { useIsMobile } from '@/app/hooks/useIsMobile';
+import { useNearPageBottom } from '@/app/hooks/useNearPageBottom';
 import { DURATION, EASING, BUTTON_PRESS_SCALE } from '@/app/lib/motion';
 
 export default function ThemeToggle() {
   const { resolvedTheme, mounted, setTheme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const nearBottom = useNearPageBottom();
+  const hidden = isMobile && nearBottom;
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
@@ -33,11 +38,16 @@ export default function ThemeToggle() {
       whileTap={
         prefersReducedMotion ? undefined : { scale: BUTTON_PRESS_SCALE }
       }
+      animate={{
+        opacity: hidden ? 0 : 1,
+        y: hidden && !prefersReducedMotion ? 12 : 0,
+      }}
+      style={{ pointerEvents: hidden ? 'none' : 'auto' }}
       transition={{ duration: DURATION.FAST, ease: EASING.STANDARD }}
       className={cn(
         'fixed bottom-4 right-4 z-50',
         'flex items-center justify-center',
-        'h-9 w-9 rounded-[8px] corner-squircle',
+        'h-11 w-11 md:h-9 md:w-9 rounded-[8px] corner-squircle',
         'bg-surface-dark inset-shadow-border-glow',
         'text-surface-dark-foreground',
         'cursor-pointer'
