@@ -7,6 +7,7 @@ import { useTheme } from '@/app/contexts/ThemeContext';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { useIsMobile } from '@/app/hooks/useIsMobile';
 import { useNearPageBottom } from '@/app/hooks/useNearPageBottom';
+import { useHaptics } from '@/app/hooks/useHaptics';
 import { DURATION, EASING, BUTTON_PRESS_SCALE } from '@/app/lib/motion';
 
 export default function ThemeToggle() {
@@ -15,8 +16,10 @@ export default function ThemeToggle() {
   const isMobile = useIsMobile();
   const nearBottom = useNearPageBottom();
   const hidden = isMobile && nearBottom;
+  const { triggerHaptic } = useHaptics();
 
   const toggleTheme = () => {
+    triggerHaptic();
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
