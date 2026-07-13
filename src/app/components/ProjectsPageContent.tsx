@@ -11,6 +11,7 @@ import {
 import { IconChevronDown } from '@tabler/icons-react';
 import { SimpleList } from '@/app/components/SimpleList';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { useHaptics } from '@/app/hooks/useHaptics';
 import { EASING } from '@/app/lib/motion';
 import type { GridItem } from '@/app/types';
 
@@ -40,8 +41,10 @@ function ScrollIndicator({
   galleryRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const reduced = useReducedMotion();
+  const { triggerHaptic } = useHaptics();
 
   const handleClick = () => {
+    triggerHaptic();
     galleryRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 

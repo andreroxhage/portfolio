@@ -12,12 +12,14 @@ import { useProjectHover } from '../../contexts/ProjectHoverContext';
 import { DURATION, EASING } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { useIsMobile } from '@/app/hooks/useIsMobile';
+import { useHaptics } from '@/app/hooks/useHaptics';
 
 const MotionLink = motion.create(Link);
 
 const FloatingNav = () => {
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const { triggerHaptic } = useHaptics();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -78,6 +80,7 @@ const FloatingNav = () => {
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    triggerHaptic();
     if (typeof window !== 'undefined') {
       if (isShortPage) {
         setIsExpanded(!isExpanded);
@@ -382,7 +385,10 @@ const FloatingNav = () => {
             <button
               type="button"
               className="bg-transparent flex items-center justify-center gap-1 cursor-pointer min-h-11 min-w-11 md:min-h-0 md:min-w-0"
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={() => {
+                triggerHaptic();
+                setIsExpanded(!isExpanded);
+              }}
               aria-expanded={isExpanded}
               aria-label={
                 isExpanded ? 'Close navigation menu' : 'Open navigation menu'
@@ -477,7 +483,10 @@ const FloatingNav = () => {
                     initial="hidden"
                     animate={isExpanded ? 'visible' : 'hidden'}
                     whileHover={{ x: 5 }}
-                    onClick={() => setIsExpanded(false)}
+                    onClick={() => {
+                      triggerHaptic();
+                      setIsExpanded(false);
+                    }}
                   >
                     {link.title}
                   </LinkComponent>
@@ -510,7 +519,10 @@ const FloatingNav = () => {
                   initial="hidden"
                   animate={isExpanded ? 'visible' : 'hidden'}
                   whileHover={{ x: 5 }}
-                  onClick={() => setIsExpanded(false)}
+                  onClick={() => {
+                    triggerHaptic();
+                    setIsExpanded(false);
+                  }}
                 >
                   {link.title}
                 </motion.a>
