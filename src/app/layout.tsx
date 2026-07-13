@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import FloatingNav from './components/Navbar/FloatingNav';
+import ThemeToggle from './components/ThemeToggle';
 import { ProjectHoverProvider } from './contexts/ProjectHoverContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import QueryProvider from './components/QueryProvider';
@@ -62,6 +63,7 @@ export default function RootLayout({
           <QueryProvider>
             <ProjectHoverProvider>
               <FloatingNav />
+              <ThemeToggle />
               {children}
             </ProjectHoverProvider>
           </QueryProvider>

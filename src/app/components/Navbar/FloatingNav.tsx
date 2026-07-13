@@ -313,7 +313,7 @@ const FloatingNav = () => {
           <div
             className={`w-full flex items-center ${
               isExpanded
-                ? 'h-14 px-4 justify-between'
+                ? 'h-14 px-4 justify-between md:justify-end'
                 : 'h-12 md:h-[52px] px-3 md:px-4 justify-center md:justify-between'
             }`}
           >
@@ -323,7 +323,7 @@ const FloatingNav = () => {
                   <motion.button
                     key="theme-toggle"
                     type="button"
-                    className="bg-transparent flex items-center justify-center cursor-pointer min-h-11 min-w-11 md:min-h-0 md:min-w-0 text-surface-dark-foreground hover:text-accent"
+                    className="md:hidden bg-transparent flex items-center justify-center cursor-pointer min-h-11 min-w-11 text-surface-dark-foreground hover:text-accent"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }
