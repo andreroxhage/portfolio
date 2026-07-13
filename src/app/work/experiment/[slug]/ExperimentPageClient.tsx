@@ -3,6 +3,7 @@ import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { experimentRegistry } from '@/app/data/experiments';
 import WorkNavigation from '@/app/components/WorkNavigation';
+import WorkBreadcrumb from '@/app/components/WorkBreadcrumb';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { experimentContentMap as contentMap } from '@/app/work/experiment/content-map';
@@ -25,28 +26,19 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
       transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
     >
       <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
+        <WorkBreadcrumb title={experiment.title} year={experiment.date} />
         <motion.h1
           className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
+          transition={{
+            duration: DURATION.SLOW,
+            ease: EASING.ENTER,
+            delay: reducedMotion ? 0 : STAGGER.DELAY,
+          }}
         >
           {experiment.title}
         </motion.h1>
-        {experiment.date && (
-          <motion.h3
-            className="text-lg md:text-2xl font-normal text-surface-dark-muted"
-            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: DURATION.SLOW,
-              ease: EASING.ENTER,
-              delay: reducedMotion ? 0 : STAGGER.DELAY,
-            }}
-          >
-            {experiment.date}
-          </motion.h3>
-        )}
       </header>
 
       <Suspense
