@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { ProjectMeta } from '@/app/types';
+import WorkBreadcrumb from '@/app/components/WorkBreadcrumb';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 
@@ -25,6 +26,8 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
 
   return (
     <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
+      <WorkBreadcrumb title={project.title} year={project.date} />
+
       <motion.h1
         className="text-2xl md:text-3xl font-medium tracking-tight leading-tight"
         style={
@@ -33,25 +36,10 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
             textWrap: 'balance',
           } as React.CSSProperties
         }
-        {...enterVariant(0)}
+        {...enterVariant(STAGGER.DELAY)}
       >
         {project.title}
       </motion.h1>
-
-      {project.date && (
-        <motion.h3
-          className="text-lg md:text-2xl font-normal opacity-80"
-          style={
-            {
-              color: project.subtitleColor || 'oklch(0.45 0.01 90)',
-              textWrap: 'balance',
-            } as React.CSSProperties
-          }
-          {...enterVariant(STAGGER.DELAY)}
-        >
-          {project.date}
-        </motion.h3>
-      )}
 
       {/* Tags hidden for now per user feedback
       {project.tags && project.tags.length > 0 && (
