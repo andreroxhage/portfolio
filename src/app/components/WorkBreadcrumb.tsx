@@ -27,7 +27,7 @@ export default function WorkBreadcrumb({ title, year }: WorkBreadcrumbProps) {
         <li>
           <Link
             href="/work"
-            className="group flex items-center gap-1.5 text-surface-dark-muted hover:text-accent transition-colors duration-200"
+            className="group flex items-center gap-1.5 text-surface-dark-muted/70 hover:text-accent transition-colors duration-200"
           >
             <IconArrowLeft
               size={15}
@@ -45,19 +45,19 @@ export default function WorkBreadcrumb({ title, year }: WorkBreadcrumbProps) {
         <li
           role="presentation"
           aria-hidden
-          className="mx-2 select-none text-surface-dark-muted/50"
+          className="mx-2 select-none text-surface-dark-muted/40"
         >
           /
         </li>
         <li
           aria-current="page"
-          className="min-w-0 truncate text-surface-dark-foreground/90"
+          className="min-w-0 truncate text-surface-dark-muted"
         >
           {title}
         </li>
       </ol>
       {year && (
-        <span className="whitespace-nowrap text-surface-dark-muted">
+        <span className="whitespace-nowrap text-surface-dark-muted/70">
           {year}
         </span>
       )}
