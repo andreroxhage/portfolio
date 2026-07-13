@@ -311,141 +311,147 @@ const FloatingNav = () => {
           }}
         >
           <div
-            className={`w-full flex items-center ${
+            className={`relative w-full flex items-center ${
               isExpanded
-                ? 'h-14 px-4 justify-between md:justify-end'
+                ? 'h-14 px-4 justify-end md:justify-between'
                 : 'h-12 md:h-[52px] px-3 md:px-4 justify-center md:justify-between'
             }`}
           >
-            <AnimatePresence mode="wait" initial={false}>
-              {isExpanded ? (
-                mounted && (
-                  <motion.button
-                    key="theme-toggle"
-                    type="button"
-                    className="md:hidden bg-transparent flex items-center justify-center cursor-pointer min-h-11 min-w-11 text-surface-dark-foreground hover:text-accent"
-                    initial={
-                      prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
-                    }
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={
-                      prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
-                    }
-                    whileTap={
-                      prefersReducedMotion
-                        ? undefined
-                        : { scale: BUTTON_PRESS_SCALE }
-                    }
-                    transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
-                    onClick={toggleTheme}
-                    aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
-                  >
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.span
-                        key={resolvedTheme === 'dark' ? 'sun' : 'moon'}
-                        initial={
-                          prefersReducedMotion
-                            ? {}
-                            : { opacity: 0, rotate: -90, scale: 0.5 }
-                        }
-                        animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                        exit={
-                          prefersReducedMotion
-                            ? {}
-                            : { opacity: 0, rotate: 45, scale: 0.8 }
-                        }
-                        transition={{
-                          duration: DURATION.FAST,
-                          ease: EASING.STANDARD,
-                        }}
-                      >
-                        {resolvedTheme === 'dark' ? (
-                          <IconSun size={18} stroke={1.5} />
-                        ) : (
-                          <IconMoon size={18} stroke={1.5} />
-                        )}
-                      </motion.span>
-                    </AnimatePresence>
-                  </motion.button>
-                )
-              ) : (
+            <AnimatePresence initial={false}>
+              {isExpanded && mounted && (
                 <motion.button
-                  key="scroll-button"
+                  key="theme-toggle"
                   type="button"
-                  className={`hidden md:block bg-transparent text-surface-dark-foreground font-medium text-xl md:text-2xl cursor-pointer`}
-                  initial={prefersReducedMotion ? {} : { opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={prefersReducedMotion ? {} : { opacity: 0 }}
-                  transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
-                  onClick={handleLogoClick}
-                  aria-label={scrollButtonLabel}
+                  className="md:hidden absolute left-4 inset-y-0 bg-transparent flex items-center justify-center cursor-pointer min-w-11 text-surface-dark-foreground hover:text-accent"
+                  initial={
+                    prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
+                  }
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    transition: prefersReducedMotion
+                      ? { duration: 0.01 }
+                      : {
+                          delay: 0.15,
+                          duration: DURATION.MEDIUM,
+                          ease: EASING.ENTER,
+                        },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: prefersReducedMotion ? 1 : 0.8,
+                    transition: { duration: DURATION.FAST, ease: EASING.EXIT },
+                  }}
+                  whileTap={
+                    prefersReducedMotion
+                      ? undefined
+                      : { scale: BUTTON_PRESS_SCALE }
+                  }
+                  onClick={toggleTheme}
+                  aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
                 >
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
-                    key={
-                      isShortPage
-                        ? 'menu'
-                        : isAtTop
-                          ? 'down'
-                          : isAtBottom
-                            ? 'up'
-                            : 'menu'
-                    }
-                  >
-                    {isShortPage || (!isAtTop && !isAtBottom) ? (
-                      <motion.svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-surface-dark-foreground hover:text-accent"
-                        initial={false}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                        />
-                      </motion.svg>
-                    ) : isAtTop ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-surface-dark-foreground hover:text-accent transform rotate-180"
-                      >
-                        <path d="M12 19V5M5 12l7-7 7 7" />
-                      </svg>
-                    ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-surface-dark-foreground hover:text-accent"
-                      >
-                        <path d="M12 19V5M5 12l7-7 7 7" />
-                      </svg>
-                    )}
-                  </motion.div>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.span
+                      key={resolvedTheme === 'dark' ? 'sun' : 'moon'}
+                      initial={
+                        prefersReducedMotion
+                          ? {}
+                          : { opacity: 0, rotate: -90, scale: 0.5 }
+                      }
+                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                      exit={
+                        prefersReducedMotion
+                          ? {}
+                          : { opacity: 0, rotate: 45, scale: 0.8 }
+                      }
+                      transition={{
+                        duration: DURATION.FAST,
+                        ease: EASING.STANDARD,
+                      }}
+                    >
+                      {resolvedTheme === 'dark' ? (
+                        <IconSun size={18} stroke={1.5} />
+                      ) : (
+                        <IconMoon size={18} stroke={1.5} />
+                      )}
+                    </motion.span>
+                  </AnimatePresence>
                 </motion.button>
               )}
             </AnimatePresence>
+            <motion.button
+              type="button"
+              className={`hidden md:block bg-transparent text-surface-dark-foreground font-medium text-xl md:text-2xl cursor-pointer`}
+              animate={{ opacity: isExpanded ? 0 : 1 }}
+              transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
+              style={{ pointerEvents: isExpanded ? 'none' : 'auto' }}
+              onClick={handleLogoClick}
+              aria-label={scrollButtonLabel}
+            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
+                key={
+                  isShortPage
+                    ? 'menu'
+                    : isAtTop
+                      ? 'down'
+                      : isAtBottom
+                        ? 'up'
+                        : 'menu'
+                }
+              >
+                {isShortPage || (!isAtTop && !isAtBottom) ? (
+                  <motion.svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6 text-surface-dark-foreground hover:text-accent"
+                    initial={false}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  </motion.svg>
+                ) : isAtTop ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-surface-dark-foreground hover:text-accent transform rotate-180"
+                  >
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-surface-dark-foreground hover:text-accent"
+                  >
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                )}
+              </motion.div>
+            </motion.button>
             <button
               ref={toggleButtonRef}
               type="button"
