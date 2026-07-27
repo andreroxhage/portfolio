@@ -210,7 +210,7 @@ export default function AiRunningCoachContent() {
       <WideSection className="mb-20">
         <ProjectImage
           src="/resource/projects/running_overview.png"
-          alt="The training dashboard's Today view: prescribed session, readiness, week versus plan, and the latest weekly analysis"
+          alt="The training dashboard's Today view: prescribed session, readiness, week versus plan, and the week ahead day by day"
           width={1440}
           height={900}
           caption="The companion dashboard, a Next.js app reading the same data layer."
@@ -271,6 +271,30 @@ export default function AiRunningCoachContent() {
         </p>
       </MiddleSection>
 
+      {/* Making it autonomous */}
+      <MiddleSection className="mb-20 space-y-6">
+        <SectionHeading>Making it run itself</SectionHeading>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          The last piece was getting the whole thing to run without me. The jobs
+          are scheduled Claude tasks on my Mac that fetch from Strava, rebuild
+          the rollups, and commit straight to the repo, since git is the
+          database here. The awkward part was auth, because a scheduled job
+          cannot stop to unlock a keychain or type an SSH passphrase. So I gave
+          it a fine-grained GitHub token, scoped to just this repo with read and
+          write on contents, and a one-time setup script that stores the token
+          inside the git directory where it can never be committed, points the
+          remote at plain HTTPS, and installs a repo-local credential helper
+          that hands git the token on every push.
+        </p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+          The nice part is that the same setup works whether the agent runs
+          locally on my Mac or in a throwaway sandbox, so I can hand a task to
+          an unattended session and trust that its commit actually lands.
+          Rotating the token is just re-running the script, and revoking it on
+          GitHub cuts access instantly.
+        </p>
+      </MiddleSection>
+
       {/* Second visual */}
       <WideSection className="mb-20">
         <ProjectImage
@@ -286,10 +310,7 @@ export default function AiRunningCoachContent() {
         <SectionHeading>What I learned</SectionHeading>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
           Building an agent around data you personally care about is a fantastic
-          forcing function. When the agent gets a number wrong, it is not an
-          abstract bug in a dashboard, it is a workout I feel in my legs that
-          morning, so you learn fast where LLMs need rails and where they
-          genuinely shine. It is not a revolutionary system, honestly it is a
+          forcing function. It is not a revolutionary system, honestly it is a
           Python ingest script and some markdown with an agent reading it, but
           it is one I get to redesign every time it lets me down, and that is
           genuinely satisfying to work on morning after morning.

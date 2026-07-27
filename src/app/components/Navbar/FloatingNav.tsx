@@ -7,17 +7,21 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
+import { IconSun, IconMoon } from '@tabler/icons-react';
 import { links, footerLinks } from '@/app/data/nav';
 import { useProjectHover } from '../../contexts/ProjectHoverContext';
-import { DURATION, EASING } from '@/app/lib/motion';
+import { useTheme } from '@/app/contexts/ThemeContext';
+import { DURATION, EASING, BUTTON_PRESS_SCALE } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { useIsMobile } from '@/app/hooks/useIsMobile';
+import { useHaptics } from '@/app/hooks/useHaptics';
 
 const MotionLink = motion.create(Link);
 
 const FloatingNav = () => {
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const { triggerHaptic } = useHaptics();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -27,6 +31,12 @@ const FloatingNav = () => {
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
   const { isProjectHovered } = useProjectHover();
+  const { resolvedTheme, mounted, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    triggerHaptic();
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
 
   const { scrollYProgress } = useScroll();
   const scrollBasedOpacity = useTransform(
@@ -78,6 +88,7 @@ const FloatingNav = () => {
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    triggerHaptic();
     if (typeof window !== 'undefined') {
       if (isShortPage) {
         setIsExpanded(!isExpanded);
@@ -300,18 +311,80 @@ const FloatingNav = () => {
           }}
         >
           <div
-            className={`w-full h-12 md:h-[52px] px-3 md:px-4 flex items-center ${
+            className={`relative w-full flex items-center ${
               isExpanded
-                ? 'justify-end md:justify-between'
-                : 'justify-center md:justify-between'
+                ? 'h-14 px-4 justify-end md:justify-between'
+                : 'h-12 md:h-[52px] px-3 md:px-4 justify-center md:justify-between'
             }`}
           >
+            <AnimatePresence initial={false}>
+              {isExpanded && mounted && (
+                <motion.button
+                  key="theme-toggle"
+                  type="button"
+                  className="md:hidden absolute left-4 inset-y-0 bg-transparent flex items-center justify-center cursor-pointer min-w-11 text-surface-dark-foreground hover:text-accent"
+                  initial={
+                    prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
+                  }
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    transition: prefersReducedMotion
+                      ? { duration: 0.01 }
+                      : {
+                          delay: 0.15,
+                          duration: DURATION.MEDIUM,
+                          ease: EASING.ENTER,
+                        },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: prefersReducedMotion ? 1 : 0.8,
+                    transition: { duration: DURATION.FAST, ease: EASING.EXIT },
+                  }}
+                  whileTap={
+                    prefersReducedMotion
+                      ? undefined
+                      : { scale: BUTTON_PRESS_SCALE }
+                  }
+                  onClick={toggleTheme}
+                  aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.span
+                      key={resolvedTheme === 'dark' ? 'sun' : 'moon'}
+                      initial={
+                        prefersReducedMotion
+                          ? {}
+                          : { opacity: 0, rotate: -90, scale: 0.5 }
+                      }
+                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                      exit={
+                        prefersReducedMotion
+                          ? {}
+                          : { opacity: 0, rotate: 45, scale: 0.8 }
+                      }
+                      transition={{
+                        duration: DURATION.FAST,
+                        ease: EASING.STANDARD,
+                      }}
+                    >
+                      {resolvedTheme === 'dark' ? (
+                        <IconSun size={18} stroke={1.5} />
+                      ) : (
+                        <IconMoon size={18} stroke={1.5} />
+                      )}
+                    </motion.span>
+                  </AnimatePresence>
+                </motion.button>
+              )}
+            </AnimatePresence>
             <motion.button
-              ref={toggleButtonRef}
               type="button"
               className={`hidden md:block bg-transparent text-surface-dark-foreground font-medium text-xl md:text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
+              style={{ pointerEvents: isExpanded ? 'none' : 'auto' }}
               onClick={handleLogoClick}
               aria-label={scrollButtonLabel}
             >
@@ -380,9 +453,13 @@ const FloatingNav = () => {
               </motion.div>
             </motion.button>
             <button
+              ref={toggleButtonRef}
               type="button"
               className="bg-transparent flex items-center justify-center gap-1 cursor-pointer min-h-11 min-w-11 md:min-h-0 md:min-w-0"
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={() => {
+                triggerHaptic();
+                setIsExpanded(!isExpanded);
+              }}
               aria-expanded={isExpanded}
               aria-label={
                 isExpanded ? 'Close navigation menu' : 'Open navigation menu'
@@ -428,7 +505,7 @@ const FloatingNav = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="text-surface-dark-foreground hover:text-accent size-6 translate-y-px"
+                    className="text-surface-dark-foreground hover:text-accent size-5"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }
@@ -477,7 +554,10 @@ const FloatingNav = () => {
                     initial="hidden"
                     animate={isExpanded ? 'visible' : 'hidden'}
                     whileHover={{ x: 5 }}
-                    onClick={() => setIsExpanded(false)}
+                    onClick={() => {
+                      triggerHaptic();
+                      setIsExpanded(false);
+                    }}
                   >
                     {link.title}
                   </LinkComponent>
@@ -510,7 +590,10 @@ const FloatingNav = () => {
                   initial="hidden"
                   animate={isExpanded ? 'visible' : 'hidden'}
                   whileHover={{ x: 5 }}
-                  onClick={() => setIsExpanded(false)}
+                  onClick={() => {
+                    triggerHaptic();
+                    setIsExpanded(false);
+                  }}
                 >
                   {link.title}
                 </motion.a>
