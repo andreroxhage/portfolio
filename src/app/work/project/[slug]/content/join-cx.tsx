@@ -27,11 +27,14 @@ export default function JoinCXContent() {
             actually understood.
           </p>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
-            I redesigned the interface from the ground up. I did not just hand
-            off Figma files, I actively built out the frontend components. This
-            allowed me to systematically simplify complex configuration steps
-            and improve dashboard usability. Ultimately, clients could launch
-            entire loyalty programs without needing to ask for support.
+            I rethought and designed a new way for the product to work.
+            Configuration steps that used to require complex queries became
+            visual workflows like the Segment Builder and a drag-and-drop
+            Journey Builder, and I introduced an Insights feature that did not
+            exist before. I built the frontend components myself, which meant I
+            could change the interaction model and the implementation at the
+            same time. Ultimately, clients could launch entire loyalty programs
+            without needing to ask for support.
           </p>
         </div>
 
