@@ -3,9 +3,9 @@
 import Picture1 from '../../../../public/resource/carousel/1.jpg';
 import Picture2 from '../../../../public/resource/carousel/2.jpg';
 import Picture3 from '../../../../public/resource/carousel/3.jpg';
-import Picture4 from '../../../../public/resource/carousel/4.jpg';
+import CrowdBw from '../../../../public/resource/carousel/crowd-bw.jpg';
 import Picture5 from '../../../../public/resource/carousel/5.jpg';
-import Picture6 from '../../../../public/resource/carousel/6.jpg';
+import GalaSpeech from '../../../../public/resource/carousel/gala-speech.jpg';
 import Picture7 from '../../../../public/resource/carousel/7.jpg';
 import styles from './styles.module.css';
 import Image from 'next/image';
@@ -29,30 +29,37 @@ export default function Index() {
     {
       src: Picture1,
       scale: scale4,
+      alt: 'Man carried above the crowd, arm raised, at a concert',
     },
     {
       src: Picture2,
       scale: scale5,
+      alt: 'Singer performing under smoky stage lights',
     },
     {
       src: Picture3,
       scale: scale6,
+      alt: 'Hand reaching for two coffee cups on a tray in bed',
     },
     {
-      src: Picture4,
+      src: CrowdBw,
       scale: scale5,
+      alt: 'Crowd with raised hands in front of a smoke-lit stage',
     },
     {
       src: Picture5,
       scale: scale6,
+      alt: 'Two pigeons taking flight from stone steps',
     },
     {
-      src: Picture6,
+      src: GalaSpeech,
       scale: scale8,
+      alt: 'Man in a tuxedo speaking on stage as a champagne glass flies overhead',
     },
     {
       src: Picture7,
       scale: scale9,
+      alt: 'Overturned boats resting on a cobblestone quay',
     },
   ];
 
@@ -69,7 +76,7 @@ export default function Index() {
         }}
         viewport={{ once: true }}
       >
-        {pictures.map(({ src, scale }, index) => {
+        {pictures.map(({ src, scale, alt }, index) => {
           return (
             <motion.div key={index} style={{ scale }} className={styles.el}>
               <div className={`${styles.imageContainer} image-depth-outline`}>
@@ -77,7 +84,7 @@ export default function Index() {
                   src={src}
                   className="rounded-[2px] corner-squircle"
                   fill={true}
-                  alt="image"
+                  alt={alt}
                   placeholder="blur"
                 />
               </div>

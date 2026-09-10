@@ -33,7 +33,7 @@ export default function MobilePhotoCollage() {
         >
           <Image
             src={Picture1}
-            alt="Concert crowd with hands raised"
+            alt="Man carried above the crowd, arm raised, at a concert"
             fill
             className="object-cover"
             placeholder="blur"
@@ -50,7 +50,7 @@ export default function MobilePhotoCollage() {
           >
             <Image
               src={Picture3}
-              alt="Two coffee cups on a tray"
+              alt="Hand reaching for two coffee cups on a tray in bed"
               fill
               className="object-cover"
               placeholder="blur"
@@ -64,7 +64,7 @@ export default function MobilePhotoCollage() {
           >
             <Image
               src={Picture4}
-              alt="Singer performing on stage"
+              alt="An old Fiat parked in an olive grove"
               fill
               className="object-cover"
               placeholder="blur"

@@ -4,6 +4,7 @@ import AtWorkSection from '@/app/sections/AtWorkSection';
 import RecentProjects from '@/app/sections/RecentProjects';
 import ElsewhereSection from '@/app/sections/ElsewhereSection';
 import ZoomParallax from '@/app/components/ZoomParallax/ZoomParallax';
+import PhotoCollage from '@/app/components/PhotoCollage/PhotoCollage';
 import MobilePhotoCollage from '@/app/components/MobilePhotoCollage';
 import OceanTransitionLoader from '@/app/components/OceanTransition/OceanTransitionLoader';
 
@@ -25,6 +26,7 @@ export default function Home() {
       <div className="relative z-10 bg-secondary">
         <MobilePhotoCollage />
         <div className="hidden md:block bg-secondary">
+          <PhotoCollage />
           <ZoomParallax />
         </div>
       </div>
