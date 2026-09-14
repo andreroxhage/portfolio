@@ -294,7 +294,7 @@ const FloatingNav = () => {
         }
       >
         <motion.div
-          className={`bg-surface-dark inset-shadow-border-glow backdrop-blur-md flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
+          className={`bg-surface-dark inset-shadow-border-glow backdrop-blur-md relative flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
             isExpanded ? 'items-start' : 'items-center justify-center'
           }`}
           variants={navVariants}
@@ -310,11 +310,27 @@ const FloatingNav = () => {
             backgroundColor: navBackgroundColor,
           }}
         >
+          {/* Full-surface expand target: makes the whole collapsed pill
+              clickable, not just the label and icons. Sits behind the header
+              controls, which opt back into pointer events individually. */}
+          {!isExpanded && (
+            <button
+              type="button"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="absolute inset-0 z-0 bg-transparent cursor-pointer"
+              onClick={() => {
+                triggerHaptic();
+                setIsExpanded(true);
+              }}
+            />
+          )}
+
           <div
-            className={`relative w-full flex items-center ${
+            className={`relative z-10 w-full flex items-center ${
               isExpanded
                 ? 'h-14 px-4 justify-end md:justify-between'
-                : 'h-12 md:h-[52px] px-3 md:px-4 justify-center md:justify-between'
+                : 'h-12 md:h-[52px] px-3 md:px-4 justify-center md:justify-between pointer-events-none'
             }`}
           >
             <AnimatePresence initial={false}>
@@ -455,8 +471,9 @@ const FloatingNav = () => {
             <button
               ref={toggleButtonRef}
               type="button"
-              className="bg-transparent flex items-center justify-center gap-1 cursor-pointer min-h-11 min-w-11 md:min-h-0 md:min-w-0"
-              onClick={() => {
+              className="bg-transparent flex items-center justify-center gap-1 cursor-pointer min-h-11 min-w-11 md:min-h-0 md:min-w-0 pointer-events-auto"
+              onClick={event => {
+                event.stopPropagation();
                 triggerHaptic();
                 setIsExpanded(!isExpanded);
               }}
