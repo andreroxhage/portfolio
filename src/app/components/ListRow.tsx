@@ -33,7 +33,7 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
           size={16}
           stroke={1.5}
           aria-hidden
-          className="shrink-0 text-muted-foreground/35 transition-[color,transform] duration-200 ease-out group-hover:text-muted-foreground/80 group-hover:translate-x-0.5 group-focus-visible:text-muted-foreground/80 group-focus-visible:translate-x-0.5"
+          className="shrink-0 text-muted-foreground/35 transition-colors duration-200 ease-out group-hover:text-muted-foreground/80 group-focus-visible:text-muted-foreground/80"
         />
       </div>
     </Link>
