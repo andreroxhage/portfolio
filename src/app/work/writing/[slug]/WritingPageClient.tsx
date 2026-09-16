@@ -26,7 +26,11 @@ export default function WritingPageClient({ slug }: { slug: string }) {
       transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
     >
       <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
-        <WorkBreadcrumb title={writing.title} year={writing.date} />
+        <WorkBreadcrumb
+          title={writing.title}
+          year={writing.date}
+          tags={writing.tags}
+        />
         <motion.h1
           className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}

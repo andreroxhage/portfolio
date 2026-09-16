@@ -51,6 +51,7 @@ export interface WritingMeta {
   subtitle: string;
   date: string;
   url?: string;
+  tags?: string[];
   order: number;
   type: 'writing';
 }
