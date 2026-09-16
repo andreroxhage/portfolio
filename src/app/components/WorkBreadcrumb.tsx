@@ -63,10 +63,18 @@ export default function WorkBreadcrumb({
       </ol>
       {(year || (tags && tags.length > 0)) && (
         <div className="flex shrink-0 items-center gap-2 text-surface-dark-muted/70">
-          {tags?.slice(0, 2).map(tag => (
-            <span key={tag} className="hidden whitespace-nowrap sm:inline">
-              {tag}
-            </span>
+          {tags?.slice(0, 2).map((tag, i) => (
+            <React.Fragment key={tag}>
+              {i > 0 && (
+                <span
+                  aria-hidden
+                  className="hidden select-none text-surface-dark-muted/35 sm:inline"
+                >
+                  ·
+                </span>
+              )}
+              <span className="hidden whitespace-nowrap sm:inline">{tag}</span>
+            </React.Fragment>
           ))}
           {tags && tags.length > 0 && year && (
             <span
