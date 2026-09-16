@@ -14,7 +14,7 @@ export const projectRegistry: ProjectMeta[] = [
     imageFader: ['/resource/joinMockup2.png', '/resource/joinMockup1.png'],
     intervalTime: 5000,
     roundedCorners: false,
-    tags: ['Design Engineering', 'SaaS', 'Data Visualization'],
+    tags: ['Design Engineering', 'SaaS'],
     order: 0,
     type: 'project',
     titleColor: 'oklch(0.387 0.063 187.2)',
@@ -32,7 +32,7 @@ export const projectRegistry: ProjectMeta[] = [
     imageAlt:
       'Abstract representation of artificial intelligence and cognitive science',
     imageFader: ['/resource/projects/fenrir_1.png'],
-    tags: ['Human-AI Collaboration', 'UX Research', 'System Design'],
+    tags: ['System Design', 'Investigative AI'],
     order: 1,
     type: 'project',
     titleColor: 'oklch(0.6856 0.0518 149.31)',
@@ -45,7 +45,7 @@ export const projectRegistry: ProjectMeta[] = [
     previewSubtitle:
       'A controlled study with 51 clinicians on when AI should surface its suggestion. Show it too early and it quietly takes over their reasoning; hold it back and judgment stays sharp',
     date: '2025',
-    tags: ['UX Research', 'Clinical AI', 'Automation Bias'],
+    tags: ['UX Research', 'Clinical AI'],
     order: 2,
     type: 'project',
     titleColor: 'oklch(0.64 0.07 232)',
