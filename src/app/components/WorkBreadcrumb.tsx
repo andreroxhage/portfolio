@@ -10,9 +10,14 @@ import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 interface WorkBreadcrumbProps {
   title: string;
   year?: string;
+  tags?: string[];
 }
 
-export default function WorkBreadcrumb({ title, year }: WorkBreadcrumbProps) {
+export default function WorkBreadcrumb({
+  title,
+  year,
+  tags,
+}: WorkBreadcrumbProps) {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -56,10 +61,23 @@ export default function WorkBreadcrumb({ title, year }: WorkBreadcrumbProps) {
           {title}
         </li>
       </ol>
-      {year && (
-        <span className="whitespace-nowrap text-surface-dark-muted/70">
-          {year}
-        </span>
+      {(year || (tags && tags.length > 0)) && (
+        <div className="flex shrink-0 items-center gap-2 text-surface-dark-muted/70">
+          {tags?.slice(0, 2).map(tag => (
+            <span key={tag} className="hidden whitespace-nowrap sm:inline">
+              {tag}
+            </span>
+          ))}
+          {tags && tags.length > 0 && year && (
+            <span
+              aria-hidden
+              className="hidden select-none text-surface-dark-muted/35 sm:inline"
+            >
+              ·
+            </span>
+          )}
+          {year && <span className="whitespace-nowrap">{year}</span>}
+        </div>
       )}
     </motion.nav>
   );

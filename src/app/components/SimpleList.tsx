@@ -43,14 +43,18 @@ export function SimpleList() {
         <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
           Projects
         </p>
-        {projects.map(p => (
-          <ListRow
-            key={p.projectSlug}
-            title={p.title}
-            description={p.subtitle}
-            href={`/work/project/${p.projectSlug}`}
-          />
-        ))}
+        <ul className="list-none">
+          {projects.map(p => (
+            <li key={p.projectSlug}>
+              <ListRow
+                title={p.title}
+                description={p.subtitle}
+                href={`/work/project/${p.projectSlug}`}
+                year={p.date}
+              />
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Writing — only rendered when registry has entries */}
@@ -59,14 +63,18 @@ export function SimpleList() {
           <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
             Writing
           </p>
-          {writing.map(w => (
-            <ListRow
-              key={w.writingSlug}
-              title={w.title}
-              description={w.subtitle}
-              href={w.url ?? `/work/writing/${w.writingSlug}`}
-            />
-          ))}
+          <ul className="list-none">
+            {writing.map(w => (
+              <li key={w.writingSlug}>
+                <ListRow
+                  title={w.title}
+                  description={w.subtitle}
+                  href={w.url ?? `/work/writing/${w.writingSlug}`}
+                  year={w.date}
+                />
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
@@ -75,14 +83,18 @@ export function SimpleList() {
         <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
           Experiments
         </p>
-        {experiments.map(e => (
-          <ListRow
-            key={e.id}
-            title={e.title}
-            description={e.subtitle}
-            href={`/work/experiment/${e.experimentSlug}`}
-          />
-        ))}
+        <ul className="list-none">
+          {experiments.map(e => (
+            <li key={e.id}>
+              <ListRow
+                title={e.title}
+                description={e.subtitle}
+                href={`/work/experiment/${e.experimentSlug}`}
+                year={e.date}
+              />
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
