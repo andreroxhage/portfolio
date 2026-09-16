@@ -50,7 +50,6 @@ export function SimpleList() {
                 title={p.title}
                 description={p.subtitle}
                 href={`/work/project/${p.projectSlug}`}
-                year={p.date}
               />
             </li>
           ))}
@@ -70,7 +69,6 @@ export function SimpleList() {
                   title={w.title}
                   description={w.subtitle}
                   href={w.url ?? `/work/writing/${w.writingSlug}`}
-                  year={w.date}
                 />
               </li>
             ))}
@@ -90,7 +88,6 @@ export function SimpleList() {
                 title={e.title}
                 description={e.subtitle}
                 href={`/work/experiment/${e.experimentSlug}`}
-                year={e.date}
               />
             </li>
           ))}

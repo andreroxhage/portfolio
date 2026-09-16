@@ -6,17 +6,10 @@ interface ListRowProps {
   title: string;
   description: string;
   href: string;
-  year?: string;
   className?: string;
 }
 
-export function ListRow({
-  title,
-  description,
-  href,
-  year,
-  className,
-}: ListRowProps) {
+export function ListRow({ title, description, href, className }: ListRowProps) {
   return (
     <Link
       href={href}
@@ -36,19 +29,12 @@ export function ListRow({
             {description}
           </p>
         </div>
-        <div className="flex shrink-0 items-center gap-2">
-          {year && (
-            <span className="mt-0.5 text-sm tracking-wide tabular-nums text-muted-foreground/50">
-              {year}
-            </span>
-          )}
-          <IconChevronRight
-            size={16}
-            stroke={1.5}
-            aria-hidden
-            className="mt-0.5 shrink-0 text-muted-foreground/35 transition-[color,transform] duration-200 ease-out group-hover:text-muted-foreground/80 group-hover:translate-x-0.5 group-focus-visible:text-muted-foreground/80 group-focus-visible:translate-x-0.5"
-          />
-        </div>
+        <IconChevronRight
+          size={16}
+          stroke={1.5}
+          aria-hidden
+          className="mt-0.5 shrink-0 text-muted-foreground/35 transition-[color,transform] duration-200 ease-out group-hover:text-muted-foreground/80 group-hover:translate-x-0.5 group-focus-visible:text-muted-foreground/80 group-focus-visible:translate-x-0.5"
+        />
       </div>
     </Link>
   );
