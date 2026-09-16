@@ -22,7 +22,7 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
         className
       )}
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-center justify-between gap-4">
         <div className="min-w-0">
           <p className="text-base text-foreground/90 tracking-wide">{title}</p>
           <p className="text-base font-normal text-muted-foreground/90 mt-1 tracking-wide">
@@ -33,7 +33,7 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
           size={16}
           stroke={1.5}
           aria-hidden
-          className="mt-0.5 shrink-0 text-muted-foreground/35 transition-[color,transform] duration-200 ease-out group-hover:text-muted-foreground/80 group-hover:translate-x-0.5 group-focus-visible:text-muted-foreground/80 group-focus-visible:translate-x-0.5"
+          className="shrink-0 text-muted-foreground/35 transition-[color,transform] duration-200 ease-out group-hover:text-muted-foreground/80 group-hover:translate-x-0.5 group-focus-visible:text-muted-foreground/80 group-focus-visible:translate-x-0.5"
         />
       </div>
     </Link>
