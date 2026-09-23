@@ -51,10 +51,8 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 w-full py-24">
-        <motion.div
-          className="md:col-span-5 flex flex-col gap-6 justify-center pl-0 md:pl-2"
-          layout
-        >
+        {/* @container: cards cap their expanded width at this column (100cqw) */}
+        <div className="@container md:col-span-5 flex flex-col gap-6 justify-center pl-0 md:pl-2">
           {allItems.map((item, index) => {
             const isExpanded = expandedItemId === item.id;
 
@@ -78,7 +76,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
         <RightPreviewPanel
           item={allItems.find(item => item.id === expandedItemId)}

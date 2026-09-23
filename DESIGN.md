@@ -253,6 +253,9 @@ Curves (`src/app/lib/motion.ts`, mirrored as CSS `--ease-*` tokens so `ease-out`
 - Exit animations faster than entry (ease-in, shorter duration)
 - Framer Motion for component animation, CSS keyframes for ambient effects only
 - No ad-hoc durations or curves — use the constants
+- **Size changes never re-wrap text.** Don't tween `width`/`height` to `'auto'` on content that wraps — Framer measures `auto` at the in-between width and snaps. Lay each state out at its final width, measure it, animate the container between measured px boxes and clip (see `ProjectCardDesktop`)
+- **Sizes that change together move together.** Every simultaneous width/height animation uses `RESIZE` (one duration, one curve), so combined heights glide in one direction and centred lists never wobble
+- **Swap content with `CROSSFADE`**: the outgoing layer clears in `OUT` before `IN` starts at the resize midpoint — no ghosting, no clipped text. Hidden layers are `inert` and `aria-hidden`
 
 ### Icons
 

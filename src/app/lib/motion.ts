@@ -35,6 +35,31 @@ export const SPRING = {
 } as const;
 
 /**
+ * Size changes that happen together (one card closing while another opens)
+ * must share one duration and curve, so their combined height moves in a
+ * single steady glide instead of wobbling. Use this for every animated
+ * width/height.
+ */
+export const RESIZE = {
+  duration: 0.4,
+  ease: EASING.STANDARD,
+} as const;
+
+/**
+ * Crossfade between two layers inside a resizing container. The outgoing
+ * layer is gone before the incoming one starts (no ghosting), and the
+ * incoming one waits for the resize's midpoint so it isn't seen clipped.
+ */
+export const CROSSFADE = {
+  OUT: { duration: DURATION.FAST, ease: EASING.EXIT },
+  IN: {
+    duration: DURATION.MEDIUM,
+    ease: EASING.ENTER,
+    delay: RESIZE.duration / 2,
+  },
+} as const;
+
+/**
  * Stagger delay between list items
  * Should be 40-80ms for natural rhythm
  */
