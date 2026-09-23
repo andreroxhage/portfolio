@@ -16,7 +16,7 @@ export function SimpleList() {
         <div>
           <Link
             href="/"
-            className="text-base font-semibold text-foreground leading-snug"
+            className="text-base font-medium text-foreground leading-snug"
           >
             André Roxhage
           </Link>
@@ -28,7 +28,7 @@ export function SimpleList() {
 
       {/* About */}
       <section className="md:mt-12 mt-8">
-        <p className="text-base leading-tight tracking-wide font-semibold text-foreground mb-4 md:mb-6">
+        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-4 md:mb-6">
           Today
         </p>
         <p className="text-base text-muted-foreground/90 leading-relaxed tracking-wide text-balance">
@@ -40,7 +40,7 @@ export function SimpleList() {
 
       {/* Projects */}
       <section className="md:mt-24 mt-16">
-        <p className="text-base leading-tight tracking-wide font-semibold text-foreground mb-2 md:mb-4">
+        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
           Projects
         </p>
         <ul className="list-none">
@@ -59,7 +59,7 @@ export function SimpleList() {
       {/* Writing — only rendered when registry has entries */}
       {writing.length > 0 && (
         <section className="md:mt-24 mt-16">
-          <p className="text-base leading-tight tracking-wide font-semibold text-foreground mb-2 md:mb-4">
+          <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
             Writing
           </p>
           <ul className="list-none">
@@ -78,7 +78,7 @@ export function SimpleList() {
 
       {/* Experiments */}
       <section className="md:mt-24 mt-16">
-        <p className="text-base leading-tight tracking-wide font-semibold text-foreground mb-2 md:mb-4">
+        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
           Experiments
         </p>
         <ul className="list-none">

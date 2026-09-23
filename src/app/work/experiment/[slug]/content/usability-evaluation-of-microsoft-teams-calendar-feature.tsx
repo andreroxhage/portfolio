@@ -13,7 +13,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
     <>
       {/* Section 1 — Summary */}
       <MiddleSection className="mb-20 space-y-6">
-        <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+        <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
           Summary
         </h4>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -48,7 +48,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Introduction</SectionHeading>
         <div className="space-y-6">
           <div>
-            <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+            <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
               Purpose
             </h4>
             <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -60,7 +60,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             </p>
           </div>
           <div>
-            <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+            <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
               Research Questions
             </h4>
             <ol className="list-decimal list-inside space-y-2">
@@ -100,47 +100,47 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             before asking what they thought.
           </p>
           <div>
-            <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+            <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
               Tasks
             </h4>
             <ol className="list-decimal list-inside space-y-2">
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">
+                <span className="font-medium">
                   Joining a Scheduled Meeting:
                 </span>{' '}
                 Testing ease of access to ongoing meetings.
               </li>
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">Creating a New Meeting:</span>{' '}
+                <span className="font-medium">Creating a New Meeting:</span>{' '}
                 Evaluating workflow steps for scheduling new meetings.
               </li>
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">
+                <span className="font-medium">
                   Checking Availability and Rescheduling:
                 </span>{' '}
                 Assessing ability to view invitee availability and execute
                 rescheduling.
               </li>
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">
+                <span className="font-medium">
                   Starting and Ending a Meeting:
                 </span>{' '}
                 Observing clarity of meeting control actions.
               </li>
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">
+                <span className="font-medium">
                   Recognizing Connection Loss:
                 </span>{' '}
                 Testing effectiveness of connection status communication.
               </li>
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">
+                <span className="font-medium">
                   Rescheduling Without Internet:
                 </span>{' '}
                 Observing user behavior during offline rescheduling attempts.
               </li>
               <li className="text-base text-muted-foreground">
-                <span className="font-semibold">Logging Out:</span> Testing
+                <span className="font-medium">Logging Out:</span> Testing
                 discoverability and execution of logout functionality.
               </li>
             </ol>
@@ -244,26 +244,26 @@ export default function UsabilityEvaluationMicrosoftTeams() {
         <SectionHeading>Recommendations</SectionHeading>
         <ol className="list-decimal list-inside space-y-2">
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold">
+            <span className="font-medium">
               Enhance Connection Feedback Visibility:
             </span>{' '}
             Implement prominent connection status indicators, such as centered
             banners with color-coded states.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold">
+            <span className="font-medium">
               Improve RSVP and Invitation Management:
             </span>{' '}
             Embed RSVP responses directly in calendar and chat views for unified
             information access.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold">Refine Action Labels:</span> Replace
+            <span className="font-medium">Refine Action Labels:</span> Replace
             ambiguous terms like &quot;Join&quot; with contextually clear labels
             like &quot;Start Meeting&quot; for new sessions.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold">
+            <span className="font-medium">
               Introduce Interactive Onboarding:
             </span>{' '}
             Implement guided tutorials covering critical workflows including
@@ -271,9 +271,7 @@ export default function UsabilityEvaluationMicrosoftTeams() {
             handling.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold">
-              Enhance Confirmation Patterns:
-            </span>{' '}
+            <span className="font-medium">Enhance Confirmation Patterns:</span>{' '}
             Supplement or replace modal dialogs with persistent visual
             confirmations like checkmarks or status messages.
           </li>

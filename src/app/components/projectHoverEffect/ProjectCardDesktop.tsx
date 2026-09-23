@@ -83,7 +83,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                 aria-hidden
                 className="text-surface-dark-muted shrink-0"
               />
-              <h3 className="text-base md:text-lg font-semibold text-surface-dark-foreground w-fit">
+              <h3 className="text-base md:text-lg font-medium text-surface-dark-foreground w-fit">
                 {item.title}
               </h3>
             </div>
@@ -113,12 +113,12 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex flex-col gap-4">
-              <span className="text-base md:text-lg font-semibold text-surface-dark-foreground">
+              <span className="text-base md:text-lg font-medium text-surface-dark-foreground">
                 {item.title}
                 {(item.previewSubtitle || item.subtitle) && (
                   <>
                     .{' '}
-                    <span className="text-base md:text-lg font-light text-surface-dark-foreground text-balance">
+                    <span className="text-base md:text-lg font-thin text-surface-dark-foreground text-balance">
                       {item.previewSubtitle || item.subtitle}
                     </span>
                   </>

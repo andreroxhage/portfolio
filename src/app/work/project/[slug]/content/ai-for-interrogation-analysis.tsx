@@ -14,7 +14,7 @@ export default function AIInterrogationContent() {
       {/* Section 1 — Summary + Key Outcomes */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Summary
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -40,12 +40,12 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Key outcomes
           </h4>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Reduced cognitive load.
               </span>{' '}
               The system automatically pulls out names, places, and events from
@@ -53,7 +53,7 @@ export default function AIInterrogationContent() {
               instead of note-taking.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Mitigated biases.
               </span>{' '}
               Frictional design patterns force users to document their initial
@@ -61,7 +61,7 @@ export default function AIInterrogationContent() {
               automation and confirmation biases.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Accelerated workflows.
               </span>{' '}
               The software automatically maps evidence against Priority
@@ -95,7 +95,7 @@ export default function AIInterrogationContent() {
         <SectionHeading>The challenge</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             The multitasking bottleneck
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -142,7 +142,7 @@ export default function AIInterrogationContent() {
         <SectionHeading>The solution &amp; design process</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Frictional design
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -157,7 +157,7 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Progressive intelligence workspace
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -170,7 +170,7 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Architecting the AI pipeline
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -186,7 +186,7 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             End-to-end traceability
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -205,7 +205,7 @@ export default function AIInterrogationContent() {
         <SectionHeading>Impact &amp; value</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Transforming the analyst&apos;s workflow
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">

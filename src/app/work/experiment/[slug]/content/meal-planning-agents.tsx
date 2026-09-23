@@ -119,7 +119,7 @@ function MealPlanningDiagram() {
             )}
           >
             <dt className="text-xs tracking-wide">{term}</dt>
-            <dd className="mt-1 text-sm font-semibold tracking-heading">
+            <dd className="mt-1 text-sm font-medium tracking-heading">
               {value}
             </dd>
           </div>
@@ -167,14 +167,14 @@ export default function MealPlanningAgentsContent() {
         </p>
         <ol className="list-decimal pl-5 space-y-2">
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold text-surface-dark-foreground">
+            <span className="font-medium text-surface-dark-foreground">
               Brainstorming
             </span>{' '}
             — I describe what I am craving and what needs balancing, in plain
             language, and an agent proposes 10-20 candidate meals that fit.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold text-surface-dark-foreground">
+            <span className="font-medium text-surface-dark-foreground">
               Recipe research
             </span>{' '}
             — one researcher agent per chosen dish, all running in parallel,
@@ -183,21 +183,21 @@ export default function MealPlanningAgentsContent() {
             good source exists.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold text-surface-dark-foreground">
+            <span className="font-medium text-surface-dark-foreground">
               Shopping list
             </span>{' '}
             — ingredients pooled across all recipes, units normalized,
             categorized by store section.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold text-surface-dark-foreground">
+            <span className="font-medium text-surface-dark-foreground">
               Recipe compilation
             </span>{' '}
             — everything standardized into one format and scaled to our
             portions.
           </li>
           <li className="text-base text-muted-foreground">
-            <span className="font-semibold text-surface-dark-foreground">
+            <span className="font-medium text-surface-dark-foreground">
               Meal prep plan
             </span>{' '}
             — a time-optimized cooking timeline that parallelizes oven,

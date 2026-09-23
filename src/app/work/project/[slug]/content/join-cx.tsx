@@ -14,7 +14,7 @@ export default function JoinCXContent() {
       {/* Section 1 — summary + key outcomes */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Summary
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -57,26 +57,26 @@ export default function JoinCXContent() {
         </WideSection>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Key outcomes
           </h4>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Improved Platform Adoption.
               </span>{' '}
               I rewrote dashboard layouts and simplified data visualizations to
               make the platform highly usable for our clients.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Streamlined Configurations.
               </span>{' '}
               I replaced tedious setup flows with interactive workflows like a
               drag-and-drop Journey Builder.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Unified Component Library.
               </span>{' '}
               I built and documented a comprehensive design system in both Figma
@@ -92,7 +92,7 @@ export default function JoinCXContent() {
         <SectionHeading>The challenge</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Understanding the data complexity
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -132,7 +132,7 @@ export default function JoinCXContent() {
         <SectionHeading>Interactive workflows</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Visualizing the business
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -147,7 +147,7 @@ export default function JoinCXContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Simplifying campaign setups
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -184,7 +184,7 @@ export default function JoinCXContent() {
         <SectionHeading>The Solution &amp; Engineering</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Bridging Design and Code
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -203,7 +203,7 @@ export default function JoinCXContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Real business impact
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -213,14 +213,14 @@ export default function JoinCXContent() {
           </p>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Major Client Wins.
               </span>{' '}
               The improved usability of the product directly contributed to
               onboarding enterprise clients like Filmstaden, Önska, and Bauhaus.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Reduced support overhead.
               </span>{' '}
               I simplified the configuration flows to eliminate common setup
@@ -228,7 +228,7 @@ export default function JoinCXContent() {
               reduced support tickets.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Enhanced campaign velocity.
               </span>{' '}
               Because I made the segmentation logic visual and intuitive,

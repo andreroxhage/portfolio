@@ -28,7 +28,7 @@ When structuring a project or work case study (e.g., JoinCX, VR Login, Spotify E
 
 When styling writing or project texts in the Next.js portfolio, ensure the HTML/Tailwind styling strictly adheres to the typography rules:
 - **Body Paragraphs / Lists**: Use `text-base` (17px) with `leading-relaxed` and `font-normal`.
-- **Inline Subheadings (h4)**: Use `text-lg` (18px) with `font-semibold`.
-- **Section Headings (h2 / SectionHeading)**: Use `text-xl` (20px) with `font-semibold tracking-heading`.
+- **Inline Subheadings (h4)**: Use `text-lg` (18px) with `font-medium`.
+- **Section Headings (h2 / SectionHeading)**: Use `text-xl` (20px) with `font-medium tracking-heading`.
 - **Captions and Links**: Use `text-sm` (14px).
-- **Weight Restraint**: Detail text is `font-normal` (400); headings and inline emphasis use `font-semibold` (600). Weight 500 and `font-bold` are not part of the ladder (DESIGN.md → Weight Restraint).
+- **Weight Restraint**: The maximum font weight for detail text is `font-medium` (500). Avoid `font-semibold` or `font-bold` inside descriptions unless strictly highlighting inline list headers.

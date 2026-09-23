@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 // Pill-shaped label. `rounded-full` is a circle-family radius, so no
 // corner-squircle (DESIGN.md → Border Radius Scale).
 const badgeVariants = cva(
-  'inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1 text-xs font-normal w-fit whitespace-nowrap shrink-0 tabular-nums [&>svg]:size-3 [&>svg]:pointer-events-none',
+  'inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium w-fit whitespace-nowrap shrink-0 tabular-nums [&>svg]:size-3 [&>svg]:pointer-events-none',
   {
     variants: {
       variant: {

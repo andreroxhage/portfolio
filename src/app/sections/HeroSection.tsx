@@ -90,7 +90,7 @@ export function HeroSection() {
 
           <div className="text-center">
             <motion.h1
-              className="text-2xl font-semibold tracking-heading leading-tight text-foreground"
+              className="text-2xl font-medium tracking-heading leading-tight text-foreground"
               style={{ textWrap: 'balance' } as React.CSSProperties}
               variants={makeVariants(stagger)}
               initial="hidden"
@@ -114,7 +114,7 @@ export function HeroSection() {
           {/* Left column: tagline then name, individually staggered */}
           <div className="col-span-5 flex flex-col justify-center">
             <motion.h1
-              className="text-4xl font-semibold tracking-display leading-tight text-foreground"
+              className="text-4xl font-medium tracking-display leading-tight text-foreground"
               style={{ textWrap: 'balance' } as React.CSSProperties}
               variants={taglineVariants}
               initial="hidden"

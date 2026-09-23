@@ -64,7 +64,7 @@ export default function Footer() {
                 <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-normal">
                   <div className="col-span-10 md:col-span-6 w-full">
                     <span
-                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-semibold tracking-heading col-start-8 col-span-3"
+                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-heading col-start-8 col-span-3"
                       style={{ textWrap: 'balance' }}
                     >
                       Connect
@@ -116,7 +116,7 @@ export default function Footer() {
                   </div>
                   <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-12 sm:mt-14">
                     <span
-                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-semibold tracking-heading col-start-1 col-span-7"
+                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-heading col-start-1 col-span-7"
                       style={{ textWrap: 'balance' }}
                     >
                       Navigation

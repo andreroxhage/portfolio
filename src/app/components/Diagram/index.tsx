@@ -95,7 +95,7 @@ export function DiagramNode({
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-3">
-            <p className="text-sm font-semibold tracking-heading text-surface-dark-foreground">
+            <p className="text-sm font-medium tracking-heading text-surface-dark-foreground">
               {title}
             </p>
             {step !== undefined && (

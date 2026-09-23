@@ -41,7 +41,7 @@ export function SectionHeading({
   return (
     <h2
       className={cn(
-        'text-xl font-semibold tracking-heading text-surface-dark-foreground mb-6',
+        'text-xl font-medium tracking-heading text-surface-dark-foreground mb-6',
         className
       )}
     >

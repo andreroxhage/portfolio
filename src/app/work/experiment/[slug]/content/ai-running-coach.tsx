@@ -39,7 +39,7 @@ function StepCard({
           stroke={1.5}
           className="text-surface-dark-muted shrink-0"
         />
-        <p className="text-sm font-semibold text-surface-dark-foreground">
+        <p className="text-sm font-medium text-surface-dark-foreground">
           {title}
         </p>
       </div>
@@ -59,7 +59,7 @@ function Zone({
 }) {
   return (
     <div className="flex-1 min-w-0 rounded-card corner-squircle border border-dashed border-border p-4 sm:p-5">
-      <p className="text-[11px] font-semibold uppercase tracking-wide text-surface-dark-muted mb-3">
+      <p className="text-[11px] font-medium uppercase tracking-wide text-surface-dark-muted mb-3">
         {label}
       </p>
       <div className="flex flex-col gap-3">{children}</div>

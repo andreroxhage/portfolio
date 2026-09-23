@@ -12,7 +12,7 @@
 
 **Key characteristics:**
 
-- The platform's own system font (SF Pro on Apple, Segoe UI on Windows, Roboto on Android) — regular (400) for body, semibold (600) for headings and UI
+- The platform's own system font (SF Pro on Apple, Segoe UI on Windows, Roboto on Android) — normal weight (400) for body, medium (500) for headings and UI
 - A warm adaptation of Apple's restraint: 17px reading text, gently tightened tracking, frosted chrome, flat surfaces
 - Warm oklch neutrals with yellow/brown undertones (never cool grays)
 - Squircle corners everywhere — iOS-inspired superellipse softness
@@ -136,16 +136,16 @@ Custom sizes available: `text-8.5xl` (6.5rem), `text-9.5xl` (10rem) for hero hea
 
 ### Hierarchy
 
-| Role            | Mobile    | Desktop      | Weight         | Tracking                    | Line Height     | Use                             |
-| --------------- | --------- | ------------ | -------------- | --------------------------- | --------------- | ------------------------------- |
-| Display Hero    | text-6xl  | text-8xl     | semibold (600) | `tracking-display` -0.025em | snug (1.125)    | Main name, hero moments         |
-| Page Title      | text-4xl  | text-6xl     | semibold (600) | `tracking-display` -0.025em | tight (1.25)    | Page headings, footer CTA       |
-| Section Heading | text-2xl  | text-4xl     | semibold (600) | `tracking-display` -0.025em | tight (1.25)    | "About me", section intros      |
-| Card Title      | text-xl   | text-2xl–3xl | semibold (600) | `tracking-heading` -0.015em | snug (1.375)    | Project cards, resume items     |
-| Body            | text-base | text-lg      | normal (400)   | body default -0.01em        | relaxed (1.625) | Descriptions, paragraphs        |
-| Body Light      | text-base | text-lg      | normal (400)   | body default -0.01em        | relaxed (1.625) | De-emphasized body, breadcrumbs |
-| Small / Meta    | text-xs   | text-sm      | normal (400)   | body default -0.01em        | normal (1.5)    | Timestamps, metadata            |
-| Label           | text-xs   | text-xs      | normal (400)   | wide                        | normal (1.5)    | Section labels in lists         |
+| Role            | Mobile    | Desktop      | Weight       | Tracking                    | Line Height     | Use                             |
+| --------------- | --------- | ------------ | ------------ | --------------------------- | --------------- | ------------------------------- |
+| Display Hero    | text-6xl  | text-8xl     | medium (500) | `tracking-display` -0.025em | snug (1.125)    | Main name, hero moments         |
+| Page Title      | text-4xl  | text-6xl     | medium (500) | `tracking-display` -0.025em | tight (1.25)    | Page headings, footer CTA       |
+| Section Heading | text-2xl  | text-4xl     | medium (500) | `tracking-display` -0.025em | tight (1.25)    | "About me", section intros      |
+| Card Title      | text-xl   | text-2xl–3xl | medium (500) | `tracking-heading` -0.015em | snug (1.375)    | Project cards, resume items     |
+| Body            | text-base | text-lg      | normal (400) | body default -0.01em        | relaxed (1.625) | Descriptions, paragraphs        |
+| Body Light      | text-base | text-lg      | normal (400) | body default -0.01em        | relaxed (1.625) | De-emphasized body, breadcrumbs |
+| Small / Meta    | text-xs   | text-sm      | normal (400) | body default -0.01em        | normal (1.5)    | Timestamps, metadata            |
+| Label           | text-xs   | text-xs      | normal (400) | wide                        | normal (1.5)    | Section labels in lists         |
 
 `text-base` is 17px; `text-lg` stays 18px.
 
@@ -163,12 +163,10 @@ Tighten gently as size grows — Apple's cadence, not billboard compression. Tok
 
 ### Weight Restraint
 
-The ladder is 300 / 400 / 600. Weight 500 is deliberately absent (Apple's rule): mid-weight emphasis always uses 600.
-
 - **font-normal (400)** — THE default for body text, descriptions, metadata, and any reading content.
-- **font-semibold (600)** — Headings, navigation, card titles, buttons, UI labels, and strong inline emphasis.
-- **font-light (300)** — Rare and deliberate: airy lead text such as project-card subtitles. Never for body copy.
-- **font-medium (500)**, **font-bold (700)** and **font-thin (100)** — Do not use.
+- **font-medium (500)** — Headings, navigation, card titles, buttons, and UI labels. The weight for structure and emphasis.
+- **font-semibold (600)** — Strong emphasis within content: bold inline text, important callouts. Use sparingly.
+- **font-light (300)** and **font-bold (700)** — Do not use in new work.
 
 ### Line-Height Philosophy
 
@@ -360,7 +358,7 @@ Four levels. Elevation comes from surface colour first; shadows are rare.
 
 - Use oklch semantic tokens for all colors — never hardcode hex or rgb
 - Apply `corner-squircle` with a named radius (`rounded-small` … `rounded-pill`) on all rectangular curved surfaces
-- Use `font-normal` for body text, `font-semibold` for headings and UI elements
+- Use `font-normal` for body text, `font-medium` for headings and UI elements
 - Apply `tracking-display` / `tracking-heading` at display and heading sizes
 - Respect reduced motion — MotionConfig covers Framer transforms; gate everything else with `useReducedMotion()`
 - Build shared components as `cva()` recipes (see Components → Variant Pattern)
@@ -372,7 +370,7 @@ Four levels. Elevation comes from surface colour first; shadows are rare.
 
 ### Don't
 
-- Don't use `font-medium` (500), `font-bold` (700) or `font-thin` (100); `font-light` (300) only for airy lead text
+- Don't use `font-bold` (700) or `font-light` (300) in new work
 - Don't introduce other icon libraries or paste raw SVG icon paths — Tabler only
 - Don't use arbitrary radii (`rounded-[Npx]`) or Tailwind's default radius and shadow scales
 - Don't add shadows to flat elements — elevation is rare and intentional
@@ -442,7 +440,7 @@ Quick reference for AI agents building components in this design system.
 **Section heading:**
 
 ```
-text-2xl md:text-4xl font-semibold tracking-display text-foreground
+text-2xl md:text-4xl font-medium tracking-display text-foreground
 ```
 
 On dark surfaces: use `text-surface-dark-foreground`.
@@ -459,7 +457,7 @@ No shadow. Image inside: `rounded-media corner-squircle`. Title at Card Title ti
 
 ```
 <Button asChild><Link href="…">Label</Link></Button>
-// bg-primary text-primary-foreground rounded-small corner-squircle font-semibold tracking-heading
+// bg-primary text-primary-foreground rounded-small corner-squircle font-medium tracking-heading
 // hover:bg-primary-600 motion-safe:active:scale-[0.96]
 ```
 

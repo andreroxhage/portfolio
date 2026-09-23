@@ -370,7 +370,7 @@ const FloatingNav = () => {
             </AnimatePresence>
             <motion.button
               type="button"
-              className={`hidden md:block bg-transparent text-surface-dark-foreground font-semibold text-xl md:text-2xl cursor-pointer`}
+              className={`hidden md:block bg-transparent text-surface-dark-foreground font-medium text-xl md:text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               style={{ pointerEvents: isExpanded ? 'none' : 'auto' }}
@@ -441,7 +441,7 @@ const FloatingNav = () => {
                     }
                     transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
                   >
-                    <span className="hidden md:inline text-base font-semibold translate-y-px pr-6">
+                    <span className="hidden md:inline text-base font-medium translate-y-px pr-6">
                       Find
                     </span>
                     <IconMenu2 size={24} stroke={1.5} className="md:hidden" />

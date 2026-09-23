@@ -85,7 +85,7 @@ const WorkNavigation: React.FC<WorkNavigationProps> = ({ currentSlug }) => {
       <div className="max-w-2.5xl mx-auto px-4 py-8 flex justify-between items-start gap-6">
         <Link href={prevItem.url} className="group flex min-w-0 flex-col">
           <span className="text-sm text-muted-foreground">Previous</span>
-          <span className="block truncate text-sm md:text-base font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
+          <span className="block truncate text-sm md:text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200">
             {prevItem.title}
           </span>
         </Link>
@@ -95,7 +95,7 @@ const WorkNavigation: React.FC<WorkNavigationProps> = ({ currentSlug }) => {
           className="group flex min-w-0 flex-col items-end text-right"
         >
           <span className="text-sm text-muted-foreground">Next</span>
-          <span className="block w-full truncate text-sm md:text-base font-semibold text-foreground group-hover:text-accent transition-colors duration-200">
+          <span className="block w-full truncate text-sm md:text-base font-medium text-foreground group-hover:text-accent transition-colors duration-200">
             {nextItem.title}
           </span>
         </Link>

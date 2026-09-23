@@ -37,7 +37,7 @@ export default function ElsewhereSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-4">
         <div className="max-w-2xl">
           <motion.h2
-            className="text-2xl md:text-4xl font-semibold tracking-display text-foreground pb-4"
+            className="text-2xl md:text-4xl font-medium tracking-display text-foreground pb-4"
             style={{ textWrap: 'balance' } as React.CSSProperties}
             variants={makeVariant(0)}
             initial="hidden"
@@ -56,9 +56,7 @@ export default function ElsewhereSection() {
             {hasPhotograph ? (
               <>
                 {beforePhotograph}
-                <span className="font-semibold text-foreground">
-                  photograph
-                </span>
+                <span className="font-medium text-foreground">photograph</span>
                 {afterPhotograph}
               </>
             ) : (

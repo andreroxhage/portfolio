@@ -33,7 +33,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
       />
 
       <motion.h1
-        className="text-2xl md:text-3xl font-semibold tracking-heading leading-tight"
+        className="text-2xl md:text-3xl font-medium tracking-heading leading-tight"
         style={
           {
             color: project.titleColor || 'var(--color-primary-700)',

@@ -32,7 +32,7 @@ export default function AtWorkSection() {
         {/* Text column */}
         <div className="md:col-span-5">
           <motion.h2
-            className="text-2xl md:text-4xl font-semibold tracking-display text-foreground pb-4"
+            className="text-2xl md:text-4xl font-medium tracking-display text-foreground pb-4"
             style={{ textWrap: 'balance' } as React.CSSProperties}
             variants={makeVariant(0)}
             initial="hidden"

@@ -23,7 +23,7 @@ You are a senior frontend developer building **André Roxhage's personal portfol
 ## Key Constraints
 
 - Preserve the warm, organic visual identity (vanilla, cream, greens)
-- Font: system stack (SF Pro / Segoe UI / Roboto) via `--font-sans`; weights 400 and 600
+- Font: system stack (SF Pro / Segoe UI / Roboto) via `--font-sans`; weights 400 (body) and 500 (headings, UI)
 - `corner-squircle` class is used extensively for iOS-style rounded corners
 - Use `cn()` for all conditional class merging
 - Prefer semantic color tokens (--background, --primary, etc.) for new code

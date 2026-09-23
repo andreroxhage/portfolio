@@ -15,7 +15,7 @@ export default function LoginExperienceInVRContent() {
       {/* Section 1 — summary + video */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Summary
           </h4>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
@@ -44,19 +44,19 @@ export default function LoginExperienceInVRContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-semibold tracking-heading text-surface-dark-foreground mb-2">
+          <h4 className="text-lg font-medium tracking-heading text-surface-dark-foreground mb-2">
             Key outcomes
           </h4>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 A working VR login without a keyboard.
               </span>{' '}
               Scroll to a character, press to confirm. The whole flow runs on
               the single button people already use in the game.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Immersion stayed intact.
               </span>{' '}
               Reusing the weapon-style controller kept the sign-in on theme, so
@@ -64,7 +64,7 @@ export default function LoginExperienceInVRContent() {
               detour out of it.
             </li>
             <li className="text-base text-muted-foreground">
-              <span className="font-semibold text-surface-dark-foreground">
+              <span className="font-medium text-surface-dark-foreground">
                 Testing pointed us to what to fix next.
               </span>{' '}
               Eight participants showed us where the idea held up and where

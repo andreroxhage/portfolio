@@ -27,14 +27,14 @@ The quiet look is a few fixed specs plus negative space. Only the data gets to b
 
 - **Bars**: the whole band is the hit target, not just the painted pixels. Each band is focusable (`tabIndex={0}`) with an `aria-label` giving the category and every value. Hover and focus show the same tooltip, and the hovered bars lift to 80% opacity.
 - **Lines**: a crosshair (`stroke-foreground/20`) snaps to the nearest x. The tooltip lists every series at that x, and the dots jump to the crosshair.
-- **Tooltip content**: the value comes first in `font-semibold text-foreground`, then the series name in `text-muted-foreground`. Rows are keyed with a short line in the slot color, not a box. The category or date sits on top in muted text.
+- **Tooltip content**: the value comes first in `font-medium text-foreground`, then the series name in `text-muted-foreground`. Rows are keyed with a short line in the slot color, not a box. The category or date sits on top in muted text.
 - **Placement**: offset 12px from the pointer, flipping left near the right edge so it never overflows the figure.
 - **Table view**: every chart has the `<details>` `Show data` table, with `tabular-nums` and values in `text-foreground`. This is the accessible version of the chart and the fallback for anything a tooltip shows.
 - **Touch**: SVGs use `touch-pan-y` so a chart never traps vertical scrolling on mobile.
 
 ## Figures
 
-- **Stat tile**: label (sentence case, no colon), value (`text-3xl md:text-4xl font-semibold tracking-display`, proportional figures), and an optional delta against a named period ("↑ 12% vs last week"). A good delta uses `text-accent-foreground`. Whether "up" is good depends on the metric (resting heart rate going up is not good).
+- **Stat tile**: label (sentence case, no colon), value (`text-3xl md:text-4xl font-medium tracking-display`, proportional figures), and an optional delta against a named period ("↑ 12% vs last week"). A good delta uses `text-accent-foreground`. Whether "up" is good depends on the metric (resting heart rate going up is not good).
 - **Hero number**: at most one per page, same sans as everything else, never a display face.
 - `tabular-nums` only where digits must line up (ticks, table cells), never on a big standalone number.
 

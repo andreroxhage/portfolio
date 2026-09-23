@@ -42,7 +42,7 @@ export default function ReadinessContent() {
         </p>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">
           The detail I am most happy with is the{' '}
-          <span className="font-semibold text-surface-dark-foreground">
+          <span className="font-medium text-surface-dark-foreground">
             as-of baseline
           </span>
           : when the app recomputes history, each past day only uses data that

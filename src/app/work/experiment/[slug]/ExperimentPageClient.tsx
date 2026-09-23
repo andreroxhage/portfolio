@@ -32,7 +32,7 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
           tags={experiment.tags}
         />
         <motion.h1
-          className="text-2xl md:text-3xl font-semibold tracking-heading leading-tight text-primary-700"
+          className="text-2xl md:text-3xl font-medium tracking-heading leading-tight text-primary-700"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
