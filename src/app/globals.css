@@ -241,10 +241,13 @@ body {
 }
 
 /* === Base Resets === */
-*,
-::after,
-::before {
-  border-color: oklch(var(--border));
+/* Layered so border-color utilities (in @layer utilities) can override it */
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: oklch(var(--border));
+  }
 }
 
 /* Text selection — warm neutral (see DESIGN.md) */

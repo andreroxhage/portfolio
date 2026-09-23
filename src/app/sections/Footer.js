@@ -66,7 +66,7 @@ export default function Footer() {
                       style={{ textWrap: 'balance' }}
                     >
                       Connect
-                      <hr className="h-0.5 pt-2 border-surface-dark-foreground md:mr-12 my-3 sm:my-2" />
+                      <hr className="h-0.5 pt-2 border-surface-dark-foreground/20 md:mr-12 my-3 sm:my-2" />
                     </span>
 
                     {footerLinks.map((link, i) => {
@@ -118,7 +118,7 @@ export default function Footer() {
                       style={{ textWrap: 'balance' }}
                     >
                       Navigation
-                      <hr className="h-0.5 pt-2 border-surface-dark-foreground w-full my-3 sm:my-2" />
+                      <hr className="h-0.5 pt-2 border-surface-dark-foreground/20 w-full my-3 sm:my-2" />
                     </span>
                     {links.map((link, i) => {
                       const { title, href } = link;

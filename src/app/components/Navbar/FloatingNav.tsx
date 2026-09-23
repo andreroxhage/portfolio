@@ -584,7 +584,7 @@ const FloatingNav = () => {
 
             {/* Divider */}
             <motion.hr
-              className="border-border/30 my-5"
+              className="border-border my-5"
               initial={{ width: 0 }}
               animate={isExpanded ? { width: '100%' } : { width: 0 }}
               transition={{
