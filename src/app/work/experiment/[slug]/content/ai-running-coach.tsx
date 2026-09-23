@@ -209,7 +209,7 @@ export default function AiRunningCoachContent() {
       {/* Dashboard visual */}
       <WideSection className="mb-20">
         <ProjectImage
-          src="/resource/projects/running_overview.png"
+          src="/resource/projects/running_overview.webp"
           alt="The training dashboard's Today view: prescribed session, readiness, week versus plan, and the week ahead day by day"
           width={1440}
           height={900}
@@ -298,7 +298,7 @@ export default function AiRunningCoachContent() {
       {/* Second visual */}
       <WideSection className="mb-20">
         <ProjectImage
-          src="/resource/projects/running_workouts.png"
+          src="/resource/projects/running_workouts.webp"
           alt="The workout library view of the training dashboard, organized by intensity zone"
           width={1440}
           height={900}

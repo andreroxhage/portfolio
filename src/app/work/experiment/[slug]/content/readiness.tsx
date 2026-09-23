@@ -56,17 +56,17 @@ export default function ReadinessContent() {
       <WideSection className="mb-20">
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-start">
           <ProjectImage
-            src="/resource/projects/readiness_home.png"
+            src="/resource/projects/readiness_home.webp"
             alt="Ready 2.0 home screen in light mode showing the daily readiness score"
-            width={1170}
-            height={2532}
+            width={960}
+            height={1608}
             className="max-w-xs mx-auto sm:mx-0"
           />
           <ProjectImage
-            src="/resource/projects/readiness_home_dark.png"
+            src="/resource/projects/readiness_home_dark.webp"
             alt="Ready 2.0 home screen in dark mode"
-            width={1170}
-            height={2532}
+            width={960}
+            height={1608}
             className="max-w-xs mx-auto sm:mx-0"
           />
         </div>
@@ -75,10 +75,10 @@ export default function ReadinessContent() {
       {/* Widgets */}
       <WideSection className="mb-20">
         <ProjectImage
-          src="/resource/projects/readiness_widgets.png"
+          src="/resource/projects/readiness_widgets.webp"
           alt="Ready 2.0 home and lock screen widgets showing the readiness score at a glance"
-          width={1170}
-          height={2532}
+          width={960}
+          height={1608}
           className="max-w-xs mx-auto"
           caption="Widgets read the last computed score via the app group, no app launch needed."
         />
