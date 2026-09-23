@@ -88,6 +88,25 @@ These map to oklch values via CSS custom properties. Light and dark mode definit
 - **Green is the singular interactive accent** — buttons, links, focus rings, action states
 - **Text selection uses warm neutral** — `neutral-200` (`oklch(0.955 0.025 85)`) background with inherited foreground text. Applied globally via `::selection` in `globals.css`. Never rely on browser-default blue highlights.
 - **Per-project brand colors** (e.g., blue for VR project) are stored in `src/app/data/projects.ts` and applied via inline styles — this is the only acceptable use of non-token colors
+- **Chart colors are data, not UI** — `chart-1`…`chart-5` encode series identity inside charts only. They never style buttons, links or text, so green stays the single interactive accent
+
+### Chart Palette
+
+Five categorical slots for charts, in a fixed order that was validated for color-vision deficiency in both modes. The earthy hues come from the site's own palette. Tokens are `--chart-1`…`--chart-5` (Tailwind: `fill-chart-N`, `stroke-chart-N`, `bg-chart-N`). How to build charts with them lives in the `portfolio-charts` skill (`.claude/skills/portfolio-charts/`).
+
+| Slot | Hue   | Light                  | Dark                   |
+| ---- | ----- | ---------------------- | ---------------------- |
+| 1    | green | `oklch(0.6 0.12 150)`  | `oklch(0.67 0.11 150)` |
+| 2    | clay  | `oklch(0.47 0.11 42)`  | `oklch(0.56 0.12 42)`  |
+| 3    | blue  | `oklch(0.55 0.12 250)` | `oklch(0.62 0.11 250)` |
+| 4    | ochre | `oklch(0.6 0.11 78)`   | `oklch(0.66 0.12 78)`  |
+| 5    | plum  | `oklch(0.46 0.11 350)` | `oklch(0.56 0.12 350)` |
+
+- Assign slots in order and never cycle. A sixth series folds into "Other" or becomes small multiples
+- Scatter and small multiples take at most three series (slots 1–3)
+- Magnitude uses the `primary` green scale as a one-hue ramp, not the categorical slots
+- Chart text (values, axes, legends) stays in `foreground` / `muted-foreground`, never in a slot color
+- After changing any slot, run `node .claude/skills/portfolio-charts/scripts/check-chart-palette.mjs`
 
 ---
 
@@ -342,17 +361,18 @@ Quick reference for AI agents building components in this design system.
 
 ### Color Quick Reference
 
-| Need            | Class                          |
-| --------------- | ------------------------------ |
-| Primary action  | `bg-primary` / `text-primary`  |
-| Page background | `bg-background`                |
-| Dark surface    | `bg-surface-dark`              |
-| Text on light   | `text-foreground`              |
-| Text on dark    | `text-surface-dark-foreground` |
-| Muted text      | `text-muted-foreground`        |
-| Borders         | `border-border`                |
-| Focus ring      | `ring-ring`                    |
-| Text selection  | `neutral-200` background       |
+| Need            | Class                           |
+| --------------- | ------------------------------- |
+| Primary action  | `bg-primary` / `text-primary`   |
+| Page background | `bg-background`                 |
+| Dark surface    | `bg-surface-dark`               |
+| Text on light   | `text-foreground`               |
+| Text on dark    | `text-surface-dark-foreground`  |
+| Muted text      | `text-muted-foreground`         |
+| Borders         | `border-border`                 |
+| Chart series    | `fill-chart-1` … `fill-chart-5` |
+| Focus ring      | `ring-ring`                     |
+| Text selection  | `neutral-200` background        |
 
 ### Example Component Recipes
 

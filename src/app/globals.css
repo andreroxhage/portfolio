@@ -71,6 +71,11 @@
   --color-surface-dark-foreground: oklch(var(--surface-dark-foreground));
   --color-surface-dark-muted: oklch(var(--surface-dark-muted));
   --color-surface-footer: oklch(var(--surface-footer));
+  --color-chart-1: oklch(var(--chart-1));
+  --color-chart-2: oklch(var(--chart-2));
+  --color-chart-3: oklch(var(--chart-3));
+  --color-chart-4: oklch(var(--chart-4));
+  --color-chart-5: oklch(var(--chart-5));
 
   /* Box shadow */
   --shadow-customShadow: 0 45px 70.8px -48px oklch(0 0 0 / 0.95);
@@ -190,6 +195,13 @@
   --surface-dark-foreground: 0.34 0.01 90;
   --surface-dark-muted: 0.45 0.01 90;
   --surface-footer: 0.19 0 0;
+
+  /* Chart categorical slots — fixed order, validated for CVD (DESIGN.md → Chart Palette) */
+  --chart-1: 0.6 0.12 150; /* green */
+  --chart-2: 0.47 0.11 42; /* clay */
+  --chart-3: 0.55 0.12 250; /* blue */
+  --chart-4: 0.6 0.11 78; /* ochre */
+  --chart-5: 0.46 0.11 350; /* plum */
 }
 
 /* Dark mode — warm organic palette */
@@ -217,6 +229,13 @@
   --surface-dark-foreground: 0.97 0 0;
   --surface-dark-muted: 0.87 0 0;
   --surface-footer: 0.145 0 0;
+
+  /* Chart slots stepped for the dark surface — same hues, same order */
+  --chart-1: 0.67 0.11 150;
+  --chart-2: 0.56 0.12 42;
+  --chart-3: 0.62 0.11 250;
+  --chart-4: 0.66 0.12 78;
+  --chart-5: 0.56 0.12 350;
 }
 
 /* Always-dark surface lock — nav, footer, header overlay */
