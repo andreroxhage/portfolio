@@ -1,159 +1,129 @@
 'use client';
 
 import React from 'react';
-import { IconArrowDown, IconCheck } from '@tabler/icons-react';
+import {
+  IconBrandNotion,
+  IconBulb,
+  IconCheck,
+  IconMessageCircle,
+  IconNotebook,
+  IconPlayerPlay,
+  IconSearch,
+  IconShoppingCart,
+  IconToolsKitchen2,
+} from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import {
   MiddleSection,
   WideSection,
   SectionHeading,
 } from '@/app/components/ProjectLayout';
-
-// A small pill used for approval gates and time-savings chips
-function Pill({
-  children,
-  tone = 'muted',
-}: {
-  children: React.ReactNode;
-  tone?: 'muted' | 'accent';
-}) {
-  return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs whitespace-nowrap corner-squircle',
-        tone === 'accent'
-          ? 'bg-primary text-primary-foreground border-transparent'
-          : 'bg-surface-dark-elevated text-surface-dark-muted'
-      )}
-    >
-      {children}
-    </span>
-  );
-}
-
-// A titled card representing one phase of the workflow
-function PhaseCard({
-  title,
-  subtitle,
-  children,
-}: {
-  title: string;
-  subtitle: string;
-  children?: React.ReactNode;
-}) {
-  return (
-    <div className="w-full rounded-2xl corner-squircle border border-border bg-surface-dark-card px-5 py-4 shadow-sm">
-      <p className="text-sm font-medium text-surface-dark-foreground">
-        {title}
-      </p>
-      <p className="text-xs text-surface-dark-muted mt-0.5">{subtitle}</p>
-      {children}
-    </div>
-  );
-}
-
-// A thin connector: an arrow, optionally labeled with an approval gate or
-// "runs automatically" note. Rotates to a plain vertical line on all
-// breakpoints since the flow is single-column by design (mobile-first).
-function Connector({ label, auto }: { label?: string; auto?: boolean }) {
-  return (
-    <div className="flex flex-col items-center gap-1.5 py-1">
-      <IconArrowDown
-        size={16}
-        stroke={1.5}
-        className="text-surface-dark-muted"
-        aria-hidden="true"
-      />
-      {label && (
-        <Pill tone="accent">
-          <IconCheck size={12} stroke={2.5} />
-          {label}
-        </Pill>
-      )}
-      {auto && (
-        <span className="text-[11px] text-surface-dark-muted italic">
-          runs automatically
-        </span>
-      )}
-    </div>
-  );
-}
+import {
+  DiagramChip,
+  DiagramConnector,
+  DiagramFanOut,
+  DiagramFrame,
+  DiagramGroup,
+  DiagramNode,
+  diagramTone,
+} from '@/app/components/Diagram';
 
 function MealPlanningDiagram() {
   return (
-    <div className="w-full max-w-xl mx-auto rounded-3xl corner-squircle border border-border bg-surface-dark/40 p-5 sm:p-8">
+    <DiagramFrame
+      label="The five-phase meal-planning workflow"
+      caption="Green is me. Everything else runs as agents."
+    >
       <div className="flex flex-col items-center">
-        <Pill>you: cravings + constraints</Pill>
-        <Connector />
+        <DiagramChip tone="you" icon={IconMessageCircle}>
+          cravings + constraints
+        </DiagramChip>
+        <DiagramConnector />
 
-        <PhaseCard
-          title="1. Brainstorming"
-          subtitle="an agent proposes 10-20 candidate meals"
+        <DiagramNode
+          step={1}
+          icon={IconBulb}
+          title="Brainstorming"
+          detail="an agent proposes 10–20 candidate meals"
         />
-        <Connector label="you approve the dishes" />
+        <DiagramConnector
+          label="I pick the dishes"
+          tone="you"
+          icon={IconCheck}
+        />
 
-        <PhaseCard
-          title="2. Recipe research"
-          subtitle="one researcher agent per dish, running in parallel"
+        <DiagramNode
+          step={2}
+          icon={IconSearch}
+          title="Recipe research"
+          detail="one researcher per dish, all in parallel, each comparing 3–5 sources"
         >
-          <div className="relative mt-4 mb-1">
-            {/* layered backing cards suggest N parallel copies of the same agent */}
-            <div
-              className="absolute inset-0 translate-x-2 translate-y-2 rounded-xl corner-squircle border border-border bg-surface-dark-elevated opacity-40"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute inset-0 translate-x-1 translate-y-1 rounded-xl corner-squircle border border-border bg-surface-dark-elevated opacity-70"
-              aria-hidden="true"
-            />
-            <div className="relative rounded-xl corner-squircle border border-border bg-surface-dark-elevated px-3 py-3">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="text-xs font-medium text-surface-dark-foreground">
-                  Researcher
-                </p>
-                <Pill>× N, one per dish</Pill>
-              </div>
-              <p className="text-[11px] text-surface-dark-muted mt-1">
-                each compares 3-5 sources, independently, in parallel
-              </p>
-            </div>
-          </div>
-          <p className="text-[11px] text-surface-dark-muted mt-2">
-            + recipe-creator for anything with no good source
+          <DiagramFanOut lanes={['dish 1', 'dish 2', 'dish 3', 'dish n']} />
+          <p className="mt-3 text-xs text-surface-dark-muted">
+            + a recipe-creator for anything with no good source
           </p>
-        </PhaseCard>
-        <Connector label="you approve the recipes" />
-
-        <PhaseCard
-          title="3. Shopping list"
-          subtitle="ingredients pooled, units normalized, categorized"
+        </DiagramNode>
+        <DiagramConnector
+          label="I approve the recipes"
+          tone="you"
+          icon={IconCheck}
         />
-        <Connector auto />
 
-        <PhaseCard
-          title="4. Recipe compiler"
-          subtitle="every recipe standardized and scaled to our portions"
+        <DiagramNode
+          step={3}
+          icon={IconShoppingCart}
+          title="Shopping list"
+          detail="ingredients pooled, units normalized, sorted by store section"
         />
-        <Connector auto />
+        <DiagramConnector
+          label="I approve the list"
+          tone="you"
+          icon={IconCheck}
+        />
 
-        <PhaseCard
-          title="5. Meal prep plan"
-          subtitle="a cooking timeline that parallelizes oven, stovetop, cold prep"
-        />
-        <Connector label="optional" />
-        <Pill>export to Notion</Pill>
+        <DiagramGroup label="runs on its own" icon={IconPlayerPlay}>
+          <DiagramNode
+            step={4}
+            icon={IconNotebook}
+            title="Recipe compiler"
+            detail="every recipe standardized and scaled to our portions"
+          />
+          <DiagramConnector />
+          <DiagramNode
+            step={5}
+            icon={IconToolsKitchen2}
+            title="Meal prep plan"
+            detail="a cooking timeline that runs oven, stovetop, and cold prep side by side"
+          />
+        </DiagramGroup>
+        <DiagramConnector label="optional" dashed />
+        <DiagramChip icon={IconBrandNotion}>export to Notion</DiagramChip>
       </div>
 
-      <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
-        <Pill>before: ~1h of tab-juggling a week</Pill>
-        <span className="text-surface-dark-muted text-xs">→</span>
-        <Pill tone="accent">now: ~10 min of decisions</Pill>
-      </div>
-      <p className="text-[11px] text-surface-dark-muted text-center mt-3">
-        research, list-building, and prep-planning run themselves once I make
-        the three calls that matter
-      </p>
-    </div>
+      <dl className="mt-8 grid grid-cols-2 gap-3">
+        {(
+          [
+            {
+              term: 'Before',
+              value: '~1 h a week of tab-juggling',
+              tone: 'agent',
+            },
+            { term: 'Now', value: '~10 min of decisions', tone: 'you' },
+          ] as const
+        ).map(({ term, value, tone }) => (
+          <div
+            key={term}
+            className={cn(
+              'rounded-[12px] corner-squircle border p-4',
+              diagramTone[tone]
+            )}
+          >
+            <dt className="text-xs tracking-wide">{term}</dt>
+            <dd className="mt-1 text-sm font-medium tracking-tight">{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </DiagramFrame>
   );
 }
 
