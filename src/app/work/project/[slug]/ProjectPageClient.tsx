@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { projectRegistry } from '@/app/data/projects';
 import WorkNavigation from '@/app/components/WorkNavigation';
 import ProjectHeader from '@/app/components/ProjectHeader';
+import { DURATION, EASING } from '@/app/lib/motion';
 import { projectContentMap as contentMap } from '@/app/work/project/content-map';
 
 export default function ProjectPageClient({ slug }: { slug: string }) {
@@ -21,14 +22,14 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
       className="bg-surface-dark min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+      transition={{ duration: DURATION.SLOW, ease: EASING.ENTER }}
     >
       <ProjectHeader project={project} />
 
       <Suspense
         fallback={
           <div className="max-w-4xl mx-auto px-4">
-            <div className="h-96 animate-pulse bg-surface-dark-card rounded-xl corner-squircle" />
+            <div className="h-96 animate-pulse bg-surface-dark-card rounded-base corner-squircle" />
           </div>
         }
       >

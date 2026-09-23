@@ -59,7 +59,7 @@ export function ProgressiveMedia({
       <div
         className={cn(
           'relative w-full overflow-hidden',
-          rounded && 'rounded-[20px] corner-squircle',
+          rounded && 'rounded-media corner-squircle',
           !videoReady && 'video-shimmer',
           className
         )}
@@ -76,7 +76,7 @@ export function ProgressiveMedia({
           className={cn(
             'absolute inset-0 w-full h-full',
             objectFit === 'cover' ? 'object-cover' : 'object-contain',
-            rounded && 'rounded-[20px] corner-squircle'
+            rounded && 'rounded-media corner-squircle'
           )}
           style={{
             opacity: videoReady ? 1 : 0,
@@ -92,7 +92,7 @@ export function ProgressiveMedia({
       className={cn(
         'relative w-full overflow-hidden',
         outline && 'image-depth-outline',
-        rounded && 'rounded-[20px] corner-squircle',
+        rounded && 'rounded-media corner-squircle',
         className
       )}
       style={{ aspectRatio }}

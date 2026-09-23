@@ -46,7 +46,7 @@ const FadeFromProjectsParent: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black pointer-events-none z-50"
+      className="fixed inset-0 bg-neutral-975 pointer-events-none z-50"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: EASING.ENTER }}

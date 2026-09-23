@@ -100,7 +100,7 @@ export function ChartFrame({
   return (
     <figure className="mx-auto w-full max-w-2xl rounded-[28px] md:rounded-[40px] corner-squircle border border-foreground/5 bg-secondary p-4 sm:p-8">
       <header className="mb-4">
-        <p className="text-sm md:text-base font-medium tracking-tight text-foreground">
+        <p className="text-sm md:text-base font-semibold tracking-heading text-foreground">
           {title}
         </p>
         {subtitle && (
@@ -178,7 +178,7 @@ function Tooltip({
   return (
     <div
       role="status"
-      className="pointer-events-none absolute z-10 min-w-28 rounded-[8px] corner-squircle bg-card px-2.5 py-2 text-xs shadow-soft-edge"
+      className="pointer-events-none absolute z-10 min-w-28 rounded-small corner-squircle bg-card px-2.5 py-2 text-xs shadow-hairline"
       style={{
         left: flip ? undefined : x + 12,
         right: flip ? width - x + 12 : undefined,
@@ -308,7 +308,7 @@ export function BarChart({
                       x={x0 + k * (barW + gap) + barW / 2}
                       y={y(Number(r[s.key])) - 6}
                       textAnchor="middle"
-                      className="fill-foreground text-[11px] font-medium"
+                      className="fill-foreground text-[11px] font-semibold"
                     >
                       {format(Number(r[s.key]))}
                     </text>
@@ -335,7 +335,7 @@ export function BarChart({
                 aria-hidden
                 className={cn('h-0.5 w-3 rounded-full', SLOT.bg[s.slot - 1])}
               />
-              <span className="font-medium text-foreground tabular-nums">
+              <span className="font-semibold text-foreground tabular-nums">
                 {format(Number(rows[hover.i][s.key]))}
               </span>
               <span className="text-muted-foreground">{s.label}</span>
@@ -500,7 +500,7 @@ export function LineChart({
                 x={x(last) + 10}
                 y={y(Number(rows[last][s.key]))}
                 dy="0.32em"
-                className="fill-foreground text-[11px] font-medium tabular-nums"
+                className="fill-foreground text-[11px] font-semibold tabular-nums"
               >
                 {format(Number(rows[last][s.key]))}
               </text>
@@ -516,7 +516,7 @@ export function LineChart({
                 aria-hidden
                 className={cn('h-0.5 w-3 rounded-full', SLOT.bg[s.slot - 1])}
               />
-              <span className="font-medium text-foreground tabular-nums">
+              <span className="font-semibold text-foreground tabular-nums">
                 {format(Number(rows[hi][s.key]))}
               </span>
               {!single && (
@@ -546,14 +546,14 @@ export function StatTile({
   return (
     <div className="rounded-[20px] corner-squircle border border-foreground/5 bg-secondary p-4 sm:p-5">
       <p className="text-xs md:text-sm text-muted-foreground">{label}</p>
-      <p className="mt-1 text-3xl md:text-4xl font-medium tracking-tight text-foreground">
+      <p className="mt-1 text-3xl md:text-4xl font-semibold tracking-display text-foreground">
         {value}
       </p>
       {delta && (
         <p className="mt-1 text-xs text-muted-foreground">
           <span
             className={cn(
-              'font-medium',
+              'font-semibold',
               good ? 'text-accent-foreground' : 'text-foreground'
             )}
           >

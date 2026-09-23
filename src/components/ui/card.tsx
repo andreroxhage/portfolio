@@ -1,15 +1,41 @@
 import * as React from 'react';
 
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/utils';
 
-function Card({ className, ...props }: React.ComponentProps<'div'>) {
+// Flat by default (DESIGN.md → Depth & Elevation). Compact radius on mobile,
+// expanded radius from md up — the Project card recipe.
+const cardVariants = cva(
+  'flex flex-col gap-6 py-6 rounded-card md:rounded-card-lg corner-squircle',
+  {
+    variants: {
+      surface: {
+        page: 'bg-card text-card-foreground',
+        scene: 'bg-surface-dark-card text-surface-dark-foreground',
+      },
+      outline: {
+        true: 'shadow-hairline',
+        false: '',
+      },
+    },
+    defaultVariants: {
+      surface: 'page',
+      outline: false,
+    },
+  }
+);
+
+function Card({
+  className,
+  surface,
+  outline,
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof cardVariants>) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        'bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm',
-        className
-      )}
+      className={cn(cardVariants({ surface, outline }), className)}
       {...props}
     />
   );
@@ -32,7 +58,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-title"
-      className={cn('leading-none font-semibold', className)}
+      className={cn('leading-snug font-semibold tracking-heading', className)}
       {...props}
     />
   );
@@ -83,6 +109,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
 
 export {
   Card,
+  cardVariants,
   CardHeader,
   CardFooter,
   CardTitle,

@@ -4,32 +4,55 @@ import Link from 'next/link';
 import {
   motion,
   AnimatePresence,
+  useMotionValueEvent,
   useScroll,
-  useTransform,
 } from 'framer-motion';
-import { IconSun, IconMoon } from '@tabler/icons-react';
+import {
+  IconArrowDown,
+  IconArrowUp,
+  IconMenu2,
+  IconMoon,
+  IconSun,
+  IconX,
+} from '@tabler/icons-react';
 import { links, footerLinks } from '@/app/data/nav';
 import { useProjectHover } from '../../contexts/ProjectHoverContext';
 import { useTheme } from '@/app/contexts/ThemeContext';
-import { DURATION, EASING, BUTTON_PRESS_SCALE } from '@/app/lib/motion';
+import { DURATION, EASING, SPRING, BUTTON_PRESS_SCALE } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { useIsMobile } from '@/app/hooks/useIsMobile';
 import { useHaptics } from '@/app/hooks/useHaptics';
 
 const MotionLink = motion.create(Link);
 
+// Distance (px) from either end of the page that counts as "at the edge"
+const EDGE_THRESHOLD = 100;
+// Expanded radius — matches --radius-panel; Framer needs a number to tween
+const EXPANDED_RADIUS = '40px';
+
+type ScrollEdge = 'top' | 'middle' | 'bottom';
+
+function getScrollEdge(scrollY: number): ScrollEdge {
+  if (scrollY < EDGE_THRESHOLD) {
+    return 'top';
+  }
+  const { scrollHeight } = document.documentElement;
+  return scrollY + window.innerHeight >= scrollHeight - EDGE_THRESHOLD
+    ? 'bottom'
+    : 'middle';
+}
+
 const FloatingNav = () => {
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
   const { triggerHaptic } = useHaptics();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // Derived scroll state lives in motion values; React state only changes
+  // when the nav's behaviour changes (DESIGN.md → State Management).
+  const [edge, setEdge] = useState<ScrollEdge>('top');
   const [isShortPage, setIsShortPage] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
-  const [contentHeight, setContentHeight] = useState(0);
   const { isProjectHovered } = useProjectHover();
   const { resolvedTheme, mounted, setTheme } = useTheme();
 
@@ -38,52 +61,27 @@ const FloatingNav = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
-  const { scrollYProgress } = useScroll();
-  const scrollBasedOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.05, 0.95, 1], // At very top (0-5%) and very bottom (95-100%)
-    [0.3, 0.9, 0.9, 0.3]
-  );
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, 'change', latest => {
+    setEdge(getScrollEdge(latest));
+  });
 
-  const navOpacity = useTransform(scrollBasedOpacity, opacity =>
-    isExpanded ? 0.9 : opacity
-  );
-
-  const navBackgroundColor = useTransform(
-    navOpacity,
-    opacity => `oklch(var(--surface-dark) / ${opacity})`
-  );
-
+  // Page length only changes when content or viewport resizes
   useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== 'undefined') {
-        setScrollPosition(window.scrollY);
-      }
+    const measure = () => {
+      setIsShortPage(
+        document.documentElement.scrollHeight < 2 * window.innerHeight
+      );
+      setEdge(getScrollEdge(window.scrollY));
     };
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
-
-  useEffect(() => {
-    const checkPageHeight = () => {
-      if (typeof window !== 'undefined') {
-        setIsShortPage(
-          document.documentElement.scrollHeight < 2 * window.innerHeight
-        );
-      }
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(document.body);
+    window.addEventListener('resize', measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', measure);
     };
-    checkPageHeight();
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', checkPageHeight);
-      const observer = new MutationObserver(checkPageHeight);
-      observer.observe(document.body, { childList: true, subtree: true });
-      return () => {
-        window.removeEventListener('resize', checkPageHeight);
-        observer.disconnect();
-      };
-    }
   }, []);
 
   const handleLogoClick = (e: React.MouseEvent) => {
@@ -102,11 +100,8 @@ const FloatingNav = () => {
     }
   };
 
-  const isAtTop = scrollPosition < 100;
-  const isAtBottom =
-    typeof window !== 'undefined' &&
-    scrollPosition + window.innerHeight >=
-      document.documentElement.scrollHeight - 100;
+  const isAtTop = edge === 'top';
+  const isAtBottom = edge === 'bottom';
 
   const scrollButtonLabel =
     isShortPage || (!isAtTop && !isAtBottom)
@@ -127,12 +122,6 @@ const FloatingNav = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  useEffect(() => {
-    if (isExpanded && contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  }, [isExpanded]);
 
   useEffect(() => {
     if (!isExpanded) {
@@ -159,11 +148,7 @@ const FloatingNav = () => {
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
-        : {
-            type: 'spring',
-            damping: 30,
-            stiffness: 250,
-          },
+        : SPRING.INTERACTIVE,
     },
     hovering: {
       height: isMobile ? '52px' : '56px',
@@ -171,24 +156,16 @@ const FloatingNav = () => {
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
-        : {
-            type: 'spring',
-            damping: 30,
-            stiffness: 250,
-          },
+        : SPRING.INTERACTIVE,
     },
     expanded: {
-      height: contentHeight ? `${contentHeight + 64}px` : 'auto', // 64px is header height
+      height: 'auto',
       width: '320px',
-      borderRadius: '40px',
+      borderRadius: EXPANDED_RADIUS,
       x: '-50%',
       transition: prefersReducedMotion
         ? { duration: 0.01 }
-        : {
-            type: 'spring',
-            damping: 30,
-            stiffness: 250,
-          },
+        : SPRING.INTERACTIVE,
     },
   };
 
@@ -294,20 +271,16 @@ const FloatingNav = () => {
         }
       >
         <motion.div
-          className={`bg-surface-dark inset-shadow-border-glow backdrop-blur-md relative flex flex-col overflow-hidden shadow-lg corner-squircle rounded-[140px] ${
+          className={`material-chrome inset-shadow-border-glow relative flex flex-col overflow-hidden corner-squircle rounded-pill ${
             isExpanded ? 'items-start' : 'items-center justify-center'
           }`}
           variants={navVariants}
           initial="collapsed"
-          animate={
-            isExpanded ? 'expanded' : isHovering ? 'hovering' : 'collapsed'
-          }
-          onMouseEnter={() => !isExpanded && setIsHovering(true)}
-          onMouseLeave={() => !isExpanded && setIsHovering(false)}
+          animate={isExpanded ? 'expanded' : 'collapsed'}
+          whileHover={isExpanded ? undefined : 'hovering'}
           style={{
             transformOrigin: 'center center',
             left: 0,
-            backgroundColor: navBackgroundColor,
           }}
         >
           {/* Full-surface expand target: makes the whole collapsed pill
@@ -397,7 +370,7 @@ const FloatingNav = () => {
             </AnimatePresence>
             <motion.button
               type="button"
-              className={`hidden md:block bg-transparent text-surface-dark-foreground font-medium text-xl md:text-2xl cursor-pointer`}
+              className={`hidden md:block bg-transparent text-surface-dark-foreground font-semibold text-xl md:text-2xl cursor-pointer`}
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
               style={{ pointerEvents: isExpanded ? 'none' : 'auto' }}
@@ -420,51 +393,23 @@ const FloatingNav = () => {
                 }
               >
                 {isShortPage || (!isAtTop && !isAtBottom) ? (
-                  <motion.svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 text-surface-dark-foreground hover:text-accent"
-                    initial={false}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                  </motion.svg>
-                ) : isAtTop ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-surface-dark-foreground hover:text-accent transform rotate-180"
-                  >
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <IconMenu2
+                    size={24}
+                    stroke={1.5}
                     className="text-surface-dark-foreground hover:text-accent"
-                  >
-                    <path d="M12 19V5M5 12l7-7 7 7" />
-                  </svg>
+                  />
+                ) : isAtTop ? (
+                  <IconArrowDown
+                    size={24}
+                    stroke={1.5}
+                    className="text-surface-dark-foreground hover:text-accent"
+                  />
+                ) : (
+                  <IconArrowUp
+                    size={24}
+                    stroke={1.5}
+                    className="text-surface-dark-foreground hover:text-accent"
+                  />
                 )}
               </motion.div>
             </motion.button>
@@ -496,33 +441,15 @@ const FloatingNav = () => {
                     }
                     transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
                   >
-                    <span className="hidden md:inline text-base font-medium translate-y-px pr-6">
+                    <span className="hidden md:inline text-base font-semibold translate-y-px pr-6">
                       Find
                     </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="md:hidden w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                      />
-                    </svg>
+                    <IconMenu2 size={24} stroke={1.5} className="md:hidden" />
                   </motion.span>
                 ) : (
-                  <motion.svg
+                  <motion.span
                     key="close-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="text-surface-dark-foreground hover:text-accent size-5"
+                    className="flex text-surface-dark-foreground hover:text-accent"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }
@@ -532,19 +459,14 @@ const FloatingNav = () => {
                     }
                     transition={{ duration: DURATION.FAST, ease: EASING.EXIT }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18 18 6M6 6l12 12"
-                    />
-                  </motion.svg>
+                    <IconX size={20} stroke={1.5} />
+                  </motion.span>
                 )}
               </AnimatePresence>
             </button>
           </div>
 
           <motion.div
-            ref={contentRef}
             className={`w-full overflow-hidden ${isExpanded ? 'px-8 pb-8 pt-2' : 'p-0'}`}
             variants={contentVariants}
             initial="hidden"
@@ -557,7 +479,9 @@ const FloatingNav = () => {
           >
             {/* Main navigation links */}
             <div className="mb-6">
-              <h3 className="text-muted-foreground text-sm mb-4">Navigation</h3>
+              <h3 className="text-surface-dark-muted text-sm mb-4">
+                Navigation
+              </h3>
               {links.map((link, i) => {
                 const isInternal = link.href.startsWith('/');
                 const LinkComponent = isInternal ? MotionLink : motion.a;
@@ -584,19 +508,23 @@ const FloatingNav = () => {
 
             {/* Divider */}
             <motion.hr
-              className="border-border my-5"
+              className="border-surface-dark-foreground/15 my-5"
               initial={{ width: 0 }}
               animate={isExpanded ? { width: '100%' } : { width: 0 }}
-              transition={{
-                duration: DURATION.SLOW,
-                ease: EASING.STANDARD,
-                delay: links.length * 0.08 + 0.1,
-              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : {
+                      duration: DURATION.SLOW,
+                      ease: EASING.STANDARD,
+                      delay: links.length * 0.08 + 0.1,
+                    }
+              }
             />
 
             {/* Footer links */}
             <div>
-              <h3 className="text-muted-foreground text-sm mb-4">Contact</h3>
+              <h3 className="text-surface-dark-muted text-sm mb-4">Contact</h3>
               {footerLinks.map((link, i) => (
                 <motion.a
                   key={`footer_${i}`}

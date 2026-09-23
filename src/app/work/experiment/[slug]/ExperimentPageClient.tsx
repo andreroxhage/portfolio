@@ -32,7 +32,7 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
           tags={experiment.tags}
         />
         <motion.h1
-          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
+          className="text-2xl md:text-3xl font-semibold tracking-heading leading-tight text-primary-700"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -48,7 +48,7 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
       <Suspense
         fallback={
           <div className="max-w-2.5xl mx-auto px-4">
-            <div className="h-96 animate-pulse bg-surface-dark-card rounded-xl corner-squircle" />
+            <div className="h-96 animate-pulse bg-surface-dark-card rounded-base corner-squircle" />
           </div>
         }
       >

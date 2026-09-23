@@ -9,6 +9,7 @@ import {
   type MotionValue,
 } from 'framer-motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING } from '@/app/lib/motion';
 
 import OliveCar from '../../../../public/resource/collage/olive-car.jpg';
 import SicilyHills from '../../../../public/resource/collage/sicily-hills.jpg';
@@ -98,13 +99,13 @@ function CollagePhoto({
         reducedMotion
           ? { duration: 0.01 }
           : {
-              duration: 0.7,
-              ease: [0.16, 1, 0.3, 1],
+              duration: DURATION.SLOW,
+              ease: EASING.ENTER,
               delay: (index % 3) * 0.06,
             }
       }
     >
-      <figure className="relative h-full w-full overflow-hidden rounded-[2px] corner-squircle image-depth-outline">
+      <figure className="relative h-full w-full overflow-hidden rounded-hairline corner-squircle image-depth-outline">
         {/* The canvas is capped at max-w-[1920px] minus lg:px-10, so past that
             breakpoint each item's width is a fixed px value, not a vw one. */}
         <Image

@@ -36,7 +36,7 @@ export function DiagramFrame({
       data-diagram
       aria-label={label}
       className={cn(
-        'mx-auto w-full max-w-xl rounded-[28px] md:rounded-[40px] corner-squircle border border-foreground/5 bg-secondary p-4 sm:p-8',
+        'mx-auto w-full max-w-xl rounded-card md:rounded-panel corner-squircle border border-foreground/5 bg-secondary p-4 sm:p-8',
         className
       )}
     >
@@ -63,7 +63,7 @@ export function DiagramChip({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-[140px] corner-squircle border px-3 py-1 text-xs whitespace-nowrap',
+        'inline-flex items-center gap-1.5 rounded-pill corner-squircle border px-3 py-1 text-xs whitespace-nowrap',
         diagramTone[tone]
       )}
     >
@@ -88,14 +88,14 @@ export function DiagramNode({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="w-full rounded-[12px] corner-squircle border border-foreground/10 bg-surface-dark-card p-4">
+    <div className="w-full rounded-base corner-squircle border border-foreground/10 bg-surface-dark-card p-4">
       <div className="flex items-start gap-3">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-[8px] corner-squircle bg-secondary text-surface-dark-muted">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-small corner-squircle bg-secondary text-surface-dark-muted">
           <Icon size={16} stroke={1.5} />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-3">
-            <p className="text-sm font-medium tracking-tight text-surface-dark-foreground">
+            <p className="text-sm font-semibold tracking-heading text-surface-dark-foreground">
               {title}
             </p>
             {step !== undefined && (
@@ -200,7 +200,7 @@ export function DiagramGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full rounded-[20px] corner-squircle border border-dashed border-foreground/20 p-3 sm:p-4">
+    <div className="w-full rounded-media corner-squircle border border-dashed border-foreground/20 p-3 sm:p-4">
       <p className="mb-3 flex items-center gap-1.5 text-xs tracking-wide text-surface-dark-muted">
         {Icon && <Icon size={14} stroke={1.5} className="shrink-0" />}
         {label}
@@ -245,7 +245,7 @@ export function DiagramFanOut({ lanes }: { lanes: string[] }) {
       >
         {lanes.map(lane => (
           <li key={lane} className="px-1">
-            <span className="block truncate rounded-[8px] corner-squircle border border-foreground/10 bg-secondary px-1 py-1.5 text-center text-xs text-surface-dark-muted">
+            <span className="block truncate rounded-small corner-squircle border border-foreground/10 bg-secondary px-1 py-1.5 text-center text-xs text-surface-dark-muted">
               {lane}
             </span>
           </li>

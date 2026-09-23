@@ -6,6 +6,7 @@ import ThemeToggle from './components/ThemeToggle';
 import { ProjectHoverProvider } from './contexts/ProjectHoverContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import QueryProvider from './components/QueryProvider';
+import MotionProvider from './components/MotionProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://andreroxhage.com'),
@@ -60,13 +61,15 @@ export default function RootLayout({
       </head>
       <body className="bg-background text-foreground">
         <ThemeProvider>
-          <QueryProvider>
-            <ProjectHoverProvider>
-              <FloatingNav />
-              <ThemeToggle />
-              {children}
-            </ProjectHoverProvider>
-          </QueryProvider>
+          <MotionProvider>
+            <QueryProvider>
+              <ProjectHoverProvider>
+                <FloatingNav />
+                <ThemeToggle />
+                {children}
+              </ProjectHoverProvider>
+            </QueryProvider>
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

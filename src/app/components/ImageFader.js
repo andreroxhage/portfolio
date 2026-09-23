@@ -3,19 +3,26 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING } from '@/app/lib/motion';
 
 const ImageFader = ({ images, intervalTime = 5000 }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [prevImage, setPrevImage] = useState(null);
+  const reducedMotion = useReducedMotion();
 
+  // Auto-rotation is motion too: hold the first frame for reduced motion
   useEffect(() => {
+    if (reducedMotion) {
+      return;
+    }
     const interval = setInterval(() => {
       setPrevImage(currentImage);
       setCurrentImage(prev => (prev + 1) % images.length);
     }, intervalTime);
 
     return () => clearInterval(interval);
-  }, [images.length, intervalTime, currentImage]);
+  }, [images.length, intervalTime, currentImage, reducedMotion]);
 
   // Preload next image to avoid flicker during crossfade
   const nextIndex = useMemo(
@@ -45,7 +52,7 @@ const ImageFader = ({ images, intervalTime = 5000 }) => {
         height={800}
         priority
         style={{ maxWidth: '100%', height: 'auto' }}
-        className="rounded-[2px] corner-squircle"
+        className="rounded-hairline corner-squircle"
       />
 
       {/* Fade out previous image on top to simulate crossfade without changing sizing */}
@@ -57,14 +64,14 @@ const ImageFader = ({ images, intervalTime = 5000 }) => {
             initial={{ opacity: 1 }}
             animate={{ opacity: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.4, 0, 1, 1] }}
+            transition={{ duration: DURATION.MEDIUM, ease: EASING.EXIT }}
           >
             <Image
               src={images[prevImage]}
               alt=""
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-contain rounded-[2px] corner-squircle"
+              className="object-contain rounded-hairline corner-squircle"
               priority
             />
           </motion.div>

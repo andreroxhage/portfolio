@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 
@@ -54,14 +55,23 @@ export const ThemeProvider: React.FC<{
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>('light');
   const [mounted, setMounted] = useState(false);
 
+  // Sync with what the pre-paint script in layout.tsx already applied: a
+  // stored choice wins, otherwise follow the OS. Must match that script
+  // exactly, or the page flashes between themes on load.
   useEffect(() => {
-    const stored = localStorage.getItem('theme') as Theme | null;
-    const initial: ResolvedTheme =
-      stored === 'light' || stored === 'dark' ? stored : 'light';
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {
+      /* storage blocked — follow the OS */
+    }
+    const initial: Theme =
+      stored === 'light' || stored === 'dark' ? stored : 'system';
+    const resolved = initial === 'system' ? getSystemTheme() : initial;
 
     setThemeState(initial);
-    setResolvedTheme(initial);
-    applyTheme(initial, false);
+    setResolvedTheme(resolved);
+    applyTheme(resolved, false);
     setMounted(true);
   }, []);
 
@@ -87,19 +97,24 @@ export const ThemeProvider: React.FC<{
     setResolvedTheme(resolved);
     applyTheme(resolved, true);
 
-    if (newTheme === 'system') {
-      localStorage.removeItem('theme');
-    } else {
-      localStorage.setItem('theme', newTheme);
+    try {
+      if (newTheme === 'system') {
+        localStorage.removeItem('theme');
+      } else {
+        localStorage.setItem('theme', newTheme);
+      }
+    } catch {
+      /* storage blocked — the choice lasts for this page view only */
     }
   }, []);
 
+  const value = useMemo(
+    () => ({ theme: themeState, resolvedTheme, mounted, setTheme }),
+    [themeState, resolvedTheme, mounted, setTheme]
+  );
+
   return (
-    <ThemeContext.Provider
-      value={{ theme: themeState, resolvedTheme, mounted, setTheme }}
-    >
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
 

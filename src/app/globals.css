@@ -14,12 +14,26 @@
    Consolidated: removed unused vanilla scale, merged brand aliases into neutral,
    merged secondary-green into primary green scale. */
 @theme inline {
-  /* Font family */
-  --font-sans: 'Sans', 'Sans Fallback', sans-serif;
+  /* Font family — system stack: SF Pro on Apple platforms, Segoe UI on
+     Windows, Roboto on Android. Nothing to download. */
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Custom font sizes */
-  --font-size-8\.5xl: 6.5rem;
-  --font-size-9\.5xl: 10rem;
+  /* Type scale — body runs at 17px (Apple reading pace) */
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.47;
+  --text-8\.5xl: 6.5rem;
+  --text-9\.5xl: 10rem;
+
+  /* Tracking — tighten gently with size (DESIGN.md → Tracking) */
+  --tracking-display: -0.025em;
+  --tracking-heading: -0.015em;
+  --tracking-body: -0.01em;
+
+  /* Easing — Apple-style ease-out for entrances (mirrors src/app/lib/motion.ts) */
+  --ease-out: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
 
   /* Warm neutral scale (replaces vanilla + brand aliases) */
   --color-neutral-25: oklch(0.975 0.005 85);
@@ -70,21 +84,27 @@
   --color-surface-dark-elevated: oklch(var(--surface-dark-elevated));
   --color-surface-dark-foreground: oklch(var(--surface-dark-foreground));
   --color-surface-dark-muted: oklch(var(--surface-dark-muted));
-  --color-surface-footer: oklch(var(--surface-footer));
   --color-chart-1: oklch(var(--chart-1));
   --color-chart-2: oklch(var(--chart-2));
   --color-chart-3: oklch(var(--chart-3));
   --color-chart-4: oklch(var(--chart-4));
   --color-chart-5: oklch(var(--chart-5));
 
-  /* Box shadow */
+  /* Elevation (DESIGN.md → Depth & Elevation). Hairline swaps per theme. */
+  --shadow-hairline: var(--elevation-hairline);
   --shadow-customShadow: 0 45px 70.8px -48px oklch(0 0 0 / 0.95);
   --inset-shadow-border-glow:
     inset 0 1px 0 0 oklch(1 0 0 / 0.08), inset 0 0 0 1px oklch(1 0 0 / 0.05);
 
-  /* Border radius */
-  --radius-4xl: 28px;
-  --radius: 0.5rem;
+  /* Border radius — the DESIGN.md §5 scale. Pair every one with corner-squircle. */
+  --radius-hairline: 2px;
+  --radius-small: 8px;
+  --radius-base: 12px;
+  --radius-media: 20px;
+  --radius-card: 28px;
+  --radius-panel: 40px;
+  --radius-card-lg: 50px;
+  --radius-pill: 140px;
 
   /* Max width */
   --max-width-2\.5xl: 45rem;
@@ -95,7 +115,14 @@
 
   /* Animations */
   --animate-shimmer: shimmer 2s linear infinite 0.5s;
-  --animate-aurora: aurora 60s linear infinite;
+}
+
+/* Material — frosted chrome for floating UI (navigation only).
+   Apple's sticky-bar recipe on the warm surface. */
+@utility material-chrome {
+  background-color: oklch(var(--surface-dark) / 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
 /* Image depth outline — 1px inset outline per blog post recommendation */
@@ -107,32 +134,6 @@
   outline-color: oklch(1 0 0 / 0.1);
 }
 
-/* Soft edge shadow — replaces hard borders with layered transparent shadows */
-.shadow-soft-edge {
-  box-shadow:
-    0px 0px 0px 1px rgba(0, 0, 0, 0.06),
-    0px 1px 2px -1px rgba(0, 0, 0, 0.06),
-    0px 2px 4px 0px rgba(0, 0, 0, 0.04);
-}
-.shadow-soft-edge-hover {
-  box-shadow:
-    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
-    0px 2px 4px -1px rgba(0, 0, 0, 0.08),
-    0px 4px 8px 0px rgba(0, 0, 0, 0.06);
-}
-:is(.dark) .shadow-soft-edge {
-  box-shadow:
-    0px 0px 0px 1px rgba(255, 255, 255, 0.06),
-    0px 1px 2px -1px rgba(255, 255, 255, 0.04),
-    0px 2px 4px 0px rgba(255, 255, 255, 0.02);
-}
-:is(.dark) .shadow-soft-edge-hover {
-  box-shadow:
-    0px 0px 0px 1px rgba(255, 255, 255, 0.08),
-    0px 2px 4px -1px rgba(255, 255, 255, 0.06),
-    0px 4px 8px 0px rgba(255, 255, 255, 0.04);
-}
-
 /* Video shimmer — subtle loading placeholder for video containers */
 .video-shimmer {
   background: linear-gradient(
@@ -142,7 +143,7 @@
     oklch(0.2 0.008 90) 100%
   );
   background-size: 200% 100%;
-  animation: shimmer 2s linear infinite 0.5s;
+  animation: var(--animate-shimmer);
 }
 
 /* Keyframes */
@@ -152,19 +153,6 @@
   }
   to {
     background-position: -200% 0;
-  }
-}
-
-@keyframes aurora {
-  from {
-    background-position:
-      50% 50%,
-      50% 50%;
-  }
-  to {
-    background-position:
-      350% 50%,
-      350% 50%;
   }
 }
 
@@ -182,7 +170,7 @@
   --muted-foreground: 0.54 0.01 90;
   --accent: 0.855 0.085 144;
   --accent-foreground: 0.45 0.07 148;
-  --border: 1 0 0 / 0.12;
+  --border: 0.34 0.01 90 / 0.12;
   --input: 0.91 0.025 80;
   --ring: 0.72 0.11 148;
 
@@ -194,7 +182,11 @@
   --surface-dark-elevated: 0.955 0.025 85;
   --surface-dark-foreground: 0.34 0.01 90;
   --surface-dark-muted: 0.45 0.01 90;
-  --surface-footer: 0.19 0 0;
+
+  /* Hairline elevation — a soft ring instead of a hard border */
+  --elevation-hairline:
+    0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.06),
+    0 2px 4px 0 oklch(0 0 0 / 0.04);
 
   /* Chart categorical slots — fixed order, validated for CVD (DESIGN.md → Chart Palette) */
   --chart-1: 0.6 0.12 150; /* green */
@@ -207,9 +199,9 @@
 /* Dark mode — warm organic palette */
 .dark {
   --background: 0.115 0.008 70;
-  --foreground: 0.87 0 85;
+  --foreground: 0.87 0.008 85;
   --card: 0.2 0.02 148;
-  --card-foreground: 0.97 0 0;
+  --card-foreground: 0.97 0.004 85;
   --primary: 0.68 0.1 148;
   --primary-foreground: 1 0 0;
   --secondary: 0.175 0.008 80;
@@ -222,13 +214,17 @@
   --input: 0.25 0.015 70;
   --ring: 0.68 0.1 148;
 
-  /* Portfolio surfaces (dark mode) */
-  --surface-dark: 0.165 0 0;
-  --surface-dark-card: 0.2 0 0;
-  --surface-dark-elevated: 0.25 0 0;
-  --surface-dark-foreground: 0.97 0 0;
-  --surface-dark-muted: 0.87 0 0;
-  --surface-footer: 0.145 0 0;
+  /* Portfolio surfaces (dark mode) — warm near-blacks, never zero chroma */
+  --surface-dark: 0.165 0.006 75;
+  --surface-dark-card: 0.2 0.007 75;
+  --surface-dark-elevated: 0.25 0.008 75;
+  --surface-dark-foreground: 0.97 0.004 85;
+  --surface-dark-muted: 0.87 0.008 80;
+
+  /* Hairline elevation on dark surfaces */
+  --elevation-hairline:
+    0 0 0 1px oklch(1 0 0 / 0.06), 0 1px 2px -1px oklch(1 0 0 / 0.04),
+    0 2px 4px 0 oklch(1 0 0 / 0.02);
 
   /* Chart slots stepped for the dark surface — same hues, same order */
   --chart-1: 0.67 0.11 150;
@@ -238,18 +234,24 @@
   --chart-5: 0.56 0.12 350;
 }
 
-/* Always-dark surface lock — nav, footer, header overlay */
+/* Chrome surface lock — pins the scene palette dark in both themes.
+   Used by navigation, the project grid shell and the footer. */
 .surface-lock-dark {
-  --surface-dark: 0.145 0 0;
-  --surface-dark-card: 0.2 0 0;
-  --surface-dark-elevated: 0.25 0 0;
-  --surface-dark-foreground: 0.97 0 0;
-  --surface-dark-muted: 0.87 0 0;
-  --surface-footer: 0.19 0 0;
+  --surface-dark: 0.145 0.006 75;
+  --surface-dark-card: 0.2 0.007 75;
+  --surface-dark-elevated: 0.25 0.008 75;
+  --surface-dark-foreground: 0.97 0.004 85;
+  --surface-dark-muted: 0.87 0.008 80;
+
+  /* Hairline elevation on dark surfaces */
+  --elevation-hairline:
+    0 0 0 1px oklch(1 0 0 / 0.06), 0 1px 2px -1px oklch(1 0 0 / 0.04),
+    0 2px 4px 0 oklch(1 0 0 / 0.02);
 }
 
 /* Antialiased for normal weight — preserves medium/semibold distinction */
 body {
+  letter-spacing: var(--tracking-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

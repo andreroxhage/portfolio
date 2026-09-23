@@ -1,46 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMediaQuery } from './useMediaQuery';
 
 /**
- * Hook to detect if user prefers reduced motion
- * Returns true if user has enabled prefers-reduced-motion: reduce
- *
- * @returns boolean - true if reduced motion is preferred
+ * True when the user prefers reduced motion.
+ * Framer Motion transforms are also neutralised globally by <MotionProvider>;
+ * use this hook for everything MotionConfig can't reach — scroll-linked
+ * `style` values, WebGL loops, autoplaying media, timers.
  */
 export function useReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    // Set initial value
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    // Listen for changes
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
-
-    // Modern browsers
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleChange);
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange);
-      };
-    }
-    // Fallback for older browsers
-    else {
-      mediaQuery.addListener(handleChange);
-      return () => {
-        mediaQuery.removeListener(handleChange);
-      };
-    }
-  }, []);
-
-  return prefersReducedMotion;
+  return useMediaQuery('(prefers-reduced-motion: reduce)');
 }

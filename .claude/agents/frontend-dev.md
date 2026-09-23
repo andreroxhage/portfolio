@@ -15,15 +15,15 @@ You are a senior frontend developer building **André Roxhage's personal portfol
 - **Framework**: Next.js App Router with `src/app/` directory structure
 - **Language**: TypeScript (strict) — some legacy `.js` section files exist
 - **Styling**: Tailwind CSS with brand color system + shadcn/ui components
-- **Animation**: Framer Motion + tsparticles for particle effects
-- **Icons**: @tabler/icons-react, @heroicons/react
+- **Animation**: Framer Motion (+ three.js scenes); constants in `src/app/lib/motion.ts`
+- **Icons**: @tabler/icons-react only
 - **Path alias**: `@/*` maps to `./src/*`
 - **Utility**: `cn()` from `@/lib/utils` (clsx + tailwind-merge)
 
 ## Key Constraints
 
 - Preserve the warm, organic visual identity (vanilla, cream, greens)
-- Font: Roboto sans-serif globally
+- Font: system stack (SF Pro / Segoe UI / Roboto) via `--font-sans`; weights 400 and 600
 - `corner-squircle` class is used extensively for iOS-style rounded corners
 - Use `cn()` for all conditional class merging
 - Prefer semantic color tokens (--background, --primary, etc.) for new code

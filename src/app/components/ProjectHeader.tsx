@@ -33,10 +33,10 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
       />
 
       <motion.h1
-        className="text-2xl md:text-3xl font-medium tracking-tight leading-tight"
+        className="text-2xl md:text-3xl font-semibold tracking-heading leading-tight"
         style={
           {
-            color: project.titleColor || 'oklch(0.635 0.08 148)',
+            color: project.titleColor || 'var(--color-primary-700)',
             textWrap: 'balance',
           } as React.CSSProperties
         }

@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING } from '@/app/lib/motion';
 import { footerLinks } from '@/app/data/nav';
 import MagneticWrapper from '@/app/components/MagneticWrapper';
 import { links } from '@/app/data/nav';
@@ -17,13 +19,13 @@ export default function Footer() {
   return (
     <div id="contact" className="min-h-fit p-0 surface-lock-dark">
       <div
-        className="w-full h-full rounded-t-[40px] corner-squircle bg-cover bg-center relative overflow-hidden"
+        className="w-full h-full rounded-t-panel corner-squircle bg-cover bg-center relative overflow-hidden"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
         {/* Gradient overlay — darker on mobile */}
-        <div className="absolute inset-0 rounded-t-[40px] corner-squircle bg-linear-to-b from-black/85 to-black md:from-black/80 md:to-black" />
+        <div className="absolute inset-0 rounded-t-panel corner-squircle bg-linear-to-b from-neutral-975/85 to-neutral-975 md:from-neutral-975/80 md:to-neutral-975" />
 
         <div className="relative flex flex-col justify-between overflow-hidden w-full h-full">
           <div
@@ -35,7 +37,7 @@ export default function Footer() {
                 <div className="w-full flex px-1 py-2 justify-end">
                   <MagneticWrapper>
                     <motion.a
-                      className="rounded-full h-16 w-16 bg-neutral-600 items-center justify-center text-neutral-200 hover:text-primary-500 hover:bg-neutral-600 transition-all duration-300 ease-in-out hover:scale-110 flex"
+                      className="rounded-full h-16 w-16 bg-neutral-600 items-center justify-center text-neutral-200 hover:text-primary-500 transition-[color,scale] duration-300 ease-out motion-safe:hover:scale-110 flex"
                       href={'#header'}
                       aria-label="Scroll to top"
                     >
@@ -62,7 +64,7 @@ export default function Footer() {
                 <div className="grid grid-cols-10 gap-y-4 sm:gap-y-2 justify-between pb-1 font-normal">
                   <div className="col-span-10 md:col-span-6 w-full">
                     <span
-                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-8 col-span-3"
+                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-semibold tracking-heading col-start-8 col-span-3"
                       style={{ textWrap: 'balance' }}
                     >
                       Connect
@@ -98,13 +100,13 @@ export default function Footer() {
                             opacity: 1,
                             transition: {
                               delay: shouldReduceMotion ? 0 : STAGGER_DELAY * i,
-                              duration: 0.4,
-                              ease: 'easeInOut',
+                              duration: DURATION.SLOW,
+                              ease: EASING.ENTER,
                             },
                           }}
                           transition={{
-                            duration: 0.2,
-                            ease: 'easeInOut',
+                            duration: DURATION.FAST,
+                            ease: EASING.STANDARD,
                           }}
                         >
                           {title}
@@ -114,7 +116,7 @@ export default function Footer() {
                   </div>
                   <div className="col-span-10 md:col-span-4 w-full md:mt-0 mt-12 sm:mt-14">
                     <span
-                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-medium tracking-tight col-start-1 col-span-7"
+                      className="text-lg md:text-xl text-surface-dark-foreground/50 font-semibold tracking-heading col-start-1 col-span-7"
                       style={{ textWrap: 'balance' }}
                     >
                       Navigation
@@ -150,13 +152,13 @@ export default function Footer() {
                             opacity: 1,
                             transition: {
                               delay: shouldReduceMotion ? 0 : STAGGER_DELAY * i,
-                              duration: 0.4,
-                              ease: 'easeInOut',
+                              duration: DURATION.SLOW,
+                              ease: EASING.ENTER,
                             },
                           }}
                           transition={{
-                            duration: 0.2,
-                            ease: 'easeInOut',
+                            duration: DURATION.FAST,
+                            ease: EASING.STANDARD,
                           }}
                         >
                           {title}

@@ -1,12 +1,6 @@
 'use client';
 
-import React, {
-  useState,
-  useRef,
-  useMemo,
-  useCallback,
-  useEffect,
-} from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { projects } from '@/app/data/projects';
 import { experiments } from '@/app/data/experiments';
 import { GridItem, galleryItemToGridItem } from '@/app/types';
@@ -16,7 +10,7 @@ import { useVideo, prefetchVideo } from '@/app/hooks/useVideo';
 import { useQueryClient } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
 import ImageFader from '../ImageFader';
-import { STAGGER } from '@/app/lib/motion';
+import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 
 interface ProjectGridProps {
   items?: GridItem[];
@@ -71,8 +65,8 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.4,
-                  ease: [0.4, 0, 0.2, 1],
+                  duration: DURATION.SLOW,
+                  ease: EASING.ENTER,
                   delay: index * STAGGER.DELAY,
                 }}
               >
@@ -97,6 +91,20 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
 
 export default ProjectGrid;
 
+// Shared by both preview kinds: panels drop in from above and settle
+const PANEL_MOTION = {
+  initial: { opacity: 0, y: -64 },
+  exit: { opacity: 0, y: 16 },
+  transition: { duration: DURATION.SLOW, ease: EASING.ENTER },
+};
+
+const PANEL_SIZE = {
+  maxWidth: '100%',
+  maxHeight: '100%',
+  width: 'auto' as const,
+  height: 'auto' as const,
+};
+
 const RightPreviewPanel = ({
   item,
   isActive,
@@ -106,100 +114,77 @@ const RightPreviewPanel = ({
 }) => {
   const identifier = item?.videoIdentifier ?? item?.id ?? '';
   const { video_url: videoUrl } = useVideo(identifier);
-  const [prevVideoUrl, setPrevVideoUrl] = useState<string>('');
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const [videoReady, setVideoReady] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Reset videoReady when switching items
-  useEffect(() => {
-    setVideoReady(false);
-  }, [identifier]);
-
-  useEffect(() => {
-    if (videoUrl && videoUrl !== prevVideoUrl) {
-      setPrevVideoUrl(videoUrl);
-      setIsFirstLoad(false);
-    }
-  }, [videoUrl, prevVideoUrl]);
 
   const hasImageFader = item?.imageFader && item.imageFader.length > 0;
   const showPanel = isActive && !!identifier && (!!videoUrl || hasImageFader);
-  const shouldRound = item?.roundedCorners !== false;
-
-  const easings = {
-    videoTransition: [0.45, 0.0, 0.15, 1] as const,
-  };
-
-  const sharedStyle = {
-    maxWidth: '100%',
-    maxHeight: '100%',
-    width: 'auto' as const,
-    height: 'auto' as const,
-  };
-
-  const roundingClass = shouldRound ? 'rounded-[40px] corner-squircle' : '';
+  const roundingClass =
+    item?.roundedCorners !== false ? 'rounded-panel corner-squircle' : '';
 
   return (
     <div className="hidden md:block md:col-span-7">
       <div className="top-28 md:top-36 h-[70vh] flex items-center justify-center p-12">
         <AnimatePresence mode="wait">
-          {showPanel && (
-            <>
-              {hasImageFader ? (
-                <motion.div
+          {showPanel &&
+            (hasImageFader ? (
+              <motion.div
+                key={identifier}
+                className={`overflow-hidden ${roundingClass}`}
+                {...PANEL_MOTION}
+                animate={{ opacity: 1, y: 0 }}
+                style={PANEL_SIZE}
+              >
+                <ImageFader
+                  images={item!.imageFader!}
+                  intervalTime={item!.intervalTime || 5000}
+                />
+              </motion.div>
+            ) : (
+              videoUrl && (
+                <PreviewVideo
                   key={identifier}
-                  className={`overflow-hidden ${roundingClass}`}
-                  initial={{ opacity: 0, y: -64 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 16 }}
-                  transition={{
-                    duration: isFirstLoad ? 0.6 : 0.5,
-                    ease: easings.videoTransition,
-                  }}
-                  style={sharedStyle}
-                >
-                  <ImageFader
-                    images={item!.imageFader!.map(src => src)}
-                    intervalTime={item!.intervalTime || 5000}
-                  />
-                </motion.div>
-              ) : (
-                videoUrl && (
-                  <motion.video
-                    key={identifier}
-                    ref={videoRef}
-                    src={videoUrl}
-                    poster={item?.posterImage}
-                    className={`${roundingClass} ${!videoReady ? 'video-shimmer' : ''}`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    initial={{ opacity: 0, y: -64 }}
-                    animate={{ opacity: videoReady ? 1 : 0, y: 0 }}
-                    exit={{ opacity: 0, y: 16 }}
-                    transition={{
-                      duration: isFirstLoad ? 0.6 : 0.5,
-                      ease: easings.videoTransition,
-                    }}
-                    onLoadedData={() => {
-                      const v = videoRef.current;
-                      if (v) {
-                        v.play()
-                          .then(() => setVideoReady(true))
-                          .catch(() => setVideoReady(true));
-                      }
-                    }}
-                    style={sharedStyle}
-                  />
-                )
-              )}
-            </>
-          )}
+                  src={videoUrl}
+                  poster={item?.posterImage}
+                  className={roundingClass}
+                />
+              )
+            ))}
         </AnimatePresence>
       </div>
     </div>
+  );
+};
+
+// Keyed by item, so its ready state resets on remount — no reset effect.
+const PreviewVideo = ({
+  src,
+  poster,
+  className,
+}: {
+  src: string;
+  poster?: string;
+  className: string;
+}) => {
+  const [isReady, setIsReady] = useState(false);
+
+  return (
+    <motion.video
+      src={src}
+      poster={poster}
+      className={`${className} ${isReady ? '' : 'video-shimmer'}`}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      {...PANEL_MOTION}
+      animate={{ opacity: isReady ? 1 : 0, y: 0 }}
+      onLoadedData={event => {
+        event.currentTarget
+          .play()
+          .catch(() => {})
+          .finally(() => setIsReady(true));
+      }}
+      style={PANEL_SIZE}
+    />
   );
 };

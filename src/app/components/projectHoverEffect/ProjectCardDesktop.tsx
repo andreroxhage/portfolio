@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { GridItem } from '@/app/types';
-import { PlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { IconPlus, IconArrowRight } from '@tabler/icons-react';
 import { EASING, BUTTON_PRESS_SCALE, DURATION } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 
@@ -21,14 +21,13 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
     const prefersReducedMotion = useReducedMotion();
     const [isHovering, setIsHovering] = useState(false);
 
-    const handleClick = () => {
+    // Expanded cards navigate; collapsed cards expand
+    const activate = () => {
       if (isExpanded && item.href) {
-        if (typeof window !== 'undefined') {
-          try {
-            sessionStorage.setItem('fromProjects', '1');
-          } catch (_e) {
-            /* noop */
-          }
+        try {
+          sessionStorage.setItem('fromProjects', '1');
+        } catch (_e) {
+          /* noop */
         }
         router.push(item.href);
         return;
@@ -39,24 +38,13 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
     const handleKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        if (isExpanded && item.href) {
-          if (typeof window !== 'undefined') {
-            try {
-              sessionStorage.setItem('fromProjects', '1');
-            } catch (_e) {
-              /* noop */
-            }
-          }
-          router.push(item.href);
-          return;
-        }
-        onClick();
+        activate();
       }
     };
 
     return (
       <motion.div
-        onClick={handleClick}
+        onClick={activate}
         onKeyDown={handleKeyDown}
         tabIndex={0}
         role="button"
@@ -64,11 +52,7 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         whileTap={{ scale: BUTTON_PRESS_SCALE }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="bg-surface-dark-card rounded-[50px] corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-all duration-150 overflow-hidden w-fit"
-        style={{
-          boxShadow:
-            'inset 0 1px 0 0 oklch(1 0 0 / 0.08), inset 0 0 0 1px oklch(1 0 0 / 0.05), 0px 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 1px 2px -1px rgba(0, 0, 0, 0.04), 0px 2px 4px 0px rgba(0, 0, 0, 0.02)',
-        }}
+        className="bg-surface-dark-card inset-shadow-border-glow shadow-hairline rounded-card-lg corner-squircle hover:bg-surface-dark-elevated cursor-pointer transition-colors duration-150 overflow-hidden w-fit"
       >
         {/* Collapsed Content - Hidden when expanded */}
         <motion.div
@@ -93,8 +77,13 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex items-center gap-4">
-              <PlusIcon className="w-5 h-5 text-surface-dark-muted shrink-0" />
-              <h3 className="text-base md:text-lg font-medium text-surface-dark-foreground w-fit">
+              <IconPlus
+                size={20}
+                stroke={1.5}
+                aria-hidden
+                className="text-surface-dark-muted shrink-0"
+              />
+              <h3 className="text-base md:text-lg font-semibold text-surface-dark-foreground w-fit">
                 {item.title}
               </h3>
             </div>
@@ -124,12 +113,12 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
         >
           <div className="p-6">
             <div className="flex flex-col gap-4">
-              <span className="text-base md:text-lg font-medium text-surface-dark-foreground">
+              <span className="text-base md:text-lg font-semibold text-surface-dark-foreground">
                 {item.title}
                 {(item.previewSubtitle || item.subtitle) && (
                   <>
                     .{' '}
-                    <span className="text-base md:text-lg font-thin text-surface-dark-foreground text-balance">
+                    <span className="text-base md:text-lg font-light text-surface-dark-foreground text-balance">
                       {item.previewSubtitle || item.subtitle}
                     </span>
                   </>
@@ -165,7 +154,11 @@ const ProjectCardDesktop: React.FC<ProjectCardDesktopProps> = React.memo(
                       }}
                       style={{ display: 'inline-block' }}
                     >
-                      <ArrowRightIcon className="w-4 h-4 inline mb-1" />
+                      <IconArrowRight
+                        size={16}
+                        stroke={1.5}
+                        className="inline mb-1"
+                      />
                     </motion.span>
                   </Link>
                 </motion.div>

@@ -41,7 +41,7 @@ export function SectionHeading({
   return (
     <h2
       className={cn(
-        'text-xl font-medium tracking-tight text-surface-dark-foreground mb-6',
+        'text-xl font-semibold tracking-heading text-surface-dark-foreground mb-6',
         className
       )}
     >
@@ -108,7 +108,7 @@ export function ProjectImage({
       <div
         className={cn(
           bgClass,
-          bgClass && rounded && 'rounded-xl corner-squircle',
+          bgClass && rounded && 'rounded-base corner-squircle',
           bgClass && 'image-depth-outline'
         )}
       >
@@ -119,7 +119,7 @@ export function ProjectImage({
           height={height}
           className={cn(
             'w-full h-auto',
-            rounded && !bgClass && 'rounded-xl corner-squircle'
+            rounded && !bgClass && 'rounded-base corner-squircle'
           )}
         />
       </div>

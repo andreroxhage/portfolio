@@ -10,35 +10,12 @@ import {
   IconCalendarCheck,
   IconChecklist,
 } from '@tabler/icons-react';
-import { cn } from '@/lib/utils';
 import {
   MiddleSection,
   WideSection,
   SectionHeading,
   ProjectImage,
 } from '@/app/components/ProjectLayout';
-
-// A small pill used for attributes and readiness states
-function Pill({
-  children,
-  tone = 'muted',
-}: {
-  children: React.ReactNode;
-  tone?: 'muted' | 'accent';
-}) {
-  return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs whitespace-nowrap corner-squircle',
-        tone === 'accent'
-          ? 'bg-primary text-primary-foreground border-transparent'
-          : 'bg-surface-dark-elevated text-surface-dark-muted'
-      )}
-    >
-      {children}
-    </span>
-  );
-}
 
 // A titled card representing one step in the pipeline
 function StepCard({
@@ -55,14 +32,14 @@ function StepCard({
   subtitle: string;
 }) {
   return (
-    <div className="w-full rounded-2xl corner-squircle border border-border bg-surface-dark-card px-4 py-3.5 shadow-sm">
+    <div className="w-full rounded-media corner-squircle bg-surface-dark-card shadow-hairline px-4 py-3.5">
       <div className="flex items-center gap-2">
         <Icon
           size={16}
           stroke={1.5}
           className="text-surface-dark-muted shrink-0"
         />
-        <p className="text-sm font-medium text-surface-dark-foreground">
+        <p className="text-sm font-semibold text-surface-dark-foreground">
           {title}
         </p>
       </div>
@@ -81,8 +58,8 @@ function Zone({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex-1 min-w-0 rounded-3xl corner-squircle border border-dashed border-border p-4 sm:p-5">
-      <p className="text-[11px] font-medium uppercase tracking-wide text-surface-dark-muted mb-3">
+    <div className="flex-1 min-w-0 rounded-card corner-squircle border border-dashed border-border p-4 sm:p-5">
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-surface-dark-muted mb-3">
         {label}
       </p>
       <div className="flex flex-col gap-3">{children}</div>
@@ -112,7 +89,7 @@ function ZoneConnector() {
 
 function RunningPipelineDiagram() {
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-3xl corner-squircle border border-border bg-surface-dark/40 p-5 sm:p-8">
+    <div className="w-full max-w-3xl mx-auto rounded-card corner-squircle border border-border bg-surface-dark/40 p-5 sm:p-8">
       <div className="flex flex-col md:flex-row items-stretch">
         <Zone label="Data sources">
           <StepCard

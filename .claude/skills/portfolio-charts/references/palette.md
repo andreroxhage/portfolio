@@ -59,11 +59,11 @@ The portfolio has no status palette, and charts should not invent one. If a valu
 | Gridline                         | `stroke-foreground/10`, `strokeWidth={1}`, `shapeRendering="crispEdges"`                           |
 | Baseline / zero line / crosshair | `stroke-foreground/20`                                                                             |
 | Axis and tick labels             | `fill-muted-foreground text-[11px]`, `tabular-nums` on numeric ticks                               |
-| Direct value labels              | `fill-foreground text-[11px] font-medium`                                                          |
-| Title                            | `text-sm md:text-base font-medium tracking-tight text-foreground`                                  |
+| Direct value labels              | `fill-foreground text-[11px] font-semibold`                                                          |
+| Title                            | `text-sm md:text-base font-semibold tracking-heading text-foreground`                                  |
 | Subtitle, legend, caption        | `text-muted-foreground`, `text-xs` (caption `md:text-sm`)                                          |
 | Dot ring (surface ring)          | `stroke-secondary`, `strokeWidth={2}`                                                              |
-| Tooltip                          | `bg-card rounded-[8px] corner-squircle shadow-soft-edge text-xs`                                   |
+| Tooltip                          | `bg-card rounded-small corner-squircle shadow-hairline text-xs`                                   |
 | Table view rules                 | `border-foreground/10` (header), `border-foreground/5` (rows)                                      |
 
 ## Surfaces the palette was validated on

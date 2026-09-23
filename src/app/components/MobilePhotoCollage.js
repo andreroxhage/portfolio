@@ -6,6 +6,7 @@ import Picture1 from '../../../public/resource/carousel/1.jpg';
 import Picture3 from '../../../public/resource/carousel/3.jpg';
 import Picture4 from '../../../public/resource/carousel/4.jpg';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING } from '@/app/lib/motion';
 
 export default function MobilePhotoCollage() {
   const reducedMotion = useReducedMotion();
@@ -19,7 +20,7 @@ export default function MobilePhotoCollage() {
   const revealTransition = delaySeconds => ({
     transition: reducedMotion
       ? { duration: 0.01 }
-      : { duration: 0.5, ease: 'easeOut', delay: delaySeconds },
+      : { duration: DURATION.SLOW, ease: EASING.ENTER, delay: delaySeconds },
   });
 
   return (
@@ -27,7 +28,7 @@ export default function MobilePhotoCollage() {
       <div className="max-w-7xl mx-auto flex flex-col gap-3">
         {/* Large hero image */}
         <motion.div
-          className="relative w-full aspect-[4/3] rounded-[20px] corner-squircle overflow-hidden image-depth-outline"
+          className="relative w-full aspect-[4/3] rounded-media corner-squircle overflow-hidden image-depth-outline"
           {...baseReveal}
           {...revealTransition(0)}
         >
@@ -44,7 +45,7 @@ export default function MobilePhotoCollage() {
         {/* Two-up grid */}
         <div className="grid grid-cols-2 gap-3">
           <motion.div
-            className="relative aspect-[3/4] rounded-[20px] corner-squircle overflow-hidden image-depth-outline"
+            className="relative aspect-[3/4] rounded-media corner-squircle overflow-hidden image-depth-outline"
             {...baseReveal}
             {...revealTransition(0.08)}
           >
@@ -58,7 +59,7 @@ export default function MobilePhotoCollage() {
             />
           </motion.div>
           <motion.div
-            className="relative aspect-[3/4] rounded-[20px] corner-squircle overflow-hidden image-depth-outline"
+            className="relative aspect-[3/4] rounded-media corner-squircle overflow-hidden image-depth-outline"
             {...baseReveal}
             {...revealTransition(0.16)}
           >

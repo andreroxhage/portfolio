@@ -15,7 +15,7 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
       href={href}
       className={cn(
         'group block -mx-3 my-4 px-3 py-3',
-        'rounded-[12px] corner-squircle',
+        'rounded-base corner-squircle',
         'transition-colors duration-200 ease-out',
         'hover:bg-secondary active:bg-muted',
         'outline-none focus-visible:bg-secondary focus-visible:ring-2 focus-visible:ring-ring',

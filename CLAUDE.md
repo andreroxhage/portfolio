@@ -18,7 +18,7 @@ npx tsc --noEmit      # Type check
 - Framework: Next.js 15 App Router (`src/app/`)
 - Language: TypeScript (strict) with some legacy `.js` section files
 - Styling: Tailwind CSS 4 + brand token system + shadcn/ui
-- Animation: Framer Motion + tsparticles
+- Animation: Framer Motion + three.js (reduced motion via `MotionProvider` + `useReducedMotion`)
 - Data/infra: Neon Postgres + Cloudflare R2 + Vercel
 - Alias: `@/*` -> `./src/*`
 

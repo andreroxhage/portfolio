@@ -11,19 +11,25 @@ import styles from './styles.module.css';
 import Image from 'next/image';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
+import { DURATION, EASING } from '@/app/lib/motion';
 
 export default function Index() {
   const container = useRef(null);
+  const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end'],
   });
 
-  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
-  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
-  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
-  const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
-  const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
+  // Scroll-bound style values sit outside MotionConfig — hold them at 1
+  // when the user prefers reduced motion.
+  const zoomTo = end => (reducedMotion ? [1, 1] : [1, end]);
+  const scale4 = useTransform(scrollYProgress, [0, 1], zoomTo(2.5));
+  const scale5 = useTransform(scrollYProgress, [0, 1], zoomTo(5));
+  const scale6 = useTransform(scrollYProgress, [0, 1], zoomTo(6));
+  const scale8 = useTransform(scrollYProgress, [0, 1], zoomTo(8));
+  const scale9 = useTransform(scrollYProgress, [0, 1], zoomTo(9));
 
   const pictures = [
     {
@@ -70,8 +76,8 @@ export default function Index() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{
-          duration: 0.4,
-          ease: 'easeInOut',
+          duration: DURATION.SLOW,
+          ease: EASING.STANDARD,
           delay: 0.2,
         }}
         viewport={{ once: true }}
@@ -82,7 +88,7 @@ export default function Index() {
               <div className={`${styles.imageContainer} image-depth-outline`}>
                 <Image
                   src={src}
-                  className="rounded-[2px] corner-squircle"
+                  className="rounded-hairline corner-squircle"
                   fill={true}
                   alt={alt}
                   placeholder="blur"

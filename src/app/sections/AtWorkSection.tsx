@@ -7,7 +7,7 @@ import { about } from '@/app/data/home';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import IsometricStack from '@/app/components/SVGgraphics/IsometricStack';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { IconArrowRight } from '@tabler/icons-react';
 
 export default function AtWorkSection() {
   const reducedMotion = useReducedMotion();
@@ -32,7 +32,7 @@ export default function AtWorkSection() {
         {/* Text column */}
         <div className="md:col-span-5">
           <motion.h2
-            className="text-2xl md:text-4xl font-medium tracking-tight text-foreground pb-4"
+            className="text-2xl md:text-4xl font-semibold tracking-display text-foreground pb-4"
             style={{ textWrap: 'balance' } as React.CSSProperties}
             variants={makeVariant(0)}
             initial="hidden"
@@ -64,7 +64,12 @@ export default function AtWorkSection() {
               <span className="text-lg md:text-xl font-normal group-hover:underline underline-offset-4 decoration-primary-300">
                 See my work
               </span>
-              <ArrowRightIcon className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              <IconArrowRight
+                size={16}
+                stroke={1.5}
+                aria-hidden
+                className="transition-transform duration-200 motion-safe:group-hover:translate-x-1"
+              />
             </Link>
           </motion.div>
         </div>

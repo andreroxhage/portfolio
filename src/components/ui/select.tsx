@@ -16,9 +16,9 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex h-9 w-full items-center justify-between gap-2 rounded-full shadow-soft-edge bg-surface-dark-card px-4 py-2 text-xs text-surface-dark-muted outline-none',
+      'flex h-9 w-full items-center justify-between gap-2 rounded-full shadow-hairline bg-surface-dark-card px-4 py-2 text-xs text-surface-dark-muted outline-none',
       'hover:text-surface-dark-foreground transition-colors duration-150',
-      'focus:ring-1 focus:ring-primary-500',
+      'focus-visible:ring-2 focus-visible:ring-ring',
       'disabled:cursor-not-allowed disabled:opacity-50',
       '[&>span]:line-clamp-1',
       className
@@ -76,12 +76,8 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        'relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-[12px] corner-squircle',
-        'bg-surface-dark-card border border-surface-dark-elevated text-surface-dark-foreground shadow-xl',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out',
-        'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-        'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
-        'data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2',
+        'relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-base corner-squircle',
+        'bg-surface-dark-card shadow-hairline text-surface-dark-foreground',
         position === 'popper' &&
           'data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1',
         className
@@ -112,7 +108,7 @@ const SelectLabel = React.forwardRef<
   <SelectPrimitive.Label
     ref={ref}
     className={cn(
-      'px-2 py-1.5 text-xs font-medium text-surface-dark-muted',
+      'px-2 py-1.5 text-xs font-semibold text-surface-dark-muted',
       className
     )}
     {...props}
@@ -127,7 +123,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded-[8px] corner-squircle',
+      'relative flex w-full cursor-default select-none items-center rounded-small corner-squircle',
       'py-2 pl-8 pr-3 text-xs text-surface-dark-muted outline-none',
       'focus:bg-surface-dark-elevated focus:text-surface-dark-foreground',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
