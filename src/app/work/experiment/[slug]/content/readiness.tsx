@@ -4,33 +4,33 @@ import React from 'react';
 import {
   MiddleSection,
   WideSection,
-  SectionHeading,
   ProjectImage,
 } from '@/app/components/ProjectLayout';
+import { Lead, P, SectionHeading } from '@/components/experiment/Prose';
 
 export default function ReadinessContent() {
   return (
     <>
       {/* Hook */}
-      <MiddleSection className="mb-20 space-y-6">
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+      <MiddleSection className="mb-20 space-y-4">
+        <Lead>
           Am I recovered enough to train hard today, or do I need one more easy
           day? I kept guessing, so I built an app that answers instead. Ready
           2.0 is a small iOS companion that turns each morning&apos;s heart rate
           variability into a simple readiness score, glanceable in the app or
           straight from a widget.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </Lead>
+        <P>
           It started as a learning project, an excuse to go deep on SwiftUI,
           MVVM, Core Data, HealthKit, BackgroundTasks, and WidgetKit, and ended
           up as something I genuinely check every day.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* How it works */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-10 space-y-4">
         <SectionHeading>How it works</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           The score is built on deviation from your own baseline, because
           absolute HRV numbers mean very little across people. The app reads HRV
           from Apple Health in a configurable morning window, compares it
@@ -39,8 +39,8 @@ export default function ReadinessContent() {
           in. Research backs the approach: multi-day HRV trends relative to a
           personal baseline reflect recovery and autonomic balance far better
           than any single reading.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </P>
+        <P>
           The detail I am most happy with is the{' '}
           <span className="font-medium text-surface-dark-foreground">
             as-of baseline
@@ -49,11 +49,11 @@ export default function ReadinessContent() {
           existed before it, so no day ever scores itself against its own
           numbers. A background task around 06:00 keeps everything fresh and
           updates the widgets, and all data stays on device.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* Visuals */}
-      <WideSection className="mb-20">
+      <WideSection className="mb-12">
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-start">
           <ProjectImage
             src="/resource/projects/readiness_home.webp"
@@ -85,9 +85,9 @@ export default function ReadinessContent() {
       </WideSection>
 
       {/* Honesty section */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>Knowing what it can&apos;t tell you</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           HRV is a useful signal and a noisy one. It moves with stress, sleep,
           alcohol, caffeine, illness, and even how consistently you wear your
           watch, and it lags behind what your body is actually doing. So the app
@@ -96,20 +96,20 @@ export default function ReadinessContent() {
           anything. It is a training companion, not a medical device, and
           designing it taught me to treat uncertainty as a first-class UI state
           instead of hiding it.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* Closer */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>What I learned</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           MVVM with proper service and storage layers made SwiftUI click for me,
           and HealthKit taught me humility about real-world data: gaps,
           duplicates, and readings that arrive whenever they feel like it. The
           biggest lesson was designing for imperfect signals, being clear about
           confidence instead of pretending precision. That thinking has followed
           me into every data-heavy interface I have built since.
-        </p>
+        </P>
       </MiddleSection>
     </>
   );
