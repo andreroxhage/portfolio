@@ -25,11 +25,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
-
-# Ignore environment variables
-.env.local
+# env files (keep an example template committable)
+.env*
+!.env.example
 
 # vercel
 .vercel

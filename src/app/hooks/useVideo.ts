@@ -11,7 +11,9 @@ interface VideoResponse {
 }
 
 const fetchVideoUrl = async (identifier: string): Promise<string> => {
-  const res = await fetch(`/api/videos?project=${identifier}`);
+  const res = await fetch(
+    `/api/videos?project=${encodeURIComponent(identifier)}`
+  );
   if (!res.ok) {
     throw new Error(`Failed to fetch video for ${identifier}`);
   }

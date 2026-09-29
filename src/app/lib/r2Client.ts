@@ -1,4 +1,5 @@
 // This file connects to your Cloudflare R2 storage
+import 'server-only';
 import { S3Client } from '@aws-sdk/client-s3';
 
 // Check if all required environment variables exist
