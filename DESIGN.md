@@ -15,7 +15,7 @@
 - Roboto with normal weight (400) for body, medium (500) for headings and UI — familiar, versatile, warm
 - Warm oklch neutrals with yellow/brown undertones (never cool grays)
 - Squircle corners everywhere — iOS-inspired superellipse softness
-- Green as the singular interactive accent color
+- Green means clickable: it is reserved for interactive elements
 - Glass navigation floating above content
 - Generous whitespace between sections, tight text within
 
@@ -27,19 +27,19 @@ All colors use the oklch perceptual color space. Source of truth: `src/app/globa
 
 ### Primary Scale (green, nature-inspired)
 
-| Stop | oklch Value              | Role                                    |
-| ---- | ------------------------ | --------------------------------------- |
-| 50   | `oklch(0.975 0.02 148)`  | Lightest tint, hover backgrounds        |
-| 100  | `oklch(0.95 0.04 148)`   | Light accent backgrounds                |
-| 200  | `oklch(0.91 0.06 148)`   | Borders, dividers                       |
-| 300  | `oklch(0.855 0.085 148)` | Active state backgrounds                |
-| 400  | `oklch(0.79 0.095 148)`  | Secondary buttons                       |
-| 500  | `oklch(0.75 0.105 148)`  | **Primary action color**                |
-| 600  | `oklch(0.69 0.085 148)`  | Hover on primary                        |
-| 700  | `oklch(0.635 0.08 148)`  | Active on primary, default title accent |
-| 800  | `oklch(0.54 0.07 148)`   | Dark accents                            |
-| 900  | `oklch(0.45 0.06 148)`   | Dark emphasis                           |
-| 950  | `oklch(0.3 0.04 148)`    | Darkest primary                         |
+| Stop | oklch Value              | Role                                |
+| ---- | ------------------------ | ----------------------------------- |
+| 50   | `oklch(0.975 0.02 148)`  | Lightest tint, hover backgrounds    |
+| 100  | `oklch(0.95 0.04 148)`   | Light accent backgrounds            |
+| 200  | `oklch(0.91 0.06 148)`   | Borders, dividers                   |
+| 300  | `oklch(0.855 0.085 148)` | Active state backgrounds            |
+| 400  | `oklch(0.79 0.095 148)`  | Secondary buttons                   |
+| 500  | `oklch(0.75 0.105 148)`  | **Primary action color**            |
+| 600  | `oklch(0.69 0.085 148)`  | Hover on primary                    |
+| 700  | `oklch(0.635 0.08 148)`  | Active on primary                   |
+| 800  | `oklch(0.54 0.07 148)`   | Link text on light surfaces (4.5:1) |
+| 900  | `oklch(0.45 0.06 148)`   | Link hover on light surfaces        |
+| 950  | `oklch(0.3 0.04 148)`    | Darkest primary                     |
 
 ### Neutral Scale (warm earth)
 
@@ -72,7 +72,7 @@ These map to oklch values via CSS custom properties. Light and dark mode definit
 | `secondary` / `secondary-foreground` | Secondary surfaces              | Secondary surfaces              |
 | `muted` / `muted-foreground`         | Muted backgrounds and text      | Muted backgrounds and text      |
 | `accent` / `accent-foreground`       | Accent backgrounds and text     | Accent backgrounds and text     |
-| `border`                             | White at 12% opacity            | White at 10% opacity            |
+| `border`                             | Warm dark at 12% opacity        | Warm light at 10% opacity       |
 | `ring`                               | Focus ring (matches primary)    | Focus ring (matches primary)    |
 | `surface-dark`                       | Always-dark surface base        | Always-dark surface base        |
 | `surface-dark-card`                  | Card on dark surface            | Card on dark surface            |
@@ -81,13 +81,33 @@ These map to oklch values via CSS custom properties. Light and dark mode definit
 | `surface-dark-muted`                 | Muted text on dark surface      | Muted text on dark surface      |
 | `surface-footer`                     | Footer background               | Footer background               |
 
+Values for the text, border and surface tokens (oklch channels as written in `globals.css`). Every dark-mode neutral carries chroma 0.005–0.01 at hue 70–90, so dark surfaces stay warm too.
+
+| Token                     | Light                 | Dark                  | Notes                                                                 |
+| ------------------------- | --------------------- | --------------------- | --------------------------------------------------------------------- |
+| `foreground`              | `0.34 0.01 90`        | `0.87 0.006 85`       |                                                                       |
+| `muted-foreground`        | `0.5 0.01 90`         | `0.7 0.01 80`         | ≥ 4.5:1 on `background`, `secondary`, `card` and surfaces, both modes |
+| `border`                  | `0.34 0.01 90 / 0.12` | `0.97 0.005 85 / 0.1` | A visible hairline. `.surface-lock-dark` uses the dark value          |
+| `card`                    | `0.995 0 0`           | `0.2 0.008 75`        |                                                                       |
+| `card-foreground`         | `0.34 0.01 90`        | `0.97 0.005 85`       |                                                                       |
+| `surface-dark`            | `0.975 0.005 85`      | `0.165 0.007 75`      | `.surface-lock-dark`: `0.145 0.008 70`                                |
+| `surface-dark-card`       | `0.995 0 0`           | `0.2 0.008 75`        |                                                                       |
+| `surface-dark-elevated`   | `0.955 0.025 85`      | `0.25 0.008 75`       |                                                                       |
+| `surface-dark-foreground` | `0.34 0.01 90`        | `0.97 0.005 85`       |                                                                       |
+| `surface-dark-muted`      | `0.45 0.01 90`        | `0.87 0.006 85`       |                                                                       |
+| `surface-footer`          | `0.19 0.008 75`       | `0.145 0.008 70`      |                                                                       |
+
 ### Color Rules
 
 - **Never hardcode hex or rgb values** — always use Tailwind token classes or CSS custom properties
 - **All neutrals are warm** — yellow/brown undertones. Never use cool grays (slate, zinc, gray)
-- **Green is the singular interactive accent** — buttons, links, focus rings, action states
+- **Green means clickable** — it is reserved for interactive elements: buttons, links, focus rings, and their hover, active and current states. Nothing that can't be clicked is green
+  - **Titles** use `foreground` (`surface-dark-foreground` on `bg-surface-dark` pages). Project titles may wear their per-project brand colour instead (see below)
+  - **Diagram `you` tone** is a solid `foreground` fill with `background` text, so it inverts with the theme. The `agent` tone stays a quiet warm-neutral card
+  - **Link text** is `primary-800` on light surfaces and `primary-500` in dark mode. Hover goes one step darker in light mode (`primary-900`) and lighter in dark (`primary-400`), or `primary-300` on an always-dark surface. Never `text-accent` for text: it is too pale to read
+- **Secondary text is `muted-foreground` with no alpha** — an opacity modifier (`/70`, `/90`) drops it below 4.5:1. Decorative separators may still use alpha
 - **Text selection uses warm neutral** — `neutral-200` (`oklch(0.955 0.025 85)`) background with inherited foreground text. Applied globally via `::selection` in `globals.css`. Never rely on browser-default blue highlights.
-- **Per-project brand colors** (e.g., blue for VR project) are stored in `src/app/data/projects.ts` and applied via inline styles — this is the only acceptable use of non-token colors
+- **Per-project brand colors** (e.g., blue for VR project) are stored in `src/app/data/projects.ts` and applied via inline styles — this is the only acceptable use of non-token colors. `titleColorLight` is the light-mode title and `titleColor` the dark-mode one. `ProjectHeader` sets both as custom properties and the `.dark` class picks one, so there is no hydration flash. Each must reach 3:1 on its theme's surface
 - **Chart colors are data, not UI** — `chart-1`…`chart-5` encode series identity inside charts only. They never style buttons, links or text, so green stays the single interactive accent
 
 ### Chart Palette
@@ -114,7 +134,7 @@ Five categorical slots for charts, in a fixed order that was validated for color
 
 ### Font Family
 
-**Roboto** — set globally via `--font-sans` in `globals.css`. Single font family, no display/text split. Versatile and readable at all sizes.
+**Roboto** — loaded with `next/font/google` in `src/app/layout.tsx` (weights 400 and 500, latin subset, `display: swap`), exposed as `--font-roboto` and bound to `--font-sans` in `globals.css`. Only those two weights ship, so don't reach for others. Single font family, no display/text split. Versatile and readable at all sizes.
 
 Custom sizes available: `text-8.5xl` (6.5rem), `text-9.5xl` (10rem) for hero headings.
 
@@ -186,6 +206,8 @@ Primary uses `bg-primary text-primary-foreground`. Rounded with `corner-squircle
 - Glass effect: `bg-surface-dark backdrop-blur-md inset-shadow-border-glow shadow-lg`
 - Shape: `rounded-[140px] corner-squircle` — extreme pill
 - Always dark surface via `surface-lock-dark` class
+- Background alpha never drops below 0.75, so the light label keeps 4.5:1 over the cream page at the top and bottom of the page
+- The menu marks the current page with `aria-current` and a `primary-300` underline
 - Collapses/expands with spring animation
 
 ### Image Treatment
@@ -361,18 +383,20 @@ Quick reference for AI agents building components in this design system.
 
 ### Color Quick Reference
 
-| Need            | Class                           |
-| --------------- | ------------------------------- |
-| Primary action  | `bg-primary` / `text-primary`   |
-| Page background | `bg-background`                 |
-| Dark surface    | `bg-surface-dark`               |
-| Text on light   | `text-foreground`               |
-| Text on dark    | `text-surface-dark-foreground`  |
-| Muted text      | `text-muted-foreground`         |
-| Borders         | `border-border`                 |
-| Chart series    | `fill-chart-1` … `fill-chart-5` |
-| Focus ring      | `ring-ring`                     |
-| Text selection  | `neutral-200` background        |
+| Need            | Class                                              |
+| --------------- | -------------------------------------------------- |
+| Primary action  | `bg-primary` / `text-primary`                      |
+| Page background | `bg-background`                                    |
+| Dark surface    | `bg-surface-dark`                                  |
+| Text on light   | `text-foreground`                                  |
+| Text on dark    | `text-surface-dark-foreground`                     |
+| Muted text      | `text-muted-foreground`                            |
+| Title           | `text-foreground` / `text-surface-dark-foreground` |
+| Link text       | `text-primary-800 dark:text-primary-500`           |
+| Borders         | `border-border`                                    |
+| Chart series    | `fill-chart-1` … `fill-chart-5`                    |
+| Focus ring      | `ring-ring`                                        |
+| Text selection  | `neutral-200` background                           |
 
 ### Example Component Recipes
 

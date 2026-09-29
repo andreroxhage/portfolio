@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { about } from '@/app/data/home';
+import { galleryHref, previewGallery, workTypeLabel } from '@/app/data/preview';
+import { ListRow } from '@/app/components/ListRow';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import IsometricStack from '@/app/components/SVGgraphics/IsometricStack';
@@ -51,6 +53,28 @@ export default function AtWorkSection() {
             {about[0].description}
           </motion.p>
 
+          {/* Below lg the hover grid is hidden, so phones and tablets get
+              the same preview items as a list, right under the intro. */}
+          <motion.ul
+            className="lg:hidden list-none mt-6"
+            variants={makeVariant(2)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {previewGallery.map(item => (
+              <li key={item.type === 'project' ? item.projectSlug : item.id}>
+                <ListRow
+                  title={item.title}
+                  description={item.subtitle}
+                  meta={`${item.date} · ${workTypeLabel[item.type]}`}
+                  href={galleryHref(item)}
+                  className="my-1"
+                />
+              </li>
+            ))}
+          </motion.ul>
+
           <motion.div
             variants={makeVariant(2)}
             initial="hidden"
@@ -59,7 +83,7 @@ export default function AtWorkSection() {
           >
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 group mt-4 cursor-pointer text-primary-700 hover:text-primary-500 transition-colors duration-200"
+              className="inline-flex min-h-11 items-center gap-2 group mt-4 cursor-pointer text-primary-800 hover:text-primary-900 dark:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
             >
               <span className="text-lg md:text-xl font-normal group-hover:underline underline-offset-4 decoration-primary-300">
                 See my work

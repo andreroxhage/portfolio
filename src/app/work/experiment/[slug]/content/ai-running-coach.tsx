@@ -27,7 +27,7 @@ import {
 } from '@/components/experiment/Prose';
 
 // Same kit as the meal-planning flow. No step here waits for me, so every
-// node keeps the agent tone and nothing is green.
+// node keeps the agent tone and nothing uses the `you` tone.
 function RunningPipelineDiagram() {
   return (
     <DiagramFrame

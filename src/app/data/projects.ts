@@ -17,7 +17,9 @@ export const projectRegistry: ProjectMeta[] = [
     tags: ['Design Engineering', 'SaaS'],
     order: 0,
     type: 'project',
-    titleColor: 'oklch(0.387 0.063 187.2)',
+    // Dark-mode title: the light value (0.387) was about 2:1 on the dark
+    // surface, so it is lifted to 0.7 at the same hue and chroma
+    titleColor: 'oklch(0.7 0.063 187.2)',
     titleColorLight: 'oklch(0.387 0.063 187.2)',
   },
   {

@@ -55,13 +55,23 @@ export const ThemeProvider: React.FC<{
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme') as Theme | null;
-    const initial: ResolvedTheme =
-      stored === 'light' || stored === 'dark' ? stored : 'light';
+    // An explicit choice wins. With nothing stored, follow the OS, which is
+    // what the inline script in layout.tsx already applied before paint, so
+    // this matches it and never flashes.
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {
+      /* storage blocked: fall through to the system preference */
+    }
+    const initialTheme: Theme =
+      stored === 'light' || stored === 'dark' ? stored : 'system';
+    const resolved: ResolvedTheme =
+      initialTheme === 'system' ? getSystemTheme() : initialTheme;
 
-    setThemeState(initial);
-    setResolvedTheme(initial);
-    applyTheme(initial, false);
+    setThemeState(initialTheme);
+    setResolvedTheme(resolved);
+    applyTheme(resolved, false);
     setMounted(true);
   }, []);
 
@@ -87,10 +97,14 @@ export const ThemeProvider: React.FC<{
     setResolvedTheme(resolved);
     applyTheme(resolved, true);
 
-    if (newTheme === 'system') {
-      localStorage.removeItem('theme');
-    } else {
-      localStorage.setItem('theme', newTheme);
+    try {
+      if (newTheme === 'system') {
+        localStorage.removeItem('theme');
+      } else {
+        localStorage.setItem('theme', newTheme);
+      }
+    } catch {
+      /* storage blocked: the choice lasts for this page view only */
     }
   }, []);
 

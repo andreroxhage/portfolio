@@ -14,9 +14,9 @@ export default function JoinCXContent() {
       {/* Section 1 — summary + key outcomes */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h2 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
-          </h4>
+          </h2>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             I worked at Join for several years, moving from leading an initial
             platform redesign to eventually designing and implementing a series
@@ -57,9 +57,9 @@ export default function JoinCXContent() {
         </WideSection>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h2 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Key outcomes
-          </h4>
+          </h2>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
@@ -92,9 +92,9 @@ export default function JoinCXContent() {
         <SectionHeading>The challenge</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Understanding the data complexity
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Marketers deal with an overwhelming amount of fragmented
             transactional and behavioral data. In the older version of the
@@ -132,9 +132,9 @@ export default function JoinCXContent() {
         <SectionHeading>Interactive workflows</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Visualizing the business
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             To give marketers a clearer overview of their business, I redesigned
             the customer profiles for better data visualization. I also
@@ -147,9 +147,9 @@ export default function JoinCXContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Simplifying campaign setups
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             The Segment Builder was just the beginning. I focused on
             transforming reward rules and point systems into visual workflows.
@@ -184,9 +184,9 @@ export default function JoinCXContent() {
         <SectionHeading>The Solution &amp; Engineering</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Bridging Design and Code
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             As a Design Engineer, I never just handed off Figma links. I
             partnered directly with the engineering team to construct a modular
@@ -203,9 +203,9 @@ export default function JoinCXContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Real business impact
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Redesigning the Join platform went far beyond satisfying design
             standards. It directly drove user adoption and helped us win major

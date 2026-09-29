@@ -15,7 +15,7 @@ A diagram earns its place when it shows a cold reader something they would other
 | `DiagramGroup`     | A dashed boundary around steps that share a trait ("runs on its own")                             |
 | `DiagramFanOut`    | One step splitting into parallel lanes                                                            |
 
-Tones carry the only meaning colour has here: `you` (green) is a human decision, and `agent` (warm neutral) is work that runs on its own. Don't add a third tone for decoration. If a new kind of actor really needs one, add it to `diagramTone` and document it.
+Tones carry the only meaning colour has here: `you` is a human decision, and `agent` is work that runs on its own. `you` is a solid `foreground` fill with `background` text (`border-foreground bg-foreground text-background`), so it inverts with the theme: charcoal on cream in light mode, near-white on near-black in dark. `agent` stays a quiet warm-neutral card. Neither tone is green, because green is reserved for things you can click (DESIGN.md → Color Rules). When a caption names the tones, describe the fill ("Solid is me"), not a hue, since the hue flips with the theme. Don't add a third tone for decoration. If a new kind of actor really needs one, add it to `diagramTone` and document it.
 
 ## What to draw
 
@@ -29,7 +29,7 @@ Tones carry the only meaning colour has here: `you` (green) is a human decision,
 For something the primitives can't express (a cycle, a two-column architecture):
 
 - Inline `<svg>` with `viewBox` sized to the content, `className="w-full h-auto"`, wrapped in a `<figure>` with a `<figcaption>` stating the claim, and `role="img"` + `aria-label` on the svg.
-- Strokes and text in `currentColor`, inheriting `text-surface-dark-muted` or `text-foreground`. The one element the argument is about may wear `chart-1` or the `you` tone.
+- Strokes and text in `currentColor`, inheriting `text-surface-dark-muted` or `text-foreground`. The one element the argument is about may wear the `you` tone. Not `chart-1` or any `primary-*` green: in a diagram that would read as clickable.
 - Arrowheads as a `<marker>` or a small `<polygon>`. Line weight 1.5px, like the kit's connectors.
 - Text 11–13px at the drawn scale, a word or three per label; sentences go in the caption.
 - Align to a grid with even gaps. No `<script>`, `<style>` or `<foreignObject>` inside the SVG.

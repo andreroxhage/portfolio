@@ -7,6 +7,8 @@ import WorkBreadcrumb from '@/app/components/WorkBreadcrumb';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 
+const TITLE_FALLBACK = 'oklch(var(--surface-dark-foreground))';
+
 interface ProjectHeaderProps {
   project: ProjectMeta;
 }
@@ -32,11 +34,18 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
         tags={project.tags}
       />
 
+      {/* Per-project brand colour (DESIGN.md's one allowed inline colour).
+          Both theme values are set as custom properties and the .dark class
+          picks one in CSS, so the server render is already right in either
+          theme. Without a brand colour the title falls back to the neutral
+          title token. */}
       <motion.h1
-        className="text-2xl md:text-3xl font-medium tracking-tight leading-tight"
+        className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-(color:--project-title) dark:text-(color:--project-title-dark)"
         style={
           {
-            color: project.titleColor || 'oklch(0.635 0.08 148)',
+            '--project-title':
+              project.titleColorLight ?? project.titleColor ?? TITLE_FALLBACK,
+            '--project-title-dark': project.titleColor ?? TITLE_FALLBACK,
             textWrap: 'balance',
           } as React.CSSProperties
         }

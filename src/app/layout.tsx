@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
+import { Roboto } from 'next/font/google';
 import './globals.css';
 import FloatingNav from './components/Navbar/FloatingNav';
 import ThemeToggle from './components/ThemeToggle';
@@ -41,6 +42,15 @@ export const viewport: Viewport = {
   ],
 };
 
+// DESIGN.md: Roboto 400 for body, 500 for headings and UI. Bound to
+// --font-sans in globals.css through this variable.
+const roboto = Roboto({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+});
+
 const FOIWT_SCRIPT = `(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(s!=='light'&&d))document.documentElement.classList.add('dark')}catch(e){}})()`;
 
 export default function RootLayout({
@@ -53,7 +63,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       style={{ scrollBehavior: 'smooth' }}
-      className="overflow-x-hidden w-full font-sans"
+      className={`${roboto.variable} overflow-x-hidden w-full font-sans`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: FOIWT_SCRIPT }} />

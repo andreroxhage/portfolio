@@ -15,7 +15,9 @@
    merged secondary-green into primary green scale. */
 @theme inline {
   /* Font family */
-  --font-sans: 'Sans', 'Sans Fallback', sans-serif;
+  /* Roboto is loaded by next/font in layout.tsx, which sets --font-roboto
+     (with its metric-matched fallback) on <html> */
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
 
   /* Custom font sizes */
   --font-size-8\.5xl: 6.5rem;
@@ -179,10 +181,10 @@
   --secondary: 0.955 0.007 85;
   --secondary-foreground: 0.34 0.01 90;
   --muted: 0.91 0.025 80;
-  --muted-foreground: 0.54 0.01 90;
+  --muted-foreground: 0.5 0.01 90;
   --accent: 0.855 0.085 144;
   --accent-foreground: 0.45 0.07 148;
-  --border: 1 0 0 / 0.12;
+  --border: 0.34 0.01 90 / 0.12;
   --input: 0.91 0.025 80;
   --ring: 0.72 0.11 148;
 
@@ -194,7 +196,7 @@
   --surface-dark-elevated: 0.955 0.025 85;
   --surface-dark-foreground: 0.34 0.01 90;
   --surface-dark-muted: 0.45 0.01 90;
-  --surface-footer: 0.19 0 0;
+  --surface-footer: 0.19 0.008 75;
 
   /* Chart categorical slots — fixed order, validated for CVD (DESIGN.md → Chart Palette) */
   --chart-1: 0.6 0.12 150; /* green */
@@ -207,28 +209,28 @@
 /* Dark mode — warm organic palette */
 .dark {
   --background: 0.115 0.008 70;
-  --foreground: 0.87 0 85;
-  --card: 0.2 0.02 148;
-  --card-foreground: 0.97 0 0;
+  --foreground: 0.87 0.006 85;
+  --card: 0.2 0.008 75;
+  --card-foreground: 0.97 0.005 85;
   --primary: 0.68 0.1 148;
-  --primary-foreground: 1 0 0;
+  --primary-foreground: 0.99 0.005 85;
   --secondary: 0.175 0.008 80;
   --secondary-foreground: 0.93 0.005 85;
   --muted: 0.165 0.01 70;
-  --muted-foreground: 0.85 0.012 80;
+  --muted-foreground: 0.7 0.01 80;
   --accent: 0.75 0.1 148;
   --accent-foreground: 0.7 0.09 148;
-  --border: 1 0 0 / 0.1;
-  --input: 0.25 0.015 70;
+  --border: 0.97 0.005 85 / 0.1;
+  --input: 0.25 0.01 70;
   --ring: 0.68 0.1 148;
 
   /* Portfolio surfaces (dark mode) */
-  --surface-dark: 0.165 0 0;
-  --surface-dark-card: 0.2 0 0;
-  --surface-dark-elevated: 0.25 0 0;
-  --surface-dark-foreground: 0.97 0 0;
-  --surface-dark-muted: 0.87 0 0;
-  --surface-footer: 0.145 0 0;
+  --surface-dark: 0.165 0.007 75;
+  --surface-dark-card: 0.2 0.008 75;
+  --surface-dark-elevated: 0.25 0.008 75;
+  --surface-dark-foreground: 0.97 0.005 85;
+  --surface-dark-muted: 0.87 0.006 85;
+  --surface-footer: 0.145 0.008 70;
 
   /* Chart slots stepped for the dark surface — same hues, same order */
   --chart-1: 0.67 0.11 150;
@@ -240,12 +242,14 @@
 
 /* Always-dark surface lock — nav, footer, header overlay */
 .surface-lock-dark {
-  --surface-dark: 0.145 0 0;
-  --surface-dark-card: 0.2 0 0;
-  --surface-dark-elevated: 0.25 0 0;
-  --surface-dark-foreground: 0.97 0 0;
-  --surface-dark-muted: 0.87 0 0;
-  --surface-footer: 0.19 0 0;
+  --surface-dark: 0.145 0.008 70;
+  --surface-dark-card: 0.2 0.008 75;
+  --surface-dark-elevated: 0.25 0.008 75;
+  --surface-dark-foreground: 0.97 0.005 85;
+  --surface-dark-muted: 0.87 0.006 85;
+  --surface-footer: 0.19 0.008 75;
+  /* Hairlines on a locked-dark surface stay light in both themes */
+  --border: 0.97 0.005 85 / 0.1;
 }
 
 /* Antialiased for normal weight — preserves medium/semibold distinction */

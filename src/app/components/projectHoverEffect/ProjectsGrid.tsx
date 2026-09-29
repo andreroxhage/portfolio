@@ -7,10 +7,8 @@ import React, {
   useCallback,
   useEffect,
 } from 'react';
-import { projects } from '@/app/data/projects';
-import { experiments } from '@/app/data/experiments';
+import { previewGallery } from '@/app/data/preview';
 import { GridItem, galleryItemToGridItem } from '@/app/types';
-import type { GalleryItem } from '@/app/types';
 import ProjectCardDesktop from '@/app/components/projectHoverEffect/ProjectCardDesktop';
 import { useVideo, prefetchVideo } from '@/app/hooks/useVideo';
 import { useQueryClient } from '@tanstack/react-query';
@@ -27,10 +25,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ items: itemsProp }) => {
     if (itemsProp) {
       return itemsProp;
     }
-    const gallery: GalleryItem[] = [...projects, ...experiments].filter(
-      item => item.showInPreview !== false
-    );
-    return gallery.map(galleryItemToGridItem).sort((a, b) => a.order - b.order);
+    return previewGallery.map(galleryItemToGridItem);
   }, [itemsProp]);
 
   const firstItem = allItems[0];
