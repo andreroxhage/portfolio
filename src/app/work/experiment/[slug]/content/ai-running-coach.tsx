@@ -2,160 +2,76 @@
 
 import React from 'react';
 import {
-  IconArrowRight,
-  IconArrowDown,
-  IconDatabase,
-  IconRun,
-  IconRobot,
   IconCalendarCheck,
   IconChecklist,
+  IconDatabase,
+  IconRobot,
+  IconRun,
 } from '@tabler/icons-react';
-import { cn } from '@/lib/utils';
 import {
   MiddleSection,
   WideSection,
-  SectionHeading,
   ProjectImage,
 } from '@/app/components/ProjectLayout';
+import {
+  DiagramConnector,
+  DiagramFrame,
+  DiagramGroup,
+  DiagramNode,
+} from '@/app/components/Diagram';
+import {
+  ExternalLink,
+  Lead,
+  P,
+  SectionHeading,
+} from '@/components/experiment/Prose';
 
-// A small pill used for attributes and readiness states
-function Pill({
-  children,
-  tone = 'muted',
-}: {
-  children: React.ReactNode;
-  tone?: 'muted' | 'accent';
-}) {
-  return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs whitespace-nowrap corner-squircle',
-        tone === 'accent'
-          ? 'bg-primary text-primary-foreground border-transparent'
-          : 'bg-surface-dark-elevated text-surface-dark-muted'
-      )}
-    >
-      {children}
-    </span>
-  );
-}
-
-// A titled card representing one step in the pipeline
-function StepCard({
-  icon: Icon,
-  title,
-  subtitle,
-}: {
-  icon: React.ComponentType<{
-    size?: number;
-    stroke?: number;
-    className?: string;
-  }>;
-  title: string;
-  subtitle: string;
-}) {
-  return (
-    <div className="w-full rounded-2xl corner-squircle border border-border bg-surface-dark-card px-4 py-3.5 shadow-sm">
-      <div className="flex items-center gap-2">
-        <Icon
-          size={16}
-          stroke={1.5}
-          className="text-surface-dark-muted shrink-0"
-        />
-        <p className="text-sm font-medium text-surface-dark-foreground">
-          {title}
-        </p>
-      </div>
-      <p className="text-xs text-surface-dark-muted mt-1">{subtitle}</p>
-    </div>
-  );
-}
-
-// A dashed-boundary zone box, one of the three stages of the pipeline.
-// Stacks vertically below md, sits side by side from md up.
-function Zone({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex-1 min-w-0 rounded-3xl corner-squircle border border-dashed border-border p-4 sm:p-5">
-      <p className="text-[11px] font-medium uppercase tracking-wide text-surface-dark-muted mb-3">
-        {label}
-      </p>
-      <div className="flex flex-col gap-3">{children}</div>
-    </div>
-  );
-}
-
-// Connector arrow: horizontal between zones from md up, vertical below it.
-function ZoneConnector() {
-  return (
-    <div className="flex items-center justify-center py-2 md:py-0 md:px-1">
-      <IconArrowDown
-        size={18}
-        stroke={1.5}
-        className="text-surface-dark-muted md:hidden"
-        aria-hidden="true"
-      />
-      <IconArrowRight
-        size={18}
-        stroke={1.5}
-        className="text-surface-dark-muted hidden md:block"
-        aria-hidden="true"
-      />
-    </div>
-  );
-}
-
+// Same kit as the meal-planning flow. No step here waits for me, so every
+// node keeps the agent tone and nothing is green.
 function RunningPipelineDiagram() {
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-3xl corner-squircle border border-border bg-surface-dark/40 p-5 sm:p-8">
-      <div className="flex flex-col md:flex-row items-stretch">
-        <Zone label="Data sources">
-          <StepCard
+    <DiagramFrame
+      label="The morning pipeline: data sources, the agent, and the output"
+      caption="runs on its own every morning, before I have had coffee"
+    >
+      <DiagramGroup label="Data sources">
+        <div className="flex w-full flex-col gap-3">
+          <DiagramNode
             icon={IconRun}
             title="Strava"
-            subtitle="latest activities, pulled via MCP"
+            detail="latest activities, pulled via MCP"
           />
-          <StepCard
+          <DiagramNode
             icon={IconDatabase}
             title="Deterministic ingest"
-            subtitle="append-only jsonl + rebuilt weekly rollups"
+            detail="append-only jsonl + rebuilt weekly rollups"
           />
-        </Zone>
-
-        <ZoneConnector />
-
-        <Zone label="Agent">
-          <StepCard
+        </div>
+      </DiagramGroup>
+      <DiagramConnector />
+      <DiagramGroup label="Agent">
+        <div className="flex w-full flex-col gap-3">
+          <DiagramNode
             icon={IconRobot}
             title="Coaching agent"
-            subtitle="reads training block, runner profile, last 7 days"
+            detail="reads training block, runner profile, last 7 days"
           />
-          <StepCard
+          <DiagramNode
             icon={IconCalendarCheck}
             title="Calendar check"
-            subtitle="finds a slot that actually fits"
+            detail="finds a slot that actually fits"
           />
-        </Zone>
-
-        <ZoneConnector />
-
-        <Zone label="Output">
-          <StepCard
-            icon={IconChecklist}
-            title="Todoist briefing"
-            subtitle="warm-up, main set, paces, HR targets"
-          />
-        </Zone>
-      </div>
-      <p className="text-[11px] text-surface-dark-muted text-center mt-5">
-        runs on its own every morning, before I have had coffee
-      </p>
-    </div>
+        </div>
+      </DiagramGroup>
+      <DiagramConnector />
+      <DiagramGroup label="Output">
+        <DiagramNode
+          icon={IconChecklist}
+          title="Todoist briefing"
+          detail="warm-up, main set, paces, HR targets"
+        />
+      </DiagramGroup>
+    </DiagramFrame>
   );
 }
 
@@ -163,26 +79,26 @@ export default function AiRunningCoachContent() {
   return (
     <>
       {/* Hook */}
-      <MiddleSection className="mb-20 space-y-6">
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+      <MiddleSection className="mb-20 space-y-4">
+        <Lead>
           I am training for a marathon in Stockholm in 2027, and coaching apps
           kept giving me the same generic plan regardless of what my body or
           calendar was doing. What I actually wanted was a coach that reads my
           recent training, respects my schedule, and adjusts when life happens.
           So I built one: a coaching system where AI agents work on top of my
           real training data.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </Lead>
+        <P>
           The core is unglamorous and that is the point: structured markdown
           training plans, a runner profile as the single source of truth, and an
           append-only log of every session pulled from Strava.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* The pipeline */}
-      <MiddleSection className="mb-12 space-y-6">
+      <MiddleSection className="mb-10 space-y-4">
         <SectionHeading>The morning pipeline</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           Every morning, without me touching anything, a scheduled agent ingests
           my latest Strava activities through MCP. A deterministic Python script
           updates the training log and rebuilds weekly rollups. The agent then
@@ -191,18 +107,18 @@ export default function AiRunningCoachContent() {
           fits, and assesses readiness, based on days since the last quality
           session, heart rate suppression, and how far the week has drifted from
           plan.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </P>
+        <P>
           Green executes the session as prescribed. Amber runs it with softer
           pace guardrails. Red swaps in an easy day and moves the quality
           session to the next opening. Whatever the verdict, the day&apos;s full
           workout, warm-up, main set, paces, heart rate targets, lands in
           Todoist as a task before I have had coffee.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* Diagram */}
-      <WideSection className="mb-20">
+      <WideSection className="mb-12">
         <RunningPipelineDiagram />
       </WideSection>
 
@@ -218,9 +134,9 @@ export default function AiRunningCoachContent() {
       </WideSection>
 
       {/* What the data layer actually buys me */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>What the data layer buys me</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           The rollups are what make this feel like more than a Strava widget.
           Every week and month gets a deterministic table, built by a script
           rather than the agent, with session counts, distance, time, the
@@ -233,8 +149,8 @@ export default function AiRunningCoachContent() {
           an append-only log, one row per session, plus a raw snapshot archived
           on every fetch, so the history I audit later is the same history I
           coached against that morning.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </P>
+        <P>
           On an actual morning, the readiness light is what changes my day. Say
           the block calls for a threshold session but I logged a hard interval
           yesterday and my resting heart rate is suppressed by eight beats this
@@ -246,13 +162,13 @@ export default function AiRunningCoachContent() {
           quality session for the next opening. The dashboard adds what none of
           this gives me on its own: a glanceable week-versus-plan view, a
           session log, and the same weekly analyses the agent writes.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* Keeping the AI honest */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>Keeping an AI coach honest</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           The most interesting design work was not the coaching, it was the
           guardrails. The training data is layered so the agent always reaches
           for the safest version first. It reads the deterministic weekly
@@ -262,19 +178,19 @@ export default function AiRunningCoachContent() {
           heart rate zones, thresholds, goals, live in one profile file it may
           reference but never restate. Determinism where numbers matter, LLM
           judgment where interpretation matters.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </P>
+        <P>
           There is an interactive layer too: a briefing skill for today&apos;s
           workout, a race-coach skill for pacing and tapering, and weekly
           reviews that follow a fixed template, always data, then analysis, then
           recommendation, then the physiological why.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* Making it autonomous */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>Making it run itself</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           The last piece was getting the whole thing to run without me. The jobs
           are scheduled Claude tasks on my Mac that fetch from Strava, rebuild
           the rollups, and commit straight to the repo, since git is the
@@ -285,14 +201,14 @@ export default function AiRunningCoachContent() {
           inside the git directory where it can never be committed, points the
           remote at plain HTTPS, and installs a repo-local credential helper
           that hands git the token on every push.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </P>
+        <P>
           The nice part is that the same setup works whether the agent runs
           locally on my Mac or in a throwaway sandbox, so I can hand a task to
           an unattended session and trust that its commit actually lands.
           Rotating the token is just re-running the script, and revoking it on
           GitHub cuts access instantly.
-        </p>
+        </P>
       </MiddleSection>
 
       {/* Second visual */}
@@ -306,28 +222,23 @@ export default function AiRunningCoachContent() {
       </WideSection>
 
       {/* Closer */}
-      <MiddleSection className="mb-20 space-y-6">
+      <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>What I learned</SectionHeading>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        <P>
           Building an agent around data you personally care about is a fantastic
           forcing function. It is not a revolutionary system, honestly it is a
           Python ingest script and some markdown with an agent reading it, but
           it is one I get to redesign every time it lets me down, and that is
           genuinely satisfying to work on morning after morning.
-        </p>
-        <p className="text-base text-muted-foreground leading-relaxed mb-3">
+        </P>
+        <P>
           At the end of it all, the point stays small and concrete: one Todoist
           task and a notification waiting for me each morning, tailored to that
           exact day, and quietly reshaping itself as my training evolves.
-        </p>
-        <a
-          href="https://stride.andreroxhage.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary-500 hover:underline text-sm"
-        >
-          Sneak peek at Stride &rarr;
-        </a>
+        </P>
+        <ExternalLink href="https://stride.andreroxhage.com">
+          Sneak peek at Stride
+        </ExternalLink>
       </MiddleSection>
     </>
   );
