@@ -4,11 +4,10 @@ import { cn } from '@/lib/utils';
 import { SectionHeading as BaseSectionHeading } from '@/app/components/ProjectLayout';
 
 // Text primitives for the short-form experiment pages only. They keep one
-// reading rhythm across all seven pages: body at text-base on mobile and
-// text-lg from md (DESIGN.md hierarchy), 16px between paragraphs, headings
-// tied closer to their text than to the block above.
+// reading rhythm across all seven pages: body at text-base, 16px between
+// paragraphs, headings tied closer to their text than to the block above.
 
-const body = 'text-base md:text-lg leading-relaxed';
+const body = 'text-base leading-relaxed';
 
 // Opening paragraph of a page. Same size as body, lifted by colour alone.
 export function Lead({ children }: { children: React.ReactNode }) {
@@ -19,18 +18,14 @@ export function P({ children }: { children: React.ReactNode }) {
   return <p className={cn(body, 'text-muted-foreground')}>{children}</p>;
 }
 
-// With body at text-lg from md, the shared h2 (text-xl) sits too close to
-// body size. Experiment pages step it up one notch: h2 24px, h3 20px, body 18px.
 export function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <BaseSectionHeading className="md:text-2xl">{children}</BaseSectionHeading>
-  );
+  return <BaseSectionHeading>{children}</BaseSectionHeading>;
 }
 
 // Sub-heading inside a section (h3 under SectionHeading's h2)
 export function SubHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="mb-2 text-lg md:text-xl font-medium tracking-tight text-surface-dark-foreground">
+    <h3 className="mb-2 text-lg font-medium tracking-tight text-surface-dark-foreground">
       {children}
     </h3>
   );
@@ -101,7 +96,7 @@ export function ExternalLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex min-h-11 items-center gap-1 rounded-[8px] corner-squircle text-sm font-medium text-primary-800 underline-offset-4 transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:text-primary-500"
+      className="inline-flex min-h-11 items-center gap-1 rounded-[8px] corner-squircle text-sm text-primary-800 underline-offset-4 transition-colors duration-200 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:text-primary-500"
     >
       {children}
       <IconArrowUpRight size={16} stroke={1.5} aria-hidden="true" />
