@@ -2,8 +2,10 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 
 // Shared vocabulary for the hand-drawn flow diagrams on experiment pages.
-// Two tones carry the meaning: `you` marks a human decision (green), `agent`
-// marks work that runs on its own (warm neutral). Everything is static, so
+// Two tones carry the meaning: `you` marks a human decision (a solid fill in
+// the foreground colour, so it inverts with the theme), `agent` marks work
+// that runs on its own (a quiet warm-neutral card). Green is reserved for
+// things you can click, so neither tone uses it. Everything is static, so
 // there is no motion to gate behind reduced-motion.
 
 type Tone = 'agent' | 'you';
@@ -16,7 +18,7 @@ type TablerIcon = React.ComponentType<{
 
 export const diagramTone: Record<Tone, string> = {
   agent: 'border-foreground/10 bg-surface-dark-card text-surface-dark-muted',
-  you: 'border-primary-200 bg-primary-100 text-primary-900 dark:border-primary-900 dark:bg-primary-950 dark:text-primary-200',
+  you: 'border-foreground bg-foreground text-background',
 };
 
 // The surface every diagram sits on

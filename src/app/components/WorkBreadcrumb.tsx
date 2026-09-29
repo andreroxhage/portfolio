@@ -32,7 +32,7 @@ export default function WorkBreadcrumb({
         <li>
           <Link
             href="/work"
-            className="group flex items-center gap-1.5 text-surface-dark-muted/70 hover:text-accent transition-colors duration-200"
+            className="group -my-3 flex min-h-11 items-center gap-1.5 text-muted-foreground hover:text-primary-800 dark:hover:text-primary-400 transition-colors duration-200"
           >
             <IconArrowLeft
               size={15}
@@ -62,7 +62,7 @@ export default function WorkBreadcrumb({
         </li>
       </ol>
       {(year || (tags && tags.length > 0)) && (
-        <div className="flex shrink-0 items-center gap-2 text-surface-dark-muted/70">
+        <div className="flex shrink-0 items-center gap-2 text-muted-foreground">
           {tags?.slice(0, 2).map((tag, i) => (
             <React.Fragment key={tag}>
               {i > 0 && (

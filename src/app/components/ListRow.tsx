@@ -14,7 +14,7 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
     <Link
       href={href}
       className={cn(
-        'group block -mx-3 my-4 px-3 py-3',
+        'group block -mx-3 my-4 px-3 py-3 min-h-11',
         'rounded-[12px] corner-squircle',
         'transition-colors duration-200 ease-out',
         'hover:bg-secondary active:bg-muted',
@@ -24,8 +24,8 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
     >
       <div className="flex items-center justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-base text-foreground/90 tracking-wide">{title}</p>
-          <p className="text-base font-normal text-muted-foreground/90 mt-1 tracking-wide">
+          <p className="text-base text-foreground tracking-wide">{title}</p>
+          <p className="text-base font-normal text-muted-foreground mt-1 tracking-wide">
             {description}
           </p>
         </div>
@@ -33,7 +33,7 @@ export function ListRow({ title, description, href, className }: ListRowProps) {
           size={16}
           stroke={1.5}
           aria-hidden
-          className="shrink-0 text-muted-foreground/35 transition-colors duration-200 ease-out group-hover:text-muted-foreground/80 group-focus-visible:text-muted-foreground/80"
+          className="shrink-0 text-muted-foreground/35 transition-colors duration-200 ease-out group-hover:text-muted-foreground group-focus-visible:text-muted-foreground"
         />
       </div>
     </Link>

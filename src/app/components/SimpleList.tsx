@@ -4,6 +4,9 @@ import { writingRegistry } from '@/app/data/writing';
 import { ListRow } from '@/app/components/ListRow';
 import Link from 'next/link';
 
+const sectionHeading =
+  'text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4';
+
 export function SimpleList() {
   const projects = [...projectRegistry].sort((a, b) => a.order - b.order);
   const experiments = [...experimentRegistry].sort((a, b) => a.order - b.order);
@@ -11,27 +14,27 @@ export function SimpleList() {
 
   return (
     <div className="max-w-2.5xl mx-auto px-4 py-24">
-      {/* Profile header */}
+      {/* Profile header. The name is the page's h1 */}
       <div className="mb-12 md:mb-24">
         <div>
-          <Link
-            href="/"
-            className="text-base font-medium text-foreground leading-snug"
-          >
-            André Roxhage
-          </Link>
-          <p className="text-base text-muted-foreground/90 leading-snug">
+          <h1 className="text-base font-medium text-foreground leading-snug">
+            <Link href="/">André Roxhage</Link>
+          </h1>
+          <p className="text-base text-muted-foreground leading-snug">
             Design Engineer
           </p>
         </div>
       </div>
 
       {/* About */}
-      <section className="md:mt-12 mt-8">
-        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-4 md:mb-6">
+      <section className="md:mt-12 mt-8" aria-labelledby="work-today">
+        <h2
+          id="work-today"
+          className="text-base leading-tight tracking-wide font-medium text-foreground mb-4 md:mb-6"
+        >
           Today
-        </p>
-        <p className="text-base text-muted-foreground/90 leading-relaxed tracking-wide text-balance">
+        </h2>
+        <p className="text-base text-muted-foreground leading-relaxed tracking-wide text-balance">
           I&apos;m a design engineer at Netlight, blending software development
           with design. <br />I care about how products feel and impact us, and
           enjoy making complex things feel simple.
@@ -39,10 +42,10 @@ export function SimpleList() {
       </section>
 
       {/* Projects */}
-      <section className="md:mt-24 mt-16">
-        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
+      <section className="md:mt-24 mt-16" aria-labelledby="work-projects">
+        <h2 id="work-projects" className={sectionHeading}>
           Projects
-        </p>
+        </h2>
         <ul className="list-none">
           {projects.map(p => (
             <li key={p.projectSlug}>
@@ -58,10 +61,10 @@ export function SimpleList() {
 
       {/* Writing — only rendered when registry has entries */}
       {writing.length > 0 && (
-        <section className="md:mt-24 mt-16">
-          <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
+        <section className="md:mt-24 mt-16" aria-labelledby="work-writing">
+          <h2 id="work-writing" className={sectionHeading}>
             Writing
-          </p>
+          </h2>
           <ul className="list-none">
             {writing.map(w => (
               <li key={w.writingSlug}>
@@ -77,10 +80,10 @@ export function SimpleList() {
       )}
 
       {/* Experiments */}
-      <section className="md:mt-24 mt-16">
-        <p className="text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4">
+      <section className="md:mt-24 mt-16" aria-labelledby="work-experiments">
+        <h2 id="work-experiments" className={sectionHeading}>
           Experiments
-        </p>
+        </h2>
         <ul className="list-none">
           {experiments.map(e => (
             <li key={e.id}>

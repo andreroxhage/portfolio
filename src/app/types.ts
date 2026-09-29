@@ -17,8 +17,10 @@ export interface ProjectMeta {
   tags?: string[];
   order: number;
   type: 'project';
+  /** Title colour in dark mode (and the fallback for light mode) */
   titleColor?: string;
   subtitleColor?: string;
+  /** Title colour in light mode. Each must reach 3:1 on its theme's surface */
   titleColorLight?: string;
   subtitleColorLight?: string;
 }

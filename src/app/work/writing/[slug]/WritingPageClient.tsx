@@ -32,7 +32,7 @@ export default function WritingPageClient({ slug }: { slug: string }) {
           tags={writing.tags}
         />
         <motion.h1
-          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-primary-700"
+          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground"
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{

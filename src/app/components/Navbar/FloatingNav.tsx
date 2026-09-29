@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   motion,
   AnimatePresence,
@@ -32,6 +33,18 @@ const FloatingNav = () => {
   const [contentHeight, setContentHeight] = useState(0);
   const { isProjectHovered } = useProjectHover();
   const { resolvedTheme, mounted, setTheme } = useTheme();
+  const pathname = usePathname();
+
+  // '/' is only current on the home page; '/work' also covers its detail pages
+  const currentState = (href: string): 'page' | 'true' | undefined => {
+    if (!pathname) {
+      return undefined;
+    }
+    if (pathname === href) {
+      return 'page';
+    }
+    return href !== '/' && pathname.startsWith(`${href}/`) ? 'true' : undefined;
+  };
 
   const toggleTheme = () => {
     triggerHaptic();
@@ -42,7 +55,9 @@ const FloatingNav = () => {
   const scrollBasedOpacity = useTransform(
     scrollYProgress,
     [0, 0.05, 0.95, 1], // At very top (0-5%) and very bottom (95-100%)
-    [0.3, 0.9, 0.9, 0.3]
+    // Floor of 0.75 keeps the light label at 4.5:1 or better over the cream
+    // page in light mode (0.3 measured 2.0:1)
+    [0.75, 0.9, 0.9, 0.75]
   );
 
   const navOpacity = useTransform(scrollBasedOpacity, opacity =>
@@ -338,7 +353,7 @@ const FloatingNav = () => {
                 <motion.button
                   key="theme-toggle"
                   type="button"
-                  className="md:hidden absolute left-4 inset-y-0 bg-transparent flex items-center justify-center cursor-pointer min-w-11 text-surface-dark-foreground hover:text-accent"
+                  className="md:hidden absolute left-4 inset-y-0 bg-transparent flex items-center justify-center cursor-pointer min-w-11 text-surface-dark-foreground hover:text-primary-300"
                   initial={
                     prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                   }
@@ -426,7 +441,7 @@ const FloatingNav = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6 text-surface-dark-foreground hover:text-accent"
+                    className="w-6 h-6 text-surface-dark-foreground hover:text-primary-300"
                     initial={false}
                   >
                     <path
@@ -446,7 +461,7 @@ const FloatingNav = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-surface-dark-foreground hover:text-accent transform rotate-180"
+                    className="text-surface-dark-foreground hover:text-primary-300 transform rotate-180"
                   >
                     <path d="M12 19V5M5 12l7-7 7 7" />
                   </svg>
@@ -461,7 +476,7 @@ const FloatingNav = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-surface-dark-foreground hover:text-accent"
+                    className="text-surface-dark-foreground hover:text-primary-300"
                   >
                     <path d="M12 19V5M5 12l7-7 7 7" />
                   </svg>
@@ -486,7 +501,7 @@ const FloatingNav = () => {
                 {!isExpanded ? (
                   <motion.span
                     key="find-label"
-                    className="flex items-center text-surface-dark-foreground hover:text-accent"
+                    className="flex items-center text-surface-dark-foreground hover:text-primary-300"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }
@@ -522,7 +537,7 @@ const FloatingNav = () => {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="text-surface-dark-foreground hover:text-accent size-5"
+                    className="text-surface-dark-foreground hover:text-primary-300 size-5"
                     initial={
                       prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }
                     }
@@ -557,15 +572,21 @@ const FloatingNav = () => {
           >
             {/* Main navigation links */}
             <div className="mb-6">
-              <h3 className="text-muted-foreground text-sm mb-4">Navigation</h3>
+              <p className="text-surface-dark-muted text-sm mb-4">Navigation</p>
               {links.map((link, i) => {
                 const isInternal = link.href.startsWith('/');
                 const LinkComponent = isInternal ? MotionLink : motion.a;
+                const current = isInternal
+                  ? currentState(link.href)
+                  : undefined;
                 return (
                   <LinkComponent
                     key={`main_${i}`}
                     href={link.href}
-                    className={`block mb-4 text-surface-dark-foreground text-lg hover:text-accent transition-colors duration-200`}
+                    aria-current={current}
+                    className={`block mb-4 text-surface-dark-foreground text-lg hover:text-primary-300 transition-colors duration-200 ${
+                      current ? 'font-medium' : ''
+                    }`}
                     variants={navItemVariants}
                     custom={i}
                     initial="hidden"
@@ -596,12 +617,12 @@ const FloatingNav = () => {
 
             {/* Footer links */}
             <div>
-              <h3 className="text-muted-foreground text-sm mb-4">Contact</h3>
+              <p className="text-surface-dark-muted text-sm mb-4">Contact</p>
               {footerLinks.map((link, i) => (
                 <motion.a
                   key={`footer_${i}`}
                   href={link.href}
-                  className={`block mb-3 text-surface-dark-foreground text-base hover:text-accent transition-colors duration-200`}
+                  className={`block mb-3 text-surface-dark-foreground text-base hover:text-primary-300 transition-colors duration-200`}
                   variants={contactItemVariants}
                   custom={i}
                   initial="hidden"

@@ -34,7 +34,7 @@ function MealPlanningDiagram() {
   return (
     <DiagramFrame
       label="The five-phase meal-planning workflow"
-      caption="Green is me. Everything else runs as agents."
+      caption="Solid is me. Everything else runs as agents."
     >
       <div className="flex flex-col items-center">
         <DiagramChip tone="you" icon={IconMessageCircle}>

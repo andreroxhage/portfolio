@@ -14,9 +14,9 @@ export default function AIInterrogationContent() {
       {/* Section 1 — Summary + Key Outcomes */}
       <MiddleSection className="mb-20 space-y-6">
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h2 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Summary
-          </h4>
+          </h2>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             My design work for the FENRIR system was a consulting assignment for
             Damalytics. We tackled a massive operational bottleneck for an
@@ -40,9 +40,9 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h2 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Key outcomes
-          </h4>
+          </h2>
           <ol className="list-decimal pl-5 space-y-2">
             <li className="text-base text-muted-foreground">
               <span className="font-medium text-surface-dark-foreground">
@@ -95,9 +95,9 @@ export default function AIInterrogationContent() {
         <SectionHeading>The challenge</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             The multitasking bottleneck
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Intelligence interrogators have to conduct interviews, interpret
             nuances, and draft structured reports all at once. This cognitive
@@ -142,9 +142,9 @@ export default function AIInterrogationContent() {
         <SectionHeading>The solution &amp; design process</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Frictional design
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             We solved the automation bias problem by rooting the system
             architecture in frictional design. FENRIR acts as a socio-cognitive
@@ -157,9 +157,9 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Progressive intelligence workspace
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             We structured the UI around a modular three-panel layout. It
             combines a structured findings dashboard, the raw transcript with
@@ -170,9 +170,9 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Architecting the AI pipeline
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Because cloud processing was out of the question, we built a local
             Retrieval-Augmented Generation (RAG) pipeline that processes
@@ -186,9 +186,9 @@ export default function AIInterrogationContent() {
         </div>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             End-to-end traceability
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             Every generated claim, summary, and assessment links directly to the
             exact source line in the transcript. We built a contextual chat and
@@ -205,9 +205,9 @@ export default function AIInterrogationContent() {
         <SectionHeading>Impact &amp; value</SectionHeading>
 
         <div>
-          <h4 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
+          <h3 className="text-lg font-medium tracking-tight text-surface-dark-foreground mb-2">
             Transforming the analyst&apos;s workflow
-          </h4>
+          </h3>
           <p className="text-base text-muted-foreground leading-relaxed mb-3">
             FENRIR handles the mechanical heavy lifting of reading transcripts,
             finding key names, and rebuilding timelines. This compresses the
