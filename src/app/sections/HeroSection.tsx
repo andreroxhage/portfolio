@@ -46,9 +46,8 @@ export function HeroSection() {
     },
   };
 
-  // The name leads, the tagline supports it one stagger step later
-  const nameVariants = makeVariants(0);
-  const taglineVariants = makeVariants(stagger);
+  const taglineVariants = makeVariants(0);
+  const nameVariants = makeVariants(stagger);
   const photoVariantsMobile = {
     hidden: { opacity: 0 },
     visible: {
@@ -91,47 +90,45 @@ export function HeroSection() {
 
           <div className="text-center">
             <motion.h1
-              className="text-6xl font-medium tracking-tighter leading-[1.125] text-foreground"
+              className="text-2xl font-medium tracking-tight leading-tight text-foreground"
               style={{ textWrap: 'balance' } as React.CSSProperties}
               variants={makeVariants(stagger)}
               initial="hidden"
               animate={animate}
             >
-              {header.title}
+              {header.currently}
             </motion.h1>
             <motion.p
-              className="text-lg font-normal leading-snug text-muted-foreground mt-4"
-              style={{ textWrap: 'balance' } as React.CSSProperties}
+              className="text-base tracking-widest text-muted-foreground font-normal mt-4"
               variants={makeVariants(stagger * 2)}
               initial="hidden"
               animate={animate}
             >
-              {header.currently}
+              André Roxhage
             </motion.p>
           </div>
         </div>
 
         {/* Desktop layout: 10-column grid */}
         <div className="hidden md:grid grid-cols-10 gap-8 items-center">
-          {/* Left column: name then tagline, individually staggered */}
+          {/* Left column: tagline then name, individually staggered */}
           <div className="col-span-5 flex flex-col justify-center">
             <motion.h1
-              className="text-6xl lg:text-8xl font-medium tracking-tighter leading-[1.125] text-foreground"
-              style={{ textWrap: 'balance' } as React.CSSProperties}
-              variants={nameVariants}
-              initial="hidden"
-              animate={animate}
-            >
-              {header.title}
-            </motion.h1>
-            <motion.p
-              className="text-xl lg:text-2xl font-normal tracking-tight leading-snug text-muted-foreground mt-6"
+              className="text-4xl font-medium tracking-tight leading-tight text-foreground"
               style={{ textWrap: 'balance' } as React.CSSProperties}
               variants={taglineVariants}
               initial="hidden"
               animate={animate}
             >
               {header.currently}
+            </motion.h1>
+            <motion.p
+              className="text-lg tracking-widest text-muted-foreground font-normal mt-4"
+              variants={nameVariants}
+              initial="hidden"
+              animate={animate}
+            >
+              André Roxhage
             </motion.p>
           </div>
 

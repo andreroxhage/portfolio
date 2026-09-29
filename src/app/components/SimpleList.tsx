@@ -1,16 +1,11 @@
 import { projectRegistry } from '@/app/data/projects';
 import { experimentRegistry } from '@/app/data/experiments';
 import { writingRegistry } from '@/app/data/writing';
-import { workTypeLabel } from '@/app/data/preview';
 import { ListRow } from '@/app/components/ListRow';
 import Link from 'next/link';
 
 const sectionHeading =
-  'text-base leading-tight font-medium text-foreground mb-2 md:mb-4';
-
-function meta(date: string, type: keyof typeof workTypeLabel) {
-  return `${date} · ${workTypeLabel[type]}`;
-}
+  'text-base leading-tight tracking-wide font-medium text-foreground mb-2 md:mb-4';
 
 export function SimpleList() {
   const projects = [...projectRegistry].sort((a, b) => a.order - b.order);
@@ -19,8 +14,7 @@ export function SimpleList() {
 
   return (
     <div className="max-w-2.5xl mx-auto px-4 py-24">
-      {/* Profile header. The name is the page's h1, at the same size as
-          before, so the page keeps its quiet list look. */}
+      {/* Profile header. The name is the page's h1 */}
       <div className="mb-12 md:mb-24">
         <div>
           <h1 className="text-base font-medium text-foreground leading-snug">
@@ -36,11 +30,11 @@ export function SimpleList() {
       <section className="md:mt-12 mt-8" aria-labelledby="work-today">
         <h2
           id="work-today"
-          className="text-base leading-tight font-medium text-foreground mb-4 md:mb-6"
+          className="text-base leading-tight tracking-wide font-medium text-foreground mb-4 md:mb-6"
         >
           Today
         </h2>
-        <p className="text-base text-muted-foreground leading-relaxed text-balance">
+        <p className="text-base text-muted-foreground leading-relaxed tracking-wide text-balance">
           I&apos;m a design engineer at Netlight, blending software development
           with design. <br />I care about how products feel and impact us, and
           enjoy making complex things feel simple.
@@ -58,7 +52,6 @@ export function SimpleList() {
               <ListRow
                 title={p.title}
                 description={p.subtitle}
-                meta={meta(p.date, p.type)}
                 href={`/work/project/${p.projectSlug}`}
               />
             </li>
@@ -78,7 +71,6 @@ export function SimpleList() {
                 <ListRow
                   title={w.title}
                   description={w.subtitle}
-                  meta={meta(w.date, w.type)}
                   href={w.url ?? `/work/writing/${w.writingSlug}`}
                 />
               </li>
@@ -98,7 +90,6 @@ export function SimpleList() {
               <ListRow
                 title={e.title}
                 description={e.subtitle}
-                meta={meta(e.date, e.type)}
                 href={`/work/experiment/${e.experimentSlug}`}
               />
             </li>

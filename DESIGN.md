@@ -134,7 +134,7 @@ Five categorical slots for charts, in a fixed order that was validated for color
 
 ### Font Family
 
-**Roboto** — loaded with `next/font/google` in `src/app/layout.tsx` (weights 400 and 500, latin subset, `display: swap`), exposed as `--font-roboto` and bound to `--font-sans` in `globals.css`. Only those two weights ship, so don't reach for others. Single font family, no display/text split. Versatile and readable at all sizes.
+**Roboto** — set globally via `--font-sans` in `globals.css`. Single font family, no display/text split. Versatile and readable at all sizes.
 
 Custom sizes available: `text-8.5xl` (6.5rem), `text-9.5xl` (10rem) for hero headings.
 
@@ -207,7 +207,7 @@ Primary uses `bg-primary text-primary-foreground`. Rounded with `corner-squircle
 - Shape: `rounded-[140px] corner-squircle` — extreme pill
 - Always dark surface via `surface-lock-dark` class
 - Background alpha never drops below 0.75, so the light label keeps 4.5:1 over the cream page at the top and bottom of the page
-- The menu marks the current page with `aria-current` and a `primary-300` underline
+- The menu marks the current page with `aria-current` and medium weight (500)
 - Collapses/expands with spring animation
 
 ### Image Treatment

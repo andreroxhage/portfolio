@@ -585,9 +585,7 @@ const FloatingNav = () => {
                     href={link.href}
                     aria-current={current}
                     className={`block mb-4 text-surface-dark-foreground text-lg hover:text-primary-300 transition-colors duration-200 ${
-                      current
-                        ? 'font-medium underline decoration-primary-300 decoration-2 underline-offset-8'
-                        : ''
+                      current ? 'font-medium' : ''
                     }`}
                     variants={navItemVariants}
                     custom={i}

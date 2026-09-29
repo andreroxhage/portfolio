@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { about } from '@/app/data/home';
-import { galleryHref, previewGallery, workTypeLabel } from '@/app/data/preview';
+import { galleryHref, previewProjects } from '@/app/data/preview';
 import { ListRow } from '@/app/components/ListRow';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
@@ -54,7 +54,7 @@ export default function AtWorkSection() {
           </motion.p>
 
           {/* Below lg the hover grid is hidden, so phones and tablets get
-              the same preview items as a list, right under the intro. */}
+              the preview projects as a list, right under the intro. */}
           <motion.ul
             className="lg:hidden list-none mt-6"
             variants={makeVariant(2)}
@@ -62,12 +62,11 @@ export default function AtWorkSection() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {previewGallery.map(item => (
-              <li key={item.type === 'project' ? item.projectSlug : item.id}>
+            {previewProjects.map(item => (
+              <li key={item.projectSlug}>
                 <ListRow
                   title={item.title}
                   description={item.subtitle}
-                  meta={`${item.date} · ${workTypeLabel[item.type]}`}
                   href={galleryHref(item)}
                   className="my-1"
                 />

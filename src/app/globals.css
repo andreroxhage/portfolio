@@ -15,9 +15,7 @@
    merged secondary-green into primary green scale. */
 @theme inline {
   /* Font family */
-  /* Roboto is loaded by next/font in layout.tsx, which sets --font-roboto
-     (with its metric-matched fallback) on <html> */
-  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Sans', 'Sans Fallback', sans-serif;
 
   /* Custom font sizes */
   --font-size-8\.5xl: 6.5rem;

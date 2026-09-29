@@ -1,6 +1,6 @@
 import { projectRegistry } from '@/app/data/projects';
 import { experimentRegistry } from '@/app/data/experiments';
-import type { GalleryItem } from '@/app/types';
+import type { GalleryItem, ProjectMeta } from '@/app/types';
 
 // The work shown on the home page: projects and experiments not opted out
 // with `showInPreview: false`, in `order`. The desktop hover grid and the
@@ -18,12 +18,7 @@ export function galleryHref(item: GalleryItem): string {
     : `/work/experiment/${item.experimentSlug}`;
 }
 
-// Registry `type` as a label for list meta
-export const workTypeLabel: Record<
-  'project' | 'experiment' | 'writing',
-  string
-> = {
-  project: 'Project',
-  experiment: 'Experiment',
-  writing: 'Writing',
-};
+// Projects only, for the mobile home list
+export const previewProjects = previewGallery.filter(
+  (item): item is ProjectMeta => item.type === 'project'
+);

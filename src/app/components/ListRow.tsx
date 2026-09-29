@@ -6,18 +6,10 @@ interface ListRowProps {
   title: string;
   description: string;
   href: string;
-  /** Short facts after the title, e.g. year and type */
-  meta?: string;
   className?: string;
 }
 
-export function ListRow({
-  title,
-  description,
-  href,
-  meta,
-  className,
-}: ListRowProps) {
+export function ListRow({ title, description, href, className }: ListRowProps) {
   return (
     <Link
       href={href}
@@ -31,19 +23,9 @@ export function ListRow({
       )}
     >
       <div className="flex items-center justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          {/* Meta wraps under the title when both don't fit on one line */}
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-            <p className="min-w-0 text-base font-medium text-foreground">
-              {title}
-            </p>
-            {meta && (
-              <p className="shrink-0 text-sm text-muted-foreground tabular-nums">
-                {meta}
-              </p>
-            )}
-          </div>
-          <p className="text-base font-normal text-muted-foreground mt-1">
+        <div className="min-w-0">
+          <p className="text-base text-foreground tracking-wide">{title}</p>
+          <p className="text-base font-normal text-muted-foreground mt-1 tracking-wide">
             {description}
           </p>
         </div>
