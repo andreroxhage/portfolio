@@ -414,11 +414,9 @@ export default function MealPlanningAgentsContent() {
         <P>
           At first the safety rules were written instructions in the prompts.
           Instructions can be ignored, so I moved them into hooks, settings and
-          tests. Each product-picking agent can only write to its own file. The
-          HTTP client only allows six Mathem endpoints, and refuses anything to
-          do with checkout, delivery slots or orders. The cart can&apos;t go
-          over 3,000 kronor or 10 of one item, and it has to start empty. All
-          490 tests passed the last time I ran them.
+          tests. Each product-picking agent can only write to its own file, and
+          the HTTP client refuses anything to do with checkout. All 490 tests
+          passed the last time I ran them.
         </P>
         <P>
           Nothing goes in until I answer yes when it asks &quot;Shall I put
@@ -456,14 +454,9 @@ export default function MealPlanningAgentsContent() {
           to improve one of mine.
         </P>
         <P>
-          I also ran into limits in Claude Code. Subagents can&apos;t start
-          subagents of their own, so the main conversation runs the whole
-          workflow and hands out the work.
-        </P>
-        <P>
-          It&apos;s a personal tool with no formal evaluation of recipe quality.
-          Six of my older recipes were written before these rules, and they
-          still fail the check.
+          I built it because planning food every week took more time than it
+          should. It ended up teaching me how to tailor an automated AI process
+          to how we actually live and eat.
         </P>
       </MiddleSection>
     </>
