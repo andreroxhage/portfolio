@@ -18,7 +18,10 @@
 <rect x="63.4" y="713.6" width="953.2" height="266.8" rx="32" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
 <rect x="229.4" y="759.9" width="172.5" height="50.2" rx="10" fill="#73b87d"/>
 <rect x="678.2" y="759.9" width="119.7" height="50.2" rx="10" fill="#73b87d"/>
-<text x="104.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="686.4" lengthAdjust="spacing">Pour <tspan font-weight="700">1.5 dl</tspan> milk over <tspan font-weight="700">1 dl</tspan></text>
+<text x="104.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" textLength="105.6" lengthAdjust="spacing">Pour</text>
+<text x="236.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" font-weight="700" textLength="158.4" lengthAdjust="spacing">1.5 dl</text>
+<text x="421.2" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" textLength="237.6" lengthAdjust="spacing">milk over</text>
+<text x="685.2" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" font-weight="700" textLength="105.6" lengthAdjust="spacing">1 dl</text>
 <text x="104.4" y="859.3" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="818.4" lengthAdjust="spacing">breadcrumbs and let it soak for</text>
 <text x="104.4" y="920.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="184.8" lengthAdjust="spacing">10 min.</text>
 <rect x="405.5" y="1006.4" width="269.0" height="74.0" rx="38.0" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
