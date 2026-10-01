@@ -58,7 +58,7 @@ function MealPlanningDiagram() {
   return (
     <DiagramFrame
       label="Five phases with three decisions by me. Hooks check the recipes, and the week can end in Notion or in a Mathem cart that never places the order."
-      caption="Solid is me. Everything else runs as agents."
+      caption="The five phases, the three points where I decide, and where a finished week can end up."
     >
       <div className="flex flex-col items-center">
         <DiagramChip tone="you" icon={IconMessageCircle}>
@@ -198,6 +198,21 @@ const themeVariants = [
 
 const videoBase = '/resource/projects/meal-planning-agents-video';
 
+// The shared edge for every media box, so video and stills match and stay
+// visible on the dark surface.
+const mediaFrame =
+  'relative w-full overflow-hidden rounded-[20px] corner-squircle border border-foreground/10';
+
+function MediaFrame({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return <div className={cn(mediaFrame, className)}>{children}</div>;
+}
+
 // One combined video (A1 + A2 + A3). Only the active theme's video mounts,
 // so only one MP4 downloads. Until the client knows the theme, both posters
 // render (one per theme, the .dark class hides the other), which keeps SSR
@@ -218,16 +233,12 @@ function PageVideo() {
             imageAlt=""
             aspectRatio="16/9"
             priority
+            outline={false}
+            className="border border-foreground/10"
           />
         ) : (
           themeVariants.map(({ theme, className }) => (
-            <div
-              key={theme}
-              className={cn(
-                'relative aspect-video w-full overflow-hidden rounded-[20px] corner-squircle image-depth-outline',
-                className
-              )}
-            >
+            <MediaFrame key={theme} className={cn('aspect-video', className)}>
               <Image
                 src={`${videoBase}-${theme}.webp`}
                 alt=""
@@ -236,7 +247,7 @@ function PageVideo() {
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-contain"
               />
-            </div>
+            </MediaFrame>
           ))
         )}
       </div>
@@ -276,12 +287,7 @@ function ThemedStill({
             key={`${size.suffix}-${variant.theme}`}
             className={cn(variant.className, 'w-full')}
           >
-            <div
-              className={cn(
-                'relative w-full overflow-hidden rounded-[20px] corner-squircle image-depth-outline',
-                size.className
-              )}
-            >
+            <MediaFrame className={size.className}>
               <Image
                 src={`/resource/projects/${name}${size.suffix}-${variant.theme}.svg`}
                 alt={alt}
@@ -290,7 +296,7 @@ function ThemedStill({
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-contain"
               />
-            </div>
+            </MediaFrame>
           </div>
         ))
       )}
@@ -299,7 +305,7 @@ function ThemedStill({
   );
 }
 
-const strong = 'font-semibold text-surface-dark-foreground';
+const emphasis = 'font-medium text-surface-dark-foreground';
 
 export default function MealPlanningAgentsContent() {
   return (
@@ -312,12 +318,11 @@ export default function MealPlanningAgentsContent() {
       {/* Hook */}
       <MiddleSection className="mb-20 space-y-4">
         <Lead>
-          Meal-kit home delivery such as HelloFresh gave me the idea to build
-          something similar myself. So I built a set of Claude Code agents that
-          brainstorm dishes with me, research the recipes, write the shopping
-          list, plan the cooking and pick what goes in our grocery cart.
-          It&apos;s set up for our household in Sweden, six portions per recipe,
-          lunch and dinner.
+          Meal-kit delivery services like HelloFresh gave me the idea to build
+          my own. I built a set of Claude Code agents that brainstorm dishes
+          with me, research the recipes, write the shopping list, plan the
+          cooking and pick what goes in our grocery cart. It&apos;s set up for
+          our household in Sweden, for lunch and dinner.
         </Lead>
         <P>
           A week starts with a conversation. Say I&apos;m in the mood for
@@ -364,16 +369,17 @@ export default function MealPlanningAgentsContent() {
         <SectionHeading>Rules that can&apos;t drift</SectionHeading>
         <P>
           It started as one Cursor agent and a skill, and moved to Claude Code
-          subagents in March 2026. Later the recipe format lived in three agent
-          prompts that had drifted apart. Six saved recipes used four formats,
-          and none put the amounts in the steps.
+          subagents in March 2026. By then the recipe format lived in three
+          agent prompts that had drifted apart. Six saved recipes used four
+          formats, and none put the amounts in the steps.
         </P>
         <P>
-          So I moved the standard into one rule file plus hooks. Rule 1 matters
-          most. Every step repeats the amount, because the reader is standing at
-          the stove. &quot;Pour the milk over the breadcrumbs&quot; becomes
-          &quot;Pour <strong className={strong}>1.5 dl</strong> milk over{' '}
-          <strong className={strong}>1 dl</strong> breadcrumbs&quot;.
+          So I moved the standard into one rule file plus hooks. Rule 1, the one
+          that matters most, says every step repeats the amount, because the
+          reader is standing at the stove. &quot;Pour the milk over the
+          breadcrumbs&quot; becomes &quot;Pour{' '}
+          <span className={emphasis}>1.5 dl</span> milk over{' '}
+          <span className={emphasis}>1 dl</span> breadcrumbs&quot;.
         </P>
         <P>
           A hook checks every recipe an agent writes. It fixes formatting itself
@@ -393,7 +399,7 @@ export default function MealPlanningAgentsContent() {
         <ThemedStill
           name="meal-planning-a2-hook-explainer"
           alt={hookAlt}
-          caption="The hook catches a step without an amount. The message says the step uses milk without saying how much."
+          caption="Rules and hooks keep every recipe consistent and easy to read, for example by putting the amount in every step."
         />
       </WideSection>
 
@@ -404,12 +410,12 @@ export default function MealPlanningAgentsContent() {
           The newest phase fills a cart at Mathem, a Swedish online grocery
           store, from the shopping list. Haiku agents run in parallel, one per
           batch of up to twelve items, and pick a product for each line. A
-          sonnet agent reviews the ones they&apos;re unsure about, and whatever
+          Sonnet agent reviews the ones they&apos;re unsure about, and whatever
           is left comes to me as questions.
         </P>
         <P>
           The safety rules started as prose in prompts. I moved them into hooks,
-          settings and tests. A hook limits each matcher to writing its own
+          settings and tests. A hook limits each Haiku agent to writing its own
           answer file. The HTTP client allows six endpoints and refuses any path
           with checkout, slot or order in it. Code caps the cart at 3,000 kronor
           and 10 per line, and the cart has to start empty. All 490 offline
