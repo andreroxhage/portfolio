@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" aria-labelledby="t d">
+<title id="t">Write the recipes: before and after the recipe check</title>
+<desc id="d">Before: Pour the milk over the breadcrumbs and let it soak for 10 minutes. recipe_guard.sh reports Error: the step uses &#39;milk&#39; without an amount. After: Pour 1.5 dl milk over 1 dl breadcrumbs and let it soak for 10 min. 0 errors. Caption: Strict rules guide the AI model, so the recipes are easy to read.</desc>
+<rect width="1080" height="1350" fill="#f2f0eb"/>
+<text x="60" y="104" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="44" font-weight="500" fill="#57554f">2 · Write the recipes</text>
+<rect x="63.4" y="204.8" width="953.2" height="266.8" rx="32" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
+<text x="104.4" y="288.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="580.8" lengthAdjust="spacing">Pour the milk over the</text>
+<rect x="342.0" y="296.8" width="105.6" height="4" rx="2" fill="#8c4224"/>
+<text x="104.4" y="350.5" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="818.4" lengthAdjust="spacing">breadcrumbs and let it soak for</text>
+<text x="104.4" y="412.1" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="290.4" lengthAdjust="spacing">10 minutes.</text>
+<rect x="189.0" y="497.6" width="454.0" height="74.0" rx="38.0" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
+<text x="218.0" y="550.4" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" textLength="396.0" lengthAdjust="spacing">recipe_guard.sh</text>
+<g transform="translate(660.0 514.6) scale(1.6667)" fill="none" stroke="#57554f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></g>
+<rect x="716.0" y="494.6" width="176.0" height="80.0" rx="40.0" fill="#8c4224"/>
+<text x="804.0" y="549.0" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="40" font-weight="500" fill="#fdfdfd">Error</text>
+<text x="540.0" y="629.0" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="40" fill="#57554f">the step uses &#39;milk&#39; without an amount</text>
+<g transform="translate(520.0 656.6) scale(1.6667)" fill="none" stroke="#57554f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l0 14"/><path d="M18 13l-6 6"/><path d="M6 13l6 6"/></g>
+<rect x="63.4" y="713.6" width="953.2" height="266.8" rx="32" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
+<rect x="229.4" y="759.9" width="172.5" height="50.2" rx="10" fill="#73b87d"/>
+<rect x="678.2" y="759.9" width="119.7" height="50.2" rx="10" fill="#73b87d"/>
+<text x="104.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="686.4" lengthAdjust="spacing">Pour <tspan font-weight="700">1.5 dl</tspan> milk over <tspan font-weight="700">1 dl</tspan></text>
+<text x="104.4" y="859.3" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="818.4" lengthAdjust="spacing">breadcrumbs and let it soak for</text>
+<text x="104.4" y="920.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="184.8" lengthAdjust="spacing">10 min.</text>
+<rect x="405.5" y="1006.4" width="269.0" height="74.0" rx="38.0" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
+<g transform="translate(422.5 1021.4) scale(1.8333)"><circle cx="12" cy="12" r="12" fill="#73b87d"/><path d="M7.5 12.2l3 3l6 -6.2" fill="none" stroke="#3a3832" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="563.0" y="1057.8" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="40" font-weight="500" fill="#3a3832">0 errors</text>
+<text x="540.0" y="1169.9" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="48" font-weight="500" fill="#3a3832">Strict rules guide the AI model,</text>
+<text x="540.0" y="1232.3" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="48" font-weight="500" fill="#3a3832">so the recipes are easy to read.</text>
+</svg>
