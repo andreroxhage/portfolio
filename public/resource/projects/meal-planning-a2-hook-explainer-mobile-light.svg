@@ -4,12 +4,12 @@
 <rect width="1080" height="1350" fill="#f2f0eb"/>
 <text x="60" y="104" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="44" font-weight="500" fill="#57554f">2 · Write the recipes</text>
 <rect x="63.4" y="204.8" width="953.2" height="266.8" rx="32" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
-<text x="104.4" y="288.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="580.8" lengthAdjust="spacing">Pour the milk over the</text>
+<text x="104.4 130.8 157.2 183.6 210.0 236.4 262.8 289.2 315.6 342.0 368.4 394.8 421.2 447.6 474.0 500.4 526.8 553.2 579.6 606.0 632.4 658.8" y="288.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">Pour the milk over the</text>
 <rect x="342.0" y="296.8" width="105.6" height="4" rx="2" fill="#8c4224"/>
-<text x="104.4" y="350.5" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="818.4" lengthAdjust="spacing">breadcrumbs and let it soak for</text>
-<text x="104.4" y="412.1" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="290.4" lengthAdjust="spacing">10 minutes.</text>
+<text x="104.4 130.8 157.2 183.6 210.0 236.4 262.8 289.2 315.6 342.0 368.4 394.8 421.2 447.6 474.0 500.4 526.8 553.2 579.6 606.0 632.4 658.8 685.2 711.6 738.0 764.4 790.8 817.2 843.6 870.0 896.4" y="350.5" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">breadcrumbs and let it soak for</text>
+<text x="104.4 130.8 157.2 183.6 210.0 236.4 262.8 289.2 315.6 342.0 368.4" y="412.1" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">10 minutes.</text>
 <rect x="189.0" y="497.6" width="454.0" height="74.0" rx="38.0" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
-<text x="218.0" y="550.4" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" textLength="396.0" lengthAdjust="spacing">recipe_guard.sh</text>
+<text x="218.0 244.4 270.8 297.2 323.6 350.0 376.4 402.8 429.2 455.6 482.0 508.4 534.8 561.2 587.6" y="550.4" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">recipe_guard.sh</text>
 <g transform="translate(660.0 514.6) scale(1.6667)" fill="none" stroke="#57554f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l14 0"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></g>
 <rect x="716.0" y="494.6" width="176.0" height="80.0" rx="40.0" fill="#8c4224"/>
 <text x="804.0" y="549.0" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="40" font-weight="500" fill="#fdfdfd">Error</text>
@@ -18,12 +18,12 @@
 <rect x="63.4" y="713.6" width="953.2" height="266.8" rx="32" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
 <rect x="229.4" y="759.9" width="172.5" height="50.2" rx="10" fill="#73b87d"/>
 <rect x="678.2" y="759.9" width="119.7" height="50.2" rx="10" fill="#73b87d"/>
-<text x="104.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" textLength="105.6" lengthAdjust="spacing">Pour</text>
-<text x="236.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" font-weight="700" textLength="158.4" lengthAdjust="spacing">1.5 dl</text>
-<text x="421.2" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" textLength="237.6" lengthAdjust="spacing">milk over</text>
-<text x="685.2" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" font-weight="700" textLength="105.6" lengthAdjust="spacing">1 dl</text>
-<text x="104.4" y="859.3" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="818.4" lengthAdjust="spacing">breadcrumbs and let it soak for</text>
-<text x="104.4" y="920.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve" textLength="184.8" lengthAdjust="spacing">10 min.</text>
+<text x="104.4 130.8 157.2 183.6" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">Pour</text>
+<text x="236.4 262.8 289.2 315.6 342.0 368.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" font-weight="700" xml:space="preserve">1.5 dl</text>
+<text x="421.2 447.6 474.0 500.4 526.8 553.2 579.6 606.0 632.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">milk over</text>
+<text x="685.2 711.6 738.0 764.4" y="797.7" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" font-weight="700" xml:space="preserve">1 dl</text>
+<text x="104.4 130.8 157.2 183.6 210.0 236.4 262.8 289.2 315.6 342.0 368.4 394.8 421.2 447.6 474.0 500.4 526.8 553.2 579.6 606.0 632.4 658.8 685.2 711.6 738.0 764.4 790.8 817.2 843.6 870.0 896.4" y="859.3" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">breadcrumbs and let it soak for</text>
+<text x="104.4 130.8 157.2 183.6 210.0 236.4 262.8" y="920.9" font-family="&quot;SF Mono&quot;, ui-monospace, Menlo, monospace" font-size="44" fill="#3a3832" xml:space="preserve">10 min.</text>
 <rect x="405.5" y="1006.4" width="269.0" height="74.0" rx="38.0" fill="#fdfdfd" stroke="#3a3832" stroke-opacity="0.12" stroke-width="2"/>
 <g transform="translate(422.5 1021.4) scale(1.8333)"><circle cx="12" cy="12" r="12" fill="#73b87d"/><path d="M7.5 12.2l3 3l6 -6.2" fill="none" stroke="#3a3832" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
 <text x="563.0" y="1057.8" text-anchor="middle" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="40" font-weight="500" fill="#3a3832">0 errors</text>
