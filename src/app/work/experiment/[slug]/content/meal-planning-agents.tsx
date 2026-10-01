@@ -48,9 +48,7 @@ const optionalEnds = [
 
 function HookMarker() {
   return (
-    <DiagramChip icon={IconShieldCheck}>
-      hooks enforce the recipe standard
-    </DiagramChip>
+    <DiagramChip icon={IconShieldCheck}>hooks check every recipe</DiagramChip>
   );
 }
 
@@ -318,19 +316,20 @@ export default function MealPlanningAgentsContent() {
       {/* Hook */}
       <MiddleSection className="mb-20 space-y-4">
         <Lead>
-          Meal-kit delivery services like HelloFresh gave me the idea to build
-          my own. I built a set of Claude Code agents that brainstorm dishes
-          with me, research the recipes, write the shopping list, plan the
-          cooking and pick what goes in our grocery cart. It&apos;s set up for
-          our household in Sweden, for lunch and dinner.
+          Meal-kit services like HelloFresh plan your week and send you the
+          groceries. That gave me the idea to build my own version with AI. I
+          built a set of Claude Code agents that brainstorm dishes with me,
+          research the recipes, write the shopping list, plan the cooking and
+          pick what goes in our grocery cart. I&apos;ve used this workflow for
+          almost a year now.
         </Lead>
         <P>
           A week starts with a conversation. Say I&apos;m in the mood for
           meatballs with mashed potatoes. I&apos;d ask for that, plus at least
-          one fish dish and one quick meal for a busy evening, the way I&apos;d
-          talk to a friend who cooks. Planning used to take me about an hour a
-          week of juggling tabs. Now it&apos;s roughly ten minutes of decisions,
-          by my own estimate.
+          one fish dish and one quick meal for a busy evening. Planning used to
+          take me about an hour a week of juggling tabs. Now it&apos;s roughly
+          ten minutes of decisions. The last step can fill a grocery cart
+          online, so the food is at the door the day after.
         </P>
       </MiddleSection>
 
@@ -339,23 +338,27 @@ export default function MealPlanningAgentsContent() {
         <SectionHeading>How a week gets planned</SectionHeading>
         <P>
           Every week runs in five phases and lands as plain markdown files in a
-          dated folder. A brainstorming agent asks for the week&apos;s mix of
-          Everyday, Standard and Advanced dishes and suggests candidates. Then
-          one recipe-researcher per dish runs in parallel, each comparing three
-          to five sources. A shopping-list agent pools the ingredients, sorts
-          them by store section and writes &quot;verify&quot; instead of
-          guessing. The last two phases compile the recipes into one format and
-          build a prep plan that runs oven, stove and cold prep side by side.
+          dated folder. A brainstorming agent asks how many Everyday, Standard
+          and Advanced dishes I want, from quick weeknight food to more
+          ambitious cooking, and suggests candidates. Then one recipe-researcher
+          per dish runs in parallel, each comparing three to five recipes from
+          different sites. A shopping-list agent pools the ingredients, sorts
+          them by store section and marks anything it isn&apos;t sure about with
+          &quot;verify&quot; so I can check it, instead of guessing. The last
+          two phases compile the recipes into one format and build a prep plan
+          that runs oven, stove and cold prep side by side.
         </P>
         <P>
           The first three phases stop and wait for me. I pick the dishes,
-          approve the recipes and approve the list. That sounds bureaucratic. In
-          practice it&apos;s what makes the output trustworthy.
+          approve the recipes and approve the list. Three stops may sound like a
+          lot, but that&apos;s where I catch a bad pick before it ends up on the
+          shopping list.
         </P>
         <P>
           A finished week can go to Notion as one overview page with two
-          subpages, the shopping list and the prep plan. Recipes live in a
-          separate recipe database and get linked, never copied.
+          subpages, the shopping list and the prep plan. I also reuse my own
+          recipes from my recipe database in Notion. The week links to them
+          instead of copying them, so each recipe only exists in one place.
         </P>
       </MiddleSection>
 
@@ -366,32 +369,27 @@ export default function MealPlanningAgentsContent() {
 
       {/* Rules and hooks */}
       <MiddleSection className="mb-10 space-y-4">
-        <SectionHeading>Rules that can&apos;t drift</SectionHeading>
+        <SectionHeading>One set of rules for every recipe</SectionHeading>
         <P>
-          It started as one Cursor agent and a skill, and moved to Claude Code
-          subagents in March 2026. By then the recipe format lived in three
-          agent prompts that had drifted apart. Six saved recipes used four
-          formats, and none put the amounts in the steps.
+          Three of the agents write recipes: the researchers, a recipe-creator
+          for dishes with no good source, and the compiler. They all follow the
+          same rule file, and hooks check each recipe against those rules as
+          soon as it&apos;s written.
         </P>
         <P>
-          So I moved the standard into one rule file plus hooks. Rule 1, the one
-          that matters most, says every step repeats the amount, because the
-          reader is standing at the stove. &quot;Pour the milk over the
-          breadcrumbs&quot; becomes &quot;Pour{' '}
-          <span className={emphasis}>1.5 dl</span> milk over{' '}
+          Reading a step and then jumping back to the ingredient list to find
+          the amount is a bad experience, and one I&apos;ve known about for a
+          long time. So the most important rule says every step repeats the
+          amount. &quot;Pour the milk over the breadcrumbs&quot; becomes
+          &quot;Pour <span className={emphasis}>1.5 dl</span> milk over{' '}
           <span className={emphasis}>1 dl</span> breadcrumbs&quot;.
         </P>
         <P>
-          A hook checks every recipe an agent writes. It fixes formatting itself
-          and sends errors back to Claude. A second hook won&apos;t let the
-          recipe agents finish while errors remain, and lets go after two
-          blocked tries so it can&apos;t loop forever. A validator checks that
-          the shopping list covers every ingredient in a large enough amount.
-        </P>
-        <P>
-          The cinnamon buns taught me rule 6. A step said to halve every
-          quantity, then bolded the totals, which made double-dosing easy. Now
-          the bold amount is the one you take right now.
+          The hook fixes small formatting issues itself and sends the rest back
+          to the agent to fix. A second hook stops the recipe agents from
+          finishing while errors remain. After two tries it lets them finish
+          anyway, so they can&apos;t get stuck in a loop. A separate script
+          checks that the shopping list has enough of every ingredient.
         </P>
       </MiddleSection>
 
@@ -408,18 +406,19 @@ export default function MealPlanningAgentsContent() {
         <SectionHeading>The cart, still an experiment</SectionHeading>
         <P>
           The newest phase fills a cart at Mathem, a Swedish online grocery
-          store, from the shopping list. Haiku agents run in parallel, one per
-          batch of up to twelve items, and pick a product for each line. A
-          Sonnet agent reviews the ones they&apos;re unsure about, and whatever
-          is left comes to me as questions.
+          store, from the shopping list. Agents on a cheaper, faster model work
+          in parallel, each on up to twelve items, and pick a product for every
+          line. An agent on a smarter model reviews the ones they&apos;re unsure
+          about, and whatever is left comes to me as questions.
         </P>
         <P>
-          The safety rules started as prose in prompts. I moved them into hooks,
-          settings and tests. A hook limits each Haiku agent to writing its own
-          answer file. The HTTP client allows six endpoints and refuses any path
-          with checkout, slot or order in it. Code caps the cart at 3,000 kronor
-          and 10 per line, and the cart has to start empty. All 490 offline
-          tests passed when I last ran them.
+          At first the safety rules were written instructions in the prompts.
+          Instructions can be ignored, so I moved them into hooks, settings and
+          tests. Each product-picking agent can only write to its own file. The
+          HTTP client only allows six Mathem endpoints, and refuses anything to
+          do with checkout, delivery slots or orders. The cart can&apos;t go
+          over 3,000 kronor or 10 of one item, and it has to start empty. All
+          490 tests passed the last time I ran them.
         </P>
         <P>
           Nothing goes in until I answer yes when it asks &quot;Shall I put
@@ -443,11 +442,11 @@ export default function MealPlanningAgentsContent() {
       <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>What building it taught me</SectionHeading>
         <P>
-          Approval gates matter more than clever prompting. Give a human the
-          decisions they care about and automate everything in between. Every
-          rule that mattered ended up as code. Each time an instruction in a
-          prompt failed in practice, I turned it into a hook, a validator, an
-          allowlist or a test.
+          The three points where I approve things matter more than clever
+          prompting. Give a human the decisions they care about and automate
+          everything in between. Every rule that mattered ended up as code. Each
+          time an instruction in a prompt failed in practice, I turned it into a
+          hook, a check in code or a test.
         </P>
         <P>
           Parallel research is still the clearest case I&apos;ve found where
@@ -457,19 +456,14 @@ export default function MealPlanningAgentsContent() {
           to improve one of mine.
         </P>
         <P>
-          I also hit practical limits. Subagents can&apos;t spawn subagents, so
-          the main conversation acts as the orchestrator. The agent{' '}
-          <code className="font-mono text-[0.9em] text-surface-dark-foreground">
-            skills:
-          </code>{' '}
-          field is ignored when an agent runs as the main session, so the
-          orchestrator loads its skill explicitly.
+          I also ran into limits in Claude Code. Subagents can&apos;t start
+          subagents of their own, so the main conversation runs the whole
+          workflow and hands out the work.
         </P>
         <P>
           It&apos;s a personal tool with no formal evaluation of recipe quality.
-          The six recipes in my library that predate the standard still fail the
-          check. The cinnamon bun recipe passes it, but it still has the
-          halve-every-quantity step that taught me rule 6.
+          Six of my older recipes were written before these rules, and they
+          still fail the check.
         </P>
       </MiddleSection>
     </>
