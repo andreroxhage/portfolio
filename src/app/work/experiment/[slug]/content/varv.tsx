@@ -612,10 +612,10 @@ export default function VarvContent() {
               src: 'log-sheet-m.webp',
               width: 780,
               height: 1688,
-              alt: 'The Log strength sheet listing two gym passes and when each was last logged',
+              alt: 'The Log sheet on a phone, with options to tell the coach how I am and the two gym passes to start',
             },
           ]}
-          caption="On my phone, logging a gym session starts from the tab bar."
+          caption="The Log sheet takes a quick note to the coach or starts a gym session."
         />
       </MiddleSection>
 
