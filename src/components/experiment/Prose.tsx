@@ -9,9 +9,10 @@ import { SectionHeading as BaseSectionHeading } from '@/app/components/ProjectLa
 
 const body = 'text-base leading-relaxed';
 
-// Opening paragraph of a page. Same size as body, lifted by colour alone.
+// Opening paragraph of a page. Styled like body text, matching how the
+// project pages open.
 export function Lead({ children }: { children: React.ReactNode }) {
-  return <p className={cn(body, 'text-surface-dark-foreground')}>{children}</p>;
+  return <p className={cn(body, 'text-muted-foreground')}>{children}</p>;
 }
 
 export function P({ children }: { children: React.ReactNode }) {

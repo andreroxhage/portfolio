@@ -28,6 +28,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/work/experiment/ai-running-coach',
+        destination: '/work/experiment/varv',
+        permanent: true,
+      },
+      {
         source: '/writing',
         destination: '/work',
         permanent: true,
