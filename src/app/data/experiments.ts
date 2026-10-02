@@ -32,10 +32,12 @@ export const experimentRegistry: ExperimentMeta[] = [
     id: 'i4',
     experimentSlug: 'meal-planning-agents',
     title: 'Meal planning with AI agents',
-    subtitle: 'A HelloFresh replacement built on Claude Code agents.',
+    subtitle:
+      'Weekly meal planning with Claude Code agents, hooks and approval gates.',
     previewSubtitle:
-      'Weekly meal planning that runs itself: specialized AI agents brainstorm dishes, research recipes in parallel, build the shopping list, and plan the cooking',
+      'I describe what we feel like eating, and Claude Code agents research the recipes in parallel, write the shopping list, plan the cooking and pick what goes in the grocery cart. I make the decisions in between',
     date: '2026',
+    posterImage: '/resource/projects/meal-planning-agents-video-light.webp',
     tags: ['System Design', 'Automation'],
     order: 2,
     type: 'experiment',
