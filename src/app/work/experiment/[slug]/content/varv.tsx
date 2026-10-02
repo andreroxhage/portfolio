@@ -534,10 +534,10 @@ export default function VarvContent() {
           leaves a line in a log, and if one never starts, I get a notification.
         </P>
         <P>
-          One rule, never hand-edit the weekly stats, was written in four places
-          and enforced by nothing. Now a hook, a small check that runs before a
-          file changes, blocks that edit and names the command that rebuilds the
-          stats.
+          The weekly stats should only ever come from a script. Writing that in
+          Claude&apos;s instructions wasn&apos;t enough, so a hook, a small
+          automatic check, now blocks any hand edit to them and points to the
+          script that rebuilds them.
         </P>
       </MiddleSection>
 
@@ -552,9 +552,8 @@ export default function VarvContent() {
           directly.
         </P>
         <P>
-          Logging a gym set used to mean waiting for Vercel to rebuild the whole
-          site before it showed up. Now it saves straight to the database and
-          shows up on the next page load.
+          Gym sets I log in the app save straight to the database, so
+          they&apos;re there the next time I open the page.
         </P>
       </MiddleSection>
 
@@ -626,10 +625,13 @@ export default function VarvContent() {
         <P>
           A lot of varv is there to stop the coach from guessing. Scripts build
           the weekly stats the coach quotes, and Claude&apos;s judgment goes
-          into the daily notes and the reviews. I learned to treat a rule that
-          only lives in a doc as a rule nobody enforces yet. I get to redesign
-          the system every time it lets me down, and that&apos;s genuinely the
-          part I enjoy most.
+          into the daily notes and the reviews. The biggest lesson was that a
+          prompt only asks. If something has to happen every time, a hook or a
+          test has to enforce it. Building with the whole setup around the
+          prompt, like hooks, rules, tool lists and scheduled jobs, was a great
+          way to learn how AI workflows are built. I get to redesign the system
+          every time it lets me down, and that&apos;s genuinely the part I enjoy
+          most.
         </P>
       </MiddleSection>
     </>
