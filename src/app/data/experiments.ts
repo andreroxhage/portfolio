@@ -50,7 +50,7 @@ export const experimentRegistry: ExperimentMeta[] = [
     subtitle:
       'A personal running coach that reads every run and plans the week around my calendar.',
     previewSubtitle:
-      'Claude coaches me from my own training data. Every morning a job on my Mac pulls in the latest runs, and Claude keeps a week of workouts on my phone in step with the plan as I train for a marathon',
+      'Claude coaches me from my own training data. Every morning a job on my server pulls in the latest runs, and Claude keeps a week of workouts on my phone in step with the plan as I train for a marathon',
     date: '2025 – 2026',
     videoIdentifier: 'varv',
     posterImage: '/resource/projects/varv/varv-preview-poster.webp',

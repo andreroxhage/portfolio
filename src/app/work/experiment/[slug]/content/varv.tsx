@@ -406,7 +406,7 @@ const galleryRows: [GalleryStill, GalleryStill][] = [
       width: 2000,
       height: 978,
       alt: 'The recovery page with resting heart rate and HRV plotted as nightly dots against a 28-night baseline band',
-      caption: 'Recovery reads Neon live, night by night.',
+      caption: 'Recovery reads the database live, night by night.',
     },
     {
       src: 'plan-week.webp',
@@ -448,11 +448,10 @@ export default function VarvContent() {
           coaching system where AI agents work on top of my real training data.
         </Lead>
         <P>
-          It started in June 2025 as markdown training plans, and my sessions
-          came from Strava until I moved to intervals.icu in July 2026. Today
-          varv is still mostly markdown, plus a data platform that feeds it.
-          Claude is the coach, working through skills, scheduled headless jobs
-          and its own MCP server. I&apos;m the only user.
+          It started in June 2025 as a folder of markdown training plans, and my
+          runs came from Strava until July 2026. Today varv is my own coaching
+          system, with Claude as the coach. It reads my training every morning,
+          puts the next workouts on my phone and writes me a review every week.
         </P>
       </MiddleSection>
 
@@ -468,27 +467,23 @@ export default function VarvContent() {
         />
       </WideSection>
 
-      {/* How a run gets in */}
+      {/* From a run to the next workout */}
       <MiddleSection className="mb-10 space-y-4">
-        <SectionHeading>How a run gets in</SectionHeading>
+        <SectionHeading>From a run to the next workout</SectionHeading>
         <P>
-          Every run starts on my Apple Watch, and HealthFit uploads it to
-          intervals.icu. A reconcile then pulls it into Neon, the canonical
-          store. There&apos;s no webhook, because registering one needs a
-          hand-made OAuth app.
+          Every run starts on my Apple Watch, gets logged in intervals.icu and
+          ends up in my own database. That database holds the full history, and
+          the server pulls its own copy from it every morning.
         </P>
         <P>
-          At 06:00 a launchd job on my Mac mirrors Neon into flat files, derives
-          zones from my runner profile, rebuilds the rollups and commits to git.
-        </P>
-        <P>
-          At 06:10 the daily job starts, headless{' '}
-          <code className="whitespace-nowrap">claude -p</code>. It writes one
-          day record per date, the only judgment call in the job, then keeps a
-          rolling 7-day window of Todoist cards, one per session lane per date.
-          Each card has a fingerprint, so it&apos;s updated in place instead of
-          duplicated. The time slot comes from Google Calendar, which it can
-          only read. If a step breaks, I get one Todoist task naming it.
+          Every morning that server works out the zones for each session and
+          rebuilds the weekly stats. A few minutes later Claude runs on its own,
+          with no chat window open. It writes a note about yesterday, then
+          updates the coming week of workouts in Todoist, each at a time that
+          fits my calendar. Today&apos;s workout opens with that note and a
+          readiness colour. Readiness can adjust the session slightly, but only
+          in ways the training plan allows. If something breaks, I get a task
+          telling me what.
         </P>
       </MiddleSection>
 
@@ -500,24 +495,21 @@ export default function VarvContent() {
       <MiddleSection className="mb-10 space-y-4">
         <SectionHeading>Keeping the coach&apos;s numbers honest</SectionHeading>
         <P>
-          All physiology comes from one profile file, and only the Mac derives
-          anything from it, so no threshold lives in cloud code. intervals.icu
-          has its own zone fields, and varv stores them for audit but never
-          reads them.
+          An AI coach is only as good as the numbers it reads, so I kept the
+          maths away from the model. All my training zones come from one profile
+          file. Change it once, and every number downstream follows.
         </P>
         <P>
-          The dashboard and the MCP server serve the Mac&apos;s rollup files
-          verbatim and never recompute them. If a chart did its own maths, its
-          numbers could drift from the review quoting the same rollup, so a
-          contract test fails on any unlisted{' '}
-          <code className="whitespace-nowrap">.reduce(</code>.
+          Scripts build the weekly stats, and the dashboard and Claude both
+          quote them as they are. If a chart did its own maths, its numbers
+          could drift from the review quoting the same week, so an automated
+          test fails when a chart tries.
         </P>
         <P>
-          Agents read rollups first, single sessions only when needed, and raw
-          streams almost never. The MCP streams tool enforces it by returning a
-          summary first and never raw 1 Hz data. Every weekly and monthly review
-          follows the same four-part spine and ends with a{' '}
-          <code className="whitespace-nowrap">Log:</code> line.
+          Claude reads the weekly summary first and only digs into single
+          sessions when a question needs it. Every review follows the same four
+          parts: the data, an analysis, a recommendation and the reasoning
+          behind it.
         </P>
       </MiddleSection>
 
@@ -536,22 +528,16 @@ export default function VarvContent() {
       <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>Letting it run without me</SectionHeading>
         <P>
-          Since September, launchd runs the jobs as headless{' '}
-          <code className="whitespace-nowrap">claude -p</code>, replacing Claude
-          Desktop scheduled tasks. The runner loads only project settings, so my
-          user settings, which allow bare Bash, Edit and Write, can&apos;t
-          loosen each job&apos;s tool list.
+          The jobs run on a schedule with nobody watching, and each one gets a
+          fixed list of the tools it may use. The daily job can&apos;t edit
+          files at all, and every job has a time limit and a budget. Each job
+          leaves a line in a log, and if one never starts, I get a notification.
         </P>
         <P>
-          Each job gets a timeout, a turn limit and a budget, $4 for the daily
-          and $8 each for the weekly and monthly. The daily job can&apos;t edit
-          files at all, and git writes go through one commit script. Every run
-          appends a row to a heartbeat file, even a run that never started.
-        </P>
-        <P>
-          The rule against hand-editing the rollups was written in four places
-          and enforced by nothing, so a hook now denies the edit and names the
-          rebuild command. It&apos;s one of 9 hooks.
+          One rule, never hand-edit the weekly stats, was written in four places
+          and enforced by nothing. Now a hook, a small check that runs before a
+          file changes, blocks that edit and names the command that rebuilds the
+          stats.
         </P>
       </MiddleSection>
 
@@ -559,16 +545,16 @@ export default function VarvContent() {
       <MiddleSection className="mb-10 space-y-4">
         <SectionHeading>The dashboard</SectionHeading>
         <P>
-          The dashboard is a Next.js app with 16 page routes, and each one
-          declares which data clock it runs on. Most read flat files bundled
-          into the deploy, and a few, like recovery and strength, query Neon on
-          every request.
+          The dashboard is where I look at all of it: the plan, every session,
+          recovery, the reviews and the workout library. The plan and review
+          pages read the copy the server makes each morning, and the pages that
+          need fresh data, like recovery and strength, ask the database
+          directly.
         </P>
         <P>
-          The strength logger is the app&apos;s one write surface. It used to
-          commit JSON to git, which put a Vercel redeploy on the critical path
-          of every set. Since August it saves to Neon, so a logged set shows up
-          on the next page load.
+          Logging a gym set used to mean waiting for Vercel to rebuild the whole
+          site before it showed up. Now it saves straight to the database and
+          shows up on the next page load.
         </P>
       </MiddleSection>
 
@@ -638,15 +624,12 @@ export default function VarvContent() {
       <MiddleSection className="mb-20 space-y-4">
         <SectionHeading>What I learned</SectionHeading>
         <P>
-          A lot of varv is there to stop the coach from guessing. Scripts with
-          no model in them build every rollup the coach quotes, and the
-          model&apos;s judgment goes into day records and reviews. I learned to
-          treat a rule that only lives in a doc as a rule nobody enforces yet.
-        </P>
-        <P>
-          The mirror holds 590 sessions going back to July 2024, and 14 weekly
-          reviews sit in the repo. I get to redesign the system every time it
-          lets me down, and that&apos;s genuinely the part I enjoy most.
+          A lot of varv is there to stop the coach from guessing. Scripts build
+          the weekly stats the coach quotes, and Claude&apos;s judgment goes
+          into the daily notes and the reviews. I learned to treat a rule that
+          only lives in a doc as a rule nobody enforces yet. I get to redesign
+          the system every time it lets me down, and that&apos;s genuinely the
+          part I enjoy most.
         </P>
       </MiddleSection>
     </>
