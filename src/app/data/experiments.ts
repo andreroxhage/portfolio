@@ -43,17 +43,17 @@ export const experimentRegistry: ExperimentMeta[] = [
   },
   {
     id: 'i5',
-    experimentSlug: 'ai-running-coach',
-    title: 'AI running coach',
-    subtitle:
-      'Data-driven marathon coaching with an autonomous morning pipeline.',
+    experimentSlug: 'varv',
+    title: 'varv',
+    subtitle: 'A running coach built on Claude Code and my own training data.',
     previewSubtitle:
-      'A personal coaching system that ingests Strava data, assesses recovery, checks my calendar, and delivers each day’s workout as a Todoist task, as I train for a marathon',
+      'Claude coaches me from my own training data. Every morning a job on my Mac pulls in the latest runs, and Claude keeps a week of workouts on my phone in step with the plan as I train for a marathon',
     date: '2025 – 2026',
-    tags: ['System Design', 'Endurance Training'],
+    videoIdentifier: 'varv',
+    posterImage: '/resource/projects/varv/varv-preview-poster.webp',
+    tags: ['System Design', 'Agentic AI'],
     order: 1,
     type: 'experiment',
-    showInPreview: false,
   },
   {
     id: 'i6',

@@ -8,7 +8,7 @@ export const experimentContentMap: Record<string, ComponentType> = {
   'meal-planning-agents': lazy(
     () => import('./[slug]/content/meal-planning-agents')
   ),
-  'ai-running-coach': lazy(() => import('./[slug]/content/ai-running-coach')),
+  varv: lazy(() => import('./[slug]/content/varv')),
   'spotify-events': lazy(() => import('./[slug]/content/spotify-events')),
   'usability-evaluation-of-microsoft-teams-calendar-feature': lazy(
     () =>
