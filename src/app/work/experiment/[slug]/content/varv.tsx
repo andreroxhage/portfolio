@@ -476,21 +476,20 @@ export default function VarvContent() {
           the server pulls its own copy from it every morning.
         </P>
         <P>
-          Every morning that server works out the zones for each session and
-          rebuilds the weekly stats. A few minutes later Claude runs on its own,
-          with no chat window open. It writes a note about yesterday, then
-          updates the coming week of workouts in Todoist, each at a time that
-          fits my calendar. Today&apos;s workout opens with that note and a
-          readiness colour. Readiness can adjust the session slightly, but only
-          in ways the training plan allows. If something breaks, I get a task
-          telling me what.
+          Every morning that server processes the latest training data, so each
+          day&apos;s workout is planned from real numbers. A few minutes later
+          Claude runs on its own, with no chat window open. It writes a note
+          about yesterday, then updates the coming week of workouts in Todoist,
+          each at a time that fits my calendar. Today&apos;s workout opens with
+          that note and a readiness colour. Readiness can adjust the session
+          slightly, but only in ways the training plan allows. If something
+          breaks, I get a task telling me what.
         </P>
         <P>
           When life gets in the way, I tell the coach from the Log sheet: sick,
-          tired, travelling, busy or something else. During the night it answers
-          and adjusts the current week by removing, moving or easing sessions,
-          and the new plan shows up on Today and in Todoist. Some reports wait
-          for my OK first.
+          tired, travelling, busy or something else. During the night it
+          answers, and the plan adjusts by removing, moving or easing sessions
+          in the current week.
         </P>
       </MiddleSection>
 
