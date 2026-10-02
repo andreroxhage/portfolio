@@ -485,6 +485,13 @@ export default function VarvContent() {
           in ways the training plan allows. If something breaks, I get a task
           telling me what.
         </P>
+        <P>
+          When life gets in the way, I tell the coach from the Log sheet: sick,
+          tired, travelling, busy or something else. During the night it answers
+          and adjusts the current week by removing, moving or easing sessions,
+          and the new plan shows up on Today and in Todoist. Some reports wait
+          for my OK first.
+        </P>
       </MiddleSection>
 
       <WideSection className="mb-20">
