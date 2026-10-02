@@ -25,7 +25,7 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
       animate={{ opacity: 1 }}
       transition={{ duration: DURATION.MEDIUM, ease: EASING.ENTER }}
     >
-      <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-14 gap-6">
+      <header className="max-w-2.5xl mx-auto px-4 w-full flex flex-col justify-start items-start pt-16 pb-10 gap-6">
         <WorkBreadcrumb
           title={experiment.title}
           year={experiment.date}
