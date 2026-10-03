@@ -32,7 +32,7 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
           year={experiment.date}
           tags={experiment.tags}
         />
-        <div className="flex w-full items-start justify-between gap-4">
+        <div className="flex w-full items-center justify-between gap-4">
           <motion.h1
             className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground"
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
