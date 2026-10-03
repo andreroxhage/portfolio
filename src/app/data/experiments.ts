@@ -39,6 +39,7 @@ export const experimentRegistry: ExperimentMeta[] = [
     date: '2026',
     posterImage: '/resource/projects/meal-planning-agents-video-light.webp',
     tags: ['System Design', 'Automation'],
+    repoUrl: 'https://github.com/andreroxhage/meal-prep-agents',
     order: 2,
     type: 'experiment',
     showInPreview: false,

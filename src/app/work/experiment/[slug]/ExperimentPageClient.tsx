@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { experimentRegistry } from '@/app/data/experiments';
 import WorkNavigation from '@/app/components/WorkNavigation';
 import WorkBreadcrumb from '@/app/components/WorkBreadcrumb';
+import { RepoCallout, RepoHeaderLink } from '@/app/components/RepoLink';
 import { DURATION, EASING, STAGGER } from '@/app/lib/motion';
 import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import { experimentContentMap as contentMap } from '@/app/work/experiment/content-map';
@@ -31,18 +32,21 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
           year={experiment.date}
           tags={experiment.tags}
         />
-        <motion.h1
-          className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground"
-          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: DURATION.SLOW,
-            ease: EASING.ENTER,
-            delay: reducedMotion ? 0 : STAGGER.DELAY,
-          }}
-        >
-          {experiment.title}
-        </motion.h1>
+        <div className="flex w-full items-start justify-between gap-4">
+          <motion.h1
+            className="text-2xl md:text-3xl font-medium tracking-tight leading-tight text-surface-dark-foreground"
+            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: DURATION.SLOW,
+              ease: EASING.ENTER,
+              delay: reducedMotion ? 0 : STAGGER.DELAY,
+            }}
+          >
+            {experiment.title}
+          </motion.h1>
+          {experiment.repoUrl && <RepoHeaderLink url={experiment.repoUrl} />}
+        </div>
       </header>
 
       <Suspense
@@ -65,6 +69,7 @@ export default function ExperimentPageClient({ slug }: { slug: string }) {
               </p>
             </div>
           )}
+          {experiment.repoUrl && <RepoCallout url={experiment.repoUrl} />}
         </div>
       </Suspense>
 
