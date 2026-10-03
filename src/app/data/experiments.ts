@@ -32,13 +32,13 @@ export const experimentRegistry: ExperimentMeta[] = [
     id: 'i4',
     experimentSlug: 'meal-planning-agents',
     title: 'Meal planning with AI agents',
-    subtitle:
-      'A weekly meal planner that picks recipes, writes the shopping list and plans the cooking.',
+    subtitle: 'Planning a week of meals, from recipes to grocery cart.',
     previewSubtitle:
-      'I describe what we feel like eating, and Claude Code agents research the recipes in parallel, write the shopping list, plan the cooking and pick what goes in the grocery cart. I make the decisions in between',
+      'Planning a week of food used to take me an hour. Now Claude Code agents research the recipes and write the shopping list, and I make the decisions',
     date: '2026',
     posterImage: '/resource/projects/meal-planning-agents-video-light.webp',
     tags: ['System Design', 'Automation'],
+    repoUrl: 'https://github.com/andreroxhage/meal-prep-agents',
     order: 2,
     type: 'experiment',
     showInPreview: false,
@@ -47,10 +47,9 @@ export const experimentRegistry: ExperimentMeta[] = [
     id: 'i5',
     experimentSlug: 'varv',
     title: 'varv',
-    subtitle:
-      'A personal running coach that reads every run and plans the week around my calendar.',
+    subtitle: 'A running coach that plans my week around my calendar.',
     previewSubtitle:
-      'Claude coaches me from my own training data. Every morning a job on my server pulls in the latest runs, and Claude keeps a week of workouts on my phone in step with the plan as I train for a marathon',
+      'A running coach built on my own training data. Claude reads every run and keeps a week of workouts on my phone in step with my marathon plan',
     date: '2025 – 2026',
     videoIdentifier: 'varv',
     posterImage: '/resource/projects/varv/varv-preview-poster.webp',
