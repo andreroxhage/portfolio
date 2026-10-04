@@ -32,7 +32,7 @@ export const experimentRegistry: ExperimentMeta[] = [
     id: 'i4',
     experimentSlug: 'meal-planning-agents',
     title: 'Meal planning with AI agents',
-    subtitle: 'Planning a week of meals, from recipes to grocery cart.',
+    subtitle: 'Agents plan our meals, from recipes to grocery cart.',
     previewSubtitle:
       'Planning a week of food used to take me an hour. Now Claude Code agents research the recipes and write the shopping list, and I make the decisions',
     date: '2026',
@@ -47,7 +47,7 @@ export const experimentRegistry: ExperimentMeta[] = [
     id: 'i5',
     experimentSlug: 'varv',
     title: 'varv',
-    subtitle: 'A running coach that plans my week around my calendar.',
+    subtitle: 'An AI coach that adjusts my training every morning.',
     previewSubtitle:
       'A running coach built on my own training data. Claude reads every run and keeps a week of workouts on my phone in step with my marathon plan',
     date: '2025 – 2026',
