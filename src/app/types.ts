@@ -41,6 +41,8 @@ export interface ExperimentMeta {
   intervalTime?: number;
   roundedCorners?: boolean;
   tags?: string[];
+  // Public source code, linked from the page header and footer
+  repoUrl?: string;
   order: number;
   type: 'experiment';
 }
