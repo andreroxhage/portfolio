@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { useVideo } from '@/app/hooks/useVideo';
@@ -12,9 +12,9 @@ interface ProgressiveMediaProps {
   imageAlt: string;
   videoIdentifier?: string;
   videoSrc?: string;
-  /** CSS aspect-ratio value (e.g. "9/16"). Required: both the video and
-   * poster-image branches size their container from this value alone, so
-   * an absent ratio would collapse the container to 0 height. */
+  /** CSS aspect-ratio value (e.g. "9/16"). Required: the container is
+   * sized from this value alone (the poster fills it and the video is
+   * absolutely positioned), so an absent ratio would collapse it to 0. */
   aspectRatio: string;
   rounded?: boolean;
   outline?: boolean;
@@ -43,7 +43,9 @@ export function ProgressiveMedia({
   objectFit = 'contain',
   sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
 }: ProgressiveMediaProps) {
-  const [videoReady, setVideoReady] = useState(false);
+  // The src whose first frame is on screen. Keyed by src so a new or
+  // remounted video starts hidden again instead of inheriting `true`.
+  const [playingSrc, setPlayingSrc] = useState<string>();
   const reducedMotion = useReducedMotion();
 
   const { video_url: fetchedVideoUrl } = useVideo(videoIdentifier ?? '');
@@ -51,6 +53,24 @@ export function ProgressiveMedia({
   const resolvedVideoSrc =
     videoSrc ?? (videoIdentifier ? fetchedVideoUrl : undefined);
   const hasVideo = !!resolvedVideoSrc && !reducedMotion;
+  const videoReady = hasVideo && playingSrc === resolvedVideoSrc;
+
+  useEffect(() => {
+    if (!hasVideo) {
+      setPlayingSrc(undefined);
+    }
+  }, [hasVideo]);
+
+  // `playing` may have fired before React attached its handler (autoplay
+  // can start before hydration), so check the element's state on mount too.
+  const videoRef = useCallback(
+    (video: HTMLVideoElement | null) => {
+      if (video && !video.paused && video.readyState >= 2) {
+        setPlayingSrc(resolvedVideoSrc);
+      }
+    },
+    [resolvedVideoSrc]
+  );
 
   // The poster image is always rendered, so the box never goes blank: it
   // shows during SSR, while the video URL is fetched, and while the video
@@ -83,8 +103,11 @@ export function ProgressiveMedia({
           loop
           muted
           playsInline
-          aria-hidden={imageAlt ? true : undefined}
-          onPlaying={() => setVideoReady(true)}
+          ref={videoRef}
+          // A visual duplicate of the poster; the label lives on the image
+          // or on the caller's wrapper.
+          aria-hidden
+          onPlaying={() => setPlayingSrc(resolvedVideoSrc)}
           className={cn(
             'absolute inset-0 w-full h-full',
             objectFit === 'cover' ? 'object-cover' : 'object-contain',
