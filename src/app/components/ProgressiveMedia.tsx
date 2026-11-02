@@ -21,6 +21,9 @@ interface ProgressiveMediaProps {
   priority?: boolean;
   className?: string;
   objectFit?: 'contain' | 'cover';
+  /** `sizes` for the poster image. Pass the real rendered width so the
+   * poster matches any server-rendered placeholder and isn't re-fetched. */
+  sizes?: string;
 }
 
 const CROSSFADE_DURATION = 300;
@@ -38,6 +41,7 @@ export function ProgressiveMedia({
   priority = false,
   className,
   objectFit = 'contain',
+  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
 }: ProgressiveMediaProps) {
   const [videoReady, setVideoReady] = useState(false);
   const reducedMotion = useReducedMotion();
@@ -48,31 +52,39 @@ export function ProgressiveMedia({
     videoSrc ?? (videoIdentifier ? fetchedVideoUrl : undefined);
   const hasVideo = !!resolvedVideoSrc && !reducedMotion;
 
-  // When a video is expected, the container is pinned to the declared
-  // aspectRatio (matching the poster/no-video path below) so the box never
-  // reflows between the poster phase, the video's own intrinsic size once
-  // metadata loads, and the playing phase. The video fills that fixed box
-  // with object-fit so both the native poster attribute and the playing
-  // video are clipped/letterboxed consistently instead of overflowing it.
-  if (hasVideo) {
-    return (
-      <div
-        className={cn(
-          'relative w-full overflow-hidden',
-          rounded && 'rounded-[20px] corner-squircle',
-          !videoReady && 'video-shimmer',
-          className
-        )}
-        style={{ aspectRatio }}
-      >
+  // The poster image is always rendered, so the box never goes blank: it
+  // shows during SSR, while the video URL is fetched, and while the video
+  // buffers. The video sits on top and fades in on `playing`, i.e. once a
+  // frame is actually on screen. (`canplay` can fire before the first frame
+  // paints, which flashed the dark container through.) The image element
+  // stays mounted across the swap so it never reloads.
+  return (
+    <div
+      className={cn(
+        'relative w-full overflow-hidden',
+        outline && !hasVideo && 'image-depth-outline',
+        rounded && 'rounded-[20px] corner-squircle',
+        className
+      )}
+      style={{ aspectRatio }}
+    >
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        className={objectFit === 'cover' ? 'object-cover' : 'object-contain'}
+      />
+      {hasVideo && (
         <video
           src={resolvedVideoSrc}
-          poster={imageSrc}
           autoPlay
           loop
           muted
           playsInline
-          onCanPlay={() => setVideoReady(true)}
+          aria-hidden={imageAlt ? true : undefined}
+          onPlaying={() => setVideoReady(true)}
           className={cn(
             'absolute inset-0 w-full h-full',
             objectFit === 'cover' ? 'object-cover' : 'object-contain',
@@ -83,28 +95,7 @@ export function ProgressiveMedia({
             transition: TRANSITION,
           }}
         />
-      </div>
-    );
-  }
-
-  return (
-    <div
-      className={cn(
-        'relative w-full overflow-hidden',
-        outline && 'image-depth-outline',
-        rounded && 'rounded-[20px] corner-squircle',
-        className
       )}
-      style={{ aspectRatio }}
-    >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        priority={priority}
-        className={objectFit === 'cover' ? 'object-cover' : 'object-contain'}
-      />
     </div>
   );
 }
