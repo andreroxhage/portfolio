@@ -36,7 +36,7 @@ export const experimentRegistry: ExperimentMeta[] = [
     previewSubtitle:
       'Planning a week of food used to take me an hour. Now Claude Code agents research the recipes and write the shopping list, and I make the decisions',
     date: '2026',
-    posterImage: '/resource/projects/meal-planning-agents-video-light.webp',
+    posterImage: '/resource/projects/meal-planning-agents-preview.webp',
     tags: ['System Design', 'Automation'],
     repoUrl: 'https://github.com/andreroxhage/meal-prep-agents',
     order: 2,

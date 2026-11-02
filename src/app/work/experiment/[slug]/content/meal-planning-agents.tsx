@@ -230,6 +230,7 @@ function PageVideo() {
             imageSrc={`${videoBase}-${resolvedTheme}.webp`}
             imageAlt=""
             aspectRatio="16/9"
+            sizes="(max-width: 896px) 100vw, 896px"
             priority
             outline={false}
             className="border border-foreground/10"

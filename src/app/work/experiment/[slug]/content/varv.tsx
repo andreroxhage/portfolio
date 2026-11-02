@@ -294,6 +294,7 @@ function PageVideo({
             imageSrc={`${active}-poster.webp`}
             imageAlt=""
             aspectRatio={aspectRatio}
+            sizes="(max-width: 896px) 100vw, 896px"
             priority={priority}
             outline={false}
             className="border border-foreground/10"
