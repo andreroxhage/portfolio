@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useId } from 'react';
+import React, { useId, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import {
   IconBasket,
@@ -19,6 +20,7 @@ import { cn } from '@/lib/utils';
 import { MiddleSection, WideSection } from '@/app/components/ProjectLayout';
 import { ProgressiveMedia } from '@/app/components/ProgressiveMedia';
 import { useTheme } from '@/app/contexts/ThemeContext';
+import { useReducedMotion } from '@/app/hooks/useReducedMotion';
 import {
   DiagramChip,
   DiagramConnector,
@@ -29,6 +31,7 @@ import {
   diagramTone,
 } from '@/app/components/Diagram';
 import { Lead, P, SectionHeading } from '@/components/experiment/Prose';
+import { Button } from '@/components/ui/button';
 
 const levels = ['Everyday', 'Standard', 'Advanced'];
 
@@ -304,6 +307,34 @@ function ThemedStill({
   );
 }
 
+// Loads the AI SDK only after a click, so other readers never download it
+const CartDemo = dynamic(() => import('@/app/components/CartDemo'), {
+  ssr: false,
+  loading: () => (
+    <p role="status" className={mediaCaption}>
+      Loading the demo
+    </p>
+  ),
+});
+
+function TryCartDemo() {
+  const [open, setOpen] = useState(false);
+  const reducedMotion = useReducedMotion();
+
+  return open ? (
+    <CartDemo reducedMotion={reducedMotion} />
+  ) : (
+    <div className="flex justify-center">
+      <Button
+        className="min-h-11 rounded-[8px] corner-squircle hover:bg-primary-600"
+        onClick={() => setOpen(true)}
+      >
+        Try it yourself
+      </Button>
+    </div>
+  );
+}
+
 const emphasis = 'font-medium text-surface-dark-foreground';
 
 export default function MealPlanningAgentsContent() {
@@ -429,13 +460,17 @@ export default function MealPlanningAgentsContent() {
         </P>
       </MiddleSection>
 
-      <WideSection className="mb-20">
+      <WideSection className="mb-6">
         <ThemedStill
           name="meal-planning-a3-cart-explainer"
           alt={cartAlt}
           caption="The agents pick the products, and I place the order myself."
         />
       </WideSection>
+
+      <MiddleSection className="mb-20">
+        <TryCartDemo />
+      </MiddleSection>
 
       {/* Closer */}
       <MiddleSection className="mb-20 space-y-4">
